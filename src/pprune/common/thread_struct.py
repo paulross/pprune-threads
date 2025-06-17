@@ -35,17 +35,16 @@ class User:
             return int(m.group(1))
 
 
+PUNCTUATION_TABLE = str.maketrans({key: None for key in string.punctuation})
+
+@dataclasses.dataclass
 class Post:
     """Represents a single post in a thread."""
-    PUNCTUATION_TABLE = str.maketrans({key: None for key in string.punctuation})
-
-    def __init__(self, timestamp: datetime.datetime, permalink: str, user: User, text: str,
-                 sequence_num: int):
-        self.timestamp = timestamp
-        self.permalink = permalink
-        self.user = user
-        self.text = text
-        self.sequence_num = sequence_num
+    timestamp: datetime.datetime
+    permalink: str
+    user: User
+    text: str
+    sequence_num: int
 
     def __str__(self):
         return (
@@ -68,7 +67,7 @@ class Post:
 
     @property
     def words(self) -> typing.List[str]:
-        txt = self.text_stripped.translate(self.PUNCTUATION_TABLE)
+        txt = self.text_stripped.translate(PUNCTUATION_TABLE)
         return txt.split()
 
     @property
@@ -98,7 +97,7 @@ class Thread:
         # Map of {permalink : post_ordinal, ...}
         self.post_map: typing.Dict[str, int] = {}
         # Map of {User : [post_ordinal, ...], ...}
-        self.user_post_indexes: typing.Dict[User, typing.List[int]] = collections.defaultdict(list)
+        self.user_post_indexes: typing.Dict[User, typing.List[int]] = {}
 
     def __len__(self) -> int:
         return len(self.posts)
@@ -111,6 +110,8 @@ class Thread:
         if post.permalink in self.post_map:
             raise ValueError('permalink already in post_map. Trying to add: {:s}'.format(post.permalink))
         self.post_map[post.permalink] = len(self.posts)
+        if post.user not in self.user_post_indexes:
+            self.user_post_indexes[post.user] = []
         self.user_post_indexes[post.user].append(len(self.posts))
         self.posts.append(post)
 
@@ -121,9 +122,10 @@ class Thread:
 
     def get_post(self, permalink: str) -> Post:
         """Given a permalink this returns the Post object corresponding to that permalink.
-        May raise KeyError or IndexError."""
+        May raise KeyError if the permalink is unknown."""
         return self.posts[self.post_map[permalink]]
 
     def get_post_ordinals(self, user: User) -> typing.List[int]:
-        """Given a user what posts have they made, by ordinal."""
+        """Given a user what posts have they made, by ordinal.
+        May raise KeyError if user unknown."""
         return self.user_post_indexes[user]

@@ -219,21 +219,48 @@ def test_post_words_removed(args, remove_these, lower_case, expected):
     assert post.words_removed(remove_these, lower_case) == expected
 
 
+EXAMPLE_THREAD_POSTS_SINGLE = [
+    (
+        datetime.datetime(2020, 1, 1, 5, 32, 14),
+        # permalink
+        "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+        'nicolai',
+        "This, is the post text. See:",
+        42,  # Sequence number
+    ),
+]
+
+
+def test_thread_posts_single():
+    post = thread_struct.Post(*EXAMPLE_THREAD_POSTS_SINGLE[0])
+    assert post
+
+
+EXAMPLE_THREAD_POSTS_TWO = [
+    (
+        datetime.datetime(2020, 1, 1, 5, 32, 14),
+        # permalink
+        "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+        'nicolai',
+        "This, is the post text. See:",
+        42,  # Sequence number
+    ),
+    (
+        datetime.datetime(2020, 1, 1, 5, 32, 28),
+        # permalink
+        "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994339",
+        'not-nicolai',
+        "Totally different text.",
+        142,  # Sequence number
+    ),
+]
+
+
 @pytest.mark.parametrize(
     'posts, expected',
     (
-            (
-                    [
-                        (
-                                datetime.datetime(2020, 1, 1, 5, 32, 14),
-                                "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
-                                'nicolai',
-                                "This, is the post text. See:",
-                                42,  # Sequence number
-                        )
-                    ],
-                    1,
-            ),
+            (EXAMPLE_THREAD_POSTS_SINGLE, 1,),
+            (EXAMPLE_THREAD_POSTS_TWO, 2,),
     )
 )
 def test_thread(posts, expected):
@@ -241,3 +268,85 @@ def test_thread(posts, expected):
     for post_args in posts:
         thread.add_post(thread_struct.Post(*post_args))
     assert len(thread) == expected
+
+
+@pytest.mark.parametrize(
+    'posts, expected',
+    (
+            (EXAMPLE_THREAD_POSTS_SINGLE, {'nicolai'},),
+            (EXAMPLE_THREAD_POSTS_TWO, {'not-nicolai', 'nicolai'},),
+    )
+)
+def test_thread_all_users(posts, expected):
+    thread = thread_struct.Thread()
+    for post_args in posts:
+        thread.add_post(thread_struct.Post(*post_args))
+    assert thread.all_users == expected
+
+
+@pytest.mark.parametrize(
+    'posts, permalink, expected',
+    (
+            (
+                    EXAMPLE_THREAD_POSTS_SINGLE,
+                    "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+                    thread_struct.Post(*EXAMPLE_THREAD_POSTS_SINGLE[0]),
+            ),
+    )
+)
+def test_thread_get_post(posts, permalink, expected):
+    thread = thread_struct.Thread()
+    for post_args in posts:
+        thread.add_post(thread_struct.Post(*post_args))
+    assert thread.get_post(permalink) == expected
+
+
+@pytest.mark.parametrize(
+    'posts, permalink, expected',
+    (
+            (
+                    EXAMPLE_THREAD_POSTS_SINGLE,
+                    "Some stuff",
+                    "Some stuff",
+            ),
+    )
+)
+def test_thread_get_post_raises(posts, permalink, expected):
+    thread = thread_struct.Thread()
+    for post_args in posts:
+        thread.add_post(thread_struct.Post(*post_args))
+    with pytest.raises(KeyError) as err:
+        thread.get_post(permalink)
+    assert err.value.args[0] == expected
+
+
+@pytest.mark.parametrize(
+    'posts, user, expected',
+    (
+            (EXAMPLE_THREAD_POSTS_SINGLE, 'nicolai', [0,]),
+            (EXAMPLE_THREAD_POSTS_TWO, 'nicolai', [0,]),
+            (EXAMPLE_THREAD_POSTS_TWO, 'not-nicolai', [1,]),
+    )
+)
+def test_thread_get_post_ordinals(posts, user, expected):
+    thread = thread_struct.Thread()
+    for post_args in posts:
+        thread.add_post(thread_struct.Post(*post_args))
+    assert thread.get_post_ordinals(user) == expected
+
+
+@pytest.mark.parametrize(
+    'posts, user, expected',
+    (
+            (EXAMPLE_THREAD_POSTS_SINGLE, 'foo', 'foo',),
+    )
+)
+def test_thread_get_post_ordinals_raises(posts, user, expected):
+    thread = thread_struct.Thread()
+    for post_args in posts:
+        thread.add_post(thread_struct.Post(*post_args))
+    with pytest.raises(KeyError) as err:
+        thread.get_post_ordinals(user)
+    assert err.value.args[0] == expected
+
+
