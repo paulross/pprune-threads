@@ -72,8 +72,11 @@ def parse_url_to_beautiful_soup(url: str) -> bs4.BeautifulSoup:
 
 def parse_str_to_beautiful_soup(content: str) -> bs4.BeautifulSoup:
     """Parses a string as HTML."""
-    parse_tree = bs4.BeautifulSoup(content, features='lxml')
-    # parse_tree = bs4.BeautifulSoup(content, 'html.parser')
+    try:
+        parse_tree = bs4.BeautifulSoup(content, features='lxml')
+    except bs4.exceptions.FeatureNotFound:
+        logger.warning(f'Could not parse with lxml. Trying with html.parser')
+        parse_tree = bs4.BeautifulSoup(content, 'html.parser')
     return parse_tree
 
 
