@@ -228,7 +228,17 @@ def read_files(directory_name: str) -> typing.Dict[int, str]:
 
 
 def read_whole_thread(directory_name: str, count: int = -1) -> Thread:
+    """Reads a directory of HTML and creates a Thread object."""
     thread = Thread()
+    update_whole_thread(directory_name, thread, count)
+    return thread
+
+
+def update_whole_thread(directory_name: str, thread: Thread, count: int = -1) -> None:
+    """Reads a directory of HTML and updates the Thread object.
+    This allows the accumulation of multiple threads.
+    See also read_whole_thread().
+    """
     files = read_files(directory_name)
     file_count = 0
     for file_number in sorted(files.keys()):
@@ -246,7 +256,6 @@ def read_whole_thread(directory_name: str, count: int = -1) -> Thread:
         logger.info('Read: {:s} posts: {:d}'.format(files[file_number], post_count))
         file_count += 1
     logger.info('read_whole_thread(): Read %d posts' % len(thread.posts))
-    return thread
 
 
 def last_url_from_html_page(html_page: bs4.BeautifulSoup) -> str:
@@ -300,8 +309,14 @@ def get_first_page_and_subsequent_urls_from_url(url: str) -> typing.Tuple[bs4.Be
 
 
 def read_whole_thread_from_url(url_first: str) -> Thread:
-    """Take the first page URL and read all of the pages into a Thread object."""
+    """Take the first page URL and read all the pages into a Thread object."""
     thread = Thread()
+    update_whole_thread_from_url(url_first, thread)
+    return thread
+
+
+def update_whole_thread_from_url(url_first: str, thread: Thread) -> None:
+    """Take the first page URL and read all the pages updating it to an existing Thread object."""
     html_doc, urls = get_first_page_and_subsequent_urls_from_url(url_first)
     for post in get_post_objects_from_parsed_doc(html_doc):
         thread.add_post(post)
@@ -309,7 +324,6 @@ def read_whole_thread_from_url(url_first: str) -> Thread:
         doc = parse_url_to_beautiful_soup(url)
         for post in get_post_objects_from_parsed_doc(doc):
             thread.add_post(post)
-    return thread
 
 
 def archive_thread_offline(url_first: str, offline_directory: str, page_count: int = -1) -> typing.Tuple[int, int]:
