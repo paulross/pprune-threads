@@ -313,17 +313,17 @@ def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[Post]:
         return post
 
 
-def read_common_words(filename, n):
-    """Reads file_path and returns the set of n words."""
-    print('Reading words file: {}'.format(filename))
-    l = []
-    with open(filename) as f:
-        for aline in f.readlines():
-            if n <= 0:
-                break
-            l.append(aline.split()[0].lower())
-            n -= 1
-    return set(l)
+# def read_common_words(filename, n):
+#     """Reads file_path and returns the set of n words."""
+#     print('Reading words file: {}'.format(filename))
+#     l = []
+#     with open(filename) as f:
+#         for aline in f.readlines():
+#             if n <= 0:
+#                 break
+#             l.append(aline.split()[0].lower())
+#             n -= 1
+#     return set(l)
 
 
 def read_files(directory_name: str) -> typing.Dict[int, str]:
