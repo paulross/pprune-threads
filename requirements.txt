@@ -6,5 +6,6 @@ numpy
 pytest
 pytest-cov
 requests
+setuptools
 urllib3
 Sphinx

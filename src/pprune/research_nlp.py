@@ -8,6 +8,8 @@ import spacy
 
 from src.PPRUNE import read_html
 
+import pprune.common.thread_struct
+
 logger = logging.getLogger(__file__)
 
 
@@ -15,7 +17,7 @@ def print_filtered_entity_label_map():
     pass
 
 
-def process_thread(thread: read_html.Thread):
+def process_thread(thread: pprune.common.thread_struct.Thread):
     logger.info('process_thread(): %s', thread)
     # Load English tokenizer, tagger, parser and NER
     nlp = spacy.load("en_core_web_sm")

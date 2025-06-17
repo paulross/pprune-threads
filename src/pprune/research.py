@@ -30,8 +30,10 @@ import collections
 import pprint
 import sys
 
-from PPRUNE.common import read_html
+from pprune.common import read_html
 import analyse_thread
+import pprune.common.thread_struct
+
 
 def print_non_cap_words(thread, common_words):
     print('print_words():')
@@ -65,7 +67,7 @@ def print_all_caps(thread, common_words, print_count):
     pprint.pprint(sorted(word_counter.most_common(print_count)))
     print(' print_all_caps(): most_common({:d}) sorted DONE '.format(print_count).center(75, '-'))
 
-def print_authors(thread: read_html.Thread, print_count: int):
+def print_authors(thread: pprune.common.thread_struct.Thread, print_count: int):
     user_count = collections.Counter()
     for user in thread.all_users:
         for _post_ordinal in thread.get_post_ordinals(user):

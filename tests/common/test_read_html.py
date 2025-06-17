@@ -5,7 +5,10 @@ import os
 import bs4
 import pytest
 
-from PPRUNE.common import read_html
+from pprune.common import read_html
+
+import pprune.common.thread_struct
+
 
 @pytest.mark.parametrize(
     'attr, expected',
@@ -17,7 +20,7 @@ from PPRUNE.common import read_html
     )
 )
 def test_user_attributes(attr, expected):
-    user = read_html.User(href="https://www.pprune.org/members/219249-nicolai", name="nicolai")
+    user = pprune.common.thread_struct.User(href="https://www.pprune.org/members/219249-nicolai", name="nicolai")
     assert hasattr(user, attr)
     assert getattr(user, attr) == expected
 

@@ -27,12 +27,10 @@ __version__ = '0.0.1'
 __rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import argparse
-import collections
 import datetime
 import logging
 import os
 import re
-import pprint
 import string
 import sys
 import time
@@ -43,141 +41,14 @@ import bs4
 import dateparser
 import requests
 
+from pprune.common.thread_struct import User, Post, Thread
 
 logger = logging.getLogger(__file__)
 
-
-HTML_PAGE_PATH = '/Users/paulross/Documents/pprune/concorde/original'
-HTML_PAGE_PATH = '/Users/paulross/Documents/pprune/concorde/current'
 # Matches '423988-concorde-question-2.html' with groups: ('423988', '-concorde-question-', '2')
 # Special case '423988-concorde-question.html' corresponds to page 1.
 RE_FILENAME = re.compile(r'(\d+)(\D+)(\d+)?\.html')
-# Matches 'http://www.pprune.org/tech-log/423988-concorde-question.html#post5866333'
-# Gives one group: ('5866333',)
-RE_PERMALINK_TO_POST_NUMBER = re.compile(r'\S+post(\d+)')
-PUNCTUATION_TABLE = str.maketrans({key: None for key in string.punctuation})
 DIGITS_TABLE = str.maketrans({key: None for key in string.digits})
-
-
-RE_USER_HREF_TO_USER_ID = re.compile(r'.+?/(\d+)-(\S+)')
-
-
-class User(typing.NamedTuple):
-    """Represents a user. Taken from a node such as:
-    <a rel="nofollow" class="bigusername" href="https://www.pprune.org/members/219249-nicolai">nicolai</a>
-    """
-    href: str
-    name: str
-
-    @property
-    def user_id(self) -> typing.Optional[str]:
-        m = RE_USER_HREF_TO_USER_ID.match(self.href)
-        if m:
-            return f'{m.group(1)}-{m.group(2)}'
-
-
-    @property
-    def user_int(self) -> typing.Optional[int]:
-        m = RE_USER_HREF_TO_USER_ID.match(self.href)
-        if m:
-            return int(m.group(1))
-
-
-class Post:
-    """Represents a single post in a thread."""
-    def __init__(self, timestamp: datetime.datetime, permalink: str, user: User, node: bs4.element.Tag, sequence_num: int):
-        self.timestamp = timestamp
-        self.permalink = permalink
-        self.user = user
-        assert node is not None
-        self.node = node
-        self.sequence_num = sequence_num
-
-    @property
-    def post_message_attribute_id(self) -> str:
-        """The id attribute of the post message node."""
-        return f'post_message_{self.sequence_num}'
-
-    @property
-    def text(self):
-        """The text in the node, this does not include the subject line.
-        From:
-        <div id="post_message_10994338">
-        """
-        text_node = self.node.find('div', **{'id' : self.post_message_attribute_id})
-        return text_node.get_text()
-
-    @property
-    def text_stripped(self):
-        """The text in the node with blank lines and excess whitespace removed."""
-        ret = []
-        for line in self.text.split('\n'):
-            line = line.strip()
-            if len(line):
-                ret.append(line)
-        return '\n'.join(ret)
-
-    @property
-    def words(self):
-        txt = self.text.translate(PUNCTUATION_TABLE)
-        # txt = txt.translate(DIGITS_TABLE)
-        return [w for w in txt.strip().split() if not w.startswith('googletag')]
-        # return [w for w in txt.lower().strip().split() if not w.startswith('googletag')]
-
-    @property
-    def post_number(self):
-        m = RE_PERMALINK_TO_POST_NUMBER.match(self.permalink)
-        if m is not None:
-            return int(m.group(1))
-
-    def words_removed(self, remove_these, lower_case):
-        result = []
-        for w in self.words:
-            if lower_case and w.upper() != w:
-                w = w.lower()
-            if w not in remove_these:
-                result.append(w)
-        return result
-        # return [w for w in self.words if w not in remove_these]
-
-
-class Thread:
-    """Represents a thread of ordered posts with some internal indexing."""
-    def __init__(self):
-        # Ordered list of posts
-        self.posts: typing.List[Post] = []
-        # Map of {permalink : post_ordinal, ...}
-        self.post_map: typing.Dict[str, int] = {}
-        # Map of {User : [post_ordinal, ...], ...}
-        self.user_post_indexes: typing.Dict[User, typing.List[int]] = collections.defaultdict(list)
-
-    def __len__(self) -> int:
-        return len(self.posts)
-
-    def __getitem__(self, item) -> Post:
-        return self.posts[item]
-
-    def add_post(self, post: Post):
-        """Add a post."""
-        if post.permalink in self.post_map:
-            raise ValueError('permalink already in post_map. Trying to add: {:s}'.format(post.permalink))
-        self.post_map[post.permalink] = len(self.posts)
-        self.user_post_indexes[post.user].append(len(self.posts))
-        self.posts.append(post)
-
-    @property
-    def all_users(self) -> typing.Set[User]:
-        """All the users in this thread."""
-        return set([p.user for p in self.posts])
-
-    def get_post(self, permalink: str) -> Post:
-        """Given a permalink this returns the Post object corresponding to that permalink.
-        May raise KeyError or IndexError."""
-        return self.posts[self.post_map[permalink]]
-
-    def get_post_ordinals(self, user: User) -> typing.List[int]:
-        """Given a user what posts have they made, by ordinal."""
-        return self.user_post_indexes[user]
 
 
 def get_url_text(url: str) -> str:
@@ -264,7 +135,7 @@ def html_node_date(node: bs4.element.Tag) -> datetime.datetime:
     #                         20th Feb 2021, 22:20
     #                         <!-- / status icon and date -->
     # </div>
-    date_node = node.find('div', **{"class" : "tcell"})
+    date_node = node.find('div', **{"class": "tcell"})
     text = date_node.text
     ret = dateparser.parse(text.strip())
     return ret
@@ -283,7 +154,7 @@ def html_node_user(node: bs4.element.Tag) -> typing.Optional[User]:
     """Returns the user from the node."""
     # Looking for:
     # <a rel="nofollow" class="bigusername" href="https://www.pprune.org/members/219249-nicolai">nicolai</a>
-    user_node = node.find('a', **{"class" : "bigusername"})
+    user_node = node.find('a', **{"class": "bigusername"})
     if user_node:
         return User(user_node.attrs['href'], user_node.text.strip())
 
@@ -293,8 +164,17 @@ def html_node_post_node(node: bs4.element.Tag) -> bs4.element.Tag:
     # Looking for:
     # <div class="tcell alt1" id="td_post_10994338">
     post_id: int = html_node_post_number(node)
-    user_node = node.find('div', **{"class" : "tcell alt1", "id" : f"td_post_{post_id}"})
+    user_node = node.find('div', **{"class": "tcell alt1", "id": f"td_post_{post_id}"})
     return user_node
+
+
+def get_post_text_from_node(node: bs4.element.Tag, sequence_num: int) -> str:
+    """The text in the node, this does not include the subject line.
+    From:
+    <div id="post_message_10994338">
+    """
+    text_node = node.find('div', **{'id': f'post_message_{sequence_num}'})
+    return text_node.get_text()
 
 
 def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[Post]:
@@ -309,7 +189,8 @@ def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[Post]:
     post_node = html_node_post_node(node)
     sequence_number = html_node_post_number(node)
     if sequence_number is not None:
-        post = Post(timestamp, permalink, user, post_node, sequence_number)
+        text = get_post_text_from_node(post_node, sequence_number)
+        post = Post(timestamp, permalink, user, text, sequence_number)
         return post
 
 
@@ -368,6 +249,7 @@ def read_whole_thread(directory_name: str, count: int = -1) -> Thread:
 def last_url_from_html_page(html_page: bs4.BeautifulSoup) -> str:
     node = html_page.find('a', **{'id': "mb_pagelast"})
     return node.attrs['href']
+
 
 #: Matches https://www.pprune.org/rumours-news/638797-united-b777-engine-failure-14.html
 RE_HREF_TO_URL_NUMBER = re.compile(r'(.+?)-(\d+)\.html')
@@ -447,7 +329,6 @@ def archive_thread_offline(url_first: str, offline_directory: str, page_count: i
     return url_count, byte_count
 
 
-
 def main() -> int:  # pragma: no cover
     DEFAULT_OPT_LOG_FORMAT_VERBOSE = (
         '%(asctime)s - %(filename)24s#%(lineno)-4d - %(process)5d - (%(threadName)-10s) - %(levelname)-8s - %(message)s'
@@ -461,7 +342,8 @@ def main() -> int:  # pragma: no cover
     t_start = time.perf_counter()
     url_count, byte_count = archive_thread_offline(args.url, args.archive)
     t_elapsed = time.perf_counter() - t_start
-    logger.info('Read %d URLs and %d bytes in %.3f (s) at %.3f (kb/s)', url_count, byte_count, t_elapsed, byte_count / t_elapsed / 1024)
+    logger.info('Read %d URLs and %d bytes in %.3f (s) at %.3f (kb/s)', url_count, byte_count, t_elapsed,
+                byte_count / t_elapsed / 1024)
     return 0
 
 
