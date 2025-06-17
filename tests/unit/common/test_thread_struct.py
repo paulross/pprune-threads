@@ -217,17 +217,19 @@ def test_post_post_number(args, expected):
 def test_post_words_removed(args, remove_these, lower_case, expected):
     post = thread_struct.Post(*args)
     assert post.words_removed(remove_these, lower_case) == expected
+
+
 @pytest.mark.parametrize(
     'posts, expected',
     (
             (
                     [
                         (
-                            datetime.datetime(2020, 1, 1, 5, 32, 14),
-                            "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
-                            'nicolai',
-                            "This, is the post text. See:",
-                            42,  # Sequence number
+                                datetime.datetime(2020, 1, 1, 5, 32, 14),
+                                "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+                                'nicolai',
+                                "This, is the post text. See:",
+                                42,  # Sequence number
                         )
                     ],
                     1,
