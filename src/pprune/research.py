@@ -26,16 +26,21 @@ __date__ = '2017-01-01'
 __version__ = '0.0.1'
 __rights__ = 'Copyright (c) 2017 Paul Ross'
 
+import argparse
 import collections
 import logging
 import pprint
 import sys
+import time
 
 import analyse_thread
+import pprune.common.log_config
 import pprune.common.read_html
 import pprune.common.thread_struct
 import pprune.common.words
 
+
+logger = logging.getLogger(__file__)
 
 def print_non_cap_words(thread, common_words):
     print('print_words():')
@@ -100,19 +105,48 @@ def print_research(thread, common_words):
 
 
 def main():
-    DEFAULT_OPT_LOG_FORMAT_VERBOSE = (
-        '%(asctime)s - %(filename)24s#%(lineno)-4d - %(process)5d - (%(threadName)-10s) - %(levelname)-8s - %(message)s'
+    parser = argparse.ArgumentParser(description='Archive a pprune thread to local storage.')
+    parser.add_argument(
+        'archives',
+        type=str,
+        nargs='+',
+        help=(
+            'Archive directory of the thread.'
+            ' Multiple threads will be added in order.'
+        )
     )
-    logging.basicConfig(level=logging.INFO, format=DEFAULT_OPT_LOG_FORMAT_VERBOSE, stream=sys.stdout)
+    parser.add_argument(
+        "-l",
+        "--log-level",
+        dest="log_level",
+        type=int,
+        default=20,
+        help="Log level. [default: %(default)d]",
+    )
+    args = parser.parse_args()
+    logging.basicConfig(
+        level=args.log_level,
+        format=pprune.common.log_config.DEFAULT_OPT_LOG_FORMAT_NO_PROCESS,
+        stream=sys.stdout,
+    )
 
-    thread = pprune.common.read_html.read_whole_thread(sys.argv[1])
-    print(f'Number of posts: {thread.__len__()}')
+    # print(args)
+
+    t_start = time.perf_counter()
+    thread = pprune.common.thread_struct.Thread()
+    for archive in args.archives:
+        pprune.common.read_html.update_whole_thread(archive, thread, )
+
+    print(f'Number of posts: {len(thread)}')
     word_count = 0
     for post in thread.posts:
         word_count += len(post.words)
     print('Number of words: {:d}'.format(word_count))
     common_words = pprune.common.words.read_common_words_file(1000)
     print_research(thread, common_words)
+
+    t_elapsed = time.perf_counter() - t_start
+    logger.info('Read %d posts in %.3f (s)', len(thread), t_elapsed,)
 
 
 if __name__ == '__main__':

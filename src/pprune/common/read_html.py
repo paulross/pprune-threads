@@ -41,7 +41,8 @@ import bs4
 import dateparser
 import requests
 
-from pprune.common.thread_struct import User, Post, Thread
+import pprune.common.thread_struct
+import pprune.common.log_config
 
 logger = logging.getLogger(__file__)
 
@@ -103,7 +104,7 @@ def get_post_nodes_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[bs4.el
     return ret
 
 
-def get_post_objects_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[Post]:
+def get_post_objects_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[pprune.common.thread_struct.Post]:
     return [post_from_html_node(node) for node in get_post_nodes_from_parsed_doc(doc)]
 
 
@@ -156,13 +157,13 @@ def html_node_permalink(node: bs4.element.Tag) -> typing.Optional[str]:
         return ret.attrs['href']
 
 
-def html_node_user(node: bs4.element.Tag) -> typing.Optional[User]:
+def html_node_user(node: bs4.element.Tag) -> typing.Optional[pprune.common.thread_struct.User]:
     """Returns the user from the node."""
     # Looking for:
     # <a rel="nofollow" class="bigusername" href="https://www.pprune.org/members/219249-nicolai">nicolai</a>
     user_node = node.find('a', **{"class": "bigusername"})
     if user_node:
-        return User(user_node.attrs['href'], user_node.text.strip())
+        return pprune.common.thread_struct.User(user_node.attrs['href'], user_node.text.strip())
 
 
 def html_node_post_node(node: bs4.element.Tag) -> bs4.element.Tag:
@@ -183,7 +184,7 @@ def get_post_text_from_node(node: bs4.element.Tag, sequence_num: int) -> str:
     return text_node.get_text()
 
 
-def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[Post]:
+def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[pprune.common.thread_struct.Post]:
     """Returns a Post object from an HTML node."""
     timestamp = html_node_date(node)
     permalink = html_node_permalink(node)
@@ -196,7 +197,7 @@ def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[Post]:
     sequence_number = html_node_post_number(node)
     if sequence_number is not None:
         text = get_post_text_from_node(post_node, sequence_number)
-        post = Post(timestamp, permalink, user, text, sequence_number)
+        post = pprune.common.thread_struct.Post(timestamp, permalink, user, text, sequence_number)
         return post
 
 
@@ -230,14 +231,14 @@ def read_files(directory_name: str) -> typing.Dict[int, str]:
     return files
 
 
-def read_whole_thread(directory_name: str, count: int = -1) -> Thread:
+def read_whole_thread(directory_name: str, count: int = -1) -> pprune.common.thread_struct.Thread:
     """Reads a directory of HTML and creates a Thread object."""
-    thread = Thread()
+    thread = pprune.common.thread_struct.Thread()
     update_whole_thread(directory_name, thread, count)
     return thread
 
 
-def update_whole_thread(directory_name: str, thread: Thread, count: int = -1) -> None:
+def update_whole_thread(directory_name: str, thread: pprune.common.thread_struct.Thread, count: int = -1) -> None:
     """Reads a directory of HTML and updates the Thread object.
     This allows the accumulation of multiple threads.
     See also read_whole_thread().
@@ -311,14 +312,14 @@ def get_first_page_and_subsequent_urls_from_url(url: str) -> typing.Tuple[bs4.Be
     return html_doc, all_page_urls_from_page(url, html_doc)[1:]
 
 
-def read_whole_thread_from_url(url_first: str) -> Thread:
+def read_whole_thread_from_url(url_first: str) -> pprune.common.thread_struct.Thread:
     """Take the first page URL and read all the pages into a Thread object."""
-    thread = Thread()
+    thread = pprune.common.thread_struct.Thread()
     update_whole_thread_from_url(url_first, thread)
     return thread
 
 
-def update_whole_thread_from_url(url_first: str, thread: Thread) -> None:
+def update_whole_thread_from_url(url_first: str, thread: pprune.common.thread_struct.Thread) -> None:
     """Take the first page URL and read all the pages updating it to an existing Thread object."""
     html_doc, urls = get_first_page_and_subsequent_urls_from_url(url_first)
     for post in get_post_objects_from_parsed_doc(html_doc):
@@ -372,7 +373,21 @@ def main() -> int:  # pragma: no cover
             ' This will be created if it does not exist.'
         )
     )
+    parser.add_argument(
+        "-l",
+        "--log-level",
+        dest="log_level",
+        type=int,
+        default=20,
+        help="Log level. [default: %(default)d]",
+    )
     args = parser.parse_args()
+    logging.basicConfig(
+        level=args.log_level,
+        format=pprune.common.log_config.DEFAULT_OPT_LOG_FORMAT_NO_PROCESS,
+        stream=sys.stdout,
+    )
+
     t_start = time.perf_counter()
     url_count, byte_count = archive_thread_offline(args.url, args.archive)
     t_elapsed = time.perf_counter() - t_start
