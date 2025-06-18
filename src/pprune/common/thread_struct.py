@@ -14,7 +14,7 @@ RE_PERMALINK_TO_POST_NUMBER = re.compile(r'\S+post(\d+)')
 RE_USER_HREF_TO_USER_ID = re.compile(r'.+?/(\d+)-(\S+)')
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass(frozen=True)
 class User:
     """Represents a user. Taken from a node such as:
     <a rel="nofollow" class="bigusername" href="https://www.pprune.org/members/219249-nicolai">nicolai</a>

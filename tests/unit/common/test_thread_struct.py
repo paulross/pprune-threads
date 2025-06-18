@@ -51,6 +51,17 @@ def test_user_user_int(href, name, expected):
     assert user.user_int == expected
 
 
+@pytest.mark.parametrize(
+    'href, name',
+    (
+            ("https://www.pprune.org/members/219249-nicolai", 'nicolai',),
+    )
+)
+def test_user_hashable(href, name):
+    user = thread_struct.User(href, name)
+    hash(user)
+
+
 # NOTE: Typical permalink: "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338"
 
 @pytest.mark.parametrize(

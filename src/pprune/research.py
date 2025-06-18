@@ -21,18 +21,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__author__  = 'Paul Ross'
-__date__    = '2017-01-01'
+__author__ = 'Paul Ross'
+__date__ = '2017-01-01'
 __version__ = '0.0.1'
-__rights__  = 'Copyright (c) 2017 Paul Ross'
+__rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import collections
 import pprint
 import sys
 
-from pprune.common import read_html
 import analyse_thread
+import pprune.common.read_html
 import pprune.common.thread_struct
+import pprune.common.words
 
 
 def print_non_cap_words(thread, common_words):
@@ -44,6 +45,7 @@ def print_non_cap_words(thread, common_words):
     # print('print_words(): sorted')
     pprint.pprint(sorted(word_counter))
     # pprint.pprint(sorted(word_counter.most_common(400)))
+
 
 def print_phrases(thread, common_words, phrase_length, print_count):
     print(' print_phrases(): most_common({:d}) '.format(print_count).center(75, '-'))
@@ -58,6 +60,7 @@ def print_phrases(thread, common_words, phrase_length, print_count):
         print(f'{" ".join(words):32} : {count:4d}')
     print(' print_phrases(): most_common({:d}) sorted DONE '.format(print_count).center(75, '-'))
 
+
 def print_all_caps(thread, common_words, print_count):
     print(' print_all_caps(): most_common({:d}) '.format(print_count).center(75, '-'))
     word_counter = analyse_thread.count_all_caps(thread, common_words)
@@ -66,6 +69,7 @@ def print_all_caps(thread, common_words, print_count):
     print(' print_all_caps(): most_common({:d}) sorted '.format(print_count).center(75, '-'))
     pprint.pprint(sorted(word_counter.most_common(print_count)))
     print(' print_all_caps(): most_common({:d}) sorted DONE '.format(print_count).center(75, '-'))
+
 
 def print_authors(thread: pprune.common.thread_struct.Thread, print_count: int):
     user_count = collections.Counter()
@@ -87,22 +91,23 @@ def print_authors(thread: pprune.common.thread_struct.Thread, print_count: int):
     print(' print_authors(): most_common({:d}) sorted DONE '.format(print_count).center(75, '-'))
 
 
-
 def print_research(thread, common_words):
     # print_non_cap_words(thread, common_words)
     # print_all_caps(thread, common_words, 200)
     print_phrases(thread, common_words, 2, 1000)
     # print_authors(thread, 100)
 
+
 def main():
-    thread = read_html.read_whole_thread(sys.argv[1])
+    thread = pprune.common.read_html.read_whole_thread(sys.argv[1])
     print(f'Number of posts: {thread.__len__()}')
     word_count = 0
     for post in thread.posts:
         word_count += len(post.words)
     print('Number of words: {:d}'.format(word_count))
-    common_words = read_html.read_common_words(sys.argv[2], 1000)
+    common_words = pprune.common.words.read_common_words_file(1000)
     print_research(thread, common_words)
+
 
 if __name__ == '__main__':
     main()
