@@ -27,6 +27,7 @@ __version__ = '0.0.1'
 __rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import collections
+import logging
 import pprint
 import sys
 
@@ -93,12 +94,17 @@ def print_authors(thread: pprune.common.thread_struct.Thread, print_count: int):
 
 def print_research(thread, common_words):
     # print_non_cap_words(thread, common_words)
-    # print_all_caps(thread, common_words, 200)
-    print_phrases(thread, common_words, 2, 1000)
+    print_all_caps(thread, common_words, 200)
+    print_phrases(thread, common_words, 2, 400)
     # print_authors(thread, 100)
 
 
 def main():
+    DEFAULT_OPT_LOG_FORMAT_VERBOSE = (
+        '%(asctime)s - %(filename)24s#%(lineno)-4d - %(process)5d - (%(threadName)-10s) - %(levelname)-8s - %(message)s'
+    )
+    logging.basicConfig(level=logging.INFO, format=DEFAULT_OPT_LOG_FORMAT_VERBOSE, stream=sys.stdout)
+
     thread = pprune.common.read_html.read_whole_thread(sys.argv[1])
     print(f'Number of posts: {thread.__len__()}')
     word_count = 0

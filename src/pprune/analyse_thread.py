@@ -27,6 +27,8 @@ __version__ = '0.0.1'
 __rights__  = 'Copyright (c) 2017 Paul Ross'
 
 import collections
+import string
+
 
 def count_non_cap_words(thread, common_words, freq_gt):
     word_counter = collections.Counter()
@@ -53,7 +55,7 @@ def count_all_caps(thread, common_words):
     word_counter = collections.Counter()
     for post in thread.posts:
         trimmed_words = post.words_removed(common_words, False)
-        words = [w for w in trimmed_words if w.upper() == w and len(w) > 1]
+        words = [w for w in trimmed_words if w.upper() == w and len(w) > 1 and w[0] in string.ascii_uppercase]
         word_counter.update(words)
     return word_counter
 

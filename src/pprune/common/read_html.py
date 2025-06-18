@@ -47,7 +47,10 @@ logger = logging.getLogger(__file__)
 
 # Matches '423988-concorde-question-2.html' with groups: ('423988', '-concorde-question-', '2')
 # Special case '423988-concorde-question.html' corresponds to page 1.
-RE_FILENAME = re.compile(r'(\d+)(\D+)(\d+)?\.html')
+# Thread two is more awkward, for example:
+# '666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html'
+# '666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-20.html'
+RE_FILENAME = re.compile(r'(\d+)(\S+?)(\d+)?\.html')
 DIGITS_TABLE = str.maketrans({key: None for key in string.digits})
 
 
