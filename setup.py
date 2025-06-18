@@ -22,26 +22,35 @@
 """The setup script.
 copyright 2017-2025, Paul Ross
 """
-import os
-import sysconfig
+import pathlib
 
 from setuptools import setup, find_packages
 
 COPYRIGHT = '2017-2025, Paul Ross'
 
+here = pathlib.Path(__file__).parent.resolve()
 
-# with open('README.rst') as readme_file:
-#     readme = readme_file.read()
-#
-# with open('HISTORY.rst') as history_file:
-#     history = history_file.read()
+# Get the long description from the README file
+long_description = (
+        (here / 'README.rst').read_text(encoding='utf-8')
+        + '\n\n'
+        + (here / 'INSTALL.rst').read_text(encoding='utf-8')
+        + '\n\n'
+        + (here / 'HISTORY.rst').read_text(encoding='utf-8')
+)
 
 install_requirements = [
     'beautifulsoup4',
-    'colorama',
+    'coverage',
+    'dateparser',
     'lxml',
-    'psutil',
+    'numpy',
+    'pytest',
+    'pytest-cov',
     'requests',
+    'setuptools',
+    'urllib3',
+    'Sphinx',
 ]
 
 setup_requirements = [
@@ -54,32 +63,42 @@ test_requirements = [
 ]
 
 setup(
-    name='pprune-thread',
+    name='pprune-threads',
     version='0.1.0rc0',
     description="Analysis of pprune threads.",
-    long_description="Analysis of pprune threads.",
+    long_description=long_description,
+    long_description_content_type='text/x-rst',
     author="Paul Ross",
     author_email='apaulross@gmail.com',
     url='https://github.com/paulross/pprune-threads',
-    packages=find_packages('src'),
-    # package_dir={'' : 'src'},
-    # package_data={'' : ['TotalDepth/util/plot/formats/*.xml']},
-    # data_files=data_files,
+    package_dir={'': 'src'},  # Optional
+    # You can just specify package directories manually here if your project is
+    # simple. Or you can use find_packages().
+    #
+    # Alternatively, if you just want to distribute a single Python file, use
+    # the `py_modules` argument instead as follows, which will expect a file
+    # called `my_module.py` to exist:
+    #
+    #   py_modules=['my_module'],
+    #
+    packages=find_packages(where='pprune'),  # Required
     entry_points={
         'console_scripts': {
-            'pprune_archive_thread=pprune.common.read_html:main',
+            'archive_thread=pprune.common.read_html:main',
         },
     },
     include_package_data=True,
     license="MIT",
+    # copyright=COPYRIGHT,
     zip_safe=False,
     keywords='pprune',
     # https://pypi.org/project/trove-classifiers/
     # https://pypi.org/classifiers/
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
+        # Deprecated, see pyproject.toml
+        # 'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
@@ -91,10 +110,10 @@ setup(
         'Programming Language :: Python :: 3.12',
         'Programming Language :: Python :: 3.13',
     ],
-    test_suite='tests',
+    # test_suite='tests',
     setup_requires=setup_requirements,
     install_requires=install_requirements,
-    tests_require=test_requirements,
+    # tests_require=test_requirements,
     # cmdclass = {'build_ext': build_ext},
     # ext_modules=ext_modules
 )

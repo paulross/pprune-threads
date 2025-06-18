@@ -352,9 +352,23 @@ def main() -> int:  # pragma: no cover
     )
     logging.basicConfig(level=logging.INFO, format=DEFAULT_OPT_LOG_FORMAT_VERBOSE, stream=sys.stdout)
 
-    parser = argparse.ArgumentParser(description='Archive a thread to offline.')
-    parser.add_argument('url', type=str, help='URL of the first page of the thread.')
-    parser.add_argument('archive', type=str, help='Output path to save the thread pages to.')
+    parser = argparse.ArgumentParser(description='Archive a pprune thread to local storage.')
+    parser.add_argument(
+        'url',
+        type=str,
+        help=(
+            'URL of the first page of the pprune thread.'
+            ' This will be used to determine how many subsequent pages need to be downloaded.'
+        )
+    )
+    parser.add_argument(
+        'archive',
+        type=str,
+        help=(
+            'Output directory to save the thread pages to.'
+            ' This will be created if it does not exist.'
+        )
+    )
     args = parser.parse_args()
     t_start = time.perf_counter()
     url_count, byte_count = archive_thread_offline(args.url, args.archive)
