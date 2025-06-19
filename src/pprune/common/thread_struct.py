@@ -78,7 +78,7 @@ class Post:
 
     def words_removed(self, remove_these: typing.Set[str], lower_case: bool) -> typing.List[str]:
         """Return the words in the post having removed all specified words and made lower case if required.
-        NOTE: The case of remove_words must match lower_case if that it to be effective."""
+        NOTE: The case of remove_these must match lower_case if that it to be effective."""
         result = []
         for w in self.words:
             if lower_case and w.upper() != w:
