@@ -1,9 +1,10 @@
-import collections
 import dataclasses
 import datetime
 import re
 import string
 import typing
+
+import bs4
 
 # Matches 'http://www.pprune.org/tech-log/423988-concorde-question.html#post5866333'
 # Gives one group: ('5866333',)
@@ -37,14 +38,40 @@ class User:
 
 PUNCTUATION_TABLE = str.maketrans({key: None for key in string.punctuation})
 
+
 @dataclasses.dataclass
 class Post:
     """Represents a single post in a thread."""
     timestamp: datetime.datetime
     permalink: str
     user: User
-    text: str
+    node: bs4.element.Tag
     sequence_num: int
+
+    # def __post_init__(self):
+    #     """Do some sanity checking on the node.
+    #
+    #     Expects::
+    #
+    #         <div id="edit10994338">
+    #
+    #     """
+    #     if self.node.name != 'div':
+    #         raise ValueError(f'{self.node.name} does not appear to be a post')
+    #     if 'id' not in self.node.attrs:
+    #         raise ValueError(f'Node does not have an "id" attribute')
+    #     node_id = self.node.attrs['id']
+    #     if not node_id.startswith('edit'):
+    #         raise ValueError(f'Node "id" atributes does not start with "edit"')
+    #     if int(node_id[len('edit')]) != self.sequence_num:
+    #         raise ValueError(f'Node "id" attribute "{self.node.attrs['id']}" does not match {self.sequence_num}')
+    #     # Check the permalink matches
+    #     permalink_node = self.node.find('a', title="Link to this Post")
+    #     if permalink_node is None:
+    #         raise ValueError(f'no permalink node for {self.permalink}')
+    #     permalink = permalink_node.attrs['href']
+    #     if permalink != self.permalink:
+    #         raise ValueError(f'permalink node href="{permalink}" != {self.permalink}')
 
     def __str__(self):
         return (
@@ -52,7 +79,19 @@ class Post:
             f' Permalink: {self.permalink},'
             f' User: {self.user},'
             f' Sequence: {self.sequence_num}'
+            # f' Text: {self.text}'
         )
+
+    @property
+    def text(self) -> str:
+        """The text in the node, this does not include the subject line.
+        From:
+        <div id="post_message_10994338">
+        """
+        text_node = self.node.find('div', **{'id': f'post_message_{self.sequence_num}'})
+        if text_node is None:
+            raise RuntimeError(f'No text node for post {self.sequence_num}')
+        return text_node.get_text()
 
     @property
     def text_stripped(self) -> str:

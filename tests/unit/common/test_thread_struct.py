@@ -1,7 +1,7 @@
 import datetime
 
+import bs4
 import pytest
-
 from pprune.common import thread_struct
 
 
@@ -62,6 +62,292 @@ def test_user_hashable(href, name):
     hash(user)
 
 
+EXAMPLE_SINGLE_PPRUNE_POST = """<!-- post #10994338 -->
+<div id="edit10994338">
+    <!-- this is not the last post shown on the page -->
+
+    <div id="post10994338">
+        <div class="tpost">
+
+            <div class="trow-group">
+                <div class="trow thead smallfont">
+                    <div class="tcell" style="width:175px;">
+                        <!-- status icon and date -->
+                        <a name="post10994338">
+                            <img class="inlineimg" src="https://www.pprune.org/images/statusicon/post_old.gif" alt="Old"/>
+                        </a>
+
+                                            20th Feb 2021, 22:11
+
+                                            <!-- / status icon and date -->
+                    </div>
+                    <div class="tcell text-right">
+
+                                            &nbsp;
+                                            #
+                        <a href="https://www.pprune.org/10994338-post1.html" target="new" id="postcount10994338" name="1">
+                            <strong>1</strong>
+                        </a>
+                         (
+                        <b>
+                            <a href="https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338" title="Link to this Post">permalink</a>
+                        </b>
+                        ) &nbsp;
+
+
+                    </div>
+                </div>
+
+                <div class="trow">
+                    <div class="tcell alt2" style="width:175px;">
+                        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"nicolai","memberOf":"Registered Member","url":"https://www.pprune.org/member.php?u=219249"}</script>
+                        <div id="postmenu_10994338">
+
+                            <a rel="nofollow" class="bigusername" href="https://www.pprune.org/members/219249-nicolai">nicolai</a>
+                            <script type="2054ed5ceb28d642617005d7-text/javascript">
+                            vbmenu_register("postmenu_10994338", true);
+                            </script>
+
+                        </div>
+
+                        <div class="smallfont">
+                            <span class="alt2 threadstarter">Thread Starter</span>
+                        </div>
+
+                        <div class="smallfont">
+
+                                                    &nbsp;
+                            <br/>
+                            <div>Join Date: Jan 2008</div>
+                            <div>Location: It used to be an island...</div>
+
+                            <div>
+                                                        Posts: 233
+                                                    </div>
+
+                            <div></div>
+                        </div>
+
+                    </div>
+
+                    <div class="tcell alt1" id="td_post_10994338">
+
+                        <!-- icon and title -->
+                        <div class="smallfont">
+
+                            <strong>United B777 engine failure</strong>
+                        </div>
+                        <hr/>
+                        <!-- / icon and title -->
+
+                        <!-- message -->
+                        <div id="post_message_10994338">
+
+
+                                                    Reports on Twitter that a UAL 777-200 has had an uncontained engine failure on the way from DEN (Denver, Colorado, USA) to HNL (Honolulu, Hawai'i, USA) and returned safely to DEN. Local news report:
+                            <a href="https://thepostmillennial.com/colorado-residents-shocked-falling-debris-united-airlines" target="_blank">https://thepostmillennial.com/colora...nited-airlines</a>
+                            <br/>
+                            <br/>
+                             There's a twitter post by user @stillgray with video of the failed engine from in the aircraft that PPRuNe doesn't seem to want to include here...
+                            <br/>
+                            <br/>
+                            <img src="https://cimg6.ibsrv.net/gimg/pprune.org-vbulletin/800x400/1613859028_bfa90ab22ac53d454b9d408b228b58c1bbed57fd.jpeg" alt="" class="post_inline_image"/>
+                            <br/>
+                            <i>UAL 777</i>
+                            <br/>
+                            <img src="https://cimg0.ibsrv.net/gimg/pprune.org-vbulletin/2000x1504/eusp_qruuaiubbl_jpeg_3753a703c961585ca56d2e7fcd59348e31d1b385.jpg" alt="" class="post_inline_image"/>
+                            <br/>
+                            <i>Ground debris</i>
+                            <br/>
+
+                        </div>
+                        <!-- / message -->
+
+                    </div>
+                </div>
+                <div class="trow">
+                    <div class="tcell alt2">
+                        <img class="inlineimg" src="https://www.pprune.org/images/statusicon/user_offline.gif" alt="nicolai is offline"/>
+
+                        <a href="https://www.pprune.org/report.php?p=10994338" rel="nofollow">
+                            <img class="inlineimg" src="https://www.pprune.org/images/buttons/report.gif" alt="Report Post"/>
+                        </a>
+
+
+                                            &nbsp;
+
+                    </div>
+
+                    <div class="tcell alt1 text-right">
+                        <!-- controls -->
+
+                        <a class="button hollow primary" href="https://www.pprune.org/newreply.php?do=newreply&amp;p=10994338" rel="nofollow">
+                            <i class="fas fa-quote-right"></i>
+                             Quote
+                        </a>
+
+                        <a class="button hollow primary" href="https://www.pprune.org/newreply.php?do=newreply&amp;p=10994338" rel="nofollow" id="qr_10994338" onclick="if (!window.__cfRLUnblockHandlers) return false; return false" data-cf-modified-2054ed5ceb28d642617005d7-="">
+                            <i class="fas fa-bolt"></i>
+                             Quick Reply
+                        </a>
+
+                        <!-- / controls -->
+                    </div>
+                </div>
+            </div>
+            <!-- trow-group -->
+        </div>
+        <!-- tbox -->
+    </div>
+
+    <!-- post 10994338 popup menu -->
+    <div class="vbmenu_popup" id="postmenu_10994338_menu" style="display:none">
+        <div class="tbox">
+            <div class="trow thead">
+                <div class="tcell">nicolai</div>
+            </div>
+
+            <div class="trow">
+                <div class="tcell vbmenu_option">
+                    <a rel="nofollow" href="https://www.pprune.org/members/219249-nicolai">View Public Profile</a>
+                </div>
+            </div>
+
+            <div class="trow">
+                <div class="tcell vbmenu_option">
+                    <a href="https://www.pprune.org/private.php?do=newpm&amp;u=219249" rel="nofollow">Send a private message to nicolai</a>
+                </div>
+            </div>
+
+            <div class="trow">
+                <div class="tcell vbmenu_option">
+                    <a href="https://www.pprune.org/search.php?do=finduser&amp;u=219249" rel="nofollow">Find More Posts by nicolai</a>
+                </div>
+            </div>
+
+            <div class="trow">
+                <div class="tcell vbmenu_option">
+                    <a rel="nofollow" href="https://www.pprune.org/profile.php?do=addlist&amp;userlist=buddy&amp;u=219249">Add nicolai to Your Contacts</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- / post 10994338 popup menu -->
+
+</div>
+
+<!-- / post #10994338 -->
+"""
+
+EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT = """<!-- post #10994338 -->
+<div id="edit10994338">
+  <!-- this is not the last post shown on the page -->
+  <div id="post10994338">
+    <div class="tpost">
+      <div class="trow-group">
+        <div class="trow thead smallfont">
+          <div class="tcell" style="width:175px;">
+          <!-- status icon and date -->
+          <a name="post10994338">
+            <img class="inlineimg" src="https://www.pprune.org/images/statusicon/post_old.gif" alt="Old" />
+          </a>20th Feb 2021, 22:11 
+          <!-- / status icon and date --></div>
+          <div class="tcell text-right">&#160; # 
+          <a href="https://www.pprune.org/10994338-post1.html" target="new" id="postcount10994338" name="1">
+            <strong>1</strong>
+          </a>( 
+          <b>
+            <a href="https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338" title="Link to this Post">permalink</a>
+          </b>) &#160;</div>
+        </div>
+        <div class="trow">
+          <div class="tcell alt2" style="width:175px;">
+            <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"nicolai","memberOf":"Registered Member","url":"https://www.pprune.org/member.php?u=219249"}</script>
+            <div id="postmenu_10994338">
+              <a rel="nofollow" class="bigusername" href="https://www.pprune.org/members/219249-nicolai">nicolai</a>
+              <script type="2054ed5ceb28d642617005d7-text/javascript">vbmenu_register("postmenu_10994338", true);</script>
+            </div>
+            <div class="smallfont">
+              <span class="alt2 threadstarter">Thread Starter</span>
+            </div>
+            <div class="smallfont">&#160; 
+            <br />
+            <div>Join Date: Jan 2008</div>
+            <div>Location: It used to be an island...</div>
+            <div>Posts: 233</div>
+            <div></div></div>
+          </div>
+          <div class="tcell alt1" id="td_post_10994338">
+            <!-- icon and title -->
+            <div class="smallfont">
+              <strong>United B777 engine failure</strong>
+            </div>
+            <hr />
+            <!-- / icon and title -->
+            <!-- message -->
+            <div id="post_message_10994338">Minimal text in this post.</div>
+            <!-- / message -->
+          </div>
+        </div>
+        <div class="trow">
+          <div class="tcell alt2">
+          <img class="inlineimg" src="https://www.pprune.org/images/statusicon/user_offline.gif" alt="nicolai is offline" />
+          <a href="https://www.pprune.org/report.php?p=10994338" rel="nofollow">
+            <img class="inlineimg" src="https://www.pprune.org/images/buttons/report.gif" alt="Report Post" />
+          </a>&#160;</div>
+          <div class="tcell alt1 text-right">
+            <!-- controls -->
+            <a class="button hollow primary" href="https://www.pprune.org/newreply.php?do=newreply&amp;p=10994338" rel="nofollow">
+            <i class="fas fa-quote-right"></i>Quote</a>
+            <a class="button hollow primary" href="https://www.pprune.org/newreply.php?do=newreply&amp;p=10994338" rel="nofollow" id="qr_10994338" onclick="if (!window.__cfRLUnblockHandlers) return false; return false" data-cf-modified-2054ed5ceb28d642617005d7-="">
+            <i class="fas fa-bolt"></i>Quick Reply</a>
+            <!-- / controls -->
+          </div>
+        </div>
+      </div>
+      <!-- trow-group -->
+    </div>
+    <!-- tbox -->
+  </div>
+  <!-- post 10994338 popup menu -->
+  <div class="vbmenu_popup" id="postmenu_10994338_menu" style="display:none">
+    <div class="tbox">
+      <div class="trow thead">
+        <div class="tcell">nicolai</div>
+      </div>
+      <div class="trow">
+        <div class="tcell vbmenu_option">
+          <a rel="nofollow" href="https://www.pprune.org/members/219249-nicolai">View Public Profile</a>
+        </div>
+      </div>
+      <div class="trow">
+        <div class="tcell vbmenu_option">
+          <a href="https://www.pprune.org/private.php?do=newpm&amp;u=219249" rel="nofollow">Send a private message to nicolai</a>
+        </div>
+      </div>
+      <div class="trow">
+        <div class="tcell vbmenu_option">
+          <a href="https://www.pprune.org/search.php?do=finduser&amp;u=219249" rel="nofollow">Find More Posts by nicolai</a>
+        </div>
+      </div>
+      <div class="trow">
+        <div class="tcell vbmenu_option">
+          <a rel="nofollow" href="https://www.pprune.org/profile.php?do=addlist&amp;userlist=buddy&amp;u=219249">Add nicolai to Your Contacts</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / post 10994338 popup menu -->
+</div>
+<!-- / post #10994338 -->
+"""
+
+def parse_string(html_string: str, features: str) -> bs4.element.Tag:
+    parse_tree = bs4.BeautifulSoup(html_string, features=features)
+    return parse_tree
+
+
 # NOTE: Typical permalink: "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338"
 
 @pytest.mark.parametrize(
@@ -72,10 +358,20 @@ def test_user_hashable(href, name):
                             datetime.datetime(2020, 1, 1, 5, 32, 14),
                             "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
                             'nicolai',
-                            "This is the post text.",
-                            42,  # Sequence number
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
+                            10994338,  # Sequence number
                     ),
-                    'Timestamp: 2020-01-01 05:32:14, Permalink: https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338, User: nicolai, Sequence: 42',
+                    'Timestamp: 2020-01-01 05:32:14, Permalink: https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338, User: nicolai, Sequence: 10994338',
+            ),
+            (
+                    (
+                            datetime.datetime(2020, 1, 1, 5, 32, 14),
+                            "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+                            'nicolai',
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'html.parser'),
+                            10994338,  # Sequence number
+                    ),
+                    'Timestamp: 2020-01-01 05:32:14, Permalink: https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338, User: nicolai, Sequence: 10994338',
             ),
     )
 )
@@ -83,6 +379,8 @@ def test_post_ctor(args, expected):
     post = thread_struct.Post(*args)
     print()
     print(post)
+    print(post.text_stripped)
+    print(post.words)
     assert str(post) == expected
 
 
@@ -94,35 +392,19 @@ def test_post_ctor(args, expected):
                             datetime.datetime(2020, 1, 1, 5, 32, 14),
                             "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
                             'nicolai',
-                            "This is the post text.",
-                            42,  # Sequence number
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
+                            10994338,  # Sequence number
                     ),
-                    'This is the post text.',
-            ),
-            (
                     (
-                            datetime.datetime(2020, 1, 1, 5, 32, 14),
-                            "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
-                            'nicolai',
-                            """
-                            This is the post text.
-                            
-                            
-                            """,
-                            42,  # Sequence number
+                            'Reports on Twitter that a UAL 777-200 has had an uncontained engine failure '
+                            "on the way from DEN (Denver, Colorado, USA) to HNL (Honolulu, Hawai'i, USA) "
+                            'and returned safely to DEN. Local news report:\n'
+                            'https://thepostmillennial.com/colora...nited-airlines\n'
+                            "There's a twitter post by user @stillgray with video of the failed engine "
+                            "from in the aircraft that PPRuNe doesn't seem to want to include here...\n"
+                            'UAL 777\n'
+                            'Ground debris'
                     ),
-                    'This is the post text.',
-            ),
-            # Check inter-word spacing.
-            (
-                    (
-                            datetime.datetime(2020, 1, 1, 5, 32, 14),
-                            "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
-                            'nicolai',
-                            "This   is    the post text.",
-                            42,  # Sequence number
-                    ),
-                    'This   is    the post text.',
             ),
     )
 )
@@ -139,10 +421,20 @@ def test_post_text_stripped(args, expected):
                             datetime.datetime(2020, 1, 1, 5, 32, 14),
                             "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
                             'nicolai',
-                            "This, is the post text. See:",
-                            42,  # Sequence number
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'lxml'),
+                            10994338,  # Sequence number
                     ),
-                    ['This', 'is', 'the', 'post', 'text', 'See', ],
+                    ['Minimal', 'text', 'in', 'this', 'post'],
+            ),
+            (
+                    (
+                            datetime.datetime(2020, 1, 1, 5, 32, 14),
+                            "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+                            'nicolai',
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'html.parser'),
+                            10994338,  # Sequence number
+                    ),
+                    ['Minimal', 'text', 'in', 'this', 'post'],
             ),
     )
 )
@@ -179,36 +471,36 @@ def test_post_post_number(args, expected):
                             datetime.datetime(2020, 1, 1, 5, 32, 14),
                             "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
                             'nicolai',
-                            "This, is the post text. See:",
-                            42,  # Sequence number
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'lxml'),
+                            10994338,  # Sequence number
                     ),
                     set(),
                     True,
-                    ['this', 'is', 'the', 'post', 'text', 'see'],
+                    ['minimal', 'text', 'in', 'this', 'post'],
             ),
             (
                     (
                             datetime.datetime(2020, 1, 1, 5, 32, 14),
                             "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
                             'nicolai',
-                            "This, is the post text. See:",
-                            42,  # Sequence number
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'lxml'),
+                            10994338,  # Sequence number
                     ),
                     set(),
                     False,
-                    ['This', 'is', 'the', 'post', 'text', 'See'],
+                    ['Minimal', 'text', 'in', 'this', 'post'],
             ),
             (
                     (
                             datetime.datetime(2020, 1, 1, 5, 32, 14),
                             "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
                             'nicolai',
-                            "This, is the post text. See:",
-                            42,  # Sequence number
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'lxml'),
+                            10994338,  # Sequence number
                     ),
                     {'this', 'the'},
                     True,
-                    ['is', 'post', 'text', 'see'],
+                    ['minimal', 'text', 'in', 'post'],
             ),
             # Example of when lower_case is False and the remove_these set is lower case. Some removal.
             (
@@ -216,12 +508,12 @@ def test_post_post_number(args, expected):
                             datetime.datetime(2020, 1, 1, 5, 32, 14),
                             "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
                             'nicolai',
-                            "This, is the post text. See:",
-                            42,  # Sequence number
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'lxml'),
+                            10994338,  # Sequence number
                     ),
                     {'this', 'the'},
                     False,
-                    ['This', 'is', 'post', 'text', 'See'],
+                    ['Minimal', 'text', 'in', 'post'],
             ),
     )
 )
@@ -236,8 +528,8 @@ EXAMPLE_THREAD_POSTS_SINGLE = [
         # permalink
         "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
         'nicolai',
-        "This, is the post text. See:",
-        42,  # Sequence number
+        parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
+        10994338,  # Sequence number
     ),
 ]
 
@@ -334,9 +626,9 @@ def test_thread_get_post_raises(posts, permalink, expected):
 @pytest.mark.parametrize(
     'posts, user, expected',
     (
-            (EXAMPLE_THREAD_POSTS_SINGLE, 'nicolai', [0,]),
-            (EXAMPLE_THREAD_POSTS_TWO, 'nicolai', [0,]),
-            (EXAMPLE_THREAD_POSTS_TWO, 'not-nicolai', [1,]),
+            (EXAMPLE_THREAD_POSTS_SINGLE, 'nicolai', [0, ]),
+            (EXAMPLE_THREAD_POSTS_TWO, 'nicolai', [0, ]),
+            (EXAMPLE_THREAD_POSTS_TWO, 'not-nicolai', [1, ]),
     )
 )
 def test_thread_get_post_ordinals(posts, user, expected):
@@ -359,5 +651,3 @@ def test_thread_get_post_ordinals_raises(posts, user, expected):
     with pytest.raises(KeyError) as err:
         thread.get_post_ordinals(user)
     assert err.value.args[0] == expected
-
-

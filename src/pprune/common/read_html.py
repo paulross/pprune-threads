@@ -80,7 +80,7 @@ def parse_str_to_beautiful_soup(content: str) -> bs4.BeautifulSoup:
         parse_tree = bs4.BeautifulSoup(content, features='lxml')
     except bs4.exceptions.FeatureNotFound:
         logger.warning(f'Could not parse with lxml. Trying with html.parser')
-        parse_tree = bs4.BeautifulSoup(content, 'html.parser')
+        parse_tree = bs4.BeautifulSoup(content, features='html.parser')
     return parse_tree
 
 
@@ -196,8 +196,7 @@ def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[pprune.common.
     post_node = html_node_post_node(node)
     sequence_number = html_node_post_number(node)
     if sequence_number is not None:
-        text = get_post_text_from_node(post_node, sequence_number)
-        post = pprune.common.thread_struct.Post(timestamp, permalink, user, text, sequence_number)
+        post = pprune.common.thread_struct.Post(timestamp, permalink, user, post_node, sequence_number)
         return post
 
 
