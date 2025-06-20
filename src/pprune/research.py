@@ -55,7 +55,7 @@ def print_non_cap_words(thread, common_words):
 
 def print_phrases(thread, common_words, phrase_length, print_count):
     print(' print_phrases(): most_common({:d}) '.format(print_count).center(75, '-'))
-    word_counter = analyse_thread.count_phrases(thread, common_words, phrase_length)
+    word_counter = analyse_thread.count_phrases(thread, common_words, phrase_length, freq_ge=0)
     # pprint.pprint(word_counter.most_common(print_count))
     for words, count in word_counter.most_common(print_count):
         print(f'{" ".join(words):32} : {count:4d}')
@@ -67,9 +67,9 @@ def print_phrases(thread, common_words, phrase_length, print_count):
     print(' print_phrases(): most_common({:d}) sorted DONE '.format(print_count).center(75, '-'))
 
 
-def print_all_caps(thread, common_words, print_count):
+def print_all_caps(thread, print_count):
     print(' print_all_caps(): most_common({:d}) '.format(print_count).center(75, '-'))
-    word_counter = analyse_thread.count_all_caps(thread, common_words)
+    word_counter = analyse_thread.count_all_caps(thread, min_size=2, freq_ge=5)
     pprint.pprint(word_counter.most_common(print_count))
     print(' print_all_caps(): most_common({:d}) DONE '.format(print_count).center(75, '-'))
     print(' print_all_caps(): most_common({:d}) sorted '.format(print_count).center(75, '-'))
@@ -99,9 +99,11 @@ def print_authors(thread: pprune.common.thread_struct.Thread, print_count: int):
 
 def print_research(thread, common_words):
     # print_non_cap_words(thread, common_words)
-    print_all_caps(thread, common_words, 200)
-    print_phrases(thread, common_words, 2, 400)
-    # print_authors(thread, 100)
+
+    # print_all_caps(thread, 200)
+    # print_phrases(thread, common_words, 2, 400)
+
+    print_authors(thread, 100)
 
 
 def main():

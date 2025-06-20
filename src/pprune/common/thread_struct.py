@@ -140,7 +140,7 @@ class Post:
         Maintain words that are all uppercase."""
         result = []
         for w in self.words:
-            if w.lower() not in remove_these or w.upper() == w:
+            if w.lower() not in remove_these:# or w.upper() == w:
                 result.append(w)
         return result
 

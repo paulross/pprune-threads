@@ -36,9 +36,9 @@ import pprune.common.thread_struct
 def filter_counter(
         word_counter: collections.Counter,
         freq_ge: int,
-) -> typing.Dict[typing.Hashable, int]:
+) -> collections.Counter:
     # Filter by frequency count.
-    wc = {}
+    wc = collections.Counter()
     for w, c in word_counter.most_common():
         if c >= freq_ge:
             wc[w] = c
