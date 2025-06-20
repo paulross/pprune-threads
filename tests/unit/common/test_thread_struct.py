@@ -8,10 +8,10 @@ from pprune.common import thread_struct
 @pytest.mark.parametrize(
     'attr, expected',
     (
-        ('href', "https://www.pprune.org/members/219249-nicolai"),
-        ('name', "nicolai"),
-        ('user_id', "219249-nicolai"),
-        ('user_int', 219249),
+            ('href', "https://www.pprune.org/members/219249-nicolai"),
+            ('name', "nicolai"),
+            ('user_id', "219249-nicolai"),
+            ('user_int', 219249),
     )
 )
 def test_user_attributes(attr, expected):
@@ -358,6 +358,7 @@ EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT = """<!-- post #10994338 -->
 <!-- / post #10994338 -->
 """
 
+
 def parse_string(html_string: str, features: str) -> bs4.element.Tag:
     parse_tree = bs4.BeautifulSoup(html_string, features=features)
     return parse_tree
@@ -535,6 +536,104 @@ def test_post_post_number(args, expected):
 def test_post_words_removed(args, remove_these, lower_case, expected):
     post = thread_struct.Post(*args)
     assert post.words_removed(remove_these, lower_case) == expected
+
+
+@pytest.mark.parametrize(
+    'args, min_size, expected',
+    (
+            (
+                    (
+                            datetime.datetime(2020, 1, 1, 5, 32, 14),
+                            "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+                            'nicolai',
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
+                            10994338,  # Sequence number
+                    ),
+                    0,
+                    ['UAL', '777200', 'DEN', 'USA', 'HNL', 'USA', 'DEN', 'UAL', '777', ],
+            ),
+            (
+                    (
+                            datetime.datetime(2020, 1, 1, 5, 32, 14),
+                            "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+                            'nicolai',
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
+                            10994338,  # Sequence number
+                    ),
+                    4,
+                    ['777200', ],
+            ),
+    )
+)
+def test_post_cap_words(args, min_size, expected):
+    post = thread_struct.Post(*args)
+    assert post.cap_words(min_size) == expected
+
+
+@pytest.mark.parametrize(
+    'args, remove_these, expected',
+    (
+            (
+                    (
+                            datetime.datetime(2020, 1, 1, 5, 32, 14),
+                            "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+                            'nicolai',
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
+                            10994338,  # Sequence number
+                    ),
+                    {
+                        'to', 'the', 'in', 'of', 'to', 'of', 'on', 'a', 'has', 'had', 'an', 'on', 'from', 'with',
+                        'way', 'and', 'by', 'that',
+                    },
+                    [
+                        'Reports',
+                        'Twitter',
+                        'UAL',
+                        '777200',
+                        'uncontained',
+                        'engine',
+                        'failure',
+                        'DEN',
+                        'Denver',
+                        'Colorado',
+                        'USA',
+                        'HNL',
+                        'Honolulu',
+                        'Hawaii',
+                        'USA',
+                        'returned',
+                        'safely',
+                        'DEN',
+                        'Local',
+                        'news',
+                        'report',
+                        'httpsthepostmillennialcomcoloranitedairlines',
+                        'Theres',
+                        'twitter',
+                        'post',
+                        'user',
+                        'stillgray',
+                        'video',
+                        'failed',
+                        'engine',
+                        'aircraft',
+                        'PPRuNe',
+                        'doesnt',
+                        'seem',
+                        'want',
+                        'include',
+                        'here',
+                        'UAL',
+                        '777',
+                        'Ground',
+                        'debris',
+                    ],
+            ),
+    )
+)
+def test_post_significant_words(args, remove_these, expected):
+    post = thread_struct.Post(*args)
+    assert post.significant_words(remove_these) == expected
 
 
 EXAMPLE_THREAD_POSTS_SINGLE = [

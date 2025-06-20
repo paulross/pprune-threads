@@ -120,9 +120,27 @@ class Post:
         NOTE: The case of remove_these must match lower_case if that it to be effective."""
         result = []
         for w in self.words:
-            if lower_case and w.upper() != w:
+            if lower_case:  # and w.upper() != w:
                 w = w.lower()
             if w not in remove_these:
+                result.append(w)
+        return result
+
+    def cap_words(self, min_size: int) -> typing.List[str]:
+        """Return the words in the post that are all capitals with a minimum size."""
+        result = []
+        for w in self.words:
+            if w.upper() == w and len(w) >= min_size:
+                result.append(w)
+        return result
+
+    def significant_words(self, remove_these: typing.Set[str]) -> typing.List[str]:
+        """Return the 'significant' words in the post.
+        Ignore a word (lowercase) in remove_these.
+        Maintain words that are all uppercase."""
+        result = []
+        for w in self.words:
+            if w.lower() not in remove_these or w.upper() == w:
                 result.append(w)
         return result
 

@@ -88,7 +88,7 @@ def pass_one(thread, common_words):
     post_subject_map = {}
     user_subject_map = collections.defaultdict(set)
     for i, post in enumerate(thread.posts):
-        subjects = analyse_thread.match_words(post, common_words, 10, concorde_pub_map.WORDS_MAP)
+        subjects = analyse_thread.match_words(post, common_words, concorde_pub_map.WORDS_MAP)
         subjects |= analyse_thread.match_all_caps(post, common_words, concorde_pub_map.CAPS_WORDS)
         subjects |= analyse_thread.match_phrases(post, common_words, 2, concorde_pub_map.PHRASES_2_MAP)
         if post.pprune_sequence_num in concorde_pub_map.SPECIFIC_POSTS_MAP:

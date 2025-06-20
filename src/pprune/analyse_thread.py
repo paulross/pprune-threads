@@ -33,50 +33,81 @@ import typing
 import pprune.common.thread_struct
 
 
-def count_non_cap_words(
-        thread: pprune.common.thread_struct.Thread,
-        common_words: typing.Set[str],
-        freq_gt: int,
+def filter_counter(
+        word_counter: collections.Counter,
+        freq_ge: int,
 ) -> typing.Dict[typing.Hashable, int]:
-    """This takes a thread and a set of common words (must be lower case) to remove and a frequency limit.
-    It returns a dict of {word : count}."""
-    word_counter = collections.Counter()
-    for post in thread.posts:
-        trimmed_words = post.words_removed(common_words, True)
-        word_counter.update(trimmed_words)
-    all_users = thread.all_users
-    # wc = {w: c for w, c in word_counter.most_common() if
-    #       c >= freq_gt and w.upper() != w and w.lower() not in common_words and w not in all_users}
+    # Filter by frequency count.
     wc = {}
     for w, c in word_counter.most_common():
-        if c >= freq_gt and w not in all_users:
+        if c >= freq_ge:
             wc[w] = c
     return wc
 
 
-def count_phrases(thread, common_words, phrase_length):
+def count_non_cap_words(
+        thread: pprune.common.thread_struct.Thread,
+        common_words: typing.Sequence[str],
+        freq_ge: int,
+) -> typing.Dict[typing.Hashable, int]:
+    """This takes a thread and a set of common words (must be lower case)
+    to remove and a frequency lower limit.
+    This also ignores all uppercase words and usernames in the text.
+    The case of the return word(s) is lowercase.
+    It returns a dict of {word : count}."""
     word_counter = collections.Counter()
+    all_users = thread.all_users
     for post in thread.posts:
-        trimmed_words = post.words_removed(common_words, True)
+        trimmed_words = [
+            word for word in post.words
+            # Eliminate common words.
+            if word.lower() not in common_words
+               # And eliminate words in users.
+               and word not in all_users
+               # And eliminate all capital words.
+               and word.upper() != word
+        ]
+        word_counter.update(trimmed_words)
+    return filter_counter(word_counter, freq_ge)
+
+
+def count_phrases(
+        thread: pprune.common.thread_struct.Thread,
+        common_words: typing.Sequence[str],
+        phrase_length: int,
+        freq_ge: int,
+) -> typing.Dict[typing.Hashable, int]:
+    """This takes a thread and a set of common words (must be lower case).
+    This also ignores all uppercase words and usernames in the text.
+    The case of the return word(s) is lowercase.
+    It returns a dict of {phrase : count}."""
+    phrase_counter = collections.Counter()
+    for post in thread.posts:
+        trimmed_words = post.significant_words(common_words)
         phrases = []
         for i in range(len(trimmed_words) - (phrase_length - 1)):
             phrase = tuple(trimmed_words[i:i + phrase_length])
-            if all([len(w) > 1 for w in phrase]):
-                phrases.append(phrase)
-        word_counter.update(phrases)
-    return word_counter
+            # if all([len(w) > 1 for w in phrase]):
+            #     phrases.append(phrase)
+            phrases.append(phrase)
+        phrase_counter.update(phrases)
+    return filter_counter(phrase_counter, freq_ge)
 
 
-def count_all_caps(thread, common_words):
+def count_all_caps(
+        thread: pprune.common.thread_struct.Thread,
+        min_size: int,
+        freq_ge: int,
+) -> typing.Dict[typing.Hashable, int]:
+    """Returns a dict of {word : count} for all thd uppercase words in the thread."""
     word_counter = collections.Counter()
     for post in thread.posts:
-        trimmed_words = post.words_removed(common_words, False)
-        words = [w for w in trimmed_words if w.upper() == w and len(w) > 1 and w[0] in string.ascii_uppercase]
+        words = post.cap_words(min_size)
         word_counter.update(words)
-    return word_counter
+    return filter_counter(word_counter, freq_ge)
 
 
-def match_words(post, common_words, freq_gt, word_map):
+def match_words(post, common_words, word_map):
     """For a given post this strips the common_words and returns the set of word_map values
     that match any word that is in word_map."""
     trimmed_words = post.words_removed(common_words, True)

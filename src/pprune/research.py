@@ -39,8 +39,8 @@ import pprune.common.read_html
 import pprune.common.thread_struct
 import pprune.common.words
 
-
 logger = logging.getLogger(__file__)
+
 
 def print_non_cap_words(thread, common_words):
     print('print_words():')
@@ -146,7 +146,7 @@ def main():
     print_research(thread, common_words)
 
     t_elapsed = time.perf_counter() - t_start
-    logger.info('Read %d posts in %.3f (s)', len(thread), t_elapsed,)
+    logger.info('Read %d posts in %.3f (s)', len(thread), t_elapsed, )
 
 
 if __name__ == '__main__':
