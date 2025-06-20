@@ -58,13 +58,21 @@ DIGITS_TABLE = str.maketrans({key: None for key in string.digits})
 def get_url_text(url: str) -> str:
     """Gets a URL as text."""
     logger.info('Parsing URL %s', url)
+    t_start = time.perf_counter()
     try:
         response = requests.get(url)
     except requests.exceptions.ConnectionError as err:  # pragma: no cover
         raise ValueError(f'URP request {url} raised: {err}')
     if response.status_code != 200:  # pragma: no cover
         raise ValueError(f'URP request {url} failed: {response.status_code}')
-    logger.info('Parsed %d bytes from URL %s ', len(response.text), url)
+    t_elapsed = time.perf_counter() - t_start
+    logger.info(
+        'Parsed %d bytes in %.3f (s) at %.3f (kb/s) from URL %s ',
+        len(response.text),
+        t_elapsed,
+        len(response.text) / t_elapsed / 1024,
+        url,
+    )
     return response.text
 
 
@@ -347,7 +355,9 @@ def archive_thread_offline(url_first: str, offline_directory: str, page_count: i
     url_count = byte_count = 0
     os.makedirs(offline_directory, exist_ok=True)
     # NOTE: We read the first page twice, simplified code and all that.
-    for url in all_page_urls_from_url(url_first):
+    all_urls = all_page_urls_from_url(url_first)
+    logger.info('Discovered %d URLs from the first page.', len(all_urls))
+    for url in all_urls:
         if page_count != -1 and url_count >= page_count:
             break
         text = get_url_text(url)
