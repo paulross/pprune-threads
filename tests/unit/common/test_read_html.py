@@ -4,6 +4,19 @@ from pprune.common import read_html
 
 
 @pytest.mark.parametrize(
+    'file_name, expected',
+    (
+        ('423988-concorde-question-2.html', ('423988', '-concorde-question-', '2')),
+        ('423988-concorde-question.html', ('423988', '-concorde-question', None)),
+    )
+)
+def test_user_attributes(file_name, expected):
+    match = read_html.RE_FILENAME.match(file_name)
+    assert match is not None
+    assert match.groups() == expected
+
+
+@pytest.mark.parametrize(
     'filename, expected',
     (
             (

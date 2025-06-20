@@ -108,6 +108,17 @@ def get_post_objects_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[ppru
     return [post_from_html_node(node) for node in get_post_nodes_from_parsed_doc(doc)]
 
 
+def get_thread_from_html_string(html_string: str) -> pprune.common.thread_struct.Thread:
+    """Given a string of HTML return the Thread object containing all the posts."""
+    doc = parse_str_to_beautiful_soup(html_string)
+    thread = pprune.common.thread_struct.Thread()
+    for node in get_post_nodes_from_parsed_doc(doc):
+        post = post_from_html_node(node)
+        if post is not None:
+            thread.add_post(post)
+    return thread
+
+
 def html_node_post_id(node: bs4.element.Tag) -> str:
     """The ID of the post. From:
     <div id="edit10994338">
@@ -256,7 +267,7 @@ def update_whole_thread(directory_name: str, thread: pprune.common.thread_struct
                 post_count += 1
             else:
                 logger.warning('Can not read post from node <%s %s>', post_node.name, post_node.attrs)
-        logger.info('Read: {:s} posts: {:d}'.format(files[file_number], post_count))
+        logger.info('Read: {:s} posts: {:d}'.format(os.path.basename(files[file_number]), post_count))
         file_count += 1
     logger.info('read_whole_thread(): Read %d posts' % len(thread.posts))
 

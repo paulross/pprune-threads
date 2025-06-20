@@ -6,6 +6,21 @@ from pprune.common import thread_struct
 
 
 @pytest.mark.parametrize(
+    'attr, expected',
+    (
+        ('href', "https://www.pprune.org/members/219249-nicolai"),
+        ('name', "nicolai"),
+        ('user_id', "219249-nicolai"),
+        ('user_int', 219249),
+    )
+)
+def test_user_attributes(attr, expected):
+    user = thread_struct.User(href="https://www.pprune.org/members/219249-nicolai", name="nicolai")
+    assert hasattr(user, attr)
+    assert getattr(user, attr) == expected
+
+
+@pytest.mark.parametrize(
     'permalink, expected',
     (
             ('http://www.pprune.org/tech-log/423988-concorde-question.html#post5866333', ('5866333',)),

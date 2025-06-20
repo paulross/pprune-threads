@@ -38,14 +38,19 @@ def count_non_cap_words(
         common_words: typing.Set[str],
         freq_gt: int,
 ) -> typing.Dict[typing.Hashable, int]:
-    # TODO:
+    """This takes a thread and a set of common words (must be lower case) to remove and a frequency limit.
+    It returns a dict of {word : count}."""
     word_counter = collections.Counter()
     for post in thread.posts:
         trimmed_words = post.words_removed(common_words, True)
         word_counter.update(trimmed_words)
     all_users = thread.all_users
-    wc = {w: c for w, c in word_counter.most_common() if
-          c >= freq_gt and w.upper() != w and w.lower() not in common_words and w not in all_users}
+    # wc = {w: c for w, c in word_counter.most_common() if
+    #       c >= freq_gt and w.upper() != w and w.lower() not in common_words and w not in all_users}
+    wc = {}
+    for w, c in word_counter.most_common():
+        if c >= freq_gt and w not in all_users:
+            wc[w] = c
     return wc
 
 
