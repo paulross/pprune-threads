@@ -348,9 +348,16 @@ def update_whole_thread_from_url(url_first: str, thread: pprune.common.thread_st
             thread.add_post(post)
 
 
-def archive_thread_offline(url_first: str, offline_directory: str, page_count: int = -1) -> typing.Tuple[int, int]:
+def archive_thread_offline(
+        url_first: str,
+        offline_directory: str,
+        page_count: int,
+        force: bool,
+) -> typing.Tuple[int, int]:
     """Given a URL of the first page of the thread archive all the pages limited by page_count.
-    This returns the number of pages archived offline."""
+    If page count is -1 then all pages are downloaded.
+    If force is True then all pages are downloaded, if False then only URLs not in the archive are downloaded.
+    This returns the (number of pages, bytes) archived offline."""
     logger.info('Archiving thread from URL %s ', url_first)
     url_count = byte_count = 0
     os.makedirs(offline_directory, exist_ok=True)
@@ -360,12 +367,16 @@ def archive_thread_offline(url_first: str, offline_directory: str, page_count: i
     for url in all_urls:
         if page_count != -1 and url_count >= page_count:
             break
-        text = get_url_text(url)
         parsed_url: ParseResult = urlparse(url)
-        with open(os.path.join(offline_directory, os.path.basename(parsed_url.path)), 'w') as file:
-            file.write(text)
-        url_count += 1
-        byte_count += len(text)
+        destination = os.path.join(offline_directory, os.path.basename(parsed_url.path))
+        if not os.path.exists(destination) or force:
+            text = get_url_text(url)
+            with open(destination, 'w') as file:
+                file.write(text)
+            url_count += 1
+            byte_count += len(text)
+        else:
+            logger.info('Ignoring existing URL %s ', url)
     logger.info('Read a total of %d bytes from URL %s ', byte_count, url_first)
     return url_count, byte_count
 
@@ -394,6 +405,23 @@ def main() -> int:  # pragma: no cover
         )
     )
     parser.add_argument(
+        "--url-count",
+        dest="url_count",
+        type=int,
+        default=-1,
+        help="Limit count of URLs to this number. -1 is all URLs. [default: %(default)d]",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help=(
+            "Force the download of each URL. "
+            " If True then all URLs will be downloaded."
+            " If False then only URLs that do not exist in the archive will be downloaded."
+            " [default: %(default)s]"
+        )
+    )
+    parser.add_argument(
         "-l",
         "--log-level",
         dest="log_level",
@@ -409,7 +437,7 @@ def main() -> int:  # pragma: no cover
     )
 
     t_start = time.perf_counter()
-    url_count, byte_count = archive_thread_offline(args.url, args.archive)
+    url_count, byte_count = archive_thread_offline(args.url, args.archive, args.url_count, args.force)
     t_elapsed = time.perf_counter() - t_start
     logger.info('Read %d URLs and %d bytes in %.3f (s) at %.3f (kb/s)', url_count, byte_count, t_elapsed,
                 byte_count / t_elapsed / 1024)
