@@ -111,21 +111,8 @@ def match_words(post, common_words, word_map):
     """For a given post this strips the common_words and returns the set of word_map values
     that match any word that is in word_map."""
     trimmed_words = post.words_removed(common_words, True)
-    return {word_map[w] for w in trimmed_words if w in word_map}
-
-
-def match_phrases(post, common_words, phrase_length, phrase_map):
-    """For a given post this strips the common_words and returns the phrase_map values
-    that match for any phrases of length phrase_length."""
-    result = set()
-    trimmed_words = post.words_removed(common_words, True)
-    for i in range(len(trimmed_words) - (phrase_length - 1)):
-        phrase = tuple(trimmed_words[i:i + phrase_length])
-        try:
-            result.add(phrase_map[phrase])
-        except KeyError:
-            pass
-    return result
+    ret = {word_map[w] for w in trimmed_words if w in word_map}
+    return ret
 
 
 def match_all_caps(post, common_words, caps_map):
@@ -133,3 +120,17 @@ def match_all_caps(post, common_words, caps_map):
     that match any upper case words that are in caps_map."""
     trimmed_words = post.words_removed(common_words, False)
     return {caps_map[w] for w in trimmed_words if w.upper() == w and len(w) > 1 and w in caps_map}
+
+
+def match_phrases(post, common_words, phrase_length, phrase_map):
+    """For a given post this strips the common_words and returns the phrase_map values
+    that match for any phrases of length phrase_length."""
+    result = set()
+    trimmed_words = post.words_removed(common_words, False)
+    for i in range(len(trimmed_words) - (phrase_length - 1)):
+        phrase = tuple(trimmed_words[i:i + phrase_length])
+        try:
+            result.add(phrase_map[phrase])
+        except KeyError:
+            pass
+    return result
