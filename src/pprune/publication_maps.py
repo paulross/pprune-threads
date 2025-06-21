@@ -67,7 +67,7 @@ class PublicationMap(abc.ABC):
     def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
         """Given a subject that a post corresponds to then this returns a set
         of subjects the post shall also be included in.
-        For example if a post is specifically targeted at "RAT (Deployment)
+        For example if a post is specifically targeted at "RAT (Deployment)"
         then that post should also be included in "RAT (All)" etc."""
         pass
 
@@ -362,11 +362,16 @@ class AirIndia171(PublicationMap):
 
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {
-
+        'mayday': 'Mayday',
     }
-    # Map of {lower_case_word : subject_title, ..}
+    # This maps capitilised words (stripped of punctuation) to their subject.
+    # Any post that has that capitilised word in it is treated as part of that subject.
     CAPS_WORDS_MAP = {
-
+        k: k + ' (All)' for k in [
+            'RAT', 'TCMA', 'FADEC', 'ADSB', 'APU', 'FDR', 'V1', 'EAFR', 'FR24', 'CVR', 'AAIB', 'VNAV', 'AI171',
+            'FAA', 'CCTV', 'TOGA', 'FBW', 'BBC', 'HPSOV', 'V2', 'MLG', 'FCOM', 'NTSB', 'EDML', 'MEL', 'DFDR',
+            'EXDAC', 'MAYDAY',
+        ]
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps
@@ -376,11 +381,38 @@ class AirIndia171(PublicationMap):
             ('RAT', 'deploy'): 'RAT (Deployment)',
             ('RAT', 'deployed'): 'RAT (Deployment)',
             ('RAT', 'deployment'): 'RAT (Deployment)',
+            ('RAT', 'extended'): 'RAT (Deployment)',
+            ('RAT', 'electrical'): 'RAT (Electrical)',
+            ('RAT', 'seen'): 'RAT (Deployment)',
             ('TCMA', 'activation'): 'TCMA (Activation)',
             ('TCMA', 'airground'): 'TCMA (Air-ground Logic)',
+            ('TCMA', 'ground'): 'TCMA (Air-ground Logic)',
             ('TCMA', 'logic'): 'TCMA (Logic)',
             ('TCMA', 'package'): 'TCMA (All)',
             ('engine', 'shutdown'): 'Engine Shutdown',
+
+            ('fuel', 'contamination'): 'Fuel Contamination',
+            ('fuel', 'cutoff'): 'Fuel Cutoff',
+            ('fuel', 'cut'): 'Fuel Cutoff',
+            ('fuel', 'switch'): 'Fuel Cutoff',
+            ('fuel', 'switches'): 'Fuel Cutoff',
+
+            ('fuel', 'pump'): 'Fuel Pumps',
+            ('fuel', 'pumps'): 'Fuel Pumps',
+            ('fuel', 'flow'): 'Fuel Pumps',
+            ('fuel', 'supply'): 'Fuel Pumps',
+
+            ('gear', 'doors'): 'Gear Retraction',
+            ('gear', 'lever'): 'Gear Retraction',
+            ('gear', 'retraction'): 'Gear Retraction',
+            ('gear', 'selected'): 'Gear Retraction',
+
+            ('gear', 'flaps',): 'Flaps vs Gear',
+
+            ('hydraulic', 'failure'): 'Hydraulic Failure (All)',
+            ('hydraulic', 'pressure'): 'Hydraulic Pumps',
+            ('hydraulic', 'pump'): 'Hydraulic Pumps',
+            ('hydraulic', 'pumps'): 'Hydraulic Pumps',
             # TODO:
         },
         3: {
@@ -413,6 +445,7 @@ class AirIndia171(PublicationMap):
     # Map of {subject_title : set(subject_title), ..}
     DUPLICATE_SUBJECT_MAP = {
         'RAT (Deployment)': {'RAT (All)', },
+        'RAT (Electrical)': {'RAT (All)', },
         'TCMA (Improper Activation)': {'TCMA (All)', },
         'TCMA (Air-ground Logic)': {'TCMA (All)', },
         'TCMA (Logic)': {'TCMA (All)', },
@@ -420,6 +453,7 @@ class AirIndia171(PublicationMap):
         'Engine Shutdown (Over-speed)': {'Engine Over-speed (All)', },
         'Hydraulic Failure (Triple)': {'Hydraulic Failure (All)', },
         'Hydraulic Failure (Double)': {'Hydraulic Failure (All)', },
+        'Hydraulic Pumps': {'Hydraulic Failure (All)', },
         'Dual Engine Failure': {'Engine Failure (All)', },
         'Engine Shutdown': {'Engine Failure (All)', },
     }

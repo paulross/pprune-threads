@@ -188,14 +188,17 @@ def main():
         default=20,
         help="Log level. [default: %(default)d]",
     )
-    args = parser.parse_args()
+    args, unknown_args = parser.parse_known_args()
+    print(f'Args:\n{args}')
+    print(f'Unknown args:\n{unknown_args}')
+    if unknown_args:
+        parser.print_usage()
+        return -1
     logging.basicConfig(
         level=args.log_level,
         format=pprune.common.log_config.DEFAULT_OPT_LOG_FORMAT_NO_PROCESS,
         stream=sys.stdout,
     )
-
-    # print(args)
 
     t_start = time.perf_counter()
     thread = pprune.common.thread_struct.Thread()
@@ -208,6 +211,7 @@ def main():
         word_count += len(post.words)
     print('Number of words: {:d}'.format(word_count))
     common_words = pprune.common.words.read_common_words_file(args.common_words)
+    print(f'Number of common words: {len(common_words)}')
 
     print_research(
         thread, common_words, args.most_common_count, args.freq_ge,
