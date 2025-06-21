@@ -107,7 +107,7 @@ def count_all_caps(
     return filter_counter(word_counter, freq_ge)
 
 
-def match_words(post, common_words, word_map):
+def match_words(post, common_words, word_map) -> typing.Set[str]:
     """For a given post this strips the common_words and returns the set of word_map values
     that match any word that is in word_map."""
     trimmed_words = post.words_removed(common_words, True)

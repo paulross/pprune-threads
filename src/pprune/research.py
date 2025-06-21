@@ -62,7 +62,8 @@ def print_phrases(thread, common_words, phrase_length, most_common_count: int, f
     word_counter = analyse_thread.count_phrases(thread, common_words, phrase_length, freq_ge=freq_ge)
     # pprint.pprint(word_counter.most_common(most_common_count))
     for words, count in word_counter.most_common(most_common_count):
-        print(f'{" ".join(words):32} : {count:4d}')
+        # print(f'{" ".join(words):32} : {count:4d}')
+        print(f'{str(words):48} : {count:4d}')
     print(
         ' print_phrases(): len={:d} most_common={:d} freq_ge={:d} DONE '.format(
             phrase_length, most_common_count, freq_ge).center(75, '-')
@@ -73,7 +74,8 @@ def print_phrases(thread, common_words, phrase_length, most_common_count: int, f
     )
     # pprint.pprint(sorted(word_counter.most_common(most_common_count)))
     for words, count in sorted(word_counter.most_common(most_common_count)):
-        print(f'{" ".join(words):32} : {count:4d}')
+        # print(f'{" ".join(words):32} : {count:4d}')
+        print(f'{str(words):48} : {count:4d}')
     print(
         ' print_phrases(): len={:d} most_common={:d} freq_ge={:d} sorted DONE '.format(
             phrase_length, most_common_count, freq_ge).center(75, '-')
@@ -123,7 +125,7 @@ def print_research(thread, common_words, most_common_count: int, freq_ge: int,
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Archive a pprune thread to local storage.')
+    parser = argparse.ArgumentParser(description='Perform research on a pprune thread to local storage.')
     parser.add_argument(
         'archives',
         type=str,

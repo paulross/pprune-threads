@@ -21,22 +21,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__author__  = 'Paul Ross'
-__date__    = '2017-01-01'
+__author__ = 'Paul Ross'
+__date__ = '2017-01-01'
 __version__ = '0.0.1'
-__rights__  = 'Copyright (c) 2017 Paul Ross'
+__rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import collections
-from contextlib import contextmanager
 import os
-import pprint
 import shutil
 import string
-import sys
+import typing
+from contextlib import contextmanager
 
 import analyse_thread
-import concorde_pub_map
+import publication_maps
 import styles
+from pprune.common import thread_struct
 
 PUNCTUATION_TABLE = str.maketrans({key: '-' for key in string.punctuation})
 POSTS_PER_PAGE = 20
@@ -56,8 +56,10 @@ GOOGLE_ANALYTICS_SCRIPT = """<script>
 </script>
 """
 
+
 def get_out_path():
     return os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir, 'docs'))
+
 
 @contextmanager
 def element(_stream, _name, **attributes):
@@ -77,7 +79,16 @@ def element(_stream, _name, **attributes):
     yield
     _stream.write('</{}>\n'.format(_name))
 
-def pass_one(thread, common_words):
+
+def pass_one(
+        thread: thread_struct.Thread,
+        common_words: typing.Set[str],
+        publication_map: publication_maps.PublicationMap,
+) -> typing.Tuple[
+    typing.Dict[str, typing.List[int]],
+    typing.Dict[int, typing.List[str]],
+    typing.Dict[str, typing.Set[str]]
+]:
     """Works through every post in the thread and returns a tuple of maps:
     (
         {subject : [post_ordinals, ...], ...}
@@ -88,11 +99,22 @@ def pass_one(thread, common_words):
     post_subject_map = {}
     user_subject_map = collections.defaultdict(set)
     for i, post in enumerate(thread.posts):
-        subjects = analyse_thread.match_words(post, common_words, concorde_pub_map.WORDS_MAP)
-        subjects |= analyse_thread.match_all_caps(post, common_words, concorde_pub_map.CAPS_WORDS)
-        subjects |= analyse_thread.match_phrases(post, common_words, 2, concorde_pub_map.PHRASES_2_MAP)
-        if post.pprune_sequence_num in concorde_pub_map.SPECIFIC_POSTS_MAP:
-            subjects.add(concorde_pub_map.SPECIFIC_POSTS_MAP[post.pprune_sequence_num])
+        subjects: typing.Set[str] = set()
+        subjects |= analyse_thread.match_words(
+            post, common_words, publication_map.get_lowercase_word_to_subject_map()
+        )
+        subjects |= analyse_thread.match_all_caps(
+            post, common_words, publication_map.get_uppercase_word_to_subject_map()
+        )
+        for phrase_length in publication_map.get_phrase_lengths():
+            subjects |= analyse_thread.match_phrases(
+                post, common_words, phrase_length, publication_map.get_phrases_to_subject_map(phrase_length)
+            )
+        if post.pprune_sequence_num in publication_map.get_specific_posts_to_subject_map():
+            subjects.add(publication_map.get_specific_posts_to_subject_map()[post.pprune_sequence_num])
+        # Add duplicate subjects, for example: 'RAT (Deployment)': {'RAT (All)', }
+        for subject in subjects:
+            subjects |= publication_map.get_duplicate_subjects(subject)
         for subject in subjects:
             subject_post_map[subject].append(i)
         post_subject_map[post.pprune_sequence_num] = subjects
@@ -101,18 +123,21 @@ def pass_one(thread, common_words):
     # pprint.pprint(subject_map, width=200)
     return subject_post_map, post_subject_map, user_subject_map
 
+
 def _subject_page_name(subject, page_num):
     result = subject.translate(PUNCTUATION_TABLE) + '{:d}.html'.format(page_num)
     result = result.replace(' ', '_')
     # print(subject, '->' , result)
     return result
 
+
 def write_index_page(thread, subject_map, user_subject_map, out_path):
     if not os.path.exists(out_path):
         os.mkdir(out_path)
     styles.writeCssToDir(out_path)
     with open(os.path.join(out_path, 'index.html'), 'w') as index:
-        index.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
+        index.write(
+            '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
         with element(index, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
             with element(index, 'head'):
                 with element(index, 'meta', name='keywords', content='Concord'):
@@ -130,19 +155,24 @@ def write_index_page(thread, subject_map, user_subject_map, out_path):
                         index.write('thread on pprune')
                     index.write(' that contains a fascinating discussion from experts about Concorde.')
                     index.write(' The thread has nearly 2000 posts and around 100 pages.')
-                    index.write(' Naturally enough it is ordered in time of each post but since it covers so many subjects it is a little hard to follow a particular subject.')
+                    index.write(
+                        ' Naturally enough it is ordered in time of each post but since it covers so many subjects it is a little hard to follow a particular subject.')
                 with element(index, 'p'):
-                    index.write('Here I have reorganised the original thread by subject semi-automatically using Python.')
-                    index.write(' Any post that refers to a subject is included in a page in the original order of the posts.')
+                    index.write(
+                        'Here I have reorganised the original thread by subject semi-automatically using Python.')
+                    index.write(
+                        ' Any post that refers to a subject is included in a page in the original order of the posts.')
                     index.write(' Posts that mention multiple subjects are duplicated appropriately.')
                     index.write(' I have not changed the content of any post and this includes links and images.')
                     index.write(' Each post is linked to the original so that you can check ;-)')
                 with element(index, 'p'):
-                    index.write('Here are all {:d} subjects I have identified with the number of posts for each subject:'.format(len(subject_map)))
+                    index.write(
+                        'Here are all {:d} subjects I have identified with the number of posts for each subject:'.format(
+                            len(subject_map)))
                 with element(index, 'table', _class="indextable"):
                     COLUMNS = 4
                     subjects = sorted(subject_map.keys())
-                    rows = [subjects[i:i+COLUMNS] for i in range(0, len(subjects), COLUMNS)]
+                    rows = [subjects[i:i + COLUMNS] for i in range(0, len(subjects), COLUMNS)]
                     subject_index = 0
                     for row in rows:
                         with element(index, 'tr'):
@@ -188,6 +218,7 @@ def write_index_page(thread, subject_map, user_subject_map, out_path):
                                         index.write(subject)
                                     index.write('&nbsp; ')
 
+
 def _write_page_links(subject, page_num, page_count, f):
     with element(f, 'p', _class='page_links'):
         f.write('Page Links:&nbsp;')
@@ -219,12 +250,14 @@ def _write_page_links(subject, page_num, page_count, f):
         with element(f, 'a', href='index.html'):
             f.write('Index Page')
 
+
 def write_subject_page(thread, subject_map, subject, out_path):
     _posts = subject_map[subject]
-    pages = [_posts[i:i+POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
+    pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
     for p, page in enumerate(pages):
         with open(os.path.join(out_path, _subject_page_name(subject, p)), 'w') as f:
-            f.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
+            f.write(
+                '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(f, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
                 with element(f, 'head'):
                     with element(f, 'meta', name='keywords', content='Concord {:s}'.format(subject)):
@@ -234,7 +267,8 @@ def write_subject_page(thread, subject_map, subject, out_path):
                     f.write(GOOGLE_ANALYTICS_SCRIPT)
                 with element(f, 'body'):
                     with element(f, 'h1'):
-                        f.write('Posts about: "{:s}" [Posts: {:d} Pages: {:d}]'.format(subject, len(_posts), len(pages)))
+                        f.write(
+                            'Posts about: "{:s}" [Posts: {:d} Pages: {:d}]'.format(subject, len(_posts), len(pages)))
                     _write_page_links(subject, p, len(pages), f)
                     # with element(f, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
                     with element(f, 'table', _class='posts'):
@@ -251,12 +285,13 @@ def write_subject_page(thread, subject_map, subject, out_path):
                                 f.write(post.td.prettify())
                     _write_page_links(subject, p, len(pages), f)
 
-def write_whole_thread(thread, common_words):
+
+def write_whole_thread(thread, common_words, publication_map: publication_maps.PublicationMap):
     out_path = get_out_path()
     print('Output path: {}'.format(out_path))
     shutil.rmtree(out_path, ignore_errors=True)
-    subject_map, post_map, user_subject_map = pass_one(thread, common_words)
-#     pprint.pprint(user_subject_map)
+    subject_map, post_map, user_subject_map = pass_one(thread, common_words, publication_map)
+    #     pprint.pprint(user_subject_map)
     print('Writing: {:s}'.format('index.html'))
     write_index_page(thread, subject_map, user_subject_map, out_path)
     for subject in sorted(subject_map.keys()):
