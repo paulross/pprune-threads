@@ -145,13 +145,25 @@ def write_significant_posts(
         publication_map: publication_maps.PublicationMap,
         index: typing.TextIO,
 ):
+    """Optionally, writes out a list of significant posts."""
     significant_posts = publication_map.get_significant_posts_permalinks()
     if significant_posts:
         with element(index, 'h1'):
             index.write('Significant Posts')
         with element(index, 'p'):
             index.write('These are worth reading before you go any further.')
-    # TODO: Create pages and return link or links
+        post_ordinals = []
+        for permalink in significant_posts:
+            post_ordinals.append(thread.post_map[permalink])
+        post_ordinals.sort()
+        with element(index, 'ul'):
+            for post_ordinal in post_ordinals:
+                post = thread.posts[post_ordinal]
+                with element(index, 'li'):
+                    subject = post.subject
+                    if not subject:
+                        subject = 'No Subject'
+                    index.write(f'Permalink: <a href="{post.permalink}">{post.subject}</a> User: <b>{post.user.name}</b>')
 
 
 def write_index_page(

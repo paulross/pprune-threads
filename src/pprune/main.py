@@ -39,8 +39,8 @@ from pprune.common import words
 from pprune import publication_maps
 from pprune import write_html
 
-
 logger = logging.getLogger(__file__)
+
 
 def main():
     parser = argparse.ArgumentParser(description='Rewrite a pprune thread to local storage.')

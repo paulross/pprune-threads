@@ -516,6 +516,7 @@ EXAMPLE_PPRINE_PAGE_URL = 'https://www.pprune.org/rumours-news/638797-united-b77
 EXAMPLE_PPRUNE_PAGE_THREE_POSTS_URL = 'https://www.pprune.org/rumours-news/639101-a320-nose-gear-incident.html'
 
 
+@pytest.mark.slow(reason='External URL may be rate limited.')
 @pytest.mark.parametrize(
     'url, expected',
     (
