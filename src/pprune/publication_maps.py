@@ -529,4 +529,6 @@ class AirIndia171(PublicationMap):
     }
     # The is the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
-    SIGNIFICANT_POSTS = set()
+    SIGNIFICANT_POSTS = {
+        'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-37.html?ispreloading=1#post11906480',
+    }
