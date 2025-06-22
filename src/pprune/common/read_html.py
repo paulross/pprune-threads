@@ -56,7 +56,12 @@ DIGITS_TABLE = str.maketrans({key: None for key in string.digits})
 
 
 def get_url_text(url: str) -> str:
-    """Gets a URL as text."""
+    """Gets a URL as text.
+    This SO question is useful:
+    https://stackoverflow.com/questions/62599036/python-requests-is-slow-and-takes-very-long-to-complete-http-or-https-request
+
+    headers = {"User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 12871.102.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.141 Safari/537.36"}
+    """
     logger.info('Parsing URL %s', url)
     t_start = time.perf_counter()
     try:
@@ -66,6 +71,7 @@ def get_url_text(url: str) -> str:
     if response.status_code != 200:  # pragma: no cover
         raise ValueError(f'URP request {url} failed: {response.status_code}')
     t_elapsed = time.perf_counter() - t_start
+    logger.info('Response: %s', response)
     logger.info(
         'Parsed %d bytes in %.3f (s) at %.3f (kb/s) from URL %s ',
         len(response.text),
@@ -261,6 +267,7 @@ def update_whole_thread(directory_name: str, thread: pprune.common.thread_struct
     This allows the accumulation of multiple threads.
     See also read_whole_thread().
     """
+    t_start = time.perf_counter()
     files = read_files(directory_name)
     file_count = 0
     for file_number in sorted(files.keys()):
@@ -277,7 +284,7 @@ def update_whole_thread(directory_name: str, thread: pprune.common.thread_struct
                 logger.warning('Can not read post from node <%s %s>', post_node.name, post_node.attrs)
         logger.info('Read: {:s} posts: {:d}'.format(os.path.basename(files[file_number]), post_count))
         file_count += 1
-    logger.info('read_whole_thread(): Read %d posts' % len(thread.posts))
+    logger.info('update_whole_thread(): Read %d posts in %.3f (s)' % (len(thread.posts), time.perf_counter() - t_start))
 
 
 def last_url_from_html_page(html_page: bs4.BeautifulSoup) -> str:

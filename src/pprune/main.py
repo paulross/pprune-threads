@@ -32,19 +32,18 @@ import os
 import sys
 import time
 
-import pprune
-import write_html
 from pprune.common import read_html
 from pprune.common import thread_struct
 from pprune.common import log_config
-import publication_maps
+from pprune.common import words
+from pprune import publication_maps
+from pprune import write_html
 
-def common_words_file():
-    return os.path.normpath(os.path.join(os.path.dirname(__file__), 'count_1w.txt'))
 
+logger = logging.getLogger(__file__)
 
 def main():
-    parser = argparse.ArgumentParser(description='Perform research on a pprune thread to local storage.')
+    parser = argparse.ArgumentParser(description='Rewrite a pprune thread to local storage.')
     parser.add_argument(
         'archives',
         type=str,
@@ -55,10 +54,17 @@ def main():
         )
     )
     parser.add_argument(
-        '--thread',
+        'output',
         type=str,
         help=(
-            'This decides the thread publication map..'
+            'Directory to write the output to.'
+        )
+    )
+    parser.add_argument(
+        '--thread-name',
+        type=str,
+        help=(
+            'This decides the thread publication map.'
         )
     )
     parser.add_argument(
@@ -89,25 +95,27 @@ def main():
         stream=sys.stdout,
     )
 
+    os.makedirs(args.output, exist_ok=True)
+
     t_start = time.perf_counter()
     thread = thread_struct.Thread()
     for archive in args.archives:
-        pprune.common.read_html.update_whole_thread(archive, thread)
+        read_html.update_whole_thread(archive, thread)
     word_count = 0
     for post in thread.posts:
         word_count += len(post.words)
-    print('Number of words: {:d}'.format(word_count))
-    common_words = read_html.read_common_words(common_words_file(), args.common_words)
+    logger.info('Number of posts: {:d} Number of words: {:d}'.format(len(thread), word_count))
+    common_words = words.read_common_words_file(args.common_words)
     # write_html.pass_one(thread, common_words)
-    if args.thread == 'Concorde'
-        write_html.write_whole_thread(thread, common_words, publication_maps.ConcordePublicationMap())
-    elif args.thread == 'AI171':
-        write_html.write_whole_thread(thread, common_words, publication_maps.AirIndia171())
+    if args.thread_name == 'Concorde':
+        write_html.write_whole_thread(thread, common_words, publication_maps.ConcordePublicationMap(), args.output)
+    elif args.thread_name == 'AI171':
+        write_html.write_whole_thread(thread, common_words, publication_maps.AirIndia171(), args.output)
     else:
-        print(f'Do not know thread {args.thread}')
+        logger.error(f'Do not know thread {args.thread_name}')
         return -1
     t_elapsed = time.perf_counter() - t_start
-    print('Processed %d posts in %.3f (s)', len(thread), t_elapsed, )
+    logger.info('Processed %d posts in %.3f (s)', len(thread), t_elapsed, )
     print('Bye, bye!')
     return 0
 

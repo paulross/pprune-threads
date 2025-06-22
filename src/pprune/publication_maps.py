@@ -59,7 +59,7 @@ class PublicationMap(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def get_specific_posts_to_subject_map(self) -> typing.Dict[str, str]:
+    def get_specific_posts_to_subject_map(self) -> typing.Dict[int, str]:
         """Returns a map of {specific_post_number : subject_title, ..}"""
         pass
 
@@ -89,7 +89,7 @@ class ConcordePublicationMap(PublicationMap):
             return self.PHRASES_2_MAP
         return {}
 
-    def get_specific_posts_to_subject_map(self) -> typing.Dict[str, str]:
+    def get_specific_posts_to_subject_map(self) -> typing.Dict[int, str]:
         return self.SPECIFIC_POSTS_MAP
 
     def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
@@ -352,7 +352,7 @@ class AirIndia171(PublicationMap):
             return self.PHRASES_MAP[phrase_length]
         return {}
 
-    def get_specific_posts_to_subject_map(self) -> typing.Dict[str, str]:
+    def get_specific_posts_to_subject_map(self) -> typing.Dict[int, str]:
         return self.SPECIFIC_POSTS_MAP
 
     def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
@@ -408,6 +408,7 @@ class AirIndia171(PublicationMap):
             ('gear', 'selected'): 'Gear Retraction',
 
             ('gear', 'flaps',): 'Flaps vs Gear',
+            # TODO: ('gear', 'tilt') Are we finding that? Doesn't seem to be eliminated by the comon words (1000). Maybe need a test?
 
             ('hydraulic', 'failure'): 'Hydraulic Failure (All)',
             ('hydraulic', 'pressure'): 'Hydraulic Pumps',

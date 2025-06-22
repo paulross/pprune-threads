@@ -27,9 +27,11 @@ __version__ = '0.0.1'
 __rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import collections
+import logging
 import os
 import shutil
 import string
+import time
 import typing
 from contextlib import contextmanager
 
@@ -38,27 +40,17 @@ import publication_maps
 import styles
 from pprune.common import thread_struct
 
+logger = logging.getLogger(__file__)
+
+
 PUNCTUATION_TABLE = str.maketrans({key: '-' for key in string.punctuation})
 POSTS_PER_PAGE = 20
 # +/- Links to other pages
 PAGE_LINK_COUNT = 10
 
-# Google analytics script
-GOOGLE_ANALYTICS_SCRIPT = """<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-90397128-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-"""
-
-
-def get_out_path():
-    return os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir, 'docs'))
+def get_out_path(thread: str):
+    return os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir, 'gh-pages', thread))
 
 
 @contextmanager
@@ -86,15 +78,18 @@ def pass_one(
         publication_map: publication_maps.PublicationMap,
 ) -> typing.Tuple[
     typing.Dict[str, typing.List[int]],
-    typing.Dict[int, typing.List[str]],
+    typing.Dict[int, typing.Set[str]],
     typing.Dict[str, typing.Set[str]]
 ]:
     """Works through every post in the thread and returns a tuple of maps:
     (
         {subject : [post_ordinals, ...], ...}
-        {post_ordinals : set([subject, ...]), ...}
+        {post_ordinal : set([subject, ...]), ...}
+        {user_name : set([subject, ...]), ...}
     )
     """
+    logger.info('Starting pass one...')
+    t_start = time.perf_counter()
     subject_post_map = collections.defaultdict(list)
     post_subject_map = {}
     user_subject_map = collections.defaultdict(set)
@@ -110,17 +105,20 @@ def pass_one(
             subjects |= analyse_thread.match_phrases(
                 post, common_words, phrase_length, publication_map.get_phrases_to_subject_map(phrase_length)
             )
-        if post.pprune_sequence_num in publication_map.get_specific_posts_to_subject_map():
-            subjects.add(publication_map.get_specific_posts_to_subject_map()[post.pprune_sequence_num])
+        if post.sequence_num in publication_map.get_specific_posts_to_subject_map():
+            subjects.add(publication_map.get_specific_posts_to_subject_map()[post.sequence_num])
         # Add duplicate subjects, for example: 'RAT (Deployment)': {'RAT (All)', }
+        dupe_subjects = set()
         for subject in subjects:
-            subjects |= publication_map.get_duplicate_subjects(subject)
+            dupe_subjects |= publication_map.get_duplicate_subjects(subject)
+        subjects |= dupe_subjects
         for subject in subjects:
             subject_post_map[subject].append(i)
-        post_subject_map[post.pprune_sequence_num] = subjects
-        user_subject_map[post.user.strip()] |= subjects
+        post_subject_map[post.sequence_num] = subjects
+        user_subject_map[post.user.name.strip()] |= subjects
         # print('Post {:3d} subjects [{:3d}]: {}'.format(i, len(subjects), subjects))
     # pprint.pprint(subject_map, width=200)
+    logger.info('Pass one complete in %.3f (s)', time.perf_counter() - t_start)
     return subject_post_map, post_subject_map, user_subject_map
 
 
@@ -140,11 +138,10 @@ def write_index_page(thread, subject_map, user_subject_map, out_path):
             '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
         with element(index, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
             with element(index, 'head'):
-                with element(index, 'meta', name='keywords', content='Concord'):
+                with element(index, 'meta', name='keywords', content='pprune'):
                     pass
                 with element(index, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                     pass
-                index.write(GOOGLE_ANALYTICS_SCRIPT)
             with element(index, 'body'):
                 # with element(index, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
                 with element(index, 'h1'):
@@ -189,7 +186,7 @@ def write_index_page(thread, subject_map, user_subject_map, out_path):
                 with element(index, 'h1'):
                     index.write('Hall of Fame')
                 MOST_COMMON_COUNT = 20
-                user_count = collections.Counter([p.user.strip() for p in thread.posts])
+                user_count = collections.Counter([post.user.name.strip() for post in thread.posts])
                 # print(user_count)
                 with element(index, 'p'):
                     index.write('The most prolific {:d} posters in the original thread:'.format(MOST_COMMON_COUNT))
@@ -254,47 +251,53 @@ def _write_page_links(subject, page_num, page_count, f):
 def write_subject_page(thread, subject_map, subject, out_path):
     _posts = subject_map[subject]
     pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
-    for p, page in enumerate(pages):
-        with open(os.path.join(out_path, _subject_page_name(subject, p)), 'w') as f:
-            f.write(
+    for page_index, page in enumerate(pages):
+        with open(os.path.join(out_path, _subject_page_name(subject, page_index)), 'w') as out_file:
+            out_file.write(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
-            with element(f, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
-                with element(f, 'head'):
-                    with element(f, 'meta', name='keywords', content='Concord {:s}'.format(subject)):
+            with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
+                with element(out_file, 'head'):
+                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
                         pass
-                    with element(f, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
+                    with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
-                    f.write(GOOGLE_ANALYTICS_SCRIPT)
-                with element(f, 'body'):
-                    with element(f, 'h1'):
-                        f.write(
+                with element(out_file, 'body'):
+                    with element(out_file, 'h1'):
+                        out_file.write(
                             'Posts about: "{:s}" [Posts: {:d} Pages: {:d}]'.format(subject, len(_posts), len(pages)))
-                    _write_page_links(subject, p, len(pages), f)
+                    _write_page_links(subject, page_index, len(pages), out_file)
                     # with element(f, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
-                    with element(f, 'table', _class='posts'):
+                    with element(out_file, 'table', _class='posts'):
                         for post_index in page:
                             post = thread.posts[post_index]
-                            with element(f, 'tr', valign="top"):
+                            with element(out_file, 'tr', valign="top"):
                                 # with element(f, 'td', _class="alt2", style="border: 1px solid #000063; border-top: 0px; border-bottom: 0px"):
-                                with element(f, 'td', _class="post"):
-                                    f.write(post.user)
-                                    f.write('<br/>{:s}'.format(post.date))
-                                    with element(f, 'a', href=post.permalink):
-                                        f.write('<br/>permalink')
-                                    f.write(' Post: {:d}'.format(post.pprune_sequence_num))
-                                f.write(post.td.prettify())
-                    _write_page_links(subject, p, len(pages), f)
+                                with element(out_file, 'td', _class="post"):
+                                    out_file.write(post.user.name.strip())
+                                    out_file.write('<br/>{:s}'.format(post.timestamp))
+                                    with element(out_file, 'a', href=post.permalink):
+                                        out_file.write('<br/>permalink')
+                                    out_file.write(' Post: {:d}'.format(post.sequence_num))
+                                out_file.write(post.node.prettify())
+                    _write_page_links(subject, page_index, len(pages), out_file)
 
 
-def write_whole_thread(thread, common_words, publication_map: publication_maps.PublicationMap):
-    out_path = get_out_path()
-    print('Output path: {}'.format(out_path))
-    shutil.rmtree(out_path, ignore_errors=True)
+def write_whole_thread(
+        thread: thread_struct.Thread,
+        common_words,
+        publication_map: publication_maps.PublicationMap,
+        output_path: str
+):
+    logger.info('Starting write_whole_thread() to %s', output_path)
+    t_start = time.perf_counter()
+    # out_path = get_out_path(output_name)
+    # shutil.rmtree(output_path, ignore_errors=True)
     subject_map, post_map, user_subject_map = pass_one(thread, common_words, publication_map)
     #     pprint.pprint(user_subject_map)
-    print('Writing: {:s}'.format('index.html'))
-    write_index_page(thread, subject_map, user_subject_map, out_path)
+    logger.info('Writing: {:s}'.format('index.html'))
+    write_index_page(thread, subject_map, user_subject_map, output_path)
     for subject in sorted(subject_map.keys()):
-        print('Writing: "{:s}" [{:d}]'.format(subject, len(subject_map[subject])))
-        write_subject_page(thread, subject_map, subject, out_path)
+        logger.info('Writing: "{:s}" [{:d}]'.format(subject, len(subject_map[subject])))
+        write_subject_page(thread, subject_map, subject, output_path)
 #     pprint.pprint(post_map)
+    logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)
