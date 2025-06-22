@@ -83,6 +83,32 @@ class Post:
         )
 
     @property
+    def subject(self) -> str:
+        """Look for ``<div class="smallfont">`` in::
+
+            <div class="tcell alt1" id="td_post_11003611">
+
+                <!-- icon and title -->
+                <div class="smallfont">
+                    <strong>BSCU Fault?</strong>
+                </div>
+                <hr/>
+                <!-- / icon and title -->
+
+                <!-- message -->
+                <div id="post_message_11003611">
+                </div>
+                <!-- / message -->
+            </div>
+
+        The test is as-is, so not stripped.
+        """
+        subject_node = self.node.find('div', **{'class': 'smallfont'})
+        if subject_node is not None:
+            return subject_node.get_text()
+        return ''
+
+    @property
     def text(self) -> str:
         """The text in the node, this does not include the subject line.
         From:
@@ -140,7 +166,7 @@ class Post:
         Maintain words that are all uppercase."""
         result = []
         for w in self.words:
-            if w.lower() not in remove_these:# or w.upper() == w:
+            if w.lower() not in remove_these:  # or w.upper() == w:
                 result.append(w)
         return result
 

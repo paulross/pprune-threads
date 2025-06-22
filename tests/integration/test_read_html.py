@@ -61,6 +61,28 @@ def test_get_thread_from_html_string_text_stripped(html_str, expected):
     'html_str, expected',
     (
             (
+                    example_data.EXAMPLE_PAGES['example_page_four_posts.html'],
+                    ['A320 Nose Gear Incident', 'BSCU Fault?', '', ''],
+            ),
+    ),
+    ids=[
+        'example_page_four_posts.html',
+    ],
+)
+def test_get_thread_subjects_from_html_string(html_str, expected):
+    thread = read_html.get_thread_from_html_string(html_str)
+    result = []
+    for post in thread.posts:
+        result.append(post.subject.strip())
+    print()
+    print(result)
+    assert result == expected
+
+
+@pytest.mark.parametrize(
+    'html_str, expected',
+    (
+            (
                     example_data.EXAMPLE_PAGES['example_page.html'],
                     {
                         'https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338': 0,
