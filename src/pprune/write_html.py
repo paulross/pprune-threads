@@ -27,6 +27,7 @@ __version__ = '0.0.1'
 __rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import collections
+import io
 import logging
 import os
 import string
@@ -139,12 +140,27 @@ def get_count_of_posts_included(
     return len(ordinals_included), len(thread) - len(ordinals_included)
 
 
+def write_significant_posts(
+        thread: thread_struct.Thread,
+        publication_map: publication_maps.PublicationMap,
+        index: typing.TextIO,
+):
+    significant_posts = publication_map.get_significant_posts_permalinks()
+    if significant_posts:
+        with element(index, 'h1'):
+            index.write('Significant Posts')
+        with element(index, 'p'):
+            index.write('These are worth reading before you go any further.')
+    # TODO: Create pages and return link or links
+
+
 def write_index_page(
         thread: thread_struct.Thread,
         subject_post_map: typing.Dict[str, typing.List[int]],
         user_subject_map: typing.Dict[str, typing.Set[str]],
         publication_map: publication_maps.PublicationMap,
-        out_path: str):
+        out_path: str,
+):
     if not os.path.exists(out_path):
         os.mkdir(out_path)
     styles.writeCssToDir(out_path)
@@ -161,10 +177,19 @@ def write_index_page(
                 # with element(index, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
                 with element(index, 'h1'):
                     index.write(publication_map.get_title())
-                index.write(publication_map.get_introduction_in_html())
+
+                with element(index, 'p'):
+                    index.write(publication_map.get_introduction_in_html())
+                with element(index, 'p'):
+                    index.write(f"""    
+        These threads have {len(thread)} posts.
+        Naturally enough it is ordered in time of each post but since it covers
+        so many subjects it is a little hard to follow any particular subject.
+""")
+
                 with element(index, 'p'):
                     index.write(
-                        'Here I have reorganised the original thread by subject semi-automatically using Python.'
+                        'Here I have reorganised the original thread by subject.'
                     )
                     index.write(
                         ' Any post that refers to a subject is included in a page in the original order of the posts.'
@@ -172,6 +197,8 @@ def write_index_page(
                     index.write(' Posts that mention multiple subjects are duplicated appropriately.')
                     index.write(' I have not changed the content of any post and this includes links and images.')
                     index.write(' Each post is linked to the original so that you can check ;-)')
+                with element(index, 'note'):
+                    index.write(' NOTE: No AI was used during this.')
                 with element(index, 'p'):
                     posts_inc, posts_exc = get_count_of_posts_included(thread, subject_post_map)
                     index.write(
@@ -179,7 +206,11 @@ def write_index_page(
                         f', posts included: {posts_inc}'
                         f', excluded: {posts_exc}'
                         f', proportion included: {posts_inc / len(thread):.1%}'
+                        f', proportion rejected: {1 - posts_inc / len(thread):.1%}'
                     )
+                write_significant_posts(thread, publication_map, index)
+                with element(index, 'h1'):
+                    index.write('Posts by Subject')
                 with element(index, 'p'):
                     index.write(
                         'Here are all {:d} subjects I have identified with the number of posts for each subject:'.format(
@@ -232,7 +263,7 @@ def write_index_page(
                                                  href=_subject_page_name(subject, 0)):
                                         index.write(subject)
                                     index.write('&nbsp; ')
-
+                # TODO: Create author pages aof their posts and link to it.
 
 def _write_page_links(subject, page_num, page_count, f):
     with element(f, 'p', _class='page_links'):

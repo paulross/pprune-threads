@@ -378,7 +378,7 @@ class AirIndia171(PublicationMap):
         return 'AI171 Re-mixed'
 
     def get_introduction_in_html(self) -> str:
-        return """<p>There are these threads on pprune about the accident to
+        return """There are these threads on pprune about the accident to
  <a href="https://en.wikipedia.org/wiki/Air_India_Flight_171">Air India Flight 171 [Wikipedia]</a>
  on 12 June 2025:
     <ol>
@@ -386,14 +386,10 @@ class AirIndia171(PublicationMap):
         <li><a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html">Part Two [pprune]</a></li>
         <li>There is also a thread on the
             <a href="https://www.pprune.org/accidents-close-calls/666714-moderation-air-india-accident-threads.html">moderation of these threads [pprune]</a>
-             (this is not included in this analysis)>
+             (this is not included in this analysis)
          </li>
     </ol>
-    
-        These two threads has more than 2000 posts.
-        Naturally enough it is ordered in time of each post but since it covers
-        so many subjects it is a little hard to follow a particular subject.
-    </p>"""
+"""
 
     def get_lowercase_word_to_subject_map(self) -> typing.Dict[str, str]:
         return self.LC_WORDS_MAP
@@ -469,6 +465,8 @@ class AirIndia171(PublicationMap):
             ('gear', 'retraction'): 'Gear Retraction',
             ('gear', 'selected'): 'Gear Retraction',
 
+            ('bogie', 'tilting'): 'Bogie Tilting',
+
             ('gear', 'flaps',): 'Flaps vs Gear',
             # TODO: ('gear', 'tilt') Are we finding that? Doesn't seem to be eliminated by the comon words (1000). Maybe need a test?
 
@@ -478,6 +476,8 @@ class AirIndia171(PublicationMap):
             ('hydraulic', 'pumps'): 'Hydraulic Pumps',
 
             ('IDGA', 'AAIB'): 'AAIB (IDGA)',
+            ('indian', 'AAIB'): 'AAIB (IDGA)',
+            ('AAIB', 'india', ): 'AAIB (IDGA)',
             ('UK', 'AAIB'): 'AAIB (UK)',
 
             # TODO:
@@ -488,7 +488,7 @@ class AirIndia171(PublicationMap):
             ('flaps', 'instead', 'gear'): 'Flaps vs Gear',
             ('dual', 'engine', 'shutdown'): 'Dual Engine Failure',
             ('improper', 'TCMA', 'activation'): 'TCMA (Improper Activation)',
-            ('fuel', 'cutoff', 'switches'): 'Fuel Cutoff Switches',
+            ('fuel', 'cutoff', 'switches'): 'Fuel Cut Off Switches',
             ('TCMA', 'airground', 'logic'): 'TCMA (Air-ground Logic)',
             ('engine', 'N2', 'overspeed'): 'N2 Over-speed',
             ('witnesses', 'RAT', 'hear'): 'RAT (Witnesses)',
@@ -503,6 +503,7 @@ class AirIndia171(PublicationMap):
             ('definitively', 'witnesses', 'RAT', 'hear'): 'RAT (Witnesses)',
             ('noise', 'listening', 'motorcycle', 'passing'): "RAT (Alternate Nose Sources)",
             ('engine', 'failure', 'detection', 'takes'): 'Engine Failure Detection Time',
+            ('fuel', 'cut', 'off', 'switches'): 'Fuel Cut Off Switches',
         },
     }
     # The key is the pprune message number where the post is clearly about the subject

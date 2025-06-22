@@ -248,7 +248,10 @@ def read_files(directory_name: str) -> typing.Dict[int, str]:
                 key = int(m.group(3))
             else:
                 key = 1
-            assert key not in files, 'Key %d already in %s' % (key, str(files.keys()))
+            # FIXME: This assert should work.
+            # assert key not in files, 'Key %d already in %s' % (key, str(files.keys()))
+            if key in files:
+                logger.warning('Key %d already in %s' % (key, str(files.keys())))
             files[key] = os.path.abspath(os.path.join(directory_name, name))
         else:
             logger.error('Can not regex "%s"', name)

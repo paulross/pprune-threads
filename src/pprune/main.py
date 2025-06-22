@@ -53,6 +53,7 @@ def main():
             ' Multiple threads will be added in order.'
         )
     )
+    # TODO: Default to docs/gh-pages/thread-name
     parser.add_argument(
         'output',
         type=str,
