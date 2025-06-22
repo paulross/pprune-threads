@@ -39,6 +39,16 @@ import typing
 
 class PublicationMap(abc.ABC):
     @abc.abstractmethod
+    def get_title(self) -> str:
+        """Gets the title to be used in the output index.html"""
+        pass
+
+    def get_introduction_in_html(self) -> str:
+        """Gets the introduction to be used in the output index.html.
+        This can be raw HTML."""
+        pass
+
+    @abc.abstractmethod
     def get_lowercase_word_to_subject_map(self) -> typing.Dict[str, str]:
         """Returns a map of {lower_case_word : subject_title, ..}"""
         pass
@@ -71,9 +81,27 @@ class PublicationMap(abc.ABC):
         then that post should also be included in "RAT (All)" etc."""
         pass
 
+    @abc.abstractmethod
+    def get_significant_posts_permalinks(self) -> typing.Set[str]:
+        """The is the set of permalinks of significant posts that might be gathered
+        together in the subject 'Significant Posts'."""
+        pass
+
 
 class ConcordePublicationMap(PublicationMap):
     """Specialisation for the Concorde thread."""
+
+    def get_title(self) -> str:
+        return 'Concorde Re-mixed'
+
+    def get_introduction_in_html(self) -> str:
+        return """<p>There is a great 
+    <a href="http://www.pprune.org/tech-log/423988-concorde-question.html">thread on pprune</a>
+    that contains a fascinating discussion from experts about Concorde.
+    The thread has nearly 2000 posts and around 100 pages.
+    Naturally enough it is ordered in time of each post but since it covers
+    so many subjects it is a little hard to follow a particular subject.
+</p>"""
 
     def get_lowercase_word_to_subject_map(self) -> typing.Dict[str, str]:
         return self.WORDS_MAP
@@ -94,6 +122,9 @@ class ConcordePublicationMap(PublicationMap):
 
     def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
         return set()
+
+    def get_significant_posts_permalinks(self) -> typing.Set[str]:
+        return self.SIGNIFICANT_POSTS
 
     # Map of {lower_case_word : subject_title, ..}
     WORDS_MAP = {
@@ -321,6 +352,8 @@ class ConcordePublicationMap(PublicationMap):
 
     # The key is the pprune message number where the post is clearly about the subject
     # but the text does not refer to it.
+    # This is a map of {permalink : subject, ...}
+    # TODO: Change these to permalinks.
     SPECIFIC_POSTS_MAP = {
         225: 'Flight Envelope',  # Post 225 by pprunes counting
         250: 'Olympus 593',  # Post 250 by pprunes counting
@@ -335,9 +368,33 @@ class ConcordePublicationMap(PublicationMap):
         1861: 'Parachute',
         1937: 'John Cook',
     }
+    # The is the set of permalinks of significant posts that might be gathered
+    # together in the subject 'Significant Posts'.
+    SIGNIFICANT_POSTS = set()
 
 
 class AirIndia171(PublicationMap):
+    def get_title(self) -> str:
+        return 'AI171 Re-mixed'
+
+    def get_introduction_in_html(self) -> str:
+        return """<p>There are these threads on pprune about the accident to
+ <a href="https://en.wikipedia.org/wiki/Air_India_Flight_171">Air India Flight 171 [Wikipedia]</a>
+ on 12 June 2025:
+    <ol>
+        <li><a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html">Part One [pprune]</a> (now closed)</li>
+        <li><a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html">Part Two [pprune]</a></li>
+        <li>There is also a thread on the
+            <a href="https://www.pprune.org/accidents-close-calls/666714-moderation-air-india-accident-threads.html">moderation of these threads [pprune]</a>
+             (this is not included in this analysis)>
+         </li>
+    </ol>
+    
+        These two threads has more than 2000 posts.
+        Naturally enough it is ordered in time of each post but since it covers
+        so many subjects it is a little hard to follow a particular subject.
+    </p>"""
+
     def get_lowercase_word_to_subject_map(self) -> typing.Dict[str, str]:
         return self.LC_WORDS_MAP
 
@@ -360,9 +417,14 @@ class AirIndia171(PublicationMap):
             return self.DUPLICATE_SUBJECT_MAP[subject]
         return set()
 
+    def get_significant_posts_permalinks(self) -> typing.Set[str]:
+        return self.SIGNIFICANT_POSTS
+
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {
         'mayday': 'Mayday',
+        'biocide': 'Biocide',
+        'suicide': 'Suicide',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -414,6 +476,10 @@ class AirIndia171(PublicationMap):
             ('hydraulic', 'pressure'): 'Hydraulic Pumps',
             ('hydraulic', 'pump'): 'Hydraulic Pumps',
             ('hydraulic', 'pumps'): 'Hydraulic Pumps',
+
+            ('IDGA', 'AAIB'): 'AAIB (IDGA)',
+            ('UK', 'AAIB'): 'AAIB (UK)',
+
             # TODO:
         },
         3: {
@@ -441,6 +507,7 @@ class AirIndia171(PublicationMap):
     }
     # The key is the pprune message number where the post is clearly about the subject
     # but the text does not refer to it.
+    # This is a map of {permalink : subject, ...}
     SPECIFIC_POSTS_MAP = {
     }
     # Map of {subject_title : set(subject_title), ..}
@@ -457,4 +524,9 @@ class AirIndia171(PublicationMap):
         'Hydraulic Pumps': {'Hydraulic Failure (All)', },
         'Dual Engine Failure': {'Engine Failure (All)', },
         'Engine Shutdown': {'Engine Failure (All)', },
+        'AAIB (IDGA)': {'AAIB (All)', },
+        'AAIB (UK)': {'AAIB (All)', },
     }
+    # The is the set of permalinks of significant posts that might be gathered
+    # together in the subject 'Significant Posts'.
+    SIGNIFICANT_POSTS = set()

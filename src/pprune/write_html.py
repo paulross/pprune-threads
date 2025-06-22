@@ -29,7 +29,6 @@ __rights__ = 'Copyright (c) 2017 Paul Ross'
 import collections
 import logging
 import os
-import shutil
 import string
 import time
 import typing
@@ -41,7 +40,6 @@ import styles
 from pprune.common import thread_struct
 
 logger = logging.getLogger(__file__)
-
 
 PUNCTUATION_TABLE = str.maketrans({key: '-' for key in string.punctuation})
 POSTS_PER_PAGE = 20
@@ -81,12 +79,13 @@ def pass_one(
     typing.Dict[int, typing.Set[str]],
     typing.Dict[str, typing.Set[str]]
 ]:
-    """Works through every post in the thread and returns a tuple of maps:
-    (
-        {subject : [post_ordinals, ...], ...}
-        {post_ordinal : set([subject, ...]), ...}
-        {user_name : set([subject, ...]), ...}
-    )
+    """Works through every post in the thread and returns a tuple of maps::
+
+        (
+            {subject : [post_ordinals, ...], ...}
+            {post_ordinal : set([subject, ...]), ...}
+            {user_name : set([subject, ...]), ...}
+        )
     """
     logger.info('Starting pass one...')
     t_start = time.perf_counter()
@@ -105,8 +104,8 @@ def pass_one(
             subjects |= analyse_thread.match_phrases(
                 post, common_words, phrase_length, publication_map.get_phrases_to_subject_map(phrase_length)
             )
-        if post.sequence_num in publication_map.get_specific_posts_to_subject_map():
-            subjects.add(publication_map.get_specific_posts_to_subject_map()[post.sequence_num])
+        if post.permalink in publication_map.get_specific_posts_to_subject_map():
+            subjects.add(publication_map.get_specific_posts_to_subject_map()[post.permalink])
         # Add duplicate subjects, for example: 'RAT (Deployment)': {'RAT (All)', }
         dupe_subjects = set()
         for subject in subjects:
@@ -129,7 +128,23 @@ def _subject_page_name(subject, page_num):
     return result
 
 
-def write_index_page(thread, subject_map, user_subject_map, out_path):
+def get_count_of_posts_included(
+        thread: thread_struct.Thread,
+        subject_post_map: typing.Dict[str, typing.List[int]],
+) -> typing.Tuple[int, int]:
+    """Returns a tuple of (number_of_posts_included, number_of_posts_ignored)."""
+    ordinals_included = set()
+    for subject in subject_post_map.keys():
+        ordinals_included |= set(subject_post_map[subject])
+    return len(ordinals_included), len(thread) - len(ordinals_included)
+
+
+def write_index_page(
+        thread: thread_struct.Thread,
+        subject_post_map: typing.Dict[str, typing.List[int]],
+        user_subject_map: typing.Dict[str, typing.Set[str]],
+        publication_map: publication_maps.PublicationMap,
+        out_path: str):
     if not os.path.exists(out_path):
         os.mkdir(out_path)
     styles.writeCssToDir(out_path)
@@ -145,30 +160,33 @@ def write_index_page(thread, subject_map, user_subject_map, out_path):
             with element(index, 'body'):
                 # with element(index, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
                 with element(index, 'h1'):
-                    index.write('Concorde Re-mixed')
-                with element(index, 'p'):
-                    index.write('There is a great ')
-                    with element(index, 'a', href='http://www.pprune.org/tech-log/423988-concorde-question.html'):
-                        index.write('thread on pprune')
-                    index.write(' that contains a fascinating discussion from experts about Concorde.')
-                    index.write(' The thread has nearly 2000 posts and around 100 pages.')
-                    index.write(
-                        ' Naturally enough it is ordered in time of each post but since it covers so many subjects it is a little hard to follow a particular subject.')
+                    index.write(publication_map.get_title())
+                index.write(publication_map.get_introduction_in_html())
                 with element(index, 'p'):
                     index.write(
-                        'Here I have reorganised the original thread by subject semi-automatically using Python.')
+                        'Here I have reorganised the original thread by subject semi-automatically using Python.'
+                    )
                     index.write(
-                        ' Any post that refers to a subject is included in a page in the original order of the posts.')
+                        ' Any post that refers to a subject is included in a page in the original order of the posts.'
+                    )
                     index.write(' Posts that mention multiple subjects are duplicated appropriately.')
                     index.write(' I have not changed the content of any post and this includes links and images.')
                     index.write(' Each post is linked to the original so that you can check ;-)')
                 with element(index, 'p'):
+                    posts_inc, posts_exc = get_count_of_posts_included(thread, subject_post_map)
+                    index.write(
+                        f'Total Posts: {len(thread)}'
+                        f', posts included: {posts_inc}'
+                        f', excluded: {posts_exc}'
+                        f', proportion included: {posts_inc / len(thread):.1%}'
+                    )
+                with element(index, 'p'):
                     index.write(
                         'Here are all {:d} subjects I have identified with the number of posts for each subject:'.format(
-                            len(subject_map)))
+                            len(subject_post_map)))
                 with element(index, 'table', _class="indextable"):
                     COLUMNS = 4
-                    subjects = sorted(subject_map.keys())
+                    subjects = sorted(subject_post_map.keys())
                     rows = [subjects[i:i + COLUMNS] for i in range(0, len(subjects), COLUMNS)]
                     subject_index = 0
                     for row in rows:
@@ -179,13 +197,13 @@ def write_index_page(thread, subject_map, user_subject_map, out_path):
                                     with element(index, 'a',
                                                  href=_subject_page_name(subject, 0)):
                                         index.write('{:s} [{:d}]'.format(subject,
-                                                                         len(subject_map[subject])))
+                                                                         len(subject_post_map[subject])))
                                 # print(subject, subject_map[subject])
                                 subject_index += 1
                 # Posts by user, including the subjects they covered
                 with element(index, 'h1'):
-                    index.write('Hall of Fame')
-                MOST_COMMON_COUNT = 20
+                    index.write('Posts by User on a Subject')
+                MOST_COMMON_COUNT = 40
                 user_count = collections.Counter([post.user.name.strip() for post in thread.posts])
                 # print(user_count)
                 with element(index, 'p'):
@@ -274,17 +292,19 @@ def write_subject_page(thread, subject_map, subject, out_path):
                                 # with element(f, 'td', _class="alt2", style="border: 1px solid #000063; border-top: 0px; border-bottom: 0px"):
                                 with element(out_file, 'td', _class="post"):
                                     out_file.write(post.user.name.strip())
-                                    out_file.write('<br/>{:s}'.format(post.timestamp))
+                                    out_file.write('<br/>')
+                                    out_file.write(post.timestamp.isoformat())
                                     with element(out_file, 'a', href=post.permalink):
                                         out_file.write('<br/>permalink')
                                     out_file.write(' Post: {:d}'.format(post.sequence_num))
-                                out_file.write(post.node.prettify())
+                                with element(out_file, 'td', _class="post"):
+                                    out_file.write(post.node.prettify(formatter='html'))
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
 def write_whole_thread(
         thread: thread_struct.Thread,
-        common_words,
+        common_words: typing.Set[str],
         publication_map: publication_maps.PublicationMap,
         output_path: str
 ):
@@ -292,12 +312,12 @@ def write_whole_thread(
     t_start = time.perf_counter()
     # out_path = get_out_path(output_name)
     # shutil.rmtree(output_path, ignore_errors=True)
-    subject_map, post_map, user_subject_map = pass_one(thread, common_words, publication_map)
+    subject_post_map, post_subject_map, user_subject_map = pass_one(thread, common_words, publication_map)
     #     pprint.pprint(user_subject_map)
     logger.info('Writing: {:s}'.format('index.html'))
-    write_index_page(thread, subject_map, user_subject_map, output_path)
-    for subject in sorted(subject_map.keys()):
-        logger.info('Writing: "{:s}" [{:d}]'.format(subject, len(subject_map[subject])))
-        write_subject_page(thread, subject_map, subject, output_path)
-#     pprint.pprint(post_map)
+    write_index_page(thread, subject_post_map, user_subject_map, publication_map, output_path)
+    for subject in sorted(subject_post_map.keys()):
+        logger.info('Writing: "{:s}" [{:d}]'.format(subject, len(subject_post_map[subject])))
+        write_subject_page(thread, subject_post_map, subject, output_path)
+    #     pprint.pprint(post_map)
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)

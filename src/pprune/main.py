@@ -65,6 +65,8 @@ def main():
         type=str,
         help=(
             'This decides the thread publication map.'
+            ' Supported values are "Concorde", "AI171".'
+            ' [default: %(default)d].'
         )
     )
     parser.add_argument(
