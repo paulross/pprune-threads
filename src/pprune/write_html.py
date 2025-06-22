@@ -163,7 +163,7 @@ def write_significant_posts(
                     subject = post.subject
                     if not subject:
                         subject = 'No Subject'
-                    index.write(f'Permalink: <a href="{post.permalink}">{post.subject}</a> User: <b>{post.user.name}</b>')
+                    index.write(f'Permalink: <a href="{post.permalink}">{post.subject}</a> User: <a href="{post.user.href}">{post.user.name}</a>')
 
 
 def write_index_page(
@@ -203,11 +203,14 @@ def write_index_page(
                     index.write(
                         'Here I have reorganised the original thread by subject.'
                     )
+                with element(index, 'p'):
                     index.write(
                         ' Any post that refers to a subject is included in a page in the original order of the posts.'
                     )
+                with element(index, 'p'):
                     index.write(' Posts that mention multiple subjects are duplicated appropriately.')
                     index.write(' I have not changed the content of any post and this includes links and images.')
+                with element(index, 'p'):
                     index.write(' Each post is linked to the original so that you can check ;-)')
                 with element(index, 'note'):
                     index.write(' NOTE: No AI was used during this.')
@@ -263,6 +266,7 @@ def write_index_page(
                         with element(index, 'tr'):
                             # User name
                             with element(index, 'td', _class='indextable'):
+                                #  TODO: Make link to user profile ???
                                 index.write(k)
                             # Count of posts
                             with element(index, 'td', _class='indextable'):

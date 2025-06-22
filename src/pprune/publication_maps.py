@@ -395,7 +395,9 @@ class AirIndia171(PublicationMap):
         return self.LC_WORDS_MAP
 
     def get_uppercase_word_to_subject_map(self) -> typing.Dict[str, str]:
-        return self.CAPS_WORDS_MAP
+        result = self.CAPS_WORDS_MAP
+        result.update(self.CAPS_WORDS_MAP_ALL)
+        return result
 
     def get_phrase_lengths(self) -> typing.List[int]:
         return [2, 3, 4, ]
@@ -421,14 +423,19 @@ class AirIndia171(PublicationMap):
         'mayday': 'Mayday',
         'biocide': 'Biocide',
         'suicide': 'Suicide',
+        'tilt': 'MLG Tilt',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
     CAPS_WORDS_MAP = {
+        k: k for k in {
+            'AI171', 'ADSB', 'APU', 'BBC', 'CCTV', 'EXDAC', 'MAYDAY', 'FDR', 'V1', 'V2', 'EDML', 'EAFR',
+            'FADEC', 'FAA', 'TOGA', 'VNAV', 'NTSB', 'MEL', 'DFDR', 'FBW', 'HPSOV', 'FCOM', 'FR24', 'CVR',
+        }
+    }
+    CAPS_WORDS_MAP_ALL = {
         k: k + ' (All)' for k in [
-            'RAT', 'TCMA', 'FADEC', 'ADSB', 'APU', 'FDR', 'V1', 'EAFR', 'FR24', 'CVR', 'AAIB', 'VNAV', 'AI171',
-            'FAA', 'CCTV', 'TOGA', 'FBW', 'BBC', 'HPSOV', 'V2', 'MLG', 'FCOM', 'NTSB', 'EDML', 'MEL', 'DFDR',
-            'EXDAC', 'MAYDAY',
+            'RAT', 'TCMA', 'AAIB', 'MLG',
         ]
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
@@ -477,7 +484,7 @@ class AirIndia171(PublicationMap):
 
             ('IDGA', 'AAIB'): 'AAIB (IDGA)',
             ('indian', 'AAIB'): 'AAIB (IDGA)',
-            ('AAIB', 'india', ): 'AAIB (IDGA)',
+            ('AAIB', 'india',): 'AAIB (IDGA)',
             ('UK', 'AAIB'): 'AAIB (UK)',
 
             # TODO:
@@ -501,7 +508,7 @@ class AirIndia171(PublicationMap):
             ('shutdown', 'engine', 'N2', 'overspeed'): 'Engine Shutdown (Over-speed)',
             ('787GEnx', 'TCMA', 'airground', 'logic'): 'GEnx TCMA Logic',
             ('definitively', 'witnesses', 'RAT', 'hear'): 'RAT (Witnesses)',
-            ('noise', 'listening', 'motorcycle', 'passing'): "RAT (Alternate Nose Sources)",
+            ('noise', 'listening', 'motorcycle', 'passing'): "RAT (Alternate Noise Sources)",
             ('engine', 'failure', 'detection', 'takes'): 'Engine Failure Detection Time',
             ('fuel', 'cut', 'off', 'switches'): 'Fuel Cut Off Switches',
         },
