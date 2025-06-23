@@ -126,7 +126,7 @@ def match_phrases(post, common_words, phrase_length, phrase_map):
     """For a given post this strips the common_words and returns the phrase_map values
     that match for any phrases of length phrase_length."""
     result = set()
-    trimmed_words = post.words_removed(common_words, False)
+    trimmed_words = post.words_removed(common_words, True)
     for i in range(len(trimmed_words) - (phrase_length - 1)):
         phrase = tuple(trimmed_words[i:i + phrase_length])
         try:
