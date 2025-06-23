@@ -154,16 +154,19 @@ def write_significant_posts(
             index.write('These are worth reading before you go any further.')
         post_ordinals = []
         for permalink in significant_posts:
-            post_ordinals.append(thread.post_map[permalink])
+            try:
+                post_ordinals.append(thread.post_map[permalink])
+            except KeyError:
+                logger.error('Can not find permalink %s', permalink)
         post_ordinals.sort()
         with element(index, 'ul'):
             for post_ordinal in post_ordinals:
                 post = thread.posts[post_ordinal]
                 with element(index, 'li'):
-                    subject = post.subject
+                    subject = post.subject.strip()
                     if not subject:
                         subject = 'No Subject'
-                    index.write(f'Permalink: <a href="{post.permalink}">{post.subject}</a> User: <a href="{post.user.href}">{post.user.name}</a>')
+                    index.write(f'Permalink: <a href="{post.permalink}">{subject}</a> User: <a href="{post.user.href}">{post.user.name}</a>')
 
 
 def write_index_page(
@@ -223,7 +226,14 @@ def write_index_page(
                         f', proportion included: {posts_inc / len(thread):.1%}'
                         f', proportion rejected: {1 - posts_inc / len(thread):.1%}'
                     )
+                with element(index, 'p'):
+                    index.write(
+                        f'Posts on the thread start at {thread.posts[0].timestamp.isoformat()}'
+                        f' and finish at {thread.posts[-1].timestamp.isoformat()}.'
+                    )
+
                 write_significant_posts(thread, publication_map, index)
+
                 with element(index, 'h1'):
                     index.write('Posts by Subject')
                 with element(index, 'p'):

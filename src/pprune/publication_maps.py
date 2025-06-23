@@ -443,51 +443,113 @@ class AirIndia171(PublicationMap):
     PHRASES_MAP = {
         2: {
             ('engine', 'failure'): 'Engine Failure (All)',
+
             ('RAT', 'deploy'): 'RAT (Deployment)',
             ('RAT', 'deployed'): 'RAT (Deployment)',
             ('RAT', 'deployment'): 'RAT (Deployment)',
             ('RAT', 'extended'): 'RAT (Deployment)',
             ('RAT', 'electrical'): 'RAT (Electrical)',
             ('RAT', 'seen'): 'RAT (Deployment)',
+            ('RAT', 'sound'): 'RAT (Sound)',
+            ('deploy', 'RAT'): 'RAT (Deployment)',
+            ('deployed', 'RAT'): 'RAT (Deployment)',
+            ('deployment', 'RAT'): 'RAT (Deployment)',
+            ('evidence', 'RAT'):  'RAT (Deployment)',
+            ('failure', 'RAT'):  'RAT (Deployment)',
+            ('trigger', 'RAT'):  'RAT (Deployment)',
+
             ('TCMA', 'activation'): 'TCMA (Activation)',
             ('TCMA', 'airground'): 'TCMA (Air-ground Logic)',
+            ('airground', 'logic'): 'TCMA (Air-ground Logic)',
+            ('TCMA', 'function'): 'TCMA (Activation)',
             ('TCMA', 'ground'): 'TCMA (Air-ground Logic)',
             ('TCMA', 'logic'): 'TCMA (Logic)',
             ('TCMA', 'package'): 'TCMA (All)',
+            ('TCMA', 'shutdown'): 'TCMA (Shutdown)',
+            ('improper', 'TCMA'): 'TCMA (Shutdown)',
+            ('overspeed', 'protection'): 'TCMA (Shutdown)',
+
             ('engine', 'shutdown'): 'Engine Shutdown',
+            ('engines', 'failed'): 'Engine Shutdown',
+            ('engines', 'failed'): 'Engine Shutdown',
+            ('engines', 'simultaneously'): 'Dual Engine Failure',
+
+            ('wrong', 'engine'): 'Wrong Engine',
 
             ('fuel', 'contamination'): 'Fuel Contamination',
+
             ('fuel', 'cutoff'): 'Fuel Cutoff',
             ('fuel', 'cut'): 'Fuel Cutoff',
+            ('fuel', 'shut'): 'Fuel Cutoff',
+            ('fuel', 'starvation'): 'Fuel Cutoff',
             ('fuel', 'switch'): 'Fuel Cutoff',
             ('fuel', 'switches'): 'Fuel Cutoff',
+            ('cutoff', 'switches'): 'Fuel Cutoff',
+            ('cut', 'off'): 'Fuel Cutoff',
 
             ('fuel', 'pump'): 'Fuel Pumps',
             ('fuel', 'pumps'): 'Fuel Pumps',
             ('fuel', 'flow'): 'Fuel Pumps',
             ('fuel', 'supply'): 'Fuel Pumps',
+            ('boost', 'pumps'): 'Fuel Pumps',
+            ('suction', 'feed'): 'Fuel Pumps',
 
             ('gear', 'doors'): 'Gear Retraction',
             ('gear', 'lever'): 'Gear Retraction',
             ('gear', 'retraction'): 'Gear Retraction',
+            ('gear', 'down'): 'Gear Retraction',
             ('gear', 'selected'): 'Gear Retraction',
+            ('landing', 'gear'): 'Gear Retraction',
+            ('doors', 'open'): 'Gear Retraction',
 
-            ('bogie', 'tilting'): 'Bogie Tilting',
+            ('bogie', 'tilting'): 'MLG Tilt',
+            ('bogies', 'tilt'): 'MLG Tilt',
+            ('gear', 'tilt'): 'MLG Tilt',
+            ('tilt', 'position'): 'MLG Tilt',
+            # ('gear', 'tilt') Is found with comon words (200). Maybe need a test?
 
             ('gear', 'flaps',): 'Flaps vs Gear',
-            # TODO: ('gear', 'tilt') Are we finding that? Doesn't seem to be eliminated by the comon words (1000). Maybe need a test?
 
             ('hydraulic', 'failure'): 'Hydraulic Failure (All)',
             ('hydraulic', 'pressure'): 'Hydraulic Pumps',
             ('hydraulic', 'pump'): 'Hydraulic Pumps',
             ('hydraulic', 'pumps'): 'Hydraulic Pumps',
+            ('hydraulic', 'power'): 'Hydraulic Pumps',
+            ('hydraulic', 'systems'): 'Hydraulic Pumps',
 
             ('IDGA', 'AAIB'): 'AAIB (IDGA)',
             ('indian', 'AAIB'): 'AAIB (IDGA)',
             ('AAIB', 'india',): 'AAIB (IDGA)',
             ('UK', 'AAIB'): 'AAIB (UK)',
 
-            # TODO:
+            ('centre', 'tank'): 'Centre Tank',
+            ('center', 'tank'): 'Centre Tank',
+
+            ('electrical', 'failure'): 'Electrical Failure',
+            ('electrical', 'fault'): 'Electrical Failure',
+            ('electrical', 'issue'): 'Electrical Failure',
+
+            ('flap', 'retraction'): 'Flap Retraction',
+            ('flap', 'lever'): 'Flap Retraction',
+            ('flap', 'retracted'): 'Flap Retraction',
+            ('flap', 'setting'): 'Flap Setting',
+            ('flap', 'position'): 'Flap Setting',
+
+            ('mayday', 'call'): 'Mayday',
+            ('radio', 'call'): 'Mayday',
+
+            ('takeoff', 'roll'): 'Takeoff Roll',
+            ('weight', 'wheels'): 'Weight on Wheels',
+
+            ('bird', 'strike'): 'Bird Strike',
+            ('bird', 'strikes'): 'Bird Strike',
+
+            ('flight', 'recorder') : 'DFDR',
+            ('flight', 'recorders') : 'DFDR',
+
+            ('maintenance', 'error'): 'Maintenance Error',
+
+            ('thread', 'closed'): 'Thread Closure',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -522,21 +584,38 @@ class AirIndia171(PublicationMap):
     DUPLICATE_SUBJECT_MAP = {
         'RAT (Deployment)': {'RAT (All)', },
         'RAT (Electrical)': {'RAT (All)', },
+        'RAT (Sound)': {'RAT (All)', },
+
         'TCMA (Improper Activation)': {'TCMA (All)', },
         'TCMA (Air-ground Logic)': {'TCMA (All)', },
         'TCMA (Logic)': {'TCMA (All)', },
+        'TCMA (Shutdown)': {'TCMA (All)', },
+
         'N2 Over-speed': {'Engine Over-speed (All)', },
         'Engine Shutdown (Over-speed)': {'Engine Over-speed (All)', },
+
         'Hydraulic Failure (Triple)': {'Hydraulic Failure (All)', },
         'Hydraulic Failure (Double)': {'Hydraulic Failure (All)', },
         'Hydraulic Pumps': {'Hydraulic Failure (All)', },
+
         'Dual Engine Failure': {'Engine Failure (All)', },
         'Engine Shutdown': {'Engine Failure (All)', },
+        'Wrong Engine': {'Engine Failure (All)', },
+
         'AAIB (IDGA)': {'AAIB (All)', },
         'AAIB (UK)': {'AAIB (All)', },
+
+        'Flap Retraction': {'Flaps (All)', },
+        'Flap Setting': {'Flaps (All)', },
+        'Flaps vs Gear': {'Flaps (All)', },
+
+        'Fuel Contamination': {'Fuel (All)', },
+        'Fuel Pumps': {'Fuel (All)', },
+        'Fuel Cutoff': {'Fuel (All)', },
     }
     # The is the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
     SIGNIFICANT_POSTS = {
         'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-37.html#post11906480',
+        'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html#post11908911',
     }

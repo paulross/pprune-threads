@@ -1,0 +1,1069 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune FADEC name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "FADEC" [Posts: 186 Pages: 10]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=FADEC0.html>First</a>
+&nbsp;<a href=FADEC0.html>Previous</a>
+&nbsp;<a href=FADEC0.html>1</a>
+&nbsp;<a href=FADEC1.html><b>2</b>
+</a>
+&nbsp;<a href=FADEC2.html>3</a>
+&nbsp;<a href=FADEC3.html>4</a>
+&nbsp;<a href=FADEC4.html>5</a>
+&nbsp;<a href=FADEC5.html>6</a>
+&nbsp;<a href=FADEC6.html>7</a>
+&nbsp;<a href=FADEC7.html>8</a>
+&nbsp;<a href=FADEC8.html>9</a>
+&nbsp;<a href=FADEC9.html>10</a>
+&nbsp;<a href=FADEC2.html>Next</a>
+&nbsp;<a href=FADEC9.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post>peterpion<br/>2025-06-14T23:54:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-64.html#post11901974><br/>permalink</a>
+ Post: 11901974</td>
+<td class=post><div class="tcell alt1" id="td_post_11901974">
+ <!-- message -->
+ <div id="post_message_11901974">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Mr Optimistic
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901865" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     From tdracer
+     <br/>
+     <span style="color:#000000">
+      However, TCMA is
+     </span>
+     <i>
+      only
+     </i>
+     <span style="color:#000000">
+      active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     </span>
+     <i>
+      one of each
+     </i>
+     <span style="color:#000000">
+      had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+     </span>
+    </div>
+   </div>
+  </div>
+  But at some point software decisions converge to a single point, a single decision, to simplify for instance the subroutine where all of the decisions have been taken to trigger an output (a shutdown signal, for instance). And if, again for instance, you accidentally jump into this subroutine (whether because of buffer overflows or mistakes in the preceding logic), then you can trigger the output incorrectly.
+  <br/>
+  <br/>
+  Of course you can have two or three systems that are coded by different teams, using different languages, running in different hardware, even if they are fed from the same sensors, as long as you have many sensors (as tdracer has indicated, 5 inputs on the 747 for instance - although only needing 2 to be true does seem to reduce that margin for error somewhat).
+  <br/>
+  <br/>
+  If these two or three systems all have to send independent signals to the downstream hardware (the engine in this case) and the engine requires more than one signal to take the dangerous action like shutdown, then you're more protected, but that doesn't seem to be how the 787 works from the descriptions here by the experts like td and fdr. But please correct me if I'm wrong on that.
+  <br/>
+  <br/>
+  Its hard to imagine how else you could simultaneously cut both engines any other way, as tdracer said, other than human action or by software command. And software command means software failure. So information and discussion about exactly how redundant the software that takes this decision is would seem a good direction to move this discussion in. Is it truly only redundant 'internally' to itself, the module that sends this message to the engines? We heard about the 32 bit overflow bug that can shutdown engines - is it really that hard to believe that it has no other similar bugs when that one slipped through the testing?
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>tdracer<br/>2025-06-15T00:30:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-65.html#post11901992><br/>permalink</a>
+ Post: 11901992</td>
+<td class=post><div class="tcell alt1" id="td_post_11901992">
+ <!-- message -->
+ <div id="post_message_11901992">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Turkey Brain
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901968" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Re; TMCA shutting down the engines. Is it possible that the TMCA was compromised ?
+     <br/>
+     <br/>
+     either by
+     <br/>
+     <br/>
+     1: fed bad inputs due to corrosion, system degradation, crossed wires, foreign object damage
+     <br/>
+     2: incomplete or inappropriate maintenance action
+     <br/>
+     3: something else
+    </div>
+   </div>
+  </div>
+  The only aircraft inputs to TCMA is air/ground and thrust lever positions - everything else is the FADEC and its sensors (primarily N1).  Even if air/ground was compromised somehow, it would take other issues before TCMA could possibly be activated.  Possible on one engine (although remote) - but two engines at the same time - almost literally imposssible (unless of course it's software error).
+  <br/>
+  The 'good' news is that even a cursory check of the FDR will indicate if TCMA activated, so we'll soon know.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>MaybeItIs<br/>2025-06-15T00:54:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-65.html#post11902008><br/>permalink</a>
+ Post: 11902008</td>
+<td class=post><div class="tcell alt1" id="td_post_11902008">
+ <!-- message -->
+ <div id="post_message_11902008">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      FullWings
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901900" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I think it needs to be said again that pretty much anything can happen to the aircraft systems and the engines will carry on running - this is by design as they have independent FADEC and power supplies and at sea level fuel will get through without boost pumps. You could almost saw the wing off the fuselage and the engine would still produce thrust, TCMA notwithstanding.
+    </div>
+   </div>
+  </div>
+  Yes, thanks, I've seen a few comments to this effect, and I have to accept most of what you say. I understand that they have their own dedicated generators and local independent FADECs (or EECs), but I'm trying to use what I do know to attempt to figure this out. I know that there are Fuel Cutoff switches in the cockpit. Somehow, if switched to Off, these will cut off the fuel to the engines, "no matter what". Of course, even that's not true, as the Qantas A380 engine burst apparently (comment in this thread) showed.
+  <br/>
+  <br/>
+  Anyway, the thing I'm looking at is how the fuel cutoff switch function could have been activated in some other way. To me, it seems obvious that there are wires that run between the engine fuel shutoff valves and the cockpit / flight control panel (no doubt with relays etc in between). I don't know where those shutoff valves are located, but logic says they should be located in the fuselage, not out at the engines. I also don't know how those valves operate - are they solenoid valves or electro-mechanically driven? Nor do I know where the power to activate those valves comes from, but using my logic, if those valves close when powered off, such as solenoid valves typically do, then the power cannot exclusively come from the engine-dedicated  generators. If it did, you'd never be able to start the engines so they could supply their own power to hold those valves open. So, there must be some power (appropriately) fed from the main aircraft control bus to activate those valves - if the rest of what I'm assuming is correct. Anyway, like I say, I don't know enough about the details at this point, but there are many more ways to activate or deactivate a circuit than by flicking a switch. Killing the relevant power supply, for example. A screwdriver across some contacts (for example), another. Shorting a wire to Chassis, maybe. Just trying to contribute what I can.
+  <br/>
+  <br/>
+  You raise another interesting point: "TCMA notwithstanding". Could you elaborate, please? What will happen if the TCMA system, which apparently also has some degree of engine control, loses power? The problem with interlinked circuits and systems is that sometimes, unexpected things can happen when events that were not considered actually happen. If one module, reporting to another, loses power or fails, sometimes it can "tell" the surviving module something that isn't true... My concern is where does the power to the Fuel Cutoff switches come from? Are there relays or solid-state switches (or what?) between the Panel Switches and the valves? If so, is the valve power derived from a different source, and if so, where? Are the valves solenoids, open when power applied, or something else? What is the logic involved, between switch and valve?
+  <br/>
+  <br/>
+  Would you mind answering these questions so I can ponder it all further, please? If I'm wrong, I'll happily say so.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_silenced.gif" title="Oh"/>
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      FullWings
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901900" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     We don\x92t know yet what actually triggered the RAT from the relatively short list but every item on it means there is a serious/critical failure(s). The flight path suggests that it was a double engine failure or shutdown (commanded or uncommanded) as anything else should have left the aeroplane in a poor state but able to climb away.
+    </div>
+   </div>
+  </div>
+  100%
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Back office Penguin<br/>2025-06-15T01:43:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-66.html#post11902040><br/>permalink</a>
+ Post: 11902040</td>
+<td class=post><div class="tcell alt1" id="td_post_11902040">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   MELs?
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11902040">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Mr Optimistic
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901865" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     From tdracer
+     <br/>
+     <span style="color:#000000">
+      However, TCMA is
+     </span>
+     <i>
+      only
+     </i>
+     <span style="color:#000000">
+      active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     </span>
+     <i>
+      one of each
+     </i>
+     <span style="color:#000000">
+      had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+     </span>
+    </div>
+   </div>
+  </div>
+  I assume the dual engine shutdown due to engine overspeed. Could the case occur with increased thrust manually in the end of takeoff phase?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>tdracer<br/>2025-06-15T04:19:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-67.html#post11902094><br/>permalink</a>
+ Post: 11902094</td>
+<td class=post><div class="tcell alt1" id="td_post_11902094">
+ <!-- message -->
+ <div id="post_message_11902094">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      MaybeItIs
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902086" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <br/>
+     Okay! Many thanks for that! Of course, it very much complicates the picture, and I'm very puzzled as to how the Fuel Cutoff Switches and Valves operate. Apparently, the TCAM system shuts off an errant engine on the ground at least, but my concern is not with the software but the hardware. It obviously has an Output going into the Fuel Shutoff system. If the TCAM unit loses power, can that output cause the Cutoff process (powered by the engine-dedicated generator) to be activated? I guess that's the $64 billion question, but if MCAS is any example, then: Probably!
+    </div>
+   </div>
+  </div>
+  I hate to disappoint you, but the people (like me) who design, test, and certify aircraft are not idiots.  We design for failures.  Yes, on rare occasion, something gets missed (e.g. MCAS), but we know that aircraft power systems sometimes fail (or suffer short term interuptions) and we design for that.  EVERY VALVE IN THE FUEL SYSTEM MUST BE POWERED TO CHANGE STATE!!!!  If electrical power is lost, they just stay where they are.  The engine fuel valve must be powered open, and it must be powered closed.  Same with the spar valve. The pilot moves a switch, that provides electrical signals to the spar valve and the engine fuel valve to open or close.  It's
+  <i>
+   not
+  </i>
+  complicated and has been in use for decades.
+  <br/>
+  TCMA (not TCAM) - Thrust Control Malfunction Accommodation - is a FADEC based system.  It's resident in the engine FADEC (aka EEC) - the ONLY inputs from the aircraft that go into the TCMA is air/ground (to enable) and thrust lever position (to determine if the engine is doing what it's being commanded to do.  The FADEC has the ability to shutdown the engine via the N2 overspeed protection system - this is separate from the aircraft run/cutoff signal, although it uses the same HPSOV to effect the shutdown.  That same system is used by TCMA to shutoff fuel if it determines the engine is 'running away'.
+  <br/>
+  <br/>
+  Hint, you might try going back a few pages and reading where all this has been posted previously.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Someone Somewhere<br/>2025-06-15T04:53:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-67.html#post11902102><br/>permalink</a>
+ Post: 11902102</td>
+<td class=post><div class="tcell alt1" id="td_post_11902102">
+ <!-- message -->
+ <div id="post_message_11902102">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      MaybeItIs
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902086" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Ok, thanks for clarifying. Of course, an overload will simply cause the hydraulic pressure relief valves to activate. There will be a moderate increase in motor current when bypassing, but the electrical side should be fully able to cope with that. Should be! I'm suggesting here that there was a fault somewhere in the electrical supplies that effectively derated some part of it, and that maybe the GearUp load was too much for it on this occasion.
+    </div>
+   </div>
+  </div>
+  This is a constant-pressure hydraulic system, not a little hydraulic ram on a logsplitter. While I assume there are some overpressure relief valves, they're not relevant here.
+  <br/>
+  <br/>
+  It uses a variable displacement pump to maintain 5000PSI constant pressure. The swashplate angle is varied to adjust pump output flow: more devices consuming fluid, more flow to keep the pressure up. If the pumps cannot deliver enough fluid, the swashplate reaches the full flow position and the output pressure decreases until flow consumed equals flow produced. Very much like a constant-current constant-voltage power supply.
+  <br/>
+  <br/>
+  Running in that area of maximum flow is 100% expected under some conditions, especially if an engine or EDP fails and the electric demand pump is supplying a whole hydraulic system sized for the larger EDP (although I think this would be less of an issue on the 787 as the L/R systems don't do much, but the same variable-displacement pump design has been around for a LONG time including on the 737).
+  <br/>
+  <br/>
+  And again, there's a VFD between the aircraft electrical bus and the pump motor, because the pump is 400Hz and the aircraft is wild-frequency. VFDs are very very good at isolating faults unless you are actually looking at a sustained overload on
+  <i>
+   one of four generators
+  </i>
+  .
+  <br/>
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    Thanks for confirming the 4 gens. So there's probably quite a bit of switching required. Not sure how that's done, but I guess robust contactors are required. And even these can fail. Systems usually cannot tell that a contactor has failed on the open side until it's switched. So, a switchover may have been done, but a failed contact meant the backup generator wasn't connected. Who knows, so many possibilities.
+   </div>
+  </div>
+  Virtually every bus will have a feed and one or more cross-ties or back-feeds. A failed contactor is 100% designed for and with possibly the sole exception of RAT-only flight, entirely designed around. Plus, of course, flight on batteries only or PMGs.
+  <br/>
+  <br/>
+  No bus is essential on a modern aircraft.
+  <br/>
+  <br/>
+  Boeing treats everything electric as a black box but the A380 has this beautifully overkill drawing - given both have 4x generators, 2x APU generators, and a RAT, it should not be entirely dissimilar levels of redundancy:
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg2.ibsrv.net/gimg/pprune.org-vbulletin/647x588/image_28431932c925c99d5fb7fef590cd5968e7f258fd.png"/>
+  <br/>
+  Note that the reason for some links having two contactors in series (e.g. BTC5/6 or BTC7) is because this is spread across two separate units, so that a fire and total loss of one leaves ~half the aircraft powered and totally flyable.
+  <br/>
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    Okay! Many thanks for that! Of course, it very much complicates the picture, and I'm very puzzled as to how the Fuel Cutoff Switches and Valves operate. Apparently, the TCAM system shuts off an errant engine on the ground at least, but my concern is not with the software but the hardware. It obviously has an Output going into the Fuel Shutoff system. If the TCAM unit loses power, can that output cause the Cutoff process (powered by the engine-dedicated generator) to be activated? I guess that's the $64 billion question, but if MCAS is any example, then: Probably!
+   </div>
+  </div>
+  As per TDR, built into the FADEC logic.
+  <br/>
+  <br/>
+  Power-open power-close is very common in commercial/situations where you don't want to be wasting energy 24/7 and don't have a defined position for the valve/damper in case of power loss. Done a bunch of them in ductwork and electrically operated windows - your car likely has them, for example.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Someone Somewhere; 15th Jun 2025 at
+   <span class="time">
+    05:08
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Eesh<br/>2025-06-15T05:45:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-68.html#post11902127><br/>permalink</a>
+ Post: 11902127</td>
+<td class=post><div class="tcell alt1" id="td_post_11902127">
+ <!-- message -->
+ <div id="post_message_11902127">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902094" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     TCMA (not TCAM) - Thrust Control Malfunction Accommodation - is a FADEC based system. It's resident in the engine FADEC (aka EEC) - the ONLY inputs from the aircraft that go into the TCMA is air/ground (to enable) and thrust lever position (to determine if the engine is doing what it's being commanded to do. The FADEC has the ability to shutdown the engine via the N2 overspeed protection system - this is separate from the aircraft run/cutoff signal, although it uses the same HPSOV to effect the shutdown. That same system is used by TCMA to shutoff fuel if it determines the engine is 'running away'.
+    </div>
+   </div>
+  </div>
+  I am working for software development for automotive systems. I presume the TMCA logic mentioned should be having robust protection built in against a deadlock.
+  <br/>
+  In software development, we always have the deadlock risk when we disable a function during a system mode shift. In case an erroneous decision was made just prior to this mode shift, it cant be correctedt as the function itself got disabled after mode shift. Normally we have a monitoring function alway active to correct this.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>MaybeItIs<br/>2025-06-15T06:47:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-68.html#post11902155><br/>permalink</a>
+ Post: 11902155</td>
+<td class=post><div class="tcell alt1" id="td_post_11902155">
+ <!-- message -->
+ <div id="post_message_11902155">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902094" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I hate to disappoint you, but the people (like me) who design, test, and certify aircraft are not idiots. We design for failures. Yes, on rare occasion, something gets missed (e.g. MCAS), but we know that aircraft power systems sometimes fail (or suffer short term interuptions) and we design for that. EVERY VALVE IN THE FUEL SYSTEM MUST BE POWERED TO CHANGE STATE!!!! If electrical power is lost, they just stay where they are. The engine fuel valve must be powered open, and it must be powered closed. Same with the spar valve. The pilot moves a switch, that provides electrical signals to the spar valve and the engine fuel valve to open or close. It's
+     <i>
+      not
+     </i>
+     complicated and has been in use for decades.
+     <br/>
+     TCMA (not TCAM) - Thrust Control Malfunction Accommodation - is a FADEC based system. It's resident in the engine FADEC (aka EEC) - the ONLY inputs from the aircraft that go into the TCMA is air/ground (to enable) and thrust lever position (to determine if the engine is doing what it's being commanded to do. The FADEC has the ability to shutdown the engine via the N2 overspeed protection system - this is separate from the aircraft run/cutoff signal, although it uses the same HPSOV to effect the shutdown. That same system is used by TCMA to shutoff fuel if it determines the engine is 'running away'.
+     <br/>
+     <br/>
+     Hint, you might try going back a few pages and reading where all this has been posted previously.
+    </div>
+   </div>
+  </div>
+  Hi tdracer, and thanks for your comments.
+  <br/>
+  <br/>
+  I hope I never suggested you guys are idiots! I very much doubt that indeed. You cannot be idiots. Planes fly, very reliably. That's evidence enough.
+  <br/>
+  <br/>
+  Maybe my analysis is simplistic, but for someone who knows as little about the nuts and bolts that are your profession, I think I'm not doing too badly.
+  <br/>
+  <br/>
+  I believe I have made a number of worthy contributions to this thread. Maybe I'm deluded. Too bad. Fact is, over the history of modern aviation, there have been a number of serious design stuff ups that "shouldn't have happened". As far as I'm concerned, the crash of AF447 is bloody good evidence of not considering a very simple, fundamental failure, and should NEVER have happened. The thing is, that would have been sooo easy to avoid. So please, don't get on too high a horse over this.
+  <br/>
+  <br/>
+  Thanks for your information about all the fuel control valves. That's cool. Yes, my cars have numerous such systems, from the radiator grilles backward.
+  <br/>
+  <br/>
+  And you misunderstand what I meant about "complicates things". Was that deliberate? What I meant was it complicates understanding how a major electrical failure could cause the Fuel Cutoff valves to close, that's all. The valves don't close if unpowered, but if the control is via the FADEC, then what could have caused them to close?
+  <br/>
+  <br/>
+  Your explanation of how the Fuel Valves are controlled is rather simplistic too. "The pilot moves a switch, that provides electrical signals to the spar valve and the engine fuel valve to open or close." Seriously? Am I an idiot then? Is it a single pole, single throw switch? Is the valve driven by a stepper motor, or what? A DC Motor and worm drive? Does it have an integral controller? How does the valve drive know when to stop at end of travel? Would you mind elaborating, please?
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>JunkAccount<br/>2025-06-15T08:04:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-69.html#post11902210><br/>permalink</a>
+ Post: 11902210</td>
+<td class=post><div class="tcell alt1" id="td_post_11902210">
+ <!-- message -->
+ <div id="post_message_11902210">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901941" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     As I've repeatedly posted, even a 100% aircraft power failure would not explain both engines quitting, at least without several other existing faults. Again, never say never, but you can only combine so many 10-9 events before it becomes ridiculous...
+    </div>
+   </div>
+  </div>
+  This is probably a very stupid question, but what would happen if a BPCU fault (or other cause) led to VFSGs on opposite sides of the aircraft being connected to the same 230 VAC bus?
+  <br/>
+  <br/>
+  My understanding is that the left engine VFSGs are not synchronized in frequency or phase with the right engine VFSGs. Cross-connecting them, electrically, could be quite violent from both an electrical and mechanical perspective.
+  <br/>
+  <br/>
+  Is it realistically possible that the torque shock from cross-connected VFSGs could damage their associated accessory drive trains to the extent that the associated FADEC alternators would no longer make power? In this situation, there would be a loss of aircraft electrical power due to the BPCU fault, no FADEC alternator power due to damage to the accessory drive train, and, therefore, no engine thrust.
+  <br/>
+  <br/>
+  I presume each VFSG has a frangible link to protect the accessory drive train in the event the VFSG seizes up, which ought to make this loss-of-engine-thrust scenario impossible, but presumption is not knowledge, and this is a possible failure chain that doesn't involve stacking up multiple 10e-9 events.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>The Brigadier<br/>2025-06-15T09:48:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-70.html#post11902302><br/>permalink</a>
+ Post: 11902302</td>
+<td class=post><div class="tcell alt1" id="td_post_11902302">
+ <!-- message -->
+ <div id="post_message_11902302">
+  I see Times of India is reporting the last call to ATC was
+  <span style="color:#1a1a1a">
+   "Thrust not achieved&hellip; falling&hellip; Mayday! Mayday! Mayday!"
+  </span>
+  <a href="https://timesofindia.indiatimes.com/city/ahmedabad/thrust-not-achieved-falling-mayday-last-words-of-pilot/articleshow/121854790.cms" target="_blank">
+   Ahmedabad Air India crash: Long runway roll hints at thrust failure, black box key to probe; officials reveal final moments in cockpit | Ahmedabad News - Times of India
+  </a>
+  <br/>
+  <br/>
+  Given the evidence now in the public domain of RAT auto-deployment and simultaneous roll back, with no bird strikes, the most plausible primary trigger is a simultaneous, fuel-related thrust failure on both GEnx-1B engines. Simultaneous FADEC failure seems less likely, at least without tampering.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Travis Anderson<br/>2025-06-15T09:59:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-70.html#post11902310><br/>permalink</a>
+ Post: 11902310</td>
+<td class=post><div class="tcell alt1" id="td_post_11902310">
+ <!-- message -->
+ <div id="post_message_11902310">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Someone Somewhere
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902293" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The issue is what maintenance error could cause simultaneous dual engine failure, or other hypothesized causes? But would not result in an immediate alarm (e.g. missing FADEC alternator) on engine startup/high-thrust?"
+    </div>
+   </div>
+  </div>
+  That would require deep dive in the maintenance records of that bird, and it's ludicrous to think we'll be able to figure it out. To cause dual engine failure at "gear up" callout (everybody's nightmare, unrecoverable) - that needs to be either drastic, super weird, or malevolent. And that hole goes too deep for us to guess.
+  <br/>
+  <br/>
+  In less than a month we'll have a preliminary report.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by T28B; 15th Jun 2025 at
+   <span class="time">
+    13:00
+   </span>
+   .
+							
+							
+								Reason: brackets completed
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>CurlyB<br/>2025-06-15T10:07:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-70.html#post11902314><br/>permalink</a>
+ Post: 11902314</td>
+<td class=post><div class="tcell alt1" id="td_post_11902314">
+ <!-- message -->
+ <div id="post_message_11902314">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      The Brigadier
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902302" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I see Times of India is reporting the last call to ATC was
+     <span style="color:#1a1a1a">
+      "Thrust not achieved\x85 falling\x85 Mayday! Mayday! Mayday!"
+     </span>
+     <a href="https://timesofindia.indiatimes.com/city/ahmedabad/thrust-not-achieved-falling-mayday-last-words-of-pilot/articleshow/121854790.cms" target="_blank">
+      Ahmedabad Air India crash: Long runway roll hints at thrust failure, black box key to probe; officials reveal final moments in cockpit | Ahmedabad News - Times of India
+     </a>
+     <br/>
+     <br/>
+     Given the evidence now in the public domain of RAT auto-deployment and simultaneous roll back, with no bird strikes, the most plausible primary trigger is a simultaneous, fuel-related thrust failure on both GEnx-1B engines. Simultaneous FADEC failure seems less likely, at least without tampering.
+    </div>
+   </div>
+  </div>
+  1. The reduction of thrust is not limited to a fuel failure
+  <br/>
+  <br/>
+  2. Without any recordings, TOI is not a reliable source
+  <br/>
+  <br/>
+  2a. The long runway roll in the tagline has not been proven, as seen many times in this thread
+  <br/>
+  <br/>
+  3. The last words of a panicked captain may not be an accurate description of the situation
+  <br/>
+  <br/>
+  Your theory may be true, but it is speculation built on assumptions
+  <br/>
+  <br/>
+  EDIT: You're - your
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by CurlyB; 15th Jun 2025 at
+   <span class="time">
+    11:09
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>MaybeItIs<br/>2025-06-15T10:12:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-70.html#post11902322><br/>permalink</a>
+ Post: 11902322</td>
+<td class=post><div class="tcell alt1" id="td_post_11902322">
+ <!-- message -->
+ <div id="post_message_11902322">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      JunkAccount
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902210" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     This is probably a very stupid question, but what would happen if a BPCU fault (or other cause) led to VFSGs on opposite sides of the aircraft being connected to the same 230 VAC bus?
+     <br/>
+     <br/>
+     My understanding is that the left engine VFSGs are not synchronized in frequency or phase with the right engine VFSGs. Cross-connecting them, electrically, could be quite violent from both an electrical and mechanical perspective.
+     <br/>
+     <br/>
+     Is it realistically possible that the torque shock from cross-connected VFSGs could damage their associated accessory drive trains to the extent that the associated FADEC alternators would no longer make power? In this situation, there would be a loss of aircraft electrical power due to the BPCU fault, no FADEC alternator power due to damage to the accessory drive train, and, therefore, no engine thrust.
+     <br/>
+     <br/>
+     I presume each VFSG has a frangible link to protect the accessory drive train in the event the VFSG seizes up, which ought to make this loss-of-engine-thrust scenario impossible, but presumption is not knowledge, and this is a possible failure chain that doesn't involve stacking up multiple 10e-9 events.
+    </div>
+   </div>
+  </div>
+  From my POV, this is not a silly question at all.
+  <br/>
+  <br/>
+  In fact, I have inadvertently "done" such a thing - all I did was switch the generator room light from one genset to the other. But whoever installed that cheap and nasty two way light changeover switch didn't realise that it sometimes did a make-before-break transfer. There was a BANG and everything instantly went dark. Every single circuit breaker on the switchboard tripped. To this day, I still don't understand why all the Load Circuit Breakers tripped as well as the generator output breakers, and no one has really supplied a clear answer. Of course, any inductive loads connected at the time would cause that, but simple incandescent light circuits? Would a couple of hundred meters of underground power cable have enough inductance to cause a breaker trip?
+  <br/>
+  <br/>
+  Anyway, Yes, the results were very dramatic, and these were only a pair of 10-15kVA Single Phase 230V gensets. If this happened on that plane with 225KVA(?) generators at a couple of hundred feet in the air, I'd imagine they had no chance of recovery.  Could it happen? If something had been wired up incorrectly in the transfer circuits, I'd say Yes. When a fault-related transfer occurred.
+  <br/>
+  <br/>
+  Still doesn't explain what could have stopped the engines, but sheared shafts would have done it, as you say. That would be pretty strong evidence.
+  <br/>
+  <br/>
+  Now, if it's true that this plane had been scavenged for parts at some stage, all the couldn't happens probably evaporate. I'd guess...
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Someone Somewhere<br/>2025-06-15T10:43:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-71.html#post11902342><br/>permalink</a>
+ Post: 11902342</td>
+<td class=post><div class="tcell alt1" id="td_post_11902342">
+ <!-- message -->
+ <div id="post_message_11902342">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      MaybeItIs
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902322" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <div style="margin:1rem; margin-top:0.3rem;">
+      <div>
+       <label>
+        Quote:
+       </label>
+      </div>
+      <div class="panel alt2" style="border:1px inset">
+       <div>
+        Originally Posted by
+        <strong>
+         JunkAccount
+        </strong>
+        <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902210" rel="nofollow" title="View Post">
+         <i class="fas fa-arrow-circle-right">
+         </i>
+        </a>
+       </div>
+       <div style="font-style:italic">
+        This is probably a very stupid question, but what would happen if a BPCU fault (or other cause) led to VFSGs on opposite sides of the aircraft being connected to the same 230 VAC bus?
+        <br/>
+        <br/>
+        My understanding is that the left engine VFSGs are not synchronized in frequency or phase with the right engine VFSGs. Cross-connecting them, electrically, could be quite violent from both an electrical and mechanical perspective.
+        <br/>
+        <br/>
+        Is it realistically possible that the torque shock from cross-connected VFSGs could damage their associated accessory drive trains to the extent that the associated FADEC alternators would no longer make power? In this situation, there would be a loss of aircraft electrical power due to the BPCU fault, no FADEC alternator power due to damage to the accessory drive train, and, therefore, no engine thrust.
+        <br/>
+        <br/>
+        I presume each VFSG has a frangible link to protect the accessory drive train in the event the VFSG seizes up, which ought to make this loss-of-engine-thrust scenario impossible, but presumption is not knowledge, and this is a possible failure chain that doesn't involve stacking up multiple 10e-9 events.
+       </div>
+      </div>
+     </div>
+     From my POV, this is not a silly question at all.
+     <br/>
+     <br/>
+     In fact, I have inadvertently "done" such a thing - all I did was switch the generator room light from one genset to the other. But whoever installed that cheap and nasty two way light changeover switch didn't realise that it sometimes did a make-before-break transfer. There was a BANG and everything instantly went dark. Every single circuit breaker on the switchboard tripped. To this day, I still don't understand why all the Load Circuit Breakers tripped as well as the generator output breakers, and no one has really supplied a clear answer. Of course, any inductive loads connected at the time would cause that, but simple incandescent light circuits? Would a couple of hundred meters of underground power cable have enough inductance to cause a breaker trip?
+     <br/>
+     <br/>
+     Anyway, Yes, the results were very dramatic, and these were only a pair of 10-15kVA Single Phase 230V gensets. If this happened on that plane with 225KVA(?) generators at a couple of hundred feet in the air, I'd imagine they had no chance of recovery. Could it happen? If something had been wired up incorrectly in the transfer circuits, I'd say Yes. When a fault-related transfer occurred.
+     <br/>
+     <br/>
+     Still doesn't explain what could have stopped the engines, but sheared shafts would have done it, as you say. That would be pretty strong evidence.
+     <br/>
+     <br/>
+     Now, if it's true that this plane had been scavenged for parts at some stage, all the couldn't happens probably evaporate. I'd guess...
+    </div>
+   </div>
+  </div>
+  It could do it, assuming fuses/contactors didn't vapourise first.
+  <br/>
+  <br/>
+  I expect the VFSG shafts would be designed to fuse/slip long before the main radial shaft feeding the gearbox, as noted.
+  <br/>
+  <br/>
+  But if it occurred, it would knock out not just your FADEC alternator but also the high pressure fuel pumps. Engine would stop dead near instantly.
+  <br/>
+  <br/>
+  It would partly be a question of how much interlocking is present. I guess bypassing/mis-adjusting mechanical interlocks is something poor maintenance could &amp; would do.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Msunduzi<br/>2025-06-15T10:52:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-71.html#post11902351><br/>permalink</a>
+ Post: 11902351</td>
+<td class=post><div class="tcell alt1" id="td_post_11902351">
+ <!-- message -->
+ <div id="post_message_11902351">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      The Brigadier
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902302" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I see Times of India is reporting the last call to ATC was
+     <span style="color:#1a1a1a">
+      "Thrust not achieved\x85 falling\x85 Mayday! Mayday! Mayday!"
+     </span>
+     <a href="https://timesofindia.indiatimes.com/city/ahmedabad/thrust-not-achieved-falling-mayday-last-words-of-pilot/articleshow/121854790.cms" target="_blank">
+      Ahmedabad Air India crash: Long runway roll hints at thrust failure, black box key to probe; officials reveal final moments in cockpit | Ahmedabad News - Times of India
+     </a>
+     <br/>
+     <br/>
+     Given the evidence now in the public domain of RAT auto-deployment and simultaneous roll back, with no bird strikes, the most plausible primary trigger is a simultaneous, fuel-related thrust failure on both GEnx-1B engines. Simultaneous FADEC failure seems less likely, at least without tampering.
+    </div>
+   </div>
+  </div>
+  <br/>
+  It's nearly 1000 posts ago I doubted the mayday call was genuine, and that ToI report helps to reinforce my doubts, it looks like they read this thread and created their report from that, it is just more speculation, some already disproven, certainly no more facts.
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Sailvi767<br/>2025-06-15T10:58:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-71.html#post11902355><br/>permalink</a>
+ Post: 11902355</td>
+<td class=post><div class="tcell alt1" id="td_post_11902355">
+ <!-- message -->
+ <div id="post_message_11902355">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      JunkAccount
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902210" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     This is probably a very stupid question, but what would happen if a BPCU fault (or other cause) led to VFSGs on opposite sides of the aircraft being connected to the same 230 VAC bus?
+     <br/>
+     <br/>
+     My understanding is that the left engine VFSGs are not synchronized in frequency or phase with the right engine VFSGs. Cross-connecting them, electrically, could be quite violent from both an electrical and mechanical perspective.
+     <br/>
+     <br/>
+     Is it realistically possible that the torque shock from cross-connected VFSGs could damage their associated accessory drive trains to the extent that the associated FADEC alternators would no longer make power? In this situation, there would be a loss of aircraft electrical power due to the BPCU fault, no FADEC alternator power due to damage to the accessory drive train, and, therefore, no engine thrust.
+     <br/>
+     <br/>
+     I presume each VFSG has a frangible link to protect the accessory drive train in the event the VFSG seizes up, which ought to make this loss-of-engine-thrust scenario impossible, but presumption is not knowledge, and this is a possible failure chain that doesn't involve stacking up multiple 10e-9 events.
+    </div>
+   </div>
+  </div>
+  What you suggest might be plausible. I had a tower shaft snap on a 767. The engine quits immediately. You lose fuel flow, oil pressure, generator and  hydraulic pressure instantly. That could account for the gear not coming up. In a normal shutdown or flameout hydraulic pressure is maintained for a considerable period of time and windmilling will provide some pressure. I would have expected the gear to move further up in the retraction cycle. Tie this in with claimed electrical issues and the concept is at least interesting.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>SteinarN<br/>2025-06-15T11:54:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-72.html#post11902404><br/>permalink</a>
+ Post: 11902404</td>
+<td class=post><div class="tcell alt1" id="td_post_11902404">
+ <!-- message -->
+ <div id="post_message_11902404">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Someone Somewhere
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902342" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     It could do it, assuming fuses/contactors didn't vapourise first.
+     <br/>
+     <br/>
+     I expect the VFSG shafts would be designed to fuse/slip long before the main radial shaft feeding the gearbox, as noted.
+     <br/>
+     <br/>
+     But if it occurred, it would knock out not just your FADEC alternator but also the high pressure fuel pumps. Engine would stop dead near instantly.
+     <br/>
+     <br/>
+     It would partly be a question of how much interlocking is present. I guess bypassing/mis-adjusting mechanical interlocks is something poor maintenance could &amp; would do.
+    </div>
+   </div>
+  </div>
+  I have been really wondering what single point of failure could take out both engines simultaneously as seems to be the case here. One single main bus contactor closing in error seems to possibly be such a single point fault.
+  <br/>
+  Online/running generators connected together by accident/fault will cause a HUGE load on everything, electric connections, generator itself and the shafts and gears driving the generators. Heck, I wouldnt be surprised if the generator could disintegrate due to such an electromagnetic shock load.
+  <br/>
+  So, the question is if there is something between the generators that could limit the electric current. A VFD possibly would as the VFD maybe would not be able to pass the current required for shearing the drive shaft for example. But then again, electronic switches like IGBT/MOSFET and such are able to pass an incredibly large over current for some milliseconds before exploding. Possibly 50 to 100 times the nominal current. So I am not sure if a VFD really would save the rest of the system in a situation with two generators connected together in error.
+  <br/>
+  So, where is the VFD part installed, directly on each generator or somewhere else in the system? Are there physical interlocks on the contactors or only electric interlocks?
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>JG1<br/>2025-06-15T13:30:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-73.html#post11902476><br/>permalink</a>
+ Post: 11902476</td>
+<td class=post><div class="tcell alt1" id="td_post_11902476">
+ <!-- message -->
+ <div id="post_message_11902476">
+  A little bit tangential here, thinking about this Mayday call (the exact contents of which haven't been verified, but have been variously reported as "no power", or "lost power" ) , if in front of you on the PFD, in large red letters, you have the words ENG FAIL, why would you say, "no power"? Seems a bit strange. Why not say "engine failure" or "no thrust"?
+  <br/>
+  <br/>
+  Could it be that "No power" may have meant the whole cockpit went dark? ie. A total electrical failure or huge short (survivor's bang) initiating RAT deployment and apu autostart. Doesn't explain loss of thrust explicitly but if there was a massive electrical issue, and critical data was lost (thinking air/ground switch position and other fundamentals), would dual engine shutdown be a possibility? Simultaneous FADEC failure? Exceptionally remote possibility perhaps, but by definition these accidents are exceptionally remote. If the RAT deployed we know there was definitely an electrical issue - how bad was it, though? Thinking about the possibility of an electrical failure causing an engine (and instrumentation) failure rather than the other way around. Over to the experts on this.
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by JG1; 15th Jun 2025 at
+   <span class="time">
+    14:20
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Icarus2001<br/>2025-06-15T13:42:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-73.html#post11902480><br/>permalink</a>
+ Post: 11902480</td>
+<td class=post><div class="tcell alt1" id="td_post_11902480">
+ <!-- message -->
+ <div id="post_message_11902480">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <span style="color:#000000">
+     Could it be that "No power" may have meant the whole cockpit went dark? ie. A total electrical failure, initiating RAT deployment and apu autostart. Doesn't explain loss of thrust explicitly but if there was a massive electrical issue, and critical data was lost (thinking air/ground switch position and other fundamentals), would dual engine shutdown be a possibility? Simultaneous FADEC failure? Exceptionally remote possibility perhaps, but by definition these accidents are exceptionally remote. Over to the experts on this.
+    </span>
+   </div>
+  </div>
+  No please read above.
+  <br/>
+  <br/>
+  The engines will just keep running despite total electrical failure.
+  <br/>
+  <br/>
+  FADEC units are self powered and independent.
+  <br/>
+  <br/>
+  Even a completely &ldquo;dark&rdquo; flight deck still has the ISIS.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>EGPI10BR<br/>2025-06-15T14:27:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-74.html#post11902507><br/>permalink</a>
+ Post: 11902507</td>
+<td class=post><div class="tcell alt1" id="td_post_11902507">
+ <!-- message -->
+ <div id="post_message_11902507">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      JG1
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902476" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     A little bit tangential here, thinking about this Mayday call (the exact contents of which haven't been verified, but have been variously reported as "no power", or "lost power" ) , if in front of you on the PFD, in large red letters, you have the words ENG FAIL, why would you say, "no power"? Seems a bit strange. Why not say "engine failure" or "no thrust"?
+     <br/>
+     <br/>
+     Could it be that "No power" may have meant the whole cockpit went dark? ie. A total electrical failure or huge short (survivor's bang) initiating RAT deployment and apu autostart. Doesn't explain loss of thrust explicitly but if there was a massive electrical issue, and critical data was lost (thinking air/ground switch position and other fundamentals), would dual engine shutdown be a possibility? Simultaneous FADEC failure? Exceptionally remote possibility perhaps, but by definition these accidents are exceptionally remote. If the RAT deployed we know there was definitely an electrical issue - how bad was it, though? Thinking about the possibility of an electrical failure causing an engine (and instrumentation) failure rather than the other way around. Over to the experts on this.
+    </div>
+   </div>
+  </div>
+  BAW38 didn\x92t give an engine failure notification either. Neither engine produced the required power when demanded.
+  <br/>
+  <br/>
+  Misty.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=FADEC0.html>First</a>
+&nbsp;<a href=FADEC0.html>Previous</a>
+&nbsp;<a href=FADEC0.html>1</a>
+&nbsp;<a href=FADEC1.html><b>2</b>
+</a>
+&nbsp;<a href=FADEC2.html>3</a>
+&nbsp;<a href=FADEC3.html>4</a>
+&nbsp;<a href=FADEC4.html>5</a>
+&nbsp;<a href=FADEC5.html>6</a>
+&nbsp;<a href=FADEC6.html>7</a>
+&nbsp;<a href=FADEC7.html>8</a>
+&nbsp;<a href=FADEC8.html>9</a>
+&nbsp;<a href=FADEC9.html>10</a>
+&nbsp;<a href=FADEC2.html>Next</a>
+&nbsp;<a href=FADEC9.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

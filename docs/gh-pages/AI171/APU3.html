@@ -1,0 +1,1100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune APU name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "APU" [Posts: 91 Pages: 5]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=APU0.html>First</a>
+&nbsp;<a href=APU2.html>Previous</a>
+&nbsp;<a href=APU0.html>1</a>
+&nbsp;<a href=APU1.html>2</a>
+&nbsp;<a href=APU2.html>3</a>
+&nbsp;<a href=APU3.html><b>4</b>
+</a>
+&nbsp;<a href=APU4.html>5</a>
+&nbsp;<a href=APU4.html>Next</a>
+&nbsp;<a href=APU4.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post>Someone Somewhere<br/>2025-06-15T13:43:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-73.html#post11902481><br/>permalink</a>
+ Post: 11902481</td>
+<td class=post><div class="tcell alt1" id="td_post_11902481">
+ <!-- message -->
+ <div id="post_message_11902481">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Skyscraper1995
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902375" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Sorry I am not a pilot but I did spend three years filming a TV series at Boeing for pBS/Channel 4 about the design and construction of the 777, and my response is not a technical one anyway. Do airfields have high definition video coverage of all takeoffs and landings? If so, they should be public domain and there would not be hundreds of posts about grainy over-magnified smartphone footage. If they don't, a 6-cam setup on each runway (3 either side of runway, one back, one across and one forward) could record continuously to hard disk or cloud. If airfields don't have this, shouldn't it be made mandatory?
+    </div>
+   </div>
+  </div>
+  <a href="https://www.pprune.org/accidents-close-calls/663456-airport-4k-8k-accident-cameras-must-installed.html?highlight=airport+4k+cameras" rel="nofollow" target="_blank">
+   This discussion
+  </a>
+  happened after Jeju. I note that one of the video sources here is actually leaked (camera-pointed-at-screen) airport CCTV. Do not mistake airport CCTV not being publicly available for it not existing.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      SteinarN
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902404" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I have been really wondering what single point of failure could take out both engines simultaneously as seems to be the case here. One single main bus contactor closing in error seems to possibly be such a single point fault.
+     <br/>
+     Online/running generators connected together by accident/fault will cause a HUGE load on everything, electric connections, generator itself and the shafts and gears driving the generators. Heck, I wouldnt be surprised if the generator could disintegrate due to such an electromagnetic shock load.
+     <br/>
+     So, the question is if there is something between the generators that could limit the electric current. A VFD possibly would as the VFD maybe would not be able to pass the current required for shearing the drive shaft for example. But then again, electronic switches like IGBT/MOSFET and such are able to pass an incredibly large over current for some milliseconds before exploding. Possibly 50 to 100 times the nominal current. So I am not sure if a VFD really would save the rest of the system in a situation with two generators connected together in error.
+     <br/>
+     So, where is the VFD part installed, directly on each generator or somewhere else in the system? Are there physical interlocks on the contactors or only electric interlocks?
+    </div>
+   </div>
+  </div>
+  We'd need to know the impedance/available fault current of the generators. 50x would be unusually high in an industrial setting.
+  <br/>
+  <br/>
+  VFDs are for frequency conversion to drive the motors (CAC/pumps/engine start). They won't be carrying the full generator load for galleys and anti-ice; that will be handled by cross-ties, which is a big black box on the 787.
+  <br/>
+  <br/>
+  Fast fuses can be faster acting than circuit breakers, but are one-shot. I'm not sure how fast-acting and effective the generator contactors/controllers are; conventional ACBs/MCCBs will blow open magnetically under sufficient fault current regardless of what the trip unit or close coil commands.
+  <br/>
+  <br/>
+  I wouldn't really expect electrical reconfiguration to happen on climbout, and I wouldn't expect it to be the first time this contactor gets used since maintenance - everything should get a good workout during sequential APU/engine starts.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      syseng68k
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902444" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     No system would be designed to parallel two frequency wild generators. The output from each would be rectified to dc and conditioned before application to the load, but could be paralleled at dc level if required for redundancy. These are quarter megawatt generators, where an out of phase connection could shear drive shafts, destroy the drive train, or worse.
+    </div>
+   </div>
+  </div>
+  Not designed to parallel, but you still need to switch each generator on/off buses and tie or separate buses.
+  <br/>
+  <br/>
+  In a very simple main-tie-main arrangement you can close any two of three breakers and still keep the sources separate. It gets much more complicated when you have ten different sources.
+  <br/>
+  <br/>
+  I suspect the 'large motor power centre'
+  <i>
+   might
+  </i>
+  parallel the rectified output of some generators.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      LTC8K6
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902453" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I no longer believe in the no flaps / flaps raised early theory.
+     <br/>
+     <br/>
+     I think this was a major electrical failure most likely due to the engines quitting.
+     <br/>
+     <br/>
+     The 787 is far more heavily dependent on electrical power to run it's systems than previous Boeing planes.
+     <br/>
+     <br/>
+     It requires about 1.5 megawatts of power according to Wiki. 5X more than previous designs.
+     <br/>
+     <br/>
+     Things that were done by engine driven pumps/compressors and engine bleed air are all done electrically on the 787.
+     <br/>
+     <br/>
+     Flight controls that were moved hydraulically or pneumatically are moved by electric actuators. Etc.
+    </div>
+   </div>
+  </div>
+  The 787 flight controls remain almost entirely hydraulic except for stab trim and two spoiler pairs. The centre system is now electric- or RAT-only with no ADP backup. Left and Right systems are still driven by EDPs and will remain pressurised as long as there's fluid and the engines turn.
+  <br/>
+  <br/>
+  1.5MW is the figure for all six generators; only four can be used at once.
+  <br/>
+  <br/>
+  There's no indication they had any flight control issues.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      scifi
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902465" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Seems to be funny that no-one has mentioned the Battery, which because of its age could have failed either Short-circuit or Open-circuit.
+     <br/>
+     Maybe some Boeing Electro Techs, could explain what role the battery has in this circumstance.
+     <br/>
+     The simultaneous failure of both engines points towards an electrical problem, unless the high temperature had adversely affected the fuel flow.
+    </div>
+   </div>
+  </div>
+  Battery is essentially unused in normal operations other than to start the APU and keep the clocks running. It's there for emergencies (like
+  <i>
+   after
+  </i>
+  the engines fail). And yes, been discussed.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Shep69<br/>2025-06-15T15:32:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-75.html#post11902560><br/>permalink</a>
+ Post: 11902560</td>
+<td class=post><div class="tcell alt1" id="td_post_11902560">
+ <!-- message -->
+ <div id="post_message_11902560">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      sorvad
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902431" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Have you considered that what you have described won\x92t deploy the rat, initiate the gear retraction sequence or cause the auto start of the APU, all of which there is a fair bit of compelling evidence for?
+    </div>
+   </div>
+  </div>
+  Not sure we have definitive evidence of that at this point. Now cycling the engines through the FCSs or either deliberate or inadvertent movement of those to off would cause that but we\x92re still deep in we don\x92t know land.
+  <br/>
+  <br/>
+  I do concur if it was a major systems breakdown without crew mistakes being made we will know shortly through emergency ADs.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>sorvad<br/>2025-06-15T17:19:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-76.html#post11902647><br/>permalink</a>
+ Post: 11902647</td>
+<td class=post><div class="tcell alt1" id="td_post_11902647">
+ <!-- message -->
+ <div id="post_message_11902647">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      StuntPilot
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902641" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     After hours of reading I conclude that so far nobody has the slightest clue about what happened.
+     <br/>
+     1: Flaps were down
+     <br/>
+     2: The RAT story is based on a single unsharp video frame. Earlier frames were much sharper but the RAT could not be seen (although there was a sound).
+     <br/>
+     3. Lack of evidence
+     <br/>
+     <br/>
+     I could be wrong, in that case please link QUALITY evidence so that we can learn something new.
+     <br/>
+     This way thousands of people are wasting countless hours.
+    </div>
+   </div>
+  </div>
+  Visual evidence the rat was deployed, audio evidence the rat was deployed, evidence the APU inlet door was open, evidence the gear retraction was interrupted, evidence there was very little engine noise after departure, very obvious evidence that the aeroplane didn&rsquo;t have enough thrust to stop it descending into the ground. All of this strongly suggests that both engines were to all intents and purposes, and for want of a better word, &lsquo;failed&rsquo; now that could be intentional, accidental or because of some sort of technical malfunction or external factor. Nothing conclusive and no answers as to how or why, but not quite as wildly stabbing in the dark as your post would infer.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by sorvad; 15th Jun 2025 at
+   <span class="time">
+    17:35
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>StuntPilot<br/>2025-06-15T18:15:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-77.html#post11902683><br/>permalink</a>
+ Post: 11902683</td>
+<td class=post><div class="tcell alt1" id="td_post_11902683">
+ <!-- message -->
+ <div id="post_message_11902683">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      sorvad
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902647" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Visual evidence the rat was deployed, audio evidence the rat was deployed, evidence the APU inlet door was open, evidence the gear retraction was interrupted, evidence there was very little engine noise after departure, very obvious evidence that the aeroplane didn\x92t have enough thrust to stop it descending into the ground. All of this strongly suggests that both engines were to all intents and purposes, and for want of a better word, \x91failed\x92 now that could be intentional, accidental or because of some sort of technical malfunction or external factor. Nothing conclusive and no answers as to how or why, but not quite as wildly stabbing in the dark as your post would infer.
+    </div>
+   </div>
+  </div>
+  We agree that there was a lack of thrust. Possibly caused by a dual engine failure. But the sharpest frames in the video do NOT show the RAT and this is counter evidence to the RAT theory. If there were substantial technical failures who knows what sounds could be generated. I find the evidence weak at best. And we immediately get into a chicken-egg problem: did some power issue of unknown nature cause an engine failure or did a dual engine failure occur, resulting in a power loss? Both are extremely unlikely and need to be backed by quality evidence. The video is not it, in my opinion. I don't know the APU intake mechanism and whether it could open after the impact.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Tu.114<br/>2025-06-15T18:48:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-77.html#post11902708><br/>permalink</a>
+ Post: 11902708</td>
+<td class=post><div class="tcell alt1" id="td_post_11902708">
+ <!-- message -->
+ <div id="post_message_11902708">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    The biggest news site in Greece claims to have the results of a kind of preliminary report from India AAIB which say that as the plane rotated, the pilot's seat malfunctioned (broken pin) and went suddenly far back forcing the captain to accidentally lower the thrust lever as he already had his hand on it
+   </div>
+  </div>
+  If there was a loss of power, it happened after V1. Normally, at V1, all hands should be removed from the thrust levers until, type dependent, selection of climb thrust, which normally takes place not below 1000\xb4 above aerodrome level. An altitude the flight never managed to achieve. If some flight crew members seat was to slide back unintentionally, there are handles in the flight deck that one will instinctively reach for, no need to grab the thrust levers of all things.
+  <br/>
+  <br/>
+  Even if the levers may have been inadvertently pulled to idle, it would have taken one single energic adjustment to slam them to maximum thrust position (whatever it is called on the 787), for which there was some time during the brief flight. And two idling engines should not result in anything triggering the RAT release or APU auto start.
+  <br/>
+  <br/>
+  Of course, stranger things have happened, but I\xb4d consider this scenario not plausible.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>sorvad<br/>2025-06-15T19:15:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-78.html#post11902740><br/>permalink</a>
+ Post: 11902740</td>
+<td class=post><div class="tcell alt1" id="td_post_11902740">
+ <!-- message -->
+ <div id="post_message_11902740">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      StuntPilot
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902683" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     We agree that there was a lack of thrust. Possibly caused by a dual engine failure. But the sharpest frames in the video do NOT show the RAT and this is counter evidence to the RAT theory. If there were substantial technical failures who knows what sounds could be generated. I find the evidence weak at best. And we immediately get into a chicken-egg problem: did some power issue of unknown nature cause an engine failure or did a dual engine failure occur, resulting in a power loss? Both are extremely unlikely and need to be backed by quality evidence. The video is not it, in my opinion. I don't know the APU intake mechanism and whether it could open after the impact.
+    </div>
+   </div>
+  </div>
+  <img alt="" class="post_inline_image" src="https://cimg9.ibsrv.net/gimg/pprune.org-vbulletin/2000x1504/img_3818_e97984e033bbf50de184e67fce186ef9367f8613.png"/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg1.ibsrv.net/gimg/pprune.org-vbulletin/2000x1504/img_3819_44e329269bc68564a35000405f16f4e8f81b866f.png"/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Alty7x7<br/>2025-06-15T20:23:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-79.html#post11902791><br/>permalink</a>
+ Post: 11902791</td>
+<td class=post><div class="tcell alt1" id="td_post_11902791">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   Engine failure with electrical power loss
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11902791">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      StuntPilot
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902683" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     We agree that there was a lack of thrust. Possibly caused by a dual engine failure. But the sharpest frames in the video do NOT show the RAT and this is counter evidence to the RAT theory. If there were substantial technical failures who knows what sounds could be generated. I find the evidence weak at best. And we immediately get into a chicken-egg problem: did some power issue of unknown nature cause an engine failure or did a dual engine failure occur, resulting in a power loss? Both are extremely unlikely and need to be backed by quality evidence. The video is not it, in my opinion. I don't know the APU intake mechanism and whether it could open after the impact.
+    </div>
+   </div>
+  </div>
+  To simplify the chicken/egg:
+  <br/>
+  <br/>
+  Tdracer earlier confirmed that an airplane electrical power loss would allow engines to keep running , because 1) engines are fully-capable of suction feed operation in takeoff envelope (if boost pumps lost), and 2) the EECs are powered by their own PMAs when running and to substantially below idle (I recall roughly 10% N2).  Airplane powers the EEC for ground starts, prior to PMA coming online, and as backup to the PMA after that.
+  <br/>
+  <br/>
+  Related:
+  <br/>
+  <br/>
+  Engine igniters are powered by the aircraft. So theoretical full loss of aircraft power would disable Autorelight upon a flameout. Ignitors typically don't make the cut for most-essential battery-only loads because it would also take an engine flameout, and the airplane past V1 in ground roll can fly fine on one engine that can achieve takeoff thrust.
+  <br/>
+  <br/>
+  Autorelight is relevant - if there was a single-engine failure post V1, autorelight will attempt to relight the engine, so there is no need for a pilot to try to cycle the fuel switch to reset the EEC (potentially grabbing the wrong one), or to otherwise intervene. In such a circumstance, they need to trust their training. I've heard accounts that the most likely pilot instinct in such a situation would be to push the throttle(s) forward.
+  <br/>
+  <br/>
+  Finally - there was talk earlier about accidentally cutting the fuel switches - and it was duly noted that they have to be pulled out over the detent, so very unlikely.  The same cutoff effect could be achieved with the engine fire handle(s), right behind the fuel switches on the pedestal - though they are an upward pull, so also not subject to inadvertent or accidental engagement.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Tu.114<br/>2025-06-15T21:17:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-79.html#post11902850><br/>permalink</a>
+ Post: 11902850</td>
+<td class=post><div class="tcell alt1" id="td_post_11902850">
+ <!-- message -->
+ <div id="post_message_11902850">
+  The electrical failure is rather a chicken-egg question.
+  <br/>
+  <br/>
+  Not knowing the 787, I\xb4d find it extremely hard to believe that a massive electrical failure would kill the engines. I gather from this thread that the landing gear retraction is driven by the electrically-powered Center hydraulic system. Retracting the gear is hard work for the system and it will put a strain on the two pumps and their supplying electric circuits, and the time of the alleged total power loss would seem to be in the vicinity of the suitable time to retract the gear.
+  <br/>
+  <br/>
+  But if there was some freak epidemic failure this inflicted upon the aircraft electrics, it is hard to imagine that this would affect both engines. There are still the autonomous FADEC governing them that run on their own internal generators (with a small external power source from the main systems, should the permanent magnet alternators fail) and do everything they can to keep the engine alive. As long as there is fuel flowing into the feed pipes, the engine should be kept running by the FADECs, and that this does not require the large tank pumps at low altitudes has been established in this thread.
+  <br/>
+  <br/>
+  Consequently, I\xb4d deem it plausible that the alleged power failure must have been a consequence of whatever happened to the engines. After all, the engines drive the available generators at this stage of flight, the APU with its additional generators is apparently not run for takeoff on the 787. I find it logically much easier to wrap my head around a situation in which an engine failure takes along the generators than one in which a massive, epidemic electric breakdown kills the engines.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>FlyingUpsideDown<br/>2025-06-16T08:46:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-85.html#post11903266><br/>permalink</a>
+ Post: 11903266</td>
+<td class=post><div class="tcell alt1" id="td_post_11903266">
+ <!-- message -->
+ <div id="post_message_11903266">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Capn Bloggs
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903257" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I suggest you hold it there, you are going from the sublime to the ridiculous eg
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+     That is incorrect.
+     <br/>
+     <br/>
+     FYI, the APU in the 787 does NOT provide air.
+    </div>
+   </div>
+  </div>
+  I stand corrected on the apu to pack takeoff. Apologies B777 hangover
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Compton3fox<br/>2025-06-16T09:41:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-86.html#post11903328><br/>permalink</a>
+ Post: 11903328</td>
+<td class=post><div class="tcell alt1" id="td_post_11903328">
+ <!-- message -->
+ <div id="post_message_11903328">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      FlyingUpsideDown
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903236" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The PF could've been task focused flying manually, following the FD's and not expecting the sinking feeling of losing the lift. The PM has made the mistake without knowing. ie. he/she has selected the flaps all the way to UP believing that the gear was now retracting. Both pilots now think the gear is retracting, they have full thrust but are sinking into the ground. "Professional crews" like Air France for eg. have made way worse decisions. Slats are extended because they are the last to retract. I'm not convinced the RAT is deployed. If it has deployed it could've been a last ditch effort for the crew to bring the fuel control switches from RUN to CUTOFF &amp; back to RUN believing they've had a dual engine failure. This would account for the RAT if it did deploy. The APU inlet door could've been open as well because they were carrying out an APU to Pack takeoff.
+     <span style="color:#000000">
+      Once the aircraft is airborne and the
+     </span>
+     <b>
+      weight-on-wheels (WOW) switches indicate air mode
+     </b>
+     <span style="color:#000000">
+      , the main gear
+     </span>
+     <b>
+      bogies automatically tilt to the neutral position
+     </b>
+     before retraction. Also when the flaps passed the last takeoff position on the quadrant, the Landing gear configuration warning horn would've sounded further confusing the pilots.
+    </div>
+   </div>
+  </div>
+  If you read the thread, you would know:
+  <br/>
+  <br/>
+  The RAT was almost certainly deployed. 4 different sources.
+  <br/>
+  The Flaps were not retracted. Visible at the accident site plus many other sources agreeing they were indeed down.
+  <br/>
+  APU will autostart when all engine power is lost. Potentially explaining why the inlet door was open or partially open at the accident site. Mentioned in several previous posts
+  <br/>
+  On a 787-8, the main bogies tilt as the 1st action of the gear retract sequence. As stated in previous posts. I don't think this happens unless gear is selected up. So the conclusion was, gear was selected up. One caveat, IIRC, there was some discussion around a failure could have caused the bogies to tilt without Gear up being selected but I don't recall the outcome.
+  <br/>
+  As for the Air France remark, un-necessary IMHO. Let's respect the crews please.
+  <br/>
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>TURIN<br/>2025-06-13T23:59:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903715><br/>permalink</a>
+ Post: 11903715</td>
+<td class=post><div class="tcell alt1" id="td_post_11903715">
+ <!-- message -->
+ <div id="post_message_11903715">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Fifthleg
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901010" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <img alt="" class="post_inline_image" src="https://cimg0.ibsrv.net/gimg/pprune.org-vbulletin/828x1431/img_4792_6f600967a0cfe4b0e39514bbc32485270bfb0e48.jpeg"/>
+     <br/>
+     It might appear from this photo that the APU intake flap is in the \x91not closed\x92 position and generally not damaged.
+     <br/>
+     The APU will automatically start in flight , irrespective of SW position, if 3 or more engine VFSGs are lost.
+    </div>
+   </div>
+  </div>
+  Good spot, but it is possible the actuator that operates the door is damaged.
+  <br/>
+  Unlikely, but possible.
+  <br/>
+  This does add more credance to the complete power loss scenario.
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Compton3fox<br/>2025-06-16T09:41:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-5.html#post11903755><br/>permalink</a>
+ Post: 11903755</td>
+<td class=post><div class="tcell alt1" id="td_post_11903755">
+ <!-- message -->
+ <div id="post_message_11903755">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      FlyingUpsideDown
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903236" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The PF could've been task focused flying manually, following the FD's and not expecting the sinking feeling of losing the lift. The PM has made the mistake without knowing. ie. he/she has selected the flaps all the way to UP believing that the gear was now retracting. Both pilots now think the gear is retracting, they have full thrust but are sinking into the ground. "Professional crews" like Air France for eg. have made way worse decisions. Slats are extended because they are the last to retract. I'm not convinced the RAT is deployed. If it has deployed it could've been a last ditch effort for the crew to bring the fuel control switches from RUN to CUTOFF &amp; back to RUN believing they've had a dual engine failure. This would account for the RAT if it did deploy. The APU inlet door could've been open as well because they were carrying out an APU to Pack takeoff.
+     <span style="color:#000000">
+      Once the aircraft is airborne and the
+     </span>
+     <b>
+      weight-on-wheels (WOW) switches indicate air mode
+     </b>
+     <span style="color:#000000">
+      , the main gear
+     </span>
+     <b>
+      bogies automatically tilt to the neutral position
+     </b>
+     before retraction. Also when the flaps passed the last takeoff position on the quadrant, the Landing gear configuration warning horn would've sounded further confusing the pilots.
+    </div>
+   </div>
+  </div>
+  If you read the thread, you would know:
+  <br/>
+  <br/>
+  The RAT was almost certainly deployed. 4 different sources.
+  <br/>
+  The Flaps were not retracted. Visible at the accident site plus many other sources agreeing they were indeed down.
+  <br/>
+  APU will autostart when all engine power is lost. Potentially explaining why the inlet door was open or partially open at the accident site. Mentioned in several previous posts
+  <br/>
+  On a 787-8, the main bogies tilt as the 1st action of the gear retract sequence. As stated in previous posts. I don't think this happens unless gear is selected up. So the conclusion was, gear was selected up. One caveat, IIRC, there was some discussion around a failure could have caused the bogies to tilt without Gear up being selected but I don't recall the outcome.
+  <br/>
+  As for the Air France remark, un-necessary IMHO. Let's respect the crews please.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Feathers McGraw<br/>2025-06-16T22:33:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-6.html#post11903844><br/>permalink</a>
+ Post: 11903844</td>
+<td class=post><div class="tcell alt1" id="td_post_11903844">
+ <!-- message -->
+ <div id="post_message_11903844">
+  I'd like to mention something that, while unrelated, does shed a bit of light on how computerised systems can misinterpret input data and take the wrong action. I spent 40 odd years as an electronics engineer involving complex systems, it can be surprising just how careful one must be in systems that sample data and then process it for decision making in software.
+  <br/>
+  <br/>
+  On August 9th 2019, there was a significant grid failure in the UK leading to load shedding (removing supply to many consumers, including Newcastle Airport) which started when a series of several lightning strikes in Hertfordshire caused a trip out of generators at Little Barford combined-cycle gas turbine generation plant. This was followed by the shut down of the power concentrator and grid connector from the Hornsea1 off-shore wind farm, significant changes in the grid frequency away from the acceptable limits which is what triggered further load shedding.
+  <br/>
+  <br/>
+  The reason I mention it is that Hornsea1 going off line was due to the software that operated the concentrator/connector sensing large voltage transients due to the lightning strikes 120 miles away, however these transients were only of the order of 10us length spikes with nominal 20ms cycles at 50Hz on the grid. In old reliable grid equipment that had been in use for decades such spikes would have been ignored because the large rotating machine inertia would make them irrelevant. Other systems went into various states of shut down for protection reasons, some of the Siemens Class 700 trains had to be reset by the train crew, others required a Siemens engineer to drive to each train and reload its firmware. The train protection mode occurred because the grid frequency on the 25kV AC supply went below 49.8Hz, this was a programmed default and it turned out to have been a very conservative one, the trains could have continued to operate normally at even lower frequencies but someone decided to write the programs without actually testing what a sensible limit was. The whole very widespread problems this caused could have been avoided by not acting instantly on microsecond transients in a 50Hz system.
+  <br/>
+  <br/>
+  Is it possible that the monitoring systems on a Boeing 787 also sample the electrical system voltages and currents at a relatively high frequency, and thus in the event of a transient of some type perhaps over-react to this event by taking precipitate action instead of waiting a short time before re-sampling again. I have seen a suggestion that an alternative explanation for the "bang" heard by the survivor in seat 11A might have been the sound of a Bus Tie Contactor closing, which in itself suggests something quite important relating to the electrical system. The 787 is unusual in that it uses variable frequency AC generators whose outputs are rectified and then inverted to other AC voltages and also quite high DC voltages, some in the 250-300V region.
+  <br/>
+  <br/>
+  I hope that some hard information is going to come out from the investigators soon, but given that the flap mis-selection idea is effectively debunked and we know that the main undercarriage either started its retraction cycle with bogies tilting forwards or that falling hydraulic pressure caused the same thing to happen, then the only thing that fits the observed flight path is loss of thrust on both engines which could have either preceded or followed an electrical failure. We also know that the RAT deployed and in the relatively undamaged tail cone the APU inlet was open or opening indicating a likely auto-start of the APU due to the parameters to trigger that occurring.
+  <br/>
+  <br/>
+  I would like to know how many tests of the electrical/computer interactions in 787 development involved arcing/shorting voltage/current transient testing. Is this the sort of thing that is done at all? The EECs (FADECs) in the engines are self-powered via magnetos and self-controlling in many circumstances, but perhaps something caused them to think that the thrust levers had been retarded, and such a thing might have been down to the effect of electrical transients on the various signals received by the EECs.
+  <br/>
+  <br/>
+  I have read the original 65+ pages of the thread, but I have not seen any discussion of this particular idea. Maybe that is because the 787 is quite a significant departure from Boeing's previous design practices with totally different electrical systems, higher pressure hydraulics and no doubt other aspects as well.
+  <br/>
+  <br/>
+  What do you all think?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>mechpowi<br/>2025-06-17T15:25:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-13.html#post11904394><br/>permalink</a>
+ Post: 11904394</td>
+<td class=post><div class="tcell alt1" id="td_post_11904394">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   RAT powered systems
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11904394">
+  There&rsquo;s been some debate over what electrical and hydraulic systems are powered. According to one unauthorized and Not For Flight -labeled FCOM copy that seems quite authentic:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    &ldquo;In-Air Rat Only Operation&rdquo; mode (Standby Power) &ndash; If loss of all electrical power to captain&rsquo;s and first officer&rsquo;s flight instruments occurs in flight, the RAT energizes the captain&rsquo;s flight instruments and other essential equipment for flight controls, navigation, and communication. The main battery provides standby power until RAT deployment. Significant loads energized by this mode include:
+    <br/>
+    <br/>
+    captain&rsquo;s inboard DU
+    <br/>
+    &bull; captain&rsquo;s outboard DU
+    <br/>
+    &bull; lower DU
+    <br/>
+    &bull; autoflight system
+    <br/>
+    &bull; MCP
+    <br/>
+    &bull; autopilot
+    <br/>
+    &bull; captain&rsquo;s / first officer&rsquo;s ACP
+    <br/>
+    &bull; captain&rsquo;s / first officer&rsquo;s
+    <br/>
+    flight interphone
+    <br/>
+    &bull; VHF L
+    <br/>
+    &bull; TCP L
+    <br/>
+    &bull; DSP L
+    <br/>
+    &bull; MFK L
+    <br/>
+    &bull; CCD L
+    <br/>
+    &bull; IRU L, R
+    <br/>
+    &bull; AHRU L, R
+    <br/>
+    &bull; INR L, R
+    <br/>
+    &bull; ISFD
+    <br/>
+    &bull; FMC
+    <br/>
+    &bull; PFC
+    <br/>
+    &bull; CCR L
+    <br/>
+    &bull; center pitot heat
+    <br/>
+    &bull; engine/APU fire detection
+    <br/>
+    &bull; miscellaneous lightin
+    <br/>
+    <br/>
+    Note: Autothrottle, flaps, slats, stabilizer, thrust reversers, auto speedbrakes, air conditioning / pressurization, Head-Up displays, HF radios, SATCOM systems, external lighting, WIPS, and window heat are inoperative on standby power.
+    <br/>
+    <br/>
+    &ldquo;In-Air Battery Only&rdquo; mode (Standby Power) &ndash;
+    <br/>
+    This mode energizes the same
+    <br/>
+    equipment as the &ldquo;In-Air RAT Operation Only&rdquo; mode with the exception of center
+    <br/>
+    pitot heat.
+   </div>
+  </div>
+  The list of inoperative systems include most/all secondary fligh controls powered by the center hydraulic system. There we can conclude that centre hydraulic system electric pumps are not available when operating on
+  <strike>
+   APU
+  </strike>
+  RAT (or battery) only electrical mode.
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Senior Pilot; 17th Jun 2025 at
+   <span class="time">
+    21:44
+   </span>
+   .
+							
+							
+								Reason: Remove false information
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Aerospace101<br/>2025-06-17T17:44:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-14.html#post11904511><br/>permalink</a>
+ Post: 11904511</td>
+<td class=post><div class="tcell alt1" id="td_post_11904511">
+ <!-- message -->
+ <div id="post_message_11904511">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Magplug
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904468" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I'm still going with
+     <br/>
+     a) Incorrect derate + low Vspeeds or
+     <br/>
+     b) Low altitude capture
+    </div>
+   </div>
+  </div>
+  How does this explain the unusual forward tilt of the gear trucks as seen in the roof top video?
+  <br/>
+  <br/>
+  I appreciate some don\x92t want to speculate on the RAT deployment or APU auto start until further evidence, but the gear truck tilt is a massive clue to a non-normal hydraulic issue, most likely caused by electrical power problems since C hydraulics is only electric pump powered.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>OPENDOOR<br/>2025-06-18T14:50:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-23.html#post11905306><br/>permalink</a>
+ Post: 11905306</td>
+<td class=post><div class="tcell alt1" id="td_post_11905306">
+ <!-- message -->
+ <div id="post_message_11905306">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      PBL
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11905294" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The emergency power system of the 787 surely consists of a lot more than just the RAT. The Reuters article, in its body, uses the term "emergency power generator". Now that could indeed refer to the RAT.
+    </div>
+   </div>
+  </div>
+  It could equally refer to the APU which some have suggested either started or was in the process of starting.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>OldnGrounded<br/>2025-06-18T15:28:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-23.html#post11905332><br/>permalink</a>
+ Post: 11905332</td>
+<td class=post><div class="tcell alt1" id="td_post_11905332">
+ <!-- message -->
+ <div id="post_message_11905332">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      OPENDOOR
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11905306" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     It could equally refer to the APU which some have suggested either started or was in the process of starting.
+    </div>
+   </div>
+  </div>
+  Yes, but it's clear from context that the WSJ story is referring to the RAT and whatever they may understand from their sources is connected to it.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    The emergency system is known as a ram air turbine. It is a small propeller that drops from the bottom of the 787 Dreamliner\x92s fuselage to serve as a backup generator.
+   </div>
+  </div>
+  The story is paywalled, so the link that pops up for me may not work for you, but in case it does:
+  <br/>
+  <br/>
+  <a href="https://www.wsj.com/business/airlines/boeing-787s-emergency-power-system-likely-active-before-air-india-crash-148b7e02?gaa_at=eafs&amp;gaa_n=ASWzDAjWSnznWcxve94hQf2poI2BtjzJFNAf6S512CsJ5ROmixC3DTq5TxrelfL-ji8%3D&amp;gaa_ts=6852ddf7&amp;gaa_sig=UGPLmEJN0fA_deQZVyoPFCTbv4-aBMiU0eHJOtxZDY8SMM2_c8QcRp30CZuF802kZkypYGttjRhMvzQPg1BBGQ%3D%3D" target="_blank">
+   https://www.wsj.com/business/airline...QPg1BBGQ%3D%3D
+  </a>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>adfad<br/>2025-06-18T18:18:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-24.html#post11905444><br/>permalink</a>
+ Post: 11905444</td>
+<td class=post><div class="tcell alt1" id="td_post_11905444">
+ <!-- message -->
+ <div id="post_message_11905444">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      skwdenyer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11905421" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     To my mind, this points to a potential software issue. 787s have already suffered from 2 separate software issues in which the passage of time causes a major and possibly catastrophic failure - the need to reboot systems before 51 days and 248 days have elapsed, due to poorly-written software. Given that history, the probability of there being a third, previously-unidentified but broadly similar in nature software issue seems surprisingly high. They aren't independent variables.
+     <br/>
+     <br/>
+     Such a passage-of-time software issue wouldn't show up in most (or possibly any) testing scenarios. It is the sort of issue that robust QA and static code analysis are designed to catch. But in at least two separate systems on the 787 it has not been caught prior to software shipping. Meanwhile, every new technical post demonstrates the myriad ways in which non-software potential causes are mitigated by redundant design.
+     <br/>
+     <br/>
+     The odds of two (or more) redundant mechanical systems failing in precisely the same way at precisely the same moment are very, very small. The odds of identical software on two (or more) redundant systems reaching a passage-of-time bug at precisely the same moment are, by contrast, very much higher. True redundancy would require different software on each redundant sub-system.
+    </div>
+   </div>
+  </div>
+  I am a software engineer, I find it alarming that the power control unit had the ability to command all AC generator control units to effectively shut down - regardless of that being the side-effect of a bug, or an ability of the system to call on in appropriate scenarios.
+  <br/>
+  <br/>
+  Integer overflow is a specific type of issue common to many systems, but like you said - it is something that should be found with robust QA and analysis. The ability to shut down all generators at once from a single source seems like a risky design decision to me and I agree with your point about different software on 2 or more redundant sub systems.
+  <br/>
+  <br/>
+  My theory is that this was an accepted risk because the engine-driven fuel pumps would be more than enough in most phases of flight to keep the engines running, and you would still have 2 engines for redundancy. The APU would also restore AC power in lets say 30 seconds and you would then have electric fuel pumps as well.
+  <br/>
+  <br/>
+  I think there are several factors that could explain how loss of all AC power during takeoff could lead to a crash:
+  <ul>
+   <li>
+    The crash happened within 30 seconds - possibly too short for the APU to start, and the RAT doesn't power the AC electric fuel pumps
+   </li>
+   <li>
+    The engine driven fuel pumps even if sufficient in level flight may have struggled during rotation - has Boeing tested an actual takeoff with only EDP feeding the engine while the fuel tanks are rotating and in extreme environments, or, have they only tested this statically?
+   </li>
+   <li>
+    The takeoff was hot and heavy - combined with the landing gear stuck down and reduced thrust from loss of electric fuel pumps could this be enough?
+   </li>
+  </ul>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by adfad; 18th Jun 2025 at
+   <span class="time">
+    18:36
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>EDLB<br/>2025-06-18T19:15:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-25.html#post11905486><br/>permalink</a>
+ Post: 11905486</td>
+<td class=post><div class="tcell alt1" id="td_post_11905486">
+ <!-- message -->
+ <div id="post_message_11905486">
+  @syseng68k
+  <br/>
+  Consensus here is, that both engines where stopped by a closing fuel cut off valve, wich yields a fast loss of N2. The generators  then shut down very quick as does the thrust in a few seconds. This is supported by the quick RAT extension which allowed the crew to control the flight. The APU did autostart too. A thrust changed with the thrust leaver to idle is much slower and would not result in the dramatic change in performance. Thrust set to idle will not engage the RAT since the electric generators would still work. So a thrust leaver  changed to idle or any intervention by Autothrust (AT) would not yield to the RAT extension. Something or someone activated a fuel cut off. How and why that happened is the big question, the investigators have to answer.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>MarineEngineer<br/>2025-06-18T19:37:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-25.html#post11905502><br/>permalink</a>
+ Post: 11905502</td>
+<td class=post><div class="tcell alt1" id="td_post_11905502">
+ <!-- message -->
+ <div id="post_message_11905502">
+  @
+  <a href="https://www.pprune.org/members/118411-edlb" target="_blank">
+   EDLB
+  </a>
+  <br/>
+  No, we don't know if the fuel valves closed. Nor do we know if the RAT or APU started automatically.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by MarineEngineer; 18th Jun 2025 at
+   <span class="time">
+    19:50
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=APU0.html>First</a>
+&nbsp;<a href=APU2.html>Previous</a>
+&nbsp;<a href=APU0.html>1</a>
+&nbsp;<a href=APU1.html>2</a>
+&nbsp;<a href=APU2.html>3</a>
+&nbsp;<a href=APU3.html><b>4</b>
+</a>
+&nbsp;<a href=APU4.html>5</a>
+&nbsp;<a href=APU4.html>Next</a>
+&nbsp;<a href=APU4.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

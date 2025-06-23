@@ -1,0 +1,1294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune RAT (All) name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "RAT (All)" [Posts: 581 Pages: 30]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=RAT_-All-0.html>First</a>
+&nbsp;<a href=RAT_-All-22.html>Previous</a>
+&nbsp;<a href=RAT_-All-13.html>14</a>
+&nbsp;<a href=RAT_-All-14.html>15</a>
+&nbsp;<a href=RAT_-All-15.html>16</a>
+&nbsp;<a href=RAT_-All-16.html>17</a>
+&nbsp;<a href=RAT_-All-17.html>18</a>
+&nbsp;<a href=RAT_-All-18.html>19</a>
+&nbsp;<a href=RAT_-All-19.html>20</a>
+&nbsp;<a href=RAT_-All-20.html>21</a>
+&nbsp;<a href=RAT_-All-21.html>22</a>
+&nbsp;<a href=RAT_-All-22.html>23</a>
+&nbsp;<a href=RAT_-All-23.html><b>24</b>
+</a>
+&nbsp;<a href=RAT_-All-24.html>25</a>
+&nbsp;<a href=RAT_-All-25.html>26</a>
+&nbsp;<a href=RAT_-All-26.html>27</a>
+&nbsp;<a href=RAT_-All-27.html>28</a>
+&nbsp;<a href=RAT_-All-28.html>29</a>
+&nbsp;<a href=RAT_-All-29.html>30</a>
+&nbsp;<a href=RAT_-All-24.html>Next</a>
+&nbsp;<a href=RAT_-All-29.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post>JPI33600<br/>2025-06-17T10:01:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-9.html#post11904160><br/>permalink</a>
+ Post: 11904160</td>
+<td class=post><div class="tcell alt1" id="td_post_11904160">
+ <!-- message -->
+ <div id="post_message_11904160">
+  Not an avionics specialist, but electronics / software engineer here, with extensive experience in hardware fault tracking, protocol monitoring and software debugging in embedded systems : mods, feel free to delete this post if I am completely out of track (and thank you for the huge amount of work you've done trying to keep this discussion clean).
+  <br/>
+  <br/>
+  After I have read the whole thread, I think most of the community agrees about a lack of engine thrust being the cause of the crash. Searching in that direction, I'm trying to "think out of the box", discarding the usual suspects (birds ingestion, TCMA, human mistake...), and to find a plausible single point of failure among the various subsystems involved. I was thinking of reversing the causality of the event, i.e. exploring a case where the engines would have behaved unexpectedly because of a major electrical failure, instead of the already explored case where both powerplants went AWOL first.
+  <br/>
+  <br/>
+  Therefore, I have a couple questions for tdracer / fdr / other informed contributors (BTW, fantastic contribution guys, please keep the good info coming):
+  <br/>
+  <br/>
+  1. From the scarce info available, is it reasonable to conclude that the engines were totally shut down? Could they have just been set to idle or reduced thrust instead?
+  <br/>
+  <br/>
+  2. In the second case, if (and that's a big IF) a major electrical failure happened first (which could have triggered RAT deployment), and considering this plane is a FBW aircraft, could there exist a case where the FADECs would command idle thrust -- or significant thrust reduction -- because they receive invalid input data from the throttle controls? Kind of a garbage in-garbage out case?
+  <br/>
+  <br/>
+  The associated scenario would be: major electrical fault (with subsequent RAT deployment) -&gt; major protocol disturbance on ARINC/AFDX buses -&gt; FADECs detect invalid data from the controls -&gt; FADECS enter some kinf of safe mode and command reduced or idle thrust.
+  <br/>
+  <br/>
+  Does it make sense or is it pure fantasy?
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>EDML<br/>2025-06-17T10:13:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-10.html#post11904168><br/>permalink</a>
+ Post: 11904168</td>
+<td class=post><div class="tcell alt1" id="td_post_11904168">
+ <!-- message -->
+ <div id="post_message_11904168">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      JPI33600
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904160" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Not an avionics specialist, but electronics / software engineer here, with extensive experience in hardware fault tracking, protocol monitoring and software debugging in embedded systems : mods, feel free to delete this post if I am completely out of track (and thank you for the huge amount of work you've done trying to keep this discussion clean).
+     <br/>
+     <br/>
+     After I have read the whole thread, I think most of the community agrees about a lack of engine thrust being the cause of the crash. Searching in that direction, I'm trying to "think out of the box", discarding the usual suspects (birds ingestion, TCMA, human mistake...), and to find a plausible single point of failure among the various subsystems involved. I was thinking of reversing the causality of the event, i.e. exploring a case where the engines would have behaved unexpectedly because of a major electrical failure, instead of the already explored case where both powerplants went AWOL first.
+     <br/>
+     <br/>
+     Therefore, I have a couple questions for tdracer / fdr / other informed contributors (BTW, fantastic contribution guys, please keep the good info coming):
+     <br/>
+     <br/>
+     1. From the scarce info available, is it reasonable to conclude that the engines were totally shut down? Could they have just been set to idle or reduced thrust instead?
+     <br/>
+     <br/>
+     2. In the second case, if (and that's a big IF) a major electrical failure happened first (which could have triggered RAT deployment), and considering this plane is a FBW aircraft, could there exist a case where the FADECs would command idle thrust -- or significant thrust reduction -- because they receive invalid input data from the throttle controls? Kind of a garbage in-garbage out case?
+     <br/>
+     <br/>
+     The associated scenario would be: major electrical fault (with subsequent RAT deployment) -&gt; major protocol disturbance on ARINC/AFDX buses -&gt; FADECs detect invalid data from the controls -&gt; FADECS enter some kinf of safe mode and command reduced or idle thrust.
+     <br/>
+     <br/>
+     Does it make sense or is it pure fantasy?
+    </div>
+   </div>
+  </div>
+  No. The throttle position sensors (dual per engine) are part of the FADEC. The throttle position data is not transmitted through the ARINC busses of the aircraft.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>TURIN<br/>2025-06-17T11:12:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-10.html#post11904212><br/>permalink</a>
+ Post: 11904212</td>
+<td class=post><div class="tcell alt1" id="td_post_11904212">
+ <!-- message -->
+ <div id="post_message_11904212">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Squawk7700
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904180" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <h2>
+      Perhaps?
+     </h2>
+     <ul>
+      <li>
+       Takeoff proceeded normally, TOGA used.
+       <br/>
+      </li>
+      <li>
+       Autothrottle entered
+       <b>
+        HOLD mode at 80 knots
+       </b>
+       .
+       <br/>
+      </li>
+      <li>
+       <b>
+        VNAV or FLCH was NOT engaged
+       </b>
+       after liftoff.
+       <br/>
+      </li>
+      <li>
+       Pilot assumed A/T was managing thrust, but it wasn\x92t.
+       <br/>
+      </li>
+      <li>
+       Pilot focused on pitch/flying manually.
+       <br/>
+      </li>
+      <li>
+       Thrust stayed fixed or decayed (if levers were moved).
+       <br/>
+      </li>
+      <li>
+       Speed decayed, aircraft climbed too steeply, energy bled off.
+       <br/>
+      </li>
+      <li>
+       Pilot assumed engine failure due to poor climb response.
+       <br/>
+      </li>
+     </ul>
+     Boeing SOPs typically include a callout at 400 ft like:
+     <br/>
+     <br/>
+     "LNAV" - "VNAV" or "FLCH SPD"
+     <br/>
+     <br/>
+     To ensure:
+     <ul>
+      <li>
+       Proper navigation mode is active
+       <br/>
+      </li>
+      <li>
+       Autothrottle resumes thrust management
+       <br/>
+      </li>
+      <li>
+       Aircraft transitions smoothly into the climb phase
+       <br/>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  But would any of that trigger the RAT and/or cause the emergency lights to come on? (I know, there is only anecdotal evidence from the sole survivor of this).
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Squawk7700<br/>2025-06-17T12:33:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-11.html#post11904262><br/>permalink</a>
+ Post: 11904262</td>
+<td class=post><div class="tcell alt1" id="td_post_11904262">
+ <!-- message -->
+ <div id="post_message_11904262">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      TURIN
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904212" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     But would any of that trigger the RAT and/or cause the emergency lights to come on? (I know, there is only anecdotal evidence from the sole survivor of this).
+    </div>
+   </div>
+  </div>
+  That came from a 787 pilot friend.  Under the assumption that the RAT deployment is still an assumption.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Icarus2001<br/>2025-06-17T12:43:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-11.html#post11904270><br/>permalink</a>
+ Post: 11904270</td>
+<td class=post><div class="tcell alt1" id="td_post_11904270">
+ <!-- message -->
+ <div id="post_message_11904270">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <span style="color:#000000">
+     The RAT provides hydraulic power only to the flight control portion of the C hydraulics
+    </span>
+   </div>
+  </div>
+  Should we talk about the RAT being an electrical generator? No? Okay then, carry on.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Tailspin Turtle<br/>2025-06-17T12:46:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-11.html#post11904272><br/>permalink</a>
+ Post: 11904272</td>
+<td class=post><div class="tcell alt1" id="td_post_11904272">
+ <!-- message -->
+ <div id="post_message_11904272">
+  Based on approximate distances and heights, the time line, the aircraft configuration, surface wind, the published L/D (gear up reduced to a guess for gear down and RAT out), and probable off-optimum speed for maximum L/D in that configuration, it's my opinion (aeronautical engineer, unused ATP rating, and glider pilot, national contests) that we can't rule out both engines being at idle or very low thrust at or shortly after rotation,
+  <u>
+   rather than shut down.
+  </u>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Tailspin Turtle; 17th Jun 2025 at
+   <span class="time">
+    16:28
+   </span>
+   .
+							
+							
+								Reason: Added final phrase for clarification
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>McDoo<br/>2025-06-17T12:50:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-11.html#post11904275><br/>permalink</a>
+ Post: 11904275</td>
+<td class=post><div class="tcell alt1" id="td_post_11904275">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   What if?
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11904275">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Squawk7700
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904180" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <h2>
+      Perhaps?
+     </h2>
+     <ul>
+      <li>
+       Takeoff proceeded normally, TOGA used.
+       <br/>
+      </li>
+      <li>
+       Autothrottle entered
+       <b>
+        HOLD mode at 80 knots
+       </b>
+       .
+       <br/>
+      </li>
+      <li>
+       <b>
+        VNAV or FLCH was NOT engaged
+       </b>
+       after liftoff.
+       <br/>
+      </li>
+      <li>
+       Pilot assumed A/T was managing thrust, but it wasn\x92t.
+       <br/>
+      </li>
+      <li>
+       Pilot focused on pitch/flying manually.
+       <br/>
+      </li>
+      <li>
+       Thrust stayed fixed or decayed (if levers were moved).
+       <br/>
+      </li>
+      <li>
+       Speed decayed, aircraft climbed too steeply, energy bled off.
+       <br/>
+      </li>
+      <li>
+       Pilot assumed engine failure due to poor climb response.
+       <br/>
+      </li>
+     </ul>
+     Boeing SOPs typically include a callout at 400 ft like:
+     <br/>
+     <br/>
+     "LNAV" - "VNAV" or "FLCH SPD"
+     <br/>
+     <br/>
+     To ensure:
+     <ul>
+      <li>
+       Proper navigation mode is active
+       <br/>
+      </li>
+      <li>
+       Autothrottle resumes thrust management
+       <br/>
+      </li>
+      <li>
+       Aircraft transitions smoothly into the climb phase
+       <br/>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  Do we know yet what stop
+  <br/>
+  altitude was set on the FGP?
+  <br/>
+  <br/>
+  Suppose they had left it at zero prior to final departure briefing?
+  <br/>
+  <br/>
+  Not 787 rated but is it possible that they selected FLCH after take off and the aircraft targeted the zero altitude selection?
+  <br/>
+  <br/>
+  Doesn\x92t explain the RAT deployment but I have a feeling there maybe more than one hole in this Swiss cheese\x85
+  <br/>
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Aerospace101<br/>2025-06-17T13:06:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-11.html#post11904288><br/>permalink</a>
+ Post: 11904288</td>
+<td class=post><div class="tcell alt1" id="td_post_11904288">
+ <!-- message -->
+ <div id="post_message_11904288">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Icarus2001
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904270" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Should we talk about the RAT being an electrical generator? No? Okay then, carry on.
+    </div>
+   </div>
+  </div>
+  Did you not read my full post?
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Aerospace101
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904137" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The RAT provides hydraulic power only to the flight control portion of the C hydraulics. Wing and tail flight controls only. Non return valves prevent power to other C hydraulic powered systems like the gear.
+     <br/>
+     <br/>
+     The RAT provides electrical power only to critical flight instrumentation (mostly Captains), navigation and communication. The same critical equipment that the Battery will provide. If all electrics was lost, the main Battery would provides standby power until RAT is fully deployed. The RAT electrical power would not be able to power C hydraulic electric pumps.
+    </div>
+   </div>
+  </div>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>DaveReidUK<br/>2025-06-17T13:32:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-11.html#post11904305><br/>permalink</a>
+ Post: 11904305</td>
+<td class=post><div class="tcell alt1" id="td_post_11904305">
+ <!-- message -->
+ <div id="post_message_11904305">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Icarus2001
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904270" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Should we talk about the RAT being an electrical generator? No? Okay then, carry on.
+    </div>
+   </div>
+  </div>
+  The post from which you quoted part did talk about both hydraulic and electrical power from the RAT. I'm not sure what point you're making.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>galaxy flyer<br/>2025-06-17T14:54:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-12.html#post11904372><br/>permalink</a>
+ Post: 11904372</td>
+<td class=post><div class="tcell alt1" id="td_post_11904372">
+ <!-- message -->
+ <div id="post_message_11904372">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Icarus2001
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904309" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Simply that the RAT is an electrical generator, that is all. What the electricity it generates powers is a downstreamm issue. The absolute rubbish being spouted on here is unreadable\x85viz\x85
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+     Why? To achieve what? The people who write this have no clue about two crew jet operations. It is so sad. No crew would pull a shut off immediately after rotation. It makes no sense. Just stop with all this rubbish.
+     <br/>
+     <br/>
+     I am going to have a lie down.
+     <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_wall.gif" title="Ugh"/>
+    </div>
+   </div>
+  </div>
+  It\x92s happened more than once.  I wouldn\x92t foreclose that outcome until we have facts.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>IFMU<br/>2025-06-17T14:56:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-12.html#post11904373><br/>permalink</a>
+ Post: 11904373</td>
+<td class=post><div class="tcell alt1" id="td_post_11904373">
+ <!-- message -->
+ <div id="post_message_11904373">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Icarus2001
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904309" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Simply that the RAT is an electrical generator, that is all.
+    </div>
+   </div>
+  </div>
+  The 787 RAT has both a generator and a hydraulic pump.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>mechpowi<br/>2025-06-17T15:25:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-13.html#post11904394><br/>permalink</a>
+ Post: 11904394</td>
+<td class=post><div class="tcell alt1" id="td_post_11904394">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   RAT powered systems
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11904394">
+  There&rsquo;s been some debate over what electrical and hydraulic systems are powered. According to one unauthorized and Not For Flight -labeled FCOM copy that seems quite authentic:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    &ldquo;In-Air Rat Only Operation&rdquo; mode (Standby Power) &ndash; If loss of all electrical power to captain&rsquo;s and first officer&rsquo;s flight instruments occurs in flight, the RAT energizes the captain&rsquo;s flight instruments and other essential equipment for flight controls, navigation, and communication. The main battery provides standby power until RAT deployment. Significant loads energized by this mode include:
+    <br/>
+    <br/>
+    captain&rsquo;s inboard DU
+    <br/>
+    &bull; captain&rsquo;s outboard DU
+    <br/>
+    &bull; lower DU
+    <br/>
+    &bull; autoflight system
+    <br/>
+    &bull; MCP
+    <br/>
+    &bull; autopilot
+    <br/>
+    &bull; captain&rsquo;s / first officer&rsquo;s ACP
+    <br/>
+    &bull; captain&rsquo;s / first officer&rsquo;s
+    <br/>
+    flight interphone
+    <br/>
+    &bull; VHF L
+    <br/>
+    &bull; TCP L
+    <br/>
+    &bull; DSP L
+    <br/>
+    &bull; MFK L
+    <br/>
+    &bull; CCD L
+    <br/>
+    &bull; IRU L, R
+    <br/>
+    &bull; AHRU L, R
+    <br/>
+    &bull; INR L, R
+    <br/>
+    &bull; ISFD
+    <br/>
+    &bull; FMC
+    <br/>
+    &bull; PFC
+    <br/>
+    &bull; CCR L
+    <br/>
+    &bull; center pitot heat
+    <br/>
+    &bull; engine/APU fire detection
+    <br/>
+    &bull; miscellaneous lightin
+    <br/>
+    <br/>
+    Note: Autothrottle, flaps, slats, stabilizer, thrust reversers, auto speedbrakes, air conditioning / pressurization, Head-Up displays, HF radios, SATCOM systems, external lighting, WIPS, and window heat are inoperative on standby power.
+    <br/>
+    <br/>
+    &ldquo;In-Air Battery Only&rdquo; mode (Standby Power) &ndash;
+    <br/>
+    This mode energizes the same
+    <br/>
+    equipment as the &ldquo;In-Air RAT Operation Only&rdquo; mode with the exception of center
+    <br/>
+    pitot heat.
+   </div>
+  </div>
+  The list of inoperative systems include most/all secondary fligh controls powered by the center hydraulic system. There we can conclude that centre hydraulic system electric pumps are not available when operating on
+  <strike>
+   APU
+  </strike>
+  RAT (or battery) only electrical mode.
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Senior Pilot; 17th Jun 2025 at
+   <span class="time">
+    21:44
+   </span>
+   .
+							
+							
+								Reason: Remove false information
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>rkenyon<br/>2025-06-17T17:19:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-13.html#post11904487><br/>permalink</a>
+ Post: 11904487</td>
+<td class=post><div class="tcell alt1" id="td_post_11904487">
+ <!-- message -->
+ <div id="post_message_11904487">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Magplug
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904468" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     B787 Skipper.... No longer able to sit on my hands!
+     <br/>
+     <br/>
+     The joker that published one or other of the fictional accident reports before the dead are even identified needs stringing up by the thumbs.... Well done mods. OK, some of these theories, just bearing in mind the the flight recorder (there is only one FDR + CVR combined) was in the intact section of the undamaged tail and has been with the authorities for almost five days......
+     <br/>
+     <br/>
+     - All you guys who are rushing down the TCMA rabbit hole: If it was established that a software error drove both engines to idle without warning, after rotate.... Don't you think the worldwide fleet of B787s would have been grounded by now? Such a glaring failure would be absolutely inescapable on the FDR.
+     <br/>
+     <br/>
+     Whatever was wrong with this aircraft was present at rotate, unbeknown to the crew. The fact that no ADs or notices to operators have been issued usually means that the cause is known and the aircraft was serviceable. The statement from a prominent Indian Captain about the skill and tenacity of the crew, right up to the last minute is absolutely laudable. However, the cynic in me says that the way is being paved for some bad news and by that I mean news that will do Air India reputational damage. Expect more management of expectation in the coming days.
+     <br/>
+     <br/>
+     I'm still going with
+     <br/>
+     a) Incorrect derate + low Vspeeds or
+     <br/>
+     b) Low altitude capture
+    </div>
+   </div>
+  </div>
+  Do you stand by your previous assertion :-
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Magplug
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904468" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <span style="color:#000000">
+      Speaking as a B787 Captain..... There is so much rubbish and stupid suggestion being written here.
+     </span>
+     <br/>
+     <br/>
+     <span style="color:#000000">
+      - RAT out? Almost impossible, I have seen no quality footage that definitively witnesses the RAT being out. Those who think they car hear a RAT type noise might be listening to a motorcycle passing or similar. It takes a triple hydraulic failure or a double engine failure to trigger RAT deploment. They happily went through V1 without a hint of rejected take off so as they rotated the aircraft was serviceable. These are big engines, they take a long time to wind down when you shut them down. I have never tried it however engine failure detection takes 30s or for the aircraft to react and they were not even airborne that long.
+     </span>
+    </div>
+   </div>
+  </div>
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>neila83<br/>2025-06-17T17:38:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-14.html#post11904506><br/>permalink</a>
+ Post: 11904506</td>
+<td class=post><div class="tcell alt1" id="td_post_11904506">
+ <!-- message -->
+ <div id="post_message_11904506">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Magplug
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904468" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     B787 Skipper.... No longer able to sit on my hands!
+     <br/>
+     <br/>
+     The joker that published one or other of the fictional accident reports before the dead are even identified needs stringing up by the thumbs.... Well done mods. OK, some of these theories, just bearing in mind the the flight recorder (there is only one FDR + CVR combined) was in the intact section of the undamaged tail and has been with the authorities for almost five days......
+     <br/>
+     <br/>
+     - All you guys who are rushing down the TCMA rabbit hole: If it was established that a software error drove both engines to idle without warning, after rotate.... Don't you think the worldwide fleet of B787s would have been grounded by now? Such a glaring failure would be absolutely inescapable on the FDR.
+     <br/>
+     <br/>
+     Whatever was wrong with this aircraft was present at rotate, unbeknown to the crew. The fact that no ADs or notices to operators have been issued usually means that the cause is known and the aircraft was serviceable. The statement from a prominent Indian Captain about the skill and tenacity of the crew, right up to the last minute is absolutely laudable. However, the cynic in me says that the way is being paved for some bad news and by that I mean news that will do Air India reputational damage. Expect more management of expectation in the coming days.
+     <br/>
+     <br/>
+     I'm still going with
+     <br/>
+     a) Incorrect derate + low Vspeeds or
+     <br/>
+     b) Low altitude capture
+    </div>
+   </div>
+  </div>
+  Maybe you should have kept sitting on your hands, theory a) in particular is about as risable as the last one you posted. Do you still think engine failure takes 30 seconds for the plane to react?! Thanks to rkenyon for alerting us not to take your post seriously. You still don't believe the RAT was out despite the in depth audio analysis done by an expert in the field. You still think its a motorbike?!
+  <br/>
+  <br/>
+  Given they took off at a perfectly normal point, at a perfectly normal speed, I don't see how you come to incorrect derate and low v speeds, or how on earth that would lead to a normal takeoff followed by sinking?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Aerospace101<br/>2025-06-17T17:44:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-14.html#post11904511><br/>permalink</a>
+ Post: 11904511</td>
+<td class=post><div class="tcell alt1" id="td_post_11904511">
+ <!-- message -->
+ <div id="post_message_11904511">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Magplug
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904468" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I'm still going with
+     <br/>
+     a) Incorrect derate + low Vspeeds or
+     <br/>
+     b) Low altitude capture
+    </div>
+   </div>
+  </div>
+  How does this explain the unusual forward tilt of the gear trucks as seen in the roof top video?
+  <br/>
+  <br/>
+  I appreciate some don\x92t want to speculate on the RAT deployment or APU auto start until further evidence, but the gear truck tilt is a massive clue to a non-normal hydraulic issue, most likely caused by electrical power problems since C hydraulics is only electric pump powered.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>604driver<br/>2025-06-17T18:54:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-14.html#post11904568><br/>permalink</a>
+ Post: 11904568</td>
+<td class=post><div class="tcell alt1" id="td_post_11904568">
+ <!-- message -->
+ <div id="post_message_11904568">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      PC767
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904524" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     One would hope, but, whilst there has been confirmation that the EAFRs have been recovered, nothing has been reported about their state or whether they have been downloaded or examined.
+     <br/>
+     <br/>
+     If the data is readable there may be a lot of politics and reputation on how that data may be interpreted. Behind the veneer of international cooperation vested interests will be being considered, advocated and agreed.
+     <br/>
+     <br/>
+     It, unfortunately, is naive to think that politics will not have a silent presence in agreeing a press release. Boeing and GE are flagship USA companies. Air India is the flagship carrier of India.
+     <br/>
+     <br/>
+     Investigations of all types first establish what happened, then how and why, before recommendations and actions. There is a possibility that they know the what, but the how and why incur liability.
+    </div>
+   </div>
+  </div>
+  <br/>
+  Investigators will try to establish a single source or truth. For them, that\x92s an ideal outcome. But due to the nature of investigations, the aim gets derailed as established facts versus possible/potential scenarios based on missing links of the chain are pieced together. But for sure, commercial considerations and liability wont enter into a proper investigation. The task of the investigators is to determine the how and why.
+  <br/>
+  <br/>
+  Theres a saying, and it may even have been the title of a book\x85 Lift is a gift but Thrust is a must. In this case, certainly one or both were absent.
+  <br/>
+  <br/>
+  For 2 (maybe 3 if it was a training flight)  professional people, the day started with waking up, getting ready, saying goodbye to loved ones, who they believed they would see again soon in 2-3 days. Sadly, that won\x92t happen, and it\x92s the job of the investigators to find out why and liability isn\x92t a hindrance to them.
+  <br/>
+  <br/>
+  They will look at every piece of evidence and recreate the events. But it will take time.
+  <br/>
+  <br/>
+  information worthy of note is:
+  <br/>
+  <br/>
+  A) The gear was still down.
+  <br/>
+  B) It would appear (due to some work by amazing members) that the RAT was indeed deployed.
+  <br/>
+  <br/>
+  Other observances:
+  <br/>
+  <br/>
+  1. Bits flying off the aircraft. (From experience of operating in this area, they like to fly kites, and waste thermals and floats around, notably plastic bags) I have no idea if that la what we see or not.
+  <br/>
+  <br/>
+  2. Generally in India, they love using their horns. So whilst you can compare the frequencies of a potential RAT to a motorbike, appreciate there would be a million horns going off too.
+  <br/>
+  <br/>
+  3. Some posters have spoken of the \x93startle effect\x94 like they know what they are talking about. The most startling effect of a professional flight deck during an emergency is how calm it is.  There aren\x92t hands flying around everywhere. In fact:
+  <br/>
+  <br/>
+  V1 &gt; Rotate &gt; Positive Rate &gt; Gear Up &gt; Confirm FD/AP Modes is adjusted to:
+  <br/>
+  V1 &gt; Rotate &gt; Positive Rate &gt; Gear Up &gt; Silence the bell (Or your SOP Variation) FD/AP modes and the PF flies the aircraft.
+  <br/>
+  <br/>
+  the next step is to identify the problem, agree on it and then perform the actions. That won\x92t happen below 400\x92.
+  <br/>
+  <br/>
+  4. There\x92s no company in the world where Pilots are being fed and watered between V1 and 1000\x92 so spilling drinks on run switches isn\x92t a thing on this departure.
+  <br/>
+  <br/>
+  5. Temperature inversion. Yes it\x92s possible and it degrades performance. However, if it\x92s present, it\x92s usually announced on the ATIS. IF other aircraft have reported it.
+  <br/>
+  <br/>
+  6. Fuel contamination. Without knowing the systems, yes it\x92s potentially possible, but it would appear no other aircraft have reported being affected by it.
+  <br/>
+  <br/>
+  I think, this accident is especially interesting to Professional Aviators and Engineers because I think none of us would ever believe that it could happen. The aircraft is highly automated, the crew have been properly trained and the operation was a regular or possibly training flight.
+  <br/>
+  <br/>
+  A query I have is, do later Gen aircraft like the 777/787/747 A330/A350/A380 constantly send Airframe/Engine data home to ops/engineering/oem\x92s. Is it likely the data is out there?
+  <br/>
+  <br/>
+  Anyway, I just wanted to post this to reassure the travelling public that Pilots don\x92t try to shut down engines before they raise the gear.
+  <br/>
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Aerospace101<br/>2025-06-17T19:01:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-14.html#post11904572><br/>permalink</a>
+ Post: 11904572</td>
+<td class=post><div class="tcell alt1" id="td_post_11904572">
+ <!-- message -->
+ <div id="post_message_11904572">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Irishshamrock
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904534" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     If power was lost at the moment gear was selected \x91up\x92 it would have started the process only for it to stop, hence why the forward tilt was present - perhaps
+    </div>
+   </div>
+  </div>
+  That is one conclusion (which I now suggest is unlikely), because you are assuming:
+  <br/>
+  <br/>
+  1. The hydraulic failure happened exactly when the truck had tilted forward but the split-second before the gear doors could open. That exact timing seems too coincidental.
+  <br/>
+  2. The crew selected Gear Up. We have no proof of this. I speculate the crew never got as far as "Positive Rate...Gear Up" because they were already engrossed in flying the aircraft and processing their thrust problem. If an electrical problem had developed (as evidenced by the RAT deployment) the flight instrumentation would have been flickering and a flurry of silent master caution alerts would be very distracting.
+  <br/>
+  <br/>
+  I suggest it's more likely that the truck remained in a forward tilt from the takeoff run because the hydraulic failure happened
+  <u>
+   prior
+  </u>
+  to rotation, therefore keeping it in this unusual position. This answer does not rely on the gear lever position either. It also insinuates that their hydraulic problems occurred probably between V1 and VR.
+  <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-6.html#post11903849" target="_blank">
+   See my earlier post
+  </a>
+  .
+  <br/>
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>brokenenglish<br/>2025-06-17T21:31:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-16.html#post11904684><br/>permalink</a>
+ Post: 11904684</td>
+<td class=post><div class="tcell alt1" id="td_post_11904684">
+ <!-- message -->
+ <div id="post_message_11904684">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Shep69
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904530" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Short answer is yes but IIRC from the 777 (believe the 78 to be similar) the auto throttles go into SPD mode at that point which could be really confusing. As one goes up through the MCP altitude and the FD commands a descent.
+     <br/>
+     <br/>
+     In any case the autopilot wouldn\x92t have been in at such a low altitude and the PF would have been hand flying.
+     <b>
+      Most of the min engagement altitudes for autopilots is 400\x92 AGL.
+     </b>
+     <br/>
+     <br/>
+     But again all of this is speculation in every way.
+    </div>
+   </div>
+  </div>
+  Most? The Airbus I'm familiar with is 100' AGL or 5s after liftoff and I think this is common to all Airbus FBW. The B787 &amp; B777 appear to be 200' AGL but I'm taking this from online FCOM extracts. The
+  <b>
+   B737
+  </b>
+  does appear to be 400'. Company limitations may be higher.
+  <br/>
+  <br/>
+  As mentioned elsewhere both EK and Air NZ have had messy low level mis-set altitude capture incidents with the B777, but in isolation, obviously, this wouldn't cause RAT extension.
+  <br/>
+  <br/>
+  About airport cameras. Someone pointed out on the other thread that airports have more coverage than they would necessarily advertise. Presumably available to investigators but not to the public or press.
+  <br/>
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Speed_Trim_Fail<br/>2025-06-17T21:37:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-16.html#post11904691><br/>permalink</a>
+ Post: 11904691</td>
+<td class=post><div class="tcell alt1" id="td_post_11904691">
+ <!-- message -->
+ <div id="post_message_11904691">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      brokenenglish
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904684" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Most? The Airbus I'm familiar with is 100' AGL or 5s after liftoff and I think this is common to all Airbus FBW. The B787 &amp; B777 appear to be 200' AGL but I'm taking this from online FCOM extracts. The
+     <b>
+      B737
+     </b>
+     does appear to be 400'. Company limitations may be higher.
+     <br/>
+     <br/>
+     As mentioned elsewhere both EK and Air NZ have had messy low level mis-set altitude capture incidents with the B777, but in isolation, obviously, this wouldn't cause RAT extension.
+     <br/>
+     <br/>
+     About airport cameras. Someone pointed out on the other thread that airports have more coverage than they would necessarily advertise. Presumably available to investigators but not to the public or press.
+    </div>
+   </div>
+  </div>
+  Even lower for the Tristar!
+  <br/>
+  <br/>
+  Yes yes back into my box.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>KSINGH<br/>2025-06-17T22:42:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-16.html#post11904730><br/>permalink</a>
+ Post: 11904730</td>
+<td class=post><div class="tcell alt1" id="td_post_11904730">
+ <!-- message -->
+ <div id="post_message_11904730">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      brokenenglish
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904684" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Most? The Airbus I'm familiar with is 100' AGL or 5s after liftoff and I think this is common to all Airbus FBW. The B787 &amp; B777 appear to be 200' AGL but I'm taking this from online FCOM extracts. The
+     <b>
+      B737
+     </b>
+     does appear to be 400'. Company limitations may be higher.
+     <br/>
+     <br/>
+     As mentioned elsewhere both EK and Air NZ have had messy low level mis-set altitude capture incidents with the B777, but in isolation, obviously, this wouldn't cause RAT extension.
+     <br/>
+     <br/>
+     About airport cameras. Someone pointed out on the other thread that airports have more coverage than they would necessarily advertise. Presumably available to investigators but not to the public or press.
+    </div>
+   </div>
+  </div>
+  <br/>
+  yeah the low MCP alt setting/alt capture doesn\x92t make a whole lot of sense- the plane didn\x92t pitch forward it just failed to climb/lost lift
+  <br/>
+  <br/>
+  that\x92s not conducive with what happened nor does it explain why the gear is still down (although seemingly selected up given the boogie tilt) or the RAT deployed (if it really was)
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=RAT_-All-0.html>First</a>
+&nbsp;<a href=RAT_-All-22.html>Previous</a>
+&nbsp;<a href=RAT_-All-13.html>14</a>
+&nbsp;<a href=RAT_-All-14.html>15</a>
+&nbsp;<a href=RAT_-All-15.html>16</a>
+&nbsp;<a href=RAT_-All-16.html>17</a>
+&nbsp;<a href=RAT_-All-17.html>18</a>
+&nbsp;<a href=RAT_-All-18.html>19</a>
+&nbsp;<a href=RAT_-All-19.html>20</a>
+&nbsp;<a href=RAT_-All-20.html>21</a>
+&nbsp;<a href=RAT_-All-21.html>22</a>
+&nbsp;<a href=RAT_-All-22.html>23</a>
+&nbsp;<a href=RAT_-All-23.html><b>24</b>
+</a>
+&nbsp;<a href=RAT_-All-24.html>25</a>
+&nbsp;<a href=RAT_-All-25.html>26</a>
+&nbsp;<a href=RAT_-All-26.html>27</a>
+&nbsp;<a href=RAT_-All-27.html>28</a>
+&nbsp;<a href=RAT_-All-28.html>29</a>
+&nbsp;<a href=RAT_-All-29.html>30</a>
+&nbsp;<a href=RAT_-All-24.html>Next</a>
+&nbsp;<a href=RAT_-All-29.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

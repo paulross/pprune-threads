@@ -1,0 +1,1163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune Engine Shutdown name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "Engine Shutdown" [Posts: 100 Pages: 5]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=Engine_Shutdown0.html>First</a>
+&nbsp;<a href=Engine_Shutdown0.html>Previous</a>
+&nbsp;<a href=Engine_Shutdown0.html>1</a>
+&nbsp;<a href=Engine_Shutdown1.html><b>2</b>
+</a>
+&nbsp;<a href=Engine_Shutdown2.html>3</a>
+&nbsp;<a href=Engine_Shutdown3.html>4</a>
+&nbsp;<a href=Engine_Shutdown4.html>5</a>
+&nbsp;<a href=Engine_Shutdown2.html>Next</a>
+&nbsp;<a href=Engine_Shutdown4.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post>violator<br/>2025-06-13T18:58:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-40.html#post11900812><br/>permalink</a>
+ Post: 11900812</td>
+<td class=post><div class="tcell alt1" id="td_post_11900812">
+ <!-- message -->
+ <div id="post_message_11900812">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11900793" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     OK, another hour spent going through all the posts since I was on last night...
+     <br/>
+     I won't quote the relevant posts as they go back ~15 pages, but a few more comments:
+     <br/>
+     <br/>
+     TAT errors affecting N1 power set: The FADEC logic (BTW, this is pretty much common on all Boeing FADEC) will use aircraft TAT if it agrees with the dedicated engine inlet temp probe -
+     <i>
+      but if they differ it will use the engine probe
+     </i>
+     . The GE inlet temp probe is relatively simple and unheated, so (unlike a heated probe) a blocked or contaminated probe will still read accurately - just with greater 'lag' to actual temperature changes.
+     <br/>
+     <br/>
+     TCMA - first off, I have to admit that this does look rather like an improper TCMA activation, but that is very, very unlikely. For those who don't know, TCMA is a system to shutdown a runaway engine that's not responding to the thrust lever - basic logic is an engine at high power with the thrust lever at/near idle, and the engine not decelerating. However, TCMA is
+     <i>
+      only
+     </i>
+     active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     <i>
+      one of each
+     </i>
+     had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+     <br/>
+     <br/>
+     Fuel contamination/filter blockage: The fuel filters have a bypass - if the delta P across the filter becomes excessive, the filter bypasses and provides the contaminated fuel to the engine. Now this contaminated fuel could easy foul up the fuel metering unit causing a flameout, but to happen to two engines at virtually the same time would be tremendous unlikely.
+     <br/>
+     <br/>
+     Auto Thrust thrust lever retard - the TO lockup in the logic makes this very unlikely (it won't unlock below (IIRC) 400 ft., and even that requires a separate pilot action such as a mode select change or thrust lever movement). And if it did somehow happen, all the pilot needs to do is push the levers back up.
+     <br/>
+     <br/>
+     Engine parameters on the FDR: I don't know what exactly is on the 787 FDR with regards to engine parameters, but rest assured that there is plenty of engine data that gets recorded - most at one/second. Getting the FDR readout from a modern FDR is almost an embarrassment of riches. Assuming the data is intact, we'll soon have a very good idea of what the engines were doing
+    </div>
+   </div>
+  </div>
+  The speed at which there was a complete loss of thrust and electrical power degrading to the point of flickering lights and RAT deployment suggests to me an actual engine shutdown rather than anything linked to auto thrust or fuel contamination. There are not many things which can cause an engine to shut down: LP valves, FADEC incl TCMA, crew action\x85
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Turkey Brain<br/>2025-06-13T21:57:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-43.html#post11900954><br/>permalink</a>
+ Post: 11900954</td>
+<td class=post><div class="tcell alt1" id="td_post_11900954">
+ <!-- message -->
+ <div id="post_message_11900954">
+  <b>
+   At this stage, at least two scenarios seem highly plausible:
+  </b>
+  <br/>
+  <br/>
+  <b>
+   1. Technical issue
+  </b>
+  <br/>
+  <br/>
+  Airliners rely on
+  <i>
+   air/ground logic
+  </i>
+  , which is fundamental to how systems operate.
+  <br/>
+  <br/>
+  There have been numerous crashes and serious incidents linked to this logic functioning incorrectly.
+  <br/>
+  <br/>
+  Some engineering tests require the air/ground switch to be set in a particular mode. If it's inadvertently left in engineering mode&mdash;or if the system misinterprets the mode&mdash;this can cause significant problems.
+  <br/>
+  <ul>
+   <li>
+    <b>
+     On the ground
+    </b>
+    , if the aircraft is incorrectly in
+    <i>
+     air mode
+    </i>
+    , some systems may be unavailable&mdash;such as wheel brakes, reverse thrust, or ground spoilers.
+    <br/>
+   </li>
+   <li>
+    <b>
+     In the air
+    </b>
+    , if the aircraft is mistakenly in
+    <i>
+     ground mode
+    </i>
+    , flaps might auto-retract, and various layers of system protection may be disabled.
+    <br/>
+   </li>
+  </ul>
+  In the case of the ANA 787, it appears the engine shutdown occurred during the landing roll, possibly when the TCMA system activated.
+  <br/>
+  <br/>
+  <b>
+   2. Pilot misselection of fuel control switches to cutoff
+  </b>
+  <br/>
+  <br/>
+  This is still a very real possibility. If it occurred, the pilot responsible may not have done it consciously&mdash;his mindset could have been in a different mode.
+  <br/>
+  <br/>
+  There&rsquo;s precedent: an A320 pilot once inadvertently shut down both engines over Paris. Fortunately, the crew managed to restart them. Afterward, the pilot reportedly couldn&rsquo;t explain his actions.
+  <br/>
+  <br/>
+  If something similar happened here, then when the pilots realized the engines had stopped producing thrust, pushing the levers forward would have had no effect. It&rsquo;s easy to overlook that the fuel switches are in the wrong position&mdash;they're far from the normal scan pattern. And with the ground rushing up, the view outside would&rsquo;ve been far more commanding.
+  <br/>
+  <br/>
+  Speaking personally, when I shut down engines at the end of a flight, I consciously force myself to operate each fuel switch
+  <i>
+   independently
+  </i>
+  and with full attention. I avoid building muscle memory that might lead to switching off both engines in a fast, well-practiced habit.
+  <br/>
+  <br/>
+  If this is a technical issue, I assume we&rsquo;ll know soon enough.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>fdr<br/>2025-06-13T22:13:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-43.html#post11900962><br/>permalink</a>
+ Post: 11900962</td>
+<td class=post><div class="tcell alt1" id="td_post_11900962">
+ <!-- message -->
+ <div id="post_message_11900962">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Turkey Brain
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11900954" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <b>
+      At this stage, at least two scenarios seem highly plausible:
+     </b>
+     <br/>
+     <br/>
+     <b>
+      1. Technical issue
+     </b>
+     <br/>
+     <br/>
+     Airliners rely on
+     <i>
+      air/ground logic
+     </i>
+     , which is fundamental to how systems operate.
+     <br/>
+     <br/>
+     There have been numerous crashes and serious incidents linked to this logic functioning incorrectly.
+     <br/>
+     <br/>
+     Some engineering tests require the air/ground switch to be set in a particular mode. If it's inadvertently left in engineering mode&mdash;or if the system misinterprets the mode&mdash;this can cause significant problems.
+     <ul>
+      <li>
+       <b>
+        On the ground
+       </b>
+       , if the aircraft is incorrectly in
+       <i>
+        air mode
+       </i>
+       , some systems may be unavailable&mdash;such as wheel brakes, reverse thrust, or ground spoilers.
+       <br/>
+      </li>
+      <li>
+       <b>
+        In the air
+       </b>
+       , if the aircraft is mistakenly in
+       <i>
+        ground mode
+       </i>
+       , flaps might auto-retract, and various layers of system protection may be disabled.
+       <br/>
+      </li>
+     </ul>
+     In the case of the ANA 787, it appears the engine shutdown occurred during the landing roll, possibly when the TCMA system activated.
+     <br/>
+     <br/>
+     <b>
+      2. Pilot misselection of fuel control switches to cutoff
+     </b>
+     <br/>
+     <br/>
+     This is still a very real possibility. If it occurred, the pilot responsible may not have done it consciously&mdash;his mindset could have been in a different mode.
+     <br/>
+     <br/>
+     There&rsquo;s precedent: an A320 pilot once inadvertently shut down both engines over Paris. Fortunately, the crew managed to restart them. Afterward, the pilot reportedly couldn&rsquo;t explain his actions.
+     <br/>
+     <br/>
+     If something similar happened here, then when the pilots realized the engines had stopped producing thrust, pushing the levers forward would have had no effect. It&rsquo;s easy to overlook that the fuel switches are in the wrong position&mdash;they're far from the normal scan pattern. And with the ground rushing up, the view outside would&rsquo;ve been far more commanding.
+     <br/>
+     <br/>
+     Speaking personally, when I shut down engines at the end of a flight, I consciously force myself to operate each fuel switch
+     <i>
+      independently
+     </i>
+     and with full attention. I avoid building muscle memory that might lead to switching off both engines in a fast, well-practiced habit.
+     <br/>
+     <br/>
+     If this is a technical issue, I assume we&rsquo;ll know soon enough.
+    </div>
+   </div>
+  </div>
+  On item 1, the TCMA issue should have been fixed, it does fit the sort of issue that occurred here. TDRACER can talk to that, and has done in 2019 and again in post 792. As to flap auto retraction, the B787 like all Boeings has a gated flap lever, and the flaps are only able to move independent of the lever by flap load relief. That would not have caused a loss of thrust, and in this case it is evident that the event is a thrust loss not a CL loss.
+  <br/>
+  <br/>
+  On item 2, the video shows no asymmetry at any time, so there is only a symmetric failure of the engines possible. Back on a B747 classic, you could chop all 4 engines at the same time with one hand, on a B737, also, not so much on a B777 or B787. I would doubt that anyone used two hands to cut the fuel at screen height. Note, there was a B744 that lost one engine in cruise when a clip board fell off the coaming. Didn't happen twice, and it only happened to one engine.
+  <br/>
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      neila83
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11900955" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Yes indeed, the moment they pulled the gear lever, as we see the gear begin the retraction process, and then suddenly stop. Almost as if they suddenly lost power.
+     <br/>
+     <br/>
+     We can see the landing gear retraction process begin. We see the bogies tilted in the second video. We can hear the RAT. We can see the RAT. We can see the flaps extended in the video and at the crash site. There isn't actually a single piece of evidence the flaps were raised, it's just a conclusion people jumped too before evidence began to emerge.
+     <br/>
+     <br/>
+     The crazy thing is, when the report comes out and there is no mention of flaps none of the people who have been pushing the flap theory will self reflect or learn anything. They'll think those of us who didn't buy into it were just lucky, rather than it being down to use of fairly simple critical thinking.
+    </div>
+   </div>
+  </div>
+  &ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;
+  <br/>
+  Neila83 is correct, the gear tilt pre retraction is rear wheels low, and at the commencement of the selection of the retraction cycle (generally),
+  <strike>
+   the first thing that happens is the inboard MLG doors start to open below the wheel well and then the bogie is driven to front wheels low.
+  </strike>
+  (There is also an option that the inboard gear doors start to open early as a result of WOW sensing to improve the SSL climb limit). [my bad, for the B788 Capt Bloggs informs us the gear door sequence is after the tilt, not before, the B789 has the before tilt, the option for the door open at rotate is separate]
+  <br/>
+  <br/>
+  <strike>
+   The inboard doors do not appear to have opened in this case, yet, the gear is forward wheels down. This appears to be out of sequence. TD may have better knowledge on the options that exist with the B788, but this is not looking good at this time.
+  </strike>
+  <br/>
+  <br/>
+  There is enough in the way of anomalies here to end up with regulatory action, and airlines themselves should/will be starting to pore over their systems and decide if they are comfortable with the airworthiness of the aircraft at this moment. A latent single point of failure is not a comfortable place to be. Inhibiting TCMA might be a good interim option, that system could have been negated by having the
+  <b>
+   ATR ARM switches....(Both)... ARM
+  </b>
+  deferred to the before takeoff checks. The EAFR recovery should result in action within the next 24-48 hours. Boeing needs to be getting their tiger teams warmed up, they can ill afford to have a latent system fault discovered that is not immediately responded to, and the general corporate response of
+  <i>
+   "blame the pilots"
+  </i>
+  is not likely to win any future orders.
+  <br/>
+  <br/>
+  I think we are about to have some really busy days for the OEM.
+  <br/>
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Right Way Up
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11900961" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I think you need to temper your tone This is a discussion about possibilities and quite honestly nothing would surprise me. There is no "winning" result here. Just hopefully answers which will help safety in the future.
+    </div>
+   </div>
+  </div>
+  Not sure that Neila83 is that far off the mark at all.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by fdr; 14th Jun 2025 at
+   <span class="time">
+    01:21
+   </span>
+   .
+							
+							
+								Reason: corrected for B788 by Capt Bloggs!
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>TURIN<br/>2025-06-13T23:49:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-45.html#post11901007><br/>permalink</a>
+ Post: 11901007</td>
+<td class=post><div class="tcell alt1" id="td_post_11901007">
+ <!-- message -->
+ <div id="post_message_11901007">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Magplug
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11900963" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Speaking as a B787 Captain..... There is so much rubbish and stupid suggestion being written here.
+     <br/>
+     <br/>
+     This aircraft was airborne for a grand total of 22 seconds, half of which was climbing to no more than 150' aal.
+     <br/>
+     <br/>
+     - No Flaps? Due to the setup of the ECL it is physically impossible to go down the runway without some sort of take-off flap set. The T/o config warning would have been singing it's head off. Despite assertions to the contrary I have seen no video clear enough to detect a lack of flaps.
+     <br/>
+     <br/>
+     - RAT out? Almost impossible, I have seen no quality footage that definitively witnesses the RAT being out. Those who think they car hear a RAT type noise might be listening to a motorcycle passing or similar. It takes a triple hydraulic failure or a double engine failure to trigger RAT deploment. They happily went through V1 without a hint of rejected take off so as they rotated the aircraft was serviceable. These are big engines, they take a long time to wind down when you shut them down. I have never tried it however engine failure detection takes 30s or for the aircraft to react and they were not even airborne that long.
+     <br/>
+     - Flaps up instead of gear? The B787 flaps are slow both in and out. Given that the 'Positive rate' call is not made the second the wheels leave the ground, a mis-selection of flaps up would not cause any loss of lift for at least 20 seconds, by which time they had already crashed. I believe the gear remained down not because of mis-selection but because of a major distraction on rotate.
+     <br/>
+     <br/>
+     Discounting the impossible, two hypotheses remain:
+     <br/>
+     <br/>
+     1. Invalid derate set through incorrect cross-checking. Trundling down the runway takes very little power to reach Vr. It is only when you rotate that you create more drag and discover that you do not have sufficient thrust vs. drag to sustain a climb. Or....
+     <br/>
+     2. Put 200' as the altitude target in the FCU. Immediate ALT capture and all the power comes off. PF is still hand flying trying to increase pitch but is already way behind the aircraft.
+     <br/>
+     <br/>
+     It could be after this that Boeing are forced to review the B787 practice of exploring the very edges of the performance envelope.
+    </div>
+   </div>
+  </div>
+  I have to agree with everything here except your assertion about engine shutdown.
+  <br/>
+  Even though these are big engines with plenty of inertia, when you select engine shut off they spool down very quickly if on load. IE, The generators, two per engine and hydraulic pumps, etc, being driven by the (relatively) small mass of the N2 rotor will drag the speed down very quickly, the gennies will trip offine in seconds, the pumps will quickly reduce flow and pressure.
+  <br/>
+  As for what went wrong.
+  <br/>
+  If the engines have stopped working there has to be a common failure mode, fuel is one but as has been said, no other aircraft has had a problem, as far as we know. FOD? It would have to be something major to shut down two GeNX engines and there would be debris all over the runway, we would know by now.
+  <br/>
+  I have no idea if the RAT has deployed, I can't see it in the video and the noise could be something else.
+  <br/>
+  We shall see.
+  <br/>
+  There is compelling evidence that flaps are set correctly and not retracted inadvertently.
+  <br/>
+  I await further evidence.
+  <br/>
+  Edit to add. LAE 40 years, type rated on 737 to 787 with lots of others in between.
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>BrogulT<br/>2025-06-14T00:49:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-46.html#post11901040><br/>permalink</a>
+ Post: 11901040</td>
+<td class=post><div class="tcell alt1" id="td_post_11901040">
+ <!-- message -->
+ <div id="post_message_11901040">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      HumbleDeer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901020" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Default setup is left tank left engine, right tank right engine. Each engine also has two redundant pumps feeding it, meaning it can operate fully and normally on one operational engine fuel pump.
+     <br/>
+     <br/>
+     Furthermore, the engines cannot run from the center tank. There's no such thing. The center tank transfers to the outer tanks, when necessary or when running low or to resolve imbalances, either automatically or manually initated by the pilot for whatever reason. The engine fuel pumps only ever draw from their respective tank.
+     <br/>
+     It is as thus impossible for the center tank being empty to cause engine shutdown unless the main tanks were also empty, in which case we would: be in a lot of trouble, shouldn't be taking off, and wouldn't have a massive orange fireball.
+    </div>
+   </div>
+  </div>
+  This is contrary to what is published here and elsewhere.
+  <br/>
+  <br/>
+  <a href="https://kb.skyhightex.com/knowledge-base/how-to-master-b787-fuel-system/" target="_blank">
+   https://kb.skyhightex.com/knowledge-...7-fuel-system/
+  </a>
+  <br/>
+  <br/>
+  Can you state the source of your information? I have no way of independently verifying what I've provided. According to that, however, the two center tank pumps are higher pressure than the L/R tank pumps and will override them if both are activated. So the center tank fuel is used first, then the L/R tank pumps. If no pumps are operating, the engines can suction fuel from their respective L or R tanks provided there's enough atmospheric pressure. The end result is still that an empty center tank cannot cause an engine shutdown absent some other malfunction.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Sailvi767<br/>2025-06-14T00:55:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-46.html#post11901047><br/>permalink</a>
+ Post: 11901047</td>
+<td class=post><div class="tcell alt1" id="td_post_11901047">
+ <!-- message -->
+ <div id="post_message_11901047">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      HumbleDeer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901020" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Default setup is left tank left engine, right tank right engine. Each engine also has two redundant pumps feeding it, meaning it can operate fully and normally on one operational engine fuel pump.
+     <br/>
+     <br/>
+     Furthermore, the engines cannot run from the center tank. There's no such thing. The center tank transfers to the outer tanks, when necessary or when running low or to resolve imbalances, either automatically or manually initated by the pilot for whatever reason. The engine fuel pumps only ever draw from their respective tank.
+     <br/>
+     It is as thus impossible for the center tank being empty to cause engine shutdown unless the main tanks were also empty, in which case we would: be in a lot of trouble, shouldn't be taking off, and wouldn't have a massive orange fireball.
+    </div>
+   </div>
+  </div>
+  Virtually everything in this post is wrong. The 787 fuel system is almost the same as the 767. The default setup is all fuel pumps on. Each wing tank sends fuel to the left or right respective manifold. The center (main) tank pumps send fuel to both manifolds and operate at a higher pressure than the wing tanks and will feed the manifolds for each side from its left or right pump before the wing tanks. If there is fuel in the center tank it is always burned first and directly supplies the manifolds to the engines. Once the center tank is empty the wing tanks then begin supplying fuel to their respective manifolds. If any pumps are inadvertently left off you will get a EICAS message and a light in the pump switch.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Blake777<br/>2025-06-14T01:16:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-46.html#post11901055><br/>permalink</a>
+ Post: 11901055</td>
+<td class=post><div class="tcell alt1" id="td_post_11901055">
+ <!-- message -->
+ <div id="post_message_11901055">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      jolihokistix
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901039" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Trying repeatedly to follow the whole thread plus updates but loading on the iPhone constantly jumps backwards and forwards making it a struggle to cover everything.
+     <br/>
+     <br/>
+     Two points which may or may not have relevance. One is just before the final crash, a dark-looking cover(?) flies up into the air. Could this be the first contact with sound that the surviving passenger alleges he heard?
+     <br/>
+     <br/>
+     Secondly the cost of aviation fuel seems to be comparatively more expensive in India than either Japan (leg before) or the UK (following leg). Would this effect refuelling procedures within India, supposing a company directive to save when possible?
+     <br/>
+     <br/>
+     (Frequent long-haul passenger.)
+    </div>
+   </div>
+  </div>
+  Good grief! They uploaded less fuel to save money??? That made the plane immediately sink to oblivion&hellip;because what? They ran out of fuel? You think airports all over India restrict fuel and endanger countless aircraft daily? It is the Captain&rsquo;s prerogative to sign off on fuel upload.
+  <br/>
+  <br/>
+  But let&rsquo;s run with it. Less fuel = lighter load. So&hellip;how does that make lift off/climb a more difficult procedure??? It shouid have been easier. How does that result in rapid loss of lift? Did they finish their tablespoon of fuel?
+  <br/>
+  <br/>
+  Or - if you are hinting at fuel contamination by being &ldquo;watered down&rdquo; somehow&hellip;why were no other aircraft affected? You might wish to consider Cathay Pacific flight 780, which suffered a serious fuel contamination incident. The problem was not initialiy detectable, but some engine underperformance was noted in one engine fairly early into the flght. The problems compounded during the flght from Surabaya to Hong Kong, culminating in complete engine shutdown. Fortunately, due to the experience and skill of Captain and Copilot, they just - only just - managed to land safely in Hong Kong. Point is - a crash scenario did not unfold in seconds.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Blake777; 14th Jun 2025 at
+   <span class="time">
+    01:48
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>compressor stall<br/>2025-06-14T04:00:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-48.html#post11901123><br/>permalink</a>
+ Post: 11901123</td>
+<td class=post><div class="tcell alt1" id="td_post_11901123">
+ <!-- message -->
+ <div id="post_message_11901123">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      bcpr
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901105" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Ex petroleum lab technician and tank farm sampler here. We would occasionally get fuel samples from crashed aircraft to test for contamination. One test was for water and sediment/microorganism sludge.
+     <br/>
+     <br/>
+     In this accident, fuel contamination continues to be dismissed as a cause, because no other aircraft have reported issues. But there has been no discussion regarding the airport's fuel storage, transfer, or filtration systems. Water and sediment naturally settles at the bottom of fuel storage tanks. If this aircraft received fuel drawn from the bottom of a storage tank, in the absence of a proper filtration system, it\x92s possible that it was contaminated. The next aircraft may have received fuel from a different storage tank with good fuel.
+    </div>
+   </div>
+  </div>
+  <br/>
+  Fuel contamination is certainly a valid theory. The main thing working against it is that it would seem from the aircraft's flight path is that both engines failed at exactly the same time and lost thrust simultaneously. The chances of this are non zero, but remote. I say that as there appears to be no yaw, or other controlling of the aircraft - either by pilot or automation - that would suggest an asymmetric thrust scenario, even for a few seconds.
+  <br/>
+  <br/>
+  Yes, Jetstar had the biocide issue but did not immediately hit both engines within seconds of each other.
+  <br/>
+  <br/>
+  It's my understanding that both engines draw fuel from independent sources during that time (which may be fed from a common source (eg central tank). But again, the odds of both failing at the exact same instant is low, but not zero.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>1stspotter<br/>2025-06-14T20:07:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-60.html#post11901788><br/>permalink</a>
+ Post: 11901788</td>
+<td class=post><div class="tcell alt1" id="td_post_11901788">
+ <!-- message -->
+ <div id="post_message_11901788">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      nachtmusak
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901782" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     There are more data messages than that, which FR24 shared on the day of the accident and which have been posted a few times in this thread. I'm pretty sure there's also been a comparison of this + previous flights posted in this thread that shows that while the coverage at the airport itself is spotty, it's reasonable to expect further messages to have been received before impact.
+     <br/>
+     <br/>
+     Not sure how permanent the content at this URL is, but here's a link to FR24's update which has a CSV with all frames received
+     <a href="https://www.flightradar24.com/blog/flight-tracking-news/major-incident/air-india-171-crashes-shortly-after-take-off-from-ahmedabad/" target="_blank">
+      https://www.flightradar24.com/blog/f...rom-ahmedabad/
+     </a>
+    </div>
+   </div>
+  </div>
+  <br/>
+  Somebody on this forum did some analysis with FR24 data of this flight and other AI171 B787 flights.
+  <br/>
+  See
+  <a href="https://feitoffake.wordpress.com/2025/06/13/what-could-have-caused-the-crash-of-the-air-india-boeing-787-flight-ai171/" target="_blank">
+   this article for an overview of all scenarios.
+  </a>
+  It all looks very like to an commanded dual engine shutdown. Why nobody knows.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>SpaceQuality<br/>2025-06-14T20:42:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-60.html#post11901816><br/>permalink</a>
+ Post: 11901816</td>
+<td class=post><div class="tcell alt1" id="td_post_11901816">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   Boeing TCMA Patent US6704630B2
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11901816">
+  Also a newcomer here, but an experienced private pilot, Software Engineer with a degree in Aerospace Computer Science and former Head of Quality for Satellites and Interplanetary Missions. We have already seen bad software solutions and the results thereof in the 737 MAX accidents, which makes me wonder, if the TCMA can reach a state, where unintended engine shutdown is possible.
+  <br/>
+  <br/>
+  There is one system implemented in the 787, that has the authority to shut down the engines, based on software subsystem decision. Interestingly - according to the description in the patent below - the same TCMA software package determines the shutdown decision, in both redundant subsystems.
+  <br/>
+  <br/>
+  Excerpt from the Patent:
+  <br/>
+  "Malfunctions in aircraft power plant thrust control systems can result in uncontrollable high engine power levels that are potentially hazardous or catastrophic for aircraft operation. A particularly hazardous situation is when a thrust control system failure results in one of the aircraft's engines continuing to operate at a high power condition and not responding to a throttle command to reduce power during takeoff, approach or landing. Typically, when this failure mode occurs, the actual thrust either increases to a significantly higher than commanded thrust and/or remains at a high level when the thrust levers are set for low thrust....
+  <br/>
+  <br/>
+  In one preferred embodiment the present invention is directed to a system and method for detecting and correcting a thrust control malfunction in an aircraft engine. The system includes an electronic engine control (EEC) unit that includes a first processing subsystem and a second processing subsystem, and a thrust control malfunction accommodation (TCMA) circuit included in the first processing subsystem and the second processing subsystem. Additionally, the system includes a TCMA software package executed by the first processing subsystem and the second processing subsystem, thereby providing redundant execution of the TCMA software package.
+  <br/>
+  <br/>
+  The method of the present invention compares the engine's actual power level with a threshold contour defined by the TCMA software package. When the TCMA software package determines that a thrust control malfunction has occurred, based on the engine's power level exceeding the threshold contour, the engine is shut down by the TCMA circuit.
+  <br/>
+  The present invention is still further directed to an electronic engine control (EEC) unit configured to detect and correct an aircraft engine thrust control malfunction using an active-active functionality. The EEC includes a first processing subsystem for unilaterally monitoring engine operation and shutting down the engine when a thrust control malfunction occurs, and a second processing subsystem for unilaterally monitoring engine operation and shutting down the engine when a thrust control malfunction occurs."
+  <br/>
+  <br/>
+  Just my 20 cents
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>BugBear<br/>2025-06-14T21:19:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-61.html#post11901847><br/>permalink</a>
+ Post: 11901847</td>
+<td class=post><div class="tcell alt1" id="td_post_11901847">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   Which side of V1
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11901847">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      SpaceQuality
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901816" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Also a newcomer here, but an experienced private pilot, Software Engineer with a degree in Aerospace Computer Science and former Head of Quality for Satellites and Interplanetary Missions. We have already seen bad software solutions and the results thereof in the 737 MAX accidents, which makes me wonder, if the TCMA can reach a state, where unintended engine shutdown is possible.
+     <br/>
+     <br/>
+     There is one system implemented in the 787, that has the authority to shut down the engines, based on software subsystem decision. Interestingly - according to the description in the patent below - the same TCMA software package determines the shutdown decision, in both redundant subsystems.
+     <br/>
+     <br/>
+     Excerpt from the Patent:
+     <br/>
+     "Malfunctions in aircraft power plant thrust control systems can result in uncontrollable high engine power levels that are potentially hazardous or catastrophic for aircraft operation. A particularly hazardous situation is when a thrust control system failure results in one of the aircraft's engines continuing to operate at a high power condition and not responding to a throttle command to reduce power during takeoff, approach or landing. Typically, when this failure mode occurs, the actual thrust either increases to a significantly higher than commanded thrust and/or remains at a high level when the thrust levers are set for low thrust....
+     <br/>
+     <br/>
+     In one preferred embodiment the present invention is directed to a system and method for detecting and correcting a thrust control malfunction in an aircraft engine. The system includes an electronic engine control (EEC) unit that includes a first processing subsystem and a second processing subsystem, and a thrust control malfunction accommodation (TCMA) circuit included in the first processing subsystem and the second processing subsystem. Additionally, the system includes a TCMA software package executed by the first processing subsystem and the second processing subsystem, thereby providing redundant execution of the TCMA software package.
+     <br/>
+     <br/>
+     The method of the present invention compares the engine's actual power level with a threshold contour defined by the TCMA software package. When the TCMA software package determines that a thrust control malfunction has occurred, based on the engine's power level exceeding the threshold contour, the engine is shut down by the TCMA circuit.
+     <br/>
+     The present invention is still further directed to an electronic engine control (EEC) unit configured to detect and correct an aircraft engine thrust control malfunction using an active-active functionality. The EEC includes a first processing subsystem for unilaterally monitoring engine operation and shutting down the engine when a thrust control malfunction occurs, and a second processing subsystem for unilaterally monitoring engine operation and shutting down the engine when a thrust control malfunction occurs."
+     <br/>
+     <br/>
+     Just my 20 cents
+    </div>
+   </div>
+  </div>
+  Which side of V1 does TCMA lurk? If a pilot closes the throttles to abort, does the system allow it? After all, "too low thrust" is outside the contour....
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>cncpc<br/>2025-06-14T23:03:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-63.html#post11901937><br/>permalink</a>
+ Post: 11901937</td>
+<td class=post><div class="tcell alt1" id="td_post_11901937">
+ <!-- message -->
+ <div id="post_message_11901937">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      A320 Glider
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11899202" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Just to confirm.
+     <br/>
+     The 787 is an aircraft which likes to, performance wise, use all of the available runway for takeoff. Sometimes you can be sat in the 787 and as you are rolling down the runway, you start wondering if Rotate has been called or not. It loves taking up all of the runway.
+     <br/>
+     <br/>
+     Nevertheless, there are some interesting speculations over on X. One guy even claimed the Captain was in the lavatory during the accident...
+     <br/>
+     <br/>
+     Many people have noted what appears to be the RAT deployed in the video footage suggesting dual engine failure. Possible wrong engine shutdown? But who diagnoses and actions an engine failure and shutdown below 400ft?
+    </div>
+   </div>
+  </div>
+  The Mayday specified loss of control and engine failure.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>wokawoka<br/>2025-06-15T00:38:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-65.html#post11901997><br/>permalink</a>
+ Post: 11901997</td>
+<td class=post><div class="tcell alt1" id="td_post_11901997">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   Sector Crewing
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11901997">
+  777 Driver for a legacy here.
+  <br/>
+  <br/>
+  This is a 10 hr ish sector. Would there not be a 3rd crew on this? There definitely is in my outfit for that length.
+  <br/>
+  <br/>
+  I was of the belief of flap mis-selection as I have seen in the past. However, with video fly past noise, the sound spectral analysis, I am happy to be convinced that the RAT was out.
+  <br/>
+  <br/>
+  There are only a few scenarios where this happens - electrical malfunction would not cause the engine to shutdown. However the engines shutting down would cause the electric malfucntion depowering the BUS' which activates the RAT. This is a billion to one chance. Can't see it happening.
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Saab Dastard; 15th Jun 2025 at
+   <span class="time">
+    20:41
+   </span>
+   .
+							
+							
+								Reason: Removal of unwarranted speculation
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>BugBear<br/>2025-06-15T00:50:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-65.html#post11902002><br/>permalink</a>
+ Post: 11902002</td>
+<td class=post><div class="tcell alt1" id="td_post_11902002">
+ <!-- message -->
+ <div id="post_message_11902002">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      wokawoka
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901997" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     777 Driver for a legacy here.
+     <br/>
+     <br/>
+     This is a 10 hr ish sector. Would there not be a 3rd crew on this? There definitely is in my outfit for that length.
+     <br/>
+     <br/>
+     I was of the belief of flap mis-selection as I have seen in the past. However, with video fly past noise, the sound spectral analysis, I am happy to be convinced that the RAT was out.
+     <br/>
+     <br/>
+     There are only a few scenarios where this happens - electrical malfunction would not cause the engine to shutdown. However the engines shutting down would cause the electric malfucntion depowering the BUS' which activates the RAT. This is a billion to one chance. Can't see it happening.
+    </div>
+   </div>
+  </div>
+  The question, unasked ....
+  <br/>
+  <br/>
+  Does TCMA understand WoW prior to taxi!? Taxiing, accelerating? Rotation, Braking, Stowed? Does the software? Does the subset? Who designed it's Contours?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>galaxy flyer<br/>2025-06-15T00:53:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-65.html#post11902007><br/>permalink</a>
+ Post: 11902007</td>
+<td class=post><div class="tcell alt1" id="td_post_11902007">
+ <!-- message -->
+ <div id="post_message_11902007">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      cncpc
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901930" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Gear pins?
+    </div>
+   </div>
+  </div>
+  I very much doubt they pin the main gear on turn. Nose, yes.
+  <br/>
+  <br/>
+  I will add loss of all generators and all engines failed can look at first and second glance awfully similar and confusing.  At least from the times I&rsquo;ve seen it in the sim in several types.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Back office Penguin<br/>2025-06-15T01:43:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-66.html#post11902040><br/>permalink</a>
+ Post: 11902040</td>
+<td class=post><div class="tcell alt1" id="td_post_11902040">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   MELs?
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11902040">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Mr Optimistic
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901865" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     From tdracer
+     <br/>
+     <span style="color:#000000">
+      However, TCMA is
+     </span>
+     <i>
+      only
+     </i>
+     <span style="color:#000000">
+      active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     </span>
+     <i>
+      one of each
+     </i>
+     <span style="color:#000000">
+      had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+     </span>
+    </div>
+   </div>
+  </div>
+  I assume the dual engine shutdown due to engine overspeed. Could the case occur with increased thrust manually in the end of takeoff phase?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Xeptu<br/>2025-06-15T01:53:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-66.html#post11902043><br/>permalink</a>
+ Post: 11902043</td>
+<td class=post><div class="tcell alt1" id="td_post_11902043">
+ <!-- message -->
+ <div id="post_message_11902043">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      SpaceQuality
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901816" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Also a newcomer here, but an experienced private pilot, Software Engineer with a degree in Aerospace Computer Science and former Head of Quality for Satellites and Interplanetary Missions. We have already seen bad software solutions and the results thereof in the 737 MAX accidents, which makes me wonder, if the TCMA can reach a state, where unintended engine shutdown is possible.
+     <br/>
+     <br/>
+     There is one system implemented in the 787, that has the authority to shut down the engines, based on software subsystem decision. Interestingly - according to the description in the patent below - the same TCMA software package determines the shutdown decision, in both redundant subsystems.
+     <br/>
+     <br/>
+     Excerpt from the Patent:
+     <br/>
+     "Malfunctions in aircraft power plant thrust control systems can result in uncontrollable high engine power levels that are potentially hazardous or catastrophic for aircraft operation. A particularly hazardous situation is when a thrust control system failure results in one of the aircraft's engines continuing to operate at a high power condition and not responding to a throttle command to reduce power during takeoff, approach or landing. Typically, when this failure mode occurs, the actual thrust either increases to a significantly higher than commanded thrust and/or remains at a high level when the thrust levers are set for low thrust....
+     <br/>
+     <br/>
+     In one preferred embodiment the present invention is directed to a system and method for detecting and correcting a thrust control malfunction in an aircraft engine. The system includes an electronic engine control (EEC) unit that includes a first processing subsystem and a second processing subsystem, and a thrust control malfunction accommodation (TCMA) circuit included in the first processing subsystem and the second processing subsystem. Additionally, the system includes a TCMA software package executed by the first processing subsystem and the second processing subsystem, thereby providing redundant execution of the TCMA software package.
+     <br/>
+     <br/>
+     The method of the present invention compares the engine's actual power level with a threshold contour defined by the TCMA software package. When the TCMA software package determines that a thrust control malfunction has occurred, based on the engine's power level exceeding the threshold contour, the engine is shut down by the TCMA circuit.
+     <br/>
+     The present invention is still further directed to an electronic engine control (EEC) unit configured to detect and correct an aircraft engine thrust control malfunction using an active-active functionality. The EEC includes a first processing subsystem for unilaterally monitoring engine operation and shutting down the engine when a thrust control malfunction occurs, and a second processing subsystem for unilaterally monitoring engine operation and shutting down the engine when a thrust control malfunction occurs."
+     <br/>
+     <br/>
+     Just my 20 cents
+    </div>
+   </div>
+  </div>
+  It's been troubling a few of us for some time. To translate all that for the layperson, a momentary electrical event triggered at V1 (still on the ground) and restored after rotation before gear up is selected.(in flight)
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Captain Fishy<br/>2025-06-15T12:00:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-72.html#post11902407><br/>permalink</a>
+ Post: 11902407</td>
+<td class=post><div class="tcell alt1" id="td_post_11902407">
+ <!-- message -->
+ <div id="post_message_11902407">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      DaveReidUK
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901855" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     A TCMA bug just doesn't bear thinking about, I really hope that doesn't turn out to be the case.
+    </div>
+   </div>
+  </div>
+  What if the PF called stop just before V1and closed the thrust levers but either changed his mind or was overridden by the other pilot, who rapidly pushed the thrust levers back up. Could this trigger a TCMA intervention and subsequent dual engine shutdown as it was still on the runway at this point? Hopefully not.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>mechpowi<br/>2025-06-15T12:38:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-72.html#post11902430><br/>permalink</a>
+ Post: 11902430</td>
+<td class=post><div class="tcell alt1" id="td_post_11902430">
+ <!-- message -->
+ <div id="post_message_11902430">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Captain Fishy
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902419" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <span style="color:#000000">
+      What if the PF called stop just before V1 and closed the thrust levers but either changed his mind or was overridden by the other pilot, who rapidly pushed the thrust levers back up. Could this trigger a TCMA intervention and subsequent dual engine shutdown as it was still on the runway at this point? Hopefully not.
+     </span>
+    </div>
+   </div>
+  </div>
+  This is the best theory of TCMA activation so far, but it\x92s still very remote. In this theory there is no need for a TCMA anomaly, it needs only(!) two simultaneous engine anonalies (and sn improper crew action) that would trigger the TCMA as designed. If there are safeguards preventing this happening, they are not mentioned in this thread.
+  <br/>
+  <br/>
+  It also doesn\x92t explaine the ADS-B data showing acceleration after lift off.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>JG1<br/>2025-06-15T13:30:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-73.html#post11902476><br/>permalink</a>
+ Post: 11902476</td>
+<td class=post><div class="tcell alt1" id="td_post_11902476">
+ <!-- message -->
+ <div id="post_message_11902476">
+  A little bit tangential here, thinking about this Mayday call (the exact contents of which haven't been verified, but have been variously reported as "no power", or "lost power" ) , if in front of you on the PFD, in large red letters, you have the words ENG FAIL, why would you say, "no power"? Seems a bit strange. Why not say "engine failure" or "no thrust"?
+  <br/>
+  <br/>
+  Could it be that "No power" may have meant the whole cockpit went dark? ie. A total electrical failure or huge short (survivor's bang) initiating RAT deployment and apu autostart. Doesn't explain loss of thrust explicitly but if there was a massive electrical issue, and critical data was lost (thinking air/ground switch position and other fundamentals), would dual engine shutdown be a possibility? Simultaneous FADEC failure? Exceptionally remote possibility perhaps, but by definition these accidents are exceptionally remote. If the RAT deployed we know there was definitely an electrical issue - how bad was it, though? Thinking about the possibility of an electrical failure causing an engine (and instrumentation) failure rather than the other way around. Over to the experts on this.
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by JG1; 15th Jun 2025 at
+   <span class="time">
+    14:20
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=Engine_Shutdown0.html>First</a>
+&nbsp;<a href=Engine_Shutdown0.html>Previous</a>
+&nbsp;<a href=Engine_Shutdown0.html>1</a>
+&nbsp;<a href=Engine_Shutdown1.html><b>2</b>
+</a>
+&nbsp;<a href=Engine_Shutdown2.html>3</a>
+&nbsp;<a href=Engine_Shutdown3.html>4</a>
+&nbsp;<a href=Engine_Shutdown4.html>5</a>
+&nbsp;<a href=Engine_Shutdown2.html>Next</a>
+&nbsp;<a href=Engine_Shutdown4.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

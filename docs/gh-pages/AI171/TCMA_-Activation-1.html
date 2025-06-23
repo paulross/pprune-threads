@@ -1,0 +1,626 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune TCMA (Activation) name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "TCMA (Activation)" [Posts: 30 Pages: 2]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=TCMA_-Activation-0.html>First</a>
+&nbsp;<a href=TCMA_-Activation-0.html>Previous</a>
+&nbsp;<a href=TCMA_-Activation-0.html>1</a>
+&nbsp;<a href=TCMA_-Activation-1.html><b>2</b>
+</a>
+&nbsp;<a href=TCMA_-Activation-1.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post>tdracer<br/>2025-06-13T18:41:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903417><br/>permalink</a>
+ Post: 11903417</td>
+<td class=post><div class="tcell alt1" id="td_post_11903417">
+ <!-- message -->
+ <div id="post_message_11903417">
+  OK, another hour spent going through all the posts since I was on last night...
+  <br/>
+  I won't quote the relevant posts as they go back ~15 pages, but a few more comments:
+  <br/>
+  <br/>
+  TAT errors affecting N1 power set: The FADEC logic (BTW, this is pretty much common on all Boeing FADEC) will use aircraft TAT if it agrees with the dedicated engine inlet temp probe -
+  <i>
+   but if they differ it will use the engine probe
+  </i>
+  . The GE inlet temp probe is relatively simple and unheated, so (unlike a heated probe) a blocked or contaminated probe will still read accurately - just with greater 'lag' to actual temperature changes.
+  <br/>
+  <br/>
+  TCMA - first off, I have to admit that this does look rather like an improper TCMA activation, but that is very, very unlikely. For those who don't know, TCMA is a system to shutdown a runaway engine that's not responding to the thrust lever - basic logic is an engine at high power with the thrust lever at/near idle, and the engine not decelerating. However, TCMA is
+  <i>
+   only
+  </i>
+  active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+  <i>
+   one of each
+  </i>
+  had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+  <br/>
+  <br/>
+  Fuel contamination/filter blockage: The fuel filters have a bypass - if the delta P across the filter becomes excessive, the filter bypasses and provides the contaminated fuel to the engine. Now this contaminated fuel could easy foul up the fuel metering unit causing a flameout, but to happen to two engines at virtually the same time would be tremendous unlikely.
+  <br/>
+  <br/>
+  Auto Thrust thrust lever retard - the TO lockup in the logic makes this very unlikely (it won't unlock below (IIRC) 400 ft., and even that requires a separate pilot action such as a mode select change or thrust lever movement). And if it did somehow happen, all the pilot needs to do is push the levers back up.
+  <br/>
+  <br/>
+  Engine parameters on the FDR: I don't know what exactly is on the 787 FDR with regards to engine parameters, but rest assured that there is plenty of engine data that gets recorded - most at one/second. Getting the FDR readout from a modern FDR is almost an embarrassment of riches. Assuming the data is intact, we'll soon have a very good idea of what the engines were doing
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>tdracer<br/>2025-06-14T20:48:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-2.html#post11903420><br/>permalink</a>
+ Post: 11903420</td>
+<td class=post><div class="tcell alt1" id="td_post_11903420">
+ <!-- message -->
+ <div id="post_message_11903420">
+  Another hour spent sifting through the stuff since last night (my sympathies to the mods
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/worry.gif" title="Uh oh"/>
+  ). A few more comments:
+  <br/>
+  <br/>
+  "Real time engine monitoring" is typically not 'real time' - it's recorded and sent in periodic bursts. Very unlikely anything was sent from the event aircraft on this flight.
+  <br/>
+  <br/>
+  Commanded engine cutoff - the aisle stand fuel switch sends electrical signals to the spar valve and the "High Pressure Shutoff Valve" (HPSOV) in the Fuel Metering Unit, commanding them to open/close using aircraft power. The HPSOV is solenoid controlled, and near instantaneous. The solenoid is of a 'locking' type that needs to be powered both ways (for obvious reasons, you wouldn't want a loss of electrical power to shut down the engine). The fire handle does the same thing, via different electrical paths (i.e. separate wiring).
+  <br/>
+  <br/>
+  As I've noted previously, a complete loss of aircraft electrical power would not cause the engines to flameout (or even lose meaningful thrust) during takeoff. In the takeoff altitude envelope, 'suction feed' (I think Airbus calls it 'gravity feed') is more than sufficient to supply the engine driven fuel pumps. It's only when you get up to ~20k ft. that suction feed can become an issue - and this event happened near sea level.
+  <br/>
+  <br/>
+  Not matter what's happening on the aircraft side - pushing the thrust levers to the forward stop will give you (at least) rated takeoff power since the only thing required from the aircraft is fuel and thrust lever position (and the thrust lever position resolver is powered by the FADEC).
+  <br/>
+  <br/>
+  The TCMA logic is designed and scrubbed so as to be quite robust - flight test data of the engine response to throttle slams is reviewed to insure there is adequate margin between the TCMA limits and the actual engine responses to prevent improper TCMA activation. Again, never say never, but a whole lot would have had to go wrong in the TCMA logic for it to have activated on this flight.
+  <br/>
+  <br/>
+  Now, if I assume the speculation that the RAT deployed is correct, I keep coming up with two potential scenarios that could explain what's known regarding this accident:
+  <br/>
+  1) TCMA activation shutdown the engines
+  <br/>
+  or
+  <br/>
+  2) The fuel cutoff switches were activated.
+  <br/>
+  I literally can come up with no other plausible scenarios.
+  <br/>
+  <br/>
+  In all due respect to all the pilots on this forum, I really hope it wasn't TCMA. It wouldn't be the first time a mandated 'safety system' has caused an accident (it wouldn't just be Boeing and GE - TCMA was forced by the FAA and EASA to prevent a scenario that had never caused a fatal accident) - and there would be a lot embarrassing questions for all involved. But I personally know many of the people who created, validated, and certified the GEnx-1B TCMA logic - and can't imagine what they would be going through if they missed something (coincidentally, one of them was at my birthday party last weekend and inevitably we ended up talking about what we used to do at Boeing (he's also retired)). Worse, similar TCMA logic is on the GEnx-2B (747-8) - which I was personally responsible for certifying - as well as the GE90-115B and the 737 MAX Leap engine - the consequences of that logic causing this accident would be massive.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>lighttwin2<br/>2025-06-16T08:51:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-5.html#post11903752><br/>permalink</a>
+ Post: 11903752</td>
+<td class=post><div class="tcell alt1" id="td_post_11903752">
+ <!-- message -->
+ <div id="post_message_11903752">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      medod
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902390" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     If TCMA cut fuel flow while still on the runway the aircraft would have been decelerating from the moment it lifted off, which is not what the ADS-B data indicates. The kinetic energy in the rotating parts of the engine wouldn't add much speed to the aircraft as the engines run down with no more energy being added via fuel.
+    </div>
+   </div>
+  </div>
+  I was not aware that we have granular ADS-B data from the a/c itself showing airspeed post rotation (rather than speed interpolated from GPS). Apologies if I have missed it. If it does show acceleration after takeoff I tend to agree with you.
+  <br/>
+  <br/>
+  In no particular order, here are some more thoughts on TCMA having caught up on the thread:
+  <br/>
+  <br/>
+  If you cut the fuel from two big engines at take-off power, there must be some delay before n2 decays below the threshold for generation (below idle n2), the generators disconnect and RAT deploys. GEnx have relatively long spool up/down times as the fan is so large (and would be exposed to 170+kts of ram air). Perhaps someone has a view on how long this would be, but I imagine it could easily be 10s or more between fuel cut off and RAT deployment. On AI171 the RAT appears to be already deployed at the beginning of the bystander video. That starts c. 13s before impact and around 17s after rotation. This does not prove anything except that the supposed shut down must have happened very close to rotation and
+  <u>
+   could
+  </u>
+  have happened just before rotation while the a/c was on the ground.
+  <br/>
+  <br/>
+  As a thought experiment, imagine if ANA985 in 2019 had decided to go around. The a/c rotates and is ~50 ft above the runway, suddenly both engines spooling down, very little runway left to land on and no reverse thrust available. I am struck by how similar this scenario is to AI171. This theory would require there to have been unexpected thrust lever movement in the moments before rotation - but plausibly one pilot moving to reject, followed by an overrule or change of heart - or even a simple human error such as the recent BA incident at LGW - could achieve this. This is perhaps more likely that any sensor fault that you would expect to only impact a single engine given the redundancy of systems.
+  <br/>
+  <br/>
+  Tdracer writes that a key requirement of TCMA is to identify an engine runaway in the event of an RTO, in order to allow the a/c to stop on the runway. This will have been tested extensively - it is a big leap to imagine a false activation could be triggered. It did happen on ANA985 but through a very unusual set of inputs including application of reverse (albeit this latter point may not be relevant if TCMA logic does not distinguish between the reverser being deployed or not).
+  <br/>
+  <br/>
+  Incidentally there is an assumption the TCMA software version in place on the ANA flight had already been patched and fixed on AI171. That probably is the case but I am not sure it is a known fact.
+  <br/>
+  <br/>
+  In summary I remain baffled by this tragic accident. I have not yet read anything that explicitly rules out TCMA activation and it remains a possibility due to the vanishingly small number of factors that could shut down two engines at apparently the exact same moment when they have fully redundant systems. Fuel contamination, for example, has typically impacted each engine a few minutes (at least) apart. I am also cautious (as others have pointed out) of a form of confirmation bias about Boeing software systems with four-letter acronyms.
+  <br/>
+  <br/>
+  In my mind the cause could equally well be something completely different to anything suggested on this thread, that will only become clear with more evidence. All of the above also incorporates a number of theories, i.e. that there was an engine shutdown - that are not conclusively known.
+  <br/>
+  <br/>
+  Thank you to the mods for an excellent job.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>mechpowi<br/>2025-06-17T07:42:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-9.html#post11904035><br/>permalink</a>
+ Post: 11904035</td>
+<td class=post><div class="tcell alt1" id="td_post_11904035">
+ <!-- message -->
+ <div id="post_message_11904035">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      bbofh
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903967" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     If a gear retraction remains in "tilt", then what does that
+     <b>
+      <i>
+       interregnum
+      </i>
+     </b>
+     status say in response to various systems' interrogations of the WoW sensors? Is it stuck in the Netherworld of
+     <b>
+      <i>
+       betwixt and between
+      </i>
+     </b>
+     ?
+     <br/>
+     Perhaps the safer solution should be an additional circuitry micro-switch feed of all three "up and locked"? (that agrees with the gear-handle).
+     <br/>
+     Also waiting to hear what the 787-8 RADALT status is? Was it ever 5G emanations-proofed?
+     <br/>
+     Is there any software provision for the TCMA to know for sure that the gear is neither up nor down? I would doubt it. Does that uncertainty affect the thrust-lever's positional input?
+    </div>
+   </div>
+  </div>
+  If the 787 is not different to all other aircaft, the WoW senses and putouts only one parameter that is always 1 or 0. There is no netherlands in between. The physical motion the switch is sensing migh have not reach it other end at the time the switch changes its output, but it is irrevelant. If there is a requirement to know that the motion has reaches it\x92s other end, another switch (or other type of sensor) is needed.
+  <br/>
+  <br/>
+  Using up and locked as signal to prevent TCMA activation is obviously more dangerous as it allows TCMA to function while the aircraft is in the air.
+  <br/>
+  <br/>
+  Even in the same aircraft there might be different logics to determin if the aicraft is on the ground or in the air, depending what is the priority. Is the priority to know that the aircraft is in the air or on the ground or even NOT in the air. Some of those logics could use up-and-locked sensors and the gear handle position.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>tdracer<br/>2025-06-17T23:20:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-17.html#post11904756><br/>permalink</a>
+ Post: 11904756</td>
+<td class=post><div class="tcell alt1" id="td_post_11904756">
+ <!-- message -->
+ <div id="post_message_11904756">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      EDML
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904732" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     That is not what the TCMA logic is supposed to do. Only high thrust with the thrust lever idle should trigger the TCMA.
+    </div>
+   </div>
+  </div>
+  Actually that's not quite true.  Thrust far higher than what's being commanded by the thrust lever - it doesn't have to be at idle.  But even with a CPU failure commanding high thrust (relative to TL position), the odds of that happening to two engines at the same time is astronomical.
+  <br/>
+  BTW, I don't know if there is any 'crosstalk' of TCMA activation between engines on the 787.  I know we don't do any crosstalk of other engines info on the 747-8, but the 787 is far more integrated, and the amount of data that can put on that ethernet based data bus is massive.
+  <br/>
+  My knee jerk is that they wouldn't crosstalk TCMA status between engines, but the reality is I really don't know.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>CloudChasing<br/>2025-06-19T16:52:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-33.html#post11906189><br/>permalink</a>
+ Post: 11906189</td>
+<td class=post><div class="tcell alt1" id="td_post_11906189">
+ <!-- message -->
+ <div id="post_message_11906189">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903417" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     TCMA - first off, I have to admit that this does look rather like an improper TCMA activation, but that is very, very unlikely. For those who don't know, TCMA is a system to shutdown a runaway engine that's not responding to the thrust lever - basic logic is an engine at high power with the thrust lever at/near idle, and the engine not decelerating. However, TCMA is
+     <i>
+      only
+     </i>
+     active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     <i>
+      one of each
+     </i>
+     had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+    </div>
+   </div>
+  </div>
+  You sound like you know what you&rsquo;re talking about. I&rsquo;m a software engineer. I think software glitches are more common for this type of event than mechanical failures or pilot errors. It can take years before software errors are discovered.
+  <br/>
+  <br/>
+  I read one post in here of a 747 flaps retracting on takeoff. No Master Caution, no warnings. Apparently, due to some maintenance triggering a software glitch, the computer thought reverse thrust had been activated during a take off. Whether it was still in ground mode I don&rsquo;t know.
+  <br/>
+  <br/>
+  Point is, being a software glitch in TMCA has already shut down two engines on a 787, I don&rsquo;t see why the same or another software glitch in TMCA or somewhere else couldn&rsquo;t do the same. Hadn&rsquo;t this plane just been in for maintenance?
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by T28B; 19th Jun 2025 at
+   <span class="time">
+    17:05
+   </span>
+   .
+							
+							
+								Reason: Formatting assistance
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>CloudChasing<br/>2025-06-19T18:05:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-34.html#post11906239><br/>permalink</a>
+ Post: 11906239</td>
+<td class=post><div class="tcell alt1" id="td_post_11906239">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   Fuel valves and TCMA software updates?
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11906239">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903420" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Commanded engine cutoff - the aisle stand fuel switch sends electrical signals to the spar valve and the "High Pressure Shutoff Valve" (HPSOV) in the Fuel Metering Unit, commanding them to open/close using aircraft power. The HPSOV is solenoid controlled, and near instantaneous. The solenoid is of a 'locking' type that needs to be powered both ways (for obvious reasons, you wouldn't want a loss of electrical power to shut down the engine). The fire handle does the same thing, via different electrical paths (i.e. separate wiring).
+     <br/>
+     <br/>
+     As I've noted previously, a complete loss of aircraft electrical power would not cause the engines to flameout (or even lose meaningful thrust) during takeoff. In the takeoff altitude envelope, 'suction feed' (I think Airbus calls it 'gravity feed') is more than sufficient to supply the engine driven fuel pumps. It's only when you get up to ~20k ft. that suction feed can become an issue - and this event happened near sea level.
+     <br/>
+     <br/>
+     Not matter what's happening on the aircraft side - pushing the thrust levers to the forward stop will give you (at least) rated takeoff power since the only thing required from the aircraft is fuel and thrust lever position (and the thrust lever position resolver is powered by the FADEC).
+     <br/>
+     <br/>
+     The TCMA logic is designed and scrubbed so as to be quite robust - flight test data of the engine response to throttle slams is reviewed to insure there is adequate margin between the TCMA limits and the actual engine responses to prevent improper TCMA activation. Again, never say never, but a whole lot would have had to go wrong in the TCMA logic for it to have activated on this flight.
+     <br/>
+     <br/>
+     Now, if I assume the speculation that the RAT deployed is correct, I keep coming up with two potential scenarios that could explain what's known regarding this accident:
+     <br/>
+     1) TCMA activation shutdown the engines
+     <br/>
+     or
+     <br/>
+     2) The fuel cutoff switches were activated.
+     <br/>
+     I literally can come up with no other plausible scenarios.
+     <br/>
+     <br/>
+     In all due respect to all the pilots on this forum, I really hope it wasn't TCMA. It wouldn't be the first time a mandated 'safety system' has caused an accident (it wouldn't just be Boeing and GE - TCMA was forced by the FAA and EASA to prevent a scenario that had never caused a fatal accident) - and there would be a lot embarrassing questions for all involved. But I personally know many of the people who created, validated, and certified the GEnx-1B TCMA logic - and can't imagine what they would be going through if they missed something (coincidentally, one of them was at my birthday party last weekend and inevitably we ended up talking about what we used to do at Boeing (he's also retired)). Worse, similar TCMA logic is on the GEnx-2B (747-8) - which I was personally responsible for certifying - as well as the GE90-115B and the 737 MAX Leap engine - the consequences of that logic causing this accident would be massive.
+    </div>
+   </div>
+  </div>
+  I\x92m sure this is wrong; was looking for confirmation. I read somewhere that the 787 keeps the fuel valve open by an electric driven actuator, and closes it by spring force.
+  <br/>
+  <br/>
+  I seem to remember Fred Dibner talking about how railway cars brake by draining the piston not by pressurising it, so trains will stop when supply lines break.
+  <br/>
+  <br/>
+  The electrical system updates to 787s for ADs and SBs - do any of these include software updates? For example the integer overflow causing GCU failsafe rectified under AD 2018-20-15. If so, who is writing and implementing these software updates? The original engineers? Their apprentices who had years long handovers? Or have they been outsourced and offshored? When these updates occur, does the entire system get tested and ratified or just the bit the bug fix is meant to fix? Because I\x92ve seen new bugs introduced by bug fixes in areas seemingly nothing to do with the original problem.
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>ams6110<br/>2025-06-19T23:04:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-37.html#post11906466><br/>permalink</a>
+ Post: 11906466</td>
+<td class=post><div class="tcell alt1" id="td_post_11906466">
+ <!-- message -->
+ <div id="post_message_11906466">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      MatthiasC172
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906311" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I am pretty sure that with WoW and &gt;=85 kt a throttle being pulled to idle leads to immediate max autobrake plus speed-brake/spoilers deployment. I don&rsquo;t see an option there to trigger TCMA like this but happy to learn from someone with more experience.
+    </div>
+   </div>
+  </div>
+  SLF but I think this makes sense. If pulling from takeoff thust back to idle with WoW would cause TCMA activation, we'd see engine shutdowns on every rejected takeoff.
+  <br/>
+  <br/>
+  I also wonder about this theory that one of the pilots called for reject and pulled the thrust levers back, and the other overruled him and continued the takeoff. Is this plausible? CRM aside, if max braking and spoilers are triggered in this scenario, it doesn't seem so to me.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by ams6110; 19th Jun 2025 at
+   <span class="time">
+    23:15
+   </span>
+   .
+							
+							
+								Reason: typo correction
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Lead Balloon<br/>2025-06-20T00:49:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-37.html#post11906514><br/>permalink</a>
+ Post: 11906514</td>
+<td class=post><div class="tcell alt1" id="td_post_11906514">
+ <!-- message -->
+ <div id="post_message_11906514">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      ams6110
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906466" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     SLF but I think this makes sense. If pulling from takeoff thust back to idle with WoW would cause TCMA activation, we'd see engine shutdowns on every rejected takeoff.
+     <br/>
+     <br/>
+     I also wonder about this theory that one of the pilots called for reject and pulled the thrust levers back, and the other overruled him and continued the takeoff. Is this plausible? CRM aside, if max braking and spoilers are triggered in this scenario, it doesn't seem so to me.
+    </div>
+   </div>
+  </div>
+  The TCMAs will not 'activate' - trigger fuel shut off - on a rejected take off if the engines do what they are told when the thrust levers are set to idle. The software monitoring the engine parameters v throttle position is quite sophisticated, for obvious reasons.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Lead Balloon; 20th Jun 2025 at
+   <span class="time">
+    00:59
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>lighttwin2<br/>2025-06-21T15:46:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-49.html#post11907858><br/>permalink</a>
+ Post: 11907858</td>
+<td class=post><div class="tcell alt1" id="td_post_11907858">
+ <!-- message -->
+ <div id="post_message_11907858">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      OldnGrounded
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11907719" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     TCMA continues to be one of the few (very unlikely) causes of/contributors to simultaneous shutdown of both engines. So far, though, I don't think we've seen a credible scenario explaining the possibility that TCMA was triggered in this accident. I'm not sure I understand your speculation.
+     <br/>
+     <br/>
+     In the scenario you are considering, it's clear that the air/ground state would be wrongly "understood" by the TCMA function. But we don't have,
+     <acronym title="As far as I know">
+      AFAIK
+     </acronym>
+     , a credible theory for how that might happen. Surely it would have to result from either incorrect signals from the relevant sensors or a failure of the related logic in the FADEC TCMA function, or a combination of those. Indeed, I don't think we yet know exactly which sensor readings that logic depends on or how those readings are fed to the FADEC. Does your speculation include any thoughts about this?
+     <br/>
+     <br/>
+     Also, the FADEC TCMA function has to "believe" that the engine is operating at high power and not responding to thrust lever operation. In your proposed scenario, is this also a logic failure &mdash; in both FADECs? Or false inputs from both TLs? Or are both engines actually operating at higher than commanded power levels?
+     <br/>
+     <br/>
+     Or do I misunderstand your post?
+    </div>
+   </div>
+  </div>
+  Let me try and summarise one possible scenario and then link in some of the better posts provide evidence relating to it:
+  <ul>
+   <li>
+    In error, PF reduces power to idle and/or reverse at a speed after V1 (either deciding to reject, or for some unexplained reason e.g. the recent BA incident at LGW)
+   </li>
+   <li>
+    Decision is changed to continue take-off, thrust levers moved to TOGA
+   </li>
+   <li>
+    Let's say the thrust inputs are similar to NM985 and TCMA is triggered; and engines shut down around the time of rotation
+   </li>
+   <li>
+    A/C rotates achieving a maximum speed in the region of 184kts
+   </li>
+  </ul>
+  Relevant "ruling out" questions, with links to posts that add new information:
+  <br/>
+  <br/>
+  Q: Would the a/c have enough kinetic energy a 184kts to climb to 100-150ft agl and then reach its final position if the engines had failed at, or just, before rotation?
+  <br/>
+  A: Theoretically possible - see calculation
+  <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-43.html#post11907161" target="_blank">
+   here
+  </a>
+  . NB, the a/c actually flew 1.5km from the end of the runway and 2.3km from the likely point of rotation.
+  <br/>
+  <br/>
+  Q: Doesn't the forward position of the gear mean that power failed after the pilots had selected gear up?
+  <br/>
+  A: Inconclusive - had hydraulic power had been lost prior to rotation, the gear could also be in this position - explanation
+  <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-6.html?#post11903849" rel="nofollow" target="_blank">
+   here
+  </a>
+  <br/>
+  <br/>
+  Q: If the throttle levers were brought to idle during take-off, would the A/C have applied autobrake, reversers and speedbrake?
+  <br/>
+  A: Yes, although there is a built in delay before reverser and speedbrake actually deploy - see
+  <a href="https://www.pprune.org/tech-log/633070-boeing-rto.html#post10804842" target="_blank">
+   here
+  </a>
+  .
+  <br/>
+  <br/>
+  Q: Is the ADS-B data consistent with this scenario?
+  <br/>
+  A: Yes, e.g. the Flightradar data shows the aircraft decelerating rapidly (12 knots in 4.2 seconds) from close to rotation. However, it's not clear how accurate this data is. For one, the altitude data is +/- 25 feet, second, while I was under the impression FR would have received airspeed data from the a/c sensors,
+  <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-47.html#post11907550" target="_blank">
+   this post
+  </a>
+  suggests maybe not.
+  <br/>
+  <br/>
+  Q: Does TCMA activation require the thrust levers to be at idle or does it function when the thrust levels are above idle, but where the actual thrust is above that commanded?
+  <br/>
+  A: No, the latter is true (i.e. idle is not required) - confirmed
+  <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-17.html#post11904756" target="_blank">
+   here
+  </a>
+  - there are of course many protections against false activation
+  <br/>
+  <br/>
+  Q. Did AI171 have the same software version / logic paths as NH-985
+  <br/>
+  A. Unknown. That a/c had Trent 1000s so to some extent the software is different, but we understand the TCMA logic is broadly the same regardless of engine. I have not seen a post clarifying whether the TCMA software has been updated /changed via SB since 2019 to account for this incident.
+  <br/>
+  <br/>
+  Be grateful if posters could refrain from speculative responses "e.g. I think this is unlikely because I feel x". I am not opining on how likely this sequence of events is, simply trying to summarise whether or not this theory has been ruled in or out.
+  <br/>
+  <br/>
+  I also recommend
+  <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-37.html?ispreloading=1#post11906480" rel="nofollow" target="_blank">
+   this post
+  </a>
+  for a summary to read before posting. .
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by lighttwin2; 21st Jun 2025 at
+   <span class="time">
+    16:13
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=TCMA_-Activation-0.html>First</a>
+&nbsp;<a href=TCMA_-Activation-0.html>Previous</a>
+&nbsp;<a href=TCMA_-Activation-0.html>1</a>
+&nbsp;<a href=TCMA_-Activation-1.html><b>2</b>
+</a>
+&nbsp;<a href=TCMA_-Activation-1.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

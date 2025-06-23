@@ -59,6 +59,7 @@ def main():
         type=str,
         help=(
             'Directory to write the output to.'
+            ' [default: %(default)s].'
         )
     )
     parser.add_argument(
@@ -67,7 +68,7 @@ def main():
         help=(
             'This decides the thread publication map.'
             ' Supported values are "Concorde", "AI171".'
-            ' [default: %(default)d].'
+            ' [default: %(default)s].'
         )
     )
     parser.add_argument(

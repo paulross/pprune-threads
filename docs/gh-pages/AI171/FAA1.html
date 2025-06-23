@@ -1,0 +1,936 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune FAA name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "FAA" [Posts: 52 Pages: 3]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=FAA0.html>First</a>
+&nbsp;<a href=FAA0.html>Previous</a>
+&nbsp;<a href=FAA0.html>1</a>
+&nbsp;<a href=FAA1.html><b>2</b>
+</a>
+&nbsp;<a href=FAA2.html>3</a>
+&nbsp;<a href=FAA2.html>Next</a>
+&nbsp;<a href=FAA2.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post>dragon6172<br/>2025-06-16T01:15:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-83.html#post11903025><br/>permalink</a>
+ Post: 11903025</td>
+<td class=post><div class="tcell alt1" id="td_post_11903025">
+ <!-- message -->
+ <div id="post_message_11903025">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      syseng68k
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902976" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     FrequentSLF: I would be more suspicious of the hardware that feeds TCMA. Rad Alt sensing could be in error, but possibly more likely is the hardware that senses weight on wheels. May be position sensing microswitches, or perhaps gear oil pressure, but would assume redundancy, eg: two sensors per leg, then some sort of voting logic on the sensor set to find faulty hardware.and make a decision. Doubt if the software is at fault, but is there a delay between sensor output, and command to shutdown the engines ?. Alluded to doubts upthread, but I think the post was deleted. Question: Should TCMA really have the absolute power to auto shutdown engines at all, without some sort of confirmation ?.
+    </div>
+   </div>
+  </div>
+  According to the MMEL available on the FAA website there are 8 air/ground sensors on the main gear. Two tilt sensors and two compression sensors on each strut. Can be dispatched with just one tilt sensor and one compression sensor working on each side.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>tdracer<br/>2025-06-14T20:48:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-2.html#post11903420><br/>permalink</a>
+ Post: 11903420</td>
+<td class=post><div class="tcell alt1" id="td_post_11903420">
+ <!-- message -->
+ <div id="post_message_11903420">
+  Another hour spent sifting through the stuff since last night (my sympathies to the mods
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/worry.gif" title="Uh oh"/>
+  ). A few more comments:
+  <br/>
+  <br/>
+  "Real time engine monitoring" is typically not 'real time' - it's recorded and sent in periodic bursts. Very unlikely anything was sent from the event aircraft on this flight.
+  <br/>
+  <br/>
+  Commanded engine cutoff - the aisle stand fuel switch sends electrical signals to the spar valve and the "High Pressure Shutoff Valve" (HPSOV) in the Fuel Metering Unit, commanding them to open/close using aircraft power. The HPSOV is solenoid controlled, and near instantaneous. The solenoid is of a 'locking' type that needs to be powered both ways (for obvious reasons, you wouldn't want a loss of electrical power to shut down the engine). The fire handle does the same thing, via different electrical paths (i.e. separate wiring).
+  <br/>
+  <br/>
+  As I've noted previously, a complete loss of aircraft electrical power would not cause the engines to flameout (or even lose meaningful thrust) during takeoff. In the takeoff altitude envelope, 'suction feed' (I think Airbus calls it 'gravity feed') is more than sufficient to supply the engine driven fuel pumps. It's only when you get up to ~20k ft. that suction feed can become an issue - and this event happened near sea level.
+  <br/>
+  <br/>
+  Not matter what's happening on the aircraft side - pushing the thrust levers to the forward stop will give you (at least) rated takeoff power since the only thing required from the aircraft is fuel and thrust lever position (and the thrust lever position resolver is powered by the FADEC).
+  <br/>
+  <br/>
+  The TCMA logic is designed and scrubbed so as to be quite robust - flight test data of the engine response to throttle slams is reviewed to insure there is adequate margin between the TCMA limits and the actual engine responses to prevent improper TCMA activation. Again, never say never, but a whole lot would have had to go wrong in the TCMA logic for it to have activated on this flight.
+  <br/>
+  <br/>
+  Now, if I assume the speculation that the RAT deployed is correct, I keep coming up with two potential scenarios that could explain what's known regarding this accident:
+  <br/>
+  1) TCMA activation shutdown the engines
+  <br/>
+  or
+  <br/>
+  2) The fuel cutoff switches were activated.
+  <br/>
+  I literally can come up with no other plausible scenarios.
+  <br/>
+  <br/>
+  In all due respect to all the pilots on this forum, I really hope it wasn't TCMA. It wouldn't be the first time a mandated 'safety system' has caused an accident (it wouldn't just be Boeing and GE - TCMA was forced by the FAA and EASA to prevent a scenario that had never caused a fatal accident) - and there would be a lot embarrassing questions for all involved. But I personally know many of the people who created, validated, and certified the GEnx-1B TCMA logic - and can't imagine what they would be going through if they missed something (coincidentally, one of them was at my birthday party last weekend and inevitably we ended up talking about what we used to do at Boeing (he's also retired)). Worse, similar TCMA logic is on the GEnx-2B (747-8) - which I was personally responsible for certifying - as well as the GE90-115B and the 737 MAX Leap engine - the consequences of that logic causing this accident would be massive.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>tdracer<br/>2025-06-15T21:35:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-3.html#post11903427><br/>permalink</a>
+ Post: 11903427</td>
+<td class=post><div class="tcell alt1" id="td_post_11903427">
+ <!-- message -->
+ <div id="post_message_11903427">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Alty7x7
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902800" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     It was assumed for decades that in the event of uncontrollable high thrust (UHT) that the pilot would cut the fuel. Until there was a UHT event (1999?) on the takeoff roll and the crew - in an RTO - rode it all the way down and off the runway without cutting fuel. TCMA is primarily about the RTO scenario (throttle back to idle), and after that fleet event it became a requirement for FAA Part 25 certification.
+    </div>
+   </div>
+  </div>
+  What Alty posted is correct.  There have always been single faults in the engine control systems that could cause uncommanded high thrust (UHT) - and such failures were considered in the safety analysis (e.g. FMEA) with the note that it wasn't unsafe as the pilot would shutdown the affected engine.  Then there was a 737-200 event (JT8D engines) (1999 sounds about right - I'm thinking it was either an Egyptian operator or it happened in Egypt, but don't hold me to that) - the JT8D had an issue with excessive wear of the splined shaft that provided the N2 input into the hydromechanical fuel control.  In this event, that splined shaft started slipping - causing the fuel control to think the N2 was below idle, and it keep adding fuel to try to get the N2 back above idle.  This caused the engine to accelerate uncontrollably - the pilots pulled back the throttle and performed an RTO, but the engine didn't respond, and they went off the runway at low speed.  Everyone evacuated safely, but the aircraft was destroyed by fire.
+  <br/>
+  <br/>
+  The FAA pointed to this accident and said we couldn't depend on crew action to shutdown a runway engine, and therefore any single failure that could result in uncontrollable high thrust was not compliant with 25.901(c) (basically says no single fault can result in an unsafe condition).  This basically made every commercial airliner flying non-compliant as every turbine engine control system at that time had single faults that could cause UHT
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/eek.gif" title="EEK!"/>
+  .  A consequence of this was everyone was effectively prevented from certifying any further engine control changes since we couldn't show compliance with 25.901(c) (even if the change actually improved safety).  The FAA and EASA were forced to issue partial exemptions for all existing aircraft/engine combinations, with the stipulation that they wouldn't certify any new engines that didn't address UHT.  A working group was put together at Boeing to come up with some way to comply - and they eventually came up with TCMA , only active on the ground since UHT was only considered unsafe when on the ground - first incorporated on the GE90-115B/777-300ER/200LR.
+  <br/>
+  <br/>
+  I've never been 100% comfortable with TCMA (for reasons that should be all to obvious right now), but the regulators gave us few options.
+  <br/>
+  BTW, during the early development of the 747-8, we didn't have a robust way of providing air/ground to the FADECs - which the FAA immediately found objectionable since they
+  <i>
+   never
+  </i>
+  wanted the risk of TCMA being active in-flight.  I eventually came up with a design change that would provide a robust air/ground indication (it solved several issues we were confronting at the time), so that concern went away - which made the FAA very happy.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>tdracer<br/>2025-06-17T02:43:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903928><br/>permalink</a>
+ Post: 11903928</td>
+<td class=post><div class="tcell alt1" id="td_post_11903928">
+ <!-- message -->
+ <div id="post_message_11903928">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lead Balloon
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903924" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Back to the subject of the TCMA, in order for the four channels (A and B for engine 1 and A and B for engine 2) to be truly independent, there would have to be, for example, four, separate weight on wheels sensors and two, separate throttle position sensors per throttle. I would be extraordinarily surprised if that's what has been implemented, but will happily stand correct.
+    </div>
+   </div>
+  </div>
+  You'd be half right (or if you prefer, half wrong). Each channel of the FADEC has its own thrust lever position resolver. In other Boeing aircraft, there is a single resolver per engine, with dual electrical coils (i.e. electrically isolated but mechanically connected). But in order to go for full compliance with a (in my opinion) rather extreme FAA position regarding 'single failures' and 25.901(c), the 787 thrust lever actually has dual load paths, feeding to different thrust lever resolvers for each channel.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>dragon6172<br/>2025-06-17T03:04:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903933><br/>permalink</a>
+ Post: 11903933</td>
+<td class=post><div class="tcell alt1" id="td_post_11903933">
+ <!-- message -->
+ <div id="post_message_11903933">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903928" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     You'd be half right (or if you prefer, half wrong). Each channel of the FADEC has its own thrust lever position resolver. In other Boeing aircraft, there is a single resolver per engine, with dual electrical coils (i.e. electrically isolated but mechanically connected). But in order to go for full compliance with a (in my opinion) rather extreme FAA position regarding 'single failures' and 25.901(c), the 787 thrust lever actually has dual load paths, feeding to different thrust lever resolvers for each channel.
+    </div>
+   </div>
+  </div>
+  There are eight air ground sensors. Two truck tilt sensors and two strut compression sensors on each main gear.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>bbofh<br/>2025-06-17T03:27:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903939><br/>permalink</a>
+ Post: 11903939</td>
+<td class=post><div class="tcell alt1" id="td_post_11903939">
+ <!-- message -->
+ <div id="post_message_11903939">
+  WHEN something catastrophic happens, like dual engine failure, that then creates a query about any "duality" between two standalone systems that really should have nothing whatsoever in common... except the PF.
+  <br/>
+  Nothing in common? Is that really the case for the 787-8 in the Air India 787 crash?
+  <br/>
+  Look at these three TCMA-related links in the order presented and note the proforma prescriptive caveats in the first two:
+  <br/>
+  <br/>
+  <a href="https://downloads.regulations.gov/FAA-2016-7855-0001/attachment_1.pdf" target="_blank">
+   https://downloads.regulations.gov/FA...tachment_1.pdf
+  </a>
+  <br/>
+  <a href="https://downloads.regulations.gov/FAA-2016-7855-0005/attachment_1.pdf" target="_blank">
+   https://downloads.regulations.gov/FA...tachment_1.pdf
+  </a>
+  <br/>
+  <a href="https://patents.google.com/patent/US6704630B2/en" target="_blank">
+   https://patents.google.com/patent/US6704630B2/en
+  </a>
+  <br/>
+  <br/>
+  TCMA is designed to detect and accommodate single failures within the EEC/FADEC, preventing a failure from jeopardizing the safe operation of the aircraft.
+  <br/>
+  Implementation:
+  <br/>
+  It involves implementing specific software changes within the engine's control system (EEC).
+  <br/>
+  Regulation:
+  <br/>
+  After some incidents, the design change was mandated by regulators, with a deadline for production aircraft by December 31, 2018, and a retrofit plan for existing aircraft.
+  <br/>
+  Boeing 787 Application:
+  <br/>
+  The TCMA feature is specifically relevant to the 787-8 equipped with GEnx-1B engines, but it may also be applicable to other 787 variants using the same engine type.
+  <br/>
+  <br/>
+  The first two links are respectively the request for and FAA affirmation/approval for a GENx-1b software system called TCMA (Thrust Control Malfunction Accommodation). TCMA is the system that precludes High Uncommanded Thrust (HUT) after touchdown by fuel-chopping the engines. It is designed to avoid runway departures. One input is power-lever position. It's then fair to say that (additionally) Air/Ground sensing is quintessentially vital (as to when the system is "armed" and can do this fuel-chop). The third link is the complex description (with diagrams) of the patent application's design functionality of TCMA.
+  <br/>
+  FROM THE 3rd link above:
+  <br/>
+  "&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;The method of the present invention compares the engine's actual power level with a threshold contour defined by the TCMA software package. When the TCMA software package determines that a thrust control malfunction has occurred, based on the engine's power level exceeding the threshold contour, the engine is shut down by the TCMA circuit." It is also notable that it says within the 3rd link that "Typically the aircraft is allowed to operate for a limited period of time with just a single operative processing subsystem."
+  <br/>
+  That Air India 787 was not long out of maintenance.
+  <br/>
+  We are then motivated to ask "what dictates the Air/Ground sensing". Is it just a Weight-on-Wheels microswitch or a RADAlt? (or both? or triplicated micro-switches?). We may then ask: "Did Air India implement the post-5G changes to their RADAlts that concentrated on maintaining their auto-land capability (in the face of 5G interference with RADAlts?) I seem to recall that the FAA's dictums on this pointed out that it was an individual nation's responsibility to both control their 5G frequency spectrums and implement changes to Radar altimeters that would work interference-free in critical phases of flight. What has the Indian regulator done in this regard as the responsible entity? The whole shemozzle, starting with the US Federal Communications Commission (FCC) spectrum allocations, was an ongoing fight between the telecom giants and their getting their new mobile tech to market.
+  <br/>
+  <br/>
+  So where are we going with this line of causal reasoning? The only commonality/duality between left and right engines is the software driving the TCMA as monitored by the TCMA software incorporated in each engine's EEC. Most pundits have identified the gear-tilt as evidence that only the centre electrically-driven pump can do the gear-tilt if the engines' other two hyd systems are suddenly both in QUIT mode (which accords also with the instant RAT deployment and loud noise heard by the sole survivor) - and an ensuing transition from climb-out to a deadly sinking and commensurate attitude change for speed maint.
+  <br/>
+  My unavoidable conclusion is that the selection of gear UP and the breaking of the gear downlocks (and WOW sensing and energization of the RADALTs) called upon the TCMA to fuel-chop the engines (via the TCMA functionality in each engine's EEC).
+  <br/>
+  We could start by looking at the No Break Power Transfer (NBPT) tech used in modern airliners. This has led to Gen Control Panel meltdowns in 777's due to GEN contact meltdown. I know of one instance when a 773 was reduced to a RAT only landing enroute and another where a disastrous MEC fire occurred after start on pushback at LHR. A description of the systems glitch often experienced is at the following link. It's quite apparently a "gear-up" hiccup with potential damning consequences for smooth TCMA operation. As to be seen in the quality videos, a fuel-chop provides no real clue (such as engine failure/smoke/fire classically does). An uncommanded "reset" of the two engine's TCMA's upon gear retraction (link below) is trackable to be the sought after "duality" leading to a "both simultaneously quit" engine failure. These momentary electrical glitches and instant "resets" are described in the two links below. Food for reasoned thought?
+  <br/>
+  <br/>
+  <a href="https://tinyurl.com/yn5ce4tz" target="_blank">
+   https://tinyurl.com/yn5ce4tz
+  </a>
+  <br/>
+  <br/>
+  <a href="https://tinyurl.com/3kkh6n3d" target="_blank">
+   https://tinyurl.com/3kkh6n3d
+  </a>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>dragon6172<br/>2025-06-17T03:57:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903950><br/>permalink</a>
+ Post: 11903950</td>
+<td class=post><div class="tcell alt1" id="td_post_11903950">
+ <!-- message -->
+ <div id="post_message_11903950">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      bbofh
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903939" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Most pundits have identified the gear-tilt as evidence that only the centre electrically-driven pump can do the gear-tilt if the engines' other two hyd systems are suddenly both in QUIT mode (which accords also with the instant RAT deployment and loud noise heard by the sole survivor) - and an ensuing transition from climb-out to a deadly sinking and commensurate attitude change for speed maint.
+    </div>
+   </div>
+  </div>
+  One comment here, and maybe I am mis-understanding your comment, but the landing gear
+  <i>
+   <b>
+    only
+   </b>
+  </i>
+  operates via the center hydraulics. It does not matter whether the Left/Right engine driven hydraulic systems are operative or not. The RAT will only pressurize the primary flight control portion of the center hydraulics.
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      OldnGrounded
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903943" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Thanks. Do we know that these are monitored by TCMA for air/ground state and if so, do we know the logic used to make a determination based on those inputs? Alternatively, do you know where we should be looking for those answers?
+    </div>
+   </div>
+  </div>
+  No idea. I only got that info from the Master MEL on the FAA website. According to the MMEL the aircraft can be dispatched as long as there is one of each type sensor working on each main gear. (AIs MEL could be more restrictive)
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>OldnGrounded<br/>2025-06-17T04:05:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-8.html#post11903952><br/>permalink</a>
+ Post: 11903952</td>
+<td class=post><div class="tcell alt1" id="td_post_11903952">
+ <!-- message -->
+ <div id="post_message_11903952">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      dragon6172
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903950" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     No idea. I only got that info from the Master MEL on the FAA website. According to the MMEL the aircraft can be dispatched as long as there is one of each type sensor working on each main gear. (AIs MEL could be more restrictive)
+    </div>
+   </div>
+  </div>
+  Thanks again. Yes, I checked the MMEL too.
+  <strike>
+   It also says that the aircraft may be dispatched with one of two TCMA functions operational
+  </strike>
+  .  Edit:  dragon6172 has pointed out that the cited MMEL entry for TCMA applies to Rolls Royce engines, so not relevant here.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by OldnGrounded; 17th Jun 2025 at
+   <span class="time">
+    05:06
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Lead Balloon<br/>2025-06-18T11:57:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-21.html#post11905178><br/>permalink</a>
+ Post: 11905178</td>
+<td class=post><div class="tcell alt1" id="td_post_11905178">
+ <!-- message -->
+ <div id="post_message_11905178">
+  Though in fairness to Boeing, as I think I and others may have noted before, rumour has it that the FAA mandate for TCMA functionality was met with strong resistance (and I can understand why).
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>OldnGrounded<br/>2025-06-18T12:15:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-21.html#post11905190><br/>permalink</a>
+ Post: 11905190</td>
+<td class=post><div class="tcell alt1" id="td_post_11905190">
+ <!-- message -->
+ <div id="post_message_11905190">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      syseng68k
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11905180" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Lead Balloon:
+     <br/>
+     <br/>
+     The requirement for TCMA may have been specified by Boeing, but that doesn't tell us who designed and built the solution in this case, though it must have been a collaborative effort between the two parties.
+    </div>
+   </div>
+  </div>
+  Yes, but Lead Balloon's posts on this were in response to your
+  <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-20.html#post11905121" target="_blank">
+   post
+  </a>
+  suggesting that "you can't blame Boeing" because the engines and FADECs were built by GE. The real-world question might be
+  <i>
+   who
+  </i>
+  can't blame Boeing? I think the answer is probably that everyone who thinks blaming Boeing is advantageous would at least try to do so. And specification and collaboration would likely be and adequate basis for trying.
+  <br/>
+  <br/>
+  Again, I'm not suggesting that TCMA is causal or contributing in this accident, and I understand that there are multiple reasons why that is unlikely even if the air/ground determination was erroneous. I just still want to know what the air/ground inputs and logic are, because there just aren't many things we know about so far that could cause what most believe was at least an important contributing factor.
+  <br/>
+  <br/>
+  Edit: As Lead Balloon points out, it was the FAA that required TCMA.  The fact remains that Boeing patented at least one version of the function and specifies/collaborates in implementation with the engine manufacturers &mdash; more than enough participation for anyone seeking to blame Boeing for (purported) failures.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by OldnGrounded; 18th Jun 2025 at
+   <span class="time">
+    13:02
+   </span>
+   .
+							
+							
+								Reason: Clarification after noticing Lead Balloon's correction.
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>The Brigadier<br/>2025-06-18T12:18:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-21.html#post11905193><br/>permalink</a>
+ Post: 11905193</td>
+<td class=post><div class="tcell alt1" id="td_post_11905193">
+ <!-- message -->
+ <div id="post_message_11905193">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      SRMman
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11905118" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I wonder if the delay in announcing any preliminary findings is because of the enormity of the consequences.
+     <br/>
+     <br/>
+     Let us say the investigation team have discovered a unique technical fault that caused the accident, but don&rsquo;t yet know why it happened, how would the team proceed? On the one hand they&rsquo;ve uncovered a fault which could reoccur and cause another accident (but a fault that has only happened once in 14 years). On the other hand a grounding would have enormous commercial consequences worldwide, with the possibility that an inspection and/or rectification are not yet available.
+     <br/>
+     <br/>
+     What would they do?
+    </div>
+   </div>
+  </div>
+  A case in point is the 2013 Boeing 787 battery fires. After two thermal runaways in 52 000 flight-hours, the root cause was still unknown; however, the FAA nevertheless issued Emergency AD 2013-02-51 grounding every 787 until a modification was available. IMHO a risk where the outcome is catastrophic, even very low probability, would trigger the FAA to issue an Emergency Airworthiness Directive as per their policy.
+  <br/>
+  <br/>
+  As I said in a previous post, every day that passes without a EAD suggest the cause was was specific to that aircraft (fuel contamination, maintenance failure, crew error - pick you own theory)
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by The Brigadier; 18th Jun 2025 at
+   <span class="time">
+    12:43
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Lead Balloon<br/>2025-06-18T12:25:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-21.html#post11905198><br/>permalink</a>
+ Post: 11905198</td>
+<td class=post><div class="tcell alt1" id="td_post_11905198">
+ <!-- message -->
+ <div id="post_message_11905198">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      syseng68k
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11905180" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Lead Balloon:
+     <br/>
+     <br/>
+     The requirement for TCMA may have been specified by Boeing, but that doesn' t tell us who designed and built the solution in this case, though it must have been a collaborative effort between the two parties. Anyway, TCMA may be a red herring, since we still have not defined what, if any, other sources would have authority to issue an engine shutdown command
+    </div>
+   </div>
+  </div>
+  The "requirement" for TCMA was "specified" by the FAA. Manufacturers seeking certification of aeronautical products subject to the requirements then had no choice but to design and instal systems that met the FAA's certification requirements.
+  <br/>
+  <br/>
+  I'm pretty sure it's clear what "sources", other than TCMA systems if any, have "authority to issue an engine shutdown command", though it does depend on what you mean by "engine shutdown".
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>syseng68k<br/>2025-06-18T13:11:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-21.html#post11905233><br/>permalink</a>
+ Post: 11905233</td>
+<td class=post><div class="tcell alt1" id="td_post_11905233">
+ <!-- message -->
+ <div id="post_message_11905233">
+  Lead Balloon:
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  &ldquo;The "requirement" for TCMA was "specified" by the FAA. Manufacturers seeking certification of aeronautical products subject to the requirements then had no choice but to design and instal systems that met the FAA's certification requirements&rdquo;.
+  <br/>
+  <br/>
+  I think that has already been established upthread.
+  <br/>
+  <br/>
+  <br/>
+  &ldquo;I'm pretty sure it's clear what "sources", other than TCMA systems if any, have "authority to issue an engine shutdown command", though it does depend on what you mean by "engine shutdown".&rdquo;
+  <br/>
+  <br/>
+  I don&rsquo;t think that is clear at all. The shutdown hypothesis, if true, both engines, makes it likely that they were commanded to do so. While the discussion has centered around the TCMA subsystem, if other subsystems have the ability to do that, they need to be defined and looked at as well.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>mechpowi<br/>2025-06-18T13:32:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-22.html#post11905254><br/>permalink</a>
+ Post: 11905254</td>
+<td class=post><div class="tcell alt1" id="td_post_11905254">
+ <!-- message -->
+ <div id="post_message_11905254">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      syseng68k
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11905233" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Lead Balloon:
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+     \x93The "requirement" for TCMA was "specified" by the FAA. Manufacturers seeking certification of aeronautical products subject to the requirements then had no choice but to design and instal systems that met the FAA's certification requirements\x94.
+     <br/>
+     <br/>
+     I think that has already been established upthread.
+     <br/>
+     <br/>
+     <br/>
+     \x93I'm pretty sure it's clear what "sources", other than TCMA systems if any, have "authority to issue an engine shutdown command", though it does depend on what you mean by "engine shutdown".\x94
+     <br/>
+     <br/>
+     I don\x92t think that is clear at all. The shutdown hypothesis, if true, both engines, makes it likely that they were commanded to do so. While the discussion has centered around the TCMA subsystem, if other subsystems have the ability to do that, they need to be defined and looked at as well.
+    </div>
+   </div>
+  </div>
+  There\x92s at least N2 overspeed protection that actually uses the same hardware as TCMA to stop the noise. There might exists crosstalk and inhibit for the N2 overspeed protection if the N2 overspeed protection has shut down the other engine. In fact it\x92s not confirmed that no such crosstalk exists in 787 TCMA system. It would complie with \x94no single fault should cause\x85\x94 certification requirements. Other than that I see no practical difference in the propability of TCMA and N2 overspeed protection to shut down both engine during take-off.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>galaxy flyer<br/>2025-06-18T14:24:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-22.html#post11905292><br/>permalink</a>
+ Post: 11905292</td>
+<td class=post><div class="tcell alt1" id="td_post_11905292">
+ <!-- message -->
+ <div id="post_message_11905292">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      SRMman
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11905266" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     My point was IF the investigations team have already discovered that a technical issue caused the accident, and it could happen again, how would they balance the need to inform everyone quickly, against the commercial consequences of a grounding, especially if the reason for the fault wasn\x92t yet understood.
+    </div>
+   </div>
+  </div>
+  The IIC would bring together the investigators, which include the FAA rep, OEM reps, and try to reach a consensus on the what and is there a technical fix or advisory needed.  It could be notice to operators, an emergency AD.  This process is not played out in the media.  We don\x92t need to know until the IIC releases the information.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>WillowRun 6-3<br/>2025-06-18T15:45:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-23.html#post11905345><br/>permalink</a>
+ Post: 11905345</td>
+<td class=post><div class="tcell alt1" id="td_post_11905345">
+ <!-- message -->
+ <div id="post_message_11905345">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      The Brigadier
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11905193" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     A case in point is the 2013 Boeing 787 battery fires. After two thermal runaways in 52 000 flight-hours, the root cause was still unknown; however, the FAA nevertheless issued Emergency AD 2013-02-51 grounding every 787 until a modification was available. IMHO a risk where the outcome is catastrophic, even very low probability, would trigger the FAA to issue an Emergency Airworthiness Directive as per their policy.
+     <br/>
+     <br/>
+     As I said in a previous post, every day that passes without a EAD suggest the cause was was specific to that aircraft (fuel contamination, maintenance failure, crew error - pick you own theory)
+    </div>
+   </div>
+  </div>
+  Additionally, the lithium-ion batteries in the 787 design required compliance with "Special Conditions" in order to gain type certification. The addition of the Special Conditions at least strongly suggests that FAA's certification process brain-trust had maintained some vigilance with regard to the batteries once the type started operating, i.e., given their newness.
+  <br/>
+  <br/>
+  At this time, the fault or flaw at the root of this accident and how that fault or flaw worked through aircraft components and systems has not been identified publicly. It might not even have been identified .... I'm not convinced that separating "what" from "how and why" as a semantics exercise is enough to conclude the Annex 13 officials know the root cause yet. Maybe they do, maybe not.
+  <br/>
+  <br/>
+  And if they do not, then the contrast with the situation where FAA was, it seemed, keeping a close eye on battery issues in particular, is relevant.
+  <br/>
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>TBC Retired<br/>2025-06-18T18:32:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-24.html#post11905458><br/>permalink</a>
+ Post: 11905458</td>
+<td class=post><div class="tcell alt1" id="td_post_11905458">
+ <!-- message -->
+ <div id="post_message_11905458">
+  I can tell you from experience that the emphasis in fault analysis and testing is to meet the requirements for certification, not necessarily for safety.
+  <br/>
+  <br/>
+  Things not strictly required to obtain type cert don't get much attention from management.
+  <br/>
+  <br/>
+  The only reason robust TAT validation ended up on 737Max was because Boeing propulsion ARs made it clear to management that the FAA would not certify without it, based on experience with 787 and 747-8. They were much less receptive to retrofitting into the OG and NG fleets based on safety concerns alone because those models were already certified.
+  <br/>
+  <br/>
+  It took a combination of insistent engineers and pressure from airlines to change their minds.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by T28B; 18th Jun 2025 at
+   <span class="time">
+    18:33
+   </span>
+   .
+							
+							
+								Reason: Formatting to pull the points out clearly, and thank you 8^)
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Util BUS<br/>2025-06-18T19:10:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-25.html#post11905482><br/>permalink</a>
+ Post: 11905482</td>
+<td class=post><div class="tcell alt1" id="td_post_11905482">
+ <!-- message -->
+ <div id="post_message_11905482">
+  Perhaps two things might have exacerbated any electrical problems:
+  <br/>
+  <br/>
+  1) Electrical Grounding
+  <br/>
+  <br/>
+  Boeing whistleblower, Sam Salehpour claims that Boeing used improper techniques to ground electrical systems on the 787, which could lead to arcing, overheating, and potential fire hazards.
+  <br/>
+  <br/>
+  2) B787-9 RAT Certification
+  <br/>
+  <br/>
+  During B787-9 flight testing, The generator control unit in the RAT experienced a failure during flight testing. This failure led to a delay in the 787-9's certification, as the FAA needed to ensure the reliability and safety of the RAT system.
+  <br/>
+  <br/>
+  Based on my previous speculation regarding a BTB short, I wonder how aircraft engines might react in a situation where initially a transient power fault is followed by only battery power being available? As I understand it, there are no longer cable connections to the engines, given no valid inputs from the.thrust levers, what thrust mode would the FADEC's revert to?
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>B2N2<br/>2025-06-19T01:04:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-26.html#post11905646><br/>permalink</a>
+ Post: 11905646</td>
+<td class=post><div class="tcell alt1" id="td_post_11905646">
+ <!-- message -->
+ <div id="post_message_11905646">
+  If:
+  <ul>
+   <li>
+    Asiana can crash on approach and landing (Asiana 214)
+   </li>
+   <li>
+    Emirates can  crash on a go-around (Emirates 521)
+   </li>
+   <li>
+    Emirates can  almost crash on take off (Emirates 231)
+   </li>
+   <li>
+    United can almost crash on take off ( UA 1722)
+   </li>
+  </ul>
+  <br/>
+  Then Air India can have an accident on take off without any nefariousness or hidden design flaws.
+  <br/>
+  <br/>
+  This accident has the full attention of
+  <ul>
+   <li>
+    Boeing
+   </li>
+   <li>
+    GE
+   </li>
+   <li>
+    FAA
+   </li>
+   <li>
+    NTSB
+   </li>
+   <li>
+    EASA
+   </li>
+  </ul>
+  <br/>
+  1,189 Dreamliners have been delivered.
+  <br/>
+  There have been no worldwide or even regional groundings.
+  <br/>
+  No Emergency AD\x92s, no required inspections.
+  <br/>
+  If a hidden hardware or software issue would be suspected there would have been a response by FAA/EASA already.
+  <br/>
+  The silence is deafening\x85and telling.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>bbofh<br/>2025-06-19T01:30:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-27.html#post11905658><br/>permalink</a>
+ Post: 11905658</td>
+<td class=post><div class="tcell alt1" id="td_post_11905658">
+ <!-- message -->
+ <div id="post_message_11905658">
+  The 787-8 landing gear retraction is primarily hydraulic, using the center hydraulic system for the main operation. However, the alternate gear
+  <i>
+   <u>
+    extension
+   </u>
+  </i>
+  system utilizes a dedicated electric pump to pressurize fluid from the center hydraulic system for gear extension. Obviously due its size and weight and staged retraction, the effort required to raise and stow the gear greatly exceeds that required for extension.
+  <br/>
+  <br/>
+  The main gear retraction/extension is controlled by the center hydraulic system.
+  <br/>
+  <br/>
+  It is apparent that the hydraulics failed when the engines shut down after breaking the down-locks and leaving the Main Landing gear bogeys in the tilt position, ready for a
+  <b>
+   <i>
+    next step
+   </i>
+  </b>
+  internal stowage and door closure (that was now never to happen). It is therefore apparent that the dual engine failure and consequent automated RAT extension was precipitated by this gear selection or retraction cycle and thus likely to be either WoW micro-switch or 5G Radar altimeter-effect associated. Due to accumulator depletion, the electric pump load would have spiked to replenish it. This may have precipitated the dual engine shutdown due to an unfiltered electrical surge affecting the Ground/Air microswitches (or a local 5G transmission affecting the RADALT) and resetting the TCMA.
+  <br/>
+  <br/>
+  The RADALT? Another plausibility? Because of the furore over a spasticated frequency allocation by the US FCC, the US FAA had finally &ldquo;bought in&rdquo; and declared that individual nations and their airline operators were responsible for their own 5G frequency spectrum allocations and for taking essential steps to ensure mitigation of the interference effects upon aircraft automated landings and other
+  <i>
+   critical systems
+  </i>
+  caused by their own national approved 5G spectrum decisions. It was admittedly a situation calling for extensive modifications to (and shielding for) the three radar altimeters fitted for redundancy considerations to all modern airliners... for Category 3 ILS approach and landing in zero/zero visibility conditions.  The RADALT also features in many air-ground sensing applications. (eg the 747-8).
+  <br/>
+  <br/>
+  This was an unusual FAA
+  <i>
+   &ldquo;passing of the buck&rdquo;
+  </i>
+  to manufacturers such as Honeywell etc. (to sort out with client operators). But then again, it was not the US FCC&rsquo;s right to dictate the specific 5G frequencies internationally. These spectrum allocations now vary over the wide selection of 5G phones available (and also nationally). 5G Radar Altimeters constitute a part of the ground/Air sensing that changes the TCMA from ground mode (able to fuel-chop engines) to the air mode (inhibited from doing so)... Ground activation is acceptable ...where fuel chopping of uncommanded thrust can prevent runway sideways excursions or runway length overruns. The question now becomes: &ldquo;Is it more (or less) safe having an automated fuel-chopping capability on BOTH your left and right, rather than leaving it to the pilot to react via his center console fuel cut-off switches... in the unlikely event of a runaway engine after landing (or during an abandoned take-off)?
+  <br/>
+  <br/>
+  <b>
+   5G Frequency Variations
+  </b>
+  <br/>
+  <br/>
+  The frequencies of 5G phones vary nationally based on the frequency bands allocated and used by different carriers in each country. In the United States, for example, carriers such as AT&amp;T, Verizon, T-Mobile, and others use a combination of low-band, mid-band, and high-band 5G frequencies.
+  <b>
+   Low-band 5G frequencies typically range from 600 MHz to 1 GHz, mid-band 5G frequencies range from 1.7 GHz to 2.5 GHz, and high-band 5G (mmWave) frequencies start at 24 GHz and go up to 40 GHz
+  </b>
+  . These frequencies are allocated by regulatory bodies such as the Federal Communications Commission (FCC) and can vary between countries based on spectrum availability and regulatory decisions. In other countries, the specific frequency bands used for 5G may differ, leading to variations in the frequencies supported by 5G phones. Additionally, the deployment of 5G networks can also influence the frequencies used, with some countries focusing more on sub-6 GHz bands while others prioritize mmWave technology.
+  <br/>
+  <br/>
+  5G interference? It may be an avenue worth exploring?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=FAA0.html>First</a>
+&nbsp;<a href=FAA0.html>Previous</a>
+&nbsp;<a href=FAA0.html>1</a>
+&nbsp;<a href=FAA1.html><b>2</b>
+</a>
+&nbsp;<a href=FAA2.html>3</a>
+&nbsp;<a href=FAA2.html>Next</a>
+&nbsp;<a href=FAA2.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>
