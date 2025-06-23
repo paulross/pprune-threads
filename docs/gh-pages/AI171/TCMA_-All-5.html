@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune TCMA (All) name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts about: "TCMA (All)" [Posts: 272 Pages: 14]</h1>
+<body><h1>Posts about: "TCMA (All)" [Posts: 278 Pages: 14]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=TCMA_-All-0.html>First</a>
 &nbsp;<a href=TCMA_-All-4.html>Previous</a>
 &nbsp;<a href=TCMA_-All-0.html>1</a>
@@ -23,7 +23,175 @@
 &nbsp;<a href=TCMA_-All-13.html>Last</a>
 &nbsp;<a href=index.html>Index Page</a>
 </p>
-<table class=posts><tr valign=top><td class=post>unworry<br/>2025-06-16T08:15:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-85.html#post11903233><br/>permalink</a>
+<table class=posts><tr valign=top><td class=post>tdracer<br/>2025-06-16T06:21:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-84.html#post11903132><br/>permalink</a>
+ Post: 11903132</td>
+<td class=post><div class="tcell alt1" id="td_post_11903132">
+ <!-- message -->
+ <div id="post_message_11903132">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      DTA
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903115" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Where does the logic block that takes the WoW and other inputs to generate the singe air/ground indication live? Is it somewhere that would be affected by the aircraft power systems? Could a failure in the aircraft power cause a false ground indication to be sent to the FADECs?
+    </div>
+   </div>
+  </div>
+  Repeating myself (again), but ALL the TCMA logic is resident in the FADEC.  It takes aircraft inputs of air/ground (again, not familiar with the specifics of the air/ground logic used on the 787/GEnx-1B, so don't ask), thrust lever position, and what the engine is actually doing (mainly N1) to determine if the engine is 'out of control'.
+  <br/>
+  The thrust lever inputs are hardwired (resolvers connected to the thrust levers, powered by the FADEC), other aircraft communications on the 787 are on an ethernet based network.  Default mode for the FADEC if aircraft inputs are lost or invalid is "Air", as that is generally considered to be the 'safe' choice.
+  <br/>
+  But even assuming some aircraft fault caused the FADECs to falsely believe the aircraft was 'on-ground', it would
+  <i>
+   still
+  </i>
+  take a pretty major error in the TCMA logic for it to actually trigger and shutdown the engine (especially lacking an associated thrust lever movement to idle).  Never say never, but we're getting pretty far out on the probability tree for all these things to happen.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>C2H5OH<br/>2025-06-16T06:54:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-85.html#post11903156><br/>permalink</a>
+ Post: 11903156</td>
+<td class=post><div class="tcell alt1" id="td_post_11903156">
+ <!-- message -->
+ <div id="post_message_11903156">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Alty7x7
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902802" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     FADEC = Full-Authority Digital Engine Control
+     <br/>
+     <br/>
+     Isolation comment still applies, but 'completely' may be debatable when there are still physical connections.
+    </div>
+   </div>
+  </div>
+  And most of all, the SISO principle (#### in #### out) applies with regard to data from other systems, which are obviously processed in TCMA. Multiple transient faults may not be considered comprehensively e.g. in input processing and filtering.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Xeptu<br/>2025-06-16T06:59:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-85.html#post11903160><br/>permalink</a>
+ Post: 11903160</td>
+<td class=post><div class="tcell alt1" id="td_post_11903160">
+ <!-- message -->
+ <div id="post_message_11903160">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      OldnGrounded
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903028" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <br/>
+     I'm still looking for identification of the relevant inputs for TCMA on the GEnx-1B. If anyone has suggestions, please share.
+    </div>
+   </div>
+  </div>
+  Don't quote me but I think it closes the firewall shut off valves (wing root) not the high pressure shutoff valves (engine) and it sources it's information from the EEC
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Europa01<br/>2025-06-16T08:03:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-85.html#post11903225><br/>permalink</a>
+ Post: 11903225</td>
+<td class=post><div class="tcell alt1" id="td_post_11903225">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   TCMA / FADEC
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11903225">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903132" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Repeating myself (again), but ALL the TCMA logic is resident in the FADEC. It takes aircraft inputs of air/ground (again, not familiar with the specifics of the air/ground logic used on the 787/GEnx-1B, so don't ask), thrust lever position, and what the engine is actually doing (mainly N1) to determine if the engine is 'out of control'.
+     <br/>
+     The thrust lever inputs are hardwired (resolvers connected to the thrust levers, powered by the FADEC), other aircraft communications on the 787 are on an ethernet based network. Default mode for the FADEC if aircraft inputs are lost or invalid is "Air", as that is generally considered to be the 'safe' choice.
+     <br/>
+     But even assuming some aircraft fault caused the FADECs to falsely believe the aircraft was 'on-ground', it would
+     <i>
+      still
+     </i>
+     take a pretty major error in the TCMA logic for it to actually trigger and shutdown the engine (especially lacking an associated thrust lever movement to idle). Never say never, but we're getting pretty far out on the probability tree for all these things to happen.
+    </div>
+   </div>
+  </div>
+  Yes. Thank you tdracer. All those postulating TCMA / FADEC faults please read and understand this clear explanation.
+  <br/>
+  <br/>
+  Then, ask yourselves which extraordinarily low probability bundle of previously unrevealed faults could spontaneously manifest themselves on both engines simultaneously.
+  <br/>
+  <br/>
+  Also ask yourselves why these faults manifested at that critical phase of flight and not during taxiing or take-off roll when some of the TCMA sensors would have been primed.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>unworry<br/>2025-06-16T08:15:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-85.html#post11903233><br/>permalink</a>
  Post: 11903233</td>
 <td class=post><div class="tcell alt1" id="td_post_11903233">
  <!-- message -->
@@ -871,194 +1039,6 @@
   <br/>
   <br/>
   What sort of 'confirmation' do you have in mind - the regulator mandate that resulted in TCMA basically says we can't take credit for the flight crew.
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr valign=top><td class=post>fdr<br/>2025-06-16T00:57:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-4.html#post11903735><br/>permalink</a>
- Post: 11903735</td>
-<td class=post><div class="tcell alt1" id="td_post_11903735">
- <!-- message -->
- <div id="post_message_11903735">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      tdracer
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903000" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     Inlet compliance is tested at max takeoff power settings, at AOA up to stall. This is done by performing something called a 'wind-up turn' - with the engine at max TO power and constant altitude, they keep pulling the turn tighter until the wing stalls and the aircraft falls out of the turn.
-     <br/>
-     If the engine doesn't continue normal operation, that's considered a 'fail'. Plus, the engine reaction of an over-rotated inlet (inlet separation) is a surge - accompanied by big bang and a ball of flame out the back.
-     <br/>
-     Nothing we know about this accident supports an over-rotation and related engine stall/surge.
-    </div>
-   </div>
-  </div>
-  Adding to your response TD, there is no time in this event where a high AOA arose prior to the final moments, around 13 seconds after the problem has occurred. AOA, intake separation is not a factor.
-  <br/>
-  <br/>
-  Going back to your prior comments on FADEC and TCMA; these are independent systems to each engine, however the event indicates a symmetric loss, and the potential of water ingress from a failed E/E sealing from the main cabin services remains a single causation that could result in multiple failures at the same moment. The last time I assessed issues in the E/E bay related to unauthorised inflight access to the fwd E/E of a B777 it was sobering how many irreversible conditions could arise. The B744 water inundation cases I was involved in were both on TO, the QF event was during deceleration. We are looking at vectors that come from outside of the normal assumptions in the SSA's, water fits that bill.
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr valign=top><td class=post>tdracer<br/>2025-06-16T01:26:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-4.html#post11903432><br/>permalink</a>
- Post: 11903432</td>
-<td class=post><div class="tcell alt1" id="td_post_11903432">
- <!-- message -->
- <div id="post_message_11903432">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      bbofh
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903016" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     The TCMA patent application is at:
-     <a href="https://patents.google.com/patent/US6704630B2/en" target="_blank">
-      https://patents.google.com/patent/US6704630B2/en
-     </a>
-     <br/>
-     Quite a simple system (not)
-     <br/>
-     What gets your attention is the fact that you can continue to operate the aircraft without an MMEL entry when one of the two systems (per EEC) that shadow each other... is unserviceable.
-     <br/>
-     As it says: "Typically the aircraft is allowed to operate for a limited period of time with just a single operative processing subsystem."
-     <br/>
-     That 787 was not long out of maintenance.
-    </div>
-   </div>
-  </div>
-  As I noted previously, the FADEC is a dual channel device.  It's long been the case that dispatch is allowed with a single FADEC channel failed (this goes back to the original PW4000/CF6-80C2 as installed on the 747-400 and 767.
-  <br/>
-  The MMEL says something like "4 installed, 3 required" (referring to individual FADEC channels) - so you can dispatch for a short time with one FADEC channel failed.  Yes, if the remaining channel of faulted FADEC fails, the engine will fail - but the FADEC reliability is such that the probability of losing the remaining channel (and hence the engine) is sufficiently small as to be acceptable.
-  <br/>
-  <br/>
-  Both channels can operate TCMA, so a single channel failure has not overall effect on the system.
-  <br/>
-  <br/>
-  Again, 'channel out' dispatch is nothing new - it's been the case since 1989 (when the PW4000/767 entered service).
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr valign=top><td class=post>tdracer<br/>2025-06-16T06:21:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-5.html#post11903434><br/>permalink</a>
- Post: 11903434</td>
-<td class=post><div class="tcell alt1" id="td_post_11903434">
- <!-- message -->
- <div id="post_message_11903434">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      DTA
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903115" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     Where does the logic block that takes the WoW and other inputs to generate the singe air/ground indication live? Is it somewhere that would be affected by the aircraft power systems? Could a failure in the aircraft power cause a false ground indication to be sent to the FADECs?
-    </div>
-   </div>
-  </div>
-  Repeating myself (again), but ALL the TCMA logic is resident in the FADEC.  It takes aircraft inputs of air/ground (again, not familiar with the specifics of the air/ground logic used on the 787/GEnx-1B, so don't ask), thrust lever position, and what the engine is actually doing (mainly N1) to determine if the engine is 'out of control'.
-  <br/>
-  The thrust lever inputs are hardwired (resolvers connected to the thrust levers, powered by the FADEC), other aircraft communications on the 787 are on an ethernet based network.  Default mode for the FADEC if aircraft inputs are lost or invalid is "Air", as that is generally considered to be the 'safe' choice.
-  <br/>
-  But even assuming some aircraft fault caused the FADECs to falsely believe the aircraft was 'on-ground', it would
-  <i>
-   still
-  </i>
-  take a pretty major error in the TCMA logic for it to actually trigger and shutdown the engine (especially lacking an associated thrust lever movement to idle).  Never say never, but we're getting pretty far out on the probability tree for all these things to happen.
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr valign=top><td class=post>Europa01<br/>2025-06-16T08:03:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-5.html#post11903748><br/>permalink</a>
- Post: 11903748</td>
-<td class=post><div class="tcell alt1" id="td_post_11903748">
- <!-- icon and title -->
- <div class="smallfont">
-  <strong>
-   TCMA / FADEC
-  </strong>
- </div>
- <hr/>
- <!-- / icon and title -->
- <!-- message -->
- <div id="post_message_11903748">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      tdracer
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903132" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     Repeating myself (again), but ALL the TCMA logic is resident in the FADEC. It takes aircraft inputs of air/ground (again, not familiar with the specifics of the air/ground logic used on the 787/GEnx-1B, so don't ask), thrust lever position, and what the engine is actually doing (mainly N1) to determine if the engine is 'out of control'.
-     <br/>
-     The thrust lever inputs are hardwired (resolvers connected to the thrust levers, powered by the FADEC), other aircraft communications on the 787 are on an ethernet based network. Default mode for the FADEC if aircraft inputs are lost or invalid is "Air", as that is generally considered to be the 'safe' choice.
-     <br/>
-     But even assuming some aircraft fault caused the FADECs to falsely believe the aircraft was 'on-ground', it would
-     <i>
-      still
-     </i>
-     take a pretty major error in the TCMA logic for it to actually trigger and shutdown the engine (especially lacking an associated thrust lever movement to idle). Never say never, but we're getting pretty far out on the probability tree for all these things to happen.
-    </div>
-   </div>
-  </div>
-  Yes. Thank you tdracer. All those postulating TCMA / FADEC faults please read and understand this clear explanation.
-  <br/>
-  <br/>
-  Then, ask yourselves which extraordinarily low probability bundle of previously unrevealed faults could spontaneously manifest themselves on both engines simultaneously.
-  <br/>
-  <br/>
-  Also ask yourselves why these faults manifested at that critical phase of flight and not during taxiing or take-off roll when some of the TCMA sensors would have been primed.
  </div>
  <!-- / message -->
 </div>

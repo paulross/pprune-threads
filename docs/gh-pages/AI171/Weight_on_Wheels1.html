@@ -1,0 +1,1161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune Weight on Wheels name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "Weight on Wheels" [Posts: 39 Pages: 2]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=Weight_on_Wheels0.html>First</a>
+&nbsp;<a href=Weight_on_Wheels0.html>Previous</a>
+&nbsp;<a href=Weight_on_Wheels0.html>1</a>
+&nbsp;<a href=Weight_on_Wheels1.html><b>2</b>
+</a>
+&nbsp;<a href=Weight_on_Wheels1.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post>DTA<br/>2025-06-16T05:52:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-84.html#post11903115><br/>permalink</a>
+ Post: 11903115</td>
+<td class=post><div class="tcell alt1" id="td_post_11903115">
+ <!-- message -->
+ <div id="post_message_11903115">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902989" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     On the 747, Weight on Wheels (WoW) depends on prox sensors on the landing gear (i.e. gear compression). I don't know how that's done on the 787.
+     <br/>
+     The reason we used both Radio Alt and WoW is that both can give erroneous indications on certain conditions - RA can be 'fooled' by dense rain or even really dense fog (the signals bounce off the water and falsely indicate on-ground), the prox sensor system can subject to HIRF/Lightning interference.
+     <br/>
+     <br/>
+     TCMA acts quickly, but it does require some persistence, so an input glitch won't activate it (mainly N1, which is measured every 15 milliseconds).
+     <br/>
+     <br/>
+     What sort of 'confirmation' do you have in mind - the regulator mandate that resulted in TCMA basically says we can't take credit for the flight crew.
+    </div>
+   </div>
+  </div>
+  Where does the logic block that takes the WoW and other inputs to generate the singe air/ground indication live?  Is it somewhere that would be affected by the aircraft power systems?  Could a failure in the aircraft power cause a false ground indication to be sent to the FADECs?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>tdracer<br/>2025-06-13T18:41:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903417><br/>permalink</a>
+ Post: 11903417</td>
+<td class=post><div class="tcell alt1" id="td_post_11903417">
+ <!-- message -->
+ <div id="post_message_11903417">
+  OK, another hour spent going through all the posts since I was on last night...
+  <br/>
+  I won't quote the relevant posts as they go back ~15 pages, but a few more comments:
+  <br/>
+  <br/>
+  TAT errors affecting N1 power set: The FADEC logic (BTW, this is pretty much common on all Boeing FADEC) will use aircraft TAT if it agrees with the dedicated engine inlet temp probe -
+  <i>
+   but if they differ it will use the engine probe
+  </i>
+  . The GE inlet temp probe is relatively simple and unheated, so (unlike a heated probe) a blocked or contaminated probe will still read accurately - just with greater 'lag' to actual temperature changes.
+  <br/>
+  <br/>
+  TCMA - first off, I have to admit that this does look rather like an improper TCMA activation, but that is very, very unlikely. For those who don't know, TCMA is a system to shutdown a runaway engine that's not responding to the thrust lever - basic logic is an engine at high power with the thrust lever at/near idle, and the engine not decelerating. However, TCMA is
+  <i>
+   only
+  </i>
+  active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+  <i>
+   one of each
+  </i>
+  had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+  <br/>
+  <br/>
+  Fuel contamination/filter blockage: The fuel filters have a bypass - if the delta P across the filter becomes excessive, the filter bypasses and provides the contaminated fuel to the engine. Now this contaminated fuel could easy foul up the fuel metering unit causing a flameout, but to happen to two engines at virtually the same time would be tremendous unlikely.
+  <br/>
+  <br/>
+  Auto Thrust thrust lever retard - the TO lockup in the logic makes this very unlikely (it won't unlock below (IIRC) 400 ft., and even that requires a separate pilot action such as a mode select change or thrust lever movement). And if it did somehow happen, all the pilot needs to do is push the levers back up.
+  <br/>
+  <br/>
+  Engine parameters on the FDR: I don't know what exactly is on the 787 FDR with regards to engine parameters, but rest assured that there is plenty of engine data that gets recorded - most at one/second. Getting the FDR readout from a modern FDR is almost an embarrassment of riches. Assuming the data is intact, we'll soon have a very good idea of what the engines were doing
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>tdracer<br/>2025-06-15T21:03:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-3.html#post11903426><br/>permalink</a>
+ Post: 11903426</td>
+<td class=post><div class="tcell alt1" id="td_post_11903426">
+ <!-- message -->
+ <div id="post_message_11903426">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      A0283
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902331" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Would be interesting to understand more about the exact definition of TCMA&rsquo;s &ldquo;on the ground&ldquo; and some more detailed insight into its implementation (only one or more WoW&rsquo;s or multiple sensing?&hellip; is there a switch on the gear added? &hellip;is there an ALT/AGL check?.. how is implementation split over HW/FW/SW? &hellip; ).
+     <br/>
+     <br/>
+     Also, how could external factors impact that sequence to run.
+     <br/>
+     <br/>
+     Appreciating your previous answers (as usual).
+    </div>
+   </div>
+  </div>
+  Keeping track of this thread is tiring - again, my sympathies to the mods, as tiring as I find it, it must be far worse for them
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_wall.gif" title="Ugh"/>
+  )
+  <br/>
+  Apologies for a few terse posts last night, but a couple of inane posts (by a usual suspect) really set me off. I've never used the 'ignore' function, but I may need to revisit that.
+  <br/>
+  <br/>
+  I posted this previously, but it was about 70 pages ago, so I understand not going back that far, or forgetting that tidbit amongst all the noise.
+  <br/>
+  In short, I'm not familiar with the specific air/ground logic on the 787/GEnx-1B - the logic I posted (3 radio altimeters, 2 Weight on Wheels, at least one of each must indicate 'on-ground) is for the 747-8 (which I'm intimately familiar with). I have a vague recollection of a discussion with my GEnx-1B counterpart 10 or more years ago that suggested that the 787 was not as complex as the 747-8, but I don't recall any details. Basic FADEC logic (BTW, as someone else noted - it's "Full Authority", not "Autonomous") is to default to 'air' if in doubt, as it's considered to be 'safer'.
+  <br/>
+  The only real hardware in the TCMA system is the N2 overspeed shutdown system - which goes through a BITE style functional test on every engine start. Everything else is in software - with the only aircraft inputs being Air/Ground and thrust lever position.
+  <br/>
+  <br/>
+  As I've posted previously, the FADEC is powered by a dedicated Permanant Magnet Alternator (PMA) - aircraft power is used only as a backup for starting or if the PMA fails.  If the FADEC determines it is running on aircraft power with engine running (i.e. the PMA has failed), it sets a 'No Dispatch" fault message.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>tdracer<br/>2025-06-16T00:01:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-4.html#post11903430><br/>permalink</a>
+ Post: 11903430</td>
+<td class=post><div class="tcell alt1" id="td_post_11903430">
+ <!-- message -->
+ <div id="post_message_11903430">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      syseng68k
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902976" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     FrequentSLF: I would be more suspicious of the hardware that feeds TCMA. Rad Alt sensing could be in error, but possibly more likely is the hardware that senses weight on wheels. May be position sensing microswitches, or perhaps gear oil pressure, but would assume redundancy, eg: two sensors per leg, then some sort of voting logic on the sensor set to find faulty hardware.and make a decision. Doubt if the software is at fault, but is there a delay between sensor output, and command to shutdown the enigines ?. Alluded to doubts upthread, but I think the post was deleted. Question: Should TCMA really have the absolute power to auto shutdown engines at all, without some sort of confirmation ?.
+    </div>
+   </div>
+  </div>
+  On the 747, Weight on Wheels (WoW) depends on prox sensors on the landing gear (i.e. gear compression). I don't know how that's done on the 787.
+  <br/>
+  The reason we used both Radio Alt and WoW is that both can give erroneous indications on certain conditions - RA can be 'fooled' by dense rain or even really dense fog (the signals bounce off the water and falsely indicate on-ground), the prox sensor system can subject to HIRF/Lightning interference.
+  <br/>
+  <br/>
+  TCMA acts quickly, but it does require some persistence, so an input glitch won't activate it (mainly N1, which is measured every 15 milliseconds).
+  <br/>
+  <br/>
+  What sort of 'confirmation' do you have in mind - the regulator mandate that resulted in TCMA basically says we can't take credit for the flight crew.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Lead Balloon<br/>2025-06-16T23:04:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-6.html#post11903859><br/>permalink</a>
+ Post: 11903859</td>
+<td class=post><div class="tcell alt1" id="td_post_11903859">
+ <!-- message -->
+ <div id="post_message_11903859">
+  I preface this post by acknowledging all the previous posts in this, and the now-closed thread, about the TCMA, in particular the excellent posts by tdracer. (Ditto the noise analyses by Kraftstoffvondesibel and First Principal.)
+  <br/>
+  <br/>
+  I also note that the primary source of the information on which I&rsquo;m basing my post is the content of
+  <a href="https://patents.google.com/patent/US6704630B2/en" target="_blank">
+   Boeing&rsquo;s patent application
+  </a>
+  which, of course, does not contain any of the actual wiring diagrams or modification details of the TCMA, even assuming it has been implemented. (I understand from the now-closed thread, that there is an unresolved question as to whether a petition for an exemption from the TCMA requirement had been successful.)
+  <br/>
+  <br/>
+  The point of my post is to get other&rsquo;s thoughts on one of the design principles of the TCMA system proposed in the patent application.
+  <br/>
+  <br/>
+  The ostensibly simple and elegant concept is described in the schematic of the system at figure 1 of the patent application. A copy of figure 1 is below.
+  <br/>
+  <br/>
+  The TCMA is the part of the schematic inside the dotted box numbered
+  <b>
+   16
+  </b>
+  , sitting with the EEC (others would call it the FADEC) in the solid box numbered
+  <b>
+   18
+  </b>
+  .
+  <br/>
+  <br/>
+  The heart of the TCMA comprises two switch relays, numbered
+  <b>
+   22
+  </b>
+  and
+  <b>
+   28
+  </b>
+  in the schematic, wired in series. Each of those switch relays is controlled by its own, dedicated engine control malfunction software, identified as the blobs numbered
+  <b>
+   130
+  </b>
+  . (The patent application identifies component 34 as a dedicated processor and 32 as the diode connected to the switch relays, but that is evidently a mistake. Component 34 is the diode and I can&rsquo;t find a component number 32 anywhere in the schematics.)
+  <br/>
+  <br/>
+  Each relay switch and its controlling software is described as a &lsquo;channel&rsquo;, one A and one B.
+  <b>
+   Both
+  </b>
+  channels run continuously, monitoring throttle position (36 in the schematic) versus engine data fed from ARINC data bus lines (46 in the schematic) and &ldquo;dedicated input sensors&rdquo; not shown in the schematic. Those sensors presumably detect things like weight on wheels and perhaps RADALT.
+  <br/>
+  <br/>
+  This design is said to achieve redundancy, because if only
+  <b>
+   one
+  </b>
+  &lsquo;channel&rsquo; detects the engine is producing excessive thrust while the throttle is set to idle, that channel will set its switch relay to CUTOFF and that is enough to change the state of the high pressure fuel shut off valve (58 in the schematic). No more motion lotion. In the words of the patent application: Both channels are &ldquo;always actively monitoring engine function and independently have the capability of shutting down the engine.&rdquo;
+  <br/>
+  <br/>
+  That arrangement wrinkled my crusty old avtech brow. In my mind &ndash; and this is why I&rsquo;m seeking other&rsquo;s thoughts &ndash; the advantage of redundancy arising from the two channels, either or both of which can shut the engine down, is not without risk. If it is possible for one of the channels to have some &lsquo;glitch&rsquo; or hardware failure such that it does not detect an actual out of envelope condition justifying immediate shut down, with the other channel detecting the condition and shutting the engine down, it inexorably follows &ndash; does it not &ndash; that it is possible for one (or both) of the channels to have a &lsquo;glitch&rsquo; or hardware failure that results in a shut down when there is no out of envelope condition?
+  <br/>
+  <br/>
+  Further, even if there are completely separate, duplicated sensors telling each channel things like the position of the throttle and whether or not there is weight on wheels, there remains the possibility of a combination of sensor failures/disconnects resulting in one channel being &lsquo;convinced&rsquo; that an out of envelope condition exists, with a consequential cutoff of fuel to the engine.
+  <br/>
+  <br/>
+  I of course acknowledge the valid observations made about the remote probabilities of these kinds of glitches and failures.
+  <br/>
+  <br/>
+  I&rsquo;ve heard rumours that there was much resistance to the mandating of TCMA systems. Having seen many, many strange faults caused by random shorts, open circuits, liquid ingress and other foreign objects, I can understand why there was that resistance. Every time you add something to a system and that added thing has electronic components and software and electrical connections and data inputs, you add risk of that thing malfunctioning or working perfectly but with erroneous inputs. In this case, there are effectively two added new things: two channels, each one of which has the ability to shut off the motion lotion to the engine to which they are strapped.
+  <br/>
+  <br/>
+  I make no comment on whether TCMA systems, if fitted, have anything to do with this tragedy.
+  <br/>
+  <br/>
+  My profound condolences to the families and friends of those killed or injured. My thoughts also go out to the many people who will be agonising over the potential causes and responsibility for it. And thanks to those who are working out the causes.
+  <br/>
+  <br/>
+  ...
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg2.ibsrv.net/gimg/pprune.org-vbulletin/1011x644/tcma_patent_application_a3beeed1d28959ee4f5ddd78a1e53b03df7ff40b.png"/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Lead Balloon<br/>2025-06-17T02:34:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903924><br/>permalink</a>
+ Post: 11903924</td>
+<td class=post><div class="tcell alt1" id="td_post_11903924">
+ <!-- message -->
+ <div id="post_message_11903924">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      RickNRoll
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903917" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Electrical engineer here. Delete if you want.
+     <br/>
+     <br/>
+     Electrical failures are often not passive and clean. A short of high voltage to low voltage lines or circuits can be highly destructive and disruptive. The "magic smoke" comes out and what happens next can't be predicted.
+    </div>
+   </div>
+  </div>
+  This is one of the reasons for the valid
+  <i>
+   theoretical
+  </i>
+  points about probabilities not necessarily being valid as a matter of practicality. It's entirely reasonable to argue that, for example, the probabilities of a weight on wheels sensor failing at the same time as a throttle position sensor are vanishingly remote. But try predicting what will happen if a cup of coffee is spilt over a control console, or a piece of loose swarf in a connector shorts unrelated system wires or...
+  <br/>
+  <br/>
+  The scenarios are nearly infinite and it is impossible to predict the consequences of all of them.
+  <br/>
+  <br/>
+  Back to the subject of the TCMA, in order for the four channels (A and B for engine 1 and A and B for engine 2) to be truly independent, there would have to be, for example, four, separate weight on wheels sensors and two, separate throttle position sensors per throttle. I would be extraordinarily surprised if that's what has been implemented, but will happily stand corrected.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Lead Balloon; 17th Jun 2025 at
+   <span class="time">
+    03:45
+   </span>
+   .
+							
+							
+								Reason: Corrected typos.
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>tdracer<br/>2025-06-17T02:43:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903928><br/>permalink</a>
+ Post: 11903928</td>
+<td class=post><div class="tcell alt1" id="td_post_11903928">
+ <!-- message -->
+ <div id="post_message_11903928">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lead Balloon
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903924" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Back to the subject of the TCMA, in order for the four channels (A and B for engine 1 and A and B for engine 2) to be truly independent, there would have to be, for example, four, separate weight on wheels sensors and two, separate throttle position sensors per throttle. I would be extraordinarily surprised if that's what has been implemented, but will happily stand correct.
+    </div>
+   </div>
+  </div>
+  You'd be half right (or if you prefer, half wrong). Each channel of the FADEC has its own thrust lever position resolver. In other Boeing aircraft, there is a single resolver per engine, with dual electrical coils (i.e. electrically isolated but mechanically connected). But in order to go for full compliance with a (in my opinion) rather extreme FAA position regarding 'single failures' and 25.901(c), the 787 thrust lever actually has dual load paths, feeding to different thrust lever resolvers for each channel.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>EXDAC<br/>2025-06-17T02:51:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903930><br/>permalink</a>
+ Post: 11903930</td>
+<td class=post><div class="tcell alt1" id="td_post_11903930">
+ <!-- message -->
+ <div id="post_message_11903930">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lead Balloon
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903924" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Back to the subject of the TCMA, in order for the four channels (A and B for engine 1 and A and B for engine 2) to be truly independent, there would have to be, for example, four, separate weight on wheels sensors and two, separate throttle position sensors per throttle. I would be extraordinarily surprised if that's what has been implemented, but will happily stand correct.
+    </div>
+   </div>
+  </div>
+  Well, I was looking at the drawings of the MD-11 thrust control module and there certainly are two sensors on each thrust lever. The sensors are implemented as a dual resolver on a common shaft. This level of redundancy is well understood by those who specify, design, test, and certify critical aircraft systems.
+  <br/>
+  <br/>
+  Edit - tdracer posted as I was typing. It seems 787 has even greater sensor separation.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by EXDAC; 17th Jun 2025 at
+   <span class="time">
+    12:07
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>OldnGrounded<br/>2025-06-17T03:02:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903932><br/>permalink</a>
+ Post: 11903932</td>
+<td class=post><div class="tcell alt1" id="td_post_11903932">
+ <!-- message -->
+ <div id="post_message_11903932">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lead Balloon
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903924" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Back to the subject of the TCMA, in order for the four channels (A and B for engine 1 and A and B for engine 2) to be truly independent, there would have to be, for example, four, separate weight on wheels sensors and two, separate throttle position sensors per throttle. I would be extraordinarily surprised if that's what has been implemented, but will happily stand correct.
+    </div>
+   </div>
+  </div>
+  And a sensor per channel per engine for actual thrust, and sensor inputs in addition to WoW switches to validate on-ground state (perhaps radio altimeters, as described by tdracer for some of the 74s, which I misread as 787s).  I, too would be surprised \x97 stunned \x97 if all of that had been implemented.  I really want to know what exactly was implemented, and when and in which specific airplanes/engines.  What I expect, though, is that when we learn all of that, we'll decide that it really is exceedingly unlikely that TCMA shut down those engines in Ahmedabad the other day.  But it sure looks like something did.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Luc Lion<br/>2025-06-17T11:01:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-10.html#post11904204><br/>permalink</a>
+ Post: 11904204</td>
+<td class=post><div class="tcell alt1" id="td_post_11904204">
+ <!-- message -->
+ <div id="post_message_11904204">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lead Balloon
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903924" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     This is one of the reasons for the valid
+     <i>
+      theoretical
+     </i>
+     points about probabilities not necessarily being valid as a matter of practicality. It's entirely reasonable to argue that, for example, the probabilities of a weight on wheels sensor failing at the same time as a throttle position sensor are vanishingly remote. But try predicting what will happen if a cup of coffee is spilt over a control console, or a piece of loose swarf in a connector shorts unrelated system wires or...
+     <br/>
+     <br/>
+     The scenarios are nearly infinite and it is impossible to predict the consequences of all of them.
+    </div>
+   </div>
+  </div>
+  The statistics that apply to such a situation are Bayesian statistics.
+  <br/>
+  Rather than looking at the absolute probability of a scenario, these statistics look at relative probabilities given a set of pre-conditions or given a set of post-conditions.
+  <br/>
+  In the present case, it's the post-conditions that matter: "The airplane has crashed".
+  <br/>
+  <br/>
+  The main formula in this area of mathematics is
+  <br/>
+  <b>
+   P(A|B) * P(B) = P(B|A) * P(A)
+  </b>
+  <br/>
+  where the functions P(x) are probability density functions (if the variation of possible events is continuous) or are matrices of probability numbers (if the possible values of events are discrete values). It reads:
+  <br/>
+  P(A|B) = probability of A knowing that B occurred,
+  <br/>
+  P(B|A) = probability of B knowing that A occurred,
+  <br/>
+  P(A) = probability of A independently of B,
+  <br/>
+  P(B) = probability of B independently of A,
+  <br/>
+  <br/>
+  I'll make up an oversimplified example in the context of aviation accidents:
+  <br/>
+  Suppose that the fault A1 has a probability of 0.000001 per million hours of flight, fault A2 has a probability of 0.000002 per million hours of flight, and fault A3 has a probability of 0.000007 per million hours of flight,
+  <br/>
+  Suppose that faults A1, A2, and A3 have each 50% change of producing a crash and there is no causality relation between A1, A2 and A3.
+  <br/>
+  (In other words, P(A1|A2) = P(A1) and similar for all permutations of A1, A2, A3)
+  <br/>
+  If you know that a crash occurred in circumstances that could only be caused by A1, A2 or A3, then the probabilities that the cause is A1, A2 or A3 is respectively 10%, 20% and 70%.
+  <br/>
+  Of course, these results are obvious and trivial.
+  <br/>
+  You can state that B is the post-condition "the plane crashed" and the fact that it did happen is written P(B) = 1.
+  <br/>
+  The relative probabilities become:
+  <br/>
+  P(A1|B) * 1 = 50% * 0.000001 = 0.0000005
+  <br/>
+  P(A2|B) * 1 = 50% * 0.000002 = 0.0000010
+  <br/>
+  P(A3|B) * 1 = 50% * 0.000007 = 0.0000035
+  <br/>
+  And since A1, A2 and A3 are the only possibilities in this example, their sum must be 1: the relative probabilities need to be "renormalised" by dividing them by their sum.
+  <br/>
+  P(A1|B) = 0.0000005 / 0.0000050 = 10%
+  <br/>
+  P(A2|B) = 0.0000010 / 0.0000050 = 20%
+  <br/>
+  P(A3|B) = 0.0000035 / 0.0000050 = 70%
+  <br/>
+  Again, this is trivial.
+  <br/>
+  But if the probabilities of the 3 causes A1, A2, A3 of causing a crash are not a flat 50%, or if some causes or events are varying continuously (for instance the time elapsed between 2 events), or if you factor many more causality factors, you can still make a probability calculation using these concepts and the formulas.
+  <br/>
+  <br/>
+  This type of statistics has, for instance, been used during the COVID pandemic for computing the basic reproduction number R0 and the effective reproduction number Re (or Rt) of the virus in a population given the number of person hospitalised and deceased per day. The hospitalisation rate and the moritality rate are the post-conditions and the effective reproduction number at a given time is the computed probability given some resulting known event.
+  <br/>
+  Since the effective reproduction number is affected by the measures taken to limit contagion, these calculations were computing the effectiveness of the measures.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Luc Lion; 17th Jun 2025 at
+   <span class="time">
+    11:18
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>13 others<br/>2025-06-17T14:24:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-12.html#post11904344><br/>permalink</a>
+ Post: 11904344</td>
+<td class=post><div class="tcell alt1" id="td_post_11904344">
+ <!-- message -->
+ <div id="post_message_11904344">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lead Balloon
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903924" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     This is one of the reasons for the valid
+     <i>
+      theoretical
+     </i>
+     points about probabilities not necessarily being valid as a matter of practicality. It's entirely reasonable to argue that, for example, the probabilities of a weight on wheels sensor failing at the same time as a throttle position sensor are vanishingly remote. But try predicting what will happen if a cup of coffee is spilt over a control console, or a piece of loose swarf in a connector shorts unrelated system wires or...
+     <br/>
+     <br/>
+     The scenarios are nearly infinite and it is impossible to predict the consequences of all of them.
+    </div>
+   </div>
+  </div>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Luc Lion
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904204" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The statistics that apply to such a situation are Bayesian statistics.
+    </div>
+   </div>
+  </div>
+  Baysian statistics play no role here, for the reason Lead Balloon identified: there are too many variables at play. Worse,
+  <a href="https://en.wikipedia.org/wiki/Simpson%27s_paradox" target="_blank">
+   Simpson's paradox
+  </a>
+  identifies that, even in the circumstance where you
+  <i>
+   know
+  </i>
+  the
+  <i>
+   key
+  </i>
+  variables at play, you've still got to think clearly through what is going on.
+  <br/>
+  <br/>
+  You did stipulate that more causality factors can be calculated using Baysian means, but so what? Back to LB's first point: calculating all of them is not practical.
+  <br/>
+  <br/>
+  While the general public (i.e. The Simpsons) can be impressed with statements like "A billion flight hours without a mishap" what matters is the precise combination of factors that caused the earlier mishap, and how similar current circumstances are to that mishap. Viewed with such insight, mishaps are almost ordinarily common (aviation example being 178 seconds to live for a VFR pilot going VMC into IMC).
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Seamless<br/>2025-06-19T14:08:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-31.html#post11906053><br/>permalink</a>
+ Post: 11906053</td>
+<td class=post><div class="tcell alt1" id="td_post_11906053">
+ <!-- message -->
+ <div id="post_message_11906053">
+  I have read most of the thread (old and new). As a lawyer working in forensic investigations, I am constantly involved in problem-solving. My field of work also includes complex investigations related to insolvencies, which almost always require an analysis of the causes behind a specific, established outcome. In doing so, I naturally also have to deal with probabilities. However, it often turns out that the most likely or plausible explanation does not reflect what actually happened.
+  <br/>
+  <br/>
+  Many of the considerations I&rsquo;ve read fail because the simultaneous failure of both engines is extremely unlikely, leading to a constant search for higher-order causes. It was suggested that an incorrect altitude setting led to an early thrust reduction. However, this would not explain the deployment of the RAT (Ram Air Turbine), especially since the thrust could have been readjusted. FADEC and TCAM are highly redundant systems, and TCAM failure is unlikely due to WOW (Weight on Wheels) logic, making a simultaneous engine failure after VR equally improbable.
+  <br/>
+  <br/>
+  With that said, and with regard to my question concerning the AD that relates to the fuel control switches (FCS), my thought&mdash;and it was nothing more than that&mdash;was that their activation becomes more probable if it can occur accidentally. That&rsquo;s how I came across SAIB: NM-18-33.
+  <br/>
+  <br/>
+  Another user then brought up an iPhone. That notion would, of course, be dramatic&mdash;but how unlikely is it really that after approximately 10,000 actuations between December 2013 and June 2025, the two FCS no longer lock perfectly? Considering all of this, I find it quite conceivable that the A/T slightly reduced thrust in the first seconds after VR (e.g., if an incorrect target altitude had been entered) and that an object lying between the thrust levers and the FCS could have pushed the FCS into the &ldquo;Off&rdquo; position. Due to the buttons on top of the switches, which provide some resistance, it&rsquo;s even possible that the object both pulled and pushed them.
+  <br/>
+  <br/>
+  But all of this is speculation. The investigation report will bring clarity.
+  <br/>
+  <br/>
+  Even if my theory is not confirmed, I still believe that the positioning and mechanism of the FCS are suboptimal. Switches of such critical importance should be better protected, and movements in the area in front of the switches (like reducing thrust) should not follow the same direction as shutting off the fuel supply. A different switching direction alone would provide more safety&mdash;especially considering that the FCS are protected laterally by metal plates.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>DTA<br/>2025-06-19T14:36:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-31.html#post11906073><br/>permalink</a>
+ Post: 11906073</td>
+<td class=post><div class="tcell alt1" id="td_post_11906073">
+ <!-- message -->
+ <div id="post_message_11906073">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Seamless
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906053" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I have read most of the thread (old and new). As a lawyer working in forensic investigations, I am constantly involved in problem-solving. My field of work also includes complex investigations related to insolvencies, which almost always require an analysis of the causes behind a specific, established outcome. In doing so, I naturally also have to deal with probabilities. However, it often turns out that the most likely or plausible explanation does not reflect what actually happened.
+     <br/>
+     <br/>
+     Many of the considerations I\x92ve read fail because the simultaneous failure of both engines is extremely unlikely, leading to a constant search for higher-order causes. It was suggested that an incorrect altitude setting led to an early thrust reduction. However, this would not explain the deployment of the RAT (Ram Air Turbine), especially since the thrust could have been readjusted. FADEC and TCAM are highly redundant systems, and TCAM failure is unlikely due to WOW (Weight on Wheels) logic, making a simultaneous engine failure after VR equally improbable.
+     <br/>
+     <br/>
+     With that said, and with regard to my question concerning the AD that relates to the fuel control switches (FCS), my thought\x97and it was nothing more than that\x97was that their activation becomes more probable if it can occur accidentally. That\x92s how I came across SAIB: NM-18-33.
+     <br/>
+     <br/>
+     Another user then brought up an iPhone. That notion would, of course, be dramatic\x97but how unlikely is it really that after approximately 10,000 actuations between December 2013 and June 2025, the two FCS no longer lock perfectly? Considering all of this, I find it quite conceivable that the A/T slightly reduced thrust in the first seconds after VR (e.g., if an incorrect target altitude had been entered) and that an object lying between the thrust levers and the FCS could have pushed the FCS into the \x93Off\x94 position. Due to the buttons on top of the switches, which provide some resistance, it\x92s even possible that the object both pulled and pushed them.
+     <br/>
+     <br/>
+     But all of this is speculation. The investigation report will bring clarity.
+     <br/>
+     <br/>
+     Even if my theory is not confirmed, I still believe that the positioning and mechanism of the FCS are suboptimal. Switches of such critical importance should be better protected, and movements in the area in front of the switches (like reducing thrust) should not follow the same direction as shutting off the fuel supply. A different switching direction alone would provide more safety\x97especially considering that the FCS are protected laterally by metal plates.
+    </div>
+   </div>
+  </div>
+  It is probable that the switches are becoming easier to move across the gate after 10,000 operations.  Something falling on them would be a possibility to cause that.  And there is certainly an argument to be had whether down=on is a safer way for them to operate.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>CloudChasing<br/>2025-06-19T16:52:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-33.html#post11906189><br/>permalink</a>
+ Post: 11906189</td>
+<td class=post><div class="tcell alt1" id="td_post_11906189">
+ <!-- message -->
+ <div id="post_message_11906189">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903417" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     TCMA - first off, I have to admit that this does look rather like an improper TCMA activation, but that is very, very unlikely. For those who don't know, TCMA is a system to shutdown a runaway engine that's not responding to the thrust lever - basic logic is an engine at high power with the thrust lever at/near idle, and the engine not decelerating. However, TCMA is
+     <i>
+      only
+     </i>
+     active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     <i>
+      one of each
+     </i>
+     had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+    </div>
+   </div>
+  </div>
+  You sound like you know what you&rsquo;re talking about. I&rsquo;m a software engineer. I think software glitches are more common for this type of event than mechanical failures or pilot errors. It can take years before software errors are discovered.
+  <br/>
+  <br/>
+  I read one post in here of a 747 flaps retracting on takeoff. No Master Caution, no warnings. Apparently, due to some maintenance triggering a software glitch, the computer thought reverse thrust had been activated during a take off. Whether it was still in ground mode I don&rsquo;t know.
+  <br/>
+  <br/>
+  Point is, being a software glitch in TMCA has already shut down two engines on a 787, I don&rsquo;t see why the same or another software glitch in TMCA or somewhere else couldn&rsquo;t do the same. Hadn&rsquo;t this plane just been in for maintenance?
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by T28B; 19th Jun 2025 at
+   <span class="time">
+    17:05
+   </span>
+   .
+							
+							
+								Reason: Formatting assistance
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>rigoschris<br/>2025-06-19T19:04:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-34.html#post11906277><br/>permalink</a>
+ Post: 11906277</td>
+<td class=post><div class="tcell alt1" id="td_post_11906277">
+ <!-- message -->
+ <div id="post_message_11906277">
+  Interesting thread towards the end, regarding the previous TCMA malfunction
+  <b>
+   on landing
+  </b>
+  : (pprune archived thread 617426, can\x92t post links yet)
+  <br/>
+  <br/>
+  according to
+  <a href="https://www.pprune.org/members/404945-dave-therhino" rel="nofollow">
+   Dave Therhino
+  </a>
+  who claimed to have seen a detailed report, the TCMA would initialise the thrust contour logic when touching the ground. This was nominally not an issue, as the throttles and engine would be close to idle. However, if the reverser was briefly deployed right before weight on wheels, and then cancelled when the wheels touched, TCMA would see high thrust but throttles at idle and trigger.
+  <br/>
+  <br/>
+  But this was supposedly fixed and all FADECs updated. Plus, during take-off there should not be such large fluctuation in throttle position or thrust, so intermittent switching of ground-air-ground should not cause an issue.
+  <br/>
+  <br/>
+  Also, according to
+  <a href="https://www.pprune.org/members/414340-tdracer" rel="nofollow">
+   tdracer
+  </a>
+  V2 overspeed protection cuts thrust so quickly, that if it triggered (via TCMA or whatever other reason) it was likely  after the plane had lifted off the ground. I wonder though if there\x92s still enough kinetic energy to fly the profile of the incident flight with the engines cut right around rotation.
+  <br/>
+  <br/>
+  Also, would hydraulics go out so quickly, that wheels would not retract? Wonder if a faulty WoW sensor could be a contributing factor and would also not manifest itself as the wheels not retracting :thinking
+  <br/>
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Furr<br/>2025-06-20T07:31:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-38.html#post11906655><br/>permalink</a>
+ Post: 11906655</td>
+<td class=post><div class="tcell alt1" id="td_post_11906655">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   If power failed first?
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11906655">
+  If power failed first,
+  <br/>
+  What happens to TCMA sensors like Weight on Wheels? Radio altimeter? Is there one Weight on Wheels per engine? Is there one radio altimeter per engine? If not, why not? Are the TCMA sensors directly powered as part of FADEC? If not, why not?
+  <br/>
+  Is it possible that there was a noticeable loss of thrust caused by loss of fuel pumps and the pilot responded by cycling thrust to zero and back, trying to clear the problem, inadvertently triggering the TCMA?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Xeptu<br/>2025-06-20T23:34:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-45.html#post11907393><br/>permalink</a>
+ Post: 11907393</td>
+<td class=post><div class="tcell alt1" id="td_post_11907393">
+ <!-- message -->
+ <div id="post_message_11907393">
+  It sure is a head scratcher and when you think you're on the right track "BOOM"
+  <br/>
+  I'm of the view that this was most likely a commanded shutdown of both engines that occurred at or between liftoff and gear up selection.
+  <br/>
+  That in the case of automatically that the conditions on the list of criteria were met and that one or more of those conditions was in opposite sense, weight on wheels would most likley be one of them.
+  <br/>
+  I believe that in at least the first 10 seconds from Vr the crew would have continued to do exactly what they were trained to do without deviation.
+  <br/>
+  <br/>
+  For example
+  <br/>
+  Both Engines at Takeoff Thrust
+  <br/>
+  TL Position, Thrust Command, unknown or last known flight idle
+  <br/>
+  Gear Selector, Overriden UP
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Xeptu; 21st Jun 2025 at
+   <span class="time">
+    01:37
+   </span>
+   .
+							
+							
+								Reason: extended
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>ignorantAndroid<br/>2025-06-21T19:33:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-50.html#post11908002><br/>permalink</a>
+ Post: 11908002</td>
+<td class=post><div class="tcell alt1" id="td_post_11908002">
+ <!-- message -->
+ <div id="post_message_11908002">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lead Balloon
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11907749" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     If we now consider the &lsquo;worst case scenario will be preferred&rsquo; concept that apparently applies to the TCMA design so as to achieve redundancy, the number of sensor inputs it&rsquo;s monitoring to decide whether, and can change its decision whether, the aircraft is on the ground, becomes a very important matter. The TCMA is only supposed to save the day on the ground, if the pilots select idle thrust on a rejected take off but one or both of the engines fail to respond. In the &lsquo;worst case&rsquo; (in my view) scenario, both TCMA channels on both engines will be monitoring/affected by
+     <i>
+      every
+     </i>
+     WoW sensor output and
+     <i>
+      every
+     </i>
+     RADALT output data and, if
+     <i>
+      any one of them
+     </i>
+     says &lsquo;on ground&rsquo;, that will result in
+     <i>
+      both
+     </i>
+     engines&rsquo; TCMAs being enabled to command fuel shut off, even though the aircraft may, in fact, be in the air.
+    </div>
+   </div>
+  </div>
+  I don't think &lsquo;worst case scenario will be preferred&rsquo; is the philosophy they use. The way tdracer explained it, there can't be any single failure that leads to uncommanded high thrust on the ground. Presumably, each FADEC channel is treated as a single 'fault isolation area.' That's why the inactive channel has to be able to effect a shutdown in case the active channel causes a runaway.
+  <br/>
+  <br/>
+  For the sake of argument, imagine if
+  <i>
+   every
+  </i>
+  air/ground sensor had to say 'ground' to enable TCMA. That should still meet the 'no single failure' requirement since you'd need at least 2 failures to get a runaway engine: the original thrust control problem, and a faulty air/ground sensor.
+  <br/>
+  <br/>
+  IIRC, he said that the 747-8 looks at weight on wheels, gear truck tilt, and radio altimeters. At least one of each has to say 'ground' for TCMA to be enabled.
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Someone Somewhere<br/>2025-06-22T11:01:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-53.html#post11908441><br/>permalink</a>
+ Post: 11908441</td>
+<td class=post><div class="tcell alt1" id="td_post_11908441">
+ <!-- message -->
+ <div id="post_message_11908441">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Icarus2001
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11908389" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Always possible, however since a pilot made a radio call there was some
+     <i>
+      emergency leve
+     </i>
+     l power available, which suggests the EAFR would be powered.
+     <br/>
+     <br/>
+     The Jeju recorders were okay if I recall correctly, they just had no input, was that the case?
+     <br/>
+     <br/>
+     Somoeone made a good point above about the German Wings FDR/CVR being available the next day after the aircraft was aimed at the ground like a missile. These things are built tough, as you know, this may be type specific but&hellip;.
+    </div>
+   </div>
+  </div>
+  The equipment on RAT/battery is limited:
+  <br/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg8.ibsrv.net/gimg/pprune.org-vbulletin/518x471/image_721716a2eae939be632f925f7b35f24d2b04c4dd.png"/>
+  <br/>
+  (from the online 2010 FCOM)
+  <br/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg3.ibsrv.net/gimg/pprune.org-vbulletin/1451x1028/image_3bdade3bff22dec8b9493cb8f301639f3e4bcab9.png"/>
+  <br/>
+  (from the
+  <a href="https://archive.org/details/b787-meav-type-1-training-manual/ATA%2024%20Electrical%20Power%20Systems/page/7/mode/1up" target="_blank">
+   maintenance training
+  </a>
+  )
+  <br/>
+  <br/>
+  The 787 battery fire report says the two recorders are on the left and right 28VDC buses. I don't think those get powered on RAT by the looks of it. I would wager you get whatever is on the 235VAC 'backup bus', plus the captain's and F/O's instrument buses via C1/C2 TRUs. You won't get all of that (like the F/O's screens) because the 787 energises/de-energises specific bits of equipment, not just whole buses.
+  <br/>
+  <br/>
+  Losing recorder power looks entirely expected.
+  <br/>
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      mh370rip
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11908402" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     SLF Engineer (electrical - not aerospace) so no special knowledge
+     <br/>
+     <br/>
+     Perceived wisdom may be applicable in normal circumstances but not when all the holes line up.
+     <br/>
+     <br/>
+     For example I've seen it quoted many times that the engine FADECs are self powered
+     <br/>
+     by the engines, the TCMAs-whether part of the FADEC or a separate unit, similarly self contained
+     <br/>
+     within the engine. The perceived wisdom seems to be that there is no common single fault
+     <br/>
+     which can take out both engines.
+     <br/>
+     <br/>
+     And yet we're also told that the TCMA function can only function in ground mode and receives ground-air
+     <br/>
+     signals from a combination of inputs from Rad Alts and WOW sensors.
+     <br/>
+     There is therefore a connection from the central EE bay to the engine.
+     <br/>
+     <br/>
+     Yes I'm sure the Rad/Alt and WOW sensor processing will use different sensors for each side and powered from different
+     <br/>
+     low voltage buses.
+     <br/>
+     However as an analogy, in your house your toaster in the kitchen may be on a separate circuit from the water heater in
+     <br/>
+     the bathroom, each protected by a fuse at the main switchboard. In normal operation a fault in one cannot affect the other.
+     <br/>
+     However a lightning strike outside the house can send much higher voltages than normal operation throughout the entire
+     <br/>
+     system and trash every electrical appliance not physically disconnected at the time.
+     <br/>
+     <br/>
+     Now I'm not suggesting the aircraft was hit by lightning but FDR has proposed a single event, buildup from a water leak entering
+     <br/>
+     one of the EE bays at rotate. It would be possible for one or more of the HV electrical buses to short so that all the low voltage
+     <br/>
+     buses go high voltage. I have no knowledge of how the FADEC / TCMA systems connect to or process the Ground-Air signals but
+     <br/>
+     there is a single fault mechanism whereby high voltage could be simultaneously and inappropriately applied to both engine control systems.
+     <br/>
+     It would be unfortunate if this failure mechanism did cause power to be applied to drive the fuel shut off valve closed.
+     <br/>
+     <br/>
+     Since the likelihood is that we're looking at a low probability event then perceived wisdom about normal operations and fault modes
+     <br/>
+     might not be applicable.
+    </div>
+   </div>
+  </div>
+  400VAC/540VDC (+-270V) is not really known for blowing past input protection in the same way as actual HV or lightning. I would expect some optocouplers and/or transformers to be both present and adequate. There's definitely some big MOVs scattered around the main 235VAC buses.
+  <br/>
+  <br/>
+  Weight on wheels appears to go into data concentrators that go into the common core system (i.e. data network).
+  <br/>
+  <br/>
+  Presumably there is a set of comms buses between the FADECs and the CCS to allow all the pretty indicators and EICAS alerts in the cockpit to work. The WoW sensors might flow back via that, or via dedicated digital inputs from whatever the reverse of a data concentrator is called (surely they have need for field actuators other than big motors?). Either way, left and right engine data should come from completely different computers, that are in the fwd e/e bay (or concentrators/repeaters in the wings, maybe) rather than in with the big power stuff in the aft e/e bay.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=Weight_on_Wheels0.html>First</a>
+&nbsp;<a href=Weight_on_Wheels0.html>Previous</a>
+&nbsp;<a href=Weight_on_Wheels0.html>1</a>
+&nbsp;<a href=Weight_on_Wheels1.html><b>2</b>
+</a>
+&nbsp;<a href=Weight_on_Wheels1.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

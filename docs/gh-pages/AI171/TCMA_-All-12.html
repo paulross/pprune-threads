@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune TCMA (All) name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts about: "TCMA (All)" [Posts: 272 Pages: 14]</h1>
+<body><h1>Posts about: "TCMA (All)" [Posts: 278 Pages: 14]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=TCMA_-All-0.html>First</a>
 &nbsp;<a href=TCMA_-All-11.html>Previous</a>
 &nbsp;<a href=TCMA_-All-2.html>3</a>
@@ -21,7 +21,274 @@
 &nbsp;<a href=TCMA_-All-13.html>Last</a>
 &nbsp;<a href=index.html>Index Page</a>
 </p>
-<table class=posts><tr valign=top><td class=post>Innaflap<br/>2025-06-20T13:57:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-42.html#post11906991><br/>permalink</a>
+<table class=posts><tr valign=top><td class=post>Lead Balloon<br/>2025-06-20T11:21:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-40.html#post11906856><br/>permalink</a>
+ Post: 11906856</td>
+<td class=post><div class="tcell alt1" id="td_post_11906856">
+ <!-- message -->
+ <div id="post_message_11906856">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      syseng68k
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906846" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Lead Balloon:
+     <br/>
+     <br/>
+     A bit of background on real time computing might help here. Apologies if some of this is tldr, obvious, or a simplification.. The FADEC must monitor the local environment, calculate and control, various aspects of engine operation. eg: baro pressure, temperature, fuel, speed control, overtemp, as well as respond to external commands (speed, start / stop etc) and provide operating status reports in real time, to other parts of the a/c. It\x92s really is a complex, semi autonomous system in it\x92s own right. In the old analog days, there might have been several individual hardware subsystems / black boxes, to do that, but since the advent of low cost reliable computing, more and more of that functionality has been delegated to software processes. Hardware function is abstracted into software space, a single black box replacing many. All those tasks that used separate hardware in the past, now run as individual software processes, at microsecond rate, sequentially. A sleight of hand making it appear as though there are separate computers, one for each item. Some critical tasks require microsecond response times, while others can wait seconds or longer. The way that is managed is by assigning a priority to each task, which ensures that all tasks have access to the processor as needed. Hence, the title, Real Time Systems. The task set shares processor, memory and other hardware, but there is great effort and process expended to encapsulate / isolate individual tasks, even though some of them will need to communicate with each other. Done right, that kind of system design can improve reliability due to far less hardware, and lowers cost and weight. However, it does concentrate for more design complexity into a much smaller abstract space, and needs a rigorous development process for safety critical applications.
+     <br/>
+     <br/>
+     Getting back to the point, if the TCMA function is resident on the FADEC, then it\x92s likely that it is just one software task of many running on a single set of FADEC hardware. Pretty opaque and no idea how we can begin to analyse that here. Iirc, tdracer said elsewhere that the various TCMA input qualifiers are handled by the airframe (?) , with a single yes / no input to the FADEC, but need to verify that. Really important to define what does what and where.
+    </div>
+   </div>
+  </div>
+  Very grateful for that background.   Your last sentence is an excellent SITREP!
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Lead Balloon<br/>2025-06-20T11:38:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-40.html#post11906873><br/>permalink</a>
+ Post: 11906873</td>
+<td class=post><div class="tcell alt1" id="td_post_11906873">
+ <!-- message -->
+ <div id="post_message_11906873">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Innaflap
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906835" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Ahah! Logic raises the questions.
+     <br/>
+     <br/>
+     What happens when the 2 disparate processes that form TCMA disagree?
+    </div>
+   </div>
+  </div>
+  We have an authoritative answer to that question, but only if the TCMA implemented in the FADEC used on the 787 engines functions in the way described in conceptual documents: If one of the two TCMA 'channels' for an engine 'thinks' the shut off criteria are satisfied but the other channel doesn't, the channel which 'thinks' the shut off criteria are satisfied 'wins' and the fuel shut off valve for that engine is therefore given a shut off signal.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Luc Lion<br/>2025-06-20T11:51:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-41.html#post11906889><br/>permalink</a>
+ Post: 11906889</td>
+<td class=post><div class="tcell alt1" id="td_post_11906889">
+ <!-- message -->
+ <div id="post_message_11906889">
+  I perfectly understand that there is much talking about TCMA here.
+  <br/>
+  There is no direct evidence of what caused the crash but several indirect evidences point towards a near simultaneous shutdown of both engines without any visual clue of a catastrophic mechanical mishap. This leads to suspecting near simultaneous fuel starvation of both engines.
+  <br/>
+  As the purpose of TCMA is shutting down the High Pressure Shut-Off Valve (HPSOV) and thus the fuel feed of an engine, it's normal to collect information on TCMA, on how it works, and on what data feeds it.
+  <br/>
+  <br/>
+  However, I hardly understand why there is no similar discussion about the spar valves and the systems that control their opening and closure.
+  <br/>
+  <br/>
+  I understand that the B787 spar valves are located in the MLG well, or at least are maintained from within that well.
+  <br/>
+  If the engine shutdown happened when the gear retraction was commanded, that's a location commonality (although it's very unlikely that a mechanical problem happened in both wells at the same time).
+  <br/>
+  Also I understand that there are several systems that command the opening or closing of the spar valves:
+  <br/>
+  - opening: "Engine control panel switch" set to "START", or "Fuel control switch" set to "RUN"
+  <br/>
+  - closing: "Engine fire handle" pulled out. (I wonder if "Fuel control switch" set to "CUTOFF" also closes the spar valve).
+  <br/>
+  Are there direct wires running from these controls to the valves or is there a pair of control units receiving these signals and controlling the valve actuators?
+  <br/>
+  If the latter is true, where are these control units? I guess that the likely location is the aft EE bay. Are they beside each other?
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Luc Lion; 20th Jun 2025 at
+   <span class="time">
+    12:57
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Innaflap<br/>2025-06-20T12:08:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-41.html#post11906904><br/>permalink</a>
+ Post: 11906904</td>
+<td class=post><div class="tcell alt1" id="td_post_11906904">
+ <!-- message -->
+ <div id="post_message_11906904">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lead Balloon
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906873" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     We have an authoritative answer to that question, but only if the TCMA implemented in the FADEC used on the 787 engines functions in the way described in conceptual documents: If one of the two TCMA 'channels' for an engine 'thinks' the shut off criteria are satisfied but the other channel doesn't, the channel which 'thinks' the shut off criteria are satisfied 'wins' and the fuel shut off valve for that engine is therefore given a shut off signal.
+    </div>
+   </div>
+  </div>
+  And each FADEC is unique to the engine in which it is hosted. So whilst these may be "autonomous" they still rely on data external to the engine itself such as WoW and Rad Alt where they hold more "sway" than they do in the flight deck.
+  <br/>
+  <br/>
+  Are these values recorded in the FDR?
+  <br/>
+  <br/>
+  Are values from the FADEC recorded?
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Europa01<br/>2025-06-20T13:25:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-41.html#post11906973><br/>permalink</a>
+ Post: 11906973</td>
+<td class=post><div class="tcell alt1" id="td_post_11906973">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   TCMA
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11906973">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Innaflap
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906904" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     And each FADEC is unique to the engine in which it is hosted. So whilst these may be "autonomous" they still rely on data external to the engine itself such as WoW and Rad Alt where they hold more "sway" than they do in the flight deck.
+     <br/>
+     <br/>
+     Are these values recorded in the FDR?
+     <br/>
+     <br/>
+     Are values from the FADEC recorded?
+    </div>
+   </div>
+  </div>
+  The excellent #724 post by user989 really should be seen as the defining statement on what is currently known.
+  <br/>
+  <br/>
+  I&rsquo;d like to add a complimentary test to user989&rsquo;s logic on TCMA faults.
+  <br/>
+  <br/>
+  Regardless of whether the &lsquo;aircraft on ground&rsquo; signal was incorrect after rotation it would have been correct during the takeoff roll. IF there was an unrevealed fault in a thrust lever position signal THEN why didn&rsquo;t TCMA activate during taxiing or the takeoff roll?
+  <br/>
+  <br/>
+  Such a fault occurring spontaneously in just the few seconds after rotation is way way down the probability table. Such a fault occurring spontaneously on both separate (think ETOPS) engine control systems is surely vanishingly unlikely.
+  <br/>
+  <br/>
+  They may be out there but you&rsquo;d have to ask if TCMA is implicated where are the lower consequence precursor events in the 787 fleet? These might be spurious TCMA action on one engine or faults with &lsquo;aircraft on ground&rsquo; found during maintenance or engines not responding to thrust lever position and so on.
+  <br/>
+  <br/>
+  Change Analysis would ask what happened differently in the few seconds after rotation on this flight that separates it from all other 787 takeoffs and why at that particular time ?The interim report will provide some answers until then please let&rsquo;s confine this thread to fact based technical discussion and debate.
+  <br/>
+  <br/>
+  Re-reading this I did briefly consider suggesting engine overshoot of thrust lever positions and FADEC shut down on N1 overspeed but that leaves a lot of WHY and WHY both engines questions so I dismissed it.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>OldnGrounded<br/>2025-06-20T13:45:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-42.html#post11906985><br/>permalink</a>
+ Post: 11906985</td>
+<td class=post><div class="tcell alt1" id="td_post_11906985">
+ <!-- message -->
+ <div id="post_message_11906985">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      soarbum
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906794" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Thanks to tdracer's explanation on TMCA (albeit 747 not 787), we know that TMCA is a logic block within the FADEC whose only external inputs are a
+     <b>
+      logic signal from the aircraft
+     </b>
+     that indicates whether it is on the ground or not and throttle position as determined by two independent resolvers per throttle side.
+    </div>
+   </div>
+  </div>
+  Emphasis added.
+  <br/>
+  <br/>
+  Do we know this?  If we do, I've missed it.  And whether the FADECs receive signals independently from the sensors used to determine the air/ground state of the aircraft \x97 radio altimeters, WoW switches, something else I don't know about \x97 or receive  a predetermined state or forwarded signals from another source is crucial to understanding possible failure conditions and the likelihood of simultaneous shutdown by TCMA in both engines.  I think.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post>Innaflap<br/>2025-06-20T13:57:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-42.html#post11906991><br/>permalink</a>
  Post: 11906991</td>
 <td class=post><div class="tcell alt1" id="td_post_11906991">
  <!-- message -->
@@ -1063,305 +1330,6 @@
   </div>
   <!-- End AdSlot 4 -->
  </aside>
-</div>
-</td>
-</tr>
-<tr valign=top><td class=post>EDML<br/>2025-06-21T21:37:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-51.html#post11908084><br/>permalink</a>
- Post: 11908084</td>
-<td class=post><div class="tcell alt1" id="td_post_11908084">
- <!-- message -->
- <div id="post_message_11908084">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      Seamless
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11908047" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     In which way would TCMA act, in the case of an electrical failure just before TO? Would TCMA - if not affected - read a difference in thrust setting (no signal e.g.) to the read engine thrust, which would then lead to an engines shut down?
-    </div>
-   </div>
-  </div>
-  Why should it? It\x92s part of the FADEC as are the TLA sensors.
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr valign=top><td class=post>Xeptu<br/>2025-06-21T22:20:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-51.html#post11908113><br/>permalink</a>
- Post: 11908113</td>
-<td class=post><div class="tcell alt1" id="td_post_11908113">
- <!-- message -->
- <div id="post_message_11908113">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      JustusW
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11907907" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     <br/>
-     So when people say "the FADEC software" (ie TCMA) has "failed" or "has a bug" what they're really saying is:
-     <div style="margin-left: 40px;">
-      <i>
-       The conditions that were experienced in the real world by the system were incorrectly assessed in the system requirements and lead to an undesired output state when taking into account the real world result we would have preferred.
-      </i>
-     </div>
-     A bit of a mouth full, granted, but an important mouth full. This simply wouldn't be someone missing a semicolon somewhere in a thousand lines of code.
-     <br/>
-     <br/>
-     Regards,
-     <br/>
-     Justus
-    </div>
-   </div>
-  </div>
-  Found It
-  <br/>
-  Truth Table Line 101 = Service Terminated (licence agreement expired please contact your service provider)
-  <br/>
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr valign=top><td class=post>FrequentSLF<br/>2025-06-21T22:31:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-51.html#post11908118><br/>permalink</a>
- Post: 11908118</td>
-<td class=post><div class="tcell alt1" id="td_post_11908118">
- <!-- message -->
- <div id="post_message_11908118">
-  Could the testing of TCMA logic less robust for the portion that works only when is not armed (i.e. not on ground)? I am asking this because from previous posts the ground logic needs only one signal (WoW, radio altimeter) to be true, if so is correct a faulty sensor could have armed the TCMA? That would have removed a safety layer on the system.
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr valign=top><td class=post>TryingToLearn<br/>2025-06-21T23:11:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-51.html#post11908143><br/>permalink</a>
- Post: 11908143</td>
-<td class=post><div class="tcell alt1" id="td_post_11908143">
- <!-- message -->
- <div id="post_message_11908143">
-  I read the whole threads, keeping my hands on the mousewheel so far since I'm not a pilot, just a EE / safety / systems engineer.
-  <br/>
-  The hamsterwheel ist spinning a lot here, and of course it could be anything including some VHDL FPGA code line or a broken RAM cell in a cheap memory bar within the computer it was compiled with. Anything is possible, but to be honest: development processes, if followed, are usually pushing the probability to a level where it becomes pure theory. BOSCH uses FPGA+\xb5C on the brake control box of cars. They sold 100 millions of those, used 4000h each (car lifetime) without error, with less strict development process. Most errors are made on requirement level, not code.
-  <br/>
-  <br/>
-  Also, so far there is no evidence I've seen regarding the 'chicken-egg' problem, did the engines fall below idle (fuel, stall...) and this caused an electrical blackout (-&gt; battery, RAT...) or did an EE problem cause the engines to reduce thrust (FADEC, SW bug...). And where is the common cause in all this?
-  <br/>
-  There has to be a systematic error common to both engines, an external failure affecting both or a dependent fault with one affecting the other within seconds. This is the only thing I think everyone agrees here. And I refuse to beleave the external failure or dependent fault was sitting in the cockpit.
-  <br/>
-  I think it is something not common to every aircraft type for the last 50 years.
-  <br/>
-  So I started searching and found a candidate.
-  <br/>
-  <br/>
-  I read myself into the EE architecture of this unique 'bleed-less' design and it's megawatt powergrid since this is the part where I may be able to contribute (and I'm most curious about). Generators on the 787 are &gt;250kW instead of &lt;100kW each and there are two per engine instead of just one. In fact, they can go up to 516 kW and shear off the gearbox at &gt;2200Nm (equal to &gt;2 MW, per generator).
-  <br/>
-  <a href="https://www.easa.europa.eu/en/downloads/7641/en" target="_blank">
-   https://www.easa.europa.eu/en/downloads/7641/en
-  </a>
-  (page 11)
-  <br/>
-  So while on any other aircraft the generator is more like the dynamo on your bicycle, those generators are massive (x10).
-  <br/>
-  The gearbox is connected to the HP shaft (N2) on the GEnx. I learned from Wikipedia that RR moved this gearbox to the IP shaft on the Trend 1000. And RR is happy that the A330neo Trend 7000 uses bleed air and less load on the gearbox, since this maintains stability on the HP shaft at light load (also Wikipedia).
-  <br/>
-  Those generators are not in phase and frequency sync, or in other words: If you parallel them, they fight each other, it's like a short. They will almost block if this is not handled by the control box if possible (or some melting fuse blows at some point).
-  <br/>
-  <a href="https://www.pprune.org/tech-log/631129-787-electrical-system-variable-frequency-generators.html#post10735455" target="_blank">
-   787 electrical system - variable frequency generators?
-  </a>
-  <br/>
-  Somehow I find it hard to believe that they are not able to disturb the engines despite that everyone here so far is claiming that there is no way an electrical problem could influence them because FADEC has it's own supply. I read that one is sufficent to start the engine, usually both are used.
-  <br/>
-  In my mind I find lot's of ways this could influence both engines simultanously. If just the BTBs on the 230V grid got some humidity (hot, no AC, water cooling...) and went up in one big arc (I think they made them semiconductor relays, too).
-  <br/>
-  Could those gearboxes and engines handle 4500Nm / almost 5 MW on each HP shaft, applied within a fraction of a second without any problem?
-  <br/>
-  Or if the engines were in a condition not far from compressor stall, one was stalling and 400kW load jumped from one engines generators to the other...
-  <br/>
-  I did some rough estimation and one of the generators could push N2 below idle in a second or less without fuel just with its normal 250kW load (just inertia).
-  <br/>
-  This is one point which is unique to this airplane model, so maybe worth a closer look.
-  <br/>
-  <br/>
-  I know that those engines are burning at &gt;100MW at full power, but how fragile in the balance between compressor load and this one turbine stage on the HP shaft / N2, without the inertia of a 2.8 meter fan? This is just out of my background, any thermodynamic expert here?
-  <br/>
-  Of course I also have no insight in SW and communication within the control boxes, how much they are talking to each other, delaying/ramping load redistribution etc. If FADEC recognizes a flameout, could it instantly command the generators to cut the load, even above idle rpm?
-  <br/>
-  <br/>
-  I would assume that some fuel contamination, valve blockade, even compressor stall would pop up slower. But such a generator could kick in within milliseconds.
-  <br/>
-  <br/>
-  As a safety guy I learned that one tends to look first at things one is familiar with (SW, HW, mechanics, pilot behaviour, maintainance, depending on one's profession) and in the end it's often the interface and dependent faults within which are not carefully considered (e.g. takeoff situation vs. thermodynamics vs. mechanics vs. power generation vs. humidity vs. generator control...) together with transient behaviour. It was the same with MCAS (safety culture vs. pilot training vs. SW design (repeated action) vs. single AOA input vs. bird strike probability close to ground vs. trim loading/blockade vs. stickshaker noise/distraction).
-  <br/>
-  In fact, I was trying to find information on all those systems and directly found slides on how the engines and generators could be simulated and the power grid tested in a HIL (hardware in the loop) environment. My experience from automotive is that such simulated environments are often far from reality and HIL environment programming finished after the product is already at the customer. But of course its far easier and cheaper to apply and test faults there. But then, some programmer programms what he thinks the reaction of the engine would be.
-  <br/>
-  This 'bleed-less' design was some massive change in airplane EE architecture with hugh consequences on the whole airplane design and extremely hard to fully analyze.
-  <br/>
-  <br/>
-  I'm just asking questions and hope that we all learn a lot and this was fully considered or just not an issue. It's just an aspect I found worth mentioning and not only spinning the wheel.
-  <br/>
-  <br/>
-  PS: I doubt it was TCMA. The air/ground decision is done in a different box, evaluating 5 inputs in a 1/3 and 1/2 decision according to this discussion. This is then safely sent to the FADEC (as one input) and combined with the thrust lever position and N2. But if the thrust lever position is sensed (redundant and direct) close to idle, you do not need TCMA or ground mode to expect reduced thrust.
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr valign=top><td class=post>Lead Balloon<br/>2025-06-21T23:27:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-51.html#post11908149><br/>permalink</a>
- Post: 11908149</td>
-<td class=post><div class="tcell alt1" id="td_post_11908149">
- <!-- message -->
- <div id="post_message_11908149">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      OldnGrounded
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11908122" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     I don't remember any credible posts suggesting that only one input to the air/ground decision logic is sufficient and I very much doubt that such is the case.
-    </div>
-   </div>
-  </div>
-  Perhaps my earlier post was incredible and that's what prompted the SLF's question.
-  <br/>
-  <br/>
-  Let us assume a simple, hypothetical WoW sensor arrangement: One sensor per main landing gear.
-  <br/>
-  <br/>
-  One of those sensors is indicating weight OFF wheels and the other is indicating weight ON wheels. What does the TCMA in each engine interpret that
-  <i>
-   ostensibly
-  </i>
-  contradictory sensor information to mean? (Note: For the time being, ignore the question whether the information is erroneous. It may be true.)
-  <br/>
-  <br/>
-  Are both engine TCMA's in the 'in the air' state, are both 'on the ground', or is one 'on the ground' and the other 'in the air'?
-  <br/>
-  <br/>
-  Given the purpose of the TCMA, I would have thought that any 'doubt' in this case would be resolved in favour of the 'on ground' state for both TCMAs.
-  <br/>
-  <br/>
-  But maybe it's the other way around. Maybe any 'doubt' would be resolved in favour of both TCMA's being in the 'in the air' state.
-  <br/>
-  <br/>
-  I have difficulty in envisaging any advantage in the TCMA system being designed such that one engine's TCMA is in the 'in the air' state and the engine's 'on the ground'.
-  <br/>
-  <br/>
-  Whichever the design and outcome, there will be benefits and there will be risks.
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr valign=top><td class=post>Chernobyl<br/>2025-06-21T23:56:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-52.html#post11908160><br/>permalink</a>
- Post: 11908160</td>
-<td class=post><div class="tcell alt1" id="td_post_11908160">
- <!-- message -->
- <div id="post_message_11908160">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      Lead Balloon
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11908149" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     Perhaps my earlier post was incredible and that's what prompted the SLF's question.
-     <br/>
-     <br/>
-     Let us assume a simple, hypothetical WoW sensor arrangement: One sensor per main landing gear.
-     <br/>
-     <br/>
-     One of those sensors is indicating weight OFF wheels and the other is indicating weight ON wheels. What does the TCMA in each engine interpret that
-     <i>
-      ostensibly
-     </i>
-     contradictory sensor information to mean? (Note: For the time being, ignore the question whether the information is erroneous. It may be true.)
-     <br/>
-     <br/>
-     Are both engine TCMA's in the 'in the air' state, are both 'on the ground', or is one 'on the ground' and the other 'in the air'?
-     <br/>
-     <br/>
-     Given the purpose of the TCMA, I would have thought that any 'doubt' in this case would be resolved in favour of the 'on ground' state for both TCMAs.
-     <br/>
-     <br/>
-     But maybe it's the other way around. Maybe any 'doubt' would be resolved in favour of both TCMA's being in the 'in the air' state.
-     <br/>
-     <br/>
-     I have difficulty in envisaging any advantage in the TCMA system being designed such that one engine's TCMA is in the 'in the air' state and the engine's 'on the ground'.
-     <br/>
-     <br/>
-     Whichever the design and outcome, there will be benefits and there will be risks.
-    </div>
-   </div>
-  </div>
-  This was already addressed in one of tdracer's posts about the TCMA system: the air/ground decision is made by the aircraft itself (using multiple redundant inputs and voting logic), and only a single air/ground binary state is provided to the EEC(FADEC). Further, he also stated that the EEC assumes "air", as that is the safer state given the nature of its operations.
-  <br/>
-  <br/>
-  Based on this, both engines will get the same air/ground indication from the aircraft and hence will always make the same TCMA decisions (subject to their individual throttle positions and thrust outputs).
- </div>
- <!-- / message -->
- <!-- edit note -->
- <div class="smallfont">
-  <hr/>
-  <em>
-   Last edited by Chernobyl; 21st Jun 2025 at
-   <span class="time">
-    23:58
-   </span>
-   .
-							
-							
-								Reason: Clarified the air/ground decision logic.
-  </em>
- </div>
- <!-- / edit note -->
 </div>
 </td>
 </tr>
