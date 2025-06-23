@@ -81,7 +81,7 @@ def main():
         "--authors",
         action="store_true",
         help=(
-            "Add posts by author. "
+            "Add posts by author."
         )
     )
     parser.add_argument(
@@ -110,11 +110,24 @@ def main():
         word_count += len(post.words)
     logger.info('Number of posts: {:d} Number of words: {:d}'.format(len(thread), word_count))
     common_words = words.read_common_words_file(args.common_words)
+    logger.info('Read: {:d} common words from "{:s}" to "{:s}".'.format(
+            len(common_words), common_words[0], common_words[-1],
+        )
+    )
     # write_html.pass_one(thread, common_words)
+    common_words = set(common_words)
     if args.thread_name == 'Concorde':
-        write_html.write_whole_thread(thread, common_words, publication_maps.ConcordePublicationMap(), args.output)
+        pub_map = publication_maps.ConcordePublicationMap()
+        words_required = pub_map.get_set_of_words_required()
+        common_words -= words_required
+        logger.info('Common words now length {:d}'.format(len(common_words)))
+        write_html.write_whole_thread(thread, common_words, pub_map, args.output)
     elif args.thread_name == 'AI171':
-        write_html.write_whole_thread(thread, common_words, publication_maps.AirIndia171(), args.output)
+        pub_map = publication_maps.AirIndia171()
+        words_required = pub_map.get_set_of_words_required()
+        common_words -= words_required
+        logger.info('Common words now length {:d}'.format(len(common_words)))
+        write_html.write_whole_thread(thread, common_words, pub_map, args.output)
     else:
         logger.error(f'Do not know thread {args.thread_name}')
         return -1

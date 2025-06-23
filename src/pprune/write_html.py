@@ -102,8 +102,9 @@ def pass_one(
             post, common_words, publication_map.get_uppercase_word_to_subject_map()
         )
         for phrase_length in publication_map.get_phrase_lengths():
+            phrase_map = publication_map.get_phrases_to_subject_map(phrase_length)
             subjects |= analyse_thread.match_phrases(
-                post, common_words, phrase_length, publication_map.get_phrases_to_subject_map(phrase_length)
+                post, common_words, phrase_length, phrase_map,
             )
         if post.permalink in publication_map.get_specific_posts_to_subject_map():
             subjects.add(publication_map.get_specific_posts_to_subject_map()[post.permalink])

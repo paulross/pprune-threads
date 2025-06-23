@@ -87,6 +87,12 @@ class PublicationMap(abc.ABC):
         together in the subject 'Significant Posts'."""
         pass
 
+    @abc.abstractmethod
+    def get_set_of_words_required(self) -> typing.Set[str]:
+        """This gives the search words that are contained in the maps,
+        these should be removed from any common words exclusion."""
+        pass
+
 
 class ConcordePublicationMap(PublicationMap):
     """Specialisation for the Concorde thread."""
@@ -125,6 +131,9 @@ class ConcordePublicationMap(PublicationMap):
 
     def get_significant_posts_permalinks(self) -> typing.Set[str]:
         return self.SIGNIFICANT_POSTS
+
+    def get_set_of_words_required(self) -> typing.Set[str]:
+        return set()
 
     # Map of {lower_case_word : subject_title, ..}
     WORDS_MAP = {
@@ -417,6 +426,13 @@ class AirIndia171(PublicationMap):
 
     def get_significant_posts_permalinks(self) -> typing.Set[str]:
         return self.SIGNIFICANT_POSTS
+
+    def get_set_of_words_required(self) -> typing.Set[str]:
+        result = set(self.LC_WORDS_MAP.keys())
+        for phrase_length in self.PHRASES_MAP:
+            for key in self.PHRASES_MAP[phrase_length]:
+                result |= set(key)
+        return result
 
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {
