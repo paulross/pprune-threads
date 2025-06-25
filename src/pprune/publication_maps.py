@@ -422,6 +422,7 @@ class AirIndia171(PublicationMap):
              (this is not included in this analysis)
          </li>
     </ol>
+    <p><b>My condolences to all the people affected by this accident, in particular to the friends and families of the victims.</b></p>
 """
 
     def get_lowercase_word_to_subject_map(self) -> typing.Dict[str, str]:
@@ -473,6 +474,9 @@ class AirIndia171(PublicationMap):
         'biocide': 'Biocide',
         'suicide': 'Suicide',
         'tilt': 'MLG Tilt',
+        'condolences': 'Condolences',
+        'sympathy': 'Condolences',
+        'empathy': 'Condolences',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
