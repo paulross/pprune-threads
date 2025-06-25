@@ -209,6 +209,42 @@ def get_post_text_from_node(node: bs4.element.Tag, sequence_num: int) -> str:
     return text_node.get_text()
 
 
+def html_node_like_usernames(node: bs4.element.Tag) -> typing.List[pprune.common.thread_struct.User]:
+    """Returns the list of users that liked this post (if any).
+
+    Example::
+
+          <div id="post_thanks_box_11898940">
+            <div class="tbox">
+              <div class="trow">
+                <div class="tcell alt2" style="width: 175px">
+                  <strong>The following 30 users liked this post by autobrake3:</strong>
+                </div>
+                <div class="tcell alt1" style="vertical-align: top">
+                  <div>
+                  <a href="https://www.pprune.org/members/20986-2-sheds" rel="nofollow">2 sheds</a>,
+                  <a href="https://www.pprune.org/members/2175-alpine-flyer" rel="nofollow">Alpine Flyer</a>,
+                  ...
+                  <a href="https://www.pprune.org/members/413833-una-due-tfc" rel="nofollow">Una Due Tfc</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    """
+    # Looking for:
+    # <div id="post_thanks_box_11898940">
+    post_id: int = html_node_post_number(node)
+    post_thanks_box_node = node.find('div', **{"id": f"post_thanks_box_{post_id}"})
+    ret = []
+    if post_thanks_box_node:
+        for node_a in post_thanks_box_node.find_all('a'):
+            user_name = node_a.text.strip()
+            user_id = node_a['href']
+            ret.append(pprune.common.thread_struct.User(user_name, user_id))
+    return ret
+
+
 def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[pprune.common.thread_struct.Post]:
     """Returns a Post object from an HTML node."""
     timestamp = html_node_date(node)
@@ -220,8 +256,9 @@ def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[pprune.common.
         logger.warning(f'No user extracted from node <{node.name} {node.attrs}>')
     post_node = html_node_post_node(node)
     sequence_number = html_node_post_number(node)
+    liked_by_users = html_node_like_usernames(node)
     if sequence_number is not None:
-        post = pprune.common.thread_struct.Post(timestamp, permalink, user, post_node, sequence_number)
+        post = pprune.common.thread_struct.Post(timestamp, permalink, user, post_node, sequence_number, liked_by_users)
         return post
 
 

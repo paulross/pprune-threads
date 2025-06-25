@@ -376,6 +376,7 @@ def parse_string(html_string: str, features: str) -> bs4.element.Tag:
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     'Timestamp: 2020-01-01 05:32:14, Permalink: https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338, User: nicolai, Sequence: 10994338',
             ),
@@ -386,6 +387,7 @@ def parse_string(html_string: str, features: str) -> bs4.element.Tag:
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'html.parser'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     'Timestamp: 2020-01-01 05:32:14, Permalink: https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338, User: nicolai, Sequence: 10994338',
             ),
@@ -410,6 +412,7 @@ def test_post_ctor(args, expected):
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     (
                             'Reports on Twitter that a UAL 777-200 has had an uncontained engine failure '
@@ -439,6 +442,7 @@ def test_post_text_stripped(args, expected):
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'lxml'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     ['Minimal', 'text', 'in', 'this', 'post'],
             ),
@@ -449,6 +453,7 @@ def test_post_text_stripped(args, expected):
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'html.parser'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     ['Minimal', 'text', 'in', 'this', 'post'],
             ),
@@ -469,6 +474,7 @@ def test_post_words(args, expected):
                             'nicolai',
                             "This, is the post text. See:",
                             42,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     10994338,
             ),
@@ -489,6 +495,7 @@ def test_post_post_number(args, expected):
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'lxml'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     set(),
                     True,
@@ -501,6 +508,7 @@ def test_post_post_number(args, expected):
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'lxml'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     set(),
                     False,
@@ -513,6 +521,7 @@ def test_post_post_number(args, expected):
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'lxml'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     {'this', 'the'},
                     True,
@@ -526,6 +535,7 @@ def test_post_post_number(args, expected):
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT, 'lxml'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     {'this', 'the'},
                     False,
@@ -548,6 +558,7 @@ def test_post_words_removed(args, remove_these, lower_case, expected):
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     0,
                     ['UAL', '777200', 'DEN', 'USA', 'HNL', 'USA', 'DEN', 'UAL', '777', ],
@@ -559,6 +570,7 @@ def test_post_words_removed(args, remove_these, lower_case, expected):
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     4,
                     ['777200', ],
@@ -580,6 +592,7 @@ def test_post_cap_words(args, min_size, expected):
                             'nicolai',
                             parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
                             10994338,  # Sequence number
+                            [],  # liked_by_users
                     ),
                     {
                         'to', 'the', 'in', 'of', 'to', 'of', 'on', 'a', 'has', 'had', 'an', 'on', 'from', 'with',
@@ -644,6 +657,7 @@ EXAMPLE_THREAD_POSTS_SINGLE = [
         'nicolai',
         parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
         10994338,  # Sequence number
+        [],  # liked_by_users
     ),
 ]
 
@@ -661,6 +675,7 @@ EXAMPLE_THREAD_POSTS_TWO = [
         'nicolai',
         "This, is the post text. See:",
         42,  # Sequence number
+        [],  # liked_by_users
     ),
     (
         datetime.datetime(2020, 1, 1, 5, 32, 28),
@@ -669,6 +684,7 @@ EXAMPLE_THREAD_POSTS_TWO = [
         'not-nicolai',
         "Totally different text.",
         142,  # Sequence number
+        [],  # liked_by_users
     ),
 ]
 

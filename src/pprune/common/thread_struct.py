@@ -47,6 +47,7 @@ class Post:
     user: User
     node: bs4.element.Tag
     sequence_num: int
+    liked_by_users: typing.List[User]
 
     # def __post_init__(self):
     #     """Do some sanity checking on the node.

@@ -89,7 +89,8 @@ def print_all_caps(thread, most_common_count: int, freq_ge: int):
     print(' print_all_caps(): most_common={:d} freq_ge={:d} DONE '.format(most_common_count, freq_ge).center(75, '-'))
     print(' print_all_caps(): most_common={:d} freq_ge={:d} sorted '.format(most_common_count, freq_ge).center(75, '-'))
     pprint.pprint(sorted(word_counter.most_common(most_common_count)))
-    print(' print_all_caps(): most_common={:d} freq_ge={:d} sorted DONE '.format(most_common_count, freq_ge).center(75, '-'))
+    print(' print_all_caps(): most_common={:d} freq_ge={:d} sorted DONE '.format(most_common_count, freq_ge).center(75,
+                                                                                                                    '-'))
 
 
 def print_authors(thread: pprune.common.thread_struct.Thread, most_common_count: int):
@@ -112,8 +113,29 @@ def print_authors(thread: pprune.common.thread_struct.Thread, most_common_count:
     print(' print_authors(): most_common({:d}) sorted DONE '.format(most_common_count).center(75, '-'))
 
 
+def print_liked_by_users(thread: pprune.common.thread_struct.Thread):
+    like_count = collections.Counter()
+    for post in thread.posts:
+        like_count.update([len(post.liked_by_users)])
+    print(' print_liked_by_users(): '.center(75, '-'))
+    # pprint.pprint(like_count)
+    total_posts = total_likes = 0
+    print(f'{"likes":6s} : {"posts":6s}')
+    for likes, count in like_count.most_common():
+        print(f'{likes:6d} : {count:6d}')
+        total_posts += count
+        total_likes += likes
+    print(f'TOTALS: posts: {total_posts:d} likes: {total_likes:d}')
+    print(' print_liked_by_users(): '.center(75, '-'))
+    # print(' print_liked_by_users(): sorted '.center(75, '-'))
+    # # pprint.pprint(user_count.most_common(most_common_count))
+    # for user_name, count in sorted(like_count.most_common()):
+    #     print(f'{user_name:32} : {count:4d}')
+    # print(' print_liked_by_users(): sorted DONE '.center(75, '-'))
+
+
 def print_research(thread, common_words, most_common_count: int, freq_ge: int,
-                   non_cap_words: bool, all_cap_words: bool, phrases: int, authors: bool):
+                   non_cap_words: bool, all_cap_words: bool, phrases: int, authors: bool, liked_by_users: bool):
     if non_cap_words:
         print_non_cap_words(thread, common_words, freq_ge)
     if all_cap_words:
@@ -122,6 +144,8 @@ def print_research(thread, common_words, most_common_count: int, freq_ge: int,
         print_phrases(thread, common_words, phrases, most_common_count, freq_ge)
     if authors:
         print_authors(thread, most_common_count)
+    if liked_by_users:
+        print_liked_by_users(thread)
 
 
 def main():
@@ -181,6 +205,13 @@ def main():
         )
     )
     parser.add_argument(
+        "--liked-by-users",
+        action="store_true",
+        help=(
+            "Show the count of how many people liked a post. "
+        )
+    )
+    parser.add_argument(
         "-l",
         "--log-level",
         dest="log_level",
@@ -215,7 +246,7 @@ def main():
 
     print_research(
         thread, common_words, args.most_common_count, args.freq_ge,
-        args.non_cap_words, args.all_cap_words, args.phrases, args.authors,
+        args.non_cap_words, args.all_cap_words, args.phrases, args.authors, args.liked_by_users
     )
 
     t_elapsed = time.perf_counter() - t_start
