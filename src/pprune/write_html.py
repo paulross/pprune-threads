@@ -219,11 +219,11 @@ def write_most_upvoted_posts_table(
                 break
         with element(index, 'h1'):
             index.write(f'The {post_count} Most Up-voted Posts')
-        # with element(index, 'p'):
-        #     index.write(
-        #         'Here are all {:d} subjects I have identified with the number of posts for each subject:'.format(
-        #             len(subject_post_map)))
-
+        with element(index, 'p'):
+            index.write(
+                'This list the posts that have the largest number of up-votes.'
+                ' They are <i>likely</i> to be more important than others.'
+            )
         post_count = 0
         with element(index, 'table', _class="indextable"):
             _write_table_header(['Up-votes', 'Text', 'User Name', 'Permalink', ], index)
