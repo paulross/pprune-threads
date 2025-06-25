@@ -201,11 +201,11 @@ def write_main_subject_table(
 
 def write_most_upvoted_posts_table(
         thread: thread_struct.Thread,
+        publication_map: publication_maps.PublicationMap,
         index: typing.TextIO,
 ):
     """Posts by most up-voted."""
     # dict of {votes : [post_ordinals, ...], ...}
-    POST_COUNT_LIMIT = 30
     liked_by_users_dict = collections.defaultdict(list)
     for i, post in enumerate(thread.posts):
         if len(post.liked_by_users) > 0:
@@ -215,7 +215,7 @@ def write_most_upvoted_posts_table(
         post_count = 0
         for k in keys:
             post_count += len(liked_by_users_dict[k])
-            if post_count >= POST_COUNT_LIMIT:
+            if post_count >= publication_map.get_upvoted_post_count_limit():
                 break
         with element(index, 'h1'):
             index.write(f'The {post_count} Most Up-voted Posts')
@@ -226,7 +226,7 @@ def write_most_upvoted_posts_table(
 
         post_count = 0
         with element(index, 'table', _class="indextable"):
-            _write_table_header(['Up-votes', 'Text', 'User Name', 'Permalink',], index)
+            _write_table_header(['Up-votes', 'Text', 'User Name', 'Permalink', ], index)
             for k in keys:
                 for post_ordinal in liked_by_users_dict[k]:
                     post = thread.posts[post_ordinal]
@@ -237,7 +237,7 @@ def write_most_upvoted_posts_table(
                         # if not post_subject_line:
                         #     # post_subject_line = 'No Subject'
                         #     post_subject_line = post.text_stripped[:64]
-                        post_subject_line = post.text_stripped[:150]
+                        post_subject_line = post.text_stripped[:publication_map.get_upvoted_post_text_limit()]
                         with element(index, 'td', _class='indextable'):
                             index.write(post_subject_line)
                         with element(index, 'td', _class='indextable'):
@@ -247,9 +247,9 @@ def write_most_upvoted_posts_table(
                             with element(index, 'a', href=post.permalink):
                                 index.write('Permalink')
                     post_count += 1
-                    if post_count >= POST_COUNT_LIMIT:
+                    if post_count >= publication_map.get_upvoted_post_count_limit():
                         break
-                if post_count >= POST_COUNT_LIMIT:
+                if post_count >= publication_map.get_upvoted_post_count_limit():
                     break
 
 
@@ -263,16 +263,19 @@ def _write_table_header(headers: typing.List[str], index: typing.TextIO):
 def write_user_subject_table(
         thread: thread_struct.Thread,
         user_subject_map: typing.Dict[str, typing.Set[str]],
+        publication_map: publication_maps.PublicationMap,
         index: typing.TextIO,
 ):
     """Posts by user, including the subjects they covered."""
     with element(index, 'h1'):
         index.write('Posts by User on a Subject')
-    MOST_COMMON_COUNT = 40
+    # MOST_COMMON_COUNT = 40
     user_count = collections.Counter([post.user for post in thread.posts])
     # print(user_count)
     with element(index, 'p'):
-        index.write('The most prolific {:d} posters in the original thread:'.format(MOST_COMMON_COUNT))
+        index.write(
+            'The most prolific {:d} posters in the original thread:'.format(publication_map.get_number_of_top_authors())
+        )
     upvotes_dict: typing.Dict[thread_struct.User, int] = {}
     for post in thread.posts:
         if post.user not in upvotes_dict:
@@ -281,8 +284,8 @@ def write_user_subject_table(
             upvotes_dict[post.user] += len(post.liked_by_users)
 
     with element(index, 'table', _class="indextable"):
-        _write_table_header(['User Name', 'Number of Posts', 'Total Up-votes', 'Subjects'], index)
-        for user, v in user_count.most_common(MOST_COMMON_COUNT):
+        _write_table_header(['User Name', 'Number of Posts', 'Total Up-votes', 'Up-votes/post', 'Subjects'], index)
+        for user, post_count in user_count.most_common(publication_map.get_number_of_top_authors()):
             with element(index, 'tr'):
                 # User name
                 with element(index, 'td', _class='indextable'):
@@ -290,10 +293,13 @@ def write_user_subject_table(
                         index.write(user.name)
                 # Count of posts
                 with element(index, 'td', _class='indextable'):
-                    index.write('{:d}'.format(v))
+                    index.write('{:d}'.format(post_count))
                 # Count of up-votes
                 with element(index, 'td', _class='indextable'):
                     index.write('{:d}'.format(upvotes_dict[user]))
+                # 'Up-votes/post'
+                with element(index, 'td', _class='indextable'):
+                    index.write('{:.1f}'.format(upvotes_dict[user] / post_count))
                 # Comma separated list of subjects that they are identified with
                 with element(index, 'td', _class='indextable'):
                     subjects = sorted(user_subject_map[user.name])
@@ -371,9 +377,9 @@ def write_index_page(
 
                 write_main_subject_table(subject_post_map, index)
 
-                write_most_upvoted_posts_table(thread, index)
+                write_most_upvoted_posts_table(thread, publication_map, index)
 
-                write_user_subject_table(thread, user_subject_map, index)
+                write_user_subject_table(thread, user_subject_map, publication_map, index)
 
 
 def _write_page_links(subject, page_num, page_count, f):

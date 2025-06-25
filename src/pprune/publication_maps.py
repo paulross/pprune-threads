@@ -93,6 +93,21 @@ class PublicationMap(abc.ABC):
         these should be removed from any common words exclusion."""
         pass
 
+    @abc.abstractmethod
+    def get_number_of_top_authors(self) -> int:
+        """The number of prolific authors."""
+        pass
+
+    @abc.abstractmethod
+    def get_upvoted_post_count_limit(self) -> int:
+        """The limit of the number of up-voted posts."""
+        pass
+
+    @abc.abstractmethod
+    def get_upvoted_post_text_limit(self) -> int:
+        """The limit of the length of the text to be used with up-voted posts."""
+        pass
+
 
 class ConcordePublicationMap(PublicationMap):
     """Specialisation for the Concorde thread."""
@@ -134,6 +149,15 @@ class ConcordePublicationMap(PublicationMap):
 
     def get_set_of_words_required(self) -> typing.Set[str]:
         return set()
+
+    def get_number_of_top_authors(self) -> int:
+        return 40
+
+    def get_upvoted_post_count_limit(self) -> int:
+        return 25
+
+    def get_upvoted_post_text_limit(self) -> int:
+        return 256
 
     # Map of {lower_case_word : subject_title, ..}
     WORDS_MAP = {
@@ -434,6 +458,15 @@ class AirIndia171(PublicationMap):
                 result |= set(key)
         return result
 
+    def get_number_of_top_authors(self) -> int:
+        return 30
+
+    def get_upvoted_post_count_limit(self) -> int:
+        return 25
+
+    def get_upvoted_post_text_limit(self) -> int:
+        return 200
+
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {
         'mayday': 'Mayday',
@@ -470,9 +503,9 @@ class AirIndia171(PublicationMap):
             ('deploy', 'RAT'): 'RAT (Deployment)',
             ('deployed', 'RAT'): 'RAT (Deployment)',
             ('deployment', 'RAT'): 'RAT (Deployment)',
-            ('evidence', 'RAT'):  'RAT (Deployment)',
-            ('failure', 'RAT'):  'RAT (Deployment)',
-            ('trigger', 'RAT'):  'RAT (Deployment)',
+            ('evidence', 'RAT'): 'RAT (Deployment)',
+            ('failure', 'RAT'): 'RAT (Deployment)',
+            ('trigger', 'RAT'): 'RAT (Deployment)',
 
             ('TCMA', 'activation'): 'TCMA (Activation)',
             ('TCMA', 'airground'): 'TCMA (Air-ground Logic)',
@@ -560,8 +593,8 @@ class AirIndia171(PublicationMap):
             ('bird', 'strike'): 'Bird Strike',
             ('bird', 'strikes'): 'Bird Strike',
 
-            ('flight', 'recorder') : 'DFDR',
-            ('flight', 'recorders') : 'DFDR',
+            ('flight', 'recorder'): 'DFDR',
+            ('flight', 'recorders'): 'DFDR',
 
             ('maintenance', 'error'): 'Maintenance Error',
 
