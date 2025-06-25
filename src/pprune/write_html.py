@@ -226,7 +226,7 @@ def write_most_upvoted_posts_table(
 
         post_count = 0
         with element(index, 'table', _class="indextable"):
-            _write_table_header(['Up-votes', 'Text', 'User', 'Permalink',], index)
+            _write_table_header(['Up-votes', 'Text', 'User Name', 'Permalink',], index)
             for k in keys:
                 for post_ordinal in liked_by_users_dict[k]:
                     post = thread.posts[post_ordinal]
@@ -241,7 +241,8 @@ def write_most_upvoted_posts_table(
                         with element(index, 'td', _class='indextable'):
                             index.write(post_subject_line)
                         with element(index, 'td', _class='indextable'):
-                            index.write(post.user.name)
+                            with element(index, 'a', href=post.user.href):
+                                index.write(post.user.name)
                         with element(index, 'td', _class='indextable'):
                             with element(index, 'a', href=post.permalink):
                                 index.write('Permalink')
@@ -268,30 +269,39 @@ def write_user_subject_table(
     with element(index, 'h1'):
         index.write('Posts by User on a Subject')
     MOST_COMMON_COUNT = 40
-    user_count = collections.Counter([post.user.name.strip() for post in thread.posts])
+    user_count = collections.Counter([post.user for post in thread.posts])
     # print(user_count)
     with element(index, 'p'):
         index.write('The most prolific {:d} posters in the original thread:'.format(MOST_COMMON_COUNT))
+    upvotes_dict: typing.Dict[thread_struct.User, int] = {}
+    for post in thread.posts:
+        if post.user not in upvotes_dict:
+            upvotes_dict[post.user] = len(post.liked_by_users)
+        else:
+            upvotes_dict[post.user] += len(post.liked_by_users)
+
     with element(index, 'table', _class="indextable"):
-        _write_table_header(['User Name', 'Number of Posts', 'Subjects'], index)
-        for k, v in user_count.most_common(MOST_COMMON_COUNT):
+        _write_table_header(['User Name', 'Number of Posts', 'Total Up-votes', 'Subjects'], index)
+        for user, v in user_count.most_common(MOST_COMMON_COUNT):
             with element(index, 'tr'):
                 # User name
                 with element(index, 'td', _class='indextable'):
-                    #  TODO: Make link to user profile ???
-                    index.write(k)
+                    with element(index, 'a', href=user.href):
+                        index.write(user.name)
                 # Count of posts
                 with element(index, 'td', _class='indextable'):
                     index.write('{:d}'.format(v))
+                # Count of up-votes
+                with element(index, 'td', _class='indextable'):
+                    index.write('{:d}'.format(upvotes_dict[user]))
                 # Comma separated list of subjects that they are identified with
                 with element(index, 'td', _class='indextable'):
-                    subjects = sorted(user_subject_map[k])
+                    subjects = sorted(user_subject_map[user.name])
                     for subject in subjects:
                         with element(index, 'a',
                                      href=_subject_page_name(subject, 0)):
                             index.write(subject)
                         index.write('&nbsp; ')
-    # TODO: Create author pages aof their posts and link to it.
 
 
 def write_index_page(
@@ -423,7 +433,8 @@ def write_subject_page(thread, subject_map, subject, out_path):
                             with element(out_file, 'tr', valign="top"):
                                 # with element(f, 'td', _class="alt2", style="border: 1px solid #000063; border-top: 0px; border-bottom: 0px"):
                                 with element(out_file, 'td', _class="post"):
-                                    out_file.write(post.user.name.strip())
+                                    with element(out_file, 'a', href=post.user.href):
+                                        out_file.write(post.user.name.strip())
                                     out_file.write('<br/>')
                                     out_file.write(post.timestamp.isoformat())
                                     with element(out_file, 'a', href=post.permalink):
