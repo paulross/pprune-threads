@@ -27,7 +27,6 @@ __version__ = '0.0.1'
 __rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import collections
-import io
 import logging
 import os
 import string
@@ -167,7 +166,132 @@ def write_significant_posts(
                     subject = post.subject.strip()
                     if not subject:
                         subject = 'No Subject'
-                    index.write(f'Permalink: <a href="{post.permalink}">{subject}</a> User: <a href="{post.user.href}">{post.user.name}</a>')
+                    index.write(
+                        f'Permalink: <a href="{post.permalink}">{subject}</a> User: <a href="{post.user.href}">{post.user.name}</a>')
+
+
+def write_main_subject_table(
+        subject_post_map: typing.Dict[str, typing.List[int]],
+        index: typing.TextIO,
+):
+    """Write out the main table of subjects."""
+    with element(index, 'h1'):
+        index.write('Posts by Subject')
+    with element(index, 'p'):
+        index.write(
+            'Here are all {:d} subjects I have identified with the number of posts for each subject:'.format(
+                len(subject_post_map)))
+    with element(index, 'table', _class="indextable"):
+        COLUMNS = 4
+        subjects = sorted(subject_post_map.keys())
+        rows = [subjects[i:i + COLUMNS] for i in range(0, len(subjects), COLUMNS)]
+        subject_index = 0
+        for row in rows:
+            with element(index, 'tr'):
+                for _cell in row:
+                    subject = subjects[subject_index]
+                    with element(index, 'td', _class='indextable'):
+                        with element(index, 'a',
+                                     href=_subject_page_name(subject, 0)):
+                            index.write('{:s} [{:d}]'.format(subject,
+                                                             len(subject_post_map[subject])))
+                    # print(subject, subject_map[subject])
+                    subject_index += 1
+
+
+def write_most_upvoted_posts_table(
+        thread: thread_struct.Thread,
+        index: typing.TextIO,
+):
+    """Posts by most up-voted."""
+    # dict of {votes : [post_ordinals, ...], ...}
+    POST_COUNT_LIMIT = 30
+    liked_by_users_dict = collections.defaultdict(list)
+    for i, post in enumerate(thread.posts):
+        if len(post.liked_by_users) > 0:
+            liked_by_users_dict[len(post.liked_by_users)].append(i)
+    if liked_by_users_dict:
+        keys = sorted(liked_by_users_dict.keys(), reverse=True)
+        post_count = 0
+        for k in keys:
+            post_count += len(liked_by_users_dict[k])
+            if post_count >= POST_COUNT_LIMIT:
+                break
+        with element(index, 'h1'):
+            index.write(f'The {post_count} Most Up-voted Posts')
+        # with element(index, 'p'):
+        #     index.write(
+        #         'Here are all {:d} subjects I have identified with the number of posts for each subject:'.format(
+        #             len(subject_post_map)))
+
+        post_count = 0
+        with element(index, 'table', _class="indextable"):
+            _write_table_header(['Up-votes', 'Text', 'User', 'Permalink',], index)
+            for k in keys:
+                for post_ordinal in liked_by_users_dict[k]:
+                    post = thread.posts[post_ordinal]
+                    with element(index, 'tr'):
+                        with element(index, 'td', _class='indextable'):
+                            index.write(f'{len(post.liked_by_users)}')
+                        # post_subject_line = post.subject.strip()
+                        # if not post_subject_line:
+                        #     # post_subject_line = 'No Subject'
+                        #     post_subject_line = post.text_stripped[:64]
+                        post_subject_line = post.text_stripped[:150]
+                        with element(index, 'td', _class='indextable'):
+                            index.write(post_subject_line)
+                        with element(index, 'td', _class='indextable'):
+                            index.write(post.user.name)
+                        with element(index, 'td', _class='indextable'):
+                            with element(index, 'a', href=post.permalink):
+                                index.write('Permalink')
+                    post_count += 1
+                    if post_count >= POST_COUNT_LIMIT:
+                        break
+                if post_count >= POST_COUNT_LIMIT:
+                    break
+
+
+def _write_table_header(headers: typing.List[str], index: typing.TextIO):
+    with element(index, 'tr'):
+        for header in headers:
+            with element(index, 'th', _class='indextable'):
+                index.write(header)
+
+
+def write_user_subject_table(
+        thread: thread_struct.Thread,
+        user_subject_map: typing.Dict[str, typing.Set[str]],
+        index: typing.TextIO,
+):
+    """Posts by user, including the subjects they covered."""
+    with element(index, 'h1'):
+        index.write('Posts by User on a Subject')
+    MOST_COMMON_COUNT = 40
+    user_count = collections.Counter([post.user.name.strip() for post in thread.posts])
+    # print(user_count)
+    with element(index, 'p'):
+        index.write('The most prolific {:d} posters in the original thread:'.format(MOST_COMMON_COUNT))
+    with element(index, 'table', _class="indextable"):
+        _write_table_header(['User Name', 'Number of Posts', 'Subjects'], index)
+        for k, v in user_count.most_common(MOST_COMMON_COUNT):
+            with element(index, 'tr'):
+                # User name
+                with element(index, 'td', _class='indextable'):
+                    #  TODO: Make link to user profile ???
+                    index.write(k)
+                # Count of posts
+                with element(index, 'td', _class='indextable'):
+                    index.write('{:d}'.format(v))
+                # Comma separated list of subjects that they are identified with
+                with element(index, 'td', _class='indextable'):
+                    subjects = sorted(user_subject_map[k])
+                    for subject in subjects:
+                        with element(index, 'a',
+                                     href=_subject_page_name(subject, 0)):
+                            index.write(subject)
+                        index.write('&nbsp; ')
+    # TODO: Create author pages aof their posts and link to it.
 
 
 def write_index_page(
@@ -235,62 +359,12 @@ def write_index_page(
 
                 write_significant_posts(thread, publication_map, index)
 
-                with element(index, 'h1'):
-                    index.write('Posts by Subject')
-                with element(index, 'p'):
-                    index.write(
-                        'Here are all {:d} subjects I have identified with the number of posts for each subject:'.format(
-                            len(subject_post_map)))
-                with element(index, 'table', _class="indextable"):
-                    COLUMNS = 4
-                    subjects = sorted(subject_post_map.keys())
-                    rows = [subjects[i:i + COLUMNS] for i in range(0, len(subjects), COLUMNS)]
-                    subject_index = 0
-                    for row in rows:
-                        with element(index, 'tr'):
-                            for _cell in row:
-                                subject = subjects[subject_index]
-                                with element(index, 'td', _class='indextable'):
-                                    with element(index, 'a',
-                                                 href=_subject_page_name(subject, 0)):
-                                        index.write('{:s} [{:d}]'.format(subject,
-                                                                         len(subject_post_map[subject])))
-                                # print(subject, subject_map[subject])
-                                subject_index += 1
-                # Posts by user, including the subjects they covered
-                with element(index, 'h1'):
-                    index.write('Posts by User on a Subject')
-                MOST_COMMON_COUNT = 40
-                user_count = collections.Counter([post.user.name.strip() for post in thread.posts])
-                # print(user_count)
-                with element(index, 'p'):
-                    index.write('The most prolific {:d} posters in the original thread:'.format(MOST_COMMON_COUNT))
-                with element(index, 'table', _class="indextable"):
-                    with element(index, 'tr'):
-                        with element(index, 'th', _class='indextable'):
-                            index.write('User Name')
-                        with element(index, 'th', _class='indextable'):
-                            index.write('Number of Posts')
-                        with element(index, 'th', _class='indextable'):
-                            index.write('Subjects')
-                    for k, v in user_count.most_common(MOST_COMMON_COUNT):
-                        with element(index, 'tr'):
-                            # User name
-                            with element(index, 'td', _class='indextable'):
-                                #  TODO: Make link to user profile ???
-                                index.write(k)
-                            # Count of posts
-                            with element(index, 'td', _class='indextable'):
-                                index.write('{:d}'.format(v))
-                            # Comma separated list of subjects that they are identified with 
-                            with element(index, 'td', _class='indextable'):
-                                subjects = sorted(user_subject_map[k])
-                                for subject in subjects:
-                                    with element(index, 'a',
-                                                 href=_subject_page_name(subject, 0)):
-                                        index.write(subject)
-                                    index.write('&nbsp; ')
-                # TODO: Create author pages aof their posts and link to it.
+                write_main_subject_table(subject_post_map, index)
+
+                write_most_upvoted_posts_table(thread, index)
+
+                write_user_subject_table(thread, user_subject_map, index)
+
 
 def _write_page_links(subject, page_num, page_count, f):
     with element(f, 'p', _class='page_links'):
