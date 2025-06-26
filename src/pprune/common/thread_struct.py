@@ -39,6 +39,37 @@ class User:
 PUNCTUATION_TABLE = str.maketrans({key: None for key in string.punctuation})
 
 
+def text_without_quoted_message(node: bs4.element.Tag, texts: typing.List[str]) -> None:
+    """Recurse through the node and return its text without quoted message.
+
+    Example::
+
+        <!-- message -->
+        <div id="post_message_11898940">
+        <div style="margin:1rem; margin-top:0.3rem;">
+          <div>
+            <label>Quote:</label>
+          </div>
+          <div class="panel alt2" style="border:1px inset">
+            <span style="color:#000000">Brits will be on board.</span>
+          </div>
+        </div>Yes, Indians and other nationalities too. “Brits” not more or less relevant.
+        <br />
+        <br />
+        </div>
+        <!-- / message -->
+    """
+    if node.name == "div" and node.has_attr("style") and node["style"] == "margin:1rem; margin-top:0.3rem;":
+        return
+    for child in node.children:
+        if isinstance(child, bs4.element.NavigableString):
+            txt = child.string.strip()
+            if txt:
+                texts.append(txt)
+        elif isinstance(child, bs4.element.Tag):
+            text_without_quoted_message(child, texts)
+
+
 @dataclasses.dataclass
 class Post:
     """Represents a single post in a thread."""
@@ -130,6 +161,14 @@ class Post:
             if len(line):
                 ret.append(line)
         return '\n'.join(ret)
+
+    @property
+    def text_stripped_without_quoted_message(self) -> str:
+        post_node = self.node.find('div', **{'id': f'post_message_{self.sequence_num}'})
+        texts = []
+        if post_node is not None:
+            text_without_quoted_message(post_node, texts)
+        return ' '.join(texts)
 
     @property
     def words(self) -> typing.List[str]:

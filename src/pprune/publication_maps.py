@@ -468,7 +468,7 @@ class AirIndia171(PublicationMap):
         return 25
 
     def get_upvoted_post_text_limit(self) -> int:
-        return 200
+        return 150
 
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {
@@ -651,7 +651,7 @@ class AirIndia171(PublicationMap):
             ('fuel', 'cut', 'off', 'switches'): 'Fuel Cut Off Switches',
         },
     }
-    # The key is the pprune message number where the post is clearly about the subject
+    # The key is the pprune message permalink where the post is clearly about the subject
     # but the text does not refer to it.
     # This is a map of {permalink : subject, ...}
     SPECIFIC_POSTS_MAP = {

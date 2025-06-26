@@ -408,6 +408,37 @@ def test_html_node_like_usernames(html_str, node_id, expected):
 
 
 @pytest.mark.parametrize(
+    'html_str, node_id, expected_txt, expected_txt_no_quote',
+    (
+            (
+                    HTML_SINGLE_POST,
+                    11898940,
+                    (
+                            'Quote:\n'
+                            'Brits will be on board.\n'
+                            'Yes, Indians and other nationalities too. “Brits” not more or less relevant.'
+                     ),
+                    'Yes, Indians and other nationalities too. “Brits” not more or less relevant.',
+            ),
+    ),
+    ids=[
+        'Single node.'
+    ],
+)
+def test_post_node_text_without_quoted_message(html_str, node_id, expected_txt, expected_txt_no_quote):
+    doc = read_html.parse_str_to_beautiful_soup(html_str)
+    assert doc is not None
+    post_node = doc.find('div', id=f'edit{node_id}')
+    assert post_node is not None
+    post = read_html.post_from_html_node(post_node)
+    assert post is not None
+    txt = post.text_stripped
+    assert txt == expected_txt
+    txt_no_quote = post.text_stripped_without_quoted_message
+    assert txt_no_quote == expected_txt_no_quote
+
+
+@pytest.mark.parametrize(
     'html_str, node_id, expected',
     (
             (HTML_SINGLE_POST, 11898940, '',),

@@ -226,7 +226,7 @@ def write_most_upvoted_posts_table(
             )
         post_count = 0
         with element(index, 'table', _class="indextable"):
-            _write_table_header(['Up-votes', 'Text', 'User Name', 'Permalink', ], index)
+            _write_table_header(['Up-votes', 'Text (Quoted Text Removed)', 'User Name', 'Permalink', ], index)
             for k in keys:
                 for post_ordinal in liked_by_users_dict[k]:
                     post = thread.posts[post_ordinal]
@@ -237,7 +237,12 @@ def write_most_upvoted_posts_table(
                         # if not post_subject_line:
                         #     # post_subject_line = 'No Subject'
                         #     post_subject_line = post.text_stripped[:64]
-                        post_subject_line = post.text_stripped[:publication_map.get_upvoted_post_text_limit()]
+
+                        # post_subject_line = post.text_stripped[:publication_map.get_upvoted_post_text_limit()]
+
+                        post_subject_line = post.text_stripped_without_quoted_message[
+                                            :publication_map.get_upvoted_post_text_limit()
+                                            ]
                         with element(index, 'td', _class='indextable'):
                             index.write(post_subject_line)
                         with element(index, 'td', _class='indextable'):
