@@ -207,9 +207,11 @@ def write_most_upvoted_posts_table(
     """Posts by most up-voted."""
     # dict of {votes : [post_ordinals, ...], ...}
     liked_by_users_dict = collections.defaultdict(list)
+    total_upvotes = 0
     for i, post in enumerate(thread.posts):
         if len(post.liked_by_users) > 0:
             liked_by_users_dict[len(post.liked_by_users)].append(i)
+            total_upvotes += len(post.liked_by_users)
     if liked_by_users_dict:
         keys = sorted(liked_by_users_dict.keys(), reverse=True)
         post_count = 0
@@ -223,6 +225,7 @@ def write_most_upvoted_posts_table(
             index.write(
                 'This list the posts that have the largest number of up-votes.'
                 ' They are <i>likely</i> to be more important than others.'
+                f' There are {total_upvotes:d} up-votes on {len(thread.posts)} posts.'
             )
         post_count = 0
         with element(index, 'table', _class="indextable"):
