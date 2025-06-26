@@ -27,6 +27,7 @@ __version__ = '0.0.1'
 __rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import collections
+import datetime
 import logging
 import os
 import string
@@ -379,6 +380,7 @@ def write_index_page(
                     index.write(
                         f'Posts on the thread start at {thread.posts[0].timestamp.isoformat()}'
                         f' and finish at {thread.posts[-1].timestamp.isoformat()}.'
+                        f' This build was made at {datetime.datetime.now().isoformat()}.'
                     )
 
                 write_significant_posts(thread, publication_map, index)
