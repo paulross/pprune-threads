@@ -448,6 +448,12 @@ def write_subject_page(thread, subject_map, subject, out_path):
                                     out_file.write(' Post: {:d}'.format(post.sequence_num))
                                 with element(out_file, 'td', _class="post"):
                                     out_file.write(post.node.prettify(formatter='html'))
+                                    if len(post.liked_by_users) == 1:
+                                        with element(out_file, 'p'):
+                                            out_file.write(f'{len(post.liked_by_users)} user liked this post.')
+                                    elif len(post.liked_by_users) > 1:
+                                        with element(out_file, 'p'):
+                                            out_file.write(f'{len(post.liked_by_users)} users liked this post.')
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 

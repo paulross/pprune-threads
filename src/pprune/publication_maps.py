@@ -431,6 +431,8 @@ class AirIndia171(PublicationMap):
     def get_uppercase_word_to_subject_map(self) -> typing.Dict[str, str]:
         result = self.CAPS_WORDS_MAP
         result.update(self.CAPS_WORDS_MAP_ALL)
+        result['HPSOV'] = "High Pressure Shutoff Valve"
+        result['FR24'] = "FlightRadar24"
         return result
 
     def get_phrase_lengths(self) -> typing.List[int]:
@@ -477,13 +479,15 @@ class AirIndia171(PublicationMap):
         'condolences': 'Condolences',
         'sympathy': 'Condolences',
         'empathy': 'Condolences',
+        'spectrogram': 'Audio Analysis',
+        'flightradar24': 'FlightRadar24',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
     CAPS_WORDS_MAP = {
         k: k for k in {
             'AI171', 'ADSB', 'APU', 'BBC', 'CCTV', 'EXDAC', 'MAYDAY', 'FDR', 'V1', 'V2', 'EDML', 'EAFR',
-            'FADEC', 'FAA', 'TOGA', 'VNAV', 'NTSB', 'MEL', 'DFDR', 'FBW', 'HPSOV', 'FCOM', 'FR24', 'CVR',
+            'FADEC', 'FAA', 'TOGA', 'VNAV', 'NTSB', 'MEL', 'DFDR', 'FBW', 'HPSOV', 'FCOM', 'FR24', 'CVR', 'EFATO',
         }
     }
     CAPS_WORDS_MAP_ALL = {
@@ -559,6 +563,7 @@ class AirIndia171(PublicationMap):
             ('bogies', 'tilt'): 'MLG Tilt',
             ('gear', 'tilt'): 'MLG Tilt',
             ('tilt', 'position'): 'MLG Tilt',
+            ('tipped', 'forward'): 'MLG Tilt',
             # ('gear', 'tilt') Is found with comon words (200). Maybe need a test?
 
             ('gear', 'flaps',): 'Flaps vs Gear',
@@ -603,6 +608,24 @@ class AirIndia171(PublicationMap):
             ('maintenance', 'error'): 'Maintenance Error',
 
             ('thread', 'closed'): 'Thread Closure',
+
+            ('audio', 'analysis'): 'Audio Analysis',
+            ('audio', 'samples'): 'Audio Analysis',
+            ('audio', 'evidence'): 'Audio Analysis',
+            ('doppler', 'shift'): 'Audio Analysis',
+            ('doppler', 'effect'): 'Audio Analysis',
+            ('frequency', 'plots'): 'Audio Analysis',
+            ('acoustic', 'signatures'): 'Audio Analysis',
+            ('acoustic', 'signature'): 'Audio Analysis',
+            ('spectral', 'comparison'): 'Audio Analysis',
+
+            ('water', 'ingress',): 'Water Ingress',
+            ('water', 'leak',): 'Water Ingress',
+            ('water', 'leakage',): 'Water Ingress',
+
+            ('preliminary', 'report',): 'Preliminary Report',
+
+            ('pilot', 'debrief',): 'Pilot Debrief',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
