@@ -69,8 +69,8 @@ class PublicationMap(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def get_specific_posts_to_subject_map(self) -> typing.Dict[int, str]:
-        """Returns a map of {specific_post_number : subject_title, ..}"""
+    def get_specific_posts_to_subject_map(self) -> typing.Dict[str, str]:
+        """Returns a map of {permalink : subject_title, ..}"""
         pass
 
     @abc.abstractmethod
@@ -138,7 +138,7 @@ class ConcordePublicationMap(PublicationMap):
             return self.PHRASES_2_MAP
         return {}
 
-    def get_specific_posts_to_subject_map(self) -> typing.Dict[int, str]:
+    def get_specific_posts_to_subject_map(self) -> typing.Dict[str, str]:
         return self.SPECIFIC_POSTS_MAP
 
     def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
@@ -443,7 +443,7 @@ class AirIndia171(PublicationMap):
             return self.PHRASES_MAP[phrase_length]
         return {}
 
-    def get_specific_posts_to_subject_map(self) -> typing.Dict[int, str]:
+    def get_specific_posts_to_subject_map(self) -> typing.Dict[str, str]:
         return self.SPECIFIC_POSTS_MAP
 
     def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
@@ -655,6 +655,13 @@ class AirIndia171(PublicationMap):
     # but the text does not refer to it.
     # This is a map of {permalink : subject, ...}
     SPECIFIC_POSTS_MAP = {
+        'https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-20.html#post11899702': 'Thread Moderation',
+        'https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-25.html#post11899920': 'Thread Moderation',
+        'https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-51.html#post11901310': 'Thread Moderation',
+        'https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-78.html#post11902773': 'Thread Moderation',
+        'https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-87.html#post11903346': 'Thread Moderation',
+        'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-5.html#post11903792': 'Thread Moderation',
+        'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-11.html#post11904254': 'Thread Moderation',
     }
     # Map of {subject_title : set(subject_title), ..}
     DUPLICATE_SUBJECT_MAP = {
