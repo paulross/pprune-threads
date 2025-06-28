@@ -474,7 +474,6 @@ class AirIndia171(PublicationMap):
     LC_WORDS_MAP = {
         'mayday': 'Mayday',
         'biocide': 'Biocide',
-        'suicide': 'Suicide',
         'tilt': 'MLG Tilt',
         'condolences': 'Condolences',
         'sympathy': 'Condolences',
