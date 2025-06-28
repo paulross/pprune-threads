@@ -25,28 +25,24 @@ def print_set_str(the_set: typing.Set[str], width: int):
     print()
 
 
-COLLECT_NOUNS = False
-COLLECT_VERBS = False
-
-
-def process_thread(thread: thread_struct.Thread):
+def process_thread(thread: thread_struct.Thread, collect_nouns: bool, collect_verbs: bool, min_frequency: int):
     logger.info('process_thread(): %s', thread)
     # Load English tokenizer, tagger, parser and NER
     nlp = spacy.load("en_core_web_sm")
     # {label : value : [post_ordinals, ...], ...}, ...}
     entity_lable_map: typing.Dict[str, typing.Dict[str, typing.List[int]]] = {}
-    nouns = set()
-    verbs = set()
+    nouns = collections.Counter()
+    verbs = collections.Counter()
     for p, post in enumerate(thread.posts):
         logger.debug('Post %d/%d', p, len(thread))
-        doc = nlp(post.text)
+        doc = nlp(post.text_stripped_without_quoted_message)
         # Analyze syntax
-        if COLLECT_NOUNS:
+        if collect_nouns:
             # print("Noun phrases:", [chunk.text for chunk in doc.noun_chunks])
             # From: https://spacy.io
-            nouns |= set(chunk.text for chunk in doc.noun_chunks)
-        if COLLECT_VERBS:
-            verbs |= {token.lemma_ for token in doc if token.pos_ == "VERB"}
+            nouns.update([chunk.text for chunk in doc.noun_chunks])
+        if collect_verbs:
+            verbs.update([token.lemma_ for token in doc if token.pos_ == "VERB"])
         # Find named entities, phrases and concepts
         for entity in doc.ents:
             # print(entity.text, entity.label_)
@@ -54,23 +50,38 @@ def process_thread(thread: thread_struct.Thread):
                 entity_lable_map[entity.label_] = collections.defaultdict(list)
             entity_lable_map[entity.label_][entity.text].append(p)
 
-    if COLLECT_NOUNS:
+    if collect_nouns:
         print(f' Nouns '.center(75, '='))
         # pprint.pprint(nouns, width=100)
-        print_set_str(nouns, width=180)
+        # print_set_str(nouns, width=180)
+        # print(nouns)
+        # for noun in nouns:
+        #     if nouns[noun] > min_frequency:
+        #         print(f'[{nouns[noun]:8}] {noun}')
+        for noun, count in nouns.most_common():
+            if count < min_frequency:
+                break
+            print(f'[{count:8}] {noun}')
         print(f' Nouns DONE '.center(75, '='))
-    if COLLECT_VERBS:
+    if collect_verbs:
         print(f' Verbs '.center(75, '='))
         # pprint.pprint(verbs, width=100)
-        print_set_str(verbs, width=180)
+        # print_set_str(verbs, width=180)
+        # print(verbs)
+        # for verb in verbs:
+        #     if verbs[verb] > min_frequency:
+        #         print(f'[{verbs[verb]:8}] {verb}')
+        for verb, count in verbs.most_common():
+            if count < min_frequency:
+                break
+            print(f'[{count:8}] {verb}')
         print(f' Verbs DONE '.center(75, '='))
 
     # Prune entity_lable_map
-    MIN_FREQUENCY = 5
     for entity in entity_lable_map:
         to_del = []
         for key in entity_lable_map[entity]:
-            if len(entity_lable_map[entity][key]) < MIN_FREQUENCY:
+            if len(entity_lable_map[entity][key]) < min_frequency:
                 to_del.append(key)
         for key in to_del:
             del entity_lable_map[entity][key]
@@ -86,6 +97,11 @@ def process_thread(thread: thread_struct.Thread):
     for entity in sorted(entity_lable_map.keys()):
         if len(entity_lable_map[entity].keys()):
             print(f' {entity} '.center(75, '-'))
+            print(
+                f'    {"Subject":32}'
+                f' [{"Posts":6}]:'
+                f' {"Histogram"}'
+            )
             for subject in sorted(entity_lable_map[entity].keys()):
                 print(
                     f'    {subject:32}'
@@ -109,51 +125,26 @@ def main() -> int:  # pragma: no cover
             ' Multiple threads will be added in order.'
         )
     )
-    # parser.add_argument(
-    #     "--common-words",
-    #     type=int,
-    #     default=1000,
-    #     help="Number of common words to exclude. [default: %(default)d]",
-    # )
-    # parser.add_argument(
-    #     "--most-common-count",
-    #     type=int,
-    #     default=100,
-    #     help="Limit the report to this many of the highest frequency. [default: %(default)d]",
-    # )
-    # parser.add_argument(
-    #     "--freq-ge",
-    #     type=int,
-    #     default=10,
-    #     help="Limit the report to frequencies >= this value. [default: %(default)d]",
-    # )
-    # parser.add_argument(
-    #     "--non-cap-words",
-    #     action="store_true",
-    #     help=(
-    #         "Report the frequency of non-cap words. "
-    #     )
-    # )
-    # parser.add_argument(
-    #     "--all-cap-words",
-    #     action="store_true",
-    #     help=(
-    #         "Report the frequency of all-cap words. "
-    #     )
-    # )
-    # parser.add_argument(
-    #     "--phrases",
-    #     type=int,
-    #     default=0,
-    #     help="If >0 then report the frequency of phrases of this length. [default: %(default)d]",
-    # )
-    # parser.add_argument(
-    #     "--authors",
-    #     action="store_true",
-    #     help=(
-    #         "Show the count of posts by author. "
-    #     )
-    # )
+    parser.add_argument(
+        "--collect-nouns",
+        action="store_true",
+        help=(
+            "Report the nouns in the text (verbose). [default: %(default)s]"
+        )
+    )
+    parser.add_argument(
+        "--collect-verbs",
+        action="store_true",
+        help=(
+            "Report the verbs in the text (verbose). [default: %(default)s]"
+        )
+    )
+    parser.add_argument(
+        "--min-frequency",
+        type=int,
+        default=5,
+        help="The minimum frequency to report. [default: %(default)d]",
+    )
     parser.add_argument(
         "-l",
         "--log-level",
@@ -184,7 +175,7 @@ def main() -> int:  # pragma: no cover
         word_count += len(post.words)
     logger.info('Number of words: {:d}'.format(word_count))
 
-    process_thread(thread)
+    process_thread(thread, args.collect_nouns, args.collect_verbs, args.min_frequency)
 
     t_elapsed = time.perf_counter() - t_start
     logger.info('Processed %d posts in %.3f (s)', len(thread), t_elapsed, )

@@ -75,7 +75,6 @@ Conducting Research
 
 There is a script ``src/pprune/research.py`` that analyses the thread for words and phrases.
 
-
 Words that are all Capitals
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -183,6 +182,67 @@ Here the most common 200 words are eliminated and then three word phrases are ex
     ('witnesses', 'RAT', 'hear')                     :   10
     ------- print_phrases(): len=3 most_common=200 freq_ge=0 sorted DONE ------
     2025-06-24 11:18:09,446 -              research.py#222  - INFO     - Read 2832 posts in 18.467 (s)
+
+
+Research With Natural Language Processing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There is a script ``src/pprune/research_nlp.py`` that analyses the thread for words and phrases.
+It uses `Spacey <https://spacy.io>`_ to do this.
+
+The arguments are:
+
+- ``--collect-nouns`` This reports the frequency of 'nouns', actually phrases. This is moderately useful.
+- ``--collect-verbs`` This reports the frequency of verbs. This is slightly useful.
+- ``--min-frequency`` This reports only occurrences >= to this frequency.
+
+Typical output (not collecting nouns or verbs):
+
+.. code-block:: text
+
+    ============================= Entity Label Map ============================
+    --------------------------------- CARDINAL --------------------------------
+        Subject                          [Posts ]: Histogram
+        1                                [     5]: *****
+        5                                [     5]: *****
+        738                              [     5]: *****
+        787                              [    28]: ****************************
+    ----------------------------- CARDINAL...DONE -----------------------------
+    DATE Empty
+    EVENT Empty
+    FAC Empty
+    ----------------------------------- GPE -----------------------------------
+        Subject                          [Posts ]: Histogram
+        Ahmedabad                        [     5]: *****
+        India                            [     5]: *****
+    -------------------------------- GPE...DONE -------------------------------
+    LAW Empty
+    LOC Empty
+    NORP Empty
+    --------------------------------- ORDINAL ---------------------------------
+        Subject                          [Posts ]: Histogram
+        first                            [    10]: **********
+    ------------------------------ ORDINAL...DONE -----------------------------
+    ----------------------------------- ORG -----------------------------------
+        Subject                          [Posts ]: Histogram
+        Airbus                           [     9]: *********
+        Boeing                           [    14]: **************
+        CDU                              [     6]: ******
+        FMC                              [     5]: *****
+        RIP                              [     5]: *****
+    -------------------------------- ORG...DONE -------------------------------
+    PERCENT Empty
+    PERSON Empty
+    --------------------------------- PRODUCT ---------------------------------
+        Subject                          [Posts ]: Histogram
+        B787                             [     6]: ******
+    ------------------------------ PRODUCT...DONE -----------------------------
+    QUANTITY Empty
+    TIME Empty
+    WORK_OF_ART Empty
+    ========================== Entity Label Map DONE ==========================
+
+I don't find it particularly useful.
 
 Configuring the Build
 --------------------------
