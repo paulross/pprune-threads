@@ -429,8 +429,9 @@ class AirIndia171(PublicationMap):
         return self.LC_WORDS_MAP
 
     def get_uppercase_word_to_subject_map(self) -> typing.Dict[str, str]:
-        result = self.CAPS_WORDS_MAP
+        result = self.CAPS_WORDS_MAP.copy()
         result.update(self.CAPS_WORDS_MAP_ALL)
+        result.update(self.CAPS_WORDS_MAP_EXTRA)
         result['HPSOV'] = "High Pressure Shutoff Valve"
         result['FR24'] = "FlightRadar24"
         return result
@@ -480,6 +481,7 @@ class AirIndia171(PublicationMap):
         'empathy': 'Condolences',
         'spectrogram': 'Audio Analysis',
         'flightradar24': 'FlightRadar24',
+        'lavatories': 'Water Ingress',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -487,12 +489,22 @@ class AirIndia171(PublicationMap):
         k: k for k in {
             'AI171', 'ADSB', 'APU', 'BBC', 'CCTV', 'EXDAC', 'MAYDAY', 'FDR', 'V1', 'V2', 'EDML', 'EAFR',
             'FADEC', 'FAA', 'TOGA', 'VNAV', 'NTSB', 'MEL', 'DFDR', 'FBW', 'HPSOV', 'FCOM', 'FR24', 'CVR', 'EFATO',
+            'RIPS', 'TRU',
         }
     }
     CAPS_WORDS_MAP_ALL = {
         k: k + ' (All)' for k in [
             'RAT', 'TCMA', 'AAIB', 'MLG',
         ]
+    }
+    CAPS_WORDS_MAP_EXTRA = {
+        'NYT': 'New York Times',
+        'AWST': 'Aviation Week & Space Technology',
+        'AD': 'Air Worthiness Directives',
+        'ADs': 'Air Worthiness Directives',
+        'EAFRs': 'EAFR',
+        'TRUs': 'TRU',
+        'DFDAU': 'Digital Flight Data Acquisition Unit'
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps
@@ -621,10 +633,18 @@ class AirIndia171(PublicationMap):
             ('water', 'ingress',): 'Water Ingress',
             ('water', 'leak',): 'Water Ingress',
             ('water', 'leakage',): 'Water Ingress',
+            ('water', 'spillages',): 'Water Ingress',
+            ('liquid', 'intrusion',): 'Water Ingress',
+            ('ee', 'bays',): 'Water Ingress',
 
             ('preliminary', 'report',): 'Preliminary Report',
 
             ('pilot', 'debrief',): 'Pilot Debrief',
+
+            ('arinc', '767',): 'ARINC-767',
+
+            ('28vdc', 'busses',): 'Electrical Busses',
+            ('dc', 'busses',): 'Electrical Busses',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -638,6 +658,8 @@ class AirIndia171(PublicationMap):
             ('witnesses', 'RAT', 'hear'): 'RAT (Witnesses)',
             ('triple', 'hydraulic', 'failure'): 'Hydraulic Failure (Triple)',
             ('hydraulic', 'failure', 'double'): 'Hydraulic Failure (Double)',
+            ('new', 'york', 'times'): 'New York Times',
+            ('235vac', 'backup', 'bus',): 'Electrical Busses',
         },
         4: {
             ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine  Driven)',
@@ -648,7 +670,12 @@ class AirIndia171(PublicationMap):
             ('noise', 'listening', 'motorcycle', 'passing'): "RAT (Alternate Noise Sources)",
             ('engine', 'failure', 'detection', 'takes'): 'Engine Failure Detection Time',
             ('fuel', 'cut', 'off', 'switches'): 'Fuel Cut Off Switches',
+            ('aviation', 'week', 'space', 'technology'): 'Aviation Week & Space Technology',
+            ('indian', 'accident', 'investigation', 'team'): 'AAIB (IDGA)',
         },
+        5: {
+            ('digital', 'flight', 'data', 'acquisition', 'unit',): 'Digital Flight Data Acquisition Unit',
+        }
     }
     # The key is the pprune message permalink where the post is clearly about the subject
     # but the text does not refer to it.
