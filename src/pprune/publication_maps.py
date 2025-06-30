@@ -43,6 +43,7 @@ class PublicationMap(abc.ABC):
         """Gets the title to be used in the output index.html"""
         pass
 
+    @abc.abstractmethod
     def get_introduction_in_html(self) -> str:
         """Gets the introduction to be used in the output index.html.
         This can be raw HTML."""
@@ -80,6 +81,16 @@ class PublicationMap(abc.ABC):
         For example if a post is specifically targeted at "RAT (Deployment)"
         then that post should also be included in "RAT (All)" etc."""
         pass
+
+    def get_all_subject_titles(self) -> typing.Set[str]:
+        ret = set()
+        ret |= set(self.get_lowercase_word_to_subject_map().values())
+        ret |= set(self.get_uppercase_word_to_subject_map().values())
+        for phrase_length in self.get_phrase_lengths():
+            ret |= set(self.get_phrases_to_subject_map(phrase_length).values())
+        ret |= set(self.get_specific_posts_to_subject_map().values())
+        # ret |= self.get_duplicate_subjects()
+        return ret
 
     @abc.abstractmethod
     def get_significant_posts_permalinks(self) -> typing.Set[str]:
@@ -432,12 +443,13 @@ class AirIndia171(PublicationMap):
         result = self.CAPS_WORDS_MAP.copy()
         result.update(self.CAPS_WORDS_MAP_ALL)
         result.update(self.CAPS_WORDS_MAP_EXTRA)
+        result['MAYDAY'] = "Mayday"
         result['HPSOV'] = "High Pressure Shutoff Valve"
         result['FR24'] = "FlightRadar24"
         return result
 
     def get_phrase_lengths(self) -> typing.List[int]:
-        return [2, 3, 4, ]
+        return sorted(self.PHRASES_MAP.keys())
 
     def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[str, str]:
         if phrase_length in self.get_phrase_lengths():
@@ -482,14 +494,16 @@ class AirIndia171(PublicationMap):
         'spectrogram': 'Audio Analysis',
         'flightradar24': 'FlightRadar24',
         'lavatories': 'Water Ingress',
+        'genx': 'GEnx (ALL)',
+        'parameters': 'Parameters',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
     CAPS_WORDS_MAP = {
         k: k for k in {
-            'AI171', 'ADSB', 'APU', 'BBC', 'CCTV', 'EXDAC', 'MAYDAY', 'FDR', 'V1', 'V2', 'EDML', 'EAFR',
+            'AI171', 'ADSB', 'APU', 'BBC', 'CCTV', 'EXDAC', 'FDR', 'V1', 'V2', 'EDML', 'EAFR',
             'FADEC', 'FAA', 'TOGA', 'VNAV', 'NTSB', 'MEL', 'DFDR', 'FBW', 'HPSOV', 'FCOM', 'FR24', 'CVR', 'EFATO',
-            'RIPS', 'TRU',
+            'RIPS', 'TRU', 'ARINC',
         }
     }
     CAPS_WORDS_MAP_ALL = {
@@ -541,6 +555,7 @@ class AirIndia171(PublicationMap):
             ('engines', 'failed'): 'Engine Shutdown',
             ('engines', 'failed'): 'Engine Shutdown',
             ('engines', 'simultaneously'): 'Dual Engine Failure',
+            ('dual', 'rollback'): 'Dual Engine Failure',
 
             ('wrong', 'engine'): 'Wrong Engine',
 
@@ -641,9 +656,8 @@ class AirIndia171(PublicationMap):
 
             ('pilot', 'debrief',): 'Pilot Debrief',
 
-            ('arinc', '767',): 'ARINC-767',
-
-            ('28vdc', 'busses',): 'Electrical Busses',
+            ('28Vdc', 'busses',): 'Electrical Busses',
+            ('28VDC', 'busses',): 'Electrical Busses',
             ('dc', 'busses',): 'Electrical Busses',
         },
         3: {
@@ -659,13 +673,13 @@ class AirIndia171(PublicationMap):
             ('triple', 'hydraulic', 'failure'): 'Hydraulic Failure (Triple)',
             ('hydraulic', 'failure', 'double'): 'Hydraulic Failure (Double)',
             ('new', 'york', 'times'): 'New York Times',
-            ('235vac', 'backup', 'bus',): 'Electrical Busses',
+            ('235VAC', 'backup', 'bus',): 'Electrical Busses',
         },
         4: {
-            ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine  Driven)',
-            ('engine', 'driven', 'fuel', 'pumps'): 'Fuel Pump (Engine  Driven)',
+            ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine Driven)',
+            ('engine', 'driven', 'fuel', 'pumps'): 'Fuel Pump (Engine Driven)',
             ('shutdown', 'engine', 'N2', 'overspeed'): 'Engine Shutdown (Over-speed)',
-            ('787GEnx', 'TCMA', 'airground', 'logic'): 'GEnx TCMA Logic',
+            ('787genx', 'TCMA', 'airground', 'logic'): 'GEnx TCMA Logic',
             ('definitively', 'witnesses', 'RAT', 'hear'): 'RAT (Witnesses)',
             ('noise', 'listening', 'motorcycle', 'passing'): "RAT (Alternate Noise Sources)",
             ('engine', 'failure', 'detection', 'takes'): 'Engine Failure Detection Time',
@@ -699,6 +713,7 @@ class AirIndia171(PublicationMap):
         'TCMA (Air-ground Logic)': {'TCMA (All)', },
         'TCMA (Logic)': {'TCMA (All)', },
         'TCMA (Shutdown)': {'TCMA (All)', },
+        'GEnx TCMA Logic': {'TCMA (All)', },
 
         'N2 Over-speed': {'Engine Over-speed (All)', },
         'Engine Shutdown (Over-speed)': {'Engine Over-speed (All)', },

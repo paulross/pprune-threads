@@ -83,16 +83,16 @@ def pass_one(
     """Works through every post in the thread and returns a tuple of maps::
 
         (
-            {subject : [post_ordinals, ...], ...}
-            {post_ordinal : set([subject, ...]), ...}
-            {user_name : set([subject, ...]), ...}
+            {subject : [post_ordinals, ...], ...}, # subject_post_map
+            {post_ordinal : set([subject, ...]), ...}, # post_subject_map
+            {user_name : set([subject, ...]), ...}, # user_subject_map
         )
     """
     logger.info('Starting pass one...')
     t_start = time.perf_counter()
-    subject_post_map = collections.defaultdict(list)
-    post_subject_map = {}
-    user_subject_map = collections.defaultdict(set)
+    subject_post_map: typing.Dict[str, typing.List[int]] = {}
+    post_subject_map: typing.Dict[int, typing.Set[str]] = {}
+    user_subject_map: typing.Dict[str, typing.Set[str]] = collections.defaultdict(set)
     for i, post in enumerate(thread.posts):
         subjects: typing.Set[str] = set()
         subjects |= analyse_thread.match_words(
@@ -114,11 +114,17 @@ def pass_one(
             dupe_subjects |= publication_map.get_duplicate_subjects(subject)
         subjects |= dupe_subjects
         for subject in subjects:
+            if subject not in subject_post_map:
+                subject_post_map[subject] = []
             subject_post_map[subject].append(i)
         post_subject_map[post.sequence_num] = subjects
         user_subject_map[post.user.name.strip()] |= subjects
         # print('Post {:3d} subjects [{:3d}]: {}'.format(i, len(subjects), subjects))
     # pprint.pprint(subject_map, width=200)
+    all_subject_titles = publication_map.get_all_subject_titles()
+    for subject_title in sorted(all_subject_titles):
+        if subject_title not in subject_post_map:
+            logger.warning('No post with subject title "%s"', subject_title)
     logger.info('Pass one complete in %.3f (s)', time.perf_counter() - t_start)
     return subject_post_map, post_subject_map, user_subject_map
 
@@ -481,8 +487,11 @@ def write_whole_thread(
     #     pprint.pprint(user_subject_map)
     logger.info('Writing: {:s}'.format('index.html'))
     write_index_page(thread, subject_post_map, user_subject_map, publication_map, output_path)
+    total_posts = 0
     for subject in sorted(subject_post_map.keys()):
         logger.info('Writing: "{:s}" [{:d}]'.format(subject, len(subject_post_map[subject])))
         write_subject_page(thread, subject_post_map, subject, output_path)
+        total_posts += len(subject_post_map[subject])
     #     pprint.pprint(post_map)
+    logger.info('Wrote %d posts including duplicates.', total_posts)
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)
