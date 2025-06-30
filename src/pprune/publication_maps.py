@@ -119,6 +119,11 @@ class PublicationMap(abc.ABC):
         """The limit of the length of the text to be used with up-voted posts."""
         pass
 
+    @abc.abstractmethod
+    def get_minimum_number_username_posts(self) -> int:
+        """The minimum number of posts a user has mad to get a page with all their posts."""
+        pass
+
 
 class ConcordePublicationMap(PublicationMap):
     """Specialisation for the Concorde thread."""
@@ -482,6 +487,11 @@ class AirIndia171(PublicationMap):
 
     def get_upvoted_post_text_limit(self) -> int:
         return 150
+
+    def get_minimum_number_username_posts(self) -> int:
+        """The minimum number of posts a user has mad to get a page with all their posts."""
+        return 5
+
 
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {

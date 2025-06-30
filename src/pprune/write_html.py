@@ -150,7 +150,7 @@ def pass_one(
     return ret
 
 
-def _subject_page_name(subject, page_num):
+def _page_name(subject, page_num):
     result = subject.translate(PUNCTUATION_TABLE) + '{:d}.html'.format(page_num)
     result = result.replace(' ', '_')
     # print(subject, '->' , result)
@@ -220,7 +220,7 @@ def write_main_subject_table(
                     subject = subjects[subject_index]
                     with element(index, 'td', _class='indextable'):
                         with element(index, 'a',
-                                     href=_subject_page_name(subject, 0)):
+                                     href=_page_name(subject, 0)):
                             index.write('{:s} [{:d}]'.format(subject,
                                                              len(subject_post_map[subject])))
                     # print(subject, subject_map[subject])
@@ -341,9 +341,44 @@ def write_user_subject_table(
                     subjects = sorted(user_subject_map[user.name])
                     for subject in subjects:
                         with element(index, 'a',
-                                     href=_subject_page_name(subject, 0)):
+                                     href=_page_name(subject, 0)):
                             index.write(subject)
                         index.write('&nbsp; ')
+
+
+def write_user_post_table(
+        thread: thread_struct.Thread,
+        user_ordinal_map: typing.Dict[str, typing.List[int]],
+        publication_map: publication_maps.PublicationMap,
+        index: typing.TextIO,
+):
+    """Write a table with links to pages that have all user posts."""
+    with element(index, 'h1'):
+        index.write('Users Posts')
+    with element(index, 'p'):
+        index.write(
+            'Here are posts by users that have made >= {:d} posts [post count]. Sorted by user name:'.format(
+                publication_map.get_minimum_number_username_posts(),
+            )
+        )
+    with element(index, 'table', _class="indextable"):
+        COLUMNS = 8
+        filtered_users = []
+        for user_name in user_ordinal_map.keys():
+            if len(user_ordinal_map[user_name]) >= publication_map.get_minimum_number_username_posts():
+                filtered_users.append(user_name)
+        filtered_users.sort()
+        rows = [filtered_users[i:i + COLUMNS] for i in range(0, len(filtered_users), COLUMNS)]
+        subject_index = 0
+        for row in rows:
+            with element(index, 'tr'):
+                for _cell in row:
+                    user_name = filtered_users[subject_index]
+                    if len(user_ordinal_map[user_name]) >= publication_map.get_minimum_number_username_posts():
+                        with element(index, 'td', _class='indextable'):
+                            with element(index, 'a', href=_page_name('USER_' + user_name, 0)):
+                                index.write('{:s} [{:d}]'.format(user_name, len(user_ordinal_map[user_name])))
+                        subject_index += 1
 
 
 def write_index_page(
@@ -419,22 +454,24 @@ def write_index_page(
 
                 write_user_subject_table(thread, pass_one_result.user_subject_map, publication_map, index)
 
+                write_user_post_table(thread, pass_one_result.user_ordinal_map, publication_map, index)
+
 
 def _write_page_links(subject, page_num, page_count, f):
     with element(f, 'p', _class='page_links'):
         f.write('Page Links:&nbsp;')
         if page_count > 1:
-            with element(f, 'a', href=_subject_page_name(subject, 0)):
+            with element(f, 'a', href=_page_name(subject, 0)):
                 f.write('First')
             if page_num > 0:
                 f.write('&nbsp;')
-                with element(f, 'a', href=_subject_page_name(subject, page_num - 1)):
+                with element(f, 'a', href=_page_name(subject, page_num - 1)):
                     f.write('Previous')
             page_start = max(0, page_num - PAGE_LINK_COUNT)
             page_end = min(page_count - 1, page_num + PAGE_LINK_COUNT)
             for p in range(page_start, page_end + 1):
                 f.write('&nbsp;')
-                with element(f, 'a', href=_subject_page_name(subject, p)):
+                with element(f, 'a', href=_page_name(subject, p)):
                     if p == page_num:
                         with element(f, 'b'):
                             f.write('{:d}'.format(p + 1))
@@ -442,10 +479,10 @@ def _write_page_links(subject, page_num, page_count, f):
                         f.write('{:d}'.format(p + 1))
             if page_num < page_count - 1:
                 f.write('&nbsp;')
-                with element(f, 'a', href=_subject_page_name(subject, page_num + 1)):
+                with element(f, 'a', href=_page_name(subject, page_num + 1)):
                     f.write('Next')
             f.write('&nbsp;')
-            with element(f, 'a', href=_subject_page_name(subject, page_count - 1)):
+            with element(f, 'a', href=_page_name(subject, page_count - 1)):
                 f.write('Last')
             f.write('&nbsp;')
         with element(f, 'a', href='index.html'):
@@ -456,7 +493,7 @@ def write_subject_page(thread, subject_map, subject, out_path):
     _posts = subject_map[subject]
     pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
     for page_index, page in enumerate(pages):
-        with open(os.path.join(out_path, _subject_page_name(subject, page_index)), 'w') as out_file:
+        with open(os.path.join(out_path, _page_name(subject, page_index)), 'w') as out_file:
             out_file.write(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
@@ -495,6 +532,49 @@ def write_subject_page(thread, subject_map, subject, out_path):
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
+def write_user_page(thread, user_map, user_name, out_path):
+    _posts = user_map[user_name]
+    pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
+    for page_index, page in enumerate(pages):
+        with open(os.path.join(out_path, _page_name('USER_' + user_name, page_index)), 'w') as out_file:
+            out_file.write(
+                '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
+            with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
+                with element(out_file, 'head'):
+                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(user_name)):
+                        pass
+                    with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
+                        pass
+                with element(out_file, 'body'):
+                    with element(out_file, 'h1'):
+                        out_file.write(
+                            'Posts about: "{:s}" [Posts: {:d} Pages: {:d}]'.format(user_name, len(_posts), len(pages)))
+                    _write_page_links('USER_' + user_name, page_index, len(pages), out_file)
+                    # with element(f, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
+                    with element(out_file, 'table', _class='posts'):
+                        for post_index in page:
+                            post = thread.posts[post_index]
+                            with element(out_file, 'tr', valign="top"):
+                                # with element(f, 'td', _class="alt2", style="border: 1px solid #000063; border-top: 0px; border-bottom: 0px"):
+                                with element(out_file, 'td', _class="post"):
+                                    with element(out_file, 'a', href=post.user.href):
+                                        out_file.write(post.user.name.strip())
+                                    out_file.write('<br/>')
+                                    out_file.write(post.timestamp.isoformat())
+                                    with element(out_file, 'a', href=post.permalink):
+                                        out_file.write('<br/>permalink')
+                                    out_file.write(' Post: {:d}'.format(post.sequence_num))
+                                with element(out_file, 'td', _class="post"):
+                                    out_file.write(post.node.prettify(formatter='html'))
+                                    if len(post.liked_by_users) == 1:
+                                        with element(out_file, 'p'):
+                                            out_file.write(f'{len(post.liked_by_users)} user liked this post.')
+                                    elif len(post.liked_by_users) > 1:
+                                        with element(out_file, 'p'):
+                                            out_file.write(f'{len(post.liked_by_users)} users liked this post.')
+                    _write_page_links('USER_' + user_name, page_index, len(pages), out_file)
+
+
 def write_whole_thread(
         thread: thread_struct.Thread,
         common_words: typing.Set[str],
@@ -518,4 +598,11 @@ def write_whole_thread(
         total_posts += len(pass_one_result.subject_post_map[subject])
     #     pprint.pprint(post_map)
     logger.info('Wrote %d posts including duplicates.', total_posts)
+    for user_name in sorted(pass_one_result.user_ordinal_map.keys()):
+        if len(pass_one_result.user_ordinal_map[user_name]) >= publication_map.get_minimum_number_username_posts():
+            logger.info(
+                'Writing: user page for "{:s}" [{:d}]'.format(
+                    user_name, len(pass_one_result.user_ordinal_map[user_name]))
+            )
+            write_user_page(thread, pass_one_result.user_ordinal_map, user_name, output_path)
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)
