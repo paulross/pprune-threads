@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune rigoschris name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "rigoschris" [Posts: 5 Pages: 1]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post><a href=https://www.pprune.org/members/559035-rigoschris>rigoschris</a>
+<br/>2025-06-18T18:25:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-24.html#post11905452><br/>permalink</a>
+ Post: 11905452</td>
+<td class=post><div class="tcell alt1" id="td_post_11905452">
+ <!-- message -->
+ <div id="post_message_11905452">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      EDLB
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903988" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     We have two donks individual fuel supply cut simultaneous in split seconds. There is no rudder activity visible for any thrust asymmetry during this timeframe. TCMA is implemented via the FADECs which are independent for each engine with their own power source from each engine. TCMA is designed to shut down its engine if its power lever is in retard position and the engine is still powering with too much thrust. In addition the airplanes ground sensors must indicate that it is on the ground. For each thrust leaver there are two independent position sensors. It is similar redundant designed as in modern car acceleration pedals. A dual redundancy in each thrust leaver. For TCMA to shut down two fuel supplies within split seconds we have to assume that 4 thrust leaver sensors malfunctioned and the ground sensing logic failed at the same time. The probability that this happens is nil (may be 1 in every 10exp15 hours) which would be about 10 times the age of our universe.
+     <br/>
+     Unless there is a software error in the FADEC TCMA system which only came to light on this flight. But there seem to be nothing special on this flight until rotation. If there is a software error I expect, that we get false single engine shut downs first. And that would already made the news if it happened during rotation.
+    </div>
+   </div>
+  </div>
+  Actually, according to
+  <a href="https://www.pprune.org/members/414340-tdracer" rel="nofollow">
+   tdracer
+  </a>
+  , each channel of the FADEC gets just one throttle resolver input, as the two resolvers are on separate wiring looms. So, the FADEC is using the dual channel feature to handle erroneous throttle position inputs. However, according to the patent at least, each channel can trigger TCMA and cut the fuel supply independently. So now we're down to only needing only one erroneous throttle signal per engine. Or one wrong interpretation of a signal, e.g. value clipping where you shouldn't (shortcircuit -&gt; idle), some integer overflow etc.
+  <br/>
+  <br/>
+  So, from my understanding, if there is an issue with some of the throttle position sensors, the FADECs will detect a disagreement and keep the high thrust -&gt; assume safe is "fly", whereas one of the TCMA channels might read or misinterpret throttle position close to idle. As the thrust doesn't decrease, at some point the upper bound of the falling TCMA thrust contour will be breached and the engine will be shut down.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by rigoschris; 18th Jun 2025 at
+   <span class="time">
+    20:09
+   </span>
+   .
+							
+							
+								Reason: Rephrase potential interplay of TCMA with rest of FADEC logic
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/559035-rigoschris>rigoschris</a>
+<br/>2025-06-19T16:54:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-33.html#post11906193><br/>permalink</a>
+ Post: 11906193</td>
+<td class=post><div class="tcell alt1" id="td_post_11906193">
+ <!-- message -->
+ <div id="post_message_11906193">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      mh370rip
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906137" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     SLF Engineer(electrical -not aerospace) so no specialised knowledge of any kind.
+     <br/>
+     The TCMA discussions on here seem clear that in normal operation the TCMA functions should not
+     <br/>
+     operate in air mode and the TCMA has multiple inputs from various sensors (Rad alts, WOW sensors).
+     <br/>
+     My query is to how these signals are routed to the engines, are they compared/aggregated in or routed through
+     <br/>
+     the EE bays. If they are present in the EE bays then fdr's idea of a water leak at rotate into the EE bays
+     <br/>
+     could generate shorts from the HV buses to the TCMA units.
+     <br/>
+     Are the TCMA units designed to cope with 400V AC inputs where a low voltage input is expected.
+     <br/>
+     I appreciate that the TCMA has to physically power a valve closed but applying high voltage to low voltage
+     <br/>
+     logic circuitry might have unexpected consequences.
+    </div>
+   </div>
+  </div>
+  The TCMA runs on the FADECs (Full Authority Digital Engine Control). There is one per engine, located inside the nacelle. Each one has a dual channel design inside, to compare computations, inputs etc. and generally provide redundancy (but I don\x92t know further details on the design/logic).
+  <br/>
+  <br/>
+  The sensors and actuators related to that engine (pressure, temperature sensors, various valves etc.) are most likely directly connected to it. The two throttle position sensors per engine are also directly cabled to it according to tdracer. No idea how other inputs like WoW and RADALT are connected. The FADECs don\x92t necessarily need much else, as apparently Autopilot etc. always move the actual thrust lever.
+  <br/>
+  <br/>
+  There must also be a communication channel back to the flight recorders. No idea if it gets thrown into a comms bus or there is direct wiring.
+  <br/>
+  <br/>
+  In terms of power, each FADEC has its own alternator driven by the engine. But there\x92s a failover connection to the AC bus of the plane. Not sure if there\x92s a physical relay keeping it disconnected in normal operations.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/559035-rigoschris>rigoschris</a>
+<br/>2025-06-19T18:19:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-34.html#post11906247><br/>permalink</a>
+ Post: 11906247</td>
+<td class=post><div class="tcell alt1" id="td_post_11906247">
+ <!-- message -->
+ <div id="post_message_11906247">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      ernst_mulder
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906233" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     SLF, sorry
+     <br/>
+     <br/>
+     And that is the reason for my question in a previous post, at what height output from the ground proximity sensor does TCMA deem the plane is on the ground?
+    </div>
+   </div>
+  </div>
+  TCMA itself also checks the weight-on-wheel sensors, so a bad rad-alt input alone should not cause a problem.
+  <br/>
+  And you need the actual deviation of actual thrust vs. commanded thrust for it to activate.
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by rigoschris; 19th Jun 2025 at
+   <span class="time">
+    19:06
+   </span>
+   .
+							
+							
+								Reason: Punctuation
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/559035-rigoschris>rigoschris</a>
+<br/>2025-06-19T19:01:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-34.html#post11906271><br/>permalink</a>
+ Post: 11906271</td>
+<td class=post><div class="tcell alt1" id="td_post_11906271">
+ <!-- message -->
+ <div id="post_message_11906271">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      EDML
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906268" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     One thing that just came to my mind: We are scratching our heads why that happened after the type is in service for almost 15 years with millions of flight hours and surely hundred thousands of T/Os and landings.
+     <br/>
+     What if it takes something to be worn/used after many years to get that kind of failure? The AI 787 was 11 years old. We have been discussing the fuel switches, but there are thousands of other parts that might contribute to such a failure in connection with some other problem.
+    </div>
+   </div>
+  </div>
+  With such high redundancies and a large degree of isolation between the engines, if it was indeed a simultaneous dual-engine shutdown, we don\x92t know of a single hardware component that could have worn out and caused it (as far as I know)
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/559035-rigoschris>rigoschris</a>
+<br/>2025-06-19T19:04:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-34.html#post11906277><br/>permalink</a>
+ Post: 11906277</td>
+<td class=post><div class="tcell alt1" id="td_post_11906277">
+ <!-- message -->
+ <div id="post_message_11906277">
+  Interesting thread towards the end, regarding the previous TCMA malfunction
+  <b>
+   on landing
+  </b>
+  : (pprune archived thread 617426, can\x92t post links yet)
+  <br/>
+  <br/>
+  according to
+  <a href="https://www.pprune.org/members/404945-dave-therhino" rel="nofollow">
+   Dave Therhino
+  </a>
+  who claimed to have seen a detailed report, the TCMA would initialise the thrust contour logic when touching the ground. This was nominally not an issue, as the throttles and engine would be close to idle. However, if the reverser was briefly deployed right before weight on wheels, and then cancelled when the wheels touched, TCMA would see high thrust but throttles at idle and trigger.
+  <br/>
+  <br/>
+  But this was supposedly fixed and all FADECs updated. Plus, during take-off there should not be such large fluctuation in throttle position or thrust, so intermittent switching of ground-air-ground should not cause an issue.
+  <br/>
+  <br/>
+  Also, according to
+  <a href="https://www.pprune.org/members/414340-tdracer" rel="nofollow">
+   tdracer
+  </a>
+  V2 overspeed protection cuts thrust so quickly, that if it triggered (via TCMA or whatever other reason) it was likely  after the plane had lifted off the ground. I wonder though if there\x92s still enough kinetic energy to fly the profile of the incident flight with the engines cut right around rotation.
+  <br/>
+  <br/>
+  Also, would hydraulics go out so quickly, that wheels would not retract? Wonder if a faulty WoW sensor could be a contributing factor and would also not manifest itself as the wheels not retracting :thinking
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

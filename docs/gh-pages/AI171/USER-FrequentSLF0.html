@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune FrequentSLF name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "FrequentSLF" [Posts: 6 Pages: 1]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post><a href=https://www.pprune.org/members/190184-frequentslf>FrequentSLF</a>
+<br/>2025-06-15T22:08:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-80.html#post11902892><br/>permalink</a>
+ Post: 11902892</td>
+<td class=post><div class="tcell alt1" id="td_post_11902892">
+ <!-- message -->
+ <div id="post_message_11902892">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902865" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     What Alty posted is correct. There have always been single faults in the engine control systems that could cause uncommanded high thrust (UHT) - and such failures were considered in the safety analysis (e.g. FMEA) with the note that it wasn't unsafe as the pilot would shutdown the affected engine. Then there was a 737-200 event (JT8D engines) (1999 sounds about right - I'm thinking it was either an Egyptian operator or it happened in Egypt, but don't hold me to that) - the JT8D had an issue with excessive wear of the splined shaft that provided the N2 input into the hydromechanical fuel control. In this event, that splined shaft started slipping - causing the fuel control to think the N2 was below idle, and it keep adding fuel to try to get the N2 back above idle. This caused the engine to accelerate uncontrollably - the pilots pulled back the throttle and performed an RTO, but the engine didn't respond, and they went off the runway at low speed. Everyone evacuated safely, but the aircraft was destroyed by fire.
+     <br/>
+     <br/>
+     The FAA pointed to this accident and said we couldn't depend on crew action to shutdown a runway engine, and therefore any single failure that could result in uncontrollable high thrust was not compliant with 25.901(c) (basically says no single fault can result in an unsafe condition). This basically made every commercial airliner flying non-compliant as every turbine engine control system at that time had single faults that could cause UHT
+     <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/eek.gif" title="EEK!"/>
+     . A consequence of this was everyone was effectively prevented from certifying any further engine control changes since we couldn't show compliance with 25.901(c) (even if the change actually improved safety). The FAA and EASA were forced to issue partial exemptions for all existing aircraft/engine combinations, with the stipulation that they wouldn't certify any new engines that didn't address UHT. A working group was put together at Boeing to come up with some way to comply - and they eventually came up with TCMA , only active on the ground since UHT was only considered unsafe when on the ground - first incorporated on the GE90-115B/777-300ER/200LR.
+     <br/>
+     <br/>
+     I've never been 100% comfortable with TCMA (for reasons that should be all to obvious right now), but the regulators gave us few options.
+     <br/>
+     BTW, during the early development of the 747-8, we didn't have a robust way of providing air/ground to the FADECs - which the FAA immediately found objectionable since they
+     <i>
+      never
+     </i>
+     wanted the risk of TCMA being active in-flight. I eventually came up with a design change that would provide a robust air/ground indication (it solved several issues we were confronting at the time), so that concern went away - which made the FAA very happy.
+    </div>
+   </div>
+  </div>
+  FLS here with engineering background, a simple question, how the TCMA software is coded, multiple designers, on different hardware and redundant? Can be a bug on that system definetevely impossible?
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/190184-frequentslf>FrequentSLF</a>
+<br/>2025-06-15T23:04:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-81.html#post11902942><br/>permalink</a>
+ Post: 11902942</td>
+<td class=post><div class="tcell alt1" id="td_post_11902942">
+ <!-- message -->
+ <div id="post_message_11902942">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      EDML
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902909" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Most of these systems are very simple. They are not running on a fancy OS. Mostly we are talking about a couple Kilobytes of code.
+     <br/>
+     <br/>
+     The TCMA doesn't do a lot. That makes it a lot easier to make sure that it works correclty.
+     <br/>
+     <br/>
+     That is how most embedded systems work.
+    </div>
+   </div>
+  </div>
+  I fully understand how that is coded, thanks to Tdracer for going in detail of DAL -A certified. However IMHO considering the unusual event, a bug on that piece of code should not be discounted.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/190184-frequentslf>FrequentSLF</a>
+<br/>2025-06-17T23:16:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-16.html#post11904752><br/>permalink</a>
+ Post: 11904752</td>
+<td class=post><div class="tcell alt1" id="td_post_11904752">
+ <!-- message -->
+ <div id="post_message_11904752">
+  Still FLS with some decent engineering background,
+  <br/>
+  <br/>
+  Said so my apologies if is not pertinent to the discussion.
+  <br/>
+  <br/>
+  I am puzzled by the TCMA logic, as shown on the patent, which of course could have nothing to do with final design, but clearly in my understanding the two FADEC channels are acting in series, therefore by design they do not need to concur to shut down the engine. Am I wrong?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/190184-frequentslf>FrequentSLF</a>
+<br/>2025-06-20T23:56:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-45.html#post11907397><br/>permalink</a>
+ Post: 11907397</td>
+<td class=post><div class="tcell alt1" id="td_post_11907397">
+ <!-- message -->
+ <div id="post_message_11907397">
+  SLF here,
+  <br/>
+  <br/>
+  With what might be a stupid question, however let me ask.
+  <br/>
+  Why the ground logic does not incorporate the wheel up command?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/190184-frequentslf>FrequentSLF</a>
+<br/>2025-06-21T22:31:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-51.html#post11908118><br/>permalink</a>
+ Post: 11908118</td>
+<td class=post><div class="tcell alt1" id="td_post_11908118">
+ <!-- message -->
+ <div id="post_message_11908118">
+  Could the testing of TCMA logic less robust for the portion that works only when is not armed (i.e. not on ground)? I am asking this because from previous posts the ground logic needs only one signal (WoW, radio altimeter) to be true, if so is correct a faulty sensor could have armed the TCMA? That would have removed a safety layer on the system.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/190184-frequentslf>FrequentSLF</a>
+<br/>2025-06-22T00:08:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-52.html#post11908168><br/>permalink</a>
+ Post: 11908168</td>
+<td class=post><div class="tcell alt1" id="td_post_11908168">
+ <!-- message -->
+ <div id="post_message_11908168">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      BrogulT
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11908164" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     What boggles my mind (if my understanding is correct) is that you have redundant systems that use that redundancy not to make sure that they never accidentally shut down an engine improperly but rather to make sure they never fail to shut down an engine if even one channel thinks it should.
+     <acronym title="As far as I know">
+      AFAIK
+     </acronym>
+     engines not returning to idle have not killed anyone yet (the engine can typically be just turned off or the fire handle pulled once the crew decides they want the engine to die) but engines shutting off at a bad time are an obvious hazard.
+    </div>
+   </div>
+  </div>
+  Not on specif type but the Trent 1000 description says this, disclaimer got from the net
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg8.ibsrv.net/gimg/pprune.org-vbulletin/1256x1430/screenshot_20250621_185612_chrome_90a914c98609fe915158b67dc05417092777def7.jpg"/>
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>5 users liked this post.</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune JPI33600 name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "JPI33600" [Posts: 8 Pages: 1]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post><a href=https://www.pprune.org/members/329150-jpi33600>JPI33600</a>
+<br/>2025-06-17T10:01:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-9.html#post11904160><br/>permalink</a>
+ Post: 11904160</td>
+<td class=post><div class="tcell alt1" id="td_post_11904160">
+ <!-- message -->
+ <div id="post_message_11904160">
+  Not an avionics specialist, but electronics / software engineer here, with extensive experience in hardware fault tracking, protocol monitoring and software debugging in embedded systems : mods, feel free to delete this post if I am completely out of track (and thank you for the huge amount of work you've done trying to keep this discussion clean).
+  <br/>
+  <br/>
+  After I have read the whole thread, I think most of the community agrees about a lack of engine thrust being the cause of the crash. Searching in that direction, I'm trying to "think out of the box", discarding the usual suspects (birds ingestion, TCMA, human mistake...), and to find a plausible single point of failure among the various subsystems involved. I was thinking of reversing the causality of the event, i.e. exploring a case where the engines would have behaved unexpectedly because of a major electrical failure, instead of the already explored case where both powerplants went AWOL first.
+  <br/>
+  <br/>
+  Therefore, I have a couple questions for tdracer / fdr / other informed contributors (BTW, fantastic contribution guys, please keep the good info coming):
+  <br/>
+  <br/>
+  1. From the scarce info available, is it reasonable to conclude that the engines were totally shut down? Could they have just been set to idle or reduced thrust instead?
+  <br/>
+  <br/>
+  2. In the second case, if (and that's a big IF) a major electrical failure happened first (which could have triggered RAT deployment), and considering this plane is a FBW aircraft, could there exist a case where the FADECs would command idle thrust -- or significant thrust reduction -- because they receive invalid input data from the throttle controls? Kind of a garbage in-garbage out case?
+  <br/>
+  <br/>
+  The associated scenario would be: major electrical fault (with subsequent RAT deployment) -&gt; major protocol disturbance on ARINC/AFDX buses -&gt; FADECs detect invalid data from the controls -&gt; FADECS enter some kinf of safe mode and command reduced or idle thrust.
+  <br/>
+  <br/>
+  Does it make sense or is it pure fantasy?
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/329150-jpi33600>JPI33600</a>
+<br/>2025-06-17T14:52:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-12.html#post11904368><br/>permalink</a>
+ Post: 11904368</td>
+<td class=post><div class="tcell alt1" id="td_post_11904368">
+ <!-- message -->
+ <div id="post_message_11904368">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      syseng68k
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904174" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     EDML: "No. The throttle position sensors (dual per engine) are part of the FADEC. The throttle position data is not transmitted through the ARINC busses of the aircraft".
+     <br/>
+     <br/>
+     To clarify, you are saying that the throttle position sensors are wired directly to the FADEC, and nothng else ?.
+    </div>
+   </div>
+  </div>
+  In his reply to your question above,
+  <b>
+   EDML
+  </b>
+  said that
+  <b>
+   tdracer
+  </b>
+  explained this specific wiring in a comment of the old thread (I had missed this detail too), and indeed, this is what he said:
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    The thrust lever inputs are hardwired (resolvers connected to the thrust levers, powered by the FADEC), other aircraft communications on the 787 are on an ethernet based network.
+   </div>
+  </div>
+  For reference,
+  <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-84.html#post11903132" target="_blank">
+   this is the permalink of the said comment
+  </a>
+  .
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/329150-jpi33600>JPI33600</a>
+<br/>2025-06-17T16:41:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-13.html#post11904452><br/>permalink</a>
+ Post: 11904452</td>
+<td class=post><div class="tcell alt1" id="td_post_11904452">
+ <!-- message -->
+ <div id="post_message_11904452">
+  Question to avionics specialists again. Below is the main drawing of the TCMA subsystem, included in
+  <a href="https://patentimages.storage.googleapis.com/11/c0/6b/6dcf993795046a/US6704630.pdf" target="_blank">
+   the patent document
+  </a>
+  . I can't stop scratching my head about the link I have circled in
+  <b>
+   <span style="color:#c0392b">
+    red
+   </span>
+  </b>
+  in the center of the image. AFAICS, this link shunts the internal RUN path of TCMA entirely : the RUN signal is supplied by the RUN contact of relay assembly 52, then goes through the common and RUN contacts of relay 22, then goes through the common and RUN contacts of relay 28, then exits TCMA subsystem 18 by wire 124, and... we're back to square 1, because of the link. So TCMA subsystem 18 doesn't actually control the OPEN relay 118 of the HPSOV, only the CLOSED relay 100, and in the case where relay 22 and/or 28 are activated, both coils of HPSOV could even be energized at the same time.
+  <br/>
+  <br/>
+  Obviously enough, this isn't a real circuit diagram, but shouldn't this link be removed from the patent drawing?
+  <br/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg7.ibsrv.net/gimg/pprune.org-vbulletin/708x521/screenshot_2025_06_17_at_17_53_46_1499080748192872927_06704630_us6704630_pdf_b4d797c531222e248c7bf172b0b56fe59e613cbc.png"/>
+  <br/>
+  <i>
+   Odd link in TCMA patent drawing
+  </i>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/329150-jpi33600>JPI33600</a>
+<br/>2025-06-18T16:12:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-23.html#post11905370><br/>permalink</a>
+ Post: 11905370</td>
+<td class=post><div class="tcell alt1" id="td_post_11905370">
+ <!-- message -->
+ <div id="post_message_11905370">
+  Once again, a question for people who know: what happens if voltage is applied to CLOSED coil of HPSOV when OPEN coil was already energized (dual conflicting inputs)?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/329150-jpi33600>JPI33600</a>
+<br/>2025-06-19T11:34:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-29.html#post11905954><br/>permalink</a>
+ Post: 11905954</td>
+<td class=post><div class="tcell alt1" id="td_post_11905954">
+ <!-- message -->
+ <div id="post_message_11905954">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    The RAT is an electrical generator, not a hydraulic pump. How many times does this need to be said?
+   </div>
+  </div>
+  To make things clear, just check
+  <a href="https://downloads.regulations.gov/FAA-2015-2959-0002/attachment_3.pdf" target="_blank">
+   this B787-related alert service bulletin dated 25 Nov 2014
+  </a>
+  (my bold):
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    This service bulletin provides instructions to replace the Ram Air Turbine (RAT) Pump and Control Module
+    <br/>
+    Assembly to prevent failure of the hydraulic pump at low air speed.
+    <b>
+     The RAT Assembly provides an emer-
+     <br/>
+     gency source of electrical and hydraulic power
+    </b>
+    for the primary flight control if the left, center and right main
+    <br/>
+    hydraulic systems fail. Loss of the RAT Pump and Control Module Assembly could lead to loss of control
+    <br/>
+    of the airplane when emergency power from RAT Assembly is needed. If this change is not incorporated
+    <br/>
+    on the RAT Assembly and hydraulic power is lost on the left, right and center main hydraulic systems, then
+    <br/>
+    the RAT Assembly may not provide sufficient hydraulic power which could result in the loss of many critical
+    <br/>
+    control systems that are necessary for safe flight.
+   </div>
+  </div>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg1.ibsrv.net/gimg/pprune.org-vbulletin/539x502/screenshot_2025_06_19_at_13_30_37_untitled_faa_2015_2959_0002_attachment_3_pdf_6e23d279f6d60829f022959eade2f85caaffdf17.png"/>
+  <br/>
+  <i>
+   787 RAT hydraulic pump location
+  </i>
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Senior Pilot; 19th Jun 2025 at
+   <span class="time">
+    11:40
+   </span>
+   .
+							
+							
+								Reason: Image
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>6 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/329150-jpi33600>JPI33600</a>
+<br/>2025-06-21T15:52:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-49.html#post11907864><br/>permalink</a>
+ Post: 11907864</td>
+<td class=post><div class="tcell alt1" id="td_post_11907864">
+ <!-- message -->
+ <div id="post_message_11907864">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      EDLB
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11907801" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Some assumed numbers about normal biotreatment.
+     <br/>
+     <a href="https://www.biobor.com/wp-content/uploads/2021/02/Biobor-JF-Spec-Sheet-TDS-Aviation-IATA.pdf" target="_blank">
+      https://www.biobor.com/wp-content/up...ation-IATA.pdf
+     </a>
+     <br/>
+     <br/>
+     If we assume 50 tonnes fuel load a 100ppmw biotreatment will be 5kg of biocide total in all tanks.
+     <br/>
+     <br/>
+     The GEnx-1B will burn about 4,5kg/s fuel each on a take off run (give or take a bit) so 9kg/s in both donks for about 20s until rotate.
+     <br/>
+     <br/>
+     So the total nominal biocide dose could be pumped in about half a second through both engines on take off power if it where not mixed at all and arrives in both engines at the same time.
+     <br/>
+     <br/>
+     This gives you an idea that with the nominal amount of biocide dose not much could have happened. If biocide is the source of this dual EFATO than an extreme overdose in addition to wrong application preventing mixture with the fuel had to be the case.
+    </div>
+   </div>
+  </div>
+  This sounds convincing, but I have read
+  <a href="https://jtsb.mlit.go.jp/eng-air_report/VHVKJ.pdf" target="_blank">
+   the investigation report on Jetstar Airways serious incident (VHVKJ)
+  </a>
+  with great attention, and if I understand it right, things may be a bit more subtle:
+  <br/>
+  <br/>
+  First, the problem involves the valves (notably but not exclusively FMV and FSV), not the combustion of the product:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    It is highly probable that Residue primarily composed of magnesium salts accumulated in FMV spool and FSV spool, which meter engine combustion fuel, restricted movement of spools, caused inadequate fuel metering, thereby led to engine rpm oscillation that occurred from the first flight after conducting biocide treatment.
+   </div>
+  </div>
+  Second, the doses apparently don't need to be that high to result in a problem. A x10 dose seems sufficient:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    Investigation into similar cases revealed that there were six cases reported in which both engines could not start in twin engine aircraft, and one case each in which all engines could not start in four-engine aircraft and engine thrust could not be adjusted. Any of these cases were presumed to have been caused by concentration ratio of biocide (Kathon FP1.5) that was set at higher values (about 1,000 ppm) than specified ones during biocide treatments.
+   </div>
+  </div>
+  Third, the main cause of the incident seems to be associated with magnesium salts dissolving in water instead of fuel:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    From the biocide test result, it is probable that Magnesium salts contained in biocide did not dissolve in fuel, but dissolved in water contained in fuel and were accumulated in spools as crystals through the engine fuel system.
+   </div>
+  </div>
+  Fourth, and despite the report indicating that (
+  <b>
+   my bold
+  </b>
+  ) "In this serious incident, it is highly probable that, when the Aircraft was descending for landing, there occurred oscillation in rpm of each engine causing both engines to temporarily fall below idle
+  <b>
+   at separate times
+  </b>
+  because Residue primarily composed of magnesium salts accumulated in spools impeded movement of spools that involved in fuel metering of both engines.", it should be noted that the reported "rpm oscillations" of left and right engines were close to each other in time:
+  <br/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg6.ibsrv.net/gimg/pprune.org-vbulletin/1498x424/engine_rpm_oscillations_left_9815b2033e52074b8f95cd991932e625d83cca93.png"/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg7.ibsrv.net/gimg/pprune.org-vbulletin/1498x423/engine_rpm_oscillations_right_1940e9825fc3766fe9b224d8e965e14cf40d9e96.png"/>
+  <br/>
+  These "rpm oscillations", leading to substantial loss of thrust, could as well have occurred simultaneously, and 81 seconds (for the RH engine) is an awfully long time. According to the report, Kathon FP1.5 is not used anymore for biocide treatment, but another contributor (
+  <b>
+   nachtmusak
+  </b>
+  , who seems to be a petrol specialist)
+  <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-11.html#post11904311" target="_blank">
+   suggested that other products may have similar effects
+  </a>
+  .
+  <br/>
+  <br/>
+  Therefore, regarding the case we are discussing at large (thanks again, mods!), I think we shouldn't overlook the hypothesis of fuel contamination by biocide, since it is a single point of failure (among a very limited number of SPoFs) from a system analysis point of view.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/329150-jpi33600>JPI33600</a>
+<br/>2025-06-21T17:23:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-50.html#post11907918><br/>permalink</a>
+ Post: 11907918</td>
+<td class=post><div class="tcell alt1" id="td_post_11907918">
+ <!-- message -->
+ <div id="post_message_11907918">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Gary Brown
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11907891" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     In the Japan descent case also discussed above it was 100 x the correct dose....
+    </div>
+   </div>
+  </div>
+  Huh??? I can't find any indication of that dose in the report:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    (5) From the results of the interview with the CS who was in charge of biocide treatment work, it is probably that the CS calculated according to the AMM so that the recommended final concentration ratio in the tanks would be about 100 ppm, and additionally loaded the treated fuel as described in 2.7 (11).
+    <br/>
+    According to the AMM calculation formula, the concentration ratio of the additional biocide treated fuel is calculated to be about 250 ppm in the left tank and about 285 ppm in the right tank. However, there was no record of the calculation of the concentration ratio of the biocide and the dosage amount. It is desirable to keep these records because they are considered to be important for traceability of maintenance work.
+   </div>
+  </div>
+  So it seems they didn't keep any record of the quantity, but they think they did it as prescribed. Is there a public source for the numbers you gave?
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/329150-jpi33600>JPI33600</a>
+<br/>2025-06-21T18:20:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-50.html#post11907962><br/>permalink</a>
+ Post: 11907962</td>
+<td class=post><div class="tcell alt1" id="td_post_11907962">
+ <!-- message -->
+ <div id="post_message_11907962">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      JustusW
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11907907" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     This is the type of software we are usually subject to in our everyday lives basically everywhere. Your phone, your fridge, your oven, your water heater, your car, etc. pp. ad nauseam.
+     <br/>
+     <br/>
+     In case of the Safran FADEC 3 this is not actually what we're dealing with. It uses something called an FPGA (Field Programmable Gate Array) which is a very different beast to what we are used to dealing with.
+     <br/>
+     <br/>
+     (...)
+     <br/>
+     <br/>
+     Unsurprisingly this is rather inconvenient when dealing with the real world and especially when dealing with volatile physical processes that need monitoring. Like a modern turbine engine.
+     <br/>
+     <br/>
+     Enter the FPGA.
+     <br/>
+     <br/>
+     While it is programmable what that actually means is that (at a very high level) you can build a thing called a truth table, that means a definitive mathematical mapping of input states to output states. Unlike our sequential CPU driven system an FPGA will be able to perform its entire logic every time it is asked to do so. We don't have to wait for our happy check to perform any other check.
+    </div>
+   </div>
+  </div>
+  Can you provide a source for this? I ask because when I look for info about FADECs generally and FADEC 3 more specifically, I find this kind of documentation (notice the mention of FADECs in the lower left corner):
+  <br/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg5.ibsrv.net/gimg/pprune.org-vbulletin/1143x705/screenshot_2025_06_21_at_20_03_11_powerpoint_presentation_02_ansys_schrader_pdf_c57832d668b29bcda8ebf82e67f378d7828fe438.png"/>
+  <br/>
+  <br/>
+  ... which is part of
+  <a href="https://www.ansys.com/content/dam/events/event-pdfs/german-innovation-conference-2024/02-ansys-schrader.pdf" target="_blank">
+   a larger Powerpoint presentation by Ansys
+  </a>
+  , explaining that these products are developed with SCADE development workbench, generating either Ada or C code, and that the resulting code runs under a microkernel realtime operating system:
+  <br/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg6.ibsrv.net/gimg/pprune.org-vbulletin/1664x936/screenshot_2025_06_21_at_20_10_48_powerpoint_presentation_02_ansys_schrader_pdf_dcb14a2e4331d40b8f166fd5427b96d2644c5ab7.png"/>
+  <br/>
+  <br/>
+  Now, obviously enough, a CPU can be embedded in an application-specific FPGA, but it would still execute machine code. And from my experience in other embedded systems development, current CISC or RISC CPUs have more than enough computation power to implement command and control on a modern turbofan.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

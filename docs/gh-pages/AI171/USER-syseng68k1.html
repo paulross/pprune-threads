@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune syseng68k name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "syseng68k" [Posts: 30 Pages: 2]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=USER-syseng68k0.html>First</a>
+&nbsp;<a href=USER-syseng68k0.html>Previous</a>
+&nbsp;<a href=USER-syseng68k0.html>1</a>
+&nbsp;<a href=USER-syseng68k1.html><b>2</b>
+</a>
+&nbsp;<a href=USER-syseng68k1.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
+<br/>2025-06-19T12:33:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-30.html#post11905987><br/>permalink</a>
+ Post: 11905987</td>
+<td class=post><div class="tcell alt1" id="td_post_11905987">
+ <!-- message -->
+ <div id="post_message_11905987">
+  I guess it depends on the model, as there are three position versions where the center position is valid, but that uses a different cam profile. For the one here, just confirmed, the toggle always finds one side or the other. The cam profile is circular, and it doesn't seem possible to balance in the middle. The cam section is separate to the threaded section. Might be a press fit initially, but is also staked either side. Have seen one of these where the cam section was loose, but still not possible to override the cam. A simple, but very effective bit of design work, IMHO.
+ </div>
+ <!-- / message -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
+<br/>2025-06-19T13:42:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-31.html#post11906029><br/>permalink</a>
+ Post: 11906029</td>
+<td class=post><div class="tcell alt1" id="td_post_11906029">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   Switch Problems
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11906029">
+  Dunno, the discussion around the switch as a failure point looks spurious to me. With that used to support the idea that a possible engine shutdown was due to the master fuel valve closing.
+  <br/>
+  <br/>
+  I don\x92t really buy that, since we don\x92t know at this stage whether the engines did in fact fully shutdown, or were commanded to spool down to idle, or other lower thrust setting, both of which would produce the same result. Thoughts ?.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
+<br/>2025-06-19T15:43:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-32.html#post11906130><br/>permalink</a>
+ Post: 11906130</td>
+<td class=post><div class="tcell alt1" id="td_post_11906130">
+ <!-- message -->
+ <div id="post_message_11906130">
+  Thanks. The next question being: With both engines at idle, will there still be enough hydraulic and electrical power generated ?. Might depend also on aircraft mode, ground / air, takeoff / landing etc.
+  <br/>
+  <br/>
+  I guess the underlying point i'm digging at is that not only the fuel shutoff valve and control has authority over the engine. Many a/c subsystems will be connected together via an aircraft data bus, (or local area network, in compute terminology). and will need access to the FADEC for many reasons. Just as home wifi allows multiple users to access a shared resource, most modern complex systems are networked to supervise and share data.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
+<br/>2025-06-19T15:59:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-33.html#post11906143><br/>permalink</a>
+ Post: 11906143</td>
+<td class=post><div class="tcell alt1" id="td_post_11906143">
+ <!-- message -->
+ <div id="post_message_11906143">
+  hans brinker:
+  <br/>
+  <br/>
+  Thanks for that. Should be obvious, I guess.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
+<br/>2025-06-20T11:11:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-40.html#post11906846><br/>permalink</a>
+ Post: 11906846</td>
+<td class=post><div class="tcell alt1" id="td_post_11906846">
+ <!-- message -->
+ <div id="post_message_11906846">
+  Lead Balloon:
+  <br/>
+  <br/>
+  A bit of background on real time computing might help here. Apologies if some of this is tldr, obvious, or a simplification.. The FADEC must monitor the local environment, calculate and control, various aspects of engine operation. eg: baro pressure, temperature, fuel, speed control, overtemp, as well as respond to external commands (speed, start / stop etc) and provide operating status reports in real time, to other parts of the a/c. It really is a complex, semi autonomous system in it\x92s own right. In the old analog days, there might have been several individual hardware subsystems / black boxes, to do that, but since the advent of low cost reliable computing, more and more of that functionality has been delegated to software processes. Hardware function is abstracted into software space, a single black box replacing many. All those tasks that used separate hardware in the past, now run as individual software processes, at microsecond rate, sequentially. A sleight of hand making it appear as though there are separate computers, one for each item. Some critical tasks require microsecond response times, while others can wait seconds or longer. The way that is managed is by assigning a priority to each task, which ensures that all tasks have access to the processor as needed. Hence, the title, Real Time Systems. The task set shares processor, memory and other hardware, but there is great effort and process expended to encapsulate / isolate individual tasks, even though some of them will need to communicate with each other. Done right, that kind of system design can improve reliability due to far less hardware, and lowers cost and weight. However, it does concentrate far more design complexity into a much smaller abstract space, and needs a rigorous development process for safety critical applications.
+  <br/>
+  <br/>
+  Getting back to the point, if the TMCA function is resident on the FADEC, then it\x92s likely that it is just one software task of many running on a single set of FADEC hardware. Pretty opaque and no idea how we can begin to analyse that here. Iirc, tdracer said elsewhere that the various TMCA input qualifiers are handled by the airframe (?) , with a single yes / no input to the FADEC, but need to verify that. Really important to define what does what and where.
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by syseng68k; 20th Jun 2025 at
+   <span class="time">
+    13:35
+   </span>
+   .
+							
+							
+								Reason: Spelling
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
+<br/>2025-06-20T16:41:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-43.html#post11907124><br/>permalink</a>
+ Post: 11907124</td>
+<td class=post><div class="tcell alt1" id="td_post_11907124">
+ <!-- message -->
+ <div id="post_message_11907124">
+  If there is complete power loss, some or majority of the data streams would be lost, as their sources would power down.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
+<br/>2025-06-21T16:15:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-49.html#post11907880><br/>permalink</a>
+ Post: 11907880</td>
+<td class=post><div class="tcell alt1" id="td_post_11907880">
+ <!-- message -->
+ <div id="post_message_11907880">
+  Aerospace101:
+  <br/>
+  <br/>
+  I think tdracer said upthread, that there are two rad alt sensors, and one wow, giving three. Need to verify, `but if two out of three are in agreement, that might be enough redundancy.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
+<br/>2025-06-22T17:53:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-55.html#post11908716><br/>permalink</a>
+ Post: 11908716</td>
+<td class=post><div class="tcell alt1" id="td_post_11908716">
+ <!-- message -->
+ <div id="post_message_11908716">
+  Musician: CVR Data
+  <br/>
+  <br/>
+  I think you will find that the cvr data is digitised before reachng the recorder, so that could be starlink as well. Can see that happening in the future, but the main obstacle to that is the cost of bandwidth and data storage. Significant to include all a/c in the sky at any given time, though the data could be compressed into packets, sent in batches.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
+<br/>2025-06-22T18:02:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-55.html#post11908722><br/>permalink</a>
+ Post: 11908722</td>
+<td class=post><div class="tcell alt1" id="td_post_11908722">
+ <!-- message -->
+ <div id="post_message_11908722">
+  IgnorantAndroid: Dumbfounded
+  <br/>
+  <br/>
+  Definately not true for the people i've worked with, me included,  where most of us can design the hardware, and write and debug the code to run on it. Might be true of very large projects, where the software at top level is little more than an application, with the hardware an abstraction.
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
+<br/>2025-06-22T18:28:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-55.html#post11908743><br/>permalink</a>
+ Post: 11908743</td>
+<td class=post><div class="tcell alt1" id="td_post_11908743">
+ <!-- message -->
+ <div id="post_message_11908743">
+  Musician: Illegal
+  <br/>
+  <br/>
+  Wasn't aware of that, thinking only about technical aspects. The possiblity of a data leak to a third party is always there, once a system is networked in some way.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=USER-syseng68k0.html>First</a>
+&nbsp;<a href=USER-syseng68k0.html>Previous</a>
+&nbsp;<a href=USER-syseng68k0.html>1</a>
+&nbsp;<a href=USER-syseng68k1.html><b>2</b>
+</a>
+&nbsp;<a href=USER-syseng68k1.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune tdracer name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "tdracer" [Posts: 56 Pages: 3]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=USER-tdracer0.html>First</a>
+&nbsp;<a href=USER-tdracer1.html>Previous</a>
+&nbsp;<a href=USER-tdracer0.html>1</a>
+&nbsp;<a href=USER-tdracer1.html>2</a>
+&nbsp;<a href=USER-tdracer2.html><b>3</b>
+</a>
+&nbsp;<a href=USER-tdracer2.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-15T23:50:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-3.html#post11903429><br/>permalink</a>
+ Post: 11903429</td>
+<td class=post><div class="tcell alt1" id="td_post_11903429">
+ <!-- message -->
+ <div id="post_message_11903429">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      EXDAC
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902949" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     DO-178 unless propulsion systems are for some reason different from displays and flight controls.
+     <br/>
+     <br/>
+     I have been on the fringes of dissimilar hardware and dissimilar software designs (MD-11 flight controls). Sometimes it is necessary but there is a huge overhead in both development and test.
+     <br/>
+     <br/>
+     Edit to add - Even with dissimilar processor and software the requirements for both will trace up to some common high level system requirements specification. There is a non zero probability that those top level requirement were inadequate or included an error.
+    </div>
+   </div>
+  </div>
+  Yea, I think you're right - DO-178 is aviation software - now that I think about it, DO-160 might be electro-magnetic effects (i.e. HIRF/Lightning).  It's not something I need to worry about anymore so it's not something I make a point of remembering
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+  <br/>
+  <br/>
+  I doubt the issue would be in top level requirements - those are pretty simple and straightforward.  It's the devil of the details where an error might have occurred.
+  <br/>
+  <br/>
+  All that being said, I have a hard time with the idea that TCMA activated without a
+  <i>
+   big
+  </i>
+  thrust lever movement (even if you assume an issue with the air/ground indication) - and there is absolutely no reason why the thrust levers would be moved right after rotation.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <span style="color:#222222">
+     tdracer has let us know that TCMA relies on inputs from three radio altimeters and two WoW switches and that at least one from each set must report on-ground.
+    </span>
+   </div>
+  </div>
+  No, what I posted was the logic for the 747-8 - I simply don't know (or at least don't remember) what the TCMA air/ground logic looks like for the 787/GEnx-1B.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-16T00:01:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-4.html#post11903430><br/>permalink</a>
+ Post: 11903430</td>
+<td class=post><div class="tcell alt1" id="td_post_11903430">
+ <!-- message -->
+ <div id="post_message_11903430">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      syseng68k
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902976" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     FrequentSLF: I would be more suspicious of the hardware that feeds TCMA. Rad Alt sensing could be in error, but possibly more likely is the hardware that senses weight on wheels. May be position sensing microswitches, or perhaps gear oil pressure, but would assume redundancy, eg: two sensors per leg, then some sort of voting logic on the sensor set to find faulty hardware.and make a decision. Doubt if the software is at fault, but is there a delay between sensor output, and command to shutdown the enigines ?. Alluded to doubts upthread, but I think the post was deleted. Question: Should TCMA really have the absolute power to auto shutdown engines at all, without some sort of confirmation ?.
+    </div>
+   </div>
+  </div>
+  On the 747, Weight on Wheels (WoW) depends on prox sensors on the landing gear (i.e. gear compression). I don't know how that's done on the 787.
+  <br/>
+  The reason we used both Radio Alt and WoW is that both can give erroneous indications on certain conditions - RA can be 'fooled' by dense rain or even really dense fog (the signals bounce off the water and falsely indicate on-ground), the prox sensor system can subject to HIRF/Lightning interference.
+  <br/>
+  <br/>
+  TCMA acts quickly, but it does require some persistence, so an input glitch won't activate it (mainly N1, which is measured every 15 milliseconds).
+  <br/>
+  <br/>
+  What sort of 'confirmation' do you have in mind - the regulator mandate that resulted in TCMA basically says we can't take credit for the flight crew.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-16T00:19:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-4.html#post11903431><br/>permalink</a>
+ Post: 11903431</td>
+<td class=post><div class="tcell alt1" id="td_post_11903431">
+ <!-- message -->
+ <div id="post_message_11903431">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      katekebo
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902992" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Question to 787 pilots or engineers familiar with this particular aircraft. Can excessive AOA cause a flame out, especially at certain throttle settings?
+    </div>
+   </div>
+  </div>
+  Inlet compliance is tested at max takeoff power settings, at AOA up to stall.  This is done by performing something called a 'wind-up turn' - with the engine at max TO power and constant altitude, they keep pulling the turn tighter until the wing stalls and the aircraft falls out of the turn.
+  <br/>
+  If the engine doesn't continue normal operation, that's considered a 'fail'.  Plus, the engine reaction of an over-rotated inlet (inlet separation) is a surge - accompanied by big bang and a ball of flame out the back.
+  <br/>
+  Nothing we know about this accident supports an over-rotation and related engine stall/surge.
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-16T01:26:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-4.html#post11903432><br/>permalink</a>
+ Post: 11903432</td>
+<td class=post><div class="tcell alt1" id="td_post_11903432">
+ <!-- message -->
+ <div id="post_message_11903432">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      bbofh
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903016" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The TCMA patent application is at:
+     <a href="https://patents.google.com/patent/US6704630B2/en" target="_blank">
+      https://patents.google.com/patent/US6704630B2/en
+     </a>
+     <br/>
+     Quite a simple system (not)
+     <br/>
+     What gets your attention is the fact that you can continue to operate the aircraft without an MMEL entry when one of the two systems (per EEC) that shadow each other... is unserviceable.
+     <br/>
+     As it says: "Typically the aircraft is allowed to operate for a limited period of time with just a single operative processing subsystem."
+     <br/>
+     That 787 was not long out of maintenance.
+    </div>
+   </div>
+  </div>
+  As I noted previously, the FADEC is a dual channel device.  It's long been the case that dispatch is allowed with a single FADEC channel failed (this goes back to the original PW4000/CF6-80C2 as installed on the 747-400 and 767.
+  <br/>
+  The MMEL says something like "4 installed, 3 required" (referring to individual FADEC channels) - so you can dispatch for a short time with one FADEC channel failed.  Yes, if the remaining channel of faulted FADEC fails, the engine will fail - but the FADEC reliability is such that the probability of losing the remaining channel (and hence the engine) is sufficiently small as to be acceptable.
+  <br/>
+  <br/>
+  Both channels can operate TCMA, so a single channel failure has not overall effect on the system.
+  <br/>
+  <br/>
+  Again, 'channel out' dispatch is nothing new - it's been the case since 1989 (when the PW4000/767 entered service).
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-16T01:58:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-4.html#post11903433><br/>permalink</a>
+ Post: 11903433</td>
+<td class=post><div class="tcell alt1" id="td_post_11903433">
+ <!-- message -->
+ <div id="post_message_11903433">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      dragon man
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903043" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I agree with you but it actually makes sense.
+    </div>
+   </div>
+  </div>
+  No, it doesn't.
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <span style="color:#222222">
+     Exploring addition of dual-path power redundancy for FADEC systems.
+    </span>
+   </div>
+  </div>
+  There are already 'dual-path power redundancy for FADEC' - dedicated engine driven FADEC power supply, and aircraft supplied 'backup' power. Again, there is no known way that an aircraft issue could cause the FADEC to lose power.
+  <br/>
+  <br/>
+  I'd rack this up to more AI generated nonsense.
+  <br/>
+  <br/>
+  Edited to add - others have beat me to the punch...
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <span style="color:#000000">
+     ✈️ Immediate Safety Actions
+    </span>
+    <br/>
+    <br/>
+    <span style="color:#000000">
+     &bull; PPRuNe: lock thread
+    </span>
+   </div>
+  </div>
+  Have to admit, that made me chuckle
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/thumbs.gif" title="Thumb"/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-16T06:21:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-5.html#post11903434><br/>permalink</a>
+ Post: 11903434</td>
+<td class=post><div class="tcell alt1" id="td_post_11903434">
+ <!-- message -->
+ <div id="post_message_11903434">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      DTA
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903115" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Where does the logic block that takes the WoW and other inputs to generate the singe air/ground indication live? Is it somewhere that would be affected by the aircraft power systems? Could a failure in the aircraft power cause a false ground indication to be sent to the FADECs?
+    </div>
+   </div>
+  </div>
+  Repeating myself (again), but ALL the TCMA logic is resident in the FADEC.  It takes aircraft inputs of air/ground (again, not familiar with the specifics of the air/ground logic used on the 787/GEnx-1B, so don't ask), thrust lever position, and what the engine is actually doing (mainly N1) to determine if the engine is 'out of control'.
+  <br/>
+  The thrust lever inputs are hardwired (resolvers connected to the thrust levers, powered by the FADEC), other aircraft communications on the 787 are on an ethernet based network.  Default mode for the FADEC if aircraft inputs are lost or invalid is "Air", as that is generally considered to be the 'safe' choice.
+  <br/>
+  But even assuming some aircraft fault caused the FADECs to falsely believe the aircraft was 'on-ground', it would
+  <i>
+   still
+  </i>
+  take a pretty major error in the TCMA logic for it to actually trigger and shutdown the engine (especially lacking an associated thrust lever movement to idle).  Never say never, but we're getting pretty far out on the probability tree for all these things to happen.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-16T22:01:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-6.html#post11903825><br/>permalink</a>
+ Post: 11903825</td>
+<td class=post><div class="tcell alt1" id="td_post_11903825">
+ <!-- message -->
+ <div id="post_message_11903825">
+  Something that occurred to me after I went to bed last night: My assumption that the FDR readouts would rapidly reveal the cause may be flawed.
+  <br/>
+  <br/>
+  Let me explain.
+  <br/>
+  <br/>
+  The consensus is that both engines quit shortly after liftoff (that assumes that the RAT did in fact deploy). At least one of the data recorders has battery backup, so it should have kept functioning when all aircraft power was lost.
+  <br/>
+  <br/>
+  However...
+  <br/>
+  <br/>
+  Over the years, I've looked at lots and lots of digital flight data recorder outputs when investigating some sort of incident or other engine anomaly, So I have become rather familiar with some of the interesting characteristics of DFDR data.
+  <br/>
+  <br/>
+  On the 767 and 747-400, when you shutdown an engine and the IDG goes offline, there is a momentary 'glitch' in the electrical power system as it reconfigures for the available power source - this is why you see the flight deck displays flicker and return, and the cabin lights momentarily flicker. As a result, most of the avionics boxes 'reset' - this is quick, but it's not instantaneous. This shows up in the FDR data - sometimes as 'no valid data' for a few seconds, or as garbage readings of zero or 'full scale'. Now, looking at the FDR data, it's easy to simply disregard the data, so normally no big deal.
+  <br/>
+  <br/>
+  Starting with the 777 (and on the 787 and 747-8), this electrical power glitch was 'fixed' - there is slight delay (~quarter of a second IIRC) before the fuel cutoff signal is sent to the engine - during which the electrical system reconfiguration takes place so no more 'glitch' during a normal engine shutdown...Except whatever happened to these engines wasn't 'normal'.
+  <br/>
+  <br/>
+  If there is a fuel cut at high power, the engine spools down incredibly rapidly - a second or two from max power to sub-idle. Assuming the fuel cut wasn't commanded by the flight deck fuel switches, the electrical system won't know it's coming, so it can't reconfigure until after the engine generators drop offline - and you're going to get that power glitch. Nearly every avionics box on the aircraft will reset due to this electrical glitch, and the FDR isn't going to get useful data for a few seconds (and then, only from the stuff that's on the battery bus).
+  <br/>
+  <br/>
+  Whatever happened, happened quickly - it's quite possible that whatever initiated the high-power fuel cut didn't get recorded.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by T28B; 16th Jun 2025 at
+   <span class="time">
+    22:16
+   </span>
+   .
+							
+							
+								Reason: White Space Is Your Friend
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>16 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-17T01:37:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903904><br/>permalink</a>
+ Post: 11903904</td>
+<td class=post><div class="tcell alt1" id="td_post_11903904">
+ <!-- message -->
+ <div id="post_message_11903904">
+  Something for everyone to keep in mind (especially in light of the apparently AI created 'news releases' that were posted in the old thread):
+  <br/>
+  During an accident investigation, everyone (and I mean
+  <i>
+   everyone
+  </i>
+  !) associated with the investigation is under what's basically a 'gag order'.  They are not to discuss what they know with
+  <i>
+   anyone
+  </i>
+  outside the investigation (been there, done that, hated it but obeyed).
+  <br/>
+  Any and all releases of information regarding the investigation are to come from the primary investigating agency (in this case the Indian investigators).
+  <br/>
+  In today's 24-hour news cycle and constant demand for information, people don't like this, but it's done for good reasons - including protecting the impartiality of the investigation.
+  <br/>
+  In short, if it doesn't originate with the Indian investigation team, it's probably not worth reading.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>24 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-17T02:43:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903928><br/>permalink</a>
+ Post: 11903928</td>
+<td class=post><div class="tcell alt1" id="td_post_11903928">
+ <!-- message -->
+ <div id="post_message_11903928">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lead Balloon
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903924" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Back to the subject of the TCMA, in order for the four channels (A and B for engine 1 and A and B for engine 2) to be truly independent, there would have to be, for example, four, separate weight on wheels sensors and two, separate throttle position sensors per throttle. I would be extraordinarily surprised if that's what has been implemented, but will happily stand correct.
+    </div>
+   </div>
+  </div>
+  You'd be half right (or if you prefer, half wrong). Each channel of the FADEC has its own thrust lever position resolver. In other Boeing aircraft, there is a single resolver per engine, with dual electrical coils (i.e. electrically isolated but mechanically connected). But in order to go for full compliance with a (in my opinion) rather extreme FAA position regarding 'single failures' and 25.901(c), the 787 thrust lever actually has dual load paths, feeding to different thrust lever resolvers for each channel.
+ </div>
+ <!-- / message -->
+</div>
+<p>5 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-17T06:11:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-8.html#post11903996><br/>permalink</a>
+ Post: 11903996</td>
+<td class=post><div class="tcell alt1" id="td_post_11903996">
+ <!-- message -->
+ <div id="post_message_11903996">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lead Balloon
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903953" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Thanks tdracer and EXDAC for the info re the throttle position resolvers (and I'm aware of what is "
+     <span style="color:#000000">
+      well understood by those who specify, design, test, and certify critical aircraft systems", EXDAC). But do the separate resolver outputs involve physically separated wiring through separate looms and connectors and, if there are any earths or power connections involved, are they at separate points and, in the case of power connections, on separate busses? Duplicated, supposedly completely independent, "designed, tested and certified critical aircraft systems" occasionally have a common, single point of failure, not as a consequence of bad theoretical design but, rather, physical implementation.
+      <br/>
+      <br/>
+      And what of the weight on wheel sensor inputs to the 4 TCMA channels (2 per engine)? 4 separate sensors with 4 separated sets of wiring in different looms through different connectors?
+     </span>
+    </div>
+   </div>
+  </div>
+  The wiring between the two (per engine) FADEC channels is separate and isolated from each other.  In the areas potentially subject to cross engine rotor burst damage, that wiring is physically separated by a considerable distance.  About the only place where the Channel A and B thrust lever resolver wiring is close proximity is in the thrust lever quadrant.  We've been designing FADEC aircraft for 40 years - and the requirements for isolation are detailed and well understood.
+  <br/>
+  <br/>
+  I've
+  <i>
+   repeatedly
+  </i>
+  posted I don't know the details of the 787/GEnx-1B FADEC air/ground logic - and I know even less about the 787 air/ground system architecture.  That being said, I think the whole air/ground is a bit of a red herring - even with a false air/ground indication, it's going to take a very major flaw in the FADEC logic for TCMA to activate without several other things happening (such as the thrust levers being moved to idle - which all by itself is going to make for a bad day if it's done at rotation).
+ </div>
+ <!-- / message -->
+</div>
+<p>6 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-17T21:41:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-16.html#post11904694><br/>permalink</a>
+ Post: 11904694</td>
+<td class=post><div class="tcell alt1" id="td_post_11904694">
+ <!-- message -->
+ <div id="post_message_11904694">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lord Bracken
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904584" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I was referring to CVR/FDRs in general being specialist equipment requiring specialist facilities to process. In any case, I would be very interested to find out where those from this accident are read. It appears from a post upthread there are new facilities in New Dehli that could be used. Having said that, for the EK 521 accident in Dubai the recorders were sent to the UK for analysis, despite a "flight data recorder centre" in Abu Dhabi being opened (again with much fanfare) by the UAE GCAA five years before the occurrence.
+    </div>
+   </div>
+  </div>
+  Given the number of times I reviewed DFDR data supplied by an operator after some sort of event/incident, I think most major operators have access to the equipment needed to download a healthy data recorder.  So I'd be a bit surprised if Air India does not have this capability.
+  <span style="color:#222222">
+   OldnGrounded has also posted that the Indian AAIB also has that ability.
+  </span>
+  <br/>
+  <br/>
+  Usually when I hear of data recorders going back to the US NTSB or the recorder manufacturer, it's because the crash damage is such that specialized equipment is needed to download the data.  The recorder in the tail would likely have little damage.
+  <br/>
+  While the AAIB
+  <i>
+   may
+  </i>
+  have held off on downloading the recorders until all the major players are present, it's been several days - I'd expect everyone who matters is already there.  So I think it is reasonable to believe that the investigators have done a download and have had at least a preliminary look at the data.  If there is a smoking gun, they probably already know (and the longer we don't hear something regarding the rest of the 787 fleet, or at least the GEnx powered fleet, the less likely it is that they suspect a systemic problem with the aircraft and/or engine).  However the proviso that I posted earlier about potential data loss/corruption due to a sudden shutdown still applies - so maybe the data simply isn't on the recorder.
+  <br/>
+  <br/>
+  As has already been posted, EMI is highly unlikely - the current cert requirements for HIRF are quite high, and due to the composite airframe construction of the 787, the lighting requirements are much higher than for conventional aluminum aircraft (the higher resistance of the composite airframe results is higher lightning induced currents).
+  <br/>
+  <br/>
+  FDR has suggested a large slug of water hitting critical aircraft electronics at rotation - it is possible that resultant electrical short circuits could falsely signal the engines that the switches are in cutoff.  Highly unlikely that it would do that to both engines, but possible.
+  <br/>
+  Then again, all the other plausible explanations are highly unlikely, so...
+  <br/>
+  <br/>
+  BTW, I do have a life outside PPRuNe - and I'm going to be traveling the next several days, with limited to non-existent internet access.  So don't be surprised if I'm not responding posts or PMs.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>16 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-17T23:20:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-17.html#post11904756><br/>permalink</a>
+ Post: 11904756</td>
+<td class=post><div class="tcell alt1" id="td_post_11904756">
+ <!-- message -->
+ <div id="post_message_11904756">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      EDML
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904732" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     That is not what the TCMA logic is supposed to do. Only high thrust with the thrust lever idle should trigger the TCMA.
+    </div>
+   </div>
+  </div>
+  Actually that's not quite true.  Thrust far higher than what's being commanded by the thrust lever - it doesn't have to be at idle.  But even with a CPU failure commanding high thrust (relative to TL position), the odds of that happening to two engines at the same time is astronomical.
+  <br/>
+  BTW, I don't know if there is any 'crosstalk' of TCMA activation between engines on the 787.  I know we don't do any crosstalk of other engines info on the 747-8, but the 787 is far more integrated, and the amount of data that can put on that ethernet based data bus is massive.
+  <br/>
+  My knee jerk is that they wouldn't crosstalk TCMA status between engines, but the reality is I really don't know.
+ </div>
+ <!-- / message -->
+</div>
+<p>8 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-17T23:25:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-17.html#post11904761><br/>permalink</a>
+ Post: 11904761</td>
+<td class=post><div class="tcell alt1" id="td_post_11904761">
+ <!-- message -->
+ <div id="post_message_11904761">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      galaxy flyer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904754" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Unless he is accredited to investigation, he doesn\x92t know. If he is accredited, he should be a great deal of trouble. It\x92s early days to be talking. I\x92ve been involved in investigations and there\x92s no talk about the investigation even to my boss or colleagues. I was in one, the only mention was to my boss that I was one, so he\x92d what I was and why I might not be available.
+    </div>
+   </div>
+  </div>
+  The gag rule is pretty much the first thing you're told when you get drawn into an investigation - and you can get in big trouble for violating it (even if inadvertent).
+  <br/>
+  A Boeing management type got his hand slapped pretty hard not to long ago when he made the mistake of answering a reporter's question regarding the Alaska door plug blowout.
+  <br/>
+  I was tempted to contact my friend who was my counterpart during the 787/GEnx-1B development, but I suspect he's already been contacted and is considered to be part of the investigation - so he couldn't talk to me about it anyway.
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-26T22:20:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html#post11911546><br/>permalink</a>
+ Post: 11911546</td>
+<td class=post><div class="tcell alt1" id="td_post_11911546">
+ <!-- message -->
+ <div id="post_message_11911546">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      RichardJones
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11911520" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Thanks for the update. S.P.
+     <br/>
+     Well it's about time, they came up with something..with all the advances in computeriisation and avionics.
+     <br/>
+     If I had love ones on board that aircraft I would not be happy at the delay in getting information to the public.
+     <br/>
+     if I didn't know any better, i would be of the opinion there is a possible reluctance of the authorities, to release information, that they must surely be in possession of.
+    </div>
+   </div>
+  </div>
+  Satisfying the public demand for instant informational gratification is not their job - determining what happened, why, and how to prevent a future occurrence is. There is a process that they should follow, and indications are they are following it.
+  <br/>
+  About the only thing you can assume from the lack of release of information is that they have not
+  <i>
+   yet
+  </i>
+  found anything that would suggest a systemic threat to other 787 aircraft that would require immediate corrective action or an aircraft grounding.
+ </div>
+ <!-- / message -->
+</div>
+<p>19 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-28T18:29:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-58.html#post11912617><br/>permalink</a>
+ Post: 11912617</td>
+<td class=post><div class="tcell alt1" id="td_post_11912617">
+ <!-- message -->
+ <div id="post_message_11912617">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      MaybeItIs
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11912358" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     But installing lavatories directly above EE Bays? Who's the genius...? .
+     <br/>
+    </div>
+   </div>
+  </div>
+  Every commercial airliner I've ever been on - with the exception of a short-range regional jet (only lav in the back) - has at least one lav immediately aft of the flight deck.  Especially post 9/11, putting the most forward lav any further back would become a nightmare when the pilots need to relieve themselves (presumably, they expect the pilot to be able to 'hold it' on a short range regional jet).
+  <br/>
+  And every commercial airliner I'm familiar with has the prime electronics bay below the flight deck - for what should be obvious reasons.
+  <br/>
+  <br/>
+  There is absolutely nothing unusual about the 787 arrangement in this regard.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-29T04:00:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-58.html#post11912775><br/>permalink</a>
+ Post: 11912775</td>
+<td class=post><div class="tcell alt1" id="td_post_11912775">
+ <!-- message -->
+ <div id="post_message_11912775">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      MaybeItIs
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11912770" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Yes, that was fairly much my point. The "Dream" was supposed to be revolutionary, "all" electric..., but it doesn't take a genius to copy an old, out-dated layout.
+     <br/>
+     <br/>
+     I see nothing wrong, everything right with the Main EE Bay being under the cockpit. It's the obvious place. But underneath a leak-prone lav? Even the plumbing fittings are problematic, often leaky. Water above, Electricity below... What do we anticipate? Time is the real issue here. We have two showers in our house. A few years on, both started leaking... It's not rocket science.
+     <br/>
+     <br/>
+     How can we have innovation and improvement without I &amp; I? The more I learn...
+    </div>
+   </div>
+  </div>
+  So how are you going to allow the pilot to relieve themselves - while maintaining post 9/11 security - without a lav up front?
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=USER-tdracer0.html>First</a>
+&nbsp;<a href=USER-tdracer1.html>Previous</a>
+&nbsp;<a href=USER-tdracer0.html>1</a>
+&nbsp;<a href=USER-tdracer1.html>2</a>
+&nbsp;<a href=USER-tdracer2.html><b>3</b>
+</a>
+&nbsp;<a href=USER-tdracer2.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>
