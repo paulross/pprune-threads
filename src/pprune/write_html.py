@@ -71,15 +71,34 @@ def element(_stream, _name, **attributes):
     _stream.write('</{}>\n'.format(_name))
 
 
+class PassOneResult:
+    def __init__(self):
+        self.subject_post_map: typing.Dict[str, typing.List[int]] = {}
+        self.post_subject_map: typing.Dict[int, typing.Set[str]] = {}
+        self.user_subject_map: typing.Dict[str, typing.Set[str]] = collections.defaultdict(set)
+        self.user_ordinal_map: typing.Dict[str, typing.List[int]] = collections.defaultdict(list)
+
+    def add_subject_post(
+            self,
+            subjects: typing.Set[str],
+            post_index: int,
+            sequence_num: int,
+            user_name: str,
+    ) -> None:
+        for subject in subjects:
+            if subject not in self.subject_post_map:
+                self.subject_post_map[subject] = []
+            self.subject_post_map[subject].append(post_index)
+        self.post_subject_map[sequence_num] = subjects
+        self.user_subject_map[user_name.strip()] |= subjects
+        self.user_ordinal_map[user_name.strip()].append(post_index)
+
+
 def pass_one(
         thread: thread_struct.Thread,
         common_words: typing.Set[str],
         publication_map: publication_maps.PublicationMap,
-) -> typing.Tuple[
-    typing.Dict[str, typing.List[int]],
-    typing.Dict[int, typing.Set[str]],
-    typing.Dict[str, typing.Set[str]]
-]:
+) -> PassOneResult:
     """Works through every post in the thread and returns a tuple of maps::
 
         (
@@ -90,9 +109,10 @@ def pass_one(
     """
     logger.info('Starting pass one...')
     t_start = time.perf_counter()
-    subject_post_map: typing.Dict[str, typing.List[int]] = {}
-    post_subject_map: typing.Dict[int, typing.Set[str]] = {}
-    user_subject_map: typing.Dict[str, typing.Set[str]] = collections.defaultdict(set)
+    ret = PassOneResult()
+    # subject_post_map: typing.Dict[str, typing.List[int]] = {}
+    # post_subject_map: typing.Dict[int, typing.Set[str]] = {}
+    # user_subject_map: typing.Dict[str, typing.Set[str]] = collections.defaultdict(set)
     for i, post in enumerate(thread.posts):
         subjects: typing.Set[str] = set()
         subjects |= analyse_thread.match_words(
@@ -113,20 +133,21 @@ def pass_one(
         for subject in subjects:
             dupe_subjects |= publication_map.get_duplicate_subjects(subject)
         subjects |= dupe_subjects
-        for subject in subjects:
-            if subject not in subject_post_map:
-                subject_post_map[subject] = []
-            subject_post_map[subject].append(i)
-        post_subject_map[post.sequence_num] = subjects
-        user_subject_map[post.user.name.strip()] |= subjects
+        # for subject in subjects:
+        #     if subject not in subject_post_map:
+        #         subject_post_map[subject] = []
+        #     subject_post_map[subject].append(i)
+        # post_subject_map[post.sequence_num] = subjects
+        # user_subject_map[post.user.name.strip()] |= subjects
+        ret.add_subject_post(subjects, i, post.sequence_num, post.user.name.strip())
         # print('Post {:3d} subjects [{:3d}]: {}'.format(i, len(subjects), subjects))
     # pprint.pprint(subject_map, width=200)
     all_subject_titles = publication_map.get_all_subject_titles()
     for subject_title in sorted(all_subject_titles):
-        if subject_title not in subject_post_map:
+        if subject_title not in ret.subject_post_map:
             logger.warning('No post with subject title "%s"', subject_title)
     logger.info('Pass one complete in %.3f (s)', time.perf_counter() - t_start)
-    return subject_post_map, post_subject_map, user_subject_map
+    return ret
 
 
 def _subject_page_name(subject, page_num):
@@ -327,8 +348,9 @@ def write_user_subject_table(
 
 def write_index_page(
         thread: thread_struct.Thread,
-        subject_post_map: typing.Dict[str, typing.List[int]],
-        user_subject_map: typing.Dict[str, typing.Set[str]],
+        pass_one_result: PassOneResult,
+        # subject_post_map: typing.Dict[str, typing.List[int]],
+        # user_subject_map: typing.Dict[str, typing.Set[str]],
         publication_map: publication_maps.PublicationMap,
         out_path: str,
 ):
@@ -374,7 +396,7 @@ def write_index_page(
                 with element(index, 'note'):
                     index.write(' NOTE: No AI was used during this.')
                 with element(index, 'p'):
-                    posts_inc, posts_exc = get_count_of_posts_included(thread, subject_post_map)
+                    posts_inc, posts_exc = get_count_of_posts_included(thread, pass_one_result.subject_post_map)
                     index.write(
                         f'Total Posts: {len(thread)}'
                         f', posts included: {posts_inc}'
@@ -391,11 +413,11 @@ def write_index_page(
 
                 write_significant_posts(thread, publication_map, index)
 
-                write_main_subject_table(subject_post_map, index)
+                write_main_subject_table(pass_one_result.subject_post_map, index)
 
                 write_most_upvoted_posts_table(thread, publication_map, index)
 
-                write_user_subject_table(thread, user_subject_map, publication_map, index)
+                write_user_subject_table(thread, pass_one_result.user_subject_map, publication_map, index)
 
 
 def _write_page_links(subject, page_num, page_count, f):
@@ -483,15 +505,17 @@ def write_whole_thread(
     t_start = time.perf_counter()
     # out_path = get_out_path(output_name)
     # shutil.rmtree(output_path, ignore_errors=True)
-    subject_post_map, post_subject_map, user_subject_map = pass_one(thread, common_words, publication_map)
+    # subject_post_map, post_subject_map, user_subject_map = pass_one(thread, common_words, publication_map)
+    pass_one_result = pass_one(thread, common_words, publication_map)
     #     pprint.pprint(user_subject_map)
     logger.info('Writing: {:s}'.format('index.html'))
-    write_index_page(thread, subject_post_map, user_subject_map, publication_map, output_path)
+    # write_index_page(thread, subject_post_map, user_subject_map, publication_map, output_path)
+    write_index_page(thread, pass_one_result, publication_map, output_path)
     total_posts = 0
-    for subject in sorted(subject_post_map.keys()):
-        logger.info('Writing: "{:s}" [{:d}]'.format(subject, len(subject_post_map[subject])))
-        write_subject_page(thread, subject_post_map, subject, output_path)
-        total_posts += len(subject_post_map[subject])
+    for subject in sorted(pass_one_result.subject_post_map.keys()):
+        logger.info('Writing: "{:s}" [{:d}]'.format(subject, len(pass_one_result.subject_post_map[subject])))
+        write_subject_page(thread, pass_one_result.subject_post_map, subject, output_path)
+        total_posts += len(pass_one_result.subject_post_map[subject])
     #     pprint.pprint(post_map)
     logger.info('Wrote %d posts including duplicates.', total_posts)
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)
