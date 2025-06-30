@@ -1,0 +1,763 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune ARINC name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "ARINC" [Posts: 12 Pages: 1]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post><a href=https://www.pprune.org/members/445033-oldngrounded>OldnGrounded</a>
+<br/>2025-06-16T01:19:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-83.html#post11903028><br/>permalink</a>
+ Post: 11903028</td>
+<td class=post><div class="tcell alt1" id="td_post_11903028">
+ <!-- message -->
+ <div id="post_message_11903028">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      bbofh
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11903016" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The TCMA patent application is at:
+     <a href="https://patents.google.com/patent/US6704630B2/en" target="_blank">
+      https://patents.google.com/patent/US6704630B2/en
+     </a>
+     <br/>
+     Quite a simple system (not)
+     <br/>
+     What gets your attention is the fact that you can continue to operate the aircraft without an MMEL entry when one of the two systems (per EEC) that shadow each other... is unserviceable.
+     <br/>
+     As it says: "Typically the aircraft is allowed to operate for a limited period of time with just a single operative processing subsystem."
+     <br/>
+     That 787 was not long out of maintenance.
+    </div>
+   </div>
+  </div>
+  Thanks for posting this.  I read it quickly and glanced at the drawings, which are adequate for the patent application but not nearly adequate to understand the system in any depth.
+  <br/>
+  <br/>
+  I note that, unless I missed it, the patent application doesn't address a mechanism for determining whether an aircraft is actually on the ground.  I suppose that will depend on some of those "several other digital inputs."
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    Via the execution of software package
+    <b>
+     130
+    </b>
+    , each of the processing subsystems
+    <b>
+     20
+    </b>
+    <i>
+     a
+    </i>
+    and
+    <b>
+     20
+    </b>
+    <i>
+     b
+    </i>
+    monitors the position of thrust lever
+    <b>
+     36
+    </b>
+    , engine power level,
+    <u>
+     and several other digital inputs provided from the aircraft
+    </u>
+    via digital ARINC data buses
+    <b>
+     46
+    </b>
+    .
+   </div>
+  </div>
+  . Emphasis added.
+  <br/>
+  <br/>
+  I'm still looking for identification of the relevant inputs for TCMA on the GEnx-1B.  If anyone has suggestions, please share.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/41806-lead-balloon>Lead Balloon</a>
+<br/>2025-06-16T23:04:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-6.html#post11903859><br/>permalink</a>
+ Post: 11903859</td>
+<td class=post><div class="tcell alt1" id="td_post_11903859">
+ <!-- message -->
+ <div id="post_message_11903859">
+  I preface this post by acknowledging all the previous posts in this, and the now-closed thread, about the TCMA, in particular the excellent posts by tdracer. (Ditto the noise analyses by Kraftstoffvondesibel and First Principal.)
+  <br/>
+  <br/>
+  I also note that the primary source of the information on which I&rsquo;m basing my post is the content of
+  <a href="https://patents.google.com/patent/US6704630B2/en" target="_blank">
+   Boeing&rsquo;s patent application
+  </a>
+  which, of course, does not contain any of the actual wiring diagrams or modification details of the TCMA, even assuming it has been implemented. (I understand from the now-closed thread, that there is an unresolved question as to whether a petition for an exemption from the TCMA requirement had been successful.)
+  <br/>
+  <br/>
+  The point of my post is to get other&rsquo;s thoughts on one of the design principles of the TCMA system proposed in the patent application.
+  <br/>
+  <br/>
+  The ostensibly simple and elegant concept is described in the schematic of the system at figure 1 of the patent application. A copy of figure 1 is below.
+  <br/>
+  <br/>
+  The TCMA is the part of the schematic inside the dotted box numbered
+  <b>
+   16
+  </b>
+  , sitting with the EEC (others would call it the FADEC) in the solid box numbered
+  <b>
+   18
+  </b>
+  .
+  <br/>
+  <br/>
+  The heart of the TCMA comprises two switch relays, numbered
+  <b>
+   22
+  </b>
+  and
+  <b>
+   28
+  </b>
+  in the schematic, wired in series. Each of those switch relays is controlled by its own, dedicated engine control malfunction software, identified as the blobs numbered
+  <b>
+   130
+  </b>
+  . (The patent application identifies component 34 as a dedicated processor and 32 as the diode connected to the switch relays, but that is evidently a mistake. Component 34 is the diode and I can&rsquo;t find a component number 32 anywhere in the schematics.)
+  <br/>
+  <br/>
+  Each relay switch and its controlling software is described as a &lsquo;channel&rsquo;, one A and one B.
+  <b>
+   Both
+  </b>
+  channels run continuously, monitoring throttle position (36 in the schematic) versus engine data fed from ARINC data bus lines (46 in the schematic) and &ldquo;dedicated input sensors&rdquo; not shown in the schematic. Those sensors presumably detect things like weight on wheels and perhaps RADALT.
+  <br/>
+  <br/>
+  This design is said to achieve redundancy, because if only
+  <b>
+   one
+  </b>
+  &lsquo;channel&rsquo; detects the engine is producing excessive thrust while the throttle is set to idle, that channel will set its switch relay to CUTOFF and that is enough to change the state of the high pressure fuel shut off valve (58 in the schematic). No more motion lotion. In the words of the patent application: Both channels are &ldquo;always actively monitoring engine function and independently have the capability of shutting down the engine.&rdquo;
+  <br/>
+  <br/>
+  That arrangement wrinkled my crusty old avtech brow. In my mind &ndash; and this is why I&rsquo;m seeking other&rsquo;s thoughts &ndash; the advantage of redundancy arising from the two channels, either or both of which can shut the engine down, is not without risk. If it is possible for one of the channels to have some &lsquo;glitch&rsquo; or hardware failure such that it does not detect an actual out of envelope condition justifying immediate shut down, with the other channel detecting the condition and shutting the engine down, it inexorably follows &ndash; does it not &ndash; that it is possible for one (or both) of the channels to have a &lsquo;glitch&rsquo; or hardware failure that results in a shut down when there is no out of envelope condition?
+  <br/>
+  <br/>
+  Further, even if there are completely separate, duplicated sensors telling each channel things like the position of the throttle and whether or not there is weight on wheels, there remains the possibility of a combination of sensor failures/disconnects resulting in one channel being &lsquo;convinced&rsquo; that an out of envelope condition exists, with a consequential cutoff of fuel to the engine.
+  <br/>
+  <br/>
+  I of course acknowledge the valid observations made about the remote probabilities of these kinds of glitches and failures.
+  <br/>
+  <br/>
+  I&rsquo;ve heard rumours that there was much resistance to the mandating of TCMA systems. Having seen many, many strange faults caused by random shorts, open circuits, liquid ingress and other foreign objects, I can understand why there was that resistance. Every time you add something to a system and that added thing has electronic components and software and electrical connections and data inputs, you add risk of that thing malfunctioning or working perfectly but with erroneous inputs. In this case, there are effectively two added new things: two channels, each one of which has the ability to shut off the motion lotion to the engine to which they are strapped.
+  <br/>
+  <br/>
+  I make no comment on whether TCMA systems, if fitted, have anything to do with this tragedy.
+  <br/>
+  <br/>
+  My profound condolences to the families and friends of those killed or injured. My thoughts also go out to the many people who will be agonising over the potential causes and responsibility for it. And thanks to those who are working out the causes.
+  <br/>
+  <br/>
+  ...
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg2.ibsrv.net/gimg/pprune.org-vbulletin/1011x644/tcma_patent_application_a3beeed1d28959ee4f5ddd78a1e53b03df7ff40b.png"/>
+ </div>
+ <!-- / message -->
+</div>
+<p>7 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/161437-edml>EDML</a>
+<br/>2025-06-17T10:13:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-10.html#post11904168><br/>permalink</a>
+ Post: 11904168</td>
+<td class=post><div class="tcell alt1" id="td_post_11904168">
+ <!-- message -->
+ <div id="post_message_11904168">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      JPI33600
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904160" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Not an avionics specialist, but electronics / software engineer here, with extensive experience in hardware fault tracking, protocol monitoring and software debugging in embedded systems : mods, feel free to delete this post if I am completely out of track (and thank you for the huge amount of work you've done trying to keep this discussion clean).
+     <br/>
+     <br/>
+     After I have read the whole thread, I think most of the community agrees about a lack of engine thrust being the cause of the crash. Searching in that direction, I'm trying to "think out of the box", discarding the usual suspects (birds ingestion, TCMA, human mistake...), and to find a plausible single point of failure among the various subsystems involved. I was thinking of reversing the causality of the event, i.e. exploring a case where the engines would have behaved unexpectedly because of a major electrical failure, instead of the already explored case where both powerplants went AWOL first.
+     <br/>
+     <br/>
+     Therefore, I have a couple questions for tdracer / fdr / other informed contributors (BTW, fantastic contribution guys, please keep the good info coming):
+     <br/>
+     <br/>
+     1. From the scarce info available, is it reasonable to conclude that the engines were totally shut down? Could they have just been set to idle or reduced thrust instead?
+     <br/>
+     <br/>
+     2. In the second case, if (and that's a big IF) a major electrical failure happened first (which could have triggered RAT deployment), and considering this plane is a FBW aircraft, could there exist a case where the FADECs would command idle thrust -- or significant thrust reduction -- because they receive invalid input data from the throttle controls? Kind of a garbage in-garbage out case?
+     <br/>
+     <br/>
+     The associated scenario would be: major electrical fault (with subsequent RAT deployment) -&gt; major protocol disturbance on ARINC/AFDX buses -&gt; FADECs detect invalid data from the controls -&gt; FADECS enter some kinf of safe mode and command reduced or idle thrust.
+     <br/>
+     <br/>
+     Does it make sense or is it pure fantasy?
+    </div>
+   </div>
+  </div>
+  No. The throttle position sensors (dual per engine) are part of the FADEC. The throttle position data is not transmitted through the ARINC busses of the aircraft.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
+<br/>2025-06-17T10:21:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-10.html#post11904174><br/>permalink</a>
+ Post: 11904174</td>
+<td class=post><div class="tcell alt1" id="td_post_11904174">
+ <!-- message -->
+ <div id="post_message_11904174">
+  EDML: "No. The throttle position sensors (dual per engine) are part of the FADEC. The throttle position data is not transmitted through the ARINC busses of the aircraft".
+  <br/>
+  <br/>
+  To clarify, you are saying that the throttle position sensors are wired directly to the FADEC, and nothng else ?.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/41806-lead-balloon>Lead Balloon</a>
+<br/>2025-06-17T11:18:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-10.html#post11904217><br/>permalink</a>
+ Post: 11904217</td>
+<td class=post><div class="tcell alt1" id="td_post_11904217">
+ <!-- message -->
+ <div id="post_message_11904217">
+  Thanks for that,
+  <b>
+   Luc Lion
+  </b>
+  .
+  <br/>
+  <br/>
+  What are the probabilities of a crew member spilling a cup of coffee over the centre console, causing a current path between the instrument lighting buss and the trim up command wire from the control column trim thumbswitch and the ARINC connector to the FMS controller, and
+  <i>
+   what will the effects of those current paths be
+  </i>
+  ? (It is for this reason, among others, that 'fluid spill' protection has been built into some instrument consoles.) It's the second bit - the almost completely unpredictable range of effects - that presents the more substantial challenge.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Lead Balloon; 17th Jun 2025 at
+   <span class="time">
+    11:29
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/161437-edml>EDML</a>
+<br/>2025-06-17T11:26:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-10.html#post11904222><br/>permalink</a>
+ Post: 11904222</td>
+<td class=post><div class="tcell alt1" id="td_post_11904222">
+ <!-- message -->
+ <div id="post_message_11904222">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      syseng68k
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904174" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     EDML: "No. The throttle position sensors (dual per engine) are part of the FADEC. The throttle position data is not transmitted through the ARINC busses of the aircraft".
+     <br/>
+     <br/>
+     To clarify, you are saying that the throttle position sensors are wired directly to the FADEC, and nothng else ?.
+    </div>
+   </div>
+  </div>
+  Yes. Other aircraft systems get the information through the FADECs (including the DFDRs) but the FADECs itself are isolated including independent alternators (PMG). There are two FADECs per engine and each has it's own throttle position sensor. That was explained by
+  <a href="https://www.pprune.org/members/414340-tdracer" rel="nofollow">
+   tdracer
+  </a>
+  at some point in the old thread.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/329150-jpi33600>JPI33600</a>
+<br/>2025-06-17T14:52:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-12.html#post11904368><br/>permalink</a>
+ Post: 11904368</td>
+<td class=post><div class="tcell alt1" id="td_post_11904368">
+ <!-- message -->
+ <div id="post_message_11904368">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      syseng68k
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904174" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     EDML: "No. The throttle position sensors (dual per engine) are part of the FADEC. The throttle position data is not transmitted through the ARINC busses of the aircraft".
+     <br/>
+     <br/>
+     To clarify, you are saying that the throttle position sensors are wired directly to the FADEC, and nothng else ?.
+    </div>
+   </div>
+  </div>
+  In his reply to your question above,
+  <b>
+   EDML
+  </b>
+  said that
+  <b>
+   tdracer
+  </b>
+  explained this specific wiring in a comment of the old thread (I had missed this detail too), and indeed, this is what he said:
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    The thrust lever inputs are hardwired (resolvers connected to the thrust levers, powered by the FADEC), other aircraft communications on the 787 are on an ethernet based network.
+   </div>
+  </div>
+  For reference,
+  <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-84.html#post11903132" target="_blank">
+   this is the permalink of the said comment
+  </a>
+  .
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
+<br/>2025-06-18T13:08:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-21.html#post11905228><br/>permalink</a>
+ Post: 11905228</td>
+<td class=post><div class="tcell alt1" id="td_post_11905228">
+ <!-- message -->
+ <div id="post_message_11905228">
+  I (and I think everyone else here) have been assuming that the FADEC does in fact have a dedicated permanent-magnet alternator, as is the case on the Airbuses (confirmed by FCOM) and surely the 737.
+  <br/>
+  <br/>
+  I have been told elsewhere that this is not the case. A read of the draft FCOM available online for the 777 &amp; 787 makes no mention of a FADEC generator, but then neither does the 737 manuals. Is this simply a case of "Boeing thinks you don't need to know"?
+  <br/>
+  <br/>
+  It has been proposed that the primary source of power for the FADECs is actually the flight control PMGs, mounted on the engine gearbox, but that this power goes to the avionics bay, has failover switching gear, and comes back to the EEC.
+  <br/>
+  <br/>
+  Can anyone shed concrete light on this (e.g. a source that clearly states there is both an EEC alternator and a flight control PMG on the accessory gearbox)?
+  <br/>
+  <br/>
+  Alternator and generator seem to be used interchangeably in this context.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Lead Balloon
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11904751" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Could someone post an authoritative list of the inputs to the EAFR&rsquo;s?
+     <br/>
+     <br/>
+     By &ldquo;authoritative&rdquo;, I mean the actual wiring diagram excerpt of the aircraft model and engine configuration (and hopefully mod state...), that labels each input.
+     <br/>
+     [snip]
+    </div>
+   </div>
+  </div>
+  It's not quite that, but there is a
+  <strike>
+   list of received channels for a GEnx 787 in the
+   <a href="https://data.ntsb.gov/Docket/Document/docBLOB?ID=40388298&amp;FileExtension=.PDF&amp;FileName=Flight%20Data%20Recorder%2010%20-%20Factual%20Report%20of%20Group%20Chairman-Master.PDF" target="_blank">
+    FDR report into one of the original battery fires
+   </a>
+   .
+  </strike>
+  Unfortunately, it is only a list of parameters that they used and verified in the investigation - the only ones listed for the engines are N1 and cutoff switch. Other accident/incident FDR reports might be more focused on engines and include a similar table.
+  <br/>
+  <br/>
+  I don't think you'll find an actual wire list for it (or it won't be useful) as apparently most/all of the data is via an ARINC bus.
+  <br/>
+  <br/>
+  I attempted to PM this but your inbox is full.
+  <br/>
+  <br/>
+  [SLF with an electrical background and some exposure to ground-side critical facilities power]
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Someone Somewhere; 18th Jun 2025 at
+   <span class="time">
+    13:32
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/3391-212man>212man</a>
+<br/>2025-06-18T13:22:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-21.html#post11905242><br/>permalink</a>
+ Post: 11905242</td>
+<td class=post><div class="tcell alt1" id="td_post_11905242">
+ <!-- message -->
+ <div id="post_message_11905242">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Someone Somewhere
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11905228" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I (and I think everyone else here) have been assuming that the FADEC does in fact have a dedicated permanent-magnet alternator, as is the case on the Airbuses (confirmed by FCOM) and surely the 737.
+     <br/>
+     <br/>
+     I have been told elsewhere that this is not the case. A read of the draft FCOM available online for the 777 &amp; 787 makes no mention of a FADEC generator, but then neither does the 737 manuals. Is this simply a case of "Boeing thinks you don't need to know"?
+     <br/>
+     <br/>
+     It has been proposed that the primary source of power for the FADECs is actually the flight control PMGs, mounted on the engine gearbox, but that this power goes to the avionics bay, has failover switching gear, and comes back to the EEC.
+     <br/>
+     <br/>
+     Can anyone shed concrete light on this (e.g. a source that clearly states there is both an EEC alternator and a flight control PMG on the accessory gearbox)?
+     <br/>
+     <br/>
+     Alternator and generator seem to be used interchangeably in this context.
+     <br/>
+     <br/>
+     <br/>
+     It's not quite that, but there is a list of received channels for a GEnx 787 in the
+     <a href="https://data.ntsb.gov/Docket/Document/docBLOB?ID=40388298&amp;FileExtension=.PDF&amp;FileName=Flight%20Data%20Recorder%2010%20-%20Factual%20Report%20of%20Group%20Chairman-Master.PDF" target="_blank">
+      FDR report into one of the original battery fires
+     </a>
+     .
+     <br/>
+     <br/>
+     I don't think you'll find an actual wire list for it (or it won't be useful) as apparently most/all of the data is via an ARINC bus.
+     <br/>
+     <br/>
+     I attempted to PM this but your inbox is full.
+     <br/>
+     <br/>
+     [SLF with an electrical background and some exposure to ground-side critical facilities power]
+    </div>
+   </div>
+  </div>
+  The details don't really matter, but this is the certification requirement:
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    (h) Aircraft Supplied Electrical Power.
+    <br/>
+    <br/>
+    (1) The Engine Control System must be designed so that the loss or interruption of electrical power supplied from the aircraft to the Engine Control System will not -
+    <br/>
+    (i) Result in a Hazardous Engine Effect,
+    <br/>
+    (ii) Cause the unacceptable transmission of erroneous data.
+    <br/>
+    <br/>
+    The effect of the loss or interruption of aircraft supplied electrical power must be taken into account in complying with CS-E 50(c)(1).
+   </div>
+  </div>
+  &ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;
+  <a href="https://www.easa.europa.eu/en/document-library/easy-access-rules/easy-access-rules-engines-cs-e" target="_blank">
+   https://www.easa.europa.eu/en/docume...s-engines-cs-e
+  </a>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/41806-lead-balloon>Lead Balloon</a>
+<br/>2025-06-20T05:47:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-38.html#post11906608><br/>permalink</a>
+ Post: 11906608</td>
+<td class=post><div class="tcell alt1" id="td_post_11906608">
+ <!-- message -->
+ <div id="post_message_11906608">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      ignorantAndroid
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906593" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I don't have any direct knowledge, but yes, that's my understanding based primarily on tdracer's comments. It also just makes sense. I'm pretty confident that all the necessary hardware already existed because of the need for N2 overspeed protection. A failure in one FADEC channel could drive the FMV fully open, leading to an overspeed and uncontained engine failure. For regulatory purposes, it would be unacceptable to have a single point of failure with catastrophic consequences, so it would be necessary to make the inactive FADEC channel capable of cutting off fuel in that case.
+     <br/>
+     <br/>
+     The air/ground signal would've already been present as well. It would be needed for switching between ground idle, flight idle, and approach idle. Tdracer has discussed that as well, in past threads.
+    </div>
+   </div>
+  </div>
+  I see the logic. If the N2 exceedance functionality in the FADEC already included authority to shut off fuel in some circumstances, might as well 'piggyback' TMCA output onto that part of the FADEC functionality.
+  <br/>
+  <br/>
+  Re air/ground input to the TMCA, I am more interested in whether that is hardwired from the sensors / systems involved or - as appears to be the case just based upon what I've read here - read from ARINC or other format data.
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/41806-lead-balloon>Lead Balloon</a>
+<br/>2025-06-21T13:25:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-48.html#post11907749><br/>permalink</a>
+ Post: 11907749</td>
+<td class=post><div class="tcell alt1" id="td_post_11907749">
+ <!-- message -->
+ <div id="post_message_11907749">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Aerospace101
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11907595" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The gear tilt position is not definitive evidence crew had selected gear up. I've speculated another cause for this non-normal gear tilt is that C hydraulics failed around time of rotation. This would explain the gear remaining in the forward tilt position. There are reasons why the crew may have not selected gear up,
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-15.html#post11904572" target="_blank">
+      see earlier post.
+     </a>
+     Therefore we cannot determine wow or air/ground logic from an assumed gear retraction.
+    </div>
+   </div>
+  </div>
+  Further to the (logical in my view) points you make in response to AAKEE's ostensibly logical conclusion that the commencement of undercarriage retraction (if it did commence) is conclusive of the aircraft being 'in the air' for aircraft systems purposes, including TCMA purposes, I make the following points:
+  <br/>
+  <br/>
+  First, whilst it may be that every system that monitors and makes decisions about whether the aircraft is 'in the air' does so on the basis of exactly the same sensor inputs, that may not be true and I'd appreciate someone with the expert knowledge on the 78 to confirm or refute the correctness of the assumption, particularly in relation to, for example, FADEC functions compared with undercarriage control functions.
+  <br/>
+  <br/>
+  Secondly and probably more importantly, what happens if one of the sensors being used to determine 'in air' versus 'on ground' gives an erroneous 'on ground' signal
+  <i>
+   after
+  </i>
+  - maybe just seconds after - every one of those sensors has given the 'in air' signal?
+  <br/>
+  <br/>
+  Reference was made earlier in this thread to a 'latched' in air FADEC condition that resulted in engine shut downs after the aircraft involved landed and was therefore actually on the ground. But what if some sensor failure had resulted in the aircraft systems believing that the aircraft was now on the ground when it was not? I also note that after the 2009 B737-800 incident at Schiphol &ndash; actually 1.5 kms away, where the aircraft crashed in a field during approach - the investigation ascertained that a RADALT system suddenly sent an erroneous minus 8&rsquo; height reading to the automatic throttle control system.
+  <br/>
+  <br/>
+  The conceptual description of the TCMA says that the channels monitor the &ldquo;position of thrust lever&rdquo; &ndash; no surprises there &ndash; &ldquo;engine power level&rdquo; &ndash; no surprises there &ndash; and &ldquo;several other digital inputs via digital ARINC data buses&rdquo;.
+  <br/>
+  <br/>
+  WoW should of course be one of those "digital inputs" and be a 1 or 0. But I haven't seen any authoritative post about whether the change in state on the 78 requires only one sensor to signal WoW or if, as is more likely, there are (at least) two sensors &ndash; one on each MLG leg &ndash; both of which have to be &lsquo;weight off&rsquo; before a weight off wheels state signal is sent. Maybe a sensor on each leg sends inputs to the ARINC data and the systems reading the data decide what to do about the different WoW signals, as between 00, 01, 10 and 11.
+  <br/>
+  <br/>
+  There is authoritative information to the effect that RADALT is also one of the &ldquo;digital inputs&rdquo; to the TCMA. The RADALTs presumably output height data (that is of course variable with height) and I don&rsquo;t know whether the RADALT hardware involved has a separate 1 or 0 output that says that, so far as the RADALT is concerned, the aircraft to which it is strapped is, in fact, &lsquo;in the air&rsquo; at &lsquo;some&rsquo; height, with the actual height being so high as to be irrelevant to the systems using that input (if that input is in fact generated and there are, in fact, systems that use that 1 or 0).
+  <br/>
+  <br/>
+  If we now consider the &lsquo;worst case scenario will be preferred&rsquo; concept that apparently applies to the TCMA design so as to achieve redundancy, the number of sensor inputs it&rsquo;s monitoring to decide whether, and can change its decision whether, the aircraft is on the ground, becomes a very important matter. The TCMA is only supposed to save the day on the ground, if the pilots select idle thrust on a rejected take off but one or both of the engines fail to respond. In the &lsquo;worst case&rsquo; (in my view) scenario, both TCMA channels on both engines will be monitoring/affected by
+  <i>
+   every
+  </i>
+  WoW sensor output and
+  <i>
+   every
+  </i>
+  RADALT output data and, if
+  <i>
+   any one of them
+  </i>
+  says &lsquo;on ground&rsquo;, that will result in
+  <i>
+   both
+  </i>
+  engines&rsquo; TCMAs being enabled to command fuel shut off, even though the aircraft may, in fact, be in the air.
+  <br/>
+  <br/>
+  Of course it&rsquo;s true that the TCMA&rsquo;s being enabled is not, of itself, sufficient to cause fuel cut off to an engine. That depends on a further glitch or failure in the system or software monitoring engine power and thrust lever position, or an actual &lsquo;too much thrust compared to thrust lever position&rsquo; situation. But I can&rsquo;t see why, on balance, it&rsquo;s prudent to increase the albeit extraordinarily remote risk of an &lsquo;in air&rsquo; TCMA commanded engine or double engine shut down due to multiple sensor failure &ndash; just one in-air / on-ground sensor and one of either the thrust lever sensor/s or engine power sensor/s &ndash; or, in the case of an actual in air &lsquo;too much thrust compared to thrust lever position situation&rsquo;, why that &lsquo;problem&rsquo; could not be handled by the crew shutting down the engine when the crew decides it&rsquo;s necessary. Once in the air, too much thrust than desired is a much better problem to have than no thrust. The latter is precisely what would happen if all &lsquo;on ground / in air&rsquo; sensors were functioning properly and some &lsquo;too much thrust&rsquo; condition occurred.
+  <br/>
+  <br/>
+  Hopefully the design processes, and particularly the DO-178B/C software design processes done by people with much bigger brains than mine, have built in enough sanity checking and error checking into the system, followed by exhaustive testing, so as to render my thoughts on the subject academic.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Lead Balloon; 21st Jun 2025 at
+   <span class="time">
+    14:02
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/296602-exdac>EXDAC</a>
+<br/>2025-06-28T15:54:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-58.html#post11912544><br/>permalink</a>
+ Post: 11912544</td>
+<td class=post><div class="tcell alt1" id="td_post_11912544">
+ <!-- message -->
+ <div id="post_message_11912544">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Innaflap
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11912515" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I'm pretty sure that within the 787 data is passed over the serial data protocols to a DFDAU - Digital Flight Data Acquisition Unit where it is stored as a form of database. Quite possibly XML
+    </div>
+   </div>
+  </div>
+  I am not aware of any requirement for a DFDAU (or equivalent) to store any data. I say "or equivalent" because in B717 the DFDAU is not an LRU. It is a functional partition of the VIA.
+  <br/>
+  <br/>
+  It's not clear to me that 787 EAFR even requires an external DFDAU. The GE EAFR does not -
+  <br/>
+  <br/>
+  "Provides Flight Data Acquisition function of ARINC 664 p7 data parameters &ndash; No need for a Digital Flight Data Acquisition Unit (DFDAU)."
+  <br/>
+  <br/>
+  ref
+  <a href="https://www.geaerospace.com/sites/default/files/enhanced-aircraft-flight-recorder-3254F.pdf" target="_blank">
+   https://www.geaerospace.com/sites/de...rder-3254F.pdf
+  </a>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

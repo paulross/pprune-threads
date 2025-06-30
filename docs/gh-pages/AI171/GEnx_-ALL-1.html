@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune GEnx (ALL) name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "GEnx (ALL)" [Posts: 23 Pages: 2]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=GEnx_-ALL-0.html>First</a>
+&nbsp;<a href=GEnx_-ALL-0.html>Previous</a>
+&nbsp;<a href=GEnx_-ALL-0.html>1</a>
+&nbsp;<a href=GEnx_-ALL-1.html><b>2</b>
+</a>
+&nbsp;<a href=GEnx_-ALL-1.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post><a href=https://www.pprune.org/members/554838-furr>Furr</a>
+<br/>2025-06-20T11:50:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-41.html#post11906887><br/>permalink</a>
+ Post: 11906887</td>
+<td class=post><div class="tcell alt1" id="td_post_11906887">
+ <!-- message -->
+ <div id="post_message_11906887">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      soarbum
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11906794" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Engineer not a pilot. Experience in analog front ends, A2D and R2D conversion and embedded systems generally but no specific knowledge of the 787 or GEnx.
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+     Thanks to tdracer's explanation on TMCA (albeit 747 not 787), we know that TMCA is a logic block within the FADEC whose only external inputs are a logic signal fron the aircraft that indicates whether it is on the ground or not and throttle position as determined by two independent resolvers per throttle side.
+     <br/>
+     <br/>
+     The logic would seem to be something of the form
+     <br/>
+     If (G AND (N2&gt;A OR N2&gt;B)) Then CutOffFuel()
+     <br/>
+     where G is true when the aircraft is on the ground,
+     <br/>
+     A is an envelope defined by throttle resolver channel A and
+     <br/>
+     B is an envelope defined by throttle resolver channel B
+     <br/>
+    </div>
+   </div>
+  </div>
+  " A logic signal from the aircraft" sounds like a single failure could provide step 1 of TMCA shutting down both engines.
+  <br/>
+  Step 2 being set throttle to zero.
+  <br/>
+  <br/>
+  As an engineers and not a pilot, it seems that momentarily setting throttle back to zero and back to full might be done to attempt to clear thrust problems, thus causing TMCA to shut down both engines.
+  <br/>
+  Anyone know enough to say whether this is plausible?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/488844-tryingtolearn>TryingToLearn</a>
+<br/>2025-06-21T23:11:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-51.html#post11908143><br/>permalink</a>
+ Post: 11908143</td>
+<td class=post><div class="tcell alt1" id="td_post_11908143">
+ <!-- message -->
+ <div id="post_message_11908143">
+  I read the whole threads, keeping my hands on the mousewheel so far since I'm not a pilot, just a EE / safety / systems engineer.
+  <br/>
+  The hamsterwheel ist spinning a lot here, and of course it could be anything including some VHDL FPGA code line or a broken RAM cell in a cheap memory bar within the computer it was compiled with. Anything is possible, but to be honest: development processes, if followed, are usually pushing the probability to a level where it becomes pure theory. BOSCH uses FPGA+\xb5C on the brake control box of cars. They sold 100 millions of those, used 4000h each (car lifetime) without error, with less strict development process. Most errors are made on requirement level, not code.
+  <br/>
+  <br/>
+  Also, so far there is no evidence I've seen regarding the 'chicken-egg' problem, did the engines fall below idle (fuel, stall...) and this caused an electrical blackout (-&gt; battery, RAT...) or did an EE problem cause the engines to reduce thrust (FADEC, SW bug...). And where is the common cause in all this?
+  <br/>
+  There has to be a systematic error common to both engines, an external failure affecting both or a dependent fault with one affecting the other within seconds. This is the only thing I think everyone agrees here. And I refuse to beleave the external failure or dependent fault was sitting in the cockpit.
+  <br/>
+  I think it is something not common to every aircraft type for the last 50 years.
+  <br/>
+  So I started searching and found a candidate.
+  <br/>
+  <br/>
+  I read myself into the EE architecture of this unique 'bleed-less' design and it's megawatt powergrid since this is the part where I may be able to contribute (and I'm most curious about). Generators on the 787 are &gt;250kW instead of &lt;100kW each and there are two per engine instead of just one. In fact, they can go up to 516 kW and shear off the gearbox at &gt;2200Nm (equal to &gt;2 MW, per generator).
+  <br/>
+  <a href="https://www.easa.europa.eu/en/downloads/7641/en" target="_blank">
+   https://www.easa.europa.eu/en/downloads/7641/en
+  </a>
+  (page 11)
+  <br/>
+  So while on any other aircraft the generator is more like the dynamo on your bicycle, those generators are massive (x10).
+  <br/>
+  The gearbox is connected to the HP shaft (N2) on the GEnx. I learned from Wikipedia that RR moved this gearbox to the IP shaft on the Trend 1000. And RR is happy that the A330neo Trend 7000 uses bleed air and less load on the gearbox, since this maintains stability on the HP shaft at light load (also Wikipedia).
+  <br/>
+  Those generators are not in phase and frequency sync, or in other words: If you parallel them, they fight each other, it's like a short. They will almost block if this is not handled by the control box if possible (or some melting fuse blows at some point).
+  <br/>
+  <a href="https://www.pprune.org/tech-log/631129-787-electrical-system-variable-frequency-generators.html#post10735455" target="_blank">
+   787 electrical system - variable frequency generators?
+  </a>
+  <br/>
+  Somehow I find it hard to believe that they are not able to disturb the engines despite that everyone here so far is claiming that there is no way an electrical problem could influence them because FADEC has it's own supply. I read that one is sufficent to start the engine, usually both are used.
+  <br/>
+  In my mind I find lot's of ways this could influence both engines simultanously. If just the BTBs on the 230V grid got some humidity (hot, no AC, water cooling...) and went up in one big arc (I think they made them semiconductor relays, too).
+  <br/>
+  Could those gearboxes and engines handle 4500Nm / almost 5 MW on each HP shaft, applied within a fraction of a second without any problem?
+  <br/>
+  Or if the engines were in a condition not far from compressor stall, one was stalling and 400kW load jumped from one engines generators to the other...
+  <br/>
+  I did some rough estimation and one of the generators could push N2 below idle in a second or less without fuel just with its normal 250kW load (just inertia).
+  <br/>
+  This is one point which is unique to this airplane model, so maybe worth a closer look.
+  <br/>
+  <br/>
+  I know that those engines are burning at &gt;100MW at full power, but how fragile in the balance between compressor load and this one turbine stage on the HP shaft / N2, without the inertia of a 2.8 meter fan? This is just out of my background, any thermodynamic expert here?
+  <br/>
+  Of course I also have no insight in SW and communication within the control boxes, how much they are talking to each other, delaying/ramping load redistribution etc. If FADEC recognizes a flameout, could it instantly command the generators to cut the load, even above idle rpm?
+  <br/>
+  <br/>
+  I would assume that some fuel contamination, valve blockade, even compressor stall would pop up slower. But such a generator could kick in within milliseconds.
+  <br/>
+  <br/>
+  As a safety guy I learned that one tends to look first at things one is familiar with (SW, HW, mechanics, pilot behaviour, maintainance, depending on one's profession) and in the end it's often the interface and dependent faults within which are not carefully considered (e.g. takeoff situation vs. thermodynamics vs. mechanics vs. power generation vs. humidity vs. generator control...) together with transient behaviour. It was the same with MCAS (safety culture vs. pilot training vs. SW design (repeated action) vs. single AOA input vs. bird strike probability close to ground vs. trim loading/blockade vs. stickshaker noise/distraction).
+  <br/>
+  In fact, I was trying to find information on all those systems and directly found slides on how the engines and generators could be simulated and the power grid tested in a HIL (hardware in the loop) environment. My experience from automotive is that such simulated environments are often far from reality and HIL environment programming finished after the product is already at the customer. But of course its far easier and cheaper to apply and test faults there. But then, some programmer programms what he thinks the reaction of the engine would be.
+  <br/>
+  This 'bleed-less' design was some massive change in airplane EE architecture with hugh consequences on the whole airplane design and extremely hard to fully analyze.
+  <br/>
+  <br/>
+  I'm just asking questions and hope that we all learn a lot and this was fully considered or just not an issue. It's just an aspect I found worth mentioning and not only spinning the wheel.
+  <br/>
+  <br/>
+  PS: I doubt it was TCMA. The air/ground decision is done in a different box, evaluating 5 inputs in a 1/3 and 1/2 decision according to this discussion. This is then safely sent to the FADEC (as one input) and combined with the thrust lever position and N2. But if the thrust lever position is sensed (redundant and direct) close to idle, you do not need TCMA or ground mode to expect reduced thrust.
+ </div>
+ <!-- / message -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/34502-fdr>fdr</a>
+<br/>2025-06-22T00:10:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-52.html#post11908171><br/>permalink</a>
+ Post: 11908171</td>
+<td class=post><div class="tcell alt1" id="td_post_11908171">
+ <!-- message -->
+ <div id="post_message_11908171">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      T28B
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11907933" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Not
+     <i>
+      confirmed
+     </i>
+     . What is apparent is a (substantial) loss of thrust. That's what one can say with some certainty.
+    </div>
+   </div>
+  </div>
+  The available video and trajectory information are quite conclusive that both engines stopped producing thrust within 12 seconds of the main wheels leaving the ground. Had partial power of any level remained, the aircraft impact would have been further away from the departure end of the runway. The NE end camera shows by using transit sightings against identifiable structures, that the failure occurred while the aircraft was still within the airport boundary area. The energy state of the aircraft at that time trades off to impact at the correct time and place.
+  <br/>
+  <br/>
+  On departure at these weights the aircraft would have some assumed temperature thrust reduction from max available on the GEnx -1B70, Unless they were carrying lead, they were around 30,000 or more below the limit weight for a flaps 5 TO. At that weight, around 440k lbs, they would have had a fair OEI climb gradient on one engine, certainly a positive gradient with the gear down, so they lost more than 50% of total thrust. There is no yaw or roll, or inputs to counter a yaw or roll moment so the aircraft was symmetrical at all times, that means losing absolutely no less than 50% of total available thrust at that point on each engine. At 50% reduction. the aircraft would have continued a positive gradient with the gear down and the flaps at the TO setting. It did not, it decelerated at around 1meter sec, or 0.1g deceleration for just maintaining level flight, but it also had to descend and that was worth around 0.05g as well. Instead of having any positive thrust margin, the guys were needing to descend to balance the decrement in thrust of around 0.15g, and that means it has negligible to no thrust from the engines. The full analysis takes more effort as the AOA has increased over the 15-20 seconds to impact, which is increasing the drag of the aircraft rapidly towards the end. For the first 5-10 seconds however, it is not such a great change, but it is still increasing.
+  <br/>
+  <br/>
+  In level flight, the aircraft would accelerate level at around 0.3-0.4g gear down with both engines running at max chuff. Lose one, and you are back to 0.05-0.1g or so. These guys had far less than one engine remaining, gravity was all that they had going for them.
+  <br/>
+  <br/>
+  To that end, there is no requirement to have the EAFR readout of the N1, N2, FF, or EGT, the video shows they had no puff going worth a darn. That is basic back of the envelope physics and anyone who does aircraft performance testing would be able to get that answer straight from the video without using a calculator, by the time they had watched the video a couple of times in replay.
+  <br/>
+  <br/>
+  I have no qualms on stating that the engines are not operating, the RAT, gear tilt are consistent with the dynamics of the aircraft. This is far simpler to determine the energy state than that of the B738W at Muan, the lack of early video required a couple of iterations of the kinetic energy of the aircraft at Muan to end up with a probable flight path, and most likely estimate of the thrust remaining for those most unfortunate souls.
+  <br/>
+  <br/>
+  regards,
+  <br/>
+  <br/>
+  <br/>
+  FDR
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by fdr; 22nd Jun 2025 at
+   <span class="time">
+    15:01
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>17 users liked this post.</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=GEnx_-ALL-0.html>First</a>
+&nbsp;<a href=GEnx_-ALL-0.html>Previous</a>
+&nbsp;<a href=GEnx_-ALL-0.html>1</a>
+&nbsp;<a href=GEnx_-ALL-1.html><b>2</b>
+</a>
+&nbsp;<a href=GEnx_-ALL-1.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

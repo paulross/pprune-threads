@@ -1,0 +1,598 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune GEnx TCMA Logic name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "GEnx TCMA Logic" [Posts: 11 Pages: 1]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-13T18:41:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-40.html#post11900793><br/>permalink</a>
+ Post: 11900793</td>
+<td class=post><div class="tcell alt1" id="td_post_11900793">
+ <!-- message -->
+ <div id="post_message_11900793">
+  OK, another hour spent going through all the posts since I was on last night...
+  <br/>
+  I won't quote the relevant posts as they go back ~15 pages, but a few more comments:
+  <br/>
+  <br/>
+  TAT errors affecting N1 power set: The FADEC logic (BTW, this is pretty much common on all Boeing FADEC) will use aircraft TAT if it agrees with the dedicated engine inlet temp probe -
+  <i>
+   but if they differ it will use the engine probe
+  </i>
+  . The GE inlet temp probe is relatively simple and unheated, so (unlike a heated probe) a blocked or contaminated probe will still read accurately - just with greater 'lag' to actual temperature changes.
+  <br/>
+  <br/>
+  TCMA - first off, I have to admit that this does look rather like an improper TCMA activation, but that is very, very unlikely. For those who don't know, TCMA is a system to shutdown a runaway engine that's not responding to the thrust lever - basic logic is an engine at high power with the thrust lever at/near idle, and the engine not decelerating. However, TCMA is
+  <i>
+   only
+  </i>
+  active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+  <i>
+   one of each
+  </i>
+  had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+  <br/>
+  <br/>
+  Fuel contamination/filter blockage: The fuel filters have a bypass - if the delta P across the filter becomes excessive, the filter bypasses and provides the contaminated fuel to the engine. Now this contaminated fuel could easy foul up the fuel metering unit causing a flameout, but to happen to two engines at virtually the same time would be tremendous unlikely.
+  <br/>
+  <br/>
+  Auto Thrust thrust lever retard - the TO lockup in the logic makes this very unlikely (it won't unlock below (IIRC) 400 ft., and even that requires a separate pilot action such as a mode select change or thrust lever movement). And if it did somehow happen, all the pilot needs to do is push the levers back up.
+  <br/>
+  <br/>
+  Engine parameters on the FDR: I don't know what exactly is on the 787 FDR with regards to engine parameters, but rest assured that there is plenty of engine data that gets recorded - most at one/second. Getting the FDR readout from a modern FDR is almost an embarrassment of riches. Assuming the data is intact, we'll soon have a very good idea of what the engines were doing
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>17 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/189222-violator>violator</a>
+<br/>2025-06-13T18:58:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-40.html#post11900812><br/>permalink</a>
+ Post: 11900812</td>
+<td class=post><div class="tcell alt1" id="td_post_11900812">
+ <!-- message -->
+ <div id="post_message_11900812">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11900793" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     OK, another hour spent going through all the posts since I was on last night...
+     <br/>
+     I won't quote the relevant posts as they go back ~15 pages, but a few more comments:
+     <br/>
+     <br/>
+     TAT errors affecting N1 power set: The FADEC logic (BTW, this is pretty much common on all Boeing FADEC) will use aircraft TAT if it agrees with the dedicated engine inlet temp probe -
+     <i>
+      but if they differ it will use the engine probe
+     </i>
+     . The GE inlet temp probe is relatively simple and unheated, so (unlike a heated probe) a blocked or contaminated probe will still read accurately - just with greater 'lag' to actual temperature changes.
+     <br/>
+     <br/>
+     TCMA - first off, I have to admit that this does look rather like an improper TCMA activation, but that is very, very unlikely. For those who don't know, TCMA is a system to shutdown a runaway engine that's not responding to the thrust lever - basic logic is an engine at high power with the thrust lever at/near idle, and the engine not decelerating. However, TCMA is
+     <i>
+      only
+     </i>
+     active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     <i>
+      one of each
+     </i>
+     had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+     <br/>
+     <br/>
+     Fuel contamination/filter blockage: The fuel filters have a bypass - if the delta P across the filter becomes excessive, the filter bypasses and provides the contaminated fuel to the engine. Now this contaminated fuel could easy foul up the fuel metering unit causing a flameout, but to happen to two engines at virtually the same time would be tremendous unlikely.
+     <br/>
+     <br/>
+     Auto Thrust thrust lever retard - the TO lockup in the logic makes this very unlikely (it won't unlock below (IIRC) 400 ft., and even that requires a separate pilot action such as a mode select change or thrust lever movement). And if it did somehow happen, all the pilot needs to do is push the levers back up.
+     <br/>
+     <br/>
+     Engine parameters on the FDR: I don't know what exactly is on the 787 FDR with regards to engine parameters, but rest assured that there is plenty of engine data that gets recorded - most at one/second. Getting the FDR readout from a modern FDR is almost an embarrassment of riches. Assuming the data is intact, we'll soon have a very good idea of what the engines were doing
+    </div>
+   </div>
+  </div>
+  The speed at which there was a complete loss of thrust and electrical power degrading to the point of flickering lights and RAT deployment suggests to me an actual engine shutdown rather than anything linked to auto thrust or fuel contamination. There are not many things which can cause an engine to shut down: LP valves, FADEC incl TCMA, crew action\x85
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/541552-lighttwin2>lighttwin2</a>
+<br/>2025-06-13T22:05:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-43.html#post11900958><br/>permalink</a>
+ Post: 11900958</td>
+<td class=post><div class="tcell alt1" id="td_post_11900958">
+ <!-- message -->
+ <div id="post_message_11900958">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11900793" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <br/>
+     TCMA - first off, I have to admit that this does look rather like an improper TCMA activation, but that is very, very unlikely. For those who don't know, TCMA is a system to shutdown a runaway engine that's not responding to the thrust lever - basic logic is an engine at high power with the thrust lever at/near idle, and the engine not decelerating. However, TCMA is
+     <i>
+      only
+     </i>
+     active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     <i>
+      one of each
+     </i>
+     had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+    </div>
+   </div>
+  </div>
+  Thank you for an excellent comment.
+  <br/>
+  <br/>
+  Two thoughts re TCMA: 1) Is it possible a false TCMA activation could have occurred just before, or concurrently with, the a/c leaving the ground, with the resulting loss of thrust and electrical power not being apparent for another (say) 10s); 2) As you say two simultaneous failures very unlikely... except that it did happen to that ANA flight, albeit during ground state.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/302667-mr-optimistic>Mr Optimistic</a>
+<br/>2025-06-14T21:39:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-61.html#post11901865><br/>permalink</a>
+ Post: 11901865</td>
+<td class=post><div class="tcell alt1" id="td_post_11901865">
+ <!-- message -->
+ <div id="post_message_11901865">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      BugBear
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901857" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     TCMA
+     <br/>
+     <br/>
+     <span style="color:#333333">
+      Which side of V1 does TCMA lurk? If a pilot closes the throttles to abort, does the system allow it? After all, "too low thrust" is outside the contour....
+      <br/>
+      <br/>
+      Ya know, when every conceivable possibility (or close) has been de wormed, it"s usually something impossible, or too fearful...(Or dishonest, fraudulent, criminal ....etc ,?
+     </span>
+    </div>
+   </div>
+  </div>
+  From tdracer
+  <br/>
+  <span style="color:#000000">
+   However, TCMA is
+  </span>
+  <i>
+   only
+  </i>
+  <span style="color:#000000">
+   active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+  </span>
+  <i>
+   one of each
+  </i>
+  <span style="color:#000000">
+   had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+  </span>
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/547460-bugbear>BugBear</a>
+<br/>2025-06-14T21:59:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-62.html#post11901875><br/>permalink</a>
+ Post: 11901875</td>
+<td class=post><div class="tcell alt1" id="td_post_11901875">
+ <!-- message -->
+ <div id="post_message_11901875">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Mr Optimistic
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901865" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     From tdracer
+     <br/>
+     <span style="color:#000000">
+      However, TCMA is
+     </span>
+     <i>
+      only
+     </i>
+     <span style="color:#000000">
+      active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     </span>
+     <i>
+      one of each
+     </i>
+     <span style="color:#000000">
+      had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+     </span>
+    </div>
+   </div>
+  </div>
+  This aircraft was on the ground...but there's more
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/488774-compton3fox>Compton3fox</a>
+<br/>2025-06-14T22:13:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-62.html#post11901888><br/>permalink</a>
+ Post: 11901888</td>
+<td class=post><div class="tcell alt1" id="td_post_11901888">
+ <!-- message -->
+ <div id="post_message_11901888">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Mr Optimistic
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901865" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     From tdracer
+     <br/>
+     <span style="color:#000000">
+      However, TCMA is
+     </span>
+     <i>
+      only
+     </i>
+     <span style="color:#000000">
+      active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     </span>
+     <i>
+      one of each
+     </i>
+     <span style="color:#000000">
+      had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+     </span>
+    </div>
+   </div>
+  </div>
+  It's controlled by Software and I've seen enough very weird "corner case" bugs that I discount nothing when Software is involved. I am sure there are more likely explanations why all power was lost (Assuming that was the case) but nothing would surprise me!
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/274411-peterpion>peterpion</a>
+<br/>2025-06-14T23:54:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-64.html#post11901974><br/>permalink</a>
+ Post: 11901974</td>
+<td class=post><div class="tcell alt1" id="td_post_11901974">
+ <!-- message -->
+ <div id="post_message_11901974">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Mr Optimistic
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901865" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     From tdracer
+     <br/>
+     <span style="color:#000000">
+      However, TCMA is
+     </span>
+     <i>
+      only
+     </i>
+     <span style="color:#000000">
+      active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     </span>
+     <i>
+      one of each
+     </i>
+     <span style="color:#000000">
+      had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+     </span>
+    </div>
+   </div>
+  </div>
+  But at some point software decisions converge to a single point, a single decision, to simplify for instance the subroutine where all of the decisions have been taken to trigger an output (a shutdown signal, for instance). And if, again for instance, you accidentally jump into this subroutine (whether because of buffer overflows or mistakes in the preceding logic), then you can trigger the output incorrectly.
+  <br/>
+  <br/>
+  Of course you can have two or three systems that are coded by different teams, using different languages, running in different hardware, even if they are fed from the same sensors, as long as you have many sensors (as tdracer has indicated, 5 inputs on the 747 for instance - although only needing 2 to be true does seem to reduce that margin for error somewhat).
+  <br/>
+  <br/>
+  If these two or three systems all have to send independent signals to the downstream hardware (the engine in this case) and the engine requires more than one signal to take the dangerous action like shutdown, then you're more protected, but that doesn't seem to be how the 787 works from the descriptions here by the experts like td and fdr. But please correct me if I'm wrong on that.
+  <br/>
+  <br/>
+  Its hard to imagine how else you could simultaneously cut both engines any other way, as tdracer said, other than human action or by software command. And software command means software failure. So information and discussion about exactly how redundant the software that takes this decision is would seem a good direction to move this discussion in. Is it truly only redundant 'internally' to itself, the module that sends this message to the engines? We heard about the 32 bit overflow bug that can shutdown engines - is it really that hard to believe that it has no other similar bugs when that one slipped through the testing?
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/558872-back-office-penguin>Back office Penguin</a>
+<br/>2025-06-15T01:43:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-66.html#post11902040><br/>permalink</a>
+ Post: 11902040</td>
+<td class=post><div class="tcell alt1" id="td_post_11902040">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   MELs?
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11902040">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Mr Optimistic
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11901865" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     From tdracer
+     <br/>
+     <span style="color:#000000">
+      However, TCMA is
+     </span>
+     <i>
+      only
+     </i>
+     <span style="color:#000000">
+      active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     </span>
+     <i>
+      one of each
+     </i>
+     <span style="color:#000000">
+      had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+     </span>
+    </div>
+   </div>
+  </div>
+  I assume the dual engine shutdown due to engine overspeed. Could the case occur with increased thrust manually in the end of takeoff phase?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/210232-dibo>DIBO</a>
+<br/>2025-06-15T23:48:00<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-81.html#post11902978><br/>permalink</a>
+ Post: 11902978</td>
+<td class=post><div class="tcell alt1" id="td_post_11902978">
+ <!-- message -->
+ <div id="post_message_11902978">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      OldnGrounded
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html#post11902958" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     tdracer has let us know that TCMA relies on inputs from three radio altimeters and two WoW switches and that at least one from each set must report on-ground.
+    </div>
+   </div>
+  </div>
+  but that was on the 747-8
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <i>
+     <span style="color:#000000">
+      unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground ....
+     </span>
+    </i>
+   </div>
+  </div>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>2025-06-13T18:41:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903417><br/>permalink</a>
+ Post: 11903417</td>
+<td class=post><div class="tcell alt1" id="td_post_11903417">
+ <!-- message -->
+ <div id="post_message_11903417">
+  OK, another hour spent going through all the posts since I was on last night...
+  <br/>
+  I won't quote the relevant posts as they go back ~15 pages, but a few more comments:
+  <br/>
+  <br/>
+  TAT errors affecting N1 power set: The FADEC logic (BTW, this is pretty much common on all Boeing FADEC) will use aircraft TAT if it agrees with the dedicated engine inlet temp probe -
+  <i>
+   but if they differ it will use the engine probe
+  </i>
+  . The GE inlet temp probe is relatively simple and unheated, so (unlike a heated probe) a blocked or contaminated probe will still read accurately - just with greater 'lag' to actual temperature changes.
+  <br/>
+  <br/>
+  TCMA - first off, I have to admit that this does look rather like an improper TCMA activation, but that is very, very unlikely. For those who don't know, TCMA is a system to shutdown a runaway engine that's not responding to the thrust lever - basic logic is an engine at high power with the thrust lever at/near idle, and the engine not decelerating. However, TCMA is
+  <i>
+   only
+  </i>
+  active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+  <i>
+   one of each
+  </i>
+  had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+  <br/>
+  <br/>
+  Fuel contamination/filter blockage: The fuel filters have a bypass - if the delta P across the filter becomes excessive, the filter bypasses and provides the contaminated fuel to the engine. Now this contaminated fuel could easy foul up the fuel metering unit causing a flameout, but to happen to two engines at virtually the same time would be tremendous unlikely.
+  <br/>
+  <br/>
+  Auto Thrust thrust lever retard - the TO lockup in the logic makes this very unlikely (it won't unlock below (IIRC) 400 ft., and even that requires a separate pilot action such as a mode select change or thrust lever movement). And if it did somehow happen, all the pilot needs to do is push the levers back up.
+  <br/>
+  <br/>
+  Engine parameters on the FDR: I don't know what exactly is on the 787 FDR with regards to engine parameters, but rest assured that there is plenty of engine data that gets recorded - most at one/second. Getting the FDR readout from a modern FDR is almost an embarrassment of riches. Assuming the data is intact, we'll soon have a very good idea of what the engines were doing
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/559067-cloudchasing>CloudChasing</a>
+<br/>2025-06-19T16:52:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-33.html#post11906189><br/>permalink</a>
+ Post: 11906189</td>
+<td class=post><div class="tcell alt1" id="td_post_11906189">
+ <!-- message -->
+ <div id="post_message_11906189">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903417" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     TCMA - first off, I have to admit that this does look rather like an improper TCMA activation, but that is very, very unlikely. For those who don't know, TCMA is a system to shutdown a runaway engine that's not responding to the thrust lever - basic logic is an engine at high power with the thrust lever at/near idle, and the engine not decelerating. However, TCMA is
+     <i>
+      only
+     </i>
+     active on the ground (unfamiliar with the 787/GEnx TCMA air/ground logic - on the 747-8 we used 5 sources of air/ground - three Radio Altimeters and two Weight on Wheels - at least
+     <i>
+      one of each
+     </i>
+     had to indicate ground to enable TCMA). TCMA will shutdown the engine via the N2 overspeed protection - nearly instantaneous. For this to be TCMA, it would require at least two major failures - improper air ground indication or logic, and improper TCMA activation logic (completely separate software paths in the FADEC). Like I said, very, very unlikely.
+    </div>
+   </div>
+  </div>
+  You sound like you know what you&rsquo;re talking about. I&rsquo;m a software engineer. I think software glitches are more common for this type of event than mechanical failures or pilot errors. It can take years before software errors are discovered.
+  <br/>
+  <br/>
+  I read one post in here of a 747 flaps retracting on takeoff. No Master Caution, no warnings. Apparently, due to some maintenance triggering a software glitch, the computer thought reverse thrust had been activated during a take off. Whether it was still in ground mode I don&rsquo;t know.
+  <br/>
+  <br/>
+  Point is, being a software glitch in TMCA has already shut down two engines on a 787, I don&rsquo;t see why the same or another software glitch in TMCA or somewhere else couldn&rsquo;t do the same. Hadn&rsquo;t this plane just been in for maintenance?
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by T28B; 19th Jun 2025 at
+   <span class="time">
+    17:05
+   </span>
+   .
+							
+							
+								Reason: Formatting assistance
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>
