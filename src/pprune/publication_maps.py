@@ -503,6 +503,10 @@ class AirIndia171(PublicationMap):
         'lavatories': 'Water Ingress',
         'genx': 'GEnx (ALL)',
         'parameters': 'Parameters',
+        'generators': 'Generators/Alternators',
+        'generator': 'Generators/Alternators',
+        'alternators': 'Generators/Alternators',
+        'alternator': 'Generators/Alternators',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -510,7 +514,7 @@ class AirIndia171(PublicationMap):
         k: k for k in {
             'AI171', 'ADSB', 'APU', 'BBC', 'CCTV', 'FDR', 'V1', 'V2', 'EDML', 'EAFR',
             'FADEC', 'FAA', 'TOGA', 'VNAV', 'NTSB', 'MEL', 'DFDR', 'FBW', 'HPSOV', 'FCOM', 'FR24', 'CVR', 'EFATO',
-            'RIPS', 'TRU', 'ARINC',
+            'RIPS', 'TRU', 'ARINC', 'DGCA',
         }
     }
     CAPS_WORDS_MAP_ALL = {
@@ -692,6 +696,7 @@ class AirIndia171(PublicationMap):
             ('new', 'york', 'times'): 'New York Times',
             ('235VAC', 'backup', 'bus',): 'Electrical Busses',
             ('lift', 'drag', 'ratio',): 'Lift/Drag Ratio',
+            ('take', 'brief', 'pause',): 'Thread Closure',
         },
         4: {
             ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine Driven)',
