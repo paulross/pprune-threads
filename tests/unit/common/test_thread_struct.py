@@ -673,6 +673,32 @@ def test_post_significant_words(args, remove_these, expected):
     assert post.significant_words(remove_these) == expected
 
 
+@pytest.mark.parametrize(
+    'args, expected',
+    (
+            (
+                    (
+                            datetime.datetime(2020, 1, 1, 5, 32, 14),
+                            "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+                            'nicolai',
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
+                            10994338,  # Sequence number
+                            [],  # liked_by_users
+                    ),
+                    [
+                        (
+                                'https://thepostmillennial.com/colorado-residents-shocked-falling-debris-united-airlines',
+                                'https://thepostmillennial.com/colora...nited-airlines',
+                        ),
+                    ],
+            ),
+    )
+)
+def test_post_href_pairs(args, expected):
+    post = thread_struct.Post(*args)
+    assert post.href_pairs() == expected
+
+
 EXAMPLE_THREAD_POSTS_SINGLE = [
     (
         datetime.datetime(2020, 1, 1, 5, 32, 14),

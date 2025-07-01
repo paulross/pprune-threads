@@ -545,3 +545,123 @@ def test_all_page_urls_from_external_url(url, expected):
     html_page = read_html.parse_url_to_beautiful_soup(url)
     result = read_html.all_page_urls_from_page(url, html_page)
     assert result == expected
+
+
+@pytest.mark.parametrize(
+    'html_str, expected',
+    (
+            (
+                    example_data.EXAMPLE_PAGES['example_page.html'],
+                    [
+                        [('https://thepostmillennial.com/colorado-residents-shocked-falling-debris-united-airlines',
+                          'https://thepostmillennial.com/colora...nited-airlines')],
+                        [('https://www.youtube.com/watch?v=XnSjAdvKp8k&ab_channel=ThePeople%27sElixir',
+                          'You Tube')],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [('https://youtu.be/G7-zh7Sebr8', 'You Tube')],
+                        [],
+                        [],
+                        [],
+                    ],
+            ),
+            (
+                    example_data.EXAMPLE_PAGES['example_page_four_posts.html'],
+                    [
+                        [('https://avherald.com/h?article=4e3fd7f4',
+                          'https://avherald.com/h?article=4e3fd7f4')],
+                        [('https://www.skybrary.aero/index.php/A320,_Los_Angeles_USA,_2005',
+                          'https://www.skybrary.aero/index.php/...eles_USA,_2005')],
+                        [],
+                        [(
+                                'https://www.nydailynews.com/news/national/damaged-plane-lands-safely-lax-2005-article-1.607155',
+                                'https://www.nydailynews.com/news/nat...ticle-1.607155')],
+                    ],
+            ),
+            (
+                    example_data.EXAMPLE_PAGES['666472-plane-crash-near-ahmedabad.html'],
+                    [
+                        [],
+                        [(
+                                'https://timesofindia.indiatimes.com/city/ahmedabad/plane-crashes-in-ahmedabads-meghani-area/articleshow/121798487.cms',
+                                'Air India Ahmedabad-London flight crashes near airport in Meghani area | '
+                                'Ahmedabad News - Times of India')],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [('https://www.flightradar24.com/data/flights/ai171#3ac3097f',
+                          'The FR24 track is extremely limited')],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [('https://www.youtube.com/watch?v=b3SEjNFJU6M', 'You Tube')],
+                        [('https://www.youtube.com/live/o_TiTsapMVU?si=z90mezbH7_sQUzX9', 'You Tube')],
+                        [],
+                        [],
+                        [],
+                        [('https://www.bbc.co.uk/news/live/c8d1r3m8z92t',
+                          'https://www.bbc.co.uk/news/live/c8d1r3m8z92t')],
+                        [('https://www.youtube.com/watch?v=b3SEjNFJU6M',
+                          'https://www.youtube.com/watch?v=b3SEjNFJU6M')],
+                        [('https://x.com/KumarVijayDesai/status/1933088706665263170',
+                          'Vijaykumar Desai on X: "LIVE VIDEO Flight AI171, operating '
+                          'Ahmedabad-London Gatwick, was involved in an incident today '
+                          '#Ahmedabadplanecrash #london #planecrash #Ahmedabad #AirIndia '
+                          'https://t.co/XFKVYVPf5k" / X')],
+                        [],
+                    ],
+            ),
+            (
+                    example_data.EXAMPLE_PAGES['666472-plane-crash-near-ahmedabad-2.html'],
+                    [
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [('https://www.jetphotos.com/photo/7894522',
+                          'https://www.jetphotos.com/photo/7894522')],
+                        [],
+                        [],
+                        [],
+                        [],
+                        [],
+                        []
+                    ],
+            ),
+    ),
+    ids=[
+        'example_page.html',
+        'example_page_four_posts.html',
+        '666472-plane-crash-near-ahmedabad.html',
+        '666472-plane-crash-near-ahmedabad-2.html',
+    ],
+)
+def test_get_thread_post_href_pairs(html_str, expected):
+    thread = read_html.get_thread_from_html_string(html_str)
+    result = []
+    for post in thread.posts:
+        result.append((post.href_pairs()))
+    assert result == expected

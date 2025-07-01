@@ -211,6 +211,24 @@ class Post:
                 result.append(w)
         return result
 
+    def href_pairs(self) -> typing.List[typing.Tuple[str, str]]:
+        """Return a list of links and their text.
+        Internal links are ignored."""
+        ret = []
+        for node in self.node.find_all('a'):
+            if 'rel' in node.attrs and node.attrs['rel'] == ['nofollow',]:
+                continue
+            href = node.get('href')
+            if href is not None:
+                node_id = node.get('id')
+                if node_id is not None and node_id == f'postcount{self.post_number}':
+                    continue
+                text = node.get_text().strip()
+                if text == 'permalink':
+                    continue
+                ret.append((href, text.strip()))
+        return ret
+
 
 class Thread:
     """Represents a thread of ordered posts with some internal indexing."""
