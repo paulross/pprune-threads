@@ -1,6 +1,7 @@
 import datetime
 import io
 import pprint
+import urllib.parse
 
 import pytest
 from pprune.common import read_html
@@ -553,9 +554,13 @@ def test_all_page_urls_from_external_url(url, expected):
             (
                     example_data.EXAMPLE_PAGES['example_page.html'],
                     [
-                        [('https://thepostmillennial.com/colorado-residents-shocked-falling-debris-united-airlines',
-                          'https://thepostmillennial.com/colora...nited-airlines')],
-                        [('https://www.youtube.com/watch?v=XnSjAdvKp8k&ab_channel=ThePeople%27sElixir',
+                        [
+                            (
+                                    urllib.parse.urlparse(
+                                        'https://thepostmillennial.com/colorado-residents-shocked-falling-debris-united-airlines'),
+                                    'https://thepostmillennial.com/colora...nited-airlines'),
+                        ],
+                        [(urllib.parse.urlparse('https://www.youtube.com/watch?v=XnSjAdvKp8k&ab_channel=ThePeople%27sElixir'),
                           'You Tube')],
                         [],
                         [],
@@ -571,7 +576,7 @@ def test_all_page_urls_from_external_url(url, expected):
                         [],
                         [],
                         [],
-                        [('https://youtu.be/G7-zh7Sebr8', 'You Tube')],
+                        [(urllib.parse.urlparse('https://youtu.be/G7-zh7Sebr8'), 'You Tube')],
                         [],
                         [],
                         [],
@@ -580,13 +585,13 @@ def test_all_page_urls_from_external_url(url, expected):
             (
                     example_data.EXAMPLE_PAGES['example_page_four_posts.html'],
                     [
-                        [('https://avherald.com/h?article=4e3fd7f4',
+                        [(urllib.parse.urlparse('https://avherald.com/h?article=4e3fd7f4'),
                           'https://avherald.com/h?article=4e3fd7f4')],
-                        [('https://www.skybrary.aero/index.php/A320,_Los_Angeles_USA,_2005',
+                        [(urllib.parse.urlparse('https://www.skybrary.aero/index.php/A320,_Los_Angeles_USA,_2005'),
                           'https://www.skybrary.aero/index.php/...eles_USA,_2005')],
                         [],
                         [(
-                                'https://www.nydailynews.com/news/national/damaged-plane-lands-safely-lax-2005-article-1.607155',
+                                urllib.parse.urlparse('https://www.nydailynews.com/news/national/damaged-plane-lands-safely-lax-2005-article-1.607155'),
                                 'https://www.nydailynews.com/news/nat...ticle-1.607155')],
                     ],
             ),
@@ -595,29 +600,28 @@ def test_all_page_urls_from_external_url(url, expected):
                     [
                         [],
                         [(
-                                'https://timesofindia.indiatimes.com/city/ahmedabad/plane-crashes-in-ahmedabads-meghani-area/articleshow/121798487.cms',
-                                'Air India Ahmedabad-London flight crashes near airport in Meghani area | '
-                                'Ahmedabad News - Times of India')],
+                                urllib.parse.urlparse('https://timesofindia.indiatimes.com/city/ahmedabad/plane-crashes-in-ahmedabads-meghani-area/articleshow/121798487.cms'),
+                                'Air India Ahmedabad-London flight crashes near airport in Meghani area | Ahmedabad News - Times of India')],
                         [],
                         [],
                         [],
                         [],
-                        [('https://www.flightradar24.com/data/flights/ai171#3ac3097f',
+                        [(urllib.parse.urlparse('https://www.flightradar24.com/data/flights/ai171#3ac3097f'),
                           'The FR24 track is extremely limited')],
                         [],
                         [],
                         [],
                         [],
-                        [('https://www.youtube.com/watch?v=b3SEjNFJU6M', 'You Tube')],
-                        [('https://www.youtube.com/live/o_TiTsapMVU?si=z90mezbH7_sQUzX9', 'You Tube')],
+                        [(urllib.parse.urlparse('https://www.youtube.com/watch?v=b3SEjNFJU6M'), 'You Tube')],
+                        [(urllib.parse.urlparse('https://www.youtube.com/live/o_TiTsapMVU?si=z90mezbH7_sQUzX9'), 'You Tube')],
                         [],
                         [],
                         [],
-                        [('https://www.bbc.co.uk/news/live/c8d1r3m8z92t',
+                        [(urllib.parse.urlparse('https://www.bbc.co.uk/news/live/c8d1r3m8z92t'),
                           'https://www.bbc.co.uk/news/live/c8d1r3m8z92t')],
-                        [('https://www.youtube.com/watch?v=b3SEjNFJU6M',
+                        [(urllib.parse.urlparse('https://www.youtube.com/watch?v=b3SEjNFJU6M'),
                           'https://www.youtube.com/watch?v=b3SEjNFJU6M')],
-                        [('https://x.com/KumarVijayDesai/status/1933088706665263170',
+                        [(urllib.parse.urlparse('https://x.com/KumarVijayDesai/status/1933088706665263170'),
                           'Vijaykumar Desai on X: "LIVE VIDEO Flight AI171, operating '
                           'Ahmedabad-London Gatwick, was involved in an incident today '
                           '#Ahmedabadplanecrash #london #planecrash #Ahmedabad #AirIndia '
@@ -641,7 +645,7 @@ def test_all_page_urls_from_external_url(url, expected):
                         [],
                         [],
                         [],
-                        [('https://www.jetphotos.com/photo/7894522',
+                        [(urllib.parse.urlparse('https://www.jetphotos.com/photo/7894522'),
                           'https://www.jetphotos.com/photo/7894522')],
                         [],
                         [],

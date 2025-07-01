@@ -1,4 +1,5 @@
 import datetime
+import urllib.parse
 
 import bs4
 import pytest
@@ -687,7 +688,7 @@ def test_post_significant_words(args, remove_these, expected):
                     ),
                     [
                         (
-                                'https://thepostmillennial.com/colorado-residents-shocked-falling-debris-united-airlines',
+                                urllib.parse.urlparse('https://thepostmillennial.com/colorado-residents-shocked-falling-debris-united-airlines'),
                                 'https://thepostmillennial.com/colora...nited-airlines',
                         ),
                     ],
@@ -696,7 +697,8 @@ def test_post_significant_words(args, remove_these, expected):
 )
 def test_post_href_pairs(args, expected):
     post = thread_struct.Post(*args)
-    assert post.href_pairs() == expected
+    result = post.href_pairs()
+    assert result == expected
 
 
 EXAMPLE_THREAD_POSTS_SINGLE = [

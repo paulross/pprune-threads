@@ -3,6 +3,7 @@ import datetime
 import re
 import string
 import typing
+import urllib.parse
 
 import bs4
 
@@ -211,7 +212,7 @@ class Post:
                 result.append(w)
         return result
 
-    def href_pairs(self) -> typing.List[typing.Tuple[str, str]]:
+    def href_pairs(self) -> typing.List[typing.Tuple[urllib.parse.ParseResult, str]]:
         """Return a list of links and their text.
         Internal links are ignored."""
         ret = []
@@ -226,7 +227,7 @@ class Post:
                 text = node.get_text().strip()
                 if text == 'permalink':
                     continue
-                ret.append((href, text.strip()))
+                ret.append((urllib.parse.urlparse(href), text.strip()))
         return ret
 
 
