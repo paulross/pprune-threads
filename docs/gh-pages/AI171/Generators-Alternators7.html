@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune Generators/Alternators name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "Generators/Alternators" [Posts: 145 Pages: 8]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=Generators-Alternators0.html>First</a>
+&nbsp;<a href=Generators-Alternators6.html>Previous</a>
+&nbsp;<a href=Generators-Alternators0.html>1</a>
+&nbsp;<a href=Generators-Alternators1.html>2</a>
+&nbsp;<a href=Generators-Alternators2.html>3</a>
+&nbsp;<a href=Generators-Alternators3.html>4</a>
+&nbsp;<a href=Generators-Alternators4.html>5</a>
+&nbsp;<a href=Generators-Alternators5.html>6</a>
+&nbsp;<a href=Generators-Alternators6.html>7</a>
+&nbsp;<a href=Generators-Alternators7.html><b>8</b>
+</a>
+&nbsp;<a href=Generators-Alternators7.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post><a href=https://www.pprune.org/members/423098-sailvi767>Sailvi767</a>
+<br/>2025-07-01T12:39:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914246><br/>permalink</a>
+ Post: 11914246</td>
+<td class=post><div class="tcell alt1" id="td_post_11914246">
+ <!-- message -->
+ <div id="post_message_11914246">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      TURIN
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11914118" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     May I ask where this information of load shedding comes from please
+     <br/>
+     In my experience the APU supplies enough power to run all systems. Hydraulic pumps, fuel pumps etc
+    </div>
+   </div>
+  </div>
+  On the 767, 757 and A330 anytime you are in single generator operations the aircraft is load shedding. The 787 with a totally different electrical system might function differently.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/558914-adfad>adfad</a>
+<br/>2025-07-01T12:55:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914255><br/>permalink</a>
+ Post: 11914255</td>
+<td class=post><div class="tcell alt1" id="td_post_11914255">
+ <!-- message -->
+ <div id="post_message_11914255">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Someone Somewhere
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11914164" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I believe that particular bug is fixed, though it's always possible there's other issues causing a total AC loss.
+     <br/>
+     <br/>
+     Not really relevant to what you quoted though, as the scenario in question requires:
+     <ul>
+      <li>
+       Engines running on centre tank fuel during takeoff
+       <i>
+        while the aircraft is operating normally
+       </i>
+       <ul>
+        <li>
+         We don't know for certain if this is the case. It seems to be but it's not something that happens on other families.
+        </li>
+       </ul>
+      </li>
+      <li>
+       Then, total AC failure stopping fuel boost pumps.
+      </li>
+      <li>
+       Engines suction feed from contaminated/full-of-water wing tanks.
+      </li>
+     </ul>
+     <br/>
+     The aircraft has two engines and should be able to climb out on one, plus it dropped like a
+     <i>
+      rock
+     </i>
+     . 'Significantly degraded' thrust isn't really compatible with what we saw. You'd also expect the engines to recover pretty quickly as it leveled off.
+     <br/>
+     <br/>
+     The limitations at high altitude are primarily air/volatiles degassing out of the fuel. That's not going to be much of an issue at sea level, even if the engines are a bit higher up during rotation.
+     <br/>
+     APU is a nice-to-have; it's on the MEL. If you lose all four generators, it's because of some major carnage in the electrical software/hardware and chances of putting the APU on line even if it's operating are very slim.
+    </div>
+   </div>
+  </div>
+  As an electronics and software engineer who has read the AD and related materials on the 248 day bug my understanding is that:
+  <ol style="list-style-type: decimal">
+   <li>
+    The specific 248-day integer overflow was patched, and before the fix was rolled out, the AD required this system to by power cycled every 120 days to prevent overflow
+   </li>
+   <li>
+    The PCU software still has the
+    <i>
+     functional requirement
+    </i>
+    to be able to command all AC GCUs to enter failsafe mode, this means that while the initial bug was fixed, the ability for this particular software system to command the same result is still a functional part of the architecture - presumably for safety management of the AC system
+   </li>
+   <li>
+    This was not the first or last "software overflow error" issue in Boeing or even in the 787
+   </li>
+  </ol>
+  Although I'm not qualified in aviation engineering I do believe from an engineering safety standpoint that this architecture creates a rare but entirely feasible scenario in which the aircraft would be without AC power for at least 30 seconds until the APU could restore it.
+  <br/>
+  <br/>
+  I do agree that the engine driven pumps
+  <i>
+   should
+  </i>
+  be able to provide fuel alone, the whole point of these pumps is to keep the plane flying within
+  <i>
+   some
+  </i>
+  limitations, high altitude is one of those limitations, I propose that there may be others based on the following:
+  <ul>
+   <li>
+    Some more knowledgable people here have proposed or countered vapour lock, fuel contamination and automatic fuel cut-off theories to various degrees - even if these are not enough on their own, loss of electrical during rotation at high temperature could combine with these in a way we have not yet considered
+   </li>
+   <li>
+    Thrust is nonlinear, and while I'm not qualified to say how much loss of fuel flow or loss of thrust would be critical in this scenario we do know that it was a hot takeoff with significant weight and gear remaining down - I know others here have run sims but I don't think anyone has focused on specific thrust / fuel flow params
+   </li>
+   <li>
+    While electric fuel pumps might not be physically necessary for takeoff, my final point is: why are they
+    <i>
+     required
+    </i>
+    for takeoff? Is it not to mitigate cavitation, fuel sloshing at rotation, or any other kind of problem that might be relevant here?
+   </li>
+  </ul>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
+<br/>2025-07-01T12:59:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914257><br/>permalink</a>
+ Post: 11914257</td>
+<td class=post><div class="tcell alt1" id="td_post_11914257">
+ <!-- message -->
+ <div id="post_message_11914257">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Sailvi767
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11914246" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     On the 767, 757 and A330 anytime you are in single generator operations the aircraft is load shedding. The 787 with a totally different electrical system might function differently.
+    </div>
+   </div>
+  </div>
+  The manuals suggest the 787 has even more advanced load inhibition/load shedding, shedding/recovering individual loads as required for both operational and availability reasons.
+  <br/>
+  <br/>
+  Remember the 787 uses electrics for engine start, wing anti-ice, centre hydraulics, and cabin air compressors. There's some
+  <b>
+   big
+  </b>
+  electrical loads.
+  <br/>
+  <br/>
+  Centre tank boost pumps are probably comparatively small, but if you can conclusively say
+  <i>
+   x is not required during ground engine start
+  </i>
+  , why power it?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/558914-adfad>adfad</a>
+<br/>2025-07-01T13:36:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914278><br/>permalink</a>
+ Post: 11914278</td>
+<td class=post><div class="tcell alt1" id="td_post_11914278">
+ <!-- message -->
+ <div id="post_message_11914278">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Someone Somewhere
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11914265" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Thrust is non-linear and complex. Reaction engines (i.e. fans, props) are generally most efficient at minimum power - lowest excess velocity. Turbine engines are generally most efficient at high power. These cancel out somewhere in the middle. With two engines at low power, you also don't have the drag from the dead engine or the drag from the rudder countering yaw.
+     <br/>
+     <br/>
+     Cavitating destroys pumps rapidly - someone upthread said replacing the fuel pump immediately is SOP if it has suction fed. Expect end of life in tens of hours rather than tens of thousands.
+     <br/>
+     <br/>
+     Some aircraft have switched to using jet/venturi pumps powered by returned fuel, like the A220. The electric boost pumps there are mainly for redundancy and are shut down in cruise; only one in each wing tank. Some A320s replace the centre override pumps with venturi transfer pumps.
+    </div>
+   </div>
+  </div>
+  Thanks for the clarifications
+  <br/>
+  <br/>
+  My question is then: what is the minimum loss of thrust in both engines (perhaps more relevantly expressed as a % in fuel flow reduction from expected) that could produce the profile we saw. I appreciate this is a figure with many variables including timing and rate of loss.
+  <br/>
+  <br/>
+  The reason I think this question is relevant is because we pretty much have 2 prevailing theories at this point:
+  <ol style="list-style-type: decimal">
+   <li>
+    A failure, or reduction of thrust (below idle, indicated by loss of AC generators), that somehow impacted both engines, within 20s of rotation (explaining the RAT and gear orientation)
+   </li>
+   <li>
+    Somehow a loss of all AC power, leading somehow to a reduction of thrust or failure of engines (both engines impacted identically is assumed in this scenario since all AC is lost), and was of course below the minimum thrust needed to fly with gear down at this weight and temperature
+   </li>
+  </ol>
+  I agree that if it is
+  <i>
+   completely infeasible
+  </i>
+  that loss of all AC power could do anything but cause thrust reduction of X where thrust minus X is not enough, even with gear down in high temperature and significant weight at the critical moment of takeoff to cause the profile we saw, then theory 2 is invalidated. I would love to invalidate any of the theories here but I do think some specific calculations, simulations or test data is needed
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/558910-87guy>87guy</a>
+<br/>2025-07-01T13:57:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914288><br/>permalink</a>
+ Post: 11914288</td>
+<td class=post><div class="tcell alt1" id="td_post_11914288">
+ <!-- message -->
+ <div id="post_message_11914288">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Sailvi767
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11914246" rel="nofollow" title="View Post">
+      <i class="fas fa-arrow-circle-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     On the 767, 757 and A330 anytime you are in single generator operations the aircraft is load shedding. The 787 with a totally different electrical system might function differently.
+    </div>
+   </div>
+  </div>
+  The 87 load sheds as well.It's got 4 permanent magnet generators, 2 per engine, along with 2 permanent magnetic alternators, 1 per engine...these power the EECs. A 115v AC bus can power the EECs during startup, and can be used as a backup.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=Generators-Alternators0.html>First</a>
+&nbsp;<a href=Generators-Alternators6.html>Previous</a>
+&nbsp;<a href=Generators-Alternators0.html>1</a>
+&nbsp;<a href=Generators-Alternators1.html>2</a>
+&nbsp;<a href=Generators-Alternators2.html>3</a>
+&nbsp;<a href=Generators-Alternators3.html>4</a>
+&nbsp;<a href=Generators-Alternators4.html>5</a>
+&nbsp;<a href=Generators-Alternators5.html>6</a>
+&nbsp;<a href=Generators-Alternators6.html>7</a>
+&nbsp;<a href=Generators-Alternators7.html><b>8</b>
+</a>
+&nbsp;<a href=Generators-Alternators7.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>
