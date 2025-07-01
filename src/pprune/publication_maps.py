@@ -697,6 +697,7 @@ class AirIndia171(PublicationMap):
             ('235VAC', 'backup', 'bus',): 'Electrical Busses',
             ('lift', 'drag', 'ratio',): 'Lift/Drag Ratio',
             ('take', 'brief', 'pause',): 'Thread Closure',
+            ('indian', 'aviation', 'regulator'): 'DGCA',
         },
         4: {
             ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine Driven)',
@@ -709,6 +710,7 @@ class AirIndia171(PublicationMap):
             ('fuel', 'cut', 'off', 'switches'): 'Fuel Cut Off Switches',
             ('aviation', 'week', 'space', 'technology'): 'Aviation Week & Space Technology',
             ('indian', 'accident', 'investigation', 'team'): 'AAIB (IDGA)',
+            ('indian', 'civil', 'air', 'authority'): 'DGCA',
         },
         5: {
             ('digital', 'flight', 'data', 'acquisition', 'unit',): 'Digital Flight Data Acquisition Unit',
