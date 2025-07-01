@@ -680,6 +680,11 @@ class AirIndia171(PublicationMap):
             ('total', 'energy',): 'Total Energy',
 
             ('liftdrag', 'ratio',): 'Lift/Drag Ratio',
+
+            ('richard', 'godfreys',): 'Self Proclaimed Experts',
+            ('richard', 'godfrey',): 'Self Proclaimed Experts',
+            ('geoffrey', 'thomas',): 'Self Proclaimed Experts',
+            ('geoffrey', 'thomass',): 'Self Proclaimed Experts',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
