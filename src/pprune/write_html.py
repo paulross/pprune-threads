@@ -445,6 +445,13 @@ def write_index_page(
                         f' and finish at {thread.posts[-1].timestamp.isoformat()}.'
                         f' This build was made at {datetime.datetime.now().isoformat()}.'
                     )
+                with element(index, 'p'):
+                    index.write('Project is here: ')
+                    with element(index, 'a', href="https://github.com/paulross/pprune-threads"):
+                        index.write('https://github.com/paulross/pprune-threads.')
+                    index.write('Issues can be raised here: ')
+                    with element(index, 'a', href="https://github.com/paulross/pprune-threads/issues"):
+                        index.write('https://github.com/paulross/pprune-threads/issues.')
 
                 write_significant_posts(thread, publication_map, index)
 
