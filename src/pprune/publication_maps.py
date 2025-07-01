@@ -531,6 +531,7 @@ class AirIndia171(PublicationMap):
         'MAYDAY': "Mayday",
         'HPSOV': "High Pressure Shutoff Valve",
         'FR24': "FlightRadar24",
+        'LD': 'Lift/Drag Ratio',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps
@@ -671,6 +672,10 @@ class AirIndia171(PublicationMap):
             ('28Vdc', 'busses',): 'Electrical Busses',
             ('28VDC', 'busses',): 'Electrical Busses',
             ('dc', 'busses',): 'Electrical Busses',
+
+            ('total', 'energy',): 'Total Energy',
+
+            ('liftdrag', 'ratio',): 'Lift/Drag Ratio',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -686,6 +691,7 @@ class AirIndia171(PublicationMap):
             ('hydraulic', 'failure', 'double'): 'Hydraulic Failure (Double)',
             ('new', 'york', 'times'): 'New York Times',
             ('235VAC', 'backup', 'bus',): 'Electrical Busses',
+            ('lift', 'drag', 'ratio',): 'Lift/Drag Ratio',
         },
         4: {
             ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine Driven)',
