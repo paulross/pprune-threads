@@ -358,6 +358,19 @@ EXAMPLE_SINGLE_PPRUNE_POST_MINIMAL_TEXT = """<!-- post #10994338 -->
 <!-- / post #10994338 -->
 """
 
+EXAMPLE_SINGLE_PPRUNE_POST_VERY_MINIMAL_TEXT = """<div class="tcell alt1" id="td_post_10994338">
+    <!-- icon and title -->
+    <div class="smallfont">
+      <strong>United B777 engine failure</strong>
+    </div>
+    <hr />
+    <!-- / icon and title -->
+    <!-- message -->
+    <div id="post_message_10994338">Example AW&ST message.</div>
+    <!-- / message -->
+    </div>
+"""
+
 
 def parse_string(html_string: str, features: str) -> bs4.element.Tag:
     parse_tree = bs4.BeautifulSoup(html_string, features=features)
@@ -456,6 +469,17 @@ def test_post_text_stripped(args, expected):
                             [],  # liked_by_users
                     ),
                     ['Minimal', 'text', 'in', 'this', 'post'],
+            ),
+            (
+                    (
+                            datetime.datetime(2020, 1, 1, 5, 32, 14),
+                            "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+                            'nicolai',
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST_VERY_MINIMAL_TEXT, 'html.parser'),
+                            10994338,  # Sequence number
+                            [],  # liked_by_users
+                    ),
+                    ['Example', 'AWST', 'message'],
             ),
     )
 )

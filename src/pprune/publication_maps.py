@@ -448,9 +448,6 @@ class AirIndia171(PublicationMap):
         result = self.CAPS_WORDS_MAP.copy()
         result.update(self.CAPS_WORDS_MAP_ALL)
         result.update(self.CAPS_WORDS_MAP_EXTRA)
-        result['MAYDAY'] = "Mayday"
-        result['HPSOV'] = "High Pressure Shutoff Valve"
-        result['FR24'] = "FlightRadar24"
         return result
 
     def get_phrase_lengths(self) -> typing.List[int]:
@@ -523,12 +520,17 @@ class AirIndia171(PublicationMap):
     }
     CAPS_WORDS_MAP_EXTRA = {
         'NYT': 'New York Times',
+        # NOTE: Punctuation is removed from 'AW&ST' -> 'AWST'.
+        # See tests.unit.common.test_thread_struct.test_post_words()
         'AWST': 'Aviation Week & Space Technology',
         'AD': 'Air Worthiness Directives',
         'ADs': 'Air Worthiness Directives',
         'EAFRs': 'EAFR',
         'TRUs': 'TRU',
-        'DFDAU': 'Digital Flight Data Acquisition Unit'
+        'DFDAU': 'Digital Flight Data Acquisition Unit',
+        'MAYDAY': "Mayday",
+        'HPSOV': "High Pressure Shutoff Valve",
+        'FR24': "FlightRadar24",
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps
