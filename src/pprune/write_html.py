@@ -325,7 +325,10 @@ def write_user_subject_table(
             with element(index, 'tr'):
                 # User name
                 with element(index, 'td', _class='indextable'):
-                    with element(index, 'a', href=user.href):
+                    # with element(index, 'a', href=user.href):
+                    #     index.write(user.name)
+                    # Link to users page below in write_user_post_table()
+                    with element(index, 'a', href=_page_name('USER_' + user.name, 0)):
                         index.write(user.name)
                 # Count of posts
                 with element(index, 'td', _class='indextable'):
@@ -539,9 +542,16 @@ def write_subject_page(thread, subject_map, subject, out_path):
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
-def write_user_page(thread, user_map, user_name, out_path):
-    _posts = user_map[user_name]
+def write_user_page(
+        thread: thread_struct.Thread,
+        pass_one_result: PassOneResult,
+        user_name: str,
+        out_path: str,
+) -> None:
+    """Writes a specific HTML page for the user posts."""
+    _posts = pass_one_result.user_ordinal_map[user_name]
     pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
+    up_votes = sum(len(p.liked_by_users) for p in thread.posts if p.user.name == user_name)
     for page_index, page in enumerate(pages):
         with open(os.path.join(out_path, _page_name('USER_' + user_name, page_index)), 'w') as out_file:
             out_file.write(
@@ -555,7 +565,7 @@ def write_user_page(thread, user_map, user_name, out_path):
                 with element(out_file, 'body'):
                     with element(out_file, 'h1'):
                         out_file.write(
-                            'Posts about: "{:s}" [Posts: {:d} Pages: {:d}]'.format(user_name, len(_posts), len(pages)))
+                            'Posts by user "{:s}" [Posts: {:d} Total up-votes: {:d} Pages: {:d}]'.format(user_name, len(_posts), up_votes, len(pages)))
                     _write_page_links('USER_' + user_name, page_index, len(pages), out_file)
                     # with element(f, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
                     with element(out_file, 'table', _class='posts'):
@@ -611,5 +621,5 @@ def write_whole_thread(
                 'Writing: user page for "{:s}" [{:d}]'.format(
                     user_name, len(pass_one_result.user_ordinal_map[user_name]))
             )
-            write_user_page(thread, pass_one_result.user_ordinal_map, user_name, output_path)
+            write_user_page(thread, pass_one_result, user_name, output_path)
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)
