@@ -35,6 +35,8 @@ import time
 import typing
 from contextlib import contextmanager
 
+import psutil
+
 import analyse_thread
 import publication_maps
 import styles
@@ -623,13 +625,17 @@ def write_whole_thread(
         output_path: str
 ):
     logger.info('Starting write_whole_thread() to %s', output_path)
+    proc = psutil.Process(os.getpid())
     t_start = time.perf_counter()
+    logger.info(f'Memory usage [PRIOR PASS ONE]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     pass_one_result = pass_one(thread, common_words, publication_map)
+    logger.info(f'Memory usage [POST PASS ONE]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     total_posts = 0
     for subject in sorted(pass_one_result.subject_post_map.keys()):
         logger.info('Writing: "{:s}" [{:d}]'.format(subject, len(pass_one_result.subject_post_map[subject])))
         write_a_subject_page(thread, pass_one_result, subject, output_path)
         total_posts += len(pass_one_result.subject_post_map[subject])
+    logger.info(f'Memory usage [SUBJECTS WRITTEN]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     logger.info('Wrote %d posts including duplicates.', total_posts)
     for user_name in sorted(pass_one_result.user_ordinal_map.keys()):
         if len(pass_one_result.user_ordinal_map[user_name]) >= publication_map.get_minimum_number_username_posts():
@@ -638,6 +644,8 @@ def write_whole_thread(
                     user_name, len(pass_one_result.user_ordinal_map[user_name]))
             )
             write_user_page(thread, pass_one_result, user_name, output_path)
+    logger.info(f'Memory usage [USERS WRITTEN]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     logger.info('Writing: {:s}'.format('index.html'))
     write_index_page(thread, pass_one_result, publication_map, output_path)
+    logger.info(f'Memory usage [ALL WRITTEN]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)

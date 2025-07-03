@@ -32,6 +32,8 @@ import os
 import sys
 import time
 
+import psutil
+
 from pprune.common import read_html
 from pprune.common import thread_struct
 from pprune.common import log_config
@@ -102,9 +104,12 @@ def main():
     os.makedirs(args.output, exist_ok=True)
 
     t_start = time.perf_counter()
+    proc = psutil.Process(os.getpid())
+    logger.info(f'Memory usage [START]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     thread = thread_struct.Thread()
     for archive in args.archives:
         read_html.update_whole_thread(archive, thread)
+    logger.info(f'Memory usage [READ THREAD]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     word_count = 0
     for post in thread.posts:
         word_count += len(post.words)
@@ -133,6 +138,7 @@ def main():
         return -1
     t_elapsed = time.perf_counter() - t_start
     logger.info('Processed %d posts in %.3f (s)', len(thread), t_elapsed, )
+    logger.info(f'Memory usage [COMPLETE]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     print('Bye, bye!')
     return 0
 
