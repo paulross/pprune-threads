@@ -81,6 +81,9 @@ class PassOneResult:
         self.user_subject_map: typing.Dict[str, typing.Set[str]] = collections.defaultdict(set)
         # Map of {username: [post_index in Thread.posts, ...], ...}
         self.user_ordinal_map: typing.Dict[str, typing.List[int]] = collections.defaultdict(list)
+        # Dict of {(sequence_number, subject) : page_link_to_post_on_subject_page, ...}
+        # This is updated by write_a_subject_page() so not pass one (!).
+        self.sequence_num_subject_link_map = {}
 
     def add_subject_post(
             self,
@@ -96,6 +99,10 @@ class PassOneResult:
         self.post_subject_map[sequence_num] = subjects
         self.user_subject_map[user_name.strip()] |= subjects
         self.user_ordinal_map[user_name.strip()].append(post_index)
+
+    def add_sequence_num_subject_link(self, sequence_num: int, subject: str, link: str) -> None:
+        """Populated by write_a_subject_page()."""
+        self.sequence_num_subject_link_map[(sequence_num, subject)] = link
 
 
 def pass_one(
@@ -484,7 +491,7 @@ def _write_page_links(subject: str, page_num: int, page_count: int, out_file: ty
             out_file.write('Index Page')
 
 
-def write_subject_page(
+def write_a_subject_page(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
         subject: str,
@@ -512,7 +519,7 @@ def write_subject_page(
                     with element(out_file, 'table', _class='posts'):
                         for post_index in page:
                             post = thread.posts[post_index]
-                            with element(out_file, 'tr', valign="top"):
+                            with element(out_file, 'tr', valign="top", _id=f'{post.sequence_num}'):
                                 # with element(f, 'td', _class="alt2", style="border: 1px solid #000063; border-top: 0px; border-bottom: 0px"):
                                 with element(out_file, 'td', _class="post"):
                                     with element(out_file, 'a', href=post.user.href):
@@ -530,6 +537,9 @@ def write_subject_page(
                                     elif len(post.liked_by_users) > 1:
                                         with element(out_file, 'p'):
                                             out_file.write(f'{len(post.liked_by_users)} users liked this post.')
+                            pass_one_result.add_sequence_num_subject_link(
+                                post.sequence_num, subject, f'{_page_name(subject, page_index)}#{post.sequence_num}'
+                            )
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
@@ -577,6 +587,18 @@ def write_user_page(
                                     out_file.write(' Post: {:d}'.format(post.sequence_num))
                                 with element(out_file, 'td', _class="post"):
                                     out_file.write(post.node.prettify(formatter='html'))
+
+                                    # Subjects that this post covers.
+                                    with element(out_file, 'p'):
+                                        if len(pass_one_result.post_subject_map[post.sequence_num]):
+                                            out_file.write('Subjects: ')
+                                            for subject in pass_one_result.post_subject_map[post.sequence_num]:
+                                                href = pass_one_result.sequence_num_subject_link_map[(post.sequence_num, subject)]
+                                                with element(out_file, 'a', href=href):
+                                                    out_file.write(subject)
+                                        else:
+                                            out_file.write('Subjects: None')
+
                                     if len(post.liked_by_users) == 1:
                                         with element(out_file, 'p'):
                                             out_file.write(f'{len(post.liked_by_users)} user liked this post.')
@@ -595,13 +617,10 @@ def write_whole_thread(
     logger.info('Starting write_whole_thread() to %s', output_path)
     t_start = time.perf_counter()
     pass_one_result = pass_one(thread, common_words, publication_map)
-    #     pprint.pprint(user_subject_map)
-    logger.info('Writing: {:s}'.format('index.html'))
-    write_index_page(thread, pass_one_result, publication_map, output_path)
     total_posts = 0
     for subject in sorted(pass_one_result.subject_post_map.keys()):
         logger.info('Writing: "{:s}" [{:d}]'.format(subject, len(pass_one_result.subject_post_map[subject])))
-        write_subject_page(thread, pass_one_result, subject, output_path)
+        write_a_subject_page(thread, pass_one_result, subject, output_path)
         total_posts += len(pass_one_result.subject_post_map[subject])
     logger.info('Wrote %d posts including duplicates.', total_posts)
     for user_name in sorted(pass_one_result.user_ordinal_map.keys()):
@@ -611,4 +630,6 @@ def write_whole_thread(
                     user_name, len(pass_one_result.user_ordinal_map[user_name]))
             )
             write_user_page(thread, pass_one_result, user_name, output_path)
+    logger.info('Writing: {:s}'.format('index.html'))
+    write_index_page(thread, pass_one_result, publication_map, output_path)
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)
