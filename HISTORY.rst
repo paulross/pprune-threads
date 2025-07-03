@@ -1,6 +1,11 @@
 History
 =======
 
+Alpha Release (2025-07-03T14:13:32.352220)
+------------------------------------------
+
+- Added links from the "Users Posts" pages to the subject pages for those posts/subjects.
+
 Alpha Release (2025-07-01T19:23:51.003685)
 ------------------------------------------
 
