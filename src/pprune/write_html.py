@@ -82,7 +82,6 @@ class PassOneResult:
         # Map of {username: [post_index in Thread.posts, ...], ...}
         self.user_ordinal_map: typing.Dict[str, typing.List[int]] = collections.defaultdict(list)
         # Dict of {(sequence_number, subject) : page_link_to_post_on_subject_page, ...}
-        # This is updated by write_a_subject_page() so not pass one (!).
         self.sequence_num_subject_link_map = {}
 
     def add_subject_post(
@@ -110,11 +109,10 @@ def pass_one(
         common_words: typing.Set[str],
         publication_map: publication_maps.PublicationMap,
 ) -> PassOneResult:
-    """Works through every post in the thread and returns a PassOneResult.
-    """
+    """Works through every post in the thread and returns a PassOneResult."""
     logger.info('Starting pass one...')
     t_start = time.perf_counter()
-    ret = PassOneResult()
+    pass_one_result = PassOneResult()
     for i, post in enumerate(thread.posts):
         subjects: typing.Set[str] = set()
         subjects |= analyse_thread.match_words(
@@ -135,13 +133,25 @@ def pass_one(
         for subject in subjects:
             dupe_subjects |= publication_map.get_duplicate_subjects(subject)
         subjects |= dupe_subjects
-        ret.add_subject_post(subjects, i, post.sequence_num, post.user.name.strip())
+        pass_one_result.add_subject_post(subjects, i, post.sequence_num, post.user.name.strip())
     all_subject_titles = publication_map.get_all_subject_titles()
     for subject_title in sorted(all_subject_titles):
-        if subject_title not in ret.subject_post_map:
+        if subject_title not in pass_one_result.subject_post_map:
             logger.warning('No post with subject title "%s"', subject_title)
+    # Add the links from the message sequence number + subject to the planned subject page.
+    for subject_title_has_posts in pass_one_result.subject_post_map.keys():
+        _posts = pass_one_result.subject_post_map[subject_title_has_posts]
+        pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
+        for page_index, page in enumerate(pages):
+            for post_index in page:
+                post = thread.posts[post_index]
+                pass_one_result.add_sequence_num_subject_link(
+                    post.sequence_num,
+                    subject_title_has_posts,
+                    f'{_page_name(subject_title_has_posts, page_index)}#{post.sequence_num}',
+                )
     logger.info('Pass one complete in %.3f (s)', time.perf_counter() - t_start)
-    return ret
+    return pass_one_result
 
 
 def _page_name(subject, page_num):
@@ -537,9 +547,6 @@ def write_a_subject_page(
                                     elif len(post.liked_by_users) > 1:
                                         with element(out_file, 'p'):
                                             out_file.write(f'{len(post.liked_by_users)} users liked this post.')
-                            pass_one_result.add_sequence_num_subject_link(
-                                post.sequence_num, subject, f'{_page_name(subject, page_index)}#{post.sequence_num}'
-                            )
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
@@ -593,7 +600,8 @@ def write_user_page(
                                         if len(pass_one_result.post_subject_map[post.sequence_num]):
                                             out_file.write('Subjects: ')
                                             for subject in pass_one_result.post_subject_map[post.sequence_num]:
-                                                href = pass_one_result.sequence_num_subject_link_map[(post.sequence_num, subject)]
+                                                href = pass_one_result.sequence_num_subject_link_map[
+                                                    (post.sequence_num, subject)]
                                                 with element(out_file, 'a', href=href):
                                                     out_file.write(subject)
                                         else:
