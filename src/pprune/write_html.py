@@ -73,9 +73,13 @@ def element(_stream, _name, **attributes):
 
 class PassOneResult:
     def __init__(self):
+        # Map of {subject: [post_index in Thread.posts, ...], ...}
         self.subject_post_map: typing.Dict[str, typing.List[int]] = {}
+        # Map of {post_sequence_number: [subjects, ...], ...}
         self.post_subject_map: typing.Dict[int, typing.Set[str]] = {}
+        # Map of {username: [subjects, ...], ...}
         self.user_subject_map: typing.Dict[str, typing.Set[str]] = collections.defaultdict(set)
+        # Map of {username: [post_index in Thread.posts, ...], ...}
         self.user_ordinal_map: typing.Dict[str, typing.List[int]] = collections.defaultdict(list)
 
     def add_subject_post(
@@ -99,20 +103,11 @@ def pass_one(
         common_words: typing.Set[str],
         publication_map: publication_maps.PublicationMap,
 ) -> PassOneResult:
-    """Works through every post in the thread and returns a tuple of maps::
-
-        (
-            {subject : [post_ordinals, ...], ...}, # subject_post_map
-            {post_ordinal : set([subject, ...]), ...}, # post_subject_map
-            {user_name : set([subject, ...]), ...}, # user_subject_map
-        )
+    """Works through every post in the thread and returns a PassOneResult.
     """
     logger.info('Starting pass one...')
     t_start = time.perf_counter()
     ret = PassOneResult()
-    # subject_post_map: typing.Dict[str, typing.List[int]] = {}
-    # post_subject_map: typing.Dict[int, typing.Set[str]] = {}
-    # user_subject_map: typing.Dict[str, typing.Set[str]] = collections.defaultdict(set)
     for i, post in enumerate(thread.posts):
         subjects: typing.Set[str] = set()
         subjects |= analyse_thread.match_words(
@@ -133,15 +128,7 @@ def pass_one(
         for subject in subjects:
             dupe_subjects |= publication_map.get_duplicate_subjects(subject)
         subjects |= dupe_subjects
-        # for subject in subjects:
-        #     if subject not in subject_post_map:
-        #         subject_post_map[subject] = []
-        #     subject_post_map[subject].append(i)
-        # post_subject_map[post.sequence_num] = subjects
-        # user_subject_map[post.user.name.strip()] |= subjects
         ret.add_subject_post(subjects, i, post.sequence_num, post.user.name.strip())
-        # print('Post {:3d} subjects [{:3d}]: {}'.format(i, len(subjects), subjects))
-    # pprint.pprint(subject_map, width=200)
     all_subject_titles = publication_map.get_all_subject_titles()
     for subject_title in sorted(all_subject_titles):
         if subject_title not in ret.subject_post_map:
@@ -168,7 +155,7 @@ def get_count_of_posts_included(
     return len(ordinals_included), len(thread) - len(ordinals_included)
 
 
-def write_significant_posts(
+def write_index_significant_posts(
         thread: thread_struct.Thread,
         publication_map: publication_maps.PublicationMap,
         index: typing.TextIO,
@@ -198,7 +185,7 @@ def write_significant_posts(
                         f'Permalink: <a href="{post.permalink}">{subject}</a> User: <a href="{post.user.href}">{post.user.name}</a>')
 
 
-def write_main_subject_table(
+def write_index_main_subject_table(
         subject_post_map: typing.Dict[str, typing.List[int]],
         index: typing.TextIO,
 ):
@@ -227,7 +214,7 @@ def write_main_subject_table(
                     subject_index += 1
 
 
-def write_most_upvoted_posts_table(
+def write_index_most_upvoted_posts_table(
         thread: thread_struct.Thread,
         publication_map: publication_maps.PublicationMap,
         index: typing.TextIO,
@@ -296,7 +283,7 @@ def _write_table_header(headers: typing.List[str], index: typing.TextIO):
                 index.write(header)
 
 
-def write_user_subject_table(
+def write_index_user_subject_table(
         thread: thread_struct.Thread,
         user_subject_map: typing.Dict[str, typing.Set[str]],
         publication_map: publication_maps.PublicationMap,
@@ -349,7 +336,7 @@ def write_user_subject_table(
                         index.write('&nbsp; ')
 
 
-def write_user_post_table(
+def write_index_user_post_table(
         thread: thread_struct.Thread,
         user_ordinal_map: typing.Dict[str, typing.List[int]],
         publication_map: publication_maps.PublicationMap,
@@ -387,8 +374,6 @@ def write_user_post_table(
 def write_index_page(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
-        # subject_post_map: typing.Dict[str, typing.List[int]],
-        # user_subject_map: typing.Dict[str, typing.Set[str]],
         publication_map: publication_maps.PublicationMap,
         out_path: str,
 ):
@@ -456,51 +441,57 @@ def write_index_page(
                     with element(index, 'a', href="https://github.com/paulross/pprune-threads/issues"):
                         index.write('https://github.com/paulross/pprune-threads/issues.')
 
-                write_significant_posts(thread, publication_map, index)
+                write_index_significant_posts(thread, publication_map, index)
 
-                write_main_subject_table(pass_one_result.subject_post_map, index)
+                write_index_main_subject_table(pass_one_result.subject_post_map, index)
 
-                write_most_upvoted_posts_table(thread, publication_map, index)
+                write_index_most_upvoted_posts_table(thread, publication_map, index)
 
-                write_user_subject_table(thread, pass_one_result.user_subject_map, publication_map, index)
+                write_index_user_subject_table(thread, pass_one_result.user_subject_map, publication_map, index)
 
-                write_user_post_table(thread, pass_one_result.user_ordinal_map, publication_map, index)
+                write_index_user_post_table(thread, pass_one_result.user_ordinal_map, publication_map, index)
 
 
-def _write_page_links(subject, page_num, page_count, f):
-    with element(f, 'p', _class='page_links'):
-        f.write('Page Links:&nbsp;')
+def _write_page_links(subject: str, page_num: int, page_count: int, out_file: typing.TextIO) -> None:
+    with element(out_file, 'p', _class='page_links'):
+        out_file.write('Page Links:&nbsp;')
         if page_count > 1:
-            with element(f, 'a', href=_page_name(subject, 0)):
-                f.write('First')
+            with element(out_file, 'a', href=_page_name(subject, 0)):
+                out_file.write('First')
             if page_num > 0:
-                f.write('&nbsp;')
-                with element(f, 'a', href=_page_name(subject, page_num - 1)):
-                    f.write('Previous')
+                out_file.write('&nbsp;')
+                with element(out_file, 'a', href=_page_name(subject, page_num - 1)):
+                    out_file.write('Previous')
             page_start = max(0, page_num - PAGE_LINK_COUNT)
             page_end = min(page_count - 1, page_num + PAGE_LINK_COUNT)
             for p in range(page_start, page_end + 1):
-                f.write('&nbsp;')
-                with element(f, 'a', href=_page_name(subject, p)):
+                out_file.write('&nbsp;')
+                with element(out_file, 'a', href=_page_name(subject, p)):
                     if p == page_num:
-                        with element(f, 'b'):
-                            f.write('{:d}'.format(p + 1))
+                        with element(out_file, 'b'):
+                            out_file.write('{:d}'.format(p + 1))
                     else:
-                        f.write('{:d}'.format(p + 1))
+                        out_file.write('{:d}'.format(p + 1))
             if page_num < page_count - 1:
-                f.write('&nbsp;')
-                with element(f, 'a', href=_page_name(subject, page_num + 1)):
-                    f.write('Next')
-            f.write('&nbsp;')
-            with element(f, 'a', href=_page_name(subject, page_count - 1)):
-                f.write('Last')
-            f.write('&nbsp;')
-        with element(f, 'a', href='index.html'):
-            f.write('Index Page')
+                out_file.write('&nbsp;')
+                with element(out_file, 'a', href=_page_name(subject, page_num + 1)):
+                    out_file.write('Next')
+            out_file.write('&nbsp;')
+            with element(out_file, 'a', href=_page_name(subject, page_count - 1)):
+                out_file.write('Last')
+            out_file.write('&nbsp;')
+        with element(out_file, 'a', href='index.html'):
+            out_file.write('Index Page')
 
 
-def write_subject_page(thread, subject_map, subject, out_path):
-    _posts = subject_map[subject]
+def write_subject_page(
+        thread: thread_struct.Thread,
+        pass_one_result: PassOneResult,
+        subject: str,
+        out_path: str,
+):
+    """Writes all the pages for a single subject."""
+    _posts = pass_one_result.subject_post_map[subject]
     pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
     for page_index, page in enumerate(pages):
         with open(os.path.join(out_path, _page_name(subject, page_index)), 'w') as out_file:
@@ -565,7 +556,10 @@ def write_user_page(
                 with element(out_file, 'body'):
                     with element(out_file, 'h1'):
                         out_file.write(
-                            'Posts by user "{:s}" [Posts: {:d} Total up-votes: {:d} Pages: {:d}]'.format(user_name, len(_posts), up_votes, len(pages)))
+                            'Posts by user "{:s}" [Posts: {:d} Total up-votes: {:d} Pages: {:d}]'.format(
+                                user_name, len(_posts), up_votes, len(pages)
+                            )
+                        )
                     _write_page_links('USER_' + user_name, page_index, len(pages), out_file)
                     # with element(f, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
                     with element(out_file, 'table', _class='posts'):
@@ -600,20 +594,15 @@ def write_whole_thread(
 ):
     logger.info('Starting write_whole_thread() to %s', output_path)
     t_start = time.perf_counter()
-    # out_path = get_out_path(output_name)
-    # shutil.rmtree(output_path, ignore_errors=True)
-    # subject_post_map, post_subject_map, user_subject_map = pass_one(thread, common_words, publication_map)
     pass_one_result = pass_one(thread, common_words, publication_map)
     #     pprint.pprint(user_subject_map)
     logger.info('Writing: {:s}'.format('index.html'))
-    # write_index_page(thread, subject_post_map, user_subject_map, publication_map, output_path)
     write_index_page(thread, pass_one_result, publication_map, output_path)
     total_posts = 0
     for subject in sorted(pass_one_result.subject_post_map.keys()):
         logger.info('Writing: "{:s}" [{:d}]'.format(subject, len(pass_one_result.subject_post_map[subject])))
-        write_subject_page(thread, pass_one_result.subject_post_map, subject, output_path)
+        write_subject_page(thread, pass_one_result, subject, output_path)
         total_posts += len(pass_one_result.subject_post_map[subject])
-    #     pprint.pprint(post_map)
     logger.info('Wrote %d posts including duplicates.', total_posts)
     for user_name in sorted(pass_one_result.user_ordinal_map.keys()):
         if len(pass_one_result.user_ordinal_map[user_name]) >= publication_map.get_minimum_number_username_posts():
