@@ -601,9 +601,10 @@ def write_user_page(
                                     with element(out_file, 'p'):
                                         if len(pass_one_result.post_subject_map[post.sequence_num]):
                                             out_file.write('Subjects: ')
-                                            for subject in pass_one_result.post_subject_map[post.sequence_num]:
-                                                href = pass_one_result.sequence_num_subject_link_map[
-                                                    (post.sequence_num, subject)]
+                                            for i, subject in enumerate(sorted(pass_one_result.post_subject_map[post.sequence_num])):
+                                                if i:
+                                                    out_file.write('&nbsp;')
+                                                href = pass_one_result.sequence_num_subject_link_map[(post.sequence_num, subject)]
                                                 with element(out_file, 'a', href=href):
                                                     out_file.write(subject)
                                         else:
