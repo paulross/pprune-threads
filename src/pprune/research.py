@@ -121,17 +121,23 @@ def print_liked_by_users(thread: pprune.common.thread_struct.Thread):
     # pprint.pprint(like_count)
     total_posts = total_likes = 0
     print(f'{"likes":6s} : {"posts":6s}')
-    for likes, count in like_count.most_common():
-        print(f'{likes:6d} : {count:6d}')
-        total_posts += count
-        total_likes += likes
+    for key in sorted(like_count.keys(), reverse=True):
+        print(f'{key:6d} : {like_count[key]:6d}')
+        total_posts += like_count[key]
+        total_likes += key
     print(f'TOTALS: posts: {total_posts:d} likes: {total_likes:d}')
-    print(' print_liked_by_users(): '.center(75, '-'))
-    # print(' print_liked_by_users(): sorted '.center(75, '-'))
-    # # pprint.pprint(user_count.most_common(most_common_count))
-    # for user_name, count in sorted(like_count.most_common()):
-    #     print(f'{user_name:32} : {count:4d}')
-    # print(' print_liked_by_users(): sorted DONE '.center(75, '-'))
+    print(' print_liked_by_users(): DONE '.center(75, '-'))
+    UPVOTES_LIMIT_GE = 10
+    print(f' print_liked_by_users(): most upvoters >= {UPVOTES_LIMIT_GE} '.center(75, '-'))
+    upvoters = collections.Counter()
+    for post in thread.posts:
+        for user in post.liked_by_users:
+            upvoters.update([user.name])
+    for username, count in upvoters.most_common():
+        if count < UPVOTES_LIMIT_GE:
+            break
+        print(f'{username:32s} : {count:6d}')
+    print(f' print_liked_by_users(): most upvoters >= {UPVOTES_LIMIT_GE} DONE '.center(75, '-'))
 
 
 def print_research(thread, common_words, most_common_count: int, freq_ge: int,
