@@ -241,7 +241,7 @@ def html_node_like_usernames(node: bs4.element.Tag) -> typing.List[pprune.common
         for node_a in post_thanks_box_node.find_all('a'):
             user_name = node_a.text.strip()
             user_id = node_a['href']
-            ret.append(pprune.common.thread_struct.User(user_name, user_id))
+            ret.append(pprune.common.thread_struct.User(user_id, user_name))
     return ret
 
 
