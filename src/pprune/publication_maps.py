@@ -512,7 +512,7 @@ class AirIndia171(PublicationMap):
     # Any post that has that capitilised word in it is treated as part of that subject.
     CAPS_WORDS_MAP = {
         k: k for k in {
-            'AI171', 'ADSB', 'APU', 'BBC', 'CCTV', 'FDR', 'V1', 'V2', 'EDML', 'EAFR',
+            'AI171', 'ADSB', 'APU', 'BBC', 'CCTV', 'FDR', 'V1', 'V2', 'EAFR',
             'FADEC', 'FAA', 'TOGA', 'VNAV', 'NTSB', 'MEL', 'DFDR', 'FBW', 'HPSOV', 'FCOM', 'FR24', 'CVR', 'EFATO',
             'RIPS', 'TRU', 'ARINC', 'DGCA',
         }
