@@ -630,7 +630,7 @@ def write_user_page(
                                         else:
                                             with element(out_file, 'b'):
                                                 out_file.write('Subjects:')
-                                            out_file.write(': None')
+                                            out_file.write(' None')
 
                                     if len(post.liked_by_users) == 1:
                                         with element(out_file, 'p'):
