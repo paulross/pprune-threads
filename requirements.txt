@@ -3,7 +3,6 @@ coverage
 dateparser
 lxml
 numpy
-psutil
 pytest
 pytest-cov
 requests

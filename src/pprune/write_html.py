@@ -35,8 +35,6 @@ import time
 import typing
 from contextlib import contextmanager
 
-import psutil
-
 import analyse_thread
 import publication_maps
 import styles
@@ -71,6 +69,11 @@ def element(_stream, _name, **attributes):
     _stream.write('>')
     yield
     _stream.write('</{}>\n'.format(_name))
+
+
+def format_datetime(dt: datetime.datetime) -> str:
+    """Return a human readable datetime."""
+    return dt.strftime('%B %d, %Y, %H:%M:%S')
 
 
 class PassOneResult:
@@ -260,6 +263,8 @@ def write_index_most_upvoted_posts_table(
                 'This list the posts that have the largest number of up-votes.'
                 ' They are <i>likely</i> to be more important than others.'
                 f' There are {total_upvotes:d} up-votes on {len(thread.posts)} posts.'
+                ' "User Name" links are to the pprune user.'
+                ' "Permalink" links is to the post on pprune.'
             )
         post_count = 0
         with element(index, 'table', _class="indextable"):
@@ -293,6 +298,8 @@ def write_index_most_upvoted_posts_table(
                         break
                 if post_count >= publication_map.get_upvoted_post_count_limit():
                     break
+    else:
+        assert 0
 
 
 def _write_table_header(headers: typing.List[str], index: typing.TextIO):
@@ -317,6 +324,10 @@ def write_index_user_subject_table(
     with element(index, 'p'):
         index.write(
             'The most prolific {:d} posters in the original thread:'.format(publication_map.get_number_of_top_authors())
+        )
+        index.write(
+            'The User Name links to the User page (below).'
+            'The "Subjects" links to the first page on that subject.'
         )
     upvotes_dict: typing.Dict[thread_struct.User, int] = {}
     for post in thread.posts:
@@ -366,9 +377,9 @@ def write_index_user_post_table(
         index.write('Users Posts')
     with element(index, 'p'):
         index.write(
-            'Here are posts by users that have made >= {:d} posts [post count]. Sorted by user name:'.format(
-                publication_map.get_minimum_number_username_posts(),
-            )
+            f'Here are posts by users that have made >= {publication_map.get_minimum_number_username_posts():d} posts.'
+            f' If a post matches a subject there will be a link to the subject page which has that post so the post can be seen in context.'
+            f' Sorted by user name with [post count]:'
         )
     with element(index, 'table', _class="indextable"):
         COLUMNS = 8
@@ -388,9 +399,6 @@ def write_index_user_post_table(
                             with element(index, 'a', href=_page_name('USER_' + user_name, 0)):
                                 index.write('{:s} [{:d}]'.format(user_name, len(user_ordinal_map[user_name])))
                         subject_index += 1
-
-def format_datetime(dt: datetime.datetime) -> str:
-    return dt.strftime('%B %d, %Y, %H:%M:%S')
 
 
 def write_index_page(
@@ -561,7 +569,10 @@ def write_user_page(
         user_name: str,
         out_path: str,
 ) -> None:
-    """Writes a specific HTML page for the user posts."""
+    """Writes a specific HTML page for the user posts.
+    Each user page has all the posts from that user in order.
+    If the post matches any subject then a link is made to that particular post in subject page so the post can be seen
+    in context."""
     _posts = pass_one_result.user_ordinal_map[user_name]
     pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
     up_votes = sum(len(p.liked_by_users) for p in thread.posts if p.user.name == user_name)
@@ -603,15 +614,23 @@ def write_user_page(
                                     # Subjects that this post covers.
                                     with element(out_file, 'p'):
                                         if len(pass_one_result.post_subject_map[post.sequence_num]):
-                                            out_file.write('Subjects: ')
-                                            for i, subject in enumerate(sorted(pass_one_result.post_subject_map[post.sequence_num])):
+                                            with element(out_file, 'b'):
+                                                out_file.write('Subjects')
+                                            out_file.write(
+                                                ' (links are to this post in the relevant subject page so that this post can be seen in context): '
+                                            )
+                                            for i, subject in enumerate(
+                                                    sorted(pass_one_result.post_subject_map[post.sequence_num])):
                                                 if i:
                                                     out_file.write('&nbsp;')
-                                                href = pass_one_result.sequence_num_subject_link_map[(post.sequence_num, subject)]
+                                                href = pass_one_result.sequence_num_subject_link_map[
+                                                    (post.sequence_num, subject)]
                                                 with element(out_file, 'a', href=href):
                                                     out_file.write(subject)
                                         else:
-                                            out_file.write('Subjects: None')
+                                            with element(out_file, 'b'):
+                                                out_file.write('Subjects:')
+                                            out_file.write(': None')
 
                                     if len(post.liked_by_users) == 1:
                                         with element(out_file, 'p'):
@@ -629,17 +648,13 @@ def write_whole_thread(
         output_path: str
 ):
     logger.info('Starting write_whole_thread() to %s', output_path)
-    proc = psutil.Process(os.getpid())
     t_start = time.perf_counter()
-    logger.info(f'Memory usage [PRIOR PASS ONE]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     pass_one_result = pass_one(thread, common_words, publication_map)
-    logger.info(f'Memory usage [POST PASS ONE]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     total_posts = 0
     for subject in sorted(pass_one_result.subject_post_map.keys()):
         logger.info('Writing: "{:s}" [{:d}]'.format(subject, len(pass_one_result.subject_post_map[subject])))
         write_a_subject_page(thread, pass_one_result, subject, output_path)
         total_posts += len(pass_one_result.subject_post_map[subject])
-    logger.info(f'Memory usage [SUBJECTS WRITTEN]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     logger.info('Wrote %d posts including duplicates.', total_posts)
     for user_name in sorted(pass_one_result.user_ordinal_map.keys()):
         if len(pass_one_result.user_ordinal_map[user_name]) >= publication_map.get_minimum_number_username_posts():
@@ -648,8 +663,6 @@ def write_whole_thread(
                     user_name, len(pass_one_result.user_ordinal_map[user_name]))
             )
             write_user_page(thread, pass_one_result, user_name, output_path)
-    logger.info(f'Memory usage [USERS WRITTEN]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     logger.info('Writing: {:s}'.format('index.html'))
     write_index_page(thread, pass_one_result, publication_map, output_path)
-    logger.info(f'Memory usage [ALL WRITTEN]: {proc.memory_info().rss / 1024**2:.3f} (MB)')
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)

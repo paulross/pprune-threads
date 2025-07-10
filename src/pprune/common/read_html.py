@@ -214,6 +214,9 @@ def get_post_text_from_node(node: bs4.element.Tag, sequence_num: int) -> str:
 def html_node_like_usernames(node: bs4.element.Tag) -> typing.List[pprune.common.thread_struct.User]:
     """Returns the list of users that liked this post (if any).
 
+    TODO: Update this doc as the site has changed and likes are now javascript based. We can only get the number of likes.
+    TODO: Even worse old threads use the original code so we could be dealing with either.
+
     Example::
 
           <div id="post_thanks_box_11898940">
@@ -239,13 +242,23 @@ def html_node_like_usernames(node: bs4.element.Tag) -> typing.List[pprune.common
     post_id: int = html_node_post_number(node)
     post_thanks_box_node = node.find('div', **{"id": f"post_thanks_box_{post_id}"})
     ret = []
-    if post_thanks_box_node:
-        for node_a in post_thanks_box_node.find_all('a'):
-            user_name = node_a.text.strip()
-            user_id = node_a['href']
-            ret.append(pprune.common.thread_struct.User(user_id, user_name))
+    if post_thanks_box_node is not None:
+        # This is the old style pprune thread, pre 2025-07-08 or thereabouts.
+        if post_thanks_box_node:
+            for node_a in post_thanks_box_node.find_all('a'):
+                user_name = node_a.text.strip()
+                user_id = node_a['href']
+                ret.append(pprune.common.thread_struct.User(user_id, user_name))
+    else:
+        # This is the old style pprune thread, post 2025-07-08 or thereabouts.
+        # It uses a javascript dropdown menu which we can not access so we just capture the number of likes and
+        # return a list of mock Users.
+        # <span id="post_thanks_button_likes_11918692">10</span>
+        post_thanks_box_node = node.find('span', **{"id": f"post_thanks_button_likes_{post_id}"})
+        if post_thanks_box_node is not None:
+            for i in range(int(post_thanks_box_node.text)):
+                ret.append(pprune.common.thread_struct.User(i, f'Mock_user_{i}'))
     return ret
-
 
 def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[pprune.common.thread_struct.Post]:
     """Returns a Post object from an HTML node."""
