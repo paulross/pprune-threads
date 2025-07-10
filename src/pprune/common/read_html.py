@@ -172,6 +172,11 @@ def html_node_date(node: bs4.element.Tag) -> datetime.datetime:
     date_node = node.find('div', **{"class": "tcell"})
     text = date_node.text
     ret = dateparser.parse(text.strip())
+    # For some weird reason the date from a file obtained by curl is 12 hours behind the display date.
+    # For example, from curl: 11th June 2025 | 20:57
+    # But in the browser/show page source: 12th June 2025 | 08:57
+    time_stamp_offset = datetime.timedelta(hours=12)
+    ret += time_stamp_offset
     return ret
 
 
