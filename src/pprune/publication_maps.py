@@ -701,6 +701,7 @@ class AirIndia171(PublicationMap):
 
             ('simulation', 'scenarios',): 'Simulation Scenarios',
 
+            ('spar', 'valve',): 'Spar Valves',
             ('spar', 'valves',): 'Spar Valves',
         },
         3: {
