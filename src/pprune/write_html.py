@@ -389,6 +389,9 @@ def write_index_user_post_table(
                                 index.write('{:s} [{:d}]'.format(user_name, len(user_ordinal_map[user_name])))
                         subject_index += 1
 
+def format_datetime(dt: datetime.datetime) -> str:
+    return dt.strftime('%B %d, %Y, %H:%M:%S')
+
 
 def write_index_page(
         thread: thread_struct.Thread,
@@ -448,9 +451,9 @@ def write_index_page(
                     )
                 with element(index, 'p'):
                     index.write(
-                        f'Posts on the thread start at {thread.posts[0].timestamp.isoformat()}'
-                        f' and finish at {thread.posts[-1].timestamp.isoformat()}.'
-                        f' This build was made at {datetime.datetime.now().isoformat()}.'
+                        f'Posts on the thread start at {format_datetime(thread.posts[0].timestamp)}'
+                        f' and finish at {format_datetime(thread.posts[-1].timestamp)}.'
+                        f' This build was made at {format_datetime(datetime.datetime.now())}.'
                     )
                 with element(index, 'p'):
                     index.write('Project is here: ')
@@ -537,7 +540,7 @@ def write_a_subject_page(
                                     with element(out_file, 'a', href=post.user.href):
                                         out_file.write(post.user.name.strip())
                                     out_file.write('<br/>')
-                                    out_file.write(post.timestamp.isoformat())
+                                    out_file.write(format_datetime(post.timestamp))
                                     with element(out_file, 'a', href=post.permalink):
                                         out_file.write('<br/>permalink')
                                     out_file.write(' Post: {:d}'.format(post.sequence_num))
@@ -590,7 +593,7 @@ def write_user_page(
                                     with element(out_file, 'a', href=post.user.href):
                                         out_file.write(post.user.name.strip())
                                     out_file.write('<br/>')
-                                    out_file.write(post.timestamp.isoformat())
+                                    out_file.write(format_datetime(post.timestamp))
                                     with element(out_file, 'a', href=post.permalink):
                                         out_file.write('<br/>permalink')
                                     out_file.write(' Post: {:d}'.format(post.sequence_num))
