@@ -489,7 +489,6 @@ class AirIndia171(PublicationMap):
         """The minimum number of posts a user has mad to get a page with all their posts."""
         return 5
 
-
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {
         'mayday': 'Mayday',
@@ -507,6 +506,11 @@ class AirIndia171(PublicationMap):
         'generator': 'Generators/Alternators',
         'alternators': 'Generators/Alternators',
         'alternator': 'Generators/Alternators',
+        'relight': 'Relight',
+        'restart': 'Relight',
+        '51': '51 Day Issue',
+        '51day': '51 Day Issue',
+        'detent': 'Fuel Cutoff Switches (detent)',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -515,6 +519,7 @@ class AirIndia171(PublicationMap):
             'AI171', 'ADSB', 'APU', 'BBC', 'CCTV', 'FDR', 'V1', 'V2', 'EAFR',
             'FADEC', 'FAA', 'TOGA', 'VNAV', 'NTSB', 'MEL', 'DFDR', 'FBW', 'HPSOV', 'FCOM', 'FR24', 'CVR', 'EFATO',
             'RIPS', 'TRU', 'ARINC', 'DGCA',
+            'ICAO',
         }
     }
     CAPS_WORDS_MAP_ALL = {
@@ -536,6 +541,7 @@ class AirIndia171(PublicationMap):
         'HPSOV': "High Pressure Shutoff Valve",
         'FR24': "FlightRadar24",
         'LD': 'Lift/Drag Ratio',
+        'CUTOFF': 'Fuel Cutoff Switches',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps
@@ -582,10 +588,12 @@ class AirIndia171(PublicationMap):
             ('fuel', 'cut'): 'Fuel Cutoff',
             ('fuel', 'shut'): 'Fuel Cutoff',
             ('fuel', 'starvation'): 'Fuel Cutoff',
-            ('fuel', 'switch'): 'Fuel Cutoff',
-            ('fuel', 'switches'): 'Fuel Cutoff',
-            ('cutoff', 'switches'): 'Fuel Cutoff',
-            ('cut', 'off'): 'Fuel Cutoff',
+
+            ('fuel', 'switch'): 'Fuel Cutoff Switches',
+            ('fuel', 'switches'): 'Fuel Cutoff Switches',
+            ('cutoff', 'switches'): 'Fuel Cutoff Switches',
+            ('cut', 'off'): 'Fuel Cutoff Switches',
+            ('fuelswitch', 'design'): 'Fuel Cutoff Switches',
 
             ('fuel', 'pump'): 'Fuel Pumps',
             ('fuel', 'pumps'): 'Fuel Pumps',
@@ -685,6 +693,13 @@ class AirIndia171(PublicationMap):
             ('richard', 'godfrey',): 'Self Proclaimed Experts',
             ('geoffrey', 'thomas',): 'Self Proclaimed Experts',
             ('geoffrey', 'thomass',): 'Self Proclaimed Experts',
+
+            ('memory', 'items',): 'Memory Items',
+            ('memory', 'actions',): 'Memory Items',
+
+            ('annex', '13',): 'Annex 13',
+
+            ('simulation', 'scenarios',): 'Simulation Scenarios',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -692,7 +707,6 @@ class AirIndia171(PublicationMap):
             ('flaps', 'instead', 'gear'): 'Flaps vs Gear',
             ('dual', 'engine', 'shutdown'): 'Dual Engine Failure',
             ('improper', 'TCMA', 'activation'): 'TCMA (Improper Activation)',
-            ('fuel', 'cutoff', 'switches'): 'Fuel Cut Off Switches',
             ('TCMA', 'airground', 'logic'): 'TCMA (Air-ground Logic)',
             ('engine', 'N2', 'overspeed'): 'N2 Over-speed',
             ('witnesses', 'RAT', 'hear'): 'RAT (Witnesses)',
@@ -703,6 +717,11 @@ class AirIndia171(PublicationMap):
             ('lift', 'drag', 'ratio',): 'Lift/Drag Ratio',
             ('take', 'brief', 'pause',): 'Thread Closure',
             ('indian', 'aviation', 'regulator'): 'DGCA',
+
+            ('fuel', 'cutoff', 'switches'): 'Fuel Cutoff Switches',
+            ('cut', 'off', 'switches'): 'Fuel Cutoff Switches',
+            ('fuel', 'control', 'switches'): 'Fuel Cutoff Switches',
+            ('engine', 'cutoff', 'switches'): 'Fuel Cutoff Switches',
         },
         4: {
             ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine Driven)',
@@ -712,7 +731,7 @@ class AirIndia171(PublicationMap):
             ('definitively', 'witnesses', 'RAT', 'hear'): 'RAT (Witnesses)',
             ('noise', 'listening', 'motorcycle', 'passing'): "RAT (Alternate Noise Sources)",
             ('engine', 'failure', 'detection', 'takes'): 'Engine Failure Detection Time',
-            ('fuel', 'cut', 'off', 'switches'): 'Fuel Cut Off Switches',
+            ('fuel', 'cut', 'off', 'switches'): 'Fuel Cutoff Switches',
             ('aviation', 'week', 'space', 'technology'): 'Aviation Week & Space Technology',
             ('indian', 'accident', 'investigation', 'team'): 'AAIB (IDGA)',
             ('indian', 'civil', 'air', 'authority'): 'DGCA',
@@ -766,6 +785,9 @@ class AirIndia171(PublicationMap):
         'Fuel Contamination': {'Fuel (All)', },
         'Fuel Pumps': {'Fuel (All)', },
         'Fuel Cutoff': {'Fuel (All)', },
+        'Fuel Cutoff Switches': {'Fuel (All)', },
+
+        'Fuel Cutoff Switches (detent)': {'Fuel (All)', 'Fuel Cutoff Switches', },
     }
     # The is the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
