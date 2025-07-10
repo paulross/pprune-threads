@@ -700,6 +700,8 @@ class AirIndia171(PublicationMap):
             ('annex', '13',): 'Annex 13',
 
             ('simulation', 'scenarios',): 'Simulation Scenarios',
+
+            ('spar', 'valves',): 'Spar Valves',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
