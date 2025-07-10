@@ -113,6 +113,8 @@ def get_post_nodes_from_file(file: typing.TextIO) -> typing.List[bs4.element.Tag
 
 def get_post_nodes_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[bs4.element.Tag]:
     posts = doc.find('div', id='posts')
+    if posts is None:
+        raise ValueError('No posts found')
     # Miss out the last one: <div id="lastpost"></div>
     ret = [c for c in posts.children if c.name == 'div' and c.attrs['id'] != 'lastpost']
     return ret
@@ -314,14 +316,19 @@ def update_whole_thread(directory_name: str, thread: pprune.common.thread_struct
         if 0 <= count <= file_count:
             break
         post_count = 0
-        for post_node in get_post_nodes_from_file_path(files[file_number]):
-            # print('Post: %d' % i)
-            post = post_from_html_node(post_node)
-            if post is not None:
-                thread.add_post(post)
-                post_count += 1
-            else:
-                logger.warning('Can not read post from node <%s %s>', post_node.name, post_node.attrs)
+        try:
+            for post_node in get_post_nodes_from_file_path(files[file_number]):
+                # print('Post: %d' % i)
+                post = post_from_html_node(post_node)
+                if post is not None:
+                    thread.add_post(post)
+                    post_count += 1
+                else:
+                    logger.warning('Can not read post from node <%s %s>', post_node.name, post_node.attrs)
+        except ValueError as err:
+            # Have seen the first page say that the lat page is 71 but when curl'ing that the file is empty and
+            # we get this error. Ignore it.
+            logger.warning('Can not read post from file %s Error: %s', files[file_number], err)
         logger.info('Read: {:s} posts: {:d}'.format(os.path.basename(files[file_number]), post_count))
         file_count += 1
     logger.info('update_whole_thread(): Read %d posts in %.3f (s)' % (len(thread.posts), time.perf_counter() - t_start))
