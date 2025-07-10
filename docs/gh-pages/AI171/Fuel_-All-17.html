@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune Fuel (All) name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts about: "Fuel (All)" [Posts: 345 Pages: 18]</h1>
+<body><h1>Posts about: "Fuel (All)" [Posts: 379 Pages: 19]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=Fuel_-All-0.html>First</a>
 &nbsp;<a href=Fuel_-All-16.html>Previous</a>
 &nbsp;<a href=Fuel_-All-7.html>8</a>
@@ -16,156 +16,13 @@
 &nbsp;<a href=Fuel_-All-16.html>17</a>
 &nbsp;<a href=Fuel_-All-17.html><b>18</b>
 </a>
-&nbsp;<a href=Fuel_-All-17.html>Last</a>
+&nbsp;<a href=Fuel_-All-18.html>19</a>
+&nbsp;<a href=Fuel_-All-18.html>Next</a>
+&nbsp;<a href=Fuel_-All-18.html>Last</a>
 &nbsp;<a href=index.html>Index Page</a>
 </p>
-<table class=posts><tr id=11914246 valign=top><td class=post><a href=https://www.pprune.org/members/423098-sailvi767>Sailvi767</a>
-<br/>2025-07-01T12:39:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914246><br/>permalink</a>
- Post: 11914246</td>
-<td class=post><div class="tcell alt1" id="td_post_11914246">
- <!-- message -->
- <div id="post_message_11914246">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      TURIN
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11914118" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     May I ask where this information of load shedding comes from please
-     <br/>
-     In my experience the APU supplies enough power to run all systems. Hydraulic pumps, fuel pumps etc
-    </div>
-   </div>
-  </div>
-  On the 767, 757 and A330 anytime you are in single generator operations the aircraft is load shedding. The 787 with a totally different electrical system might function differently.
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr id=11914255 valign=top><td class=post><a href=https://www.pprune.org/members/558914-adfad>adfad</a>
-<br/>2025-07-01T12:55:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914255><br/>permalink</a>
- Post: 11914255</td>
-<td class=post><div class="tcell alt1" id="td_post_11914255">
- <!-- message -->
- <div id="post_message_11914255">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      Someone Somewhere
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11914164" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     I believe that particular bug is fixed, though it's always possible there's other issues causing a total AC loss.
-     <br/>
-     <br/>
-     Not really relevant to what you quoted though, as the scenario in question requires:
-     <ul>
-      <li>
-       Engines running on centre tank fuel during takeoff
-       <i>
-        while the aircraft is operating normally
-       </i>
-       <ul>
-        <li>
-         We don't know for certain if this is the case. It seems to be but it's not something that happens on other families.
-        </li>
-       </ul>
-      </li>
-      <li>
-       Then, total AC failure stopping fuel boost pumps.
-      </li>
-      <li>
-       Engines suction feed from contaminated/full-of-water wing tanks.
-      </li>
-     </ul>
-     <br/>
-     The aircraft has two engines and should be able to climb out on one, plus it dropped like a
-     <i>
-      rock
-     </i>
-     . 'Significantly degraded' thrust isn't really compatible with what we saw. You'd also expect the engines to recover pretty quickly as it leveled off.
-     <br/>
-     <br/>
-     The limitations at high altitude are primarily air/volatiles degassing out of the fuel. That's not going to be much of an issue at sea level, even if the engines are a bit higher up during rotation.
-     <br/>
-     APU is a nice-to-have; it's on the MEL. If you lose all four generators, it's because of some major carnage in the electrical software/hardware and chances of putting the APU on line even if it's operating are very slim.
-    </div>
-   </div>
-  </div>
-  As an electronics and software engineer who has read the AD and related materials on the 248 day bug my understanding is that:
-  <ol style="list-style-type: decimal">
-   <li>
-    The specific 248-day integer overflow was patched, and before the fix was rolled out, the AD required this system to by power cycled every 120 days to prevent overflow
-   </li>
-   <li>
-    The PCU software still has the
-    <i>
-     functional requirement
-    </i>
-    to be able to command all AC GCUs to enter failsafe mode, this means that while the initial bug was fixed, the ability for this particular software system to command the same result is still a functional part of the architecture - presumably for safety management of the AC system
-   </li>
-   <li>
-    This was not the first or last "software overflow error" issue in Boeing or even in the 787
-   </li>
-  </ol>
-  Although I'm not qualified in aviation engineering I do believe from an engineering safety standpoint that this architecture creates a rare but entirely feasible scenario in which the aircraft would be without AC power for at least 30 seconds until the APU could restore it.
-  <br/>
-  <br/>
-  I do agree that the engine driven pumps
-  <i>
-   should
-  </i>
-  be able to provide fuel alone, the whole point of these pumps is to keep the plane flying within
-  <i>
-   some
-  </i>
-  limitations, high altitude is one of those limitations, I propose that there may be others based on the following:
-  <ul>
-   <li>
-    Some more knowledgable people here have proposed or countered vapour lock, fuel contamination and automatic fuel cut-off theories to various degrees - even if these are not enough on their own, loss of electrical during rotation at high temperature could combine with these in a way we have not yet considered
-   </li>
-   <li>
-    Thrust is nonlinear, and while I'm not qualified to say how much loss of fuel flow or loss of thrust would be critical in this scenario we do know that it was a hot takeoff with significant weight and gear remaining down - I know others here have run sims but I don't think anyone has focused on specific thrust / fuel flow params
-   </li>
-   <li>
-    While electric fuel pumps might not be physically necessary for takeoff, my final point is: why are they
-    <i>
-     required
-    </i>
-    for takeoff? Is it not to mitigate cavitation, fuel sloshing at rotation, or any other kind of problem that might be relevant here?
-   </li>
-  </ul>
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr id=11914257 valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
-<br/>2025-07-01T12:59:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914257><br/>permalink</a>
+<table class=posts><tr id=11914257 valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
+<br/>July 01, 2025, 12:59:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914257><br/>permalink</a>
  Post: 11914257</td>
 <td class=post><div class="tcell alt1" id="td_post_11914257">
  <!-- message -->
@@ -182,8 +39,8 @@
      <strong>
       Sailvi767
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11914246" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11914246" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
     </div>
@@ -213,7 +70,7 @@
 </td>
 </tr>
 <tr id=11914265 valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
-<br/>2025-07-01T13:08:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914265><br/>permalink</a>
+<br/>July 01, 2025, 13:08:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914265><br/>permalink</a>
  Post: 11914265</td>
 <td class=post><div class="tcell alt1" id="td_post_11914265">
  <!-- message -->
@@ -230,8 +87,8 @@
      <strong>
       adfad
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11914255" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11914255" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
     </div>
@@ -305,7 +162,7 @@
 </td>
 </tr>
 <tr id=11914278 valign=top><td class=post><a href=https://www.pprune.org/members/558914-adfad>adfad</a>
-<br/>2025-07-01T13:36:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914278><br/>permalink</a>
+<br/>July 01, 2025, 13:36:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-66.html#post11914278><br/>permalink</a>
  Post: 11914278</td>
 <td class=post><div class="tcell alt1" id="td_post_11914278">
  <!-- message -->
@@ -322,8 +179,8 @@
      <strong>
       Someone Somewhere
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11914265" rel="nofollow" title="View Post">
-      <i class="fas fa-arrow-circle-right">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11914265" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
     </div>
@@ -361,6 +218,681 @@
  </div>
  <!-- / message -->
 </div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11918167 valign=top><td class=post><a href=https://www.pprune.org/members/220465-artee>artee</a>
+<br/>July 09, 2025, 07:04:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-67.html#post11918167><br/>permalink</a>
+ Post: 11918167</td>
+<td class=post><div class="tcell alt1" id="td_post_11918167">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   Air India jet's fuel switches in focus, as crash preliminary report nears
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11918167">
+  From
+  <a href="https://www.reuters.com/world/india/investigators-submit-preliminary-report-air-india-crash-indias-aviation-ministry-2025-07-08/" target="_blank">
+   Reuters
+  </a>
+  <br>
+   <br>
+    Summary
+    <ul>
+     <li>
+      Air India crash probe focuses on engine fuel control switches - source
+     </li>
+     <li>
+      Preliminary report expected by Friday - sources
+     </li>
+     <li>
+      Report could provide early details into world's worst aviation disaster in a decade
+     </li>
+     <li>
+      Probe has been dogged by questions over lack of information
+     </li>
+     <li>
+      India reversed course and now allowing UN specialist observer status - sources
+     </li>
+    </ul>
+    <div style="margin:1rem; margin-top:0.3rem;">
+     <div>
+      <label>
+       Quote:
+      </label>
+     </div>
+     <div class="panel alt2" style="border:1px inset">
+      July 8 (Reuters) - A preliminary report into the deadly crash of an Air India jetliner in June is expected to be released by Friday, three sources with knowledge of the matter said, with one adding the probe had narrowed its focus to the movement of the plane's fuel control switches.
+      <br>
+       <br>
+        The London-bound Boeing
+        <a href="https://www.reuters.com/markets/companies/BA.N" target="_blank">
+         (BA.N)
+        </a>
+        787 Dreamliner, which started losing height after reaching an altitude of 650 feet, crashed moments after takeoff from Ahmedabad, India, killing 241 of the 242 people on board and the rest on the ground.
+        <br>
+         <br>
+          The investigation into the Air India crash is focusing on the movement of the engine fuel control switches following an analysis of the 787's flight and voice data recorders, along with a simulation by Boeing of the aircraft's final moments, one of the sources said.
+          <br>
+           <br>
+            The investigation has not raised any immediate concerns over mechanical failure, the source said, and there has been no bulletin to airlines recommending changes to
+            <a href="https://www.reuters.com/world/india/india-regulator-says-no-major-safety-concerns-air-indias-boeing-787-fleet-2025-06-17/" target="_blank">
+             787 operations
+            </a>
+            . Boeing declined to comment.
+            <br>
+             <br/>
+             Aviation industry publication
+             <a href="https://theaircurrent.com/aviation-safety/ai171-investigation-fuel-control-switches/" target="_blank">
+              the Air Current
+             </a>
+             first reported the focus on the fuel switches that help power the plane's two engines.
+             <br/>
+             <br/>
+             It was not clear what specific actions involving the fuel switches are being looked at by investigators. Sources told the Air Current that the available information on the black boxes could not rule in or out improper, inadvertent or intentional actions that preceded or followed the apparent loss of thrust before the aircraft crashed.
+             <br/>
+             <br/>
+             U.S. aviation safety expert John Cox said a pilot would not be able to accidentally move the fuel switches that feed the engines. "You can't bump them and they move," he said.
+             <br/>
+             <br/>
+             Cox added that if a switch was shut off, the effect would be almost immediate, cutting off engine power.
+             <br/>
+             <br/>
+             Most air crashes are caused by multiple factors. The investigation is focusing at least partly on
+             <a href="https://www.reuters.com/business/aerospace-defense/rescuers-search-missing-people-aircraft-parts-after-air-india-crash-kills-over-2025-06-13/" target="_blank">
+              engine thrust
+             </a>
+             , Reuters reported last month.
+             <br/>
+             <br/>
+             While the report from Indian investigators could be made public on Friday, the three sources cautioned to Reuters that plans could change and there was no clarity on how much information would be available in the document, which comes about 30 days after the June 12 tragedy.
+             <br/>
+             <br/>
+             The sources spoke on condition of anonymity because they were not authorised to speak to media.
+             <br/>
+             <br/>
+             India's Aircraft Accident Investigation Bureau, which is leading the probe under
+             <a href="https://www.reuters.com/business/aerospace-defense/air-safety-reporting-under-scrutiny-crashes-lie-unresolved-2025-02-27/" target="_blank">
+              international rules
+             </a>
+             , did not respond immediately to a request for comment outside normal business hours.
+             <h2>
+              INFORMATION RELEASE
+             </h2>
+             The probe has been dogged by questions over lack of information, after investigators took about
+             <a href="https://www.reuters.com/business/aerospace-defense/efforts-reconstruct-events-that-caused-air-india-crash-says-india-government-2025-06-26/" target="_blank">
+              two weeks to download
+             </a>
+             flight recorder data after the crash. The Indian government held only one press conference on the incident, and no questions were taken.
+             <br/>
+             <br/>
+             However, India reversed course on an earlier decision
+             <a href="https://www.reuters.com/world/asia-pacific/india-denies-entry-un-aviation-investigator-air-india-crash-probe-say-sources-2025-06-26/" target="_blank">
+              reported by Reuters
+             </a>
+             to prevent a U.N. aviation investigator from joining the probe, two senior sources said.
+             <br/>
+             <br/>
+             A specialist from the U.N.'s International Civil Aviation Organization (ICAO) was granted observer status, following an unusual request by the agency to offer its support.
+             <br/>
+             <br/>
+             ICAO declined to comment, adding in a statement that any public discussion of "cooperative arrangements," would require authorisation by the state.
+             <br/>
+             <br/>
+             The crash is challenging the Tata Group's ambitious campaign to restore Air India's reputation and revamp its fleet, after taking the carrier over from the government in 2022.
+             <br/>
+             <br/>
+             <a href="https://www.reuters.com/world/india/modis-soaring-indian-aviation-ambitions-face-many-headwinds-2025-06-03/" target="_blank">
+              India is banking
+             </a>
+             on a boom in aviation to support wider development goals, with New Delhi saying it wants India to be a job-creating global aviation hub along the lines of Dubai, which currently handles much of the country's international traffic.
+             <br/>
+             <br/>
+             A panel of Indian lawmakers will
+             <a href="https://www.reuters.com/world/india/indian-lawmakers-review-aviation-safety-weeks-after-air-india-crash-2025-07-01/" target="_blank">
+              review safety
+             </a>
+             in the country's civil aviation sector and has invited several industry and government officials to answer questions on Wednesday, with topics set to include the recent plane crash.
+             <br/>
+             <br/>
+             Reporting by Allison Lampert in Montreal and David Shepardson in Washington; Additional reporting by Dan Catchpole in Seattle and Kanjyik Ghosh in Bengaluru; Editing by Jamie Freed
+             <br/>
+            </br>
+           </br>
+          </br>
+         </br>
+        </br>
+       </br>
+      </br>
+     </div>
+    </div>
+   </br>
+  </br>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11918308 valign=top><td class=post><a href=https://www.pprune.org/members/370749-fursty-ferret>Fursty Ferret</a>
+<br/>July 09, 2025, 11:00:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-67.html#post11918308><br/>permalink</a>
+ Post: 11918308</td>
+<td class=post><div class="tcell alt1" id="td_post_11918308">
+ <!-- message -->
+ <div id="post_message_11918308">
+  For what it's worth, if the fuel control switches were rapidly cycled as per the dual engine failure memory actions, the engines should both have restarted and recovered full thrust within a matter of seconds. This is part of the certification and Rolls Royce publish the procedure (unofficially) as a last-ditch attempt to recover an engine that's experiencing a locked-in surge condition.
+ </div>
+ <!-- / message -->
+</div>
+<p>6 users liked this post.</p>
+</td>
+</tr>
+<tr id=11918314 valign=top><td class=post><a href=https://www.pprune.org/members/366993-olitom>OliTom</a>
+<br/>July 09, 2025, 11:07:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-67.html#post11918314><br/>permalink</a>
+ Post: 11918314</td>
+<td class=post><div class="tcell alt1" id="td_post_11918314">
+ <!-- message -->
+ <div id="post_message_11918314">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Fursty Ferret
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11918308" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     For what it's worth, if the fuel control switches were rapidly cycled as per the dual engine failure memory actions, the engines should both have restarted and recovered full thrust within a matter of seconds. This is part of the certification and Rolls Royce publish the procedure (unofficially) as a last-ditch attempt to recover an engine that's experiencing a locked-in surge condition.
+    </div>
+   </div>
+  </div>
+  Obvious questions, Is the procedure applicable to the GEnx engines installed on the accident aircraft and I assume this only applies if you realise the control switches are what the issue is, within seconds?
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by OliTom; 8th July 2025 at
+   <span class="time">
+    23:24
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr id=11918361 valign=top><td class=post><a href=https://www.pprune.org/members/3730-propellerhead>Propellerhead</a>
+<br/>July 09, 2025, 12:32:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-67.html#post11918361><br/>permalink</a>
+ Post: 11918361</td>
+<td class=post><div class="tcell alt1" id="td_post_11918361">
+ <!-- message -->
+ <div id="post_message_11918361">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Fursty Ferret
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11918308" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     For what it's worth, if the fuel control switches were rapidly cycled as per the dual engine failure memory actions, the engines should both have restarted and recovered full thrust within a matter of seconds. This is part of the certification and Rolls Royce publish the procedure (unofficially) as a last-ditch attempt to recover an engine that's experiencing a locked-in surge condition.
+    </div>
+   </div>
+  </div>
+  Not sure about this. I don\x92t think the loss of thrust on both engines memory items were envisaged to be done after liftoff. It\x92s way outside the ram air start envelope. The engines would spool down fairly quickly at that low airspeed. Procedures to the operator are written by Boeing, not the engine manufacturer. And there is no procedure official or otherwise to recover a single surging engine - you either run it surge and stall free at a lower thrust or shut it down.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11918363 valign=top><td class=post><a href=https://www.pprune.org/members/545237-maybeitis>MaybeItIs</a>
+<br/>July 09, 2025, 12:35:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-67.html#post11918363><br/>permalink</a>
+ Post: 11918363</td>
+<td class=post><div class="tcell alt1" id="td_post_11918363">
+ <!-- message -->
+ <div id="post_message_11918363">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      OliTom
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11918314" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Obvious questions, Is the procedure applicable to the GEnx engines installed on the accident aircraft [...]?
+    </div>
+   </div>
+  </div>
+  <br/>
+  Another question if I may? I've tried searching but find the search function quite perplexing! Anyway, didn't find this answered.
+  <br/>
+  <br/>
+  <br/>
+  From other posts here, it's clear that the Cutoff switches have a mechanical locking system which requires the switch handles to be pulled outwards to disengage the lock, before they can be moved to Cutoff.
+  <br/>
+  <br/>
+  <br/>
+  Question is, to a pilot who knows these switches, can both these switches be easily operated in this fashion in unison, i.e. I guess, with one hand, so that they are both unlocked and moved to off together?  I imagine that would be quite difficult to do (unless that's what everyone routinely practices), so the result would not be simultaneous.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11918371 valign=top><td class=post><a href=https://www.pprune.org/members/300656-sloppyjoe>SloppyJoe</a>
+<br/>July 09, 2025, 12:45:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-67.html#post11918371><br/>permalink</a>
+ Post: 11918371</td>
+<td class=post><div class="tcell alt1" id="td_post_11918371">
+ <!-- message -->
+ <div id="post_message_11918371">
+  Firstly, it's not rapid cycling of the fuel control switches, you turn them off then back on and see if it starts, this can take more than a minute as you have to wait to see if the action was successful. Second problem as mentioned above, the speed was far too low for a successful relight, you would most likely end up with a hot start or no start, most likely with a lot of smoke out the back due to unburnt fuel.
+  <br/>
+  <br/>
+  edited to add, after reading about the 787 it seems it uses electrical power to start. Same sort of issue though if not enough power, which is likely given the RAT was out.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by SloppyJoe; 9th July 2025 at
+   <span class="time">
+    00:57
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11918385 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
+<br/>July 09, 2025, 13:09:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-67.html#post11918385><br/>permalink</a>
+ Post: 11918385</td>
+<td class=post><div class="tcell alt1" id="td_post_11918385">
+ <!-- message -->
+ <div id="post_message_11918385">
+  The idea is to set the switch to CUTOFF and then to ON as that resets the FADEC (the circuit that controls the engine) and hopefully clears any issues it might have. The hope is that the turbine is still rotating fast enough for the FADEC to restart it. I believe this works the same as the auto-relight feature.
+  <br/>
+  The turbine rotation would also provide the electrical power for that.
+  <br/>
+  <br/>
+  Do a thread search on "detent" to learn more about the construction of these switches than you ever wanted to know.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/wink2.gif" title="Wink"/>
+  <br/>
+  There's also a section on them in
+  <a href="https://www.pprune.org/members/464374-paulross" rel="nofollow">
+   paulross
+  </a>
+  's
+  <a href="https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html" target="_blank">
+   https://paulross.github.io/pprune-th...171/index.html
+  </a>
+  , but it may not be up to date. (Still a great resource, though.)
+  <br/>
+  <br/>
+  Unfortunately the wikipost linking to it is gone, presumably a victim to the recent forum changes.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11918435 valign=top><td class=post><a href=https://www.pprune.org/members/9556-magplug>Magplug</a>
+<br/>July 09, 2025, 14:45:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-67.html#post11918435><br/>permalink</a>
+ Post: 11918435</td>
+<td class=post><div class="tcell alt1" id="td_post_11918435">
+ <!-- message -->
+ <div id="post_message_11918435">
+  As a 787 operator I can observe a couple of things......
+  <br/>
+  <br/>
+  Deliberately cycling the Engine Cutoff switches just after rotate, in response to a dual power loss is inconceivable.  You are way too low and slow for it to have any effect and your attention is better devoted to aiming for the flattest area ahead to crash into.  Commencing the Dual Eng  Fail/Stall checklist memory items is conditional upon both engines being at sub-idle and the aircraft being within the in-flight relight envelope.  Neither of those conditions existed.
+  <br/>
+  <br/>
+  The flight recorder will witness what came first - Power loss or Start Switches to Cutoff?  It seems the 'Third Contingency' that I alluded to about a thousand posts ago, sadly now seems likely.  Given the iron-grip that the government appears to have over the media, one wonders how the truth will ever surface?
+  <br/>
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+<p>9 users liked this post.</p>
+</td>
+</tr>
+<tr id=11918497 valign=top><td class=post><a href=https://www.pprune.org/members/105467-v1-ooops>V1... Ooops</a>
+<br/>July 09, 2025, 16:26:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-68.html#post11918497><br/>permalink</a>
+ Post: 11918497</td>
+<td class=post><div class="tcell alt1" id="td_post_11918497">
+ <!-- message -->
+ <div id="post_message_11918497">
+  There has been discussion recently about a procedure that involves moving the fuel switches to CUTOFF and then back to RUN following a dual engine failure.
+  <br/>
+  <br/>
+  Attached is an image of a page from the Air India 787 Training Manual that discusses this procedure.
+  <br/>
+  <br/>
+  I am submitting this without comment or opinion.
+  <br/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg0.ibsrv.net/gimg/pprune.org-vbulletin/1053x1600/img_9757_38ba63c68524cf51a429380a776d67161d9f70a4.jpg"/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>6 users liked this post.</p>
+</td>
+</tr>
+<tr id=11918504 valign=top><td class=post><a href=https://www.pprune.org/members/67532-pj2>PJ2</a>
+<br/>July 09, 2025, 16:34:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-68.html#post11918504><br/>permalink</a>
+ Post: 11918504</td>
+<td class=post><div class="tcell alt1" id="td_post_11918504">
+ <!-- message -->
+ <div id="post_message_11918504">
+  For info only - re-post of lever-lock fuel-switch design:
+  <br/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg9.ibsrv.net/gimg/pprune.org-vbulletin/517x276/standard_toggle_v_locking_lever_toggle_e767f7de4142769ad5240ca91923113ec6409d4e.png"/>
+  <br/>
+  <br/>
+  <br/>
+  B787 Fuel Control Switches -
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg4.ibsrv.net/gimg/pprune.org-vbulletin/740x555/787_fuel_cut_off_switches_e1571381484168_3152798476_bacaf1a7c931024181b3beb54ac28a0875a7aaab.jpeg"/>
+  <br/>
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by PJ2; 9th July 2025 at
+   <span class="time">
+    04:45
+   </span>
+   .
+							
+							
+								Reason: Add image of B787 Fuel Control Switches
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11918511 valign=top><td class=post><a href=https://www.pprune.org/members/3730-propellerhead>Propellerhead</a>
+<br/>July 09, 2025, 16:38:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-68.html#post11918511><br/>permalink</a>
+ Post: 11918511</td>
+<td class=post><div class="tcell alt1" id="td_post_11918511">
+ <!-- message -->
+ <div id="post_message_11918511">
+  Theory alert : If you don\x92t have, or delete the cruise altitude in the FMC the aircraft will command a level off at 400ft, with the thrust levers reducing thrust significantly (I\x92ve seen it in the sim and happened at least once for real to my operator). It\x92s easy to do when loading the descent winds if you hit the wrong button. Could this have been confused with a loss of thrust?
+  <br/>
+  <br/>
+  And I would say the cut off switches do make a fairly unique click when being moved - I can hear it in my head as I write this!
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11918533 valign=top><td class=post><a href=https://www.pprune.org/members/3730-propellerhead>Propellerhead</a>
+<br/>July 09, 2025, 17:14:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-69.html#post11918533><br/>permalink</a>
+ Post: 11918533</td>
+<td class=post><div class="tcell alt1" id="td_post_11918533">
+ <!-- message -->
+ <div id="post_message_11918533">
+  Yeah but thought it worth discussing again IF we believe that the engine failure was caused by a pilot selecting both fuel control switches to cutoff. You\x92re right that I can\x92t imagine myself doing it but fear can make our inner chimps do strange things in response to the flight or flight response. (See the chimp paradox book).
+  <br>
+   <br>
+    In what world would you feather both props instead of selecting landing flaps in Nepal and cause a fatal crash? Seemed pretty inconceivable until it happened. What we all would do in the comfort of our armchairs is very different to what can happen in the heat of the moment.
+    <br>
+    </br>
+   </br>
+  </br>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Propellerhead; 9th July 2025 at
+   <span class="time">
+    05:37
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11918536 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
+<br/>July 09, 2025, 17:20:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-69.html#post11918536><br/>permalink</a>
+ Post: 11918536</td>
+<td class=post><div class="tcell alt1" id="td_post_11918536">
+ <!-- message -->
+ <div id="post_message_11918536">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Propellerhead
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11918533" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Yeah but thought it worth discussing again IF we believe that the engine failure was caused by a pilot selecting both fuel control switches to cutoff. You\x92re right that I can\x92t imagine myself doing it but fear can make our inner chimps do strange things in response to the flight or flight response. (See the chimp paradox book).
+    </div>
+   </div>
+  </div>
+  Or we could wait two more days because certainly that would be in the flight recorder data.
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11918540 valign=top><td class=post><a href=https://www.pprune.org/members/215198-simmple>simmple</a>
+<br/>July 09, 2025, 17:22:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-69.html#post11918540><br/>permalink</a>
+ Post: 11918540</td>
+<td class=post><div class="tcell alt1" id="td_post_11918540">
+ <!-- message -->
+ <div id="post_message_11918540">
+  Not a Boeing but the aircraft I last flew, if you turned off the fuel nothing would happen unless the power levers were below a certain power setting. You had to reduce the power levers, maybe to idle, can\x92t remember, then the fuel switches off.
+  <br>
+   <br>
+   </br>
+  </br>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11918554 valign=top><td class=post><a href=https://www.pprune.org/members/3730-propellerhead>Propellerhead</a>
+<br/>July 09, 2025, 17:55:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-69.html#post11918554><br/>permalink</a>
+ Post: 11918554</td>
+<td class=post><div class="tcell alt1" id="td_post_11918554">
+ <!-- message -->
+ <div id="post_message_11918554">
+  Fuel control switches will cut off the fuel at any thrust or thrust lever setting - they need to be able to deal with an uncommanded thrust increase from an engine fault.
+  <br/>
+  <br/>
+  I guess I\x92m hoping that there is (and trying to find) a logical explanation to this accident that we can all learn from and make sure it never happens again. There aren\x92t that many things that scare me in my job. Some of the alternatives I find terrifying for the industry, the manufacturer, the operators and the travelling public.
+  <br/>
+  <br/>
+  PPRUNE could make a rule that all accident threads are locked until the final report is published when it can be discussed (I\x92m sure the mods have been tempted at times)! I suspect the website wouldn\x92t get many hits if it did\x85..
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11918557 valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
+<br/>July 09, 2025, 18:06:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-69.html#post11918557><br/>permalink</a>
+ Post: 11918557</td>
+<td class=post><div class="tcell alt1" id="td_post_11918557">
+ <!-- message -->
+ <div id="post_message_11918557">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Propellerhead
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11918554" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Fuel control switches will cut off the fuel at any thrust or thrust lever setting - they need to be able to deal with an uncommanded thrust increase from an engine fault.
+    </div>
+   </div>
+  </div>
+  The fire switches potentially provide that capability.
+  <br/>
+  <br/>
+  There are many types where the shutoff position is a fully aft thrust lever, past a lift-up gate. Apparently this has caused a few human-factors issues because other types use the exact same mechanism for setting reverse thrust.
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11918562 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 09, 2025, 18:20:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-69.html#post11918562><br/>permalink</a>
+ Post: 11918562</td>
+<td class=post><div class="tcell alt1" id="td_post_11918562">
+ <!-- message -->
+ <div id="post_message_11918562">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Propellerhead
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11918394" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     One thing that I remember from when I was a simulator TRI/TRE on a Boeing was that as an instructor you get very used to operating critical
+     <br/>
+     switches rapidly without following any procedure, in order to set the sim up for a single engine landing etc. When I was then line flying next I had to guard against doing the same thing in the real aircraft.
+    </div>
+   </div>
+  </div>
+  Muscle memory is a strange and (usually) wonderous thing.  It allows us as humans to perform amazing things without actually thinking about what we are doing.  Professional Athletes have perfected this to a high art, but the rest of us do things using muscle memory on a regular basis.  Back when I was still racing, I happened to look down at my hands on the steering wheel in fast, bumpy corner, and I was simply amazed at the large, rapid steering inputs that I was making to compensate for the bumps - with absolutely zero conscious thought. Muscle memory at its best.
+  <br/>
+  <br/>
+  However, it can also bite us.  The Delta dual engine shutdown during takeoff from LA (referenced way back when in the 1st accident thread) was caused by muscle memory - the pilot reached down to set the EEC switches (located near the fuel On-Off switches) but muscle memory caused him to do something else - set both fuel switches to OFF.  Fortunately, he quickly recognized his error, placing the switches back to RUN and the engines recovered in time to prevent a water landing (barely).
+  <br/>
+  <br/>
+  It is conceivable that a pilot - reaching down to the center console to adjust something unrelated - could have muscle memory cause him to turn the fuel off to both engines.  While all new engines are tested for "Quick Windmill Relight" - i.e. the fuel switch is set to CUTOFF with the engine at high power - and the engine must recover and produce thrust withing a specified time (memory says 60 or 90 seconds) - it takes a finite amount of time for the engines to recover (spool down after a power cut at high power is incredibly fast - plus moving the switch to CUTOFF causes a FADEC reset, which means it won't do anything for ~ 1 second).  Doing that at a couple hundred feet and the chance that an engine will recover and start producing thrust before ground impact is pretty much zero
+ </div>
+ <!-- / message -->
+</div>
+<p>8 users liked this post.</p>
 </td>
 </tr>
 </table>
@@ -378,7 +910,9 @@
 &nbsp;<a href=Fuel_-All-16.html>17</a>
 &nbsp;<a href=Fuel_-All-17.html><b>18</b>
 </a>
-&nbsp;<a href=Fuel_-All-17.html>Last</a>
+&nbsp;<a href=Fuel_-All-18.html>19</a>
+&nbsp;<a href=Fuel_-All-18.html>Next</a>
+&nbsp;<a href=Fuel_-All-18.html>Last</a>
 &nbsp;<a href=index.html>Index Page</a>
 </p>
 </body>

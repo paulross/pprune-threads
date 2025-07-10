@@ -1,6 +1,15 @@
 History
 =======
 
+Alpha Release (July 10, 2025, 13:43:45)
+------------------------------------------
+
+- Build thread up to July 10, 2025, 12:31:00
+- Add subjects: Relight, 51 Day Issue, Fuel Cutoff Switches (detent), ICAO, Fuel Cutoff Switches, Memory Items, Annex 13, Simulation Scenarios.
+- Fix for timestamp off-by-12-hours issue.
+- Best effort to handle new page design (up-votes issue).
+- Minor improvements to the index.html page.
+
 Alpha Release (2025-07-03T14:13:32.352220)
 ------------------------------------------
 
