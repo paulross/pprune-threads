@@ -544,7 +544,7 @@ class AirIndia171(PublicationMap):
         'EAFRs': 'EAFR',
         'TRUs': 'TRU',
         'DFDAU': 'Digital Flight Data Acquisition Unit',
-        'MAYDAY': "Mayday",
+        'MAYDAY': "MAYDAY",
         'HPSOV': "High Pressure Shutoff Valve",
         'FR24': "FlightRadar24",
         'LD': 'Lift/Drag Ratio',
