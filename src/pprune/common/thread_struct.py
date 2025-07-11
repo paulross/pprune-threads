@@ -217,7 +217,7 @@ class Post:
         Internal links are ignored."""
         ret = []
         for node in self.node.find_all('a'):
-            if 'rel' in node.attrs and node.attrs['rel'] == ['nofollow',]:
+            if 'rel' in node.attrs and node.attrs['rel'] == ['nofollow', ]:
                 continue
             href = node.get('href')
             if href is not None:

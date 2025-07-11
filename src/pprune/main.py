@@ -32,12 +32,12 @@ import os
 import sys
 import time
 
-from pprune.common import read_html
-from pprune.common import thread_struct
-from pprune.common import log_config
-from pprune.common import words
 from pprune import publication_maps
 from pprune import write_html
+from pprune.common import log_config
+from pprune.common import read_html
+from pprune.common import thread_struct
+from pprune.common import words
 
 logger = logging.getLogger(__file__)
 
@@ -111,8 +111,8 @@ def main():
     logger.info('Number of posts: {:d} Number of words: {:d}'.format(len(thread), word_count))
     common_words = words.read_common_words_file(args.common_words)
     logger.info('Read: {:d} common words from "{:s}" to "{:s}".'.format(
-            len(common_words), common_words[0], common_words[-1],
-        )
+        len(common_words), common_words[0], common_words[-1],
+    )
     )
     # write_html.pass_one(thread, common_words)
     common_words = set(common_words)

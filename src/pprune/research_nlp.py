@@ -6,6 +6,7 @@ import time
 import typing
 
 import spacy
+
 from pprune.common import log_config
 from pprune.common import read_html
 from pprune.common import thread_struct

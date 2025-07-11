@@ -27,7 +27,6 @@ __version__ = '0.0.1'
 __rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import collections
-import string
 import typing
 
 import pprune.common.thread_struct

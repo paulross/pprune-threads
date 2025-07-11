@@ -21,13 +21,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__author__  = 'Paul Ross'
-__date__    = '2017-01-01'
+__author__ = 'Paul Ross'
+__date__ = '2017-01-01'
 __version__ = '0.0.1'
-__rights__  = 'Copyright (c) 2017 Paul Ross'
+__rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import os
-import string
 
 CSS_LIST = [
     # HTML styling
@@ -38,14 +37,14 @@ margin:         6px;
 padding:        6px;
 }""",
 
-#===============================================================================
-#    """h1 {
-# font-family:     Sans-serif;
-# font-size:       1.5em;
-# color:           silver;
-# font-style:    italic;
-# }""",
-#===============================================================================
+    # ===============================================================================
+    #    """h1 {
+    # font-family:     Sans-serif;
+    # font-size:       1.5em;
+    # color:           silver;
+    # font-style:    italic;
+    # }""",
+    # ===============================================================================
     """h1 {
 color:            darkgoldenrod;
 font-family:      sans-serif;
@@ -107,28 +106,29 @@ border-collapse:   collapse;
 font-family:       sans-serif;
 color:             black;
 }""",
-"""th.post, td.post, td.alt1 {
-border:            1px solid black;
-vertical-align:    top;
-padding:           2px 6px 2px 6px;
-}""",
+    """th.post, td.post, td.alt1 {
+    border:            1px solid black;
+    vertical-align:    top;
+    padding:           2px 6px 2px 6px;
+    }""",
 
-"""p.page_links {
-    horizontal-align:          center;
-    font-family:      sans-serif;
-    font-size:        10pt;
-    font-style:     italic;
-}""",
+    """p.page_links {
+        horizontal-align:          center;
+        font-family:      sans-serif;
+        font-size:        10pt;
+        font-style:     italic;
+    }""",
     # When a post is quoted, example:
     # <div class="panel alt2"
     # Not curently working
-#     """div.alt2 {
-#     bgcolor:        #7F7F7F;
-# }""",
+    #     """div.alt2 {
+    #     bgcolor:        #7F7F7F;
+    # }""",
 ]
 
 CSS_FILE = 'styles.css'
 CSS_STRING = '\n'.join(CSS_LIST)
+
 
 def writeCssToDir(theDir):
     """Writes the CSS file into to the directory."""
@@ -136,4 +136,3 @@ def writeCssToDir(theDir):
         os.makedirs(theDir)
     with open(os.path.join(theDir, CSS_FILE), 'w') as f:
         f.write(CSS_STRING)
-
