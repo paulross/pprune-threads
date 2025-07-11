@@ -439,6 +439,13 @@ class AirIndia171(PublicationMap):
          </li>
     </ol>
     <p><b>My condolences to all the people affected by this accident, in particular to the friends and families of the victims.</b></p>
+    <h2>Useful Links</h2>
+    <ol>
+        <li><a href="https://aaib.gov.in">Air Accident Investigation Board (India)</a></li>
+        <li><a href="https://www.dgca.gov.in/digigov-portal/">Directorate General of Civil Aviation (India)</a> (DGCA)</li>
+        <li>This accident on the <a href="https://asn.flightsafety.org/asndb/518859">Aviation Safety Network</a></li>
+        <li><a href="https://www.gov.uk/government/organisations/air-accidents-investigation-branch">Air Accident Investigation Board (UK)</a></li>
+    </ol>
 """
 
     def get_lowercase_word_to_subject_map(self) -> typing.Dict[str, str]:
@@ -491,7 +498,7 @@ class AirIndia171(PublicationMap):
 
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {
-        'mayday': 'Mayday',
+        'mayday': 'MAYDAY',
         'biocide': 'Biocide',
         'tilt': 'MLG Tilt',
         'condolences': 'Condolences',
@@ -537,11 +544,12 @@ class AirIndia171(PublicationMap):
         'EAFRs': 'EAFR',
         'TRUs': 'TRU',
         'DFDAU': 'Digital Flight Data Acquisition Unit',
-        'MAYDAY': "Mayday",
+        'MAYDAY': "MAYDAY",
         'HPSOV': "High Pressure Shutoff Valve",
         'FR24': "FlightRadar24",
         'LD': 'Lift/Drag Ratio',
         'CUTOFF': 'Fuel Cutoff Switches',
+        'TLA': 'TLA (Thrust Lever Angle)',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps
@@ -626,9 +634,9 @@ class AirIndia171(PublicationMap):
             ('hydraulic', 'power'): 'Hydraulic Pumps',
             ('hydraulic', 'systems'): 'Hydraulic Pumps',
 
-            ('IDGA', 'AAIB'): 'AAIB (IDGA)',
-            ('indian', 'AAIB'): 'AAIB (IDGA)',
-            ('AAIB', 'india',): 'AAIB (IDGA)',
+            ('IDGA', 'AAIB'): 'AAIB (India)',
+            ('indian', 'AAIB'): 'AAIB (India)',
+            ('AAIB', 'india',): 'AAIB (India)',
             ('UK', 'AAIB'): 'AAIB (UK)',
 
             ('centre', 'tank'): 'Centre Tank',
@@ -644,8 +652,8 @@ class AirIndia171(PublicationMap):
             ('flap', 'setting'): 'Flap Setting',
             ('flap', 'position'): 'Flap Setting',
 
-            ('mayday', 'call'): 'Mayday',
-            ('radio', 'call'): 'Mayday',
+            ('mayday', 'call'): 'MAYDAY',
+            ('radio', 'call'): 'MAYDAY',
 
             ('takeoff', 'roll'): 'Takeoff Roll',
             ('weight', 'wheels'): 'Weight on Wheels',
