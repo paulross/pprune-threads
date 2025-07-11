@@ -118,81 +118,14 @@ padding:           2px 6px 2px 6px;
     font-family:      sans-serif;
     font-size:        10pt;
     font-style:     italic;
-}"""
-
-
-
-    # Macro presentation
-    """span.macro_s_f_r_f_name{
-    color:          DarkSlateGray;
-    font-family:    monospace;
-    font-weight:    normal;
-    font-style:     italic;
 }""",
-    """span.macro_s_t_r_f_name {
-    color:          DarkSlateGray;
-    font-family:    monospace;
-    font-weight:    normal;
-    font-style:     normal;
-}""",
-    """span.macro_s_f_r_t_name {
-    color:          Red; /* OrangeRed; */
-    font-family:    monospace;
-    font-weight:    bold;
-    font-style:     italic;
-}""",
-    """span.macro_s_t_r_t_name{
-    color:          Red; /* OrangeRed; */
-    font-family:    monospace;
-    font-weight:    bold;
-    font-style:     normal;
-}""",
-    """span.macro_s_f_r_f_repl{
-    color:          SlateGray;
-    font-family:    monospace;
-    font-weight:    normal;
-    font-style:     italic;
-}""",
-    """span.macro_s_t_r_f_repl {
-    color:          SlateGray;
-    font-family:    monospace;
-    font-weight:    normal;
-    font-style:     normal;
-}""",
-    """span.macro_s_f_r_t_repl {
-    color:          RosyBrown; /* Orange; */
-    font-family:    monospace;
-    font-weight:    bold;
-    font-style:     italic;
-}""",
-    """span.macro_s_t_r_t_repl{
-    color:          RosyBrown; /* Orange; */
-    font-family:    monospace;
-    font-weight:    bold;
-    font-style:     normal;
-}""",
-    # File declarations in the macro pages
-    """span.file_decl {
-    color:          black;
-    font-family:    monospace;
-    /* font-weight:    bold;
-    font-style:     italic; */
-}""",
-    # Conditional preprocessing directives - True
-    """span.CcgNodeTrue {
-    color:          LimeGreen;
-    font-family:    monospace;
-    /* font-weight:    bold; */
-    /* font-style:     italic; */
-}""",
-    # Conditional preprocessing directives - False
-    """span.CcgNodeFalse {
-    color:          red;
-    font-family:    monospace;
-    /* font-weight:    bold; */
-    /* font-style:     italic; */
-}""",
-    ]
+    # When a post is quoted, example:
+    # <div class="panel alt2"
+    # Not curently working
+#     """div.alt2 {
+#     bgcolor:        #7F7F7F;
+# }""",
+]
 
 CSS_FILE = 'styles.css'
 CSS_STRING = '\n'.join(CSS_LIST)
