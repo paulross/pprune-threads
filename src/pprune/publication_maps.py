@@ -498,7 +498,7 @@ class AirIndia171(PublicationMap):
 
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {
-        'mayday': 'Mayday',
+        'mayday': 'MAYDAY',
         'biocide': 'Biocide',
         'tilt': 'MLG Tilt',
         'condolences': 'Condolences',
@@ -652,8 +652,8 @@ class AirIndia171(PublicationMap):
             ('flap', 'setting'): 'Flap Setting',
             ('flap', 'position'): 'Flap Setting',
 
-            ('mayday', 'call'): 'Mayday',
-            ('radio', 'call'): 'Mayday',
+            ('mayday', 'call'): 'MAYDAY',
+            ('radio', 'call'): 'MAYDAY',
 
             ('takeoff', 'roll'): 'Takeoff Roll',
             ('weight', 'wheels'): 'Weight on Wheels',
