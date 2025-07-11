@@ -301,7 +301,7 @@ def test_html_node_post_number(html_str, node_id, expected):
 @pytest.mark.parametrize(
     'html_str, node_id, expected',
     (
-            (HTML_SINGLE_POST, 11898940, datetime.datetime(2025, 6, 12, 9, 35),),
+            (HTML_SINGLE_POST, 11898940, datetime.datetime(2025, 6, 12, 21, 35),),
     ),
     ids=[
         'Single node.'

@@ -255,14 +255,14 @@ def html_node_like_usernames(node: bs4.element.Tag) -> typing.List[pprune.common
                 user_id = node_a['href']
                 ret.append(pprune.common.thread_struct.User(user_id, user_name))
     else:
-        # This is the old style pprune thread, post 2025-07-08 or thereabouts.
+        # This is the new style pprune thread, post 2025-07-08 or thereabouts.
         # It uses a javascript dropdown menu which we can not access so we just capture the number of likes and
         # return a list of mock Users.
         # <span id="post_thanks_button_likes_11918692">10</span>
         post_thanks_box_node = node.find('span', **{"id": f"post_thanks_button_likes_{post_id}"})
         if post_thanks_box_node is not None:
             for i in range(int(post_thanks_box_node.text)):
-                ret.append(pprune.common.thread_struct.User(i, f'Mock_user_{i}'))
+                ret.append(pprune.common.thread_struct.User(str(i), f'Mock_user_{i}'))
     return ret
 
 def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[pprune.common.thread_struct.Post]:
