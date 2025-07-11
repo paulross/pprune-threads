@@ -299,7 +299,11 @@ def write_index_most_upvoted_posts_table(
                 if post_count >= publication_map.get_upvoted_post_count_limit():
                     break
     else:
-        assert 0
+        logger.warning('Can not read up-votes from the thread. Is the thread closed (up-votes will not show)?')
+        with element(index, 'h1'):
+            index.write(f'The Most Up-voted Posts')
+        with element(index, 'p'):
+            index.write('This is not available, perhaps because the thread is closed.')
 
 
 def _write_table_header(headers: typing.List[str], index: typing.TextIO):
