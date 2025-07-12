@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune FADEC name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts about: "FADEC" [Posts: 197 Pages: 10]</h1>
+<body><h1>Posts about: "FADEC" [Posts: 206 Pages: 11]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=FADEC0.html>First</a>
 &nbsp;<a href=FADEC8.html>Previous</a>
 &nbsp;<a href=FADEC0.html>1</a>
@@ -15,7 +15,9 @@
 &nbsp;<a href=FADEC8.html>9</a>
 &nbsp;<a href=FADEC9.html><b>10</b>
 </a>
-&nbsp;<a href=FADEC9.html>Last</a>
+&nbsp;<a href=FADEC10.html>11</a>
+&nbsp;<a href=FADEC10.html>Next</a>
+&nbsp;<a href=FADEC10.html>Last</a>
 &nbsp;<a href=index.html>Index Page</a>
 </p>
 <table class=posts><tr id=11908494 valign=top><td class=post><a href=https://www.pprune.org/members/20793-pbl>PBL</a>
@@ -40,7 +42,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>5 users liked this post.</p>
 </td>
 </tr>
 <tr id=11908784 valign=top><td class=post><a href=https://www.pprune.org/members/46562-turin>TURIN</a>
@@ -61,7 +62,7 @@
      <strong>
       PBL
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11908494" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11908494" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -87,7 +88,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>2 users liked this post.</p>
 </td>
 </tr>
 <tr id=11908803 valign=top><td class=post><a href=https://www.pprune.org/members/488844-tryingtolearn>TryingToLearn</a>
@@ -108,7 +108,7 @@
      <strong>
       TURIN
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11908784" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11908784" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -132,49 +132,41 @@
         Worn out part? -&gt; systematic fault, you did not calculate wear correctly in your analysis, adding maintainance cycles
         <br>
          Broken nut due to too much torque? -&gt; systematic fault, you did not analyse the severity and put QM measures in place within maintainance.
-         <br>
-          broken fan blade due to corrosion? -&gt; systematic fault, incorrect testing and environment assumption, other fan blades may be corroded, too
-          <br>
-           SW crash every 10 years? -&gt; systematic fault, you did not make it robust against some nasty timing circumstance or race condition.
-           <br>
-            So systematic faults do not mean they happen instantly, they may happen never or after dozens of years. Not on all parts but e.g. just if there is a problem in production like a cavity in aluminum casting.
-            <br>
-             But there are systematic ways to avoid them (FMEA, FTA...). This is why every accident is analyzed. If it was a systematic fault, other party could be affected.
-             <br>
-              This also counts for SW, there are techniques to avoid errors on all levels of development. But having the same SW with the same inputs and the exact same timing will give the same outcome (...on both engines).
-              <br>
-               <br>
-                Random faults are unique to electronic HW. The reason is just because of miniaturization. One cannot exclude migration and degradation on such small scales, there will be faulting transistors or other parts. If you scale them bigger, your processor runs on kHz instead of MHz, this is not an option. Those are random HW faults. There are calculation methods (FMEDA) to calculate the expected lifetime and error probability over the expected temperature profile. But if you give the faulting part the same input, it will show the fault again. But not any other part without the degraded transistor will give you the same error.
-                <br>
-                 And there are soft faults (not SW faults, soft faults), those are not reproducible at all. Imagine some hard x-ray from the sky hitting a DRAM cell and changing it's state. You will never be able to reproduce this hard x-ray which made it's way thru the atmosphere without interaction hitting exactly the right \xb5m\xb3 to do the same bit-flip again. You can just have redundancy in information and processing (ECC, parity, lock-step etc.) to have enough probability to detect (and reset) or correct the fault.
-                 <br/>
-                 <br/>
-                 Faults, no matter if systematic or random can be single, multiple, latent and dependent faults.
-                 <br/>
-                 Single fault: a single error leads to a hazardous state
-                 <br/>
-                 Multiple point fault: more than one (independent) error will lead to a hazardous state
-                 <br/>
-                 Latent fault: a fault which remains undetected for some time (e.g. only detectable during startup / power-on) and not hazardous by itself. But together with a second fault it will lead to a hazardous event. But the probability of 2 errors within a power cycle is sufficiently low.
-                 <br/>
-                 Dependent fault: A fault, by itself not hazardous which will influence the probability of a second fault with both in combination... exactly. (-&gt; freedom from interference not given)
-                 <br/>
-                 <br/>
-                 Having the same SW bug on both engines would fall within the dependent fault category. Redundancy only helps if freedom from interference is given.
-                 <br/>
-                 So if there is a fault in SW and both FADEC instances get the same input and have the same timing, they will react the same way. If there is a hidden systematic fault, both will show it. This is why things are often programmed twice by independent teams or on different processors. They will not do the exact same mistake. Or there is a normal function and a supervisor like TCMA. One complex function but a tiny, easy to analyze supervisor just checking for the hazardous state.
-                 <br/>
-                 <br/>
-                 All this can be analyzed and is really lots of work but necessary. So first there is an analysis how severe a fault would be on a high level, this defines the necessary level of analysis in detail.
-                 <br/>
-                </br>
-               </br>
-              </br>
-             </br>
-            </br>
-           </br>
-          </br>
-         </br>
+         <br/>
+         broken fan blade due to corrosion? -&gt; systematic fault, incorrect testing and environment assumption, other fan blades may be corroded, too
+         <br/>
+         SW crash every 10 years? -&gt; systematic fault, you did not make it robust against some nasty timing circumstance or race condition.
+         <br/>
+         So systematic faults do not mean they happen instantly, they may happen never or after dozens of years. Not on all parts but e.g. just if there is a problem in production like a cavity in aluminum casting.
+         <br/>
+         But there are systematic ways to avoid them (FMEA, FTA...). This is why every accident is analyzed. If it was a systematic fault, other party could be affected.
+         <br/>
+         This also counts for SW, there are techniques to avoid errors on all levels of development. But having the same SW with the same inputs and the exact same timing will give the same outcome (...on both engines).
+         <br/>
+         <br/>
+         Random faults are unique to electronic HW. The reason is just because of miniaturization. One cannot exclude migration and degradation on such small scales, there will be faulting transistors or other parts. If you scale them bigger, your processor runs on kHz instead of MHz, this is not an option. Those are random HW faults. There are calculation methods (FMEDA) to calculate the expected lifetime and error probability over the expected temperature profile. But if you give the faulting part the same input, it will show the fault again. But not any other part without the degraded transistor will give you the same error.
+         <br/>
+         And there are soft faults (not SW faults, soft faults), those are not reproducible at all. Imagine some hard x-ray from the sky hitting a DRAM cell and changing it's state. You will never be able to reproduce this hard x-ray which made it's way thru the atmosphere without interaction hitting exactly the right \xb5m\xb3 to do the same bit-flip again. You can just have redundancy in information and processing (ECC, parity, lock-step etc.) to have enough probability to detect (and reset) or correct the fault.
+         <br/>
+         <br/>
+         Faults, no matter if systematic or random can be single, multiple, latent and dependent faults.
+         <br/>
+         Single fault: a single error leads to a hazardous state
+         <br/>
+         Multiple point fault: more than one (independent) error will lead to a hazardous state
+         <br/>
+         Latent fault: a fault which remains undetected for some time (e.g. only detectable during startup / power-on) and not hazardous by itself. But together with a second fault it will lead to a hazardous event. But the probability of 2 errors within a power cycle is sufficiently low.
+         <br/>
+         Dependent fault: A fault, by itself not hazardous which will influence the probability of a second fault with both in combination... exactly. (-&gt; freedom from interference not given)
+         <br/>
+         <br/>
+         Having the same SW bug on both engines would fall within the dependent fault category. Redundancy only helps if freedom from interference is given.
+         <br/>
+         So if there is a fault in SW and both FADEC instances get the same input and have the same timing, they will react the same way. If there is a hidden systematic fault, both will show it. This is why things are often programmed twice by independent teams or on different processors. They will not do the exact same mistake. Or there is a normal function and a supervisor like TCMA. One complex function but a tiny, easy to analyze supervisor just checking for the hazardous state.
+         <br/>
+         <br/>
+         All this can be analyzed and is really lots of work but necessary. So first there is an analysis how severe a fault would be on a high level, this defines the necessary level of analysis in detail.
+         <br/>
         </br>
        </br>
       </br>
@@ -197,7 +189,6 @@
  </div>
  <!-- / edit note -->
 </div>
-<p>13 users liked this post.</p>
 </td>
 </tr>
 <tr id=11908844 valign=top><td class=post><a href=https://www.pprune.org/members/326317-semreh>Semreh</a>
@@ -230,7 +221,7 @@
      <strong>
       First_Principal
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11908202" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11908202" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -315,7 +306,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>3 users liked this post.</p>
 </td>
 </tr>
 <tr id=11908907 valign=top><td class=post><a href=https://www.pprune.org/members/545237-maybeitis>MaybeItIs</a>
@@ -336,7 +326,7 @@
      <strong>
       FullWings
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11908793" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11908793" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -393,7 +383,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>1 user liked this post.</p>
 </td>
 </tr>
 <tr id=11912668 valign=top><td class=post><a href=https://www.pprune.org/members/43937-hot-n-high>Hot 'n' High</a>
@@ -414,7 +403,7 @@
      <strong>
       Machinbird
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11912658" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11912658" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -436,7 +425,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>8 users liked this post.</p>
 </td>
 </tr>
 <tr id=11913157 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
@@ -457,7 +445,7 @@
      <strong>
       Kraftstoffvondesibel
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11913148" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11913148" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -473,7 +461,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>7 users liked this post.</p>
 </td>
 </tr>
 <tr id=11913194 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
@@ -494,7 +481,7 @@
      <strong>
       Kraftstoffvondesibel
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11913190" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11913190" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -553,7 +540,6 @@
   <!-- End AdSlot 4 -->
  </aside>
 </div>
-<p>12 users liked this post.</p>
 </td>
 </tr>
 <tr id=11913431 valign=top><td class=post><a href=https://www.pprune.org/members/548247-the-brigadier>The Brigadier</a>
@@ -579,7 +565,6 @@
  </div>
  <!-- / edit note -->
 </div>
-<p>3 users liked this post.</p>
 </td>
 </tr>
 <tr id=11913592 valign=top><td class=post><a href=https://www.pprune.org/members/448660-skwdenyer>skwdenyer</a>
@@ -600,7 +585,7 @@
      <strong>
       The Brigadier
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11913431" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11913431" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -614,7 +599,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>1 user liked this post.</p>
 </td>
 </tr>
 <tr id=11913613 valign=top><td class=post><a href=https://www.pprune.org/members/307224-lonewolf_50>Lonewolf_50</a>
@@ -635,7 +619,7 @@
      <strong>
       The Brigadier
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11913431" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11913431" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -727,7 +711,7 @@
      <strong>
       Lonewolf_50
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11913619" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11913619" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -743,7 +727,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>1 user liked this post.</p>
 </td>
 </tr>
 <tr id=11913645 valign=top><td class=post><a href=https://www.pprune.org/members/548247-the-brigadier>The Brigadier</a>
@@ -764,7 +747,7 @@
      <strong>
       skwdenyer
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11913592" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11913592" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -801,7 +784,7 @@
      <strong>
       The Brigadier
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11913431" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11913431" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -815,7 +798,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>3 users liked this post.</p>
 </td>
 </tr>
 <tr id=11918385 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
@@ -847,7 +829,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>1 user liked this post.</p>
 </td>
 </tr>
 <tr id=11918562 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
@@ -868,7 +849,7 @@
      <strong>
       Propellerhead
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11918394" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11918394" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -890,7 +871,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>8 users liked this post.</p>
 </td>
 </tr>
 <tr id=11918592 valign=top><td class=post><a href=https://www.pprune.org/members/449272-subsy>Subsy</a>
@@ -911,7 +891,7 @@
      <strong>
       tdracer
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11918562" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11918562" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
@@ -952,6 +932,271 @@
 </div>
 </td>
 </tr>
+<tr id=11918993 valign=top><td class=post><a href=https://www.pprune.org/members/216710-moosepileit>moosepileit</a>
+<br/>July 10, 2025, 12:33:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-71.html#post11918993><br/>permalink</a>
+ Post: 11918993</td>
+<td class=post><div class="tcell alt1" id="td_post_11918993">
+ <!-- message -->
+ <div id="post_message_11918993">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      TBL Warrior
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11918976" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Yes, switch directly controls spar valve (fuel supply) position - no fuel - no fire.
+    </div>
+   </div>
+  </div>
+  To be less subtle- someone cuts off switches, unknown to PF and possibly PM, with throttles off idle... Would do nothing.
+  <br/>
+  <br/>
+  Worst case, at next idle TLA, engine shuts down. I bet eyes go to cutoff switches after a scan, surely EICAS/ECAM has a Captain Obvious alert set.
+  <br/>
+  <br/>
+  Runaway RPM or locked RPM, some FADECS latch at 86 or so % N1- you'd still need TLA of idle for the cut off switch to work.
+  <br/>
+  <br/>
+  Volcanic ash, loss of all engines, desire the simultaneous FADEC reset of cycling the cutoffs- just coordinate with PM for idle TLA.
+  <br/>
+  <br/>
+  Other jets have this standard, today.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      island_airphoto
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11918969" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     You do not want a condition where you can't shut the fuel off when you need to because some condition is not met.
+    </div>
+   </div>
+  </div>
+  I'd say the throttle needing to be at idle is one heck of a CRM/TEM-based reason. Dual resolvers can fail, but throttles no longer get locked by jammed cable runs to the FCU on the engine. A resolver bypass would possibly be required in extremis 10 to the minus 6 to 9th case.
+  <br/>
+  <br/>
+  Who flies the throttles in normal? PF
+  <br/>
+  Who typically performs the steps, including idle TLA of shutdown/restart in flight? PM.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by moosepileit; 10th July 2025 at
+   <span class="time">
+    00:46
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr id=11919310 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 11, 2025, 00:34:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11919310><br/>permalink</a>
+ Post: 11919310</td>
+<td class=post><div class="tcell alt1" id="td_post_11919310">
+ <!-- message -->
+ <div id="post_message_11919310">
+  <span style="color:#000000">
+   This has all been answered in previous posts, but I'll repeat it for those you don't want to look back through something like 150 pages:
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   Thrust Lever Angle (TLA) is measured directly by the FADEC, using a resolver hardwired to and excited by the FADEC. Both FADEC channels have their own resolver input - on most Boeing aircraft it's a common resolver with two sets of electrically isolated windings, however on the 787 it actually uses two mechanically separate resolvers. The resolver is basically read as "sine" and "cosine" which is converted in the angle. This also makes error detection easy, using the sine squared + cosine squared relationship. Any other aircraft systems that use TLA use the TLA signal relayed back to the aircraft by the FADEC.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   The fuel control switch is a two-position multiple pole 'latching' switch - you have to pull it out slightly over detent to move it between the RUN and CUTOFF positions (on other aircraft there is an interposing relay for some of the functions. not sure about the implementation on the 787). Moving the switch to cutoff sends a DC signal to both the High Pressure ShutOff Valve (HPSOV) in the fuel control and the spar valve commanding them to close. HPSOV is solenoid actuated and is near instantaneous, Spar Valve takes ~one second to change positions (yes, this is different than some other airframers that only send the signal to one valve or the other, but it's been standard Boeing design practice since the early 1970s). Both the HPSOV solenoid and the Spar Valve are designed to stay in their last commanded position if airframe power is lost. Moving the switch to CUTOFF also sends a 'reset' signal to the FADEC - meaning the FADEC will be offline for roughly one second. On the 787 (and 777 and 747-8), there is a brief pause (~0.25 seconds) before the shutdown signal is sent to the engine to allow the electrical system to reconfigure to prevent a brief interrupt of electrical power to the rest of the aircraft.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   Pulling the Fire Handle does the same thing as the fuel condition switch - via separate wiring (physically isolated from the fuel switch wiring to help protect from things like rotor burst damage), with the exception of the FADEC reset (since there is no requirement to be able to restart the engine after a Fire Handle shutdown).
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   There is absolutely
+  </span>
+  <i>
+   no
+  </i>
+  <span style="color:#000000">
+   TLA input into either the fuel conditions switch or the Fire Handle - you can shutdown the engine via either
+  </span>
+  <i>
+   regardless
+  </i>
+  <span style="color:#000000">
+   of Thrust Lever Angle.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   All this is standard Boeing design practice (and except for the no-break electrical power transfer) has been for at least 50 years. This is enforced by the Boeing "Design Requirements and Objectives" - DR&amp;O - compliance with is demonstrated by an audit after the final design freeze.
+  </span>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11919772 valign=top><td class=post><a href=https://www.pprune.org/members/451397-engineless>Engineless</a>
+<br/>July 11, 2025, 20:40:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html#post11919772><br/>permalink</a>
+ Post: 11919772</td>
+<td class=post><div class="tcell alt1" id="td_post_11919772">
+ <!-- message -->
+ <div id="post_message_11919772">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    The aircraft achieved the maximum recorded airspeed of 180 Knots IAS at about 08:08:42
+    <br/>
+    UTC and immediately thereafter, the Engine 1 and Engine 2 fuel cutoff switches transitioned
+    <br/>
+    from RUN to CUTOFF position one after another with a time gap of 01 sec. The Engine N1
+    <br/>
+    and N2 began to decrease from their take-off values as the fuel supply to the engines was cut
+    <br/>
+    off.
+    <br/>
+    In the cockpit voice recording, one of the pilots is heard asking the other why did he cutoff.
+    <br/>
+    The other pilot responded that he did not do so.
+    <br/>
+    The CCTV footage obtained from the airport showed Ram Air Turbine (RAT) getting deployed
+    <br/>
+    during the initial climb immediately after lift-off (fig. 15). No significant bird activity is observed
+    <br/>
+    in the vicinity of the flight path. The aircraft started to lose altitude before crossing the airport
+    <br/>
+    perimeter wall.
+    <br/>
+    <br/>
+    As per the EAFR, the Engine 1 fuel cutoff switch transitioned from CUTOFF to RUN at about
+    <br/>
+    08:08:52 UTC. The APU Inlet Door began opening at about 08:08:54 UTC, consistent with
+    <br/>
+    the APU Auto Start logic. Thereafter at 08:08:56 UTC the Engine 2 fuel cutoff switch also
+    <br/>
+    transitions from CUTOFF to RUN. When fuel control switches are moved from CUTOFF to
+    <br/>
+    RUN while the aircraft is inflight, each engines full authority dual engine control (FADEC)
+    <br/>
+    automatically manages a relight and thrust recovery sequence of ignition and fuel introduction.
+    <br/>
+    The EGT was observed to be rising for both engines indicating relight. Engine 1&rsquo;s core
+    <br/>
+    deceleration stopped, reversed and started to progress to recovery. Engine 2 was able to
+    <br/>
+    relight but could not arrest core speed deceleration and re-introduced fuel repeatedly to
+    <br/>
+    increase core speed acceleration and recovery. The EAFR recording stopped at 08:09:11
+    <br/>
+    UTC
+    <br/>
+    <br/>
+    As per the EAFR data both engines N2 values passed below minimum idle speed, and the
+    <br/>
+    RAT hydraulic pump began supplying hydraulic power at about 08:08:47 UTC.
+    <br/>
+    RAT in extended position
+    <br/>
+    15
+    <br/>
+    As per the EAFR, the Engine 1 fuel cutoff switch transitioned from CUTOFF to RUN at about
+    <br/>
+    08:08:52 UTC. The APU Inlet Door began opening at about 08:08:54 UTC, consistent with
+    <br/>
+    the APU Auto Start logic. Thereafter at 08:08:56 UTC the Engine 2 fuel cutoff switch also
+    <br/>
+    transitions from CUTOFF to RUN. When fuel control switches are moved from CUTOFF to
+    <br/>
+    RUN while the aircraft is inflight, each engines full authority dual engine control (FADEC)
+    <br/>
+    automatically manages a relight and thrust recovery sequence of ignition and fuel introduction.
+    <br/>
+    The EGT was observed to be rising for both engines indicating relight. Engine 1&rsquo;s core
+    <br/>
+    deceleration stopped, reversed and started to progress to recovery. Engine 2 was able to
+    <br/>
+    relight but could not arrest core speed deceleration and re-introduced fuel repeatedly to
+    <br/>
+    increase core speed acceleration and recovery. The EAFR recording stopped at 08:09:11
+    <br/>
+    UTC
+    <br/>
+    At about 08:09:05 UTC, one of the pilots transmitted &ldquo;MAYDAY MAYDAY MAYDAY&rdquo;.
+   </div>
+  </div>
+  What the hell happened in the cockpit?
+  <br/>
+  <br/>
+  08:08:42  Engine 1 and Engine 2 fuel cutoff switches transitioned from RUN to CUTOFF position.
+  <br/>
+  One of the pilots asks the other why did he cutoff.
+  <br/>
+  The other pilot responded that he did not do so.
+  <br/>
+  08:08:52 Engine 1 fuel cutoff switch transitioned from CUTOFF to RUN
+  <br/>
+  08:08:56 Engine 2 fuel cutoff switch also transitions from CUTOFF to RUN
+  <br/>
+  <br/>
+  Who (or what?) operated the cutoff switches?
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr>
+   <em>
+    Last edited by Engineless; 11th July 2025 at
+    <span class="time">
+     08:53
+    </span>
+    .
+   </em>
+  </hr>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
 </table>
 <p class=page_links>Page Links:&nbsp;<a href=FADEC0.html>First</a>
 &nbsp;<a href=FADEC8.html>Previous</a>
@@ -966,7 +1211,9 @@
 &nbsp;<a href=FADEC8.html>9</a>
 &nbsp;<a href=FADEC9.html><b>10</b>
 </a>
-&nbsp;<a href=FADEC9.html>Last</a>
+&nbsp;<a href=FADEC10.html>11</a>
+&nbsp;<a href=FADEC10.html>Next</a>
+&nbsp;<a href=FADEC10.html>Last</a>
 &nbsp;<a href=index.html>Index Page</a>
 </p>
 </body>

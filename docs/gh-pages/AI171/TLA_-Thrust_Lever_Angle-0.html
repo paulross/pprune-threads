@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune TLA (Thrust Lever Angle) name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "TLA (Thrust Lever Angle)" [Posts: 5 Pages: 1]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr id=11906736 valign=top><td class=post><a href=https://www.pprune.org/members/555957-ignorantandroid>ignorantAndroid</a>
+<br/>June 20, 2025, 08:53:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-39.html#post11906736><br/>permalink</a>
+ Post: 11906736</td>
+<td class=post><div class="tcell alt1" id="td_post_11906736">
+ <!-- message -->
+ <div id="post_message_11906736">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      skwdenyer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11906620" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     So saying "TCMA would only trigger if WoW and RA have failed somehow" is incorrect? Those are simply inputs to software, which might itself fail badly for other reasons.
+    </div>
+   </div>
+  </div>
+  In general, we can classify computer errors into 3 categories:
+  <ol style="list-style-type: decimal">
+   <li>
+    Errors in system design, specifications, or algorithms. These are cases where the computer does exactly what it was designed to do, but the design itself was flawed or inadequate, or had unforeseen consequences. This would include things like MCAS on the 737 MAX.
+   </li>
+   <li>
+    Software errors. These are cases where the computer does exactly what the code
+    <i>
+     tells
+    </i>
+    it to do, but not what the designers
+    <i>
+     wanted
+    </i>
+    it to do. This results from mistakes in writing the actual code, and this is usually what we'd refer to as a "bug." This includes things like race conditions, loops that fail to terminate, incorrect type conversion, etc.
+   </li>
+   <li>
+    Hardware malfunctions. These are cases where the computer does something different from what the code instructs. It can involve memory corruption or data bus corruption. It can result in a system that appears to work, but returns incorrect outputs, e.g. a calculator saying 2+2=5. It can also cause the computer to execute valid instructions, but at an inappropriate time. It can result from manufacturing defects in components, cosmic rays (SEU or SEE), radiofrequency interference (HIRF), moisture ingress, failed solder joints, and numerous other things.
+   </li>
+  </ol>
+  As I said previously, I think we can rule out category 3 in this case. Hardware malfunctions are essentially random events. They're inherently unpredictable since there's little to no relationship between what the system was supposed to do and what it actually does. It would be astronomically improbable for the same failure to occur on both engines at the same moment.
+  <br/>
+  <br/>
+  Categories 1 and 2 would be common to both engines, so they both remain plausible. For category 2, it would be impossible to identify the issue without analyzing the complete source code. Since we don't have access to that code, this is a dead end. It could be the cause, but we won't be able to figure it out. Looking at how the FADECs are
+  <i>
+   designed
+  </i>
+  to work isn't going to be very useful here, since by definition, they'd be doing something they weren't supposed to.
+  <br/>
+  <br/>
+  Category 1 is a bit different. There are 2 functions we know of that can close the fuel shutoff valve: TCMA and N2 overspeed protection. We don't have the complete specifications, but the basic logic of both functions has been described. If we assume that one of these was the cause, then the conditions for one of those functions must have been met.
+  <br/>
+  <br/>
+  The conditions for TCMA, at least as it's been described in this thread, are:
+  <ul>
+   <li>
+    Airplane on ground
+   </li>
+   <li>
+    Thrust higher than commanded by thrust lever angle (TLA) for some period of time
+   </li>
+  </ul>
+  It's reasonable to assume that the first condition is common to both engines. But that still leaves the second. To my knowledge, there's no plausible scenario that would cause that condition to be met on both engines simultaneously. Each thrust lever has 2 resolvers which are wired directly to the corresponding FADECs. That means the signals don't pass through any common component. An incorrect reading from one resolver could conceivably trigger TCMA, but I don't see any reason why that would happen to both engines simultaneously.
+  <br/>
+  <br/>
+  As for the overspeed protection, as far as I know, there's only one condition: N2 greater than a certain value. That reading comes from sensors that are inside each engine and wired directly to the FADECs. I don't see any way this could affect both engines simultaneously either, but it still seems a bit more likely than something involving TCMA since it only requires 2 separate, simultaneous failures rather than 3 or more.
+  <br/>
+  <br/>
+  For the sake of accuracy, I should also note that not everything fits neatly into one of my 3 categories. For example, let's say we have a machine that's programmed to shut down if any one of 3 parameters goes above a certain value. If one of those values gets corrupted by a faulty memory chip, the machine could shut down unnecessarily. If we add more parameters to the list, the probability of an inadvertent shutdown increases since there are more critical areas in memory. As another example, consider a case where corruption of the CPU's program counter causes it to inadvertently jump to a particular subroutine. If we add more subroutines that can trigger a shutdown, we make the machine more vulnerable, albeit to a very small degree. Changes like these are sometimes referred to as "increasing the surface area."
+  <br/>
+  <br/>
+  Due to those types of scenario, I will admit that the existence of something like TCMA probably makes an engine ever-so-slightly more likely to fail. Whether the benefit is worth the cost could be debated. In any case, I still find it pretty unlikely that any of this will turn out to have been a factor in this accident.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by ignorantAndroid; 19th June 2025 at
+   <span class="time">
+    21:11
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr id=11908084 valign=top><td class=post><a href=https://www.pprune.org/members/161437-edml>EDML</a>
+<br/>June 21, 2025, 21:37:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-51.html#post11908084><br/>permalink</a>
+ Post: 11908084</td>
+<td class=post><div class="tcell alt1" id="td_post_11908084">
+ <!-- message -->
+ <div id="post_message_11908084">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Seamless
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11908047" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     In which way would TCMA act, in the case of an electrical failure just before TO? Would TCMA - if not affected - read a difference in thrust setting (no signal e.g.) to the read engine thrust, which would then lead to an engines shut down?
+    </div>
+   </div>
+  </div>
+  Why should it? It\x92s part of the FADEC as are the TLA sensors.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11918993 valign=top><td class=post><a href=https://www.pprune.org/members/216710-moosepileit>moosepileit</a>
+<br/>July 10, 2025, 12:33:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-71.html#post11918993><br/>permalink</a>
+ Post: 11918993</td>
+<td class=post><div class="tcell alt1" id="td_post_11918993">
+ <!-- message -->
+ <div id="post_message_11918993">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      TBL Warrior
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11918976" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Yes, switch directly controls spar valve (fuel supply) position - no fuel - no fire.
+    </div>
+   </div>
+  </div>
+  To be less subtle- someone cuts off switches, unknown to PF and possibly PM, with throttles off idle... Would do nothing.
+  <br/>
+  <br/>
+  Worst case, at next idle TLA, engine shuts down. I bet eyes go to cutoff switches after a scan, surely EICAS/ECAM has a Captain Obvious alert set.
+  <br/>
+  <br/>
+  Runaway RPM or locked RPM, some FADECS latch at 86 or so % N1- you'd still need TLA of idle for the cut off switch to work.
+  <br/>
+  <br/>
+  Volcanic ash, loss of all engines, desire the simultaneous FADEC reset of cycling the cutoffs- just coordinate with PM for idle TLA.
+  <br/>
+  <br/>
+  Other jets have this standard, today.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      island_airphoto
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11918969" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     You do not want a condition where you can't shut the fuel off when you need to because some condition is not met.
+    </div>
+   </div>
+  </div>
+  I'd say the throttle needing to be at idle is one heck of a CRM/TEM-based reason. Dual resolvers can fail, but throttles no longer get locked by jammed cable runs to the FCU on the engine. A resolver bypass would possibly be required in extremis 10 to the minus 6 to 9th case.
+  <br/>
+  <br/>
+  Who flies the throttles in normal? PF
+  <br/>
+  Who typically performs the steps, including idle TLA of shutdown/restart in flight? PM.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by moosepileit; 10th July 2025 at
+   <span class="time">
+    00:46
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr id=11919035 valign=top><td class=post><a href=https://www.pprune.org/members/296602-exdac>EXDAC</a>
+<br/>July 10, 2025, 13:45:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-71.html#post11919035><br/>permalink</a>
+ Post: 11919035</td>
+<td class=post><div class="tcell alt1" id="td_post_11919035">
+ <!-- message -->
+ <div id="post_message_11919035">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      galaxy flyer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11919031" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Just for emphasis, the fuel control switches control both the spar valve AND the shutoff inside the fuel controller at the engine. It\x92s not the spar valve the starves the engine of fuel it\x92s the HP valve. If it were only the spar valve, shut downs at the gate would take awhile.
+    </div>
+   </div>
+  </div>
+  Agreed, but that knowledge does nothing to convince anyone that TLA is not involved in the response to fuel cut off.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11919310 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 11, 2025, 00:34:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11919310><br/>permalink</a>
+ Post: 11919310</td>
+<td class=post><div class="tcell alt1" id="td_post_11919310">
+ <!-- message -->
+ <div id="post_message_11919310">
+  <span style="color:#000000">
+   This has all been answered in previous posts, but I'll repeat it for those you don't want to look back through something like 150 pages:
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   Thrust Lever Angle (TLA) is measured directly by the FADEC, using a resolver hardwired to and excited by the FADEC. Both FADEC channels have their own resolver input - on most Boeing aircraft it's a common resolver with two sets of electrically isolated windings, however on the 787 it actually uses two mechanically separate resolvers. The resolver is basically read as "sine" and "cosine" which is converted in the angle. This also makes error detection easy, using the sine squared + cosine squared relationship. Any other aircraft systems that use TLA use the TLA signal relayed back to the aircraft by the FADEC.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   The fuel control switch is a two-position multiple pole 'latching' switch - you have to pull it out slightly over detent to move it between the RUN and CUTOFF positions (on other aircraft there is an interposing relay for some of the functions. not sure about the implementation on the 787). Moving the switch to cutoff sends a DC signal to both the High Pressure ShutOff Valve (HPSOV) in the fuel control and the spar valve commanding them to close. HPSOV is solenoid actuated and is near instantaneous, Spar Valve takes ~one second to change positions (yes, this is different than some other airframers that only send the signal to one valve or the other, but it's been standard Boeing design practice since the early 1970s). Both the HPSOV solenoid and the Spar Valve are designed to stay in their last commanded position if airframe power is lost. Moving the switch to CUTOFF also sends a 'reset' signal to the FADEC - meaning the FADEC will be offline for roughly one second. On the 787 (and 777 and 747-8), there is a brief pause (~0.25 seconds) before the shutdown signal is sent to the engine to allow the electrical system to reconfigure to prevent a brief interrupt of electrical power to the rest of the aircraft.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   Pulling the Fire Handle does the same thing as the fuel condition switch - via separate wiring (physically isolated from the fuel switch wiring to help protect from things like rotor burst damage), with the exception of the FADEC reset (since there is no requirement to be able to restart the engine after a Fire Handle shutdown).
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   There is absolutely
+  </span>
+  <i>
+   no
+  </i>
+  <span style="color:#000000">
+   TLA input into either the fuel conditions switch or the Fire Handle - you can shutdown the engine via either
+  </span>
+  <i>
+   regardless
+  </i>
+  <span style="color:#000000">
+   of Thrust Lever Angle.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   All this is standard Boeing design practice (and except for the no-break electrical power transfer) has been for at least 50 years. This is enforced by the Boeing "Design Requirements and Objectives" - DR&amp;O - compliance with is demonstrated by an audit after the final design freeze.
+  </span>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

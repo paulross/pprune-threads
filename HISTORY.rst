@@ -1,10 +1,10 @@
 History
 =======
 
-Alpha Release (Thread: July 12, 2025, 10:43:00)
+Alpha Release (Thread: July 12, 2025, 11:59:00)
 -----------------------------------------------
 
-- Build threads up to July 12, 2025, 10:43:00
+- Build threads up to July 12, 2025, 11:59:00 (built at July 12, 2025, 13:03:09).
 - Add thread about the published report: https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html
 - Add subjects: "Guards", "Timeline (Preliminary Report)", "EICAS", "RUN/CUTOFF", "Special Airworthiness Information Bulletin", "SAIB NM-18-33", "Gear Lever", "Startle Effect" and "Cockpit Area Audio".
 - Minor improvements to the index.html page.

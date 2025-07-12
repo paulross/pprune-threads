@@ -1,0 +1,849 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune Relight name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "Relight" [Posts: 57 Pages: 3]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=Relight0.html>First</a>
+&nbsp;<a href=Relight1.html>Previous</a>
+&nbsp;<a href=Relight0.html>1</a>
+&nbsp;<a href=Relight1.html>2</a>
+&nbsp;<a href=Relight2.html><b>3</b>
+</a>
+&nbsp;<a href=Relight2.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr id=11919015 valign=top><td class=post><a href=https://www.pprune.org/members/464374-paulross>paulross</a>
+<br/>July 10, 2025, 13:04:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-71.html#post11919015><br/>permalink</a>
+ Post: 11919015</td>
+<td class=post><div class="tcell alt1" id="td_post_11919015">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   AI171 Thread by Subject
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11919015">
+  I have rebuilt the site that organises this thread by subject here:
+  <a href="https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html" target="_blank">
+   https://paulross.github.io/pprune-th...171/index.html
+  </a>
+  <br/>
+  <br/>
+  Changes:
+  <ul>
+   <li>
+    Built the thread up to July 10, 2025, 12:31:00
+   </li>
+   <li>
+    Add subjects: Relight, 51 Day Issue, Fuel Cutoff Switches (detent), ICAO, Fuel Cutoff Switches, Memory Items, Annex 13, Simulation Scenarios.
+   </li>
+   <li>
+    Various technical fixes should give a better/more accurate presentation.
+   </li>
+  </ul>
+  Project is here:
+  <a href="https://github.com/paulross/pprune-threads" target="_blank">
+   https://github.com/paulross/pprune-threads
+  </a>
+  <br/>
+  Raise issues here
+  <a href="https://github.com/paulross/pprune-threads/issues" target="_blank">
+   https://github.com/paulross/pprune-threads/issues
+  </a>
+  or PM me.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11919310 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 11, 2025, 00:34:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11919310><br/>permalink</a>
+ Post: 11919310</td>
+<td class=post><div class="tcell alt1" id="td_post_11919310">
+ <!-- message -->
+ <div id="post_message_11919310">
+  <span style="color:#000000">
+   This has all been answered in previous posts, but I'll repeat it for those you don't want to look back through something like 150 pages:
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   Thrust Lever Angle (TLA) is measured directly by the FADEC, using a resolver hardwired to and excited by the FADEC. Both FADEC channels have their own resolver input - on most Boeing aircraft it's a common resolver with two sets of electrically isolated windings, however on the 787 it actually uses two mechanically separate resolvers. The resolver is basically read as "sine" and "cosine" which is converted in the angle. This also makes error detection easy, using the sine squared + cosine squared relationship. Any other aircraft systems that use TLA use the TLA signal relayed back to the aircraft by the FADEC.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   The fuel control switch is a two-position multiple pole 'latching' switch - you have to pull it out slightly over detent to move it between the RUN and CUTOFF positions (on other aircraft there is an interposing relay for some of the functions. not sure about the implementation on the 787). Moving the switch to cutoff sends a DC signal to both the High Pressure ShutOff Valve (HPSOV) in the fuel control and the spar valve commanding them to close. HPSOV is solenoid actuated and is near instantaneous, Spar Valve takes ~one second to change positions (yes, this is different than some other airframers that only send the signal to one valve or the other, but it's been standard Boeing design practice since the early 1970s). Both the HPSOV solenoid and the Spar Valve are designed to stay in their last commanded position if airframe power is lost. Moving the switch to CUTOFF also sends a 'reset' signal to the FADEC - meaning the FADEC will be offline for roughly one second. On the 787 (and 777 and 747-8), there is a brief pause (~0.25 seconds) before the shutdown signal is sent to the engine to allow the electrical system to reconfigure to prevent a brief interrupt of electrical power to the rest of the aircraft.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   Pulling the Fire Handle does the same thing as the fuel condition switch - via separate wiring (physically isolated from the fuel switch wiring to help protect from things like rotor burst damage), with the exception of the FADEC reset (since there is no requirement to be able to restart the engine after a Fire Handle shutdown).
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   There is absolutely
+  </span>
+  <i>
+   no
+  </i>
+  <span style="color:#000000">
+   TLA input into either the fuel conditions switch or the Fire Handle - you can shutdown the engine via either
+  </span>
+  <i>
+   regardless
+  </i>
+  <span style="color:#000000">
+   of Thrust Lever Angle.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   All this is standard Boeing design practice (and except for the no-break electrical power transfer) has been for at least 50 years. This is enforced by the Boeing "Design Requirements and Objectives" - DR&amp;O - compliance with is demonstrated by an audit after the final design freeze.
+  </span>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11919772 valign=top><td class=post><a href=https://www.pprune.org/members/451397-engineless>Engineless</a>
+<br/>July 11, 2025, 20:40:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html#post11919772><br/>permalink</a>
+ Post: 11919772</td>
+<td class=post><div class="tcell alt1" id="td_post_11919772">
+ <!-- message -->
+ <div id="post_message_11919772">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    The aircraft achieved the maximum recorded airspeed of 180 Knots IAS at about 08:08:42
+    <br/>
+    UTC and immediately thereafter, the Engine 1 and Engine 2 fuel cutoff switches transitioned
+    <br/>
+    from RUN to CUTOFF position one after another with a time gap of 01 sec. The Engine N1
+    <br/>
+    and N2 began to decrease from their take-off values as the fuel supply to the engines was cut
+    <br/>
+    off.
+    <br/>
+    In the cockpit voice recording, one of the pilots is heard asking the other why did he cutoff.
+    <br/>
+    The other pilot responded that he did not do so.
+    <br/>
+    The CCTV footage obtained from the airport showed Ram Air Turbine (RAT) getting deployed
+    <br/>
+    during the initial climb immediately after lift-off (fig. 15). No significant bird activity is observed
+    <br/>
+    in the vicinity of the flight path. The aircraft started to lose altitude before crossing the airport
+    <br/>
+    perimeter wall.
+    <br/>
+    <br/>
+    As per the EAFR, the Engine 1 fuel cutoff switch transitioned from CUTOFF to RUN at about
+    <br/>
+    08:08:52 UTC. The APU Inlet Door began opening at about 08:08:54 UTC, consistent with
+    <br/>
+    the APU Auto Start logic. Thereafter at 08:08:56 UTC the Engine 2 fuel cutoff switch also
+    <br/>
+    transitions from CUTOFF to RUN. When fuel control switches are moved from CUTOFF to
+    <br/>
+    RUN while the aircraft is inflight, each engines full authority dual engine control (FADEC)
+    <br/>
+    automatically manages a relight and thrust recovery sequence of ignition and fuel introduction.
+    <br/>
+    The EGT was observed to be rising for both engines indicating relight. Engine 1&rsquo;s core
+    <br/>
+    deceleration stopped, reversed and started to progress to recovery. Engine 2 was able to
+    <br/>
+    relight but could not arrest core speed deceleration and re-introduced fuel repeatedly to
+    <br/>
+    increase core speed acceleration and recovery. The EAFR recording stopped at 08:09:11
+    <br/>
+    UTC
+    <br/>
+    <br/>
+    As per the EAFR data both engines N2 values passed below minimum idle speed, and the
+    <br/>
+    RAT hydraulic pump began supplying hydraulic power at about 08:08:47 UTC.
+    <br/>
+    RAT in extended position
+    <br/>
+    15
+    <br/>
+    As per the EAFR, the Engine 1 fuel cutoff switch transitioned from CUTOFF to RUN at about
+    <br/>
+    08:08:52 UTC. The APU Inlet Door began opening at about 08:08:54 UTC, consistent with
+    <br/>
+    the APU Auto Start logic. Thereafter at 08:08:56 UTC the Engine 2 fuel cutoff switch also
+    <br/>
+    transitions from CUTOFF to RUN. When fuel control switches are moved from CUTOFF to
+    <br/>
+    RUN while the aircraft is inflight, each engines full authority dual engine control (FADEC)
+    <br/>
+    automatically manages a relight and thrust recovery sequence of ignition and fuel introduction.
+    <br/>
+    The EGT was observed to be rising for both engines indicating relight. Engine 1&rsquo;s core
+    <br/>
+    deceleration stopped, reversed and started to progress to recovery. Engine 2 was able to
+    <br/>
+    relight but could not arrest core speed deceleration and re-introduced fuel repeatedly to
+    <br/>
+    increase core speed acceleration and recovery. The EAFR recording stopped at 08:09:11
+    <br/>
+    UTC
+    <br/>
+    At about 08:09:05 UTC, one of the pilots transmitted &ldquo;MAYDAY MAYDAY MAYDAY&rdquo;.
+   </div>
+  </div>
+  What the hell happened in the cockpit?
+  <br/>
+  <br/>
+  08:08:42  Engine 1 and Engine 2 fuel cutoff switches transitioned from RUN to CUTOFF position.
+  <br/>
+  One of the pilots asks the other why did he cutoff.
+  <br/>
+  The other pilot responded that he did not do so.
+  <br/>
+  08:08:52 Engine 1 fuel cutoff switch transitioned from CUTOFF to RUN
+  <br/>
+  08:08:56 Engine 2 fuel cutoff switch also transitions from CUTOFF to RUN
+  <br/>
+  <br/>
+  Who (or what?) operated the cutoff switches?
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr>
+   <em>
+    Last edited by Engineless; 11th July 2025 at
+    <span class="time">
+     08:53
+    </span>
+    .
+   </em>
+  </hr>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr id=11919886 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
+<br/>July 11, 2025, 22:09:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-4.html#post11919886><br/>permalink</a>
+ Post: 11919886</td>
+<td class=post><div class="tcell alt1" id="td_post_11919886">
+ <!-- message -->
+ <div id="post_message_11919886">
+  Seconds count:
+  <div style="margin-left: 40px;">
+   <i>
+    As per the EAFR, the Engine 1 fuel cutoff switch transitioned from CUTOFF to RUN at about
+   </i>
+   <i>
+    08:08:52 UTC. The APU Inlet Door began opening at about 08:08:54 UTC, consistent with the APU Auto Start logic. Thereafter at 08:08:56 UTC the Engine 2 fuel cutoff switch also transitions from CUTOFF to RUN. When fuel control switches are moved from CUTOFF to RUN while the aircraft is inflight, each engines full authority dual engine control (FADEC) automatically manages a relight and thrust recovery sequence of ignition and fuel introduction. The EGT was observed to be rising for both engines indicating relight.
+    <b>
+     Engine 1's core deceleration stopped, reversed and started to progress to recovery.
+    </b>
+    Engine 2 was able to relight but could not arrest core speed deceleration and re-introduced fuel repeatedly to increase core speed acceleration and recovery. The EAFR recording stopped at 08:09:11 UTC.
+   </i>
+   <br/>
+  </div>
+  That was with 10 seconds delay vs. 13 seconds for engine 2.
+  <br/>
+  <br/>
+  Time was spent with the verbal exchange, and then perhaps each pilot expected the other to put the switch back?
+  <br/>
+  <br/>
+  Anyway, the preliminary report also establishes that the aircraft had only 3-4 seconds of powered flight. (Would the gear lever be operated that early?) Everyone who saw that from the CCTV video, pat yourselves on the back.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/wink2.gif" title="Wink"/>
+  <br/>
+  <br/>
+  Mayday call, dual engine failure, RAT deployment all confirmed.
+  <br/>
+  TCMA was a red herring, the aircraft was firmly in air mode as the accident unfolded, and the thrust levers were at takeoff thrust the whole time.
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11919944 valign=top><td class=post><a href=https://www.pprune.org/members/491129-medod>medod</a>
+<br/>July 11, 2025, 22:47:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-6.html#post11919944><br/>permalink</a>
+ Post: 11919944</td>
+<td class=post><div class="tcell alt1" id="td_post_11919944">
+ <!-- message -->
+ <div id="post_message_11919944">
+  Anyone willing to make an estimate of how long would be required to reach take-off thrust given the known movement of the cut-off switches? With engine 1 spooling up and engine 2 having relit but failing to accelerate, it sounds like they came oh so close to recovery.
+  <br/>
+  <br/>
+  I imagine that what happened with engine 2 ("able to relight but could not arrest core speed deceleration and re-introduced fuel repeatedly to increase core speed acceleration and recovery") will be a major part of the investigation.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11919982 valign=top><td class=post><a href=https://www.pprune.org/members/229877-gbo>GBO</a>
+<br/>July 11, 2025, 23:20:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-7.html#post11919982><br/>permalink</a>
+ Post: 11919982</td>
+<td class=post><div class="tcell alt1" id="td_post_11919982">
+ <!-- message -->
+ <div id="post_message_11919982">
+  The actual CVR will be crucial to solving the problem.
+  <br/>
+  <br/>
+  When someone attempted the engine re-lights at 08:08:52 and 08:08:56, does the CVR hear one or two movements of the RUN/CUTOFF switches for each engine?
+  <br/>
+  <br/>
+  Therefore, we could determine the position of the switch prior to the re-light attempt, and whether this was caused by a person on the Flight Deck or mechanical problem.
+  <br/>
+  <br/>
+  Release the CVR.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11920034 valign=top><td class=post><a href=https://www.pprune.org/members/415073-brogult>BrogulT</a>
+<br/>July 12, 2025, 00:16:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-8.html#post11920034><br/>permalink</a>
+ Post: 11920034</td>
+<td class=post><div class="tcell alt1" id="td_post_11920034">
+ <!-- message -->
+ <div id="post_message_11920034">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      medod
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11919944" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I imagine that what happened with engine 2 ("able to relight but could not arrest core speed deceleration and re-introduced fuel repeatedly to increase core speed acceleration and recovery") will be a major part of the investigation.
+    </div>
+   </div>
+  </div>
+  It won't be an issue, the cause is simply that they were below the airspeed needed for a successful airstart, the engine had spooled down too far to recover without being cranked and there was no power available from the APU yet.  As far as knowing how long they were from #1 providing meaningful thrust, you'd need to have a lot more data to know.  Another 30 seconds probably would have helped a lot.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>7 users liked this post.</p>
+</td>
+</tr>
+<tr id=11920045 valign=top><td class=post><a href=https://www.pprune.org/members/150561-pilot-dar>Pilot DAR</a>
+<br/>July 12, 2025, 00:50:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-8.html#post11920045><br/>permalink</a>
+ Post: 11920045</td>
+<td class=post><div class="tcell alt1" id="td_post_11920045">
+ <!-- message -->
+ <div id="post_message_11920045">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    08:08:52 EAFR: Eng 1 cutoff to RUN
+    <br/>
+    08:08:54 EAFR: APU inlet door opens (auto start logic)
+    <br/>
+    08:08:56 EAFR: Eng 2 cutoff to RUN
+    <br/>
+    08:09:05 ATC: Mayday call
+   </div>
+  </div>
+  If I recall correctly, the Mayday call was wording to the effect "thrust not achieved". That sounds like a phrase which could be expected from a pilot who had just frantically tried to restart an engine, and realized that it was not a success, and there would not be an opportunity for another attempt. The pilot aviated, (forget navigation), then communicated - over a period of 13 seconds.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11920049 valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
+<br/>July 12, 2025, 01:00:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-8.html#post11920049><br/>permalink</a>
+ Post: 11920049</td>
+<td class=post><div class="tcell alt1" id="td_post_11920049">
+ <!-- message -->
+ <div id="post_message_11920049">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Pilot DAR
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920045" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     If I recall correctly, the Mayday call was wording to the effect "thrust not achieved". That sounds like a phrase which could be expected from a pilot who had just frantically tried to restart an engine, and realized that it was not a success, and there would not be an opportunity for another attempt. The pilot aviated, (forget navigation), then communicated - over a period of 13 seconds.
+    </div>
+   </div>
+  </div>
+  I believe the 'thrust not achieved' was that one made up by a journalist - happy to be corrected.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    The EGT was observed to be rising for both engines indicating relight. Engine 1&rsquo;s core
+    <br/>
+    deceleration stopped, reversed and started to
+    <b>
+     progress to recovery.
+    </b>
+    Engine 2 was able to
+    <br/>
+    relight but could not arrest core speed deceleration and re-introduced fuel repeatedly to
+    <br/>
+    increase core speed acceleration and recovery. The EAFR recording stopped at 08:09:11
+    <br/>
+    UTC
+    <br/>
+    At about 08:09:05 UTC, one of the pilots transmitted &ldquo;
+    <b>
+     MAYDAY MAYDAY MAYDAY
+    </b>
+    &rdquo;. The
+    <br/>
+    ATCO enquired about the call sign. ATCO
+    <b>
+     did not get any response
+    </b>
+    but observed the aircraft
+    <br/>
+    crashing outside the airport boundary and activated the emergency response.
+   </div>
+  </div>
+  Sounds like #1 was restarting successfully but they just didn't have enough time for it to get back to high thrust.
+  <br/>
+  <br/>
+  #2 may or may not have eventually started successfully; the extra two seconds of no fuel meant it would be a much harder start for the FADEC.
+  <br/>
+  <br/>
+  It doesn't sound like the crew have any input on the relight process; if the switch is on, the FADECs will try anything they can to get the engines lit and accelerating ASAP. Repeatedly switching between off and on will not help this process and there are basically no other controls the crew have, especially with no other power to run the engine starters.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11920057 valign=top><td class=post><a href=https://www.pprune.org/members/328920-the-ancient-geek>The Ancient Geek</a>
+<br/>July 12, 2025, 01:14:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-8.html#post11920057><br/>permalink</a>
+ Post: 11920057</td>
+<td class=post><div class="tcell alt1" id="td_post_11920057">
+ <!-- message -->
+ <div id="post_message_11920057">
+  Why are we concentrating on the engine switches .?
+  <br/>
+  What happened before this to cause the engines to run down, resulting in the crew trying the documented procedure of turning the switches off then on to restart ?.
+  <br/>
+  <br/>
+  Basically they ran out of time to resolve the problem.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11920062 valign=top><td class=post><a href=https://www.pprune.org/members/335524-contact-approach>Contact Approach</a>
+<br/>July 12, 2025, 01:19:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-8.html#post11920062><br/>permalink</a>
+ Post: 11920062</td>
+<td class=post><div class="tcell alt1" id="td_post_11920062">
+ <!-- message -->
+ <div id="post_message_11920062">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      The Ancient Geek
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920057" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Why are we concentrating on the engine switches .?
+     <br/>
+     What happened before this to cause the engines to run down, resulting in the crew trying the documented procedure of turning the switches off then on to restart ?.
+    </div>
+   </div>
+  </div>
+  There are no documented procedures to that effect during takeoff\x85\x85\x85
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11920079 valign=top><td class=post><a href=https://www.pprune.org/members/502872-ltc8k6>LTC8K6</a>
+<br/>July 12, 2025, 01:42:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-9.html#post11920079><br/>permalink</a>
+ Post: 11920079</td>
+<td class=post><div class="tcell alt1" id="td_post_11920079">
+ <!-- message -->
+ <div id="post_message_11920079">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      The Ancient Geek
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920057" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Why are we concentrating on the engine switches .?
+     <br/>
+     What happened before this to cause the engines to run down, resulting in the crew trying the documented procedure of turning the switches off then on to restart ?.
+     <br/>
+     <br/>
+     Basically they ran out of time to resolve the problem.
+    </div>
+   </div>
+  </div>
+  I think the engines were fine until the switches went to "OFF"?
+  <br/>
+  <br/>
+  The takeoff run seems to show a normal acceleration to V1.
+ </div>
+ <!-- / message -->
+</div>
+<p>7 users liked this post.</p>
+</td>
+</tr>
+<tr id=11920081 valign=top><td class=post><a href=https://www.pprune.org/members/150561-pilot-dar>Pilot DAR</a>
+<br/>July 12, 2025, 01:43:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-9.html#post11920081><br/>permalink</a>
+ Post: 11920081</td>
+<td class=post><div class="tcell alt1" id="td_post_11920081">
+ <!-- message -->
+ <div id="post_message_11920081">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    What happened before this to cause the engines to run down, resulting in the crew trying the documented procedure of turning the switches off then on to restart ?
+   </div>
+  </div>
+  Nothing in the report suggests that the engines began to run down before the fuel was selected to cutoff. The report states a sequence of events for power loss which
+  <i>
+   begins
+  </i>
+  with the switches being moved to cutoff. The maximum airspeed was immediately before the switches were moved, so there had not been a power rundown prior to that:
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    The aircraft achieved the maximum recorded airspeed of 180 Knots IAS at about 08:08:42 UTC and immediately thereafter, the Engine 1 and Engine 2 fuel cutoff switches transitioned from RUN to CUTOFF position one after another with a time gap of 01 sec. The Engine N1 and N2 began to decrease from their take-off values as the fuel supply to the engines was cut off.
+   </div>
+  </div>
+ </div>
+ <!-- / message -->
+</div>
+<p>6 users liked this post.</p>
+</td>
+</tr>
+<tr id=11920083 valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
+<br/>July 12, 2025, 01:47:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-9.html#post11920083><br/>permalink</a>
+ Post: 11920083</td>
+<td class=post><div class="tcell alt1" id="td_post_11920083">
+ <!-- message -->
+ <div id="post_message_11920083">
+  <div class="spoiler">
+   <div class="spoiler-title">
+    <strong>
+     Spoiler
+    </strong>
+    <div class="spoiler-toggle" onclick="this.parentNode.nextElementSibling.style.display='';this.nextElementSibling.style.display='';this.style.display='none';" style="">
+     &nbsp;
+     <i class="fa-regular fa-square-plus">
+     </i>
+    </div>
+    <div class="spoiler-toggle" onclick="this.parentNode.nextElementSibling.style.display='none';this.previousElementSibling.style.display='';this.style.display='none';" style="display:none">
+     &nbsp;
+     <i class="fa-regular fa-square-minus">
+     </i>
+    </div>
+   </div>
+   <div class="spoiler-content" style="display:none">
+    <div style="margin:1rem; margin-top:0.3rem;">
+     <div>
+      <label>
+       Quote:
+      </label>
+     </div>
+     <div class="panel alt2" style="border:1px inset">
+      <div>
+       Originally Posted by
+       <strong>
+        The Ancient Geek
+       </strong>
+       <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920057" rel="nofollow" title="View Post">
+        <i class="fa-solid fa-circle-arrow-right">
+        </i>
+       </a>
+      </div>
+      <div style="font-style:italic">
+       Why are we concentrating on the engine switches .?
+       <br/>
+       What happened before this to cause the engines to run down, resulting in the crew trying the documented procedure of turning the switches off then on to restart ?.
+       <br/>
+       <br/>
+       Basically they ran out of time to resolve the problem.
+      </div>
+     </div>
+    </div>
+    The AAIB clearly pulled the N2 data at least out of the EAFR. There is no indication that the engines were operating abnormally prior to being switched off. We also see this:
+    <br/>
+    <div style="margin:1rem; margin-top:0.3rem;">
+     <div>
+      <label>
+       Quote:
+      </label>
+     </div>
+     <div class="panel alt2" style="border:1px inset">
+      The aircraft achieved the
+      <b>
+       maximum recorded airspeed
+      </b>
+      of 180 Knots IAS at about 08:08:42
+      <br/>
+      UTC and
+      <b>
+       immediately thereafter
+      </b>
+      , the Engine 1 and Engine 2 fuel cutoff switches transitioned
+      <br/>
+      from RUN to CUTOFF position one after another with a time gap of 01 sec.
+     </div>
+    </div>
+    You do not see maximum recorded airspeed if the engines are already running down.
+   </div>
+  </div>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Finalveridict
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920058" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <span style="color:#000000">
+      It seems like people are jumping to conclusions about the pilots and letting Boeing off the hook without proper investigation. Instead of providing a professional, detailed transcript of the cockpit voice recorder (CVR), we&rsquo;re just getting casual comments about what the pilot allegedly said. Critical information&mdash;like the timing of transmissions, the checklist items completed before takeoff, and other key details that should be on the CVR&mdash;are essential for understanding what happened in the cockpit, especially since the crash occurred so soon after takeoff. In my view, the preliminary report feels too convenient for certain parties involved.
+     </span>
+    </div>
+   </div>
+  </div>
+  This is a preliminary report. It is quite detailed for a preliminary report.
+  <br/>
+  <br/>
+  Examining the before-takeoff checklists seems like it would be akin to examining the re-arrangement of the deckchairs before the titanic even hit the iceberg.
+  <br/>
+  <br/>
+  The engines were switched off. Unlike Embraer, B &amp; A have no protections stopping you switching an engine off inadvertently. From everything in the report, everything operated exactly as designed. I am not certain of how long the relight window is without windmilling speed, but +- 10 seconds seems entirely reasonable.
+  <br/>
+  <br/>
+  The outstanding question that presumably requires much more in-depth investigation of the wreckage items and CVR audio is whether:
+  <ul>
+   <li>
+    the cutoff switches were operated deliberately (and by who)
+   </li>
+   <li>
+    the cutoff switches were operated inadvertently (and by who)
+   </li>
+   <li>
+    the cutoff switches were bumped (by what) and the guards failed or weren't installed
+   </li>
+   <li>
+    some electrical failure perfectly mimicked both many-pole switches being operated, then being operated again (seems unlikely)
+   </li>
+  </ul>
+ </div>
+ <!-- / message -->
+</div>
+<p>5 users liked this post.</p>
+</td>
+</tr>
+<tr id=11920123 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 12, 2025, 02:55:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-10.html#post11920123><br/>permalink</a>
+ Post: 11920123</td>
+<td class=post><div class="tcell alt1" id="td_post_11920123">
+ <!-- message -->
+ <div id="post_message_11920123">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Tobin
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920120" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Both of the comments above imply that the 10 second wait to set the switches back to RUN is excessive and inexplicable for an "experienced" pilot.
+     <br/>
+    </div>
+   </div>
+  </div>
+  Ever since the two 767 events in the mid 1980's where a pilot - thinking he was activating the supervisory Electronic Engine Control switches - set both engine fuel switches to CUTOFF (fortunately at ~3,000 ft. so the engines had time to relight and recover), the FAA has mandated something called a "Quick Windmill Relight" capability.  Basically - with the engine at high power - the fuel switch is set to CUTOFF, then (IIRC) ten seconds later set back to RUN.  The engine must recover and produce thrust within (again, IIRC) 90 seconds.  It's a very challenging test for the FADEC s/w.
+  <br/>
+  I assume the 10 second pause is based on how long it took the two 767 event pilots to realize their error and return the switches to RUN.
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11920143 valign=top><td class=post><a href=https://www.pprune.org/members/218879-katekebo>katekebo</a>
+<br/>July 12, 2025, 03:30:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-10.html#post11920143><br/>permalink</a>
+ Post: 11920143</td>
+<td class=post><div class="tcell alt1" id="td_post_11920143">
+ <!-- message -->
+ <div id="post_message_11920143">
+  This is pure speculation but I can envision the following sequence of events that would match the timeline and the little we know from the CVR and sequence of events.
+  <br/>
+  - While PF is concentrated on flying the airplane, PNF moves the switches from RUN to CUTOFF in quick succession (for whatever reason).
+  <br/>
+  - PF doesn't notice that the switches have been moved (again, he is concentrated on flying) but soon perceives the loss of thrust and sees a message on EICAS.
+  <br/>
+  - PF looks down to check throttle position. It takes him a couple seconds to realize that the switches are in CUTOFF position.
+  <br/>
+  - PF asks PNF (and his superior) "Why did you cut off the engines?" (or something similar). PNF anwers that he didn't (a lie, but we don't know if deliberate or just confusion / mental breakdown)
+  <br/>
+  - PF realizes that PNF is in a wrong mental state, and attempts to restart the engines. It takes him a couple of seconds to move both switches because his other hand is on the yoke trying to stabilize the airplane.
+  <br/>
+  - By then the airplane has lost too much energy for a successful recovery. One of the pilots calls MAYDAY because he knows that they are about to crash.
+  <br/>
+  This sequence would match the timeline between the initial fuel cutoff, and when the switches were moved back to run position, and would actually indicate great presence of mind and quick decision from the PF.
+  <br/>
+  Again, this is pure speculation but it would match well with the little information we have.
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11920539 valign=top><td class=post><a href=https://www.pprune.org/members/274651-martinebrangan>martinebrangan</a>
+<br/>July 12, 2025, 11:36:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-17.html#post11920539><br/>permalink</a>
+ Post: 11920539</td>
+<td class=post><div class="tcell alt1" id="td_post_11920539">
+ <!-- message -->
+ <div id="post_message_11920539">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      The Brigadier
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920280" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     It's established fact both fuel control switches moved to CUTOFF 4 seconds after Vr, a deliberate guarded action, not easily done accidentally.
+     <br/>
+     The CVR records one pilot asking \x93Why did you cut off?\x94, the other replies \x93I didn\x92t\x94. Then a bland Mayday attributed to the Captain \x93engine failure, returning\x94 in the middle of the crisis.
+     <br/>
+     <br/>
+     The language, if reported correctly, feels strangely detached. No confusion, no urgency, no clear troubleshooting. Not drawing conclusions, but does anyone else see signs of performative behaviour, that is saying the right things outwardly, while being at odds with the underlying cause?
+     <br/>
+     <br/>
+     I appreciate that both crew members lost their lives, however if we avoid discussing uncomfortable patterns, we miss the point of investigation and learning.
+    </div>
+   </div>
+  </div>
+  in that fraught moment of engines not functioning very close to the ground, the last thing to do at this critical moment when you don\x92t really known what has happened is communicate a MayDay. With the buildings looming up fast, the action required is to attempt to restart, as seems to have been done by a pilot putting the fuel switch to \x93run\x94, but too late to rescue aircraft. I think the timing of the MayDay call is strange given that the scenario called for Aviate, Navigate\x85 then Communicate.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=Relight0.html>First</a>
+&nbsp;<a href=Relight1.html>Previous</a>
+&nbsp;<a href=Relight0.html>1</a>
+&nbsp;<a href=Relight1.html>2</a>
+&nbsp;<a href=Relight2.html><b>3</b>
+</a>
+&nbsp;<a href=Relight2.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

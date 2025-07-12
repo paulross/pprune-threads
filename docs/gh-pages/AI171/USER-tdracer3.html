@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune tdracer name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts by user "tdracer" [Posts: 61 Total up-votes: 186 Pages: 4]</h1>
+<body><h1>Posts by user "tdracer" [Posts: 67 Total up-votes: 59 Pages: 4]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=USER-tdracer0.html>First</a>
 &nbsp;<a href=USER-tdracer2.html>Previous</a>
 &nbsp;<a href=USER-tdracer0.html>1</a>
@@ -28,10 +28,268 @@
 </div>
 <p><b>Subjects</b>
  (links are to this post in the relevant subject page so that this post can be seen in context): <a href=FDR5.html#11918722>FDR</a>
-&nbsp;<a href=Fuel_-All-18.html#11918722>Fuel (All)</a>
-&nbsp;<a href=Fuel_Cutoff_Switches7.html#11918722>Fuel Cutoff Switches</a>
+&nbsp;<a href=Fuel_-All-19.html#11918722>Fuel (All)</a>
+&nbsp;<a href=Fuel_Cutoff_Switches9.html#11918722>Fuel Cutoff Switches</a>
 </p>
-<p>9 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 11, 2025, 00:34:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11919310><br/>permalink</a>
+ Post: 11919310</td>
+<td class=post><div class="tcell alt1" id="td_post_11919310">
+ <!-- message -->
+ <div id="post_message_11919310">
+  <span style="color:#000000">
+   This has all been answered in previous posts, but I'll repeat it for those you don't want to look back through something like 150 pages:
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   Thrust Lever Angle (TLA) is measured directly by the FADEC, using a resolver hardwired to and excited by the FADEC. Both FADEC channels have their own resolver input - on most Boeing aircraft it's a common resolver with two sets of electrically isolated windings, however on the 787 it actually uses two mechanically separate resolvers. The resolver is basically read as "sine" and "cosine" which is converted in the angle. This also makes error detection easy, using the sine squared + cosine squared relationship. Any other aircraft systems that use TLA use the TLA signal relayed back to the aircraft by the FADEC.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   The fuel control switch is a two-position multiple pole 'latching' switch - you have to pull it out slightly over detent to move it between the RUN and CUTOFF positions (on other aircraft there is an interposing relay for some of the functions. not sure about the implementation on the 787). Moving the switch to cutoff sends a DC signal to both the High Pressure ShutOff Valve (HPSOV) in the fuel control and the spar valve commanding them to close. HPSOV is solenoid actuated and is near instantaneous, Spar Valve takes ~one second to change positions (yes, this is different than some other airframers that only send the signal to one valve or the other, but it's been standard Boeing design practice since the early 1970s). Both the HPSOV solenoid and the Spar Valve are designed to stay in their last commanded position if airframe power is lost. Moving the switch to CUTOFF also sends a 'reset' signal to the FADEC - meaning the FADEC will be offline for roughly one second. On the 787 (and 777 and 747-8), there is a brief pause (~0.25 seconds) before the shutdown signal is sent to the engine to allow the electrical system to reconfigure to prevent a brief interrupt of electrical power to the rest of the aircraft.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   Pulling the Fire Handle does the same thing as the fuel condition switch - via separate wiring (physically isolated from the fuel switch wiring to help protect from things like rotor burst damage), with the exception of the FADEC reset (since there is no requirement to be able to restart the engine after a Fire Handle shutdown).
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   There is absolutely
+  </span>
+  <i>
+   no
+  </i>
+  <span style="color:#000000">
+   TLA input into either the fuel conditions switch or the Fire Handle - you can shutdown the engine via either
+  </span>
+  <i>
+   regardless
+  </i>
+  <span style="color:#000000">
+   of Thrust Lever Angle.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   All this is standard Boeing design practice (and except for the no-break electrical power transfer) has been for at least 50 years. This is enforced by the Boeing "Design Requirements and Objectives" - DR&amp;O - compliance with is demonstrated by an audit after the final design freeze.
+  </span>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=FADEC9.html#11919310>FADEC</a>
+&nbsp;<a href=Fuel_-All-20.html#11919310>Fuel (All)</a>
+&nbsp;<a href=Fuel_Cutoff_Switches10.html#11919310>Fuel Cutoff Switches</a>
+&nbsp;<a href=Fuel_Cutoff_Switches_-detent-0.html#11919310>Fuel Cutoff Switches (detent)</a>
+&nbsp;<a href=High_Pressure_Shutoff_Valve1.html#11919310>High Pressure Shutoff Valve</a>
+&nbsp;<a href=RUN-CUTOFF1.html#11919310>RUN/CUTOFF</a>
+&nbsp;<a href=Relight2.html#11919310>Relight</a>
+&nbsp;<a href=Spar_Valves1.html#11919310>Spar Valves</a>
+&nbsp;<a href=TLA_-Thrust_Lever_Angle-0.html#11919310>TLA (Thrust Lever Angle)</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 11, 2025, 23:12:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-6.html#post11919974><br/>permalink</a>
+ Post: 11919974</td>
+<td class=post><div class="tcell alt1" id="td_post_11919974">
+ <!-- message -->
+ <div id="post_message_11919974">
+  OK, a couple of informed comments, again with the disclaimer that I have very little first hand knowledge of the 787.
+  <br/>
+  <br/>
+  Every single engine parameter I've seen on a DFDR readout has been recorded at 1/second (most parameters), or slower. I've never seen an engine parameter recorded at more than once/second.
+  <br/>
+  The recorder doesn't do an instantaneous snapshot - it cycles through the thousands of recorded parameters. So a once second difference on the data could - in reality - be anywhere from 0.01 seconds to 1.99 seconds. If it matters, a deep dive into the avionics and FDR logic could narrow that time interval down. That being said, moving both switches to cutoff could happen in about a second. The switches make a rather distinct noise (especially if moved rapidly) so the CVR should give better resolution.
+  <br/>
+  <br/>
+  There have been instances in the past where the locking tab on the switch has been broken or 'worn down' from heavy use. But that's been seen on
+  <i>
+   very
+  </i>
+  high cycle aircraft - usually 737s that fly short hops. No memory of ever hearing of an issue with relatively new 787s that are - by nature - long range aircraft and don't get a lot of cycles.
+  <br/>
+  <br/>
+  On the 747-400, the fuel switches are a 'break before make' design with a distinct gap of ~0.050 seconds during a normal switch cycle (it's a long, somewhat painful story about why I know that...). I don't know the specifics of the 787, but I'd be very surprised if it's any different.
+  <br/>
+  <br/>
+  BTW, if the investigators had reason to believe the switches somehow moved on their own, I think a fleet wide inspection would have been ordered by now.
+  <br/>
+  <br/>
+  I keep coming back to my 'muscle memory' hypothesis...
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=CVR5.html#11919974>CVR</a>
+&nbsp;<a href=DFDR3.html#11919974>DFDR</a>
+&nbsp;<a href=FDR6.html#11919974>FDR</a>
+&nbsp;<a href=Fuel_-All-24.html#11919974>Fuel (All)</a>
+&nbsp;<a href=Fuel_Cutoff_Switches14.html#11919974>Fuel Cutoff Switches</a>
+&nbsp;<a href=Parameters2.html#11919974>Parameters</a>
+</p>
+<p>25 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 11, 2025, 23:42:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-7.html#post11920011><br/>permalink</a>
+ Post: 11920011</td>
+<td class=post><div class="tcell alt1" id="td_post_11920011">
+ <!-- message -->
+ <div id="post_message_11920011">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Abbas Ibn Firnas
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11919999" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     A point already mentioned, but has had very little subsequent discussion.
+     <br/>
+     <b>
+      Location and functionality of these switches.
+     </b>
+     Being that they are permitted to allow fuel isolation at take off thrust, would it be more appropriate to locate them in a position less likely to be inadvertently or accidentally manipulated. Or at least, have them fully guarded?
+    </div>
+   </div>
+  </div>
+  Boeing has put the fuel control switches in more or less that same position starting with the 707 (it may go back even further).  Over a billion flight cycles on 707, 727, 737, 747, 757, 767, 777, and 787 (not to mention various military installations such as the KC-135.
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Fuel_-All-24.html#11920011>Fuel (All)</a>
+&nbsp;<a href=Fuel_Cutoff_Switches14.html#11920011>Fuel Cutoff Switches</a>
+&nbsp;<a href=Switch_Guards1.html#11920011>Switch Guards</a>
+</p>
+<p>11 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 12, 2025, 01:37:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-9.html#post11920074><br/>permalink</a>
+ Post: 11920074</td>
+<td class=post><div class="tcell alt1" id="td_post_11920074">
+ <!-- message -->
+ <div id="post_message_11920074">
+  Wow, 5 hours from tread initiation to hamster wheel type repeating of the same theories over and over again (some already discounted by knowledgeable people).
+  <br/>
+  <br/>
+  That must be some sort of record...
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects:</b>
+ None</p>
+<p>15 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 12, 2025, 02:17:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-9.html#post11920102><br/>permalink</a>
+ Post: 11920102</td>
+<td class=post><div class="tcell alt1" id="td_post_11920102">
+ <!-- message -->
+ <div id="post_message_11920102">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      The Ancient Geek
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920085" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Yebbut did the physical switches move to off or did the system see them as being off by looking at the wiring ?
+     <br/>
+     How do the recorders monitor the switches ?
+    </div>
+   </div>
+  </div>
+  Think about your question - how would the recorder know the actual switch position other than electrically?  Some all-seeing electric eye in the flight deck watching the switch?
+  <br/>
+  This stuff is getting absolutely silly
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_wall.gif" title="Ugh"/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects:</b>
+ None</p>
+<p>6 users liked this post.</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 12, 2025, 02:55:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-10.html#post11920123><br/>permalink</a>
+ Post: 11920123</td>
+<td class=post><div class="tcell alt1" id="td_post_11920123">
+ <!-- message -->
+ <div id="post_message_11920123">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Tobin
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920120" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Both of the comments above imply that the 10 second wait to set the switches back to RUN is excessive and inexplicable for an "experienced" pilot.
+     <br/>
+    </div>
+   </div>
+  </div>
+  Ever since the two 767 events in the mid 1980's where a pilot - thinking he was activating the supervisory Electronic Engine Control switches - set both engine fuel switches to CUTOFF (fortunately at ~3,000 ft. so the engines had time to relight and recover), the FAA has mandated something called a "Quick Windmill Relight" capability.  Basically - with the engine at high power - the fuel switch is set to CUTOFF, then (IIRC) ten seconds later set back to RUN.  The engine must recover and produce thrust within (again, IIRC) 90 seconds.  It's a very challenging test for the FADEC s/w.
+  <br/>
+  I assume the 10 second pause is based on how long it took the two 767 event pilots to realize their error and return the switches to RUN.
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=FAA3.html#11920123>FAA</a>
+&nbsp;<a href=FADEC10.html#11920123>FADEC</a>
+&nbsp;<a href=Fuel_-All-25.html#11920123>Fuel (All)</a>
+&nbsp;<a href=Fuel_Cutoff_Switches16.html#11920123>Fuel Cutoff Switches</a>
+&nbsp;<a href=RUN-CUTOFF2.html#11920123>RUN/CUTOFF</a>
+&nbsp;<a href=Relight2.html#11920123>Relight</a>
+</p>
+<p>2 users liked this post.</p>
 </td>
 </tr>
 </table>
