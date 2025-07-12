@@ -251,7 +251,7 @@ class Thread:
     def sort_by_sequence_number(self) -> None:
         """Sorts the posts by their sequence number.
         This is useful when combining multiple threads and you want to keep the posts in time order."""
-        self.posts.sort(key=lambda p: p.sequence_number)
+        self.posts.sort(key=lambda p: p.sequence_num)
 
     def add_post(self, post: Post):
         """Add a post."""
