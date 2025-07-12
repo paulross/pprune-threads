@@ -105,6 +105,7 @@ def main():
     thread = thread_struct.Thread()
     for archive in args.archives:
         read_html.update_whole_thread(archive, thread)
+    thread.sort_by_sequence_number()
     word_count = 0
     for post in thread.posts:
         word_count += len(post.words)
