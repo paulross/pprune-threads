@@ -217,7 +217,7 @@ class Post:
         Internal links are ignored."""
         ret = []
         for node in self.node.find_all('a'):
-            if 'rel' in node.attrs and node.attrs['rel'] == ['nofollow',]:
+            if 'rel' in node.attrs and node.attrs['rel'] == ['nofollow', ]:
                 continue
             href = node.get('href')
             if href is not None:
@@ -247,6 +247,11 @@ class Thread:
 
     def __getitem__(self, item) -> Post:
         return self.posts[item]
+
+    def sort_by_sequence_number(self) -> None:
+        """Sorts the posts by their sequence number.
+        This is useful when combining multiple threads and you want to keep the posts in time order."""
+        self.posts.sort(key=lambda p: p.sequence_number)
 
     def add_post(self, post: Post):
         """Add a post."""

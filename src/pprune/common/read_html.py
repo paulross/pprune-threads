@@ -41,8 +41,8 @@ import bs4
 import dateparser
 import requests
 
-import pprune.common.thread_struct
 import pprune.common.log_config
+import pprune.common.thread_struct
 
 logger = logging.getLogger(__file__)
 
@@ -264,6 +264,7 @@ def html_node_like_usernames(node: bs4.element.Tag) -> typing.List[pprune.common
             for i in range(int(post_thanks_box_node.text)):
                 ret.append(pprune.common.thread_struct.User(str(i), f'Mock_user_{i}'))
     return ret
+
 
 def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[pprune.common.thread_struct.Post]:
     """Returns a Post object from an HTML node."""
