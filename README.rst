@@ -14,6 +14,7 @@ Original threads:
 
 1. https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html
 2. https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html
+3. https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html
 
 There is also https://www.pprune.org/accidents-close-calls/666714-moderation-air-india-accident-threads.html
 
@@ -58,13 +59,39 @@ This gives:
 
     <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html?ispreloading=1" title="Last Page - Results 1,061 to 1,074 of 1,074">Last <i class="fas fa-angle-double-right"></i></a></li>```
 
-So the last page is ``https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html``
+So the last page is ``https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html``
 
 And all the rest:
 
 .. code-block:: shell
 
-    $ time curl https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-[2-56].html -o "666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-#1.html"
+    $ time curl https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-[2-72].html -o "666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-#1.html"
+    ...
+    real	0m35.544s
+    user	0m0.176s
+    sys	0m0.356s
+
+Then:
+
+.. code-block:: shell
+
+    $ cd threads/AI171-3
+    $ curl https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html -o "667141-preliminary-air-india-crash-report-published.html"
+    $ grep 'Last Page' 667141-preliminary-air-india-crash-report-published.html
+
+This gives:
+
+.. code-block:: shell
+
+    	<li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-15.html" title="Last Page - Results 281 to 297 of 297">Last <i class="fa-solid fa-angles-right"></i></a></li>
+
+So the last page is ``667141-preliminary-air-india-crash-report-published-15.html``
+
+And all the rest:
+
+.. code-block:: shell
+
+    $ time curl https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-[2-15].html -o "667141-preliminary-air-india-crash-report-published-#1.html"
     ...
     real	0m35.544s
     user	0m0.176s

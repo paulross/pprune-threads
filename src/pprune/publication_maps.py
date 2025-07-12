@@ -432,7 +432,8 @@ class AirIndia171(PublicationMap):
  on 12 June 2025:
     <ol>
         <li><a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html">Part One [pprune]</a> (now closed)</li>
-        <li><a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html">Part Two [pprune]</a></li>
+        <li><a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html">Part Two [pprune]</a> (now closed)</li>
+        <li><a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html">Published Report [pprune]</a></li>
         <li>There is also a thread on the
             <a href="https://www.pprune.org/accidents-close-calls/666714-moderation-air-india-accident-threads.html">moderation of these threads [pprune]</a>
              (this is not included in this analysis)
