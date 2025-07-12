@@ -518,6 +518,15 @@ class AirIndia171(PublicationMap):
         '51': '51 Day Issue',
         '51day': '51 Day Issue',
         'detent': 'Fuel Cutoff Switches (detent)',
+        'detents': 'Fuel Cutoff Switches (detent)',
+        'cutoff': 'Fuel Cutoff Switches',
+        'guards': 'Switch Guards',
+        'guarded': 'Switch Guards',
+        'honeywell': 'Honeywell',
+        # Slightly hacky way to capture posts that reference the timeline in the preliminary report.
+        # 08:08:42 E1 Fuel Cutoff Switch RUN -> CUTOFF, 180 kts
+        # 08:08:43 E2 Fuel Cutoff Switch RUN -> CUTOFF
+        '080842': 'Timeline (Preliminary Report)',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -526,7 +535,7 @@ class AirIndia171(PublicationMap):
             'AI171', 'ADSB', 'APU', 'BBC', 'CCTV', 'FDR', 'V1', 'V2', 'EAFR',
             'FADEC', 'FAA', 'TOGA', 'VNAV', 'NTSB', 'MEL', 'DFDR', 'FBW', 'HPSOV', 'FCOM', 'FR24', 'CVR', 'EFATO',
             'RIPS', 'TRU', 'ARINC', 'DGCA',
-            'ICAO',
+            'ICAO', 'EICAS',
         }
     }
     CAPS_WORDS_MAP_ALL = {
@@ -548,8 +557,11 @@ class AirIndia171(PublicationMap):
         'HPSOV': "High Pressure Shutoff Valve",
         'FR24': "FlightRadar24",
         'LD': 'Lift/Drag Ratio',
-        'CUTOFF': 'Fuel Cutoff Switches',
         'TLA': 'TLA (Thrust Lever Angle)',
+        'RUN': 'RUN/CUTOFF',
+        'CUTOFF': 'RUN/CUTOFF',
+        'SAIB': 'Special Airworthiness Information Bulletin',
+        'NM-18-33': 'SAIB NM-18-33',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps
@@ -611,19 +623,19 @@ class AirIndia171(PublicationMap):
             ('suction', 'feed'): 'Fuel Pumps',
 
             ('gear', 'doors'): 'Gear Retraction',
-            ('gear', 'lever'): 'Gear Retraction',
             ('gear', 'retraction'): 'Gear Retraction',
             ('gear', 'down'): 'Gear Retraction',
             ('gear', 'selected'): 'Gear Retraction',
             ('landing', 'gear'): 'Gear Retraction',
             ('doors', 'open'): 'Gear Retraction',
 
+            ('gear', 'lever'): 'Gear Lever',
+
             ('bogie', 'tilting'): 'MLG Tilt',
             ('bogies', 'tilt'): 'MLG Tilt',
             ('gear', 'tilt'): 'MLG Tilt',
             ('tilt', 'position'): 'MLG Tilt',
             ('tipped', 'forward'): 'MLG Tilt',
-            # ('gear', 'tilt') Is found with comon words (200). Maybe need a test?
 
             ('gear', 'flaps',): 'Flaps vs Gear',
 
@@ -711,6 +723,10 @@ class AirIndia171(PublicationMap):
 
             ('spar', 'valve',): 'Spar Valves',
             ('spar', 'valves',): 'Spar Valves',
+
+            ('startle', 'effect',): 'Startle Effect',
+
+            ('51', 'days',): '51 Day Issue',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -733,6 +749,11 @@ class AirIndia171(PublicationMap):
             ('cut', 'off', 'switches'): 'Fuel Cutoff Switches',
             ('fuel', 'control', 'switches'): 'Fuel Cutoff Switches',
             ('engine', 'cutoff', 'switches'): 'Fuel Cutoff Switches',
+
+            ('cockpit', 'area', 'audio'): 'Cockpit Area Audio',
+            ('cockpit', 'area', 'microphone'): 'Cockpit Area Audio',
+
+            ('landing', 'gear', ' lever'): 'Gear Lever',
         },
         4: {
             ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine Driven)',
@@ -746,6 +767,7 @@ class AirIndia171(PublicationMap):
             ('aviation', 'week', 'space', 'technology'): 'Aviation Week & Space Technology',
             ('indian', 'accident', 'investigation', 'team'): 'AAIB (IDGA)',
             ('indian', 'civil', 'air', 'authority'): 'DGCA',
+            ('special', 'airworthiness', 'information', 'bulletin',): 'Special Airworthiness Information Bulletin',
         },
         5: {
             ('digital', 'flight', 'data', 'acquisition', 'unit',): 'Digital Flight Data Acquisition Unit',
@@ -799,6 +821,8 @@ class AirIndia171(PublicationMap):
         'Fuel Cutoff Switches': {'Fuel (All)', },
 
         'Fuel Cutoff Switches (detent)': {'Fuel (All)', 'Fuel Cutoff Switches', },
+
+        'Timeline (Preliminary Report)': {'Preliminary Report', },
     }
     # The is the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
