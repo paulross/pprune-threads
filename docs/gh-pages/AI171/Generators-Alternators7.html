@@ -357,7 +357,6 @@
  </div>
  <!-- / edit note -->
 </div>
-<p>1 user liked this post.</p>
 </td>
 </tr>
 <tr id=11920093 valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
@@ -435,7 +434,6 @@
  </div>
  <!-- / message -->
 </div>
-<p>1 user liked this post.</p>
 </td>
 </tr>
 <tr id=11920474 valign=top><td class=post><a href=https://www.pprune.org/members/554665-nachtmusak>nachtmusak</a>
@@ -469,42 +467,7 @@
   </a>
  </div>
  <!-- / message -->
- <aside class="text-center" style="">
-  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
-  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
-  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
-   <script>
-    googletag.cmd.push(function() {
-					if (window.googletag && googletag.apiReady) {
-						
-						
-						
-				// this is a new code for OpenWrap
-				var initAdDisplay = function() {
-						googletag.display('gpt-adslot-4');
-						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
-						console.log('Requested ad unit 4');
-						
-				}
-				if (typeof PWT.requestBids === 'function') {
-					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
-				), function (adUnitsArray) {
-						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
-						initAdDisplay();
-					});
-				}
-				else {
-					initAdDisplay();
-				}
-			
-					}
-				});
-   </script>
-  </div>
-  <!-- End AdSlot 4 -->
- </aside>
 </div>
-<p>1 user liked this post.</p>
 </td>
 </tr>
 <tr id=11920495 valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
@@ -532,98 +495,104 @@
     </div>
     <div style="font-style:italic">
      The accident aircraft was written up for a status message of &rdquo;STAB POS XDCR&rdquo; on the previous flight, which is a message relating to implausible data from the stab trim switches. It was released from maintenance (according to the preliminary report) at 06:40UTC ahead of an 07:40UTC departure (the crash flight) with &rdquo;no fault found&rdquo;.
-     <br/>
-     <br/>
-     On the 787-8, as all modern planes, switches are not cabled as dry closing contacts all the way from the switch poles to the affected end devices (FADECs in the case of fuel cutoff switches), but rather connect locally to an analogue/digital converter to encode the switch position data onto the digital comms bus ARINC629 which allows all aircraft systems to talk to one another.
-     <br/>
-     <br/>
-     Are the fuel cutoff switches, which are positioned adjacent to the stab trim switches, connected to the same ADC module which produced the error message on the previous flight, which maintenance was unable to resolve before the accident flight took off? I do not know, but it must be worthy of being looked into.
+     <br>
+      <br>
+       On the 787-8, as all modern planes, switches are not cabled as dry closing contacts all the way from the switch poles to the affected end devices (FADECs in the case of fuel cutoff switches), but rather connect locally to an analogue/digital converter to encode the switch position data onto the digital comms bus ARINC629 which allows all aircraft systems to talk to one another.
+       <br>
+        <br>
+         Are the fuel cutoff switches, which are positioned adjacent to the stab trim switches, connected to the same ADC module which produced the error message on the previous flight, which maintenance was unable to resolve before the accident flight took off? I do not know, but it must be worthy of being looked into.
+        </br>
+       </br>
+      </br>
+     </br>
     </div>
    </div>
   </div>
   I believe the fuel cutoff switches are one of the exceptions to this. They are direct wired. Stab trim may well be too.
-  <br/>
-  <br/>
-  I think they're called remote data concentrators - in many cases it is a conversion from a direct digital input to a bus signal; electronics would not call it an 'analog' input unless it was actually measuring a quantitative value.
-  <br/>
-  <br/>
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      Musician
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920377" rel="nofollow" title="View Post">
-      <i class="fa-solid fa-circle-arrow-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     <b>
-      Was the RAT deployed manually?
-     </b>
+  <br>
+   <br>
+    I think they're called remote data concentrators - in many cases it is a conversion from a direct digital input to a bus signal; electronics would not call it an 'analog' input unless it was actually measuring a quantitative value.
+    <br>
      <br/>
-     The report says,
+     <div style="margin:1rem; margin-top:0.3rem;">
+      <div>
+       <label>
+        Quote:
+       </label>
+      </div>
+      <div class="panel alt2" style="border:1px inset">
+       <div>
+        Originally Posted by
+        <strong>
+         Musician
+        </strong>
+        <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920377" rel="nofollow" title="View Post">
+         <i class="fa-solid fa-circle-arrow-right">
+         </i>
+        </a>
+       </div>
+       <div style="font-style:italic">
+        <b>
+         Was the RAT deployed manually?
+        </b>
+        <br/>
+        The report says,
+        <br/>
+        <i>
+         As per the EAFR data both engines N2 values passed below minimum idle speed, and the
+        </i>
+        <i>
+         RAT hydraulic pump began supplying hydraulic power at about 08:08:47 UTC.
+        </i>
+        <br/>
+        This was 5 seconds after the fuel was cut off.
+        <br/>
+        <br/>
+        It suggests to me that the RAT deployment was initiated while the engines were still above idle and generating electrical power. Obviously one of the pilots could have done it via depressing the switch, as it's a "dual engine failure/stall" memory item (see
+        <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11918946" target="_blank">
+         Air India Ahmedabad accident 12th June 2025 Part 2
+        </a>
+        ) that won't hurt anything.
+        <br/>
+        <br/>
+        Is there a way for the RAT to deploy while the engines are still above idle?
+       </div>
+      </div>
+     </div>
+     I think I have seen a previous reference that the generators are disconnected when you select the switches to cutoff (or very shortly afterwards), not when the engine actually drops below idle. That could account for a few seconds of spool down time.
      <br/>
-     <i>
-      As per the EAFR data both engines N2 values passed below minimum idle speed, and the
-     </i>
-     <i>
-      RAT hydraulic pump began supplying hydraulic power at about 08:08:47 UTC.
-     </i>
      <br/>
-     This was 5 seconds after the fuel was cut off.
-     <br/>
-     <br/>
-     It suggests to me that the RAT deployment was initiated while the engines were still above idle and generating electrical power. Obviously one of the pilots could have done it via depressing the switch, as it's a "dual engine failure/stall" memory item (see
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-70.html#post11918946" target="_blank">
-      Air India Ahmedabad accident 12th June 2025 Part 2
-     </a>
-     ) that won't hurt anything.
-     <br/>
-     <br/>
-     Is there a way for the RAT to deploy while the engines are still above idle?
-    </div>
-   </div>
-  </div>
-  I think I have seen a previous reference that the generators are disconnected when you select the switches to cutoff (or very shortly afterwards), not when the engine actually drops below idle. That could account for a few seconds of spool down time.
-  <br/>
-  <br/>
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      AfricanSkies
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920489" rel="nofollow" title="View Post">
-      <i class="fa-solid fa-circle-arrow-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     What is unusual to me is the 4 second gap between moving Eng 1 fuel switch from cutoff to run, and moving Eng 2 fuel switch from cutoff to run.
-     <br/>
-     One would imagine that in this situation, speed of response would have been critical.
-    </div>
-   </div>
-  </div>
-  That is a very good question IMHO.
+     <div style="margin:1rem; margin-top:0.3rem;">
+      <div>
+       <label>
+        Quote:
+       </label>
+      </div>
+      <div class="panel alt2" style="border:1px inset">
+       <div>
+        Originally Posted by
+        <strong>
+         AfricanSkies
+        </strong>
+        <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-18.html#post11920489" rel="nofollow" title="View Post">
+         <i class="fa-solid fa-circle-arrow-right">
+         </i>
+        </a>
+       </div>
+       <div style="font-style:italic">
+        What is unusual to me is the 4 second gap between moving Eng 1 fuel switch from cutoff to run, and moving Eng 2 fuel switch from cutoff to run.
+        <br/>
+        One would imagine that in this situation, speed of response would have been critical.
+       </div>
+      </div>
+     </div>
+     That is a very good question IMHO.
+    </br>
+   </br>
+  </br>
  </div>
  <!-- / message -->
 </div>
-<p>1 user liked this post.</p>
 </td>
 </tr>
 </table>

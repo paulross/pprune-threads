@@ -562,7 +562,8 @@ class AirIndia171(PublicationMap):
         'RUN': 'RUN/CUTOFF',
         'CUTOFF': 'RUN/CUTOFF',
         'SAIB': 'Special Airworthiness Information Bulletin',
-        'NM-18-33': 'SAIB NM-18-33',
+        # NM-18-33 without punctuation.
+        'NM1833': 'SAIB NM-18-33',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps

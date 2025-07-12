@@ -266,6 +266,8 @@ def write_index_most_upvoted_posts_table(
                 ' "User Name" links are to the pprune user.'
                 ' "Permalink" links is to the post on pprune.'
             )
+        with element(index, 'p'):
+            index.write('NOTE: Up-votes from closed threads maybe lost.')
         post_count = 0
         with element(index, 'table', _class="indextable"):
             _write_table_header(['Up-votes', 'Text (Quoted Text Removed)', 'User Name', 'Permalink', ], index)
