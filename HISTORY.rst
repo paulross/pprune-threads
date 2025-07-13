@@ -1,6 +1,12 @@
 History
 =======
 
+Alpha Release (Thread: July 13, 2025, 10:57:00)
+-----------------------------------------------
+
+- Build threads up to July 13, 2025, 10:57:00 (built on July 13, 2025, 12:02:17).
+- Add subjects: "Action slip", "AvHerald", "Human Factors", 'Pilot "Why did you cut off"'.
+
 Alpha Release (Thread: July 12, 2025, 11:59:00)
 -----------------------------------------------
 

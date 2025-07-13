@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune RAT (Deployment) name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts about: "RAT (Deployment)" [Posts: 377 Pages: 19]</h1>
+<body><h1>Posts about: "RAT (Deployment)" [Posts: 374 Pages: 19]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=RAT_-Deployment-0.html>First</a>
 &nbsp;<a href=RAT_-Deployment-12.html>Previous</a>
 &nbsp;<a href=RAT_-Deployment-3.html>4</a>
@@ -905,154 +905,6 @@
 </div>
 </td>
 </tr>
-<tr id=11903825 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
-<br/>June 16, 2025, 22:01:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-6.html#post11903825><br/>permalink</a>
- Post: 11903825</td>
-<td class=post><div class="tcell alt1" id="td_post_11903825">
- <!-- message -->
- <div id="post_message_11903825">
-  Something that occurred to me after I went to bed last night: My assumption that the FDR readouts would rapidly reveal the cause may be flawed.
-  <br>
-   <br>
-    Let me explain.
-    <br>
-     <br>
-      The consensus is that both engines quit shortly after liftoff (that assumes that the RAT did in fact deploy). At least one of the data recorders has battery backup, so it should have kept functioning when all aircraft power was lost.
-      <br>
-       <br>
-        However...
-        <br>
-         <br/>
-         Over the years, I've looked at lots and lots of digital flight data recorder outputs when investigating some sort of incident or other engine anomaly, So I have become rather familiar with some of the interesting characteristics of DFDR data.
-         <br/>
-         <br/>
-         On the 767 and 747-400, when you shutdown an engine and the IDG goes offline, there is a momentary 'glitch' in the electrical power system as it reconfigures for the available power source - this is why you see the flight deck displays flicker and return, and the cabin lights momentarily flicker. As a result, most of the avionics boxes 'reset' - this is quick, but it's not instantaneous. This shows up in the FDR data - sometimes as 'no valid data' for a few seconds, or as garbage readings of zero or 'full scale'. Now, looking at the FDR data, it's easy to simply disregard the data, so normally no big deal.
-         <br/>
-         <br/>
-         Starting with the 777 (and on the 787 and 747-8), this electrical power glitch was 'fixed' - there is slight delay (~quarter of a second IIRC) before the fuel cutoff signal is sent to the engine - during which the electrical system reconfiguration takes place so no more 'glitch' during a normal engine shutdown...Except whatever happened to these engines wasn't 'normal'.
-         <br/>
-         <br/>
-         If there is a fuel cut at high power, the engine spools down incredibly rapidly - a second or two from max power to sub-idle. Assuming the fuel cut wasn't commanded by the flight deck fuel switches, the electrical system won't know it's coming, so it can't reconfigure until after the engine generators drop offline - and you're going to get that power glitch. Nearly every avionics box on the aircraft will reset due to this electrical glitch, and the FDR isn't going to get useful data for a few seconds (and then, only from the stuff that's on the battery bus).
-         <br/>
-         <br/>
-         Whatever happened, happened quickly - it's quite possible that whatever initiated the high-power fuel cut didn't get recorded.
-        </br>
-       </br>
-      </br>
-     </br>
-    </br>
-   </br>
-  </br>
- </div>
- <!-- / message -->
- <!-- edit note -->
- <div class="smallfont">
-  <hr>
-   <em>
-    Last edited by T28B; 16th June 2025 at
-    <span class="time">
-     10:16
-    </span>
-    .
-							
-							
-								Reason: White Space Is Your Friend
-   </em>
-  </hr>
- </div>
- <!-- / edit note -->
-</div>
-</td>
-</tr>
-<tr id=11903839 valign=top><td class=post><a href=https://www.pprune.org/members/302789-syseng68k>syseng68k</a>
-<br/>June 16, 2025, 22:23:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-6.html#post11903839><br/>permalink</a>
- Post: 11903839</td>
-<td class=post><div class="tcell alt1" id="td_post_11903839">
- <!-- message -->
- <div id="post_message_11903839">
-  tdracer:
-  <br/>
-  <br/>
-  "What sort of 'confirmation' do you have in mind - the regulator mandate that resulted in TCMA basically says we can't take credit for the flight crew"
-  <br/>
-  <br/>
-  I had just that in mind, as any automated action that could shut down both engines really should have pilot confirmation, imho, but looks like the regulators may not have considered all possible scenarios.
-  <br/>
-  <br/>
-  Another question, maybe a complete red herring: Is the TCMA a completely self contained module with it's own processor and software, (possibly the best option) or is it part the FADEC software package, perhaps just a task in a real time multitasking system ?. If the latter, that would open a whole rabbit warren of possibilities.
-  <br/>
-  <br/>
-  From all the evidence thus far, it looks like the RAT did deploy, plus other data, which means there was likely a complete electrical power failure. The idea that all four generators and controls would fail at once doesn't make sense, so that doesn't leave much else as the next step.
-  <br/>
-  <br/>
-  <br/>
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
-<tr id=11903843 valign=top><td class=post><a href=https://www.pprune.org/members/34502-fdr>fdr</a>
-<br/>June 16, 2025, 22:32:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-6.html#post11903843><br/>permalink</a>
- Post: 11903843</td>
-<td class=post><div class="tcell alt1" id="td_post_11903843">
- <!-- message -->
- <div id="post_message_11903843">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      tdracer
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11903825" rel="nofollow" title="View Post">
-      <i class="fa-solid fa-circle-arrow-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     Something that occurred to me after I went to bed last night: My assumption that the FDR readouts would rapidly reveal the cause may be flawed.
-     <br/>
-     <br/>
-     Let me explain.
-     <br/>
-     <br/>
-     The consensus is that both engines quit shortly after liftoff (that assumes that the RAT did in fact deploy). At least one of the data recorders has battery backup, so it should have kept functioning when all aircraft power was lost.
-     <br/>
-     <br/>
-     However...
-     <br/>
-     <br/>
-     Over the years, I've looked at lots and lots of digital flight data recorder outputs when investigating some sort of incident or other engine anomaly, So I have become rather familiar with some of the interesting characteristics of DFDR data.
-     <br/>
-     <br/>
-     On the 767 and 747-400, when you shutdown an engine and the IDG goes offline, there is a momentary 'glitch' in the electrical power system as it reconfigures for the available power source - this is why you see the flight deck displays flicker and return, and the cabin lights momentarily flicker. As a result, most of the avionics boxes 'reset' - this is quick, but it's not instantaneous. This shows up in the FDR data - sometimes as 'no valid data' for a few seconds, or as garbage readings of zero or 'full scale'. Now, looking at the FDR data, it's easy to simply disregard the data, so normally no big deal.
-     <br/>
-     <br/>
-     Starting with the 777 (and on the 787 and 747-8), this electrical power glitch was 'fixed' - there is slight delay (~quarter of a second IIRC) before the fuel cutoff signal is sent to the engine - during which the electrical system reconfiguration takes place so no more 'glitch' during a normal engine shutdown...Except whatever happened to these engines wasn't 'normal'.
-     <br/>
-     <br/>
-     If there is a fuel cut at high power, the engine spools down incredibly rapidly - a second or two from max power to sub-idle. Assuming the fuel cut wasn't commanded by the flight deck fuel switches, the electrical system won't know it's coming, so it can't reconfigure until after the engine generators drop offline - and you're going to get that power glitch. Nearly every avionics box on the aircraft will reset due to this electrical glitch, and the FDR isn't going to get useful data for a few seconds (and then, only from the stuff that's on the battery bus).
-     <br/>
-     <br/>
-     Whatever happened, happened quickly - it's quite possible that whatever initiated the high-power fuel cut didn't get recorded.
-    </div>
-   </div>
-  </div>
-  True, I would bet that the voltage regulating architecture of the voice recorder at least will give useful information for a short time around the loss of power, as it did for the Lockerbie CVR using far less sophisticated recorder systems. That was sufficient to show the pressure pulse in the fuselage and to give a fairly good idea of where the explosion had emanated from. TWA was similar, a bigger bang though. Would be listening for any mechanical noises related to the fuel switches, and frankly I doubt that they existed, but they would be recorded.
-  <br/>
-  <br/>
-  If the cause is what I have suggested it will dificult to get direct evidence of that case, as it was for the QFA072 event as well. Like icing cases, a water ingress into the avionics is going to be a tough investigation, water would have been sprayed all over the wreckage in the aftermath. Dousing the E/E bay with 20 or 30 gallons of water will be an expensive investigative exercise to do in a real plane, with engines running. Would not want to be observing up close.
-  <br/>
- </div>
- <!-- / message -->
-</div>
-</td>
-</tr>
 <tr id=11903844 valign=top><td class=post><a href=https://www.pprune.org/members/9953-feathers-mcgraw>Feathers McGraw</a>
 <br/>June 16, 2025, 22:33:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-6.html#post11903844><br/>permalink</a>
  Post: 11903844</td>
@@ -1302,6 +1154,270 @@
   <br/>
  </div>
  <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11903903 valign=top><td class=post><a href=https://www.pprune.org/members/484456-dragon6172>dragon6172</a>
+<br/>June 17, 2025, 01:30:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903903><br/>permalink</a>
+ Post: 11903903</td>
+<td class=post><div class="tcell alt1" id="td_post_11903903">
+ <!-- message -->
+ <div id="post_message_11903903">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Aerospace101
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11903849" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I previously speculated the forward truck tilt was proof the gear had been selected UP and the retraction sequence was interrupted.
+     <br/>
+     <br/>
+     I\x92m not so sure now and believe there is a different conclusion from this non-normal gear position.
+     <br/>
+     <br/>
+     In normal retraction sequence the gear doors open almost instantaneously after the forward truck tilt. It does seem coincidental the tilt was completed while no indication of the doors opening is visible on the rooftop video, which would suggest hydraulic failure at that exact moment; this precise timing of interruption in the retraction sequence feels unlikely. So is there a more likely answer for the forward truck tilt that does not involve movement of the gear lever?
+     <br/>
+     <br/>
+     I suspect it\x92s more likely that C hydraulics lost power
+     <u>
+      prior
+     </u>
+     to rotation, as a consequence the truck could not tilt
+     <u>
+      rearward
+     </u>
+     during rotation as it normally should. Therefore it\x92s probable it always stayed in a neutral or forward tilt position from the take off run until we see it in the rooftop video. If the gear was behaving normally, and the crew had omitted to retract, it should be hanging rearwards. Watch any 787-8 takeoff video and you can see at rotation all 4 main wheels stay on the runway as the aircraft rotates. Just after wheels up they tilt rearwards. It\x92s a very subtle position change.
+     <br/>
+     <br/>
+     If the gear was always in a neutral or forward truck tilt position then this undermines the theory that retraction sequence was interrupted. It insinuates the C hydraulic and electrical failure happened
+     <u>
+      prior
+     </u>
+     to main wheels lift off.
+     <br/>
+     <br/>
+     For this reason I believe we cannot assume that gear UP was selected nor that retraction was interrupted. I\x92m seeing lots of social media posts which suggest the forward tilt means gear was in retraction and I don\x92t believe it was now.
+     <br/>
+     <br/>
+     I think the truck tilt position is key to understanding the timeline of system failures and whether the automatic RAT deployment was triggered by power failures or engine(s) failure. The question remains, did loss of center hydraulics happen before or after loss of thrust?
+    </div>
+   </div>
+  </div>
+  I originally was onboard with the truck tilt seen in the one video being proof that the gear handle was selected rather than the flap handle. But after watching several videos and an "endless" web search for info, I also have started to think that there was a problem before the gear handle was moved.
+  <br/>
+  <br/>
+  In a normal retraction, the main gear doors begin to open before the truck tilt is complete (roughly when the gear trucks are "level", seen around 8-10 second marks of
+  <a href="https://www.youtube.com/watch?v=2ZwzACp-q9U" target="_blank">
+   this video
+  </a>
+  ). The nose gear doors open at the same time the main gear tilt starts (seen in Jetstar video linked below). It's too blurry in the video/stills of the accident aircraft to definitively say the nose doors are not open, but I'd say no. And it's pretty much a certainty that the main gear doors are not open. And finally I think it is also pretty clear that the main gear trucks are tilted down to the retract position.
+  <br/>
+  <br/>
+  I have no confirmation of this, but I read (or heard someone say in a video) that the truck tilt actuator was a "single acting" actuator, meaning hydraulic pressure held it in the toe up position and it was spring loaded to the retract position. Which means if hydraulic pressure was lost due to loss of power to the electric driven center hydraulic system, then the main gear trucks would tilt forward on their own without moving the gear handle. The Jetstar burst tire video somewhat backs this up, in that the blown tire caused a leak to the center hydraulic system and an alternate extension was required (thus the reason the main doors are down during the landing). No hydraulic pressure means the main gear trucks remained pointing nose down during the landing.
+  <a href="https://www.youtube.com/watch?v=yg5Vitq07UY" target="_blank">
+   Video here
+  </a>
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by dragon6172; 17th June 2025 at
+   <span class="time">
+    15:01
+   </span>
+   .
+							
+							
+								Reason: Edit video links
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr id=11903939 valign=top><td class=post><a href=https://www.pprune.org/members/529068-bbofh>bbofh</a>
+<br/>June 17, 2025, 03:27:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903939><br/>permalink</a>
+ Post: 11903939</td>
+<td class=post><div class="tcell alt1" id="td_post_11903939">
+ <!-- message -->
+ <div id="post_message_11903939">
+  WHEN something catastrophic happens, like dual engine failure, that then creates a query about any "duality" between two standalone systems that really should have nothing whatsoever in common... except the PF.
+  <br/>
+  Nothing in common? Is that really the case for the 787-8 in the Air India 787 crash?
+  <br/>
+  Look at these three TCMA-related links in the order presented and note the proforma prescriptive caveats in the first two:
+  <br/>
+  <br/>
+  <a href="https://downloads.regulations.gov/FAA-2016-7855-0001/attachment_1.pdf" target="_blank">
+   https://downloads.regulations.gov/FA...tachment_1.pdf
+  </a>
+  <br/>
+  <a href="https://downloads.regulations.gov/FAA-2016-7855-0005/attachment_1.pdf" target="_blank">
+   https://downloads.regulations.gov/FA...tachment_1.pdf
+  </a>
+  <br/>
+  <a href="https://patents.google.com/patent/US6704630B2/en" target="_blank">
+   https://patents.google.com/patent/US6704630B2/en
+  </a>
+  <br/>
+  <br/>
+  TCMA is designed to detect and accommodate single failures within the EEC/FADEC, preventing a failure from jeopardizing the safe operation of the aircraft.
+  <br/>
+  Implementation:
+  <br/>
+  It involves implementing specific software changes within the engine's control system (EEC).
+  <br/>
+  Regulation:
+  <br/>
+  After some incidents, the design change was mandated by regulators, with a deadline for production aircraft by December 31, 2018, and a retrofit plan for existing aircraft.
+  <br/>
+  Boeing 787 Application:
+  <br/>
+  The TCMA feature is specifically relevant to the 787-8 equipped with GEnx-1B engines, but it may also be applicable to other 787 variants using the same engine type.
+  <br/>
+  <br/>
+  The first two links are respectively the request for and FAA affirmation/approval for a GENx-1b software system called TCMA (Thrust Control Malfunction Accommodation). TCMA is the system that precludes High Uncommanded Thrust (HUT) after touchdown by fuel-chopping the engines. It is designed to avoid runway departures. One input is power-lever position. It's then fair to say that (additionally) Air/Ground sensing is quintessentially vital (as to when the system is "armed" and can do this fuel-chop). The third link is the complex description (with diagrams) of the patent application's design functionality of TCMA.
+  <br/>
+  FROM THE 3rd link above:
+  <br/>
+  "&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;The method of the present invention compares the engine's actual power level with a threshold contour defined by the TCMA software package. When the TCMA software package determines that a thrust control malfunction has occurred, based on the engine's power level exceeding the threshold contour, the engine is shut down by the TCMA circuit." It is also notable that it says within the 3rd link that "Typically the aircraft is allowed to operate for a limited period of time with just a single operative processing subsystem."
+  <br/>
+  That Air India 787 was not long out of maintenance.
+  <br/>
+  We are then motivated to ask "what dictates the Air/Ground sensing". Is it just a Weight-on-Wheels microswitch or a RADAlt? (or both? or triplicated micro-switches?). We may then ask: "Did Air India implement the post-5G changes to their RADAlts that concentrated on maintaining their auto-land capability (in the face of 5G interference with RADAlts?) I seem to recall that the FAA's dictums on this pointed out that it was an individual nation's responsibility to both control their 5G frequency spectrums and implement changes to Radar altimeters that would work interference-free in critical phases of flight. What has the Indian regulator done in this regard as the responsible entity? The whole shemozzle, starting with the US Federal Communications Commission (FCC) spectrum allocations, was an ongoing fight between the telecom giants and their getting their new mobile tech to market.
+  <br/>
+  <br/>
+  So where are we going with this line of causal reasoning? The only commonality/duality between left and right engines is the software driving the TCMA as monitored by the TCMA software incorporated in each engine's EEC. Most pundits have identified the gear-tilt as evidence that only the centre electrically-driven pump can do the gear-tilt if the engines' other two hyd systems are suddenly both in QUIT mode (which accords also with the instant RAT deployment and loud noise heard by the sole survivor) - and an ensuing transition from climb-out to a deadly sinking and commensurate attitude change for speed maint.
+  <br/>
+  My unavoidable conclusion is that the selection of gear UP and the breaking of the gear downlocks (and WOW sensing and energization of the RADALTs) called upon the TCMA to fuel-chop the engines (via the TCMA functionality in each engine's EEC).
+  <br/>
+  We could start by looking at the No Break Power Transfer (NBPT) tech used in modern airliners. This has led to Gen Control Panel meltdowns in 777's due to GEN contact meltdown. I know of one instance when a 773 was reduced to a RAT only landing enroute and another where a disastrous MEC fire occurred after start on pushback at LHR. A description of the systems glitch often experienced is at the following link. It's quite apparently a "gear-up" hiccup with potential damning consequences for smooth TCMA operation. As to be seen in the quality videos, a fuel-chop provides no real clue (such as engine failure/smoke/fire classically does). An uncommanded "reset" of the two engine's TCMA's upon gear retraction (link below) is trackable to be the sought after "duality" leading to a "both simultaneously quit" engine failure. These momentary electrical glitches and instant "resets" are described in the two links below. Food for reasoned thought?
+  <br/>
+  <br/>
+  <a href="https://tinyurl.com/yn5ce4tz" target="_blank">
+   https://tinyurl.com/yn5ce4tz
+  </a>
+  <br/>
+  <br/>
+  <a href="https://tinyurl.com/3kkh6n3d" target="_blank">
+   https://tinyurl.com/3kkh6n3d
+  </a>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11903950 valign=top><td class=post><a href=https://www.pprune.org/members/484456-dragon6172>dragon6172</a>
+<br/>June 17, 2025, 03:57:00<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-7.html#post11903950><br/>permalink</a>
+ Post: 11903950</td>
+<td class=post><div class="tcell alt1" id="td_post_11903950">
+ <!-- message -->
+ <div id="post_message_11903950">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      bbofh
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11903939" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Most pundits have identified the gear-tilt as evidence that only the centre electrically-driven pump can do the gear-tilt if the engines' other two hyd systems are suddenly both in QUIT mode (which accords also with the instant RAT deployment and loud noise heard by the sole survivor) - and an ensuing transition from climb-out to a deadly sinking and commensurate attitude change for speed maint.
+    </div>
+   </div>
+  </div>
+  One comment here, and maybe I am mis-understanding your comment, but the landing gear
+  <i>
+   <b>
+    only
+   </b>
+  </i>
+  operates via the center hydraulics. It does not matter whether the Left/Right engine driven hydraulic systems are operative or not. The RAT will only pressurize the primary flight control portion of the center hydraulics.
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      OldnGrounded
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html#post11903943" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Thanks. Do we know that these are monitored by TCMA for air/ground state and if so, do we know the logic used to make a determination based on those inputs? Alternatively, do you know where we should be looking for those answers?
+    </div>
+   </div>
+  </div>
+  No idea. I only got that info from the Master MEL on the FAA website. According to the MMEL the aircraft can be dispatched as long as there is one of each type sensor working on each main gear. (AIs MEL could be more restrictive)
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
 </div>
 </td>
 </tr>
