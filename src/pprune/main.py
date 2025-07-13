@@ -102,9 +102,12 @@ def main():
     os.makedirs(args.output, exist_ok=True)
 
     t_start = time.perf_counter()
+    archive_post_count = {}
     thread = thread_struct.Thread()
     for archive in args.archives:
+        prev_post_count = len(thread)
         read_html.update_whole_thread(archive, thread)
+        archive_post_count[archive] = len(thread) - prev_post_count
     thread.sort_by_sequence_number()
     word_count = 0
     for post in thread.posts:
@@ -112,9 +115,15 @@ def main():
     logger.info('Number of posts: {:d} Number of words: {:d}'.format(len(thread), word_count))
     common_words = words.read_common_words_file(args.common_words)
     logger.info('Read: {:d} common words from "{:s}" to "{:s}".'.format(
-        len(common_words), common_words[0], common_words[-1],
+            len(common_words), common_words[0], common_words[-1],
+        )
     )
-    )
+    for archive in archive_post_count:
+        logger.info(
+            'Read: {:d} posts, {:d} pages from "{:s}"'.format(
+                archive_post_count[archive], 1 + archive_post_count[archive] // 20, archive,
+            )
+        )
     # write_html.pass_one(thread, common_words)
     common_words = set(common_words)
     if args.thread_name == 'Concorde':

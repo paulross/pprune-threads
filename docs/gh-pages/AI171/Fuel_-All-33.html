@@ -1,0 +1,1031 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune Fuel (All) name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "Fuel (All)" [Posts: 685 Pages: 35]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=Fuel_-All-0.html>First</a>
+&nbsp;<a href=Fuel_-All-32.html>Previous</a>
+&nbsp;<a href=Fuel_-All-23.html>24</a>
+&nbsp;<a href=Fuel_-All-24.html>25</a>
+&nbsp;<a href=Fuel_-All-25.html>26</a>
+&nbsp;<a href=Fuel_-All-26.html>27</a>
+&nbsp;<a href=Fuel_-All-27.html>28</a>
+&nbsp;<a href=Fuel_-All-28.html>29</a>
+&nbsp;<a href=Fuel_-All-29.html>30</a>
+&nbsp;<a href=Fuel_-All-30.html>31</a>
+&nbsp;<a href=Fuel_-All-31.html>32</a>
+&nbsp;<a href=Fuel_-All-32.html>33</a>
+&nbsp;<a href=Fuel_-All-33.html><b>34</b>
+</a>
+&nbsp;<a href=Fuel_-All-34.html>35</a>
+&nbsp;<a href=Fuel_-All-34.html>Next</a>
+&nbsp;<a href=Fuel_-All-34.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr id=11921012 valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
+<br/>July 13, 2025, 04:27:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-24.html#post11921012><br/>permalink</a>
+ Post: 11921012</td>
+<td class=post><div class="tcell alt1" id="td_post_11921012">
+ <!-- message -->
+ <div id="post_message_11921012">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      LTC8K6
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11920905" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     There are good explanations and diagrams of the switches in the thread.
+     <br/>
+     <br/>
+     With that info, your scenario seems very unlikely.
+    </div>
+   </div>
+  </div>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      icarus sun
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11920831" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Anyone have a wiring diagram of the run/cutoff switch and a diagram of the wiring underneath the switches.
+     <br/>
+     Does the data recorders record the actual,position of the switches or the electrical output of the switches
+    </div>
+   </div>
+  </div>
+  Industrial electrician here.
+  <br/>
+  <br/>
+  I have only seen a diagram for I think the 737. I remember there being a listing of what each pole did, but I can no longer find the post.
+  <br/>
+  <br/>
+  My expectation/speculation, though, is this:
+  <br/>
+  <br/>
+  The EAFR gets its information on cutoff switch position from the FADECs via data buses, similar to almost all other engine data. We have N2 information in the report after the engines were switched off, so clearly there are no concerns about this data not being captured.
+  <br/>
+  This means that the FADEC's data of where the switches are is almost certainly the EAFR's data.
+  <br/>
+  <br/>
+  There are other poles on the switches that do other things - I think it was opening/closing the LPSOV and enabling the generators. The fourth pole in the 'cutoff' position was IIRC not used because the generators don't get a disable signal, whereas the LPSOVs are powered open in the run position and powered closed in the cutoff position.
+  <br/>
+  <br/>
+  If the switches were
+  <b>
+   physically operated and in good electromechanical condition
+  </b>
+  (not counting the possibly faulty gates), we would expect all four poles to operate essentially simultaneously, with the four 'run' contacts opening and the four 'cutoff' contacts closing. Not only would the EAFR pick up that the FADECs were commanded off, but also that the LPSOV closes after a short delay, and the generators drop offline
+  <i>
+   before
+  </i>
+  N2 drops below idle.
+  <br/>
+  <br/>
+  When the switches are moved back to run, we would likewise see the position of each LPSOV return to open.
+  <br/>
+  <br/>
+  (this does not necessarily mean that a person intentionally operated them, but that the lever actually moved).
+  <br/>
+  <br/>
+  If there was a
+  <b>
+   wiring fault, contamination, or internal switch failure,
+  </b>
+  we would probably not see this. Instead, you might see the LPSOV remain open despite the engine shutting down, or perhaps the FADECs trying to keep the engine running while the LPSOV has closed and shut off fuel, or the two FADEC channels receiving different run/cutoff signals - and all of this would probably happen differently on each engine (if it affected both engines at all). There is no indication of this in the report.
+  <br/>
+  <br/>
+  These are not your basic light switch where the load is either powered or not powered. They're four switches ganged together and operated in unison, and each channel powers
+  <b>
+   either
+  </b>
+  thing A
+  <b>
+   or
+  </b>
+  thing B. If you have both or neither A &amp; B powered (for longer than the ~50ms that the switch takes to move between positions), this is a fault that should be visible in the EAFR data in some/many cases. Think valves being displayed in orange as 'position unknown'.
+  <br/>
+  <br/>
+  If all run contacts opened, and all cutoff contacts closed,
+  <b>
+   the switch moved from run to cutoff
+  </b>
+  .
+  <br/>
+  <br/>
+  I don't know whether they analysed the EAFR data in this much detail yet, but coupled with a potential click sound on the CVR, I think there's going to be very very little doubt at the end of the investigation whether the switches physically moved or not, and I strongly expect they did.
+ </div>
+ <!-- / message -->
+</div>
+<p>6 users liked this post.</p>
+</td>
+</tr>
+<tr id=11921023 valign=top><td class=post><a href=https://www.pprune.org/members/9681-africanskies>AfricanSkies</a>
+<br/>July 13, 2025, 05:12:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-24.html#post11921023><br/>permalink</a>
+ Post: 11921023</td>
+<td class=post><div class="tcell alt1" id="td_post_11921023">
+ <!-- message -->
+ <div id="post_message_11921023">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      verticallimit
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11920907" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Just a thought \x97 the fire extinguisher handles perform the same function as the fuel cut-off.
+     <br/>
+     Could there have been a strap /booklet or something else that accidentally got under the fire handles and activated them when one of the pilots pulled on the item?
+     <br/>
+     The fire handles are not particularly well protected against something getting underneath them
+     <br/>
+     Is there any information on whether the fuel cutoff switches and fire handles register as separate events on the flight data recorder, or if both are logged under a common indication, such as 'fuel switch cut off'?
+    </div>
+   </div>
+  </div>
+  The flight deck of a modern airliner, especially at takeoff, isn't some cluttered artists studio with a one wheeled bicycle behind the seats. There aren't books and straps and whatever all over the controls (or the dashboard - it's SOP not to ever put anything on the dashboard in a lot of airlines). Nothing is going to fall on the switches and nothing is suddenly going to creep under the fire handles, which by the way, have an integrated physical lock and require a double action to activate. Yes of course the fuel switches and fire handles are separate, they are different controls, and do different things.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_wall.gif" title="Ugh"/>
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11921026 valign=top><td class=post><a href=https://www.pprune.org/members/48133-capn-bloggs>Capn Bloggs</a>
+<br/>July 13, 2025, 05:16:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-25.html#post11921026><br/>permalink</a>
+ Post: 11921026</td>
+<td class=post><div class="tcell alt1" id="td_post_11921026">
+ <!-- message -->
+ <div id="post_message_11921026">
+  <b>
+   @Maybeitis,
+  </b>
+  how about we leave the total redesign of the fuel switch locations and operation (which have been moved billions of times in thousands of aircraft without a hitch) until the final report is out.
+  <br/>
+  These were deliberately moved. It wasn't a brain-fart. Unless the interim report omits crew calls which turn the scenario on it's head.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11921035 valign=top><td class=post><a href=https://www.pprune.org/members/555493-kwikasaki>Kwikasaki</a>
+<br/>July 13, 2025, 05:36:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-25.html#post11921035><br/>permalink</a>
+ Post: 11921035</td>
+<td class=post><div class="tcell alt1" id="td_post_11921035">
+ <!-- message -->
+ <div id="post_message_11921035">
+  It is incomprehensible to conceive of someone deliberately shutting off the engines. For good reason the interim report does not state that as the cause  \x85.. however it makes clear that the switches were moved to cutoff for an as yet unknown reason, and subsequently back to run.
+  <br/>
+  <br/>
+  This brought to mind a case many years ago where a pilot had a significant psychiatric disorder that among other things, caused him to have the urge to shutoff engines in flight. I am unable to post a link as I am a newby but if you search
+  <b>
+   Sick Qantas Pilot wanted to crash
+  </b>
+  you will find the story.
+  <br/>
+  <br/>
+  As sad as that particular case is, it does reveal that psychiatric issues may (I stress may) have been a trigger for the events that have unfolded on AI 171. There are other physiological events that may result in a person carrying out  \x93memory\x94 actions at an in-opportune moment. These include brain tumour or a brain infection. Looking to the medicos for further discussion on these possibilities.
+  <br/>
+  <br/>
+  I am sure the investigation will be looking very closely at the autopsy results as well as medical history to determine if a health aspect contributed to the events.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11921038 valign=top><td class=post><a href=https://www.pprune.org/members/545237-maybeitis>MaybeItIs</a>
+<br/>July 13, 2025, 05:51:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-25.html#post11921038><br/>permalink</a>
+ Post: 11921038</td>
+<td class=post><div class="tcell alt1" id="td_post_11921038">
+ <!-- message -->
+ <div id="post_message_11921038">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Capn Bloggs
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921026" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <b>
+      @Maybeitis,
+     </b>
+     how about we leave the total redesign of the fuel switch locations and operation (which have been moved billions of times in thousands of aircraft without a hitch) until the final report is out.
+     <br/>
+     These were deliberately moved. It wasn't a brain-fart. Unless the interim report omits crew calls which turn the scenario on it's head.
+    </div>
+   </div>
+  </div>
+  Hello Capn Bloggs,
+  <br/>
+  <br/>
+  Happy to oblige.
+  <br/>
+  <br/>
+  TBH, I'm no longer so concerned with what really happened inside the cockpit of AI171. What the final report says won't make any difference. I can see some flaws in the Boeing design (don't know Airbus so can't compare), and propose a few ideas to deal with that, and with the fact that we humans are highly flawed. Sometimes, the brain doesn't know what the right hand is doing. That's a wee problem.
+  <br/>
+  <br/>
+  My theory FWIW, says this won't have been called at all. And that "it" was done entirely without intention. The intention was to do something else. So, in that case, was it deliberate? I say No. It was an accident.
+  <br/>
+  <br/>
+  It was IMO, done with the best of intentions, but resulted in a serious blunder, with the wrong switches getting turned off. By what has been termed here "a slip". I agree with that. As I've mentioned, I now believe that when you know someone (including yourself) is doing something wrong, you seem to be more likely to make a mistake yourself. It's as if you automatically become partners in crime. (Even you and yourself!)  Did you read this article?  Some of the comments are also well worth reading.
+  <br/>
+  <br/>
+  <a href="https://avherald.com/h?article=48d1e3ae&amp;opt=0" target="_blank">
+   https://avherald.com/h?article=48d1e3ae&amp;opt=0
+  </a>
+  <br/>
+  <br/>
+  This [i.e 171] accident (I think the correct term) has absolutely fascinated me, and caused me to think a great deal. My recent posts are not really about 171. Only a result of it.
+  <br/>
+  <br/>
+  For the benefit of all. You know how people who have lost loved ones want their death to somehow benefit others? I didn't lose anyone in this crash, but that's a beautiful thing about we flawed humans.
+  <br/>
+  <br/>
+  I'll shut up now. Thanks for allowing me to participate.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11921045 valign=top><td class=post><a href=https://www.pprune.org/members/299067-mahogany-bob>mahogany bob</a>
+<br/>July 13, 2025, 06:13:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-25.html#post11921045><br/>permalink</a>
+ Post: 11921045</td>
+<td class=post><div class="tcell alt1" id="td_post_11921045">
+ <!-- message -->
+ <div id="post_message_11921045">
+  This accident emphasises the sad fact that HUMANS are the weakest link in the FS chain - particularly now that engineering is much more reliable.
+  <br/>
+  <br/>
+  How close are we to having PILOTLESS passenger aircraft ?
+  <br/>
+  I would guess many years?
+  <br/>
+  <br/>
+  Computers don\x92t have heart attacks and \x91brain farts \x91 ! BUT garbage IN = garbage OUT !
+  <br/>
+  <br/>
+  PS reading the many reports that these cut off switches have been \x91moved \x91 in error they appear to be located in a much too accessible position !
+  <br/>
+  (On the B707 ( AWACS ) they were on the roof panel.)
+  <br/>
+  <br/>
+  The explanation that they were switched OFF in error after a STAB TRIM warning seems possibly the most likely cause but would be a major mistake !! is a STAB TRIM problem shortly after T/O potentially a major problem on th B787 ?
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11921078 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
+<br/>July 13, 2025, 07:18:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-26.html#post11921078><br/>permalink</a>
+ Post: 11921078</td>
+<td class=post><div class="tcell alt1" id="td_post_11921078">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   The Action Slip scenario
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11921078">
+  What is an action slip?
+  <br>
+   <br>
+    There's a possible scenario we're discussing here that fits all of the available evidence. It proposes that one of the pilots operated the switches in an unconscious action called an "action slip". This is a rote action that we do without conscious thought when we're distracted: we mean to do something, and then we get our signals crossed and do something else. To learn more, search for "action slip" or "cerebellum" on this thread; I hope
+    <a href="https://www.pprune.org/members/464374-paulross" rel="nofollow">
+     paulross
+    </a>
+    adds the keyword to the next build of his excellent index at
+    <a href="https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html" target="_blank">
+     https://paulross.github.io/pprune-th...171/index.html
+    </a>
+    .
+    <br/>
+    <br/>
+    How would this scenario play out?
+    <br/>
+    <br/>
+    We don't have enough evidence to pin down the exact sequence, so there are some assumptions here that I hope you find plausible. (And obviously it's not the only scenario that fits the evidence.) We especially do not know who did what and why, so that is all guesswork on my part. The times are taken from the preliminary report. The report places the verbal exchange among the pilots where I put it.
+    <br/>
+    <br/>
+    &mdash;&mdash;&mdash;
+    <br/>
+    <br/>
+    8:08:39 The 787 becomes airborne. The F/O is pilot flying (PF), with both hands on the yoke. The Captain is PNF (not flying).
+    <br/>
+    <br/>
+    8:08:42 The PNF unconsciously flips both fuel switches to CUT OFF, one after the other.
+    <i>
+     This is a rote action performed after each flight, or as training captain in the simulator.
+    </i>
+    <br/>
+    The action cuts power to the engines; they stop delivering thrust almost immediately, and the turbines start slowing down.
+    <br/>
+    The 787 systems disconnect the electrical generators in advance of them failing. The right side
+    <strike>
+     (Captain's side)
+    </strike>
+    of the cockpit l oses power to most instruments. With all 4 generators offline, the RAT deploys to provide emergency power.
+    <br/>
+    <br/>
+    The PF feels the cessation of thrust. He looks at the display to see an ENGINES SHUT OFF message. He assumes the PNF shut them off, and asks him why he shut them off.
+    <i>
+     This is the lowest "probe" level on the PACE assertiveness scale; see e.g.
+     <a href="https://psychsafety.com/pace-graded-assertiveness/" target="_blank">
+      https://psychsafety.com/pace-graded-assertiveness/
+     </a>
+     or search for "probe alert" on pprune if you wish to know more. The highest level of assertiveness, E for "emergency", would have the F/O put the switches back himself immediately, but that would have required a high degree of confidence in the face of the older Captain that may have been difficult to achieve.
+    </i>
+    <br/>
+    <br/>
+    Since the action was unconscious, the PNF replies that he did not do that.
+    <br/>
+    <br/>
+    8:08:47 The RAT starts delivering hydraulic power, the engines decelerate past idle.
+    <br/>
+    <br/>
+    The PNF realizes that engine power is in fact cut. Eventually he checks the switches he thinks he did not touch, sees the engine 1 switch first and flips it back to RUN at 8:08:52. He then thinks to check the second switch and flips it up at 8:08:56.
+    <br/>
+    <br/>
+    The accident sequence ensues.
+    <br/>
+    <br/>
+    There's really not much the PNF can do at this point. At 8:09:05, he transmits a MAYDAY.
+    <br/>
+    <br/>
+    &mdash;&mdash;&mdash;
+    <br/>
+    <br/>
+    Obviously there are variations to this, for example it could have been the PF who put the fuel switches back. (In the above scenario, the PF is focused on flying&mdash;aviate!&mdash;and never turns his head to see the switches.) My goal was simply to set out a possible sequence, to see whether it feels plausible. Remember, as you see other scenarios put forth, that any issues a person could wrestle with would also be distracting. While both pilots would be very focused during the takeoff run, the moment the aircraft lifted off, the PNF could well have mentally relaxed a little, opening an opportunity for the action slip.
+    <br/>
+    <br/>
+    Thoughts?
+    <br/>
+    <br/>
+    <i>
+     Edit: I got the roles mixed up; in a fixed scenario, either the Captain was the PF (and may have set the switches to cutoff), or flight control changed over at the power failure.
+    </i>
+   </br>
+  </br>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Musician; 12th July 2025 at
+   <span class="time">
+    20:03
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11921085 valign=top><td class=post><a href=https://www.pprune.org/members/80116-fullwings>FullWings</a>
+<br/>July 13, 2025, 07:31:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-26.html#post11921085><br/>permalink</a>
+ Post: 11921085</td>
+<td class=post><div class="tcell alt1" id="td_post_11921085">
+ <!-- message -->
+ <div id="post_message_11921085">
+  If we assume that the report is factual, as there is no good reason to think otherwise, then the aircraft was serviceable and there were no faults, messages or warnings right up to the point the FCSs were moved to cutoff, as they would have been detailed in the report. The only unresolved question is why was this done?
+  <br/>
+  <br/>
+  Putting deliberate action to one side, if the FO was the PF in manual flight, as SOP the captain as PM would be making any configuration changes, MCP selections or switch movements. We know that the captain was a trainer and as such, it is likely that he was used to running details both from the instructor station and either seat. Given the constraints on simulator time and ever-increasing syllabi it is not uncommon for trainers to physically reset the sim to save time and that includes moving critical controls without diagnosis or confirmation in ways inappropriate for the phase of flight, even if frozen. It is likely that if you were doing a lot of training, you would become more practiced at this than the SOP multi-crew interactive method and unknowingly build a semi-autonomous routine in your mind that allowed these type of actions as there was no jeopardy. Normal line pilots are only trained/practiced/checked on the correct way of doing these.
+  <br/>
+  <br/>
+  I\x92m not saying that this is what happened, just offering one possibility as to how a competent crew could end up in a disastrous scenario and experience post-decision dissonance over what had just transpired.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11921086 valign=top><td class=post><a href=https://www.pprune.org/members/190067-herc708>Herc708</a>
+<br/>July 13, 2025, 07:32:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-26.html#post11921086><br/>permalink</a>
+ Post: 11921086</td>
+<td class=post><div class="tcell alt1" id="td_post_11921086">
+ <!-- message -->
+ <div id="post_message_11921086">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      42go
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11920747" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Rather confusingly, AvHerald carries this today
+     <br/>
+     <br/>
+     <i>
+      "On Jul 12th 2025 (UTC) India's media report that the investigation is NOT focussing on a human action causing the fuel switches to appear in the CUTOFF position, but on a system failure."
+     </i>
+     <br/>
+     <br/>
+     I have no idea what provenance to attach to that!
+    </div>
+   </div>
+  </div>
+  Does the EAFR record the electrical / physical contact of the RUN / CUTOFF switch or, does it record a software  'EVENT' which has the same 'signature' as the RUN / CUTOFF switch being toggled. My thoughts are that the RUN / CUTOFF switch never moved but,  the underlying software / hardware system mal-functioned triggering a scenario similar to both RUN / CUTOFF switches being triggered
+  <br/>
+  <br/>
+  Some Boeing SB's describe circuit board failures triggering all sorts of unexpected / unpredictable failures
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11921087 valign=top><td class=post><a href=https://www.pprune.org/members/520729-speed_trim_fail>Speed_Trim_Fail</a>
+<br/>July 13, 2025, 07:36:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-26.html#post11921087><br/>permalink</a>
+ Post: 11921087</td>
+<td class=post><div class="tcell alt1" id="td_post_11921087">
+ <!-- message -->
+ <div id="post_message_11921087">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Musician
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921078" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     What is an action slip?
+     <br/>
+     <br/>
+     There's a possible scenario we're discussing here that fits all of the available evidence. It proposes that one of the pilots operated the switches in an unconscious action called an "action slip". This is a rote action that we do without conscious thought when we're distracted: we mean to do something, and then we get our signals crossed and do something else. To learn more, search for "action slip" or "cerebellum" on this thread; I hope
+     <a href="https://www.pprune.org/members/464374-paulross" rel="nofollow">
+      paulross
+     </a>
+     adds the keyword to the next build of his excellent index at
+     <a href="https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html" target="_blank">
+      https://paulross.github.io/pprune-th...171/index.html
+     </a>
+     .
+     <br/>
+     <br/>
+     How would this scenario play out?
+     <br/>
+     <br/>
+     We don't have enough evidence to pin down the exact sequence, so there are some assumptions here that I hope you find plausible. (And obviously it's not the only scenario that fits the evidence.) We especially do not know who did what and why, so that is all guesswork on my part. The times are taken from the preliminary report. The report places the verbal exchange among the pilots where I put it.
+     <br/>
+     <br/>
+     \x97\x97\x97
+     <br/>
+     <br/>
+     8:08:39 The 787 becomes airborne. The F/O is pilot flying (PF), with both hands on the yoke. The Captain is PNF (not flying).
+     <br/>
+     <br/>
+     8:08:42 The PNF unconsciously flicks both fuel switches to CUT OFF, one after the other.
+     <i>
+      This is a rote action performed after each flight, or as training captain in the simulator.
+     </i>
+     <br/>
+     The action cuts power to the engines; they stop delivering thrust almost immediately, and the turbines start slowing down.
+     <br/>
+     The 787 systems disconnect the electrical generators in advance of them failing. The right side (Captain's side) of the cockpit loses power to most instruments. With all 4 generators offline, the RAT deploys to provide emergency power.
+     <br/>
+     <br/>
+     The PF feels the cessation of thrust. He looks at the display to see an ENGINES SHUT OFF message. He assumes the PNF shut them off, and asks him why he shut them off.
+     <i>
+      This is the lowest "probe" level on the PACE assertiveness scale; see e.g.
+      <a href="https://psychsafety.com/pace-graded-assertiveness/" target="_blank">
+       https://psychsafety.com/pace-graded-assertiveness/
+      </a>
+      or search for "probe alert" on pprune if you wish to know more. The highest level of assertiveness, E for "emergency", would have the F/O put the switches back himself immediately, but that would have required a high degree of confidence in the face of the older Captain that may have been difficult to achieve.
+     </i>
+     <br/>
+     <br/>
+     Since the action was unconscious, the PNF replies that he did not do that.
+     <br/>
+     <br/>
+     8:08:47 The RAT starts delivering hydraulic power, the engines decelerate past idle.
+     <br/>
+     <br/>
+     The PNF realizes that engine power is in fact cut. Eventually he checks the switches he thinks he did not touch, sees the engine 1 switch first and flips it back to RUN at 8:08:52. He then thinks to check the second switch and flips it up at 8:08:56.
+     <br/>
+     <br/>
+     The accident sequence ensues.
+     <br/>
+     <br/>
+     There's really not much the PNF can do at this point. At 8:09:05, he transmits a MAYDAY.
+     <br/>
+     <br/>
+     \x97\x97\x97
+     <br/>
+     <br/>
+     Obviously there are variations to this, for example it could have been the PF who put the fuel switches back. (In the above scenario, the PF is focused on flying\x97aviate!\x97and never turns his head to see the switches.) My goal was simply to set out a possible sequence, to see whether it feels plausible. Remember, as you see other scenarios put forth, that any issues a person could wrestle with would also be distracting. While both pilots would be very focused during the takeoff run, the moment the aircraft lifted off, the PNF could well have mentally relaxed a little, opening an opportunity for the action slip.
+     <br/>
+     <br/>
+     Thoughts?
+    </div>
+   </div>
+  </div>
+  Beyond the technical side, the Skipper\x92s side is the Left\x85. Or I\x92ve been doing something terribly wrong for years.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11921093 valign=top><td class=post><a href=https://www.pprune.org/members/122819-charliemike>CharlieMike</a>
+<br/>July 13, 2025, 07:41:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-26.html#post11921093><br/>permalink</a>
+ Post: 11921093</td>
+<td class=post><div class="tcell alt1" id="td_post_11921093">
+ <!-- message -->
+ <div id="post_message_11921093">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Musician
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921078" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     What is an action slip?
+     <br/>
+     <br/>
+     There's a possible scenario we're discussing here that fits all of the available evidence. It proposes that one of the pilots operated the switches in an unconscious action called an "action slip". This is a rote action that we do without conscious thought when we're distracted: we mean to do something, and then we get our signals crossed and do something else. To learn more, search for "action slip" or "cerebellum" on this thread; I hope
+     <a href="https://www.pprune.org/members/464374-paulross" rel="nofollow">
+      paulross
+     </a>
+     adds the keyword to the next build of his excellent index at
+     <a href="https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html" target="_blank">
+      https://paulross.github.io/pprune-th...171/index.html
+     </a>
+     .
+     <br/>
+     <br/>
+     How would this scenario play out?
+     <br/>
+     <br/>
+     We don't have enough evidence to pin down the exact sequence, so there are some assumptions here that I hope you find plausible. (And obviously it's not the only scenario that fits the evidence.) We especially do not know who did what and why, so that is all guesswork on my part. The times are taken from the preliminary report. The report places the verbal exchange among the pilots where I put it.
+     <br/>
+     <br/>
+     &mdash;&mdash;&mdash;
+     <br/>
+     <br/>
+     8:08:39 The 787 becomes airborne. The F/O is pilot flying (PF), with both hands on the yoke. The Captain is PNF (not flying).
+     <br/>
+     <br/>
+     8:08:42 The PNF unconsciously flicks both fuel switches to CUT OFF, one after the other.
+     <i>
+      This is a rote action performed after each flight, or as training captain in the simulator.
+     </i>
+     <br/>
+     The action cuts power to the engines; they stop delivering thrust almost immediately, and the turbines start slowing down.
+     <br/>
+     The 787 systems disconnect the electrical generators in advance of them failing. The right side (Captain's side) of the cockpit loses power to most instruments. With all 4 generators offline, the RAT deploys to provide emergency power.
+     <br/>
+     <br/>
+     The PF feels the cessation of thrust. He looks at the display to see an ENGINES SHUT OFF message. He assumes the PNF shut them off, and asks him why he shut them off.
+     <i>
+      This is the lowest "probe" level on the PACE assertiveness scale; see e.g.
+      <a href="https://psychsafety.com/pace-graded-assertiveness/" target="_blank">
+       https://psychsafety.com/pace-graded-assertiveness/
+      </a>
+      or search for "probe alert" on pprune if you wish to know more. The highest level of assertiveness, E for "emergency", would have the F/O put the switches back himself immediately, but that would have required a high degree of confidence in the face of the older Captain that may have been difficult to achieve.
+     </i>
+     <br/>
+     <br/>
+     Since the action was unconscious, the PNF replies that he did not do that.
+     <br/>
+     <br/>
+     8:08:47 The RAT starts delivering hydraulic power, the engines decelerate past idle.
+     <br/>
+     <br/>
+     The PNF realizes that engine power is in fact cut. Eventually he checks the switches he thinks he did not touch, sees the engine 1 switch first and flips it back to RUN at 8:08:52. He then thinks to check the second switch and flips it up at 8:08:56.
+     <br/>
+     <br/>
+     The accident sequence ensues.
+     <br/>
+     <br/>
+     There's really not much the PNF can do at this point. At 8:09:05, he transmits a MAYDAY.
+     <br/>
+     <br/>
+     &mdash;&mdash;&mdash;
+     <br/>
+     <br/>
+     Obviously there are variations to this, for example it could have been the PF who put the fuel switches back. (In the above scenario, the PF is focused on flying&mdash;aviate!&mdash;and never turns his head to see the switches.) My goal was simply to set out a possible sequence, to see whether it feels plausible. Remember, as you see other scenarios put forth, that any issues a person could wrestle with would also be distracting. While both pilots would be very focused during the takeoff run, the moment the aircraft lifted off, the PNF could well have mentally relaxed a little, opening an opportunity for the action slip.
+     <br/>
+     <br/>
+     Thoughts?
+    </div>
+   </div>
+  </div>
+  I&rsquo;m 100% with you on this. Back on the original thread, whilst everyone was distracted by some extremely unlikely technical scenarios, I&rsquo;d predicted that although it was unthinkable, the most likely cause was manually switching both fuel control switches&hellip;
+  <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-56.html#post11901619" target="_blank">
+   Plane crash near Ahmedabad..
+  </a>
+  <br/>
+  <br/>
+  Seeing that the gear remained down after liftoff, there was CVR confusion after the event, and there was an attempt to rectify the situation&hellip;. I&rsquo;m now thinking aviation is witnessing its most bizarre action-slip it&rsquo;s ever seen and we&rsquo;ll learn that the human automatic system is capable of making the most inappropriate and illogical responses to a given situation. I suspect fatigue and the captains sim experience of flicking switches plays a part.
+  <br/>
+  <br/>
+  As a result of this, I think we&rsquo;ll see a renewed interest in slowing down actions at all times&hellip;touch a control, look at it, pause, consciously think about what you are touching before you execute it. This needs to be habitual, especially on LH fleets where fatigue inevitably plays into the operation.
+  <br/>
+  <br/>
+  We&rsquo;ll also be discouraging the &ldquo;insta-pilot&rdquo; trend of showing how slick you are (usually on A320) where your hands flick round the flight deck at lightning speed. Even in more benign scenarios like shutdown flows etc, this isn&rsquo;t a good habit.
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11921100 valign=top><td class=post><a href=https://www.pprune.org/members/20211-manaadasystem>ManaAdaSystem</a>
+<br/>July 13, 2025, 07:53:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-26.html#post11921100><br/>permalink</a>
+ Post: 11921100</td>
+<td class=post><div class="tcell alt1" id="td_post_11921100">
+ <!-- message -->
+ <div id="post_message_11921100">
+  A lot of \xabflipping\xbb and \xabflicking\xbb of fuel switches going on. You don\x92t flick or flip these switches. They require a deliberate movement.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11921110 valign=top><td class=post><a href=https://www.pprune.org/members/122819-charliemike>CharlieMike</a>
+<br/>July 13, 2025, 08:08:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-26.html#post11921110><br/>permalink</a>
+ Post: 11921110</td>
+<td class=post><div class="tcell alt1" id="td_post_11921110">
+ <!-- message -->
+ <div id="post_message_11921110">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      ManaAdaSystem
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921100" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     A lot of \xabflipping\xbb and \xabflicking\xbb of fuel switches going on. You don&rsquo;t flick or flip these switches. They require a deliberate movement.
+    </div>
+   </div>
+  </div>
+  A statement that completely underestimates the human subconscious system. You need a deliberate movement to raise the gear or drop the flaps too&hellip;I&rsquo;d say nearly every operator has instances of pilots accidentally doing one instead of the other. There will be people saying that there is no way you can have such an extreme action slip but I don&rsquo;t think we should ever underestimate the power of the human to do the most random things, even if it is one-in-a-million event.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11921117 valign=top><td class=post><a href=https://www.pprune.org/members/20211-manaadasystem>ManaAdaSystem</a>
+<br/>July 13, 2025, 08:16:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-26.html#post11921117><br/>permalink</a>
+ Post: 11921117</td>
+<td class=post><div class="tcell alt1" id="td_post_11921117">
+ <!-- message -->
+ <div id="post_message_11921117">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      CharlieMike
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921110" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     A statement that completely underestimates the human subconscious system. You need a deliberate movement to raise the gear or drop the flaps too\x85I\x92d say nearly every operator has instances of pilots accidentally doing one instead of the other. There will be people saying that there is no way you can have such an extreme action slip but I don\x92t think we should ever underestimate the power of the human to do the most random things, even if it is one-in-a-million event.
+    </div>
+   </div>
+  </div>
+  I\x92m only referring to how you operate the switch, not why or if. Flipping something is easy. It takes a bit more to operate the fuel switches.
+  <br/>
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+</td>
+</tr>
+<tr id=11921118 valign=top><td class=post><a href=https://www.pprune.org/members/555509-enderman>enderman</a>
+<br/>July 13, 2025, 08:16:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-27.html#post11921118><br/>permalink</a>
+ Post: 11921118</td>
+<td class=post><div class="tcell alt1" id="td_post_11921118">
+ <!-- message -->
+ <div id="post_message_11921118">
+  Action slip seems highly unlikely to me. Even if one cutoff switch was moved in response to a gear up request I can\x92t believe anyone would then move a second switch, one second later.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11921123 valign=top><td class=post><a href=https://www.pprune.org/members/122819-charliemike>CharlieMike</a>
+<br/>July 13, 2025, 08:21:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-27.html#post11921123><br/>permalink</a>
+ Post: 11921123</td>
+<td class=post><div class="tcell alt1" id="td_post_11921123">
+ <!-- message -->
+ <div id="post_message_11921123">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      enderman
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921118" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Action slip seems highly unlikely to me. Even if one cutoff switch was moved in response to a gear up request I can\x92t believe anyone would then move a second switch, one second later.
+    </div>
+   </div>
+  </div>
+  Not so sure, thinking about how you shut the engines down at the end of the day, I think it\x92s plausible to think the subconscious brain has it as one event.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11921134 valign=top><td class=post><a href=https://www.pprune.org/members/119582-bunk-rest>Bunk-Rest</a>
+<br/>July 13, 2025, 08:33:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-27.html#post11921134><br/>permalink</a>
+ Post: 11921134</td>
+<td class=post><div class="tcell alt1" id="td_post_11921134">
+ <!-- message -->
+ <div id="post_message_11921134">
+  Why did you do cutoff ? Question may have been directed at the third person in the cockpit who had actually done it.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11921139 valign=top><td class=post><a href=https://www.pprune.org/members/554847-dbyo>DBYO</a>
+<br/>July 13, 2025, 08:38:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-27.html#post11921139><br/>permalink</a>
+ Post: 11921139</td>
+<td class=post><div class="tcell alt1" id="td_post_11921139">
+ <!-- message -->
+ <div id="post_message_11921139">
+  Yes - many posts ago, it was expressed that the fuel cut off switches go direct to the engines, not via software, in order to allow them to fulfil their purpose where a shutdown is deemed necessary and in the face of other faults  that may inhibit software functionality.
+  <br/>
+  <br/>
+  The obvious way of removing the risk of muscle memory leading to unintentional fuel cut offs would be to remove the use of the switches from normal operations. Shutdowns at the end of flights on future aircraft could be instructed via touchscreen and software (which could check weight on wheels before actioning the command), with the physical buttons reserved exclusively for emergency use.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11921144 valign=top><td class=post><a href=https://www.pprune.org/members/122819-charliemike>CharlieMike</a>
+<br/>July 13, 2025, 08:43:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-27.html#post11921144><br/>permalink</a>
+ Post: 11921144</td>
+<td class=post><div class="tcell alt1" id="td_post_11921144">
+ <!-- message -->
+ <div id="post_message_11921144">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Bunk-Rest
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921134" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Why did you do cutoff ? Question may have been directed at the third person in the cockpit who had actually done it.
+    </div>
+   </div>
+  </div>
+  I guess with current information it\x92s going to be hard to rule this out. Once they fully analyse the CVR, I think we\x92ll know the answer to this. If the FO is asking the question, it\x92ll be more likely that this isn\x92t the case.
+  <br/>
+  <br/>
+  The switches were operated at 3s after liftoff\x85exactly the time positive rate would be confirmed\x85so I\x92m still thinking third party isn\x92t the most likely scenario.
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11921160 valign=top><td class=post><a href=https://www.pprune.org/members/558914-adfad>adfad</a>
+<br/>July 13, 2025, 09:03:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921160><br/>permalink</a>
+ Post: 11921160</td>
+<td class=post><div class="tcell alt1" id="td_post_11921160">
+ <!-- message -->
+ <div id="post_message_11921160">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      CharlieMike
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921120" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Hadn\x92t even thought of that, but the fact there was no motion of the gear at all when positive rate was achieved makes me believe there is more evidence to suggest action-slip.
+    </div>
+   </div>
+  </div>
+  I don't see any evidence here. The report doesn't mention any callout of positive rate or request for gear up. The cutoff switches were moved ~3 seconds after wheels leaving the ground which would have been just before or at roughly the same time as the callout. The report did not say "pilot flying requested gear up and then the switches were moved to cutoff". There is also no evidence of a 3rd person and I'm not even sure how that would make a difference.
+  <br>
+   <br>
+    I see 3 meaningful explanations roughly by order of probability
+    <ol style="list-style-type: decimal">
+     <li>
+      Switches moved deliberately - evidenced by the specific question "why did
+      <u>
+       you
+      </u>
+      cutoff" and circumstanced by this being the most vulnerable phase of flight to do such a thing
+     </li>
+     <li>
+      Switches moved accidentally eg., 'action-slip' - is there a precedent for not 1 but both switches of this type in any similar aircraft being cut off during
+      <i>
+       routine
+      </i>
+      operations?
+     </li>
+     <li>
+      Switches failed mechanically or electronically - the recovered switches were in the position consistent with flight data, timing data is consistent with manual 1-by-1 movement
+     </li>
+    </ol>
+   </br>
+  </br>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=Fuel_-All-0.html>First</a>
+&nbsp;<a href=Fuel_-All-32.html>Previous</a>
+&nbsp;<a href=Fuel_-All-23.html>24</a>
+&nbsp;<a href=Fuel_-All-24.html>25</a>
+&nbsp;<a href=Fuel_-All-25.html>26</a>
+&nbsp;<a href=Fuel_-All-26.html>27</a>
+&nbsp;<a href=Fuel_-All-27.html>28</a>
+&nbsp;<a href=Fuel_-All-28.html>29</a>
+&nbsp;<a href=Fuel_-All-29.html>30</a>
+&nbsp;<a href=Fuel_-All-30.html>31</a>
+&nbsp;<a href=Fuel_-All-31.html>32</a>
+&nbsp;<a href=Fuel_-All-32.html>33</a>
+&nbsp;<a href=Fuel_-All-33.html><b>34</b>
+</a>
+&nbsp;<a href=Fuel_-All-34.html>35</a>
+&nbsp;<a href=Fuel_-All-34.html>Next</a>
+&nbsp;<a href=Fuel_-All-34.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>
