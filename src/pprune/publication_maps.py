@@ -442,6 +442,7 @@ class AirIndia171(PublicationMap):
     <p><b>My condolences to all the people affected by this accident, in particular to the friends and families of the victims.</b></p>
     <h2>Useful Links</h2>
     <ol>
+        <li><a href="https://aaib.gov.in/What's%20New%20Assets/Preliminary%20Report%20VT-ANB.pdf">The Preliminary Report</a></li>
         <li><a href="https://aaib.gov.in">Air Accident Investigation Board (India)</a></li>
         <li><a href="https://www.dgca.gov.in/digigov-portal/">Directorate General of Civil Aviation (India)</a> (DGCA)</li>
         <li>This accident on the <a href="https://asn.flightsafety.org/asndb/518859">Aviation Safety Network</a></li>
@@ -521,6 +522,7 @@ class AirIndia171(PublicationMap):
         'detent': 'Fuel Cutoff Switches (detent)',
         'detents': 'Fuel Cutoff Switches (detent)',
         'cutoff': 'Fuel Cutoff Switches',
+        'guard': 'Switch Guards',
         'guards': 'Switch Guards',
         'guarded': 'Switch Guards',
         'honeywell': 'Honeywell',
@@ -528,6 +530,9 @@ class AirIndia171(PublicationMap):
         # 08:08:42 E1 Fuel Cutoff Switch RUN -> CUTOFF, 180 kts
         # 08:08:43 E2 Fuel Cutoff Switch RUN -> CUTOFF
         '080842': 'Timeline (Preliminary Report)',
+        '080843': 'Timeline (Preliminary Report)',
+        'cerebellum' : 'Action slip',
+        'avherald' : 'AvHerald',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -700,6 +705,7 @@ class AirIndia171(PublicationMap):
             ('ee', 'bays',): 'Water Ingress',
 
             ('preliminary', 'report',): 'Preliminary Report',
+            ('prelim', 'report',): 'Preliminary Report',
 
             ('pilot', 'debrief',): 'Pilot Debrief',
 
@@ -729,6 +735,15 @@ class AirIndia171(PublicationMap):
             ('startle', 'effect',): 'Startle Effect',
 
             ('51', 'days',): '51 Day Issue',
+
+            ('action', 'slip',): 'Action slip',
+
+            ('human', 'error',): 'Human Factors',
+            ('human', 'factor',): 'Human Factors',
+            ('human', 'factors',): 'Human Factors',
+
+            # Note that this assumes 'of' is removed by the common words (in fact it is number 2 :-) ).
+            ('timeline', 'events'): 'Timeline (Preliminary Report)',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -770,9 +785,12 @@ class AirIndia171(PublicationMap):
             ('indian', 'accident', 'investigation', 'team'): 'AAIB (IDGA)',
             ('indian', 'civil', 'air', 'authority'): 'DGCA',
             ('special', 'airworthiness', 'information', 'bulletin',): 'Special Airworthiness Information Bulletin',
+            ('why', 'did', 'he', 'cutoff',): 'Pilot "Why did you cut off"',
+            ('why', 'did', 'you', 'cutoff',): 'Pilot "Why did you cut off"',
         },
         5: {
             ('digital', 'flight', 'data', 'acquisition', 'unit',): 'Digital Flight Data Acquisition Unit',
+            ('why', 'did', 'you', 'cut', 'off',): 'Pilot "Why did you cut off"',
         }
     }
     # The key is the pprune message permalink where the post is clearly about the subject
@@ -829,6 +847,7 @@ class AirIndia171(PublicationMap):
     # The is the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
     SIGNIFICANT_POSTS = {
+        'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921202',
         'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-37.html#post11906480',
         'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html#post11908911',
     }
