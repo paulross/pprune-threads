@@ -93,7 +93,7 @@ class PublicationMap(abc.ABC):
         return ret
 
     @abc.abstractmethod
-    def get_significant_posts_permalinks(self) -> typing.Set[str]:
+    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, str]]:
         """The is the set of permalinks of significant posts that might be gathered
         together in the subject 'Significant Posts'."""
         pass
@@ -160,7 +160,7 @@ class ConcordePublicationMap(PublicationMap):
     def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
         return set()
 
-    def get_significant_posts_permalinks(self) -> typing.Set[str]:
+    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, str]]:
         return self.SIGNIFICANT_POSTS
 
     def get_set_of_words_required(self) -> typing.Set[str]:
@@ -419,7 +419,7 @@ class ConcordePublicationMap(PublicationMap):
     }
     # The is the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
-    SIGNIFICANT_POSTS = set()
+    SIGNIFICANT_POSTS = tuple()
 
 
 class AirIndia171(PublicationMap):
@@ -433,7 +433,7 @@ class AirIndia171(PublicationMap):
     <ol>
         <li><a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html">Part One [pprune]</a> (now closed)</li>
         <li><a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html">Part Two [pprune]</a> (now closed)</li>
-        <li><a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html">Published Report [pprune]</a></li>
+        <li><a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html">Preliminary Report [pprune]</a></li>
         <li>There is also a thread on the
             <a href="https://www.pprune.org/accidents-close-calls/666714-moderation-air-india-accident-threads.html">moderation of these threads [pprune]</a>
              (this is not included in this analysis)
@@ -475,7 +475,7 @@ class AirIndia171(PublicationMap):
             return self.DUPLICATE_SUBJECT_MAP[subject]
         return set()
 
-    def get_significant_posts_permalinks(self) -> typing.Set[str]:
+    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, str]]:
         return self.SIGNIFICANT_POSTS
 
     def get_set_of_words_required(self) -> typing.Set[str]:
@@ -619,6 +619,7 @@ class AirIndia171(PublicationMap):
             ('fuel', 'switch'): 'Fuel Cutoff Switches',
             ('fuel', 'switches'): 'Fuel Cutoff Switches',
             ('cutoff', 'switches'): 'Fuel Cutoff Switches',
+            ('cutoff', 'switch'): 'Fuel Cutoff Switches',
             ('cut', 'off'): 'Fuel Cutoff Switches',
             ('fuelswitch', 'design'): 'Fuel Cutoff Switches',
 
@@ -743,7 +744,12 @@ class AirIndia171(PublicationMap):
             ('human', 'factors',): 'Human Factors',
 
             # Note that this assumes 'of' is removed by the common words (in fact it is number 2 :-) ).
-            ('timeline', 'events'): 'Timeline (Preliminary Report)',
+            ('timeline', 'events',): 'Timeline (Preliminary Report)',
+
+            ('authority', 'gradient',): 'Authority Gradient',
+            ('authority', 'gradients',): 'Authority Gradient',
+
+            ('muscle', 'memory',): 'Muscle Memory',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -771,6 +777,7 @@ class AirIndia171(PublicationMap):
             ('cockpit', 'area', 'microphone'): 'Cockpit Area Audio',
 
             ('landing', 'gear', ' lever'): 'Gear Lever',
+            ('quick', 'windmill', 'relight'): 'Quick Windmill Relight',
         },
         4: {
             ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine Driven)',
@@ -843,11 +850,13 @@ class AirIndia171(PublicationMap):
         'Fuel Cutoff Switches (detent)': {'Fuel (All)', 'Fuel Cutoff Switches', },
 
         'Timeline (Preliminary Report)': {'Preliminary Report', },
+        'Quick Windmill Relight': {'Relight', },
     }
-    # The is the set of permalinks of significant posts that might be gathered
+    # This the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
-    SIGNIFICANT_POSTS = {
-        'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921202',
-        'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-37.html#post11906480',
-        'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html#post11908911',
-    }
+    SIGNIFICANT_POSTS = (
+        ('Summary of Main Theories', 'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-37.html#post11906480', ),
+        ('Thread Closure', 'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html#post11908911', ),
+        ('Preliminary Report Timeline', 'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921202', ),
+        ('Quick Windmill Relight', 'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-38.html#post11921747', ),
+    )
