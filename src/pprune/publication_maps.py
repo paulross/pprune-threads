@@ -90,6 +90,12 @@ class PublicationMap(abc.ABC):
             ret |= set(self.get_phrases_to_subject_map(phrase_length).values())
         ret |= set(self.get_specific_posts_to_subject_map().values())
         # ret |= self.get_duplicate_subjects()
+        removed_subjects = self.get_set_of_removed_subjects()
+        # # Sanity check.
+        # removed_subjects_diff = removed_subjects.difference(ret | self.get_duplicate_subjects())
+        # if removed_subjects_diff:
+        #     raise ValueError(f'These removed subjects not in all subjects: {removed_subjects_diff}')
+        ret -= removed_subjects
         return ret
 
     @abc.abstractmethod
@@ -122,6 +128,11 @@ class PublicationMap(abc.ABC):
     @abc.abstractmethod
     def get_minimum_number_username_posts(self) -> int:
         """The minimum number of posts a user has mad to get a page with all their posts."""
+        pass
+
+    @abc.abstractmethod
+    def get_set_of_removed_subjects(self) -> typing.Set[str]:
+        """Returns a set of subjects that are removed, possibly temporarily."""
         pass
 
 
@@ -200,6 +211,44 @@ class AirIndia171(PublicationMap):
     def get_minimum_number_username_posts(self) -> int:
         """The minimum number of posts a user has mad to get a page with all their posts."""
         return 5
+
+    def get_set_of_removed_subjects(self) -> typing.Set[str]:
+        return {
+            "RAT (Alternate Noise Sources)",
+            '51 Day Issue',
+            'Audio Analysis',
+            'Bird Strike',
+            'Engine Over-speed (All)',
+            'Engine Shutdown (Over-speed)',
+            'Flap Retraction',
+            'Flap Setting',
+            'Flaps (All)',
+            'Flaps vs Gear',
+            'Fuel Contamination',
+            'Fuel Pump (Engine Driven)',
+            'Fuel Pumps',
+            'GEnx TCMA Logic',
+            'Gear Retraction',
+            'Hydraulic Failure (Double)',
+            'Hydraulic Failure (Triple)',
+            'Hydraulic Pumps',
+            'Lift/Drag Ratio',
+            'MLG (All)',
+            'MLG Tilt',
+            'N2 Over-speed',
+            'RAT (Sound)',
+            'RAT (Witnesses)',
+            'TCMA (Activation)',
+            'TCMA (Air-ground Logic)',
+            'TCMA (All)',
+            'TCMA (Improper Activation)',
+            'TCMA (Logic)',
+            'TCMA (Shutdown)',
+            'Total Energy',
+            'VNAV',
+            'Water Ingress',
+            'Wrong Engine',
+        }
 
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {
