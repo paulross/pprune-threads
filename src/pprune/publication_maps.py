@@ -90,10 +90,16 @@ class PublicationMap(abc.ABC):
             ret |= set(self.get_phrases_to_subject_map(phrase_length).values())
         ret |= set(self.get_specific_posts_to_subject_map().values())
         # ret |= self.get_duplicate_subjects()
+        removed_subjects = self.get_set_of_removed_subjects()
+        # # Sanity check.
+        # removed_subjects_diff = removed_subjects.difference(ret | self.get_duplicate_subjects())
+        # if removed_subjects_diff:
+        #     raise ValueError(f'These removed subjects not in all subjects: {removed_subjects_diff}')
+        ret -= removed_subjects
         return ret
 
     @abc.abstractmethod
-    def get_significant_posts_permalinks(self) -> typing.Set[str]:
+    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, str]]:
         """The is the set of permalinks of significant posts that might be gathered
         together in the subject 'Significant Posts'."""
         pass
@@ -124,302 +130,10 @@ class PublicationMap(abc.ABC):
         """The minimum number of posts a user has mad to get a page with all their posts."""
         pass
 
-
-class ConcordePublicationMap(PublicationMap):
-    """Specialisation for the Concorde thread."""
-
-    def get_title(self) -> str:
-        return 'Concorde Re-mixed'
-
-    def get_introduction_in_html(self) -> str:
-        return """<p>There is a great 
-    <a href="http://www.pprune.org/tech-log/423988-concorde-question.html">thread on pprune</a>
-    that contains a fascinating discussion from experts about Concorde.
-    The thread has nearly 2000 posts and around 100 pages.
-    Naturally enough it is ordered in time of each post but since it covers
-    so many subjects it is a little hard to follow a particular subject.
-</p>"""
-
-    def get_lowercase_word_to_subject_map(self) -> typing.Dict[str, str]:
-        return self.WORDS_MAP
-
-    def get_uppercase_word_to_subject_map(self) -> typing.Dict[str, str]:
-        return self.CAPS_WORDS
-
-    def get_phrase_lengths(self) -> typing.List[int]:
-        return [2, ]
-
-    def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[str, str]:
-        if phrase_length == 2:
-            return self.PHRASES_2_MAP
-        return {}
-
-    def get_specific_posts_to_subject_map(self) -> typing.Dict[str, str]:
-        return self.SPECIFIC_POSTS_MAP
-
-    def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
-        return set()
-
-    def get_significant_posts_permalinks(self) -> typing.Set[str]:
-        return self.SIGNIFICANT_POSTS
-
-    def get_set_of_words_required(self) -> typing.Set[str]:
-        return set()
-
-    def get_number_of_top_authors(self) -> int:
-        return 40
-
-    def get_upvoted_post_count_limit(self) -> int:
-        return 25
-
-    def get_upvoted_post_text_limit(self) -> int:
-        return 256
-
-    # Map of {lower_case_word : subject_title, ..}
-    WORDS_MAP = {
-        '214': 'G-BOAG',
-        '216': 'G-BOAF',
-        '593': 'Olympus 593',
-        'abatement': 'Noise Abatement',
-        'accident': 'Air France 4590',
-        'aerospatiale': 'Aerospatiale',
-        'afterburner': 'Afterburner/Re-heat',
-        'airbus': 'Airbus',
-        'antiskid': 'Anti-skid',
-        'aoa': 'AoA',
-        'apus': 'Auxiliary Power Unit',
-        'autoland': 'Auto-land',
-        'autopilot': 'Auto-pilot',
-        'autostab': 'Auto-stabilisation',
-        'autostabs': 'Auto-stabilisation',
-        'autothrottle': 'Auto-throttle',
-        'autotrim': 'Auto-trim',
-        'bleed': 'Bleed Air',
-        'boeing': 'Boeing',
-        'bourget': 'Le Bourget',
-        'brakes': 'Braking',
-        'braking': 'Braking',
-        'braniff': 'Braniff',
-        'brooklands': 'Brooklands',
-        'bucket': 'Thrust Reversers',
-        'buckets': 'Thrust Reversers',
-        'captain': 'Captains',
-        'captains': 'Captains',
-        'cofg': 'C of G',
-        'cog': 'C of G',
-        'corrosion': 'Corrosion',
-        'crash': 'Air France 4590',
-        'dakar': 'Dakar',
-        'depressurisation': 'Depressurisation',
-        'depressurization': 'Depressurisation',
-        'disaster': 'Air France 4590',
-        'elevon': 'Elevons',
-        'elevons': 'Elevons',
-        'fairford': 'Fairford',
-        'fatigue': 'Fatigue',
-        'filton': 'Filton',
-        'flameout': 'Flameout',
-        'flameouts': 'Flameout',
-        'galley': 'Galley',
-        'galleys': 'Galley',
-        'glide': 'Glide',
-        'gpus': 'Ground Power Unit',
-        'gonesse': 'Air France 4590',
-        'haynes': 'Haynes guide to Concorde',
-        'heathrow': 'LHR',
-        'hooker': 'Sir Stanley Hooker',
-        'hydraulic': 'Hydraulic',
-        'hydrazine': 'Hydrazine',
-        'ignitor': 'Ignitors',
-        'ignitors': 'Ignitors',
-        'inlet': 'Intakes',
-        'intakes': 'Intakes',
-        'microprocessor': 'Microprocessor',
-        'mmo': 'Mmo',
-        'nosewheel': 'Landing Gear',
-        'nozzle': 'Nozzles',
-        'nozzles': 'Nozzles',
-        'parachute': 'Parachute',
-        'pressurisation': 'Pressurisation',
-        'reheat': 'Afterburner/Re-heat',
-        'reheats': 'Afterburner/Re-heat',
-        'relight': 'Relight',
-        'rollsroyce': 'Rolls Royce',
-        'rudder': 'Rudder',
-        'shockwave': 'Shockwave',
-        'shockwaves': 'Shockwave',
-        'shutdown': 'Engine Shutdown',
-        'sideslip': 'Sideslip',
-        'sidestick': 'Sidestick',
-        'simulator': 'Simulator',
-        'simulators': 'Simulator',
-        'stagnation': 'Stagnation Point',
-        'stewardess': 'Cabin Crew',
-        'supercruise': 'Super-cruise',
-        'surge': 'Engine surge',
-        'surged': 'Engine surge',
-        'surges': 'Engine surge',
-        'tailcone': 'Tail Cone',
-        'tailwheel': 'Tailwheel',
-        'toulouse': 'Toulouse',
-        'tyres': 'Tyres',
-        'tu144': 'Tu-144',
-        'undercarridge': 'Landing Gear',
-        'visor': 'Visor',
-        'vortex': 'Vortex',
-        'vorticies': 'Vortex',
-    }
-
-    # This maps capitilised words (stripped of punctuation) to their subject.
-    # Any post that has that capitilised word in it is treated as part of that subject.
-    CAPS_WORDS = {
-        'ADC': 'ADC (Air Data Computer)',
-        'AF': 'Air France',
-        'AFCS': 'AFCS (Automtic Flight Control System)',
-        'AICS': 'AICS (Air Intake Control System)',
-        'AICU': 'AICU (Air Intake Control Computer)',
-        'APU': 'APU (Auxiliary Power Unit)',
-        'AUTOSTAB': 'Auto-stabilisation',
-        'AUTOLAND': 'Auto-land',
-        'BA': 'British Airways',
-        'BLUE': 'Hydraulic System - BLUE',
-        'CDG': 'CDG',
-        'CG': 'C of G',
-        'CC': 'Cabin Crew',
-        'FBW': 'FBW (Fly By Wire)',
-        'FBTSC': 'F-BTSC',
-        'FBTSD': 'F-BTSD',
-        'FBVFA': 'F-BVFA',
-        'FBVFC': 'F-BVFC',
-        'FBVFD': 'F-BVFD',
-        'FWTSA': 'F-WTSA',
-        'FWTSB': 'F-WTSB',
-        'GAXDN': 'G-AXDN',
-        'GBBDG': 'G-BBDG',
-        'GBFKW': 'G-BFKW',
-        'GBOAA': 'G-BOAA',
-        'GBOAB': 'G-BOAB',
-        'GBOAC': 'G-BOAC',
-        'GBOAD': 'G-BOAD',
-        'GBOAE': 'G-BOAE',
-        'GBOAF': 'G-BOAF',
-        'GBOAG': 'G-BOAG',
-        'GN81AC': 'G-N81AC',
-        'GPU': 'GPU (Ground Power Unit)',
-        'GREEN': 'Hydraulic System - GREEN',
-        'HUD': 'HUD (Head Up Display)',
-        'IAS': 'IAS (Indicated Air Speed)',
-        'INS': 'INS (Inertial Navigation System)',
-        'ITVV': 'Intelligent Television and Video',
-        'JFK': 'JFK',
-        'JC': 'John Cook',
-        'LHR': 'LHR',
-        'LHRBGI': 'LHR-BGI Route',
-        'LHRJFK': 'LHR-JFK Route',
-        'MEPU': 'MEPU (Monogol Emergency Power Unit)',
-        'N1': 'N1 (revolutions)',
-        'PFCU': 'PFCU (Powered Flying Control Units)',
-        'RAT': 'RAT (Ram Air Turbine)',
-        'RR': 'Rolls Royce',
-        'SR71': 'SR-71',
-        'TAS': 'TAS (True Air Speed)',
-        'TAT': 'TAT (Total Air Temperature)',
-        'TLA': 'TLA (Throttle Lever Angle)',
-        'TMO': 'TMO (Temprature Max Operating)',
-        'TU144': 'Tu-144',
-        'V1': 'V1',
-        'V2': 'V2',
-        'YELLOW': 'Hydraulic System - YELLOW',
-    }
-
-    # ('fuel', 'pump') -> "Fuel Pumps"
-    # Each part of the key should be lower case unless all caps
-    PHRASES_2_MAP = {
-        ('ALT', 'HOLD'): 'ALT HOLD',
-        ('aoa', 'concorde'): 'AoA',
-        ('aoa', 'stall'): 'AoA',
-        ('aoa', 'vortex'): 'AoA',
-        ('aoa', 'vortices'): 'AoA',
-        ('auto', 'stabilisation'): 'Auto-stabilisation',
-        ('boeing', 'SST'): 'Boeing SST',
-        ('barbara', 'harmer'): 'Barbara Harmer',
-        ('brian', 'calvert'): 'Brian Calvert',
-        ('brian', 'wadpole'): 'Brian Walpole',
-        ('brian', 'walpole'): 'Brian Walpole',
-        ('CLIMB', 'MAX'): 'Climb Performance',
-        ('C', 'G'): 'C of G',  # 'of' is stripped out by common words.
-        ('concorde', 'simulator'): 'Concorde Simulator',
-        ('Chris', 'Norris'): 'Chris Norris',
-        ('cabin', 'crew'): 'Cabin Crew',
-        ('delta', 'golf'): 'G-BBDG',
-        ('engine', 'failure'): 'Engine Failure',
-        ('female', 'pilots'): 'Female Pilots',
-        ('flight', 'envelope'): 'Flight Envelope',
-        ('fuel', 'pump'): 'Fuel Pumps',
-        ('fuel', 'pumps'): 'Fuel Pumps',
-        ('fuel', 'vent'): 'Fuel Vent System',
-        ('green', 'system'): 'GREEN Hydraulic System',
-        ('hand', 'flying'): 'Hand Flying',
-        ('hydraulic', 'contamination'): 'Hydraulic Failure/Contamination',
-        ('hydraulic', 'failures'): 'Hydraulic Failure/Contamination',
-        ('HP', 'compressor'): 'HP Compressor',
-        ('HP', 'turbine'): 'HP Turbine',
-        ('JFK', 'departures'): 'LHR-JFK Route',
-        ('JFK', 'LHR'): 'LHR-JFK Route',
-        ('John', 'Cook'): 'John Cook',
-        ('landing', 'gear'): 'Landing Gear',
-        ('landing', 'lamps'): 'Landing & Taxy Lights',
-        ('landing', 'lights'): 'Landing & Taxy Lights',
-        ('le', 'bourget'): 'Le Bourget',
-        ('LHR', 'JFK'): 'LHR-JFK Route',
-        ('LHR', 'runways'): 'LHR Operations',
-        ('LP', 'compressor'): 'LP Compressor',
-        ('LP', 'turbine'): 'LP Turbine',
-        ('main', 'gear'): 'Landing Gear',
-        ('mach', 'trim'): 'Mach Trim',
-        ('mach', 'trimmer'): 'Mach Trim',
-        ('mach', 'trimming'): 'Mach Trim',
-        ('nose', 'gear'): 'Landing Gear',
-        ('nose', 'leg'): 'Landing Gear',
-        ('nose', 'wheel'): 'Landing Gear',
-        ('nozzle', 'reverser'): 'Thrust Reversers',
-        ('Olympus', '593'): 'Olympus 593',
-        ('nozzle', 'reverser'): 'Thrust Reversers',
-        ('pilot', 'selection'): 'Pilot Selection',
-        ('RAE', 'farnborough'): 'RAE Farnborough',
-        ('rivers', 'babylon'): 'By the Rivers of Babylon',
-        ('Rolls', 'Royce'): 'Rolls Royce',
-        ('rotating', 'stall'): 'Rotating (engine) Stall',
-        ('stick', 'shaker'): 'Stick Shaker',
-        ('taxy', 'lights'): 'Landing & Taxy Lights',
-        ('temperature', 'shear'): 'Temperature Shear',
-        ('temperature', 'shears'): 'Temperature Shear',
-        ('transonic', 'acceleration'): 'Transonic Acceleration',
-        ('thrust', 'recuperator'): 'Thrust Recuperator',
-        ('vortex', 'aoa'): 'Vortex AoA',
-    }
-
-    # The key is the pprune message number where the post is clearly about the subject
-    # but the text does not refer to it.
-    # This is a map of {permalink : subject, ...}
-    # TODO: Change these to permalinks.
-    SPECIFIC_POSTS_MAP = {
-        225: 'Flight Envelope',  # Post 225 by pprunes counting
-        250: 'Olympus 593',  # Post 250 by pprunes counting
-        310: 'John Cook',
-        333: 'C of G',  # Post 333 by pprunes counting
-        463: 'John Cook',
-        600: 'John Cook',
-        664: 'HUD (Head Up Display)',
-        1023: 'Relight',
-        1049: 'Captains',
-        1666: 'Tu-144',
-        1861: 'Parachute',
-        1937: 'John Cook',
-    }
-    # The is the set of permalinks of significant posts that might be gathered
-    # together in the subject 'Significant Posts'.
-    SIGNIFICANT_POSTS = set()
+    @abc.abstractmethod
+    def get_set_of_removed_subjects(self) -> typing.Set[str]:
+        """Returns a set of subjects that are removed, possibly temporarily."""
+        pass
 
 
 class AirIndia171(PublicationMap):
@@ -433,7 +147,7 @@ class AirIndia171(PublicationMap):
     <ol>
         <li><a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html">Part One [pprune]</a> (now closed)</li>
         <li><a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html">Part Two [pprune]</a> (now closed)</li>
-        <li><a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html">Published Report [pprune]</a></li>
+        <li><a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html">Preliminary Report [pprune]</a></li>
         <li>There is also a thread on the
             <a href="https://www.pprune.org/accidents-close-calls/666714-moderation-air-india-accident-threads.html">moderation of these threads [pprune]</a>
              (this is not included in this analysis)
@@ -475,7 +189,7 @@ class AirIndia171(PublicationMap):
             return self.DUPLICATE_SUBJECT_MAP[subject]
         return set()
 
-    def get_significant_posts_permalinks(self) -> typing.Set[str]:
+    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, str]]:
         return self.SIGNIFICANT_POSTS
 
     def get_set_of_words_required(self) -> typing.Set[str]:
@@ -497,6 +211,44 @@ class AirIndia171(PublicationMap):
     def get_minimum_number_username_posts(self) -> int:
         """The minimum number of posts a user has mad to get a page with all their posts."""
         return 5
+
+    def get_set_of_removed_subjects(self) -> typing.Set[str]:
+        return {
+            "RAT (Alternate Noise Sources)",
+            '51 Day Issue',
+            'Audio Analysis',
+            'Bird Strike',
+            'Engine Over-speed (All)',
+            'Engine Shutdown (Over-speed)',
+            'Flap Retraction',
+            'Flap Setting',
+            'Flaps (All)',
+            'Flaps vs Gear',
+            'Fuel Contamination',
+            'Fuel Pump (Engine Driven)',
+            'Fuel Pumps',
+            'GEnx TCMA Logic',
+            'Gear Retraction',
+            'Hydraulic Failure (Double)',
+            'Hydraulic Failure (Triple)',
+            'Hydraulic Pumps',
+            'Lift/Drag Ratio',
+            'MLG (All)',
+            'MLG Tilt',
+            'N2 Over-speed',
+            'RAT (Sound)',
+            'RAT (Witnesses)',
+            'TCMA (Activation)',
+            'TCMA (Air-ground Logic)',
+            'TCMA (All)',
+            'TCMA (Improper Activation)',
+            'TCMA (Logic)',
+            'TCMA (Shutdown)',
+            'Total Energy',
+            'VNAV',
+            'Water Ingress',
+            'Wrong Engine',
+        }
 
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {
@@ -531,8 +283,8 @@ class AirIndia171(PublicationMap):
         # 08:08:43 E2 Fuel Cutoff Switch RUN -> CUTOFF
         '080842': 'Timeline (Preliminary Report)',
         '080843': 'Timeline (Preliminary Report)',
-        'cerebellum' : 'Action slip',
-        'avherald' : 'AvHerald',
+        'cerebellum': 'Action slip',
+        'avherald': 'AvHerald',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -619,6 +371,7 @@ class AirIndia171(PublicationMap):
             ('fuel', 'switch'): 'Fuel Cutoff Switches',
             ('fuel', 'switches'): 'Fuel Cutoff Switches',
             ('cutoff', 'switches'): 'Fuel Cutoff Switches',
+            ('cutoff', 'switch'): 'Fuel Cutoff Switches',
             ('cut', 'off'): 'Fuel Cutoff Switches',
             ('fuelswitch', 'design'): 'Fuel Cutoff Switches',
 
@@ -743,7 +496,12 @@ class AirIndia171(PublicationMap):
             ('human', 'factors',): 'Human Factors',
 
             # Note that this assumes 'of' is removed by the common words (in fact it is number 2 :-) ).
-            ('timeline', 'events'): 'Timeline (Preliminary Report)',
+            ('timeline', 'events',): 'Timeline (Preliminary Report)',
+
+            ('authority', 'gradient',): 'Authority Gradient',
+            ('authority', 'gradients',): 'Authority Gradient',
+
+            ('muscle', 'memory',): 'Muscle Memory',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -771,6 +529,7 @@ class AirIndia171(PublicationMap):
             ('cockpit', 'area', 'microphone'): 'Cockpit Area Audio',
 
             ('landing', 'gear', ' lever'): 'Gear Lever',
+            ('quick', 'windmill', 'relight'): 'Quick Windmill Relight',
         },
         4: {
             ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine Driven)',
@@ -843,11 +602,17 @@ class AirIndia171(PublicationMap):
         'Fuel Cutoff Switches (detent)': {'Fuel (All)', 'Fuel Cutoff Switches', },
 
         'Timeline (Preliminary Report)': {'Preliminary Report', },
+        'Quick Windmill Relight': {'Relight', },
     }
-    # The is the set of permalinks of significant posts that might be gathered
+    # This the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
-    SIGNIFICANT_POSTS = {
-        'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921202',
-        'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-37.html#post11906480',
-        'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html#post11908911',
-    }
+    SIGNIFICANT_POSTS = (
+        ('Summary of Main Theories',
+         'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-37.html#post11906480',),
+        ('Thread Closure',
+         'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html#post11908911',),
+        ('Preliminary Report Timeline',
+         'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921202',),
+        ('Quick Windmill Relight',
+         'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-38.html#post11921747',),
+    )
