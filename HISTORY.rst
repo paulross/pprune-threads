@@ -1,6 +1,13 @@
 History
 =======
 
+Alpha Release (Thread: July 14, 2025, 13:20:00)
+-----------------------------------------------
+
+- Build threads up to July 14, 2025, 13:20:00 (built on July 14, 2025, 14:31:36).
+- Removed 34 subjects the the Preliminary Report has rendered irrelevant such as: "Bird Strike", "Flaps vs Gear", "TCMA" and so on.
+- No new subjects added.
+
 Alpha Release (Thread: July 13, 2025, 10:57:00)
 -----------------------------------------------
 
