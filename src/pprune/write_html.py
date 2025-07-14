@@ -138,6 +138,7 @@ def pass_one(
         for subject in subjects:
             dupe_subjects |= publication_map.get_duplicate_subjects(subject)
         subjects |= dupe_subjects
+        subjects -= publication_map.get_set_of_removed_subjects()
         pass_one_result.add_subject_post(subjects, i, post.sequence_num, post.user.name.strip())
     all_subject_titles = publication_map.get_all_subject_titles()
     for subject_title in sorted(all_subject_titles):
@@ -189,22 +190,20 @@ def write_index_significant_posts(
             index.write('Significant Posts')
         with element(index, 'p'):
             index.write('These are worth reading before you go any further.')
-        post_ordinals = []
-        for permalink in significant_posts:
+        # post_ordinals = []
+        for subject, permalink in significant_posts:
             try:
-                post_ordinals.append(thread.post_map[permalink])
+                post_ordinal = thread.post_map[permalink]
             except KeyError:
                 logger.error('Can not find permalink %s', permalink)
-        post_ordinals.sort()
-        with element(index, 'ul'):
-            for post_ordinal in post_ordinals:
-                post = thread.posts[post_ordinal]
-                with element(index, 'li'):
-                    subject = post.subject.strip()
-                    if not subject:
-                        subject = 'No Subject'
-                    index.write(
-                        f'Permalink: <a href="{post.permalink}">{subject}</a> User: <a href="{post.user.href}">{post.user.name}</a>')
+            else:
+                with element(index, 'ul'):
+                    post = thread.posts[post_ordinal]
+                    with element(index, 'li'):
+                        index.write(
+                            f'Permalink: <a href="{post.permalink}">{subject}</a>'
+                            f' User: <a href="{post.user.href}">{post.user.name}</a>'
+                        )
 
 
 def write_index_main_subject_table(
@@ -234,6 +233,24 @@ def write_index_main_subject_table(
                                                              len(subject_post_map[subject])))
                     # print(subject, subject_map[subject])
                     subject_index += 1
+
+
+def write_index_removed_subjects(
+        publication_map: publication_maps.PublicationMap,
+        index: typing.TextIO,
+):
+    """If there are removed subjects then list them here."""
+    removed_subjects = publication_map.get_set_of_removed_subjects()
+    if removed_subjects:
+        with element(index, 'h1'):
+            index.write('Removed Subjects')
+        with element(index, 'p'):
+            index.write(f'These {len(removed_subjects)} subjects have been removed: ')
+            index.write(
+                ', '.join(
+                    [f'"{s}"' for s in sorted(removed_subjects)]
+                )
+            )
 
 
 def write_index_most_upvoted_posts_table(
@@ -501,7 +518,9 @@ def write_index_page(
                         with element(index, 'td', _class='indextable'):
                             index.write('Thread finishes at')
                         with element(index, 'td', _class='indextable'):
-                            index.write(format_datetime(thread.posts[-1].timestamp))
+                            index.write(f'{format_datetime(thread.posts[-1].timestamp)} ')
+                            with element(index, 'a', href=thread.posts[-1].permalink):
+                                index.write('Last Post')
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('This build')
@@ -519,6 +538,8 @@ def write_index_page(
                 write_index_significant_posts(thread, publication_map, index)
 
                 write_index_main_subject_table(pass_one_result.subject_post_map, index)
+
+                write_index_removed_subjects(publication_map, index)
 
                 write_index_most_upvoted_posts_table(thread, publication_map, index)
 
