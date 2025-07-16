@@ -197,14 +197,16 @@ def write_index_significant_posts(
             except KeyError:
                 logger.error('Can not find permalink %s', permalink)
             else:
-                with element(index, 'ul'):
-                    post = thread.posts[post_ordinal]
-                    with element(index, 'li'):
-                        index.write(
-                            f'Permalink: <a href="{post.permalink}">{subject}</a>'
-                            f' User: <a href="{post.user.href}">{post.user.name}</a>'
-                        )
-
+                if post_ordinal < len(thread):
+                    with element(index, 'ul'):
+                        post = thread.posts[post_ordinal]
+                        with element(index, 'li'):
+                            index.write(
+                                f'Permalink: <a href="{post.permalink}">{subject}</a>'
+                                f' User: <a href="{post.user.href}">{post.user.name}</a>'
+                            )
+                else:
+                    logger.warning(f'Can not write post {post_ordinal} most likely due to --limit-posts')
 
 def write_index_main_subject_table(
         subject_post_map: typing.Dict[str, typing.List[int]],

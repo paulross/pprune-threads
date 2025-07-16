@@ -85,6 +85,12 @@ def main():
         )
     )
     parser.add_argument(
+        "--limit-posts",
+        type=int,
+        default=0,
+        help="Limit the thread to this number of posts, 0 means all posts. [default: %(default)d]",
+    )
+    parser.add_argument(
         "-l",
         "--log-level",
         dest="log_level",
@@ -109,6 +115,10 @@ def main():
         read_html.update_whole_thread(archive, thread)
         archive_post_count[archive] = len(thread) - prev_post_count
     thread.sort_by_sequence_number()
+    if args.limit_posts > 0:
+        logger.info("Post limiting, was %d posts.", len(thread))
+        thread.posts = thread.posts[:args.limit_posts]
+        logger.info("Post limiting, now %d posts.", len(thread))
     word_count = 0
     for post in thread.posts:
         word_count += len(post.words)
