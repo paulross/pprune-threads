@@ -285,6 +285,7 @@ class AirIndia171(PublicationMap):
         '080843': 'Timeline (Preliminary Report)',
         'cerebellum': 'Action slip',
         'avherald': 'AvHerald',
+        'wsj': 'Wall Street Journal',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -321,6 +322,7 @@ class AirIndia171(PublicationMap):
         'SAIB': 'Special Airworthiness Information Bulletin',
         # NM-18-33 without punctuation.
         'NM1833': 'SAIB NM-18-33',
+        'WSJ': 'Wall Street Journal',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps
@@ -530,6 +532,7 @@ class AirIndia171(PublicationMap):
 
             ('landing', 'gear', ' lever'): 'Gear Lever',
             ('quick', 'windmill', 'relight'): 'Quick Windmill Relight',
+            ('wall', 'street', 'journal'): 'Wall Street Journal',
         },
         4: {
             ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine Driven)',
