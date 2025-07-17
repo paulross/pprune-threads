@@ -621,5 +621,5 @@ class AirIndia171(PublicationMap):
         ('A 787 Pilot Speaks', 11924096,),
         ('tdracer on Air Accident Investigations', 11924194,),
         # https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-65.html#post11924281
-        ('787 Maintenance and those Fuel Cutoff Switches', 11924281,),
+        ('787 Maintenance and those Fuel Cutoff Switches (15:00 onwards)', 11924281,),
     )
