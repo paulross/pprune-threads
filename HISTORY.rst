@@ -1,6 +1,13 @@
 History
 =======
 
+Alpha Release (Thread: July 17, 2025, 19:52:00)
+-----------------------------------------------
+
+- Build threads up to July 17, 2025, 19:52:00 (built on July 17, 2025, 21:02:45).
+- Subjects added: "Jump Seat".
+- Added "Number of Posts by Date" on the landing page.
+
 Alpha Release (Thread: July 17, 2025, 13:34:00)
 -----------------------------------------------
 
