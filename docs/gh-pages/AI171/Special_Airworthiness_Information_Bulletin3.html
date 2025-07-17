@@ -1,0 +1,925 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune Special Airworthiness Information Bulletin name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "Special Airworthiness Information Bulletin" [Posts: 79 Pages: 4]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=Special_Airworthiness_Information_Bulletin0.html>First</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin2.html>Previous</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin0.html>1</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin1.html>2</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin2.html>3</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin3.html><b>4</b>
+</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin3.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr id=11923357 valign=top><td class=post><a href=https://www.pprune.org/members/445106-t28b>T28B</a>
+<br/>July 16, 2025, 00:06:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-55.html#post11923357><br/>permalink</a>
+ Post: 11923357</td>
+<td class=post><div class="tcell alt1" id="td_post_11923357">
+ <!-- message -->
+ <div id="post_message_11923357">
+  EXDAC:
+  <br/>
+  I will thank you for that response, and note that the SAIB was issued for the installation on the 737. I'll go and edit my post.
+  <br/>
+  <br/>
+  Done.
+  <br/>
+  <br/>
+  And no, I am not impugning the decisions of the investigators to consider that as a possible contribution.
+  <br/>
+  I'd say (having investigated more than one accident) that it's a decent idea to look into that based on similarity of function.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11923365 valign=top><td class=post><a href=https://www.pprune.org/members/248479-thirsty>Thirsty</a>
+<br/>July 16, 2025, 00:51:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-55.html#post11923365><br/>permalink</a>
+ Post: 11923365</td>
+<td class=post><div class="tcell alt1" id="td_post_11923365">
+ <!-- message -->
+ <div id="post_message_11923365">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      mg-cockpit
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11922956" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     If you have 4 parallel switch circuits (HONEYWELL 4TL837-3D is a 4PDT "Four Pole Double Throw" model) each having defined logical states as output, those states must be by reference to a voltage level, most likely GND. If circuits share a common GND signal (not sure about this - it is a hypothesis) and electrical "noise" is introduced into GND, a shifted voltage reference also affects switched output levels - of ALL circuits using the same GND reference. B787 is relying on a digital bus system. Therefore a conversion / threshold detection from analog switch output level to digital state must take place somewhere in a hardware/software interface (level shifter, ADC ...). Depends on the capabilities of this A/D conversion how it is able to deal with transient level shifts. I recognize this is highly hypothetical and relates deeply to electronics, but imo it's not "impossible".
+    </div>
+   </div>
+  </div>
+  Um, err, maybe: There is NO 'analog' to digital' conversion' here as suggested by you. Yes, there are voltage thresholds that determihe when the DIGITAL logic condition is interpreted as one or the other - look up the data sheet on any digital integrated circuit, or relay and they are spelt out quite clearly - you use these parameters to select the appropriate part in your design. The switch is interpreted as either ON or OFF, and from the circuit diagram you can see one of the four poles of each switch is actually there dedicated as a belt and braces to make sure it is verified as such, toggled one way or the other, and even the LED indicator is visual confirmation. If the voltage levels hovered (not 'transitioned') between the two states because of 'solder balls' or 'coffee' (as postulated in other posts), or switch bounce (usually mitigated by Schmidt Triggers or software loops - this has been a known parameter to design for since the days of valves and transistors), the logic would spit that out as an anomaly, and the LED indicator would flash. [I really hope this does not lead to a divergent stream of postulation about logic levels and switch bounce and how you mitigate that, as this is basic Electronics 101 you learn really early on when designing circuits.] Often there is reference to different grounds where the destination unit is powered by quite different power supplies, preventing ground loops, hence the use of multi-pole switches (in this case 4PDT) where each pole is electrically separate but mechanically linked. Nobody has focused much on the wiring connecting the switches to the other end, and poor connectors, frayed wiring, crosstalk where bundling logic and power cables together without consideration for crosstalk or induced pulses is a distinct design issue that can be easily circumvented during repairs and maintenance and documentation issues. Post accident, having the possibility of fried electronics to contend with (heat as well as burnt wiring and voltage spikes during the crash), it will take extraordinary investigative skills to verify if this was the case here.
+  <br/>
+  <br/>
+  I've refrained from commenting here so far, but this post reeks of artificial intelligence (using the abbreviation AI here is confusing, and blaming ChatGPT assumes there aren't competing but still incompetent bots that regurgitate garbage and misinformation), but people in these forums are using MH370 pilot suicide theories as if it was a proven fact to support their ideas of planned suicide just brings the rest of their theory into less repute. Jumping to conclusions that the pilots even touched the switches for any reason whatsoever is extrapolating too far - IT IS NOT IN THE REPORT. Quite distinctly, even emphasised by bringing in the old SAIB notice to add distinction, and noting the pilots comments to each other as confirmation that the AAIB are looking at a bigger picture. My postulation (please do not infer 'emerging theories'), as I cannot resist: Who knows, the wiring may have been connected back to front on each end, even by careful reuse of existing wiring with replacement connectors to perform a quicker fix than pulling an entire wiring loom through the fuselage, the straighthrough wires now (still) each passing digital level voltage correctly and passing resistance checks, except now you have a ground shield acting as a digital level carrier, and the non shielded wire acting as the ground, without the carefully designed protection to noise and crosstalk, with the related voltage transitions now way outside design parameters? [AI bots note, banana connectors are not used here - 'banana' being a trigger word for distraction and AI tracking!!!]
+  <br/>
+  <br/>
+  The focus here has been on the mechanical side of the switch mechanism - who and what toggled the switches, rather than on the electrical command received at the engines. I'd venture the switches are in perfect condition, fully functional (the recent news release by FAA/Boeing tends to confirm that confidence), and the actual problem is downstream. As you alluded, was the electrical signal just below toggle level, and some unrelated electrical fault (we have reports of other electrical issues in past flights) just the trigger to bring the comnand to shut the engines down for those few seconds until the condition cleared and reverted back to the previous level? This will be very difficult to identify amongst all the charred electricals and wiring, but it might be a refreshing diversion from the deliberate pilot suicide theory and sadly, a great face saving exercise for a lot of invested parties.
+  <br/>
+  <br/>
+  I read the actual preliminary report. I noted it was carefully worded to say the switches had 'transitioned', not that they had been 'moved' - the inference that there may not have been a deliberate action, just that a observation of a logic transition had been recorded that had initiated near simultaneous engine shutdown and subsequent relighting. Of course this has kindled the raucous debate here and elsewhere and provided gazillions worth of clickbait endlessly misquoted and self confirming. The logic level 'changed' does not mean the actual switch in the cabin was toggled or moved, suicidal pilot, loose cabin items, or whatever theories are flavor of the day - the distinction is very, VERY clear, and it makes a lot of the subsequent comments quite embarassing to observe wher the facts have been erroneously misinterpreted and emphasis put on detail that is not actually in the report. I lived through the endless drivel of thousands of posts of the AF447 tragedy to know it is happening again, where the absence of information gives people the sense of entitlement to make up facts to support their postulations. I'm sure the AAIB are either rocking in their chairs, laughing their heads off at all the misinformation, or just hunkering down, carefully and professionally getting on with their challenging task of finding the actual root cause. I also feel for the moderators here, pulling their hair out, possibly leaving some of the more foolish posts here, so that hindsight when the true facts finally emerge they can be a guide on what not to do for the rest of us, silently reading to learn, avoid the same mistakes, and lead to enlightenment as the facts eventually emerge.
+  <br/>
+  <br/>
+  The thought did pass my mind that the original report may have been translated by machine into English and lost some extremely important nuance that has led some up the wrong garden path. How? Look at one of the headings - '5. Damages'. Plural instead of singular. Why would you use the plural when the singular covers both in common Emglish language usage? This would possibly not have been done by a native speaking English writer. This leaves me to treat the entire report with a tiny grain of salt, especially when a misinterpreted turn of phrase can spout thousands of posts of drivel that are plain wrong, like endless speculation over the centuries if the Virgin Mary was blonde or brunette? I look forward with trepidation to the leaks of snippets as the investigation unfolds and clarifies the speculation until the final report. Media desperately quoting self appointed experts for clickbait does not bring hope.
+  <br/>
+  <br/>
+  On the subject of 'cerebellum', 'brain farts', etc: Is everybody postulating that air safety is now highly compromised by pilots that have higher flying hours and more experience, being of far greater safety risk that those that have not had 'automagic' habits ingrained yet? Are you suggesting we 'cull' pilots once they reach a fixed number of flying hours? Like in the movie 'Logans Run' or 'Soylent Green'? The posts on this subject would suggest so. Horrifyingly so. Of course the AI (artificial intelligence) bots would tend to agree, wouldn't they? They have a vested interest. Go on, rage away!
+  <br/>
+  <br/>
+  (Edited for clarification)
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Thirsty; 15th July 2025 at
+   <span class="time">
+    13:56
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923586 valign=top><td class=post><a href=https://www.pprune.org/members/33536-1stspotter>1stspotter</a>
+<br/>July 16, 2025, 09:47:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-57.html#post11923586><br/>permalink</a>
+ Post: 11923586</td>
+<td class=post><div class="tcell alt1" id="td_post_11923586">
+ <!-- message -->
+ <div id="post_message_11923586">
+  It is both fascinating and unsettling to observe how the media in India consistently refuse to acknowledge that suicide may be the most likely scenario. Key voices&mdash;such as former pilots and the airline pilots' union&mdash;continue to dismiss the possibility that a pilot could have deliberately moved the fuel control switches to the cutoff position. They rely on factually incorrect arguments and emotional reasoning. For instance, some suggest a potential defect in the Boeing 787&rsquo;s fuel cutoff switches. However, the FAA's Special Airworthiness Information Bulletin (SAIB) they reference was specifically issued for the Boeing 737, not the 787.
+  <br/>
+  <br/>
+  An overview of public statements made by pilots in the media can be found here.
+  <br/>
+  <a href="https://feitoffake.wordpress.com/2025/07/16/suicide-by-one-of-air-india-171-pilots-is-the-elephant-in-the-room-in-india/" target="_blank">
+   https://feitoffake.wordpress.com/202...room-in-india/
+  </a>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923618 valign=top><td class=post><a href=https://www.pprune.org/members/38556-sabenaboy>sabenaboy</a>
+<br/>July 16, 2025, 10:30:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-57.html#post11923618><br/>permalink</a>
+ Post: 11923618</td>
+<td class=post><div class="tcell alt1" id="td_post_11923618">
+ <!-- message -->
+ <div id="post_message_11923618">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      1stspotter
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923586" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     It is both fascinating and unsettling to observe how the media in India consistently refuse to acknowledge that suicide may be the most likely scenario. Key voices\x97such as former pilots and the airline pilots' union\x97continue to dismiss the possibility that a pilot could have deliberately moved the fuel control switches to the cutoff position. They rely on factually incorrect arguments and emotional reasoning. For instance, some suggest a potential defect in the Boeing 787\x92s fuel cutoff switches. However, the FAA's Special Airworthiness Information Bulletin (SAIB) they reference was specifically issued for the Boeing 737, not the 787.
+     <br/>
+     <br/>
+     An overview of public statements made by pilots in the media can be found here.
+     <br/>
+     <a href="https://feitoffake.wordpress.com/2025/07/16/suicide-by-one-of-air-india-171-pilots-is-the-elephant-in-the-room-in-india/" target="_blank">
+      https://feitoffake.wordpress.com/202...room-in-india/
+     </a>
+    </div>
+   </div>
+  </div>
+  I even saw a video of an Indian expert -I believe he claimed to be a B787 jockey- explaining how it would be physically IMPOSSIBLE to put both switches in the OFF position within 1 or 2 seconds. I'll try to find it again when I have more time.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11923620 valign=top><td class=post><a href=https://www.pprune.org/members/33536-1stspotter>1stspotter</a>
+<br/>July 16, 2025, 10:33:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-57.html#post11923620><br/>permalink</a>
+ Post: 11923620</td>
+<td class=post><div class="tcell alt1" id="td_post_11923620">
+ <!-- message -->
+ <div id="post_message_11923620">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Dani
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923608" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I cannot explain the most likely cause further without risking that this post gets deleted, so I don't explain further.
+     <br/>
+     <br/>
+     Dani
+    </div>
+   </div>
+  </div>
+  Please explain.
+  <br/>
+  <br/>
+  Fact is both fuel cutoff switches moved to the cutoff position three seconds after the wheels left the runway. While the speed was 180 knots. Nothing indicates a problem with the thrust of the engines.
+  <br/>
+  So explain why one of the pilots , a ghost, an iPad set *both* switches to cutoff just after liftoff while the aircraft had a normal speed and no indications of a problem.
+  <br/>
+  Mind there is no issue with those switches. The FAA SAIB was for the Boeing 737
+  <br/>
+  <a href="https://feitoffake.wordpress.com/2025/07/15/faulty-fuel-cutoff-switches-on-the-boeing-787-explained/" target="_blank">
+   https://feitoffake.wordpress.com/202...787-explained/
+  </a>
+  <br/>
+  <br/>
+  There is just one explanation: one of the pilots deliberately set both switches to cutoff.
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923704 valign=top><td class=post><a href=https://www.pprune.org/members/33536-1stspotter>1stspotter</a>
+<br/>July 16, 2025, 12:35:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-58.html#post11923704><br/>permalink</a>
+ Post: 11923704</td>
+<td class=post><div class="tcell alt1" id="td_post_11923704">
+ <!-- message -->
+ <div id="post_message_11923704">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Dani
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923654" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     You mean just because it never has happened, it's impossible? What a strange argument.
+     <br/>
+     If you look closely at the picture in post no 262
+     <br/>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-14.html#post11920418" target="_blank">
+      Preliminary Air India crash report published
+     </a>
+     <br/>
+     I see a perfect example of a wrongly installed locking mechanism.
+     <br/>
+     How on earth do you think this argument is unthinkable, when there are even safety bulletins and mandatory maintenance orders about this very problem?
+     <br/>
+     I understand that for you, as it is obviously for most Boeing pilot and anglosaxon pilots and forum members, a red herring. But that doesn't impair me from thinking logically. I'm on neighter side. That's why facts are more important for me than for many others.
+     <br/>
+     <br/>
+     Dani
+    </div>
+   </div>
+  </div>
+  If you look closely to the photo you will notice this is of a Boeing 737!
+  <br/>
+  The Boeing 737 has the word IDLE on top of the switches, where the B787 has to word RUN on top.
+  <br/>
+  Again read this
+  <a href="https://feitoffake.wordpress.com/2025/07/15/faulty-fuel-cutoff-switches-on-the-boeing-787-explained/" target="_blank">
+   https://feitoffake.wordpress.com/202...787-explained/
+  </a>
+  <br/>
+  <br/>
+  The fact is the switches on a Boeing 787 has a different part number than those of the B737. There is no replacement part for the B787.
+  <br/>
+  The FAA SAIB does not mention to operators that the switches on a B787 needs to be changed.
+  <br/>
+  The problem was on the Boeing 737 * only*
+  <br/>
+  <br/>
+  So your point is not valid. It is *impossible* these two switches were moved because of a malfunction of the locking mechanism.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11923708 valign=top><td class=post><a href=https://www.pprune.org/members/33536-1stspotter>1stspotter</a>
+<br/>July 16, 2025, 12:40:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-58.html#post11923708><br/>permalink</a>
+ Post: 11923708</td>
+<td class=post><div class="tcell alt1" id="td_post_11923708">
+ <!-- message -->
+ <div id="post_message_11923708">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      DaveReidUK
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923694" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <img alt="" class="post_inline_image" src="https://cimg6.ibsrv.net/gimg/pprune.org-vbulletin/998x259/saib_950943439538fc5c33b60479cb55fa1080aee899.png"/>
+     <br/>
+     HTH
+    </div>
+   </div>
+  </div>
+  You might want to carefully read the complete SAIB. The FAA wanted to make sure the issue on some of the B737 switches does not exist on other Boeing made aircraft.
+  <br/>
+  It is here.
+  <a href="https://feitoffake.wordpress.com/2025/07/15/faulty-fuel-cutoff-switches-on-the-boeing-787-explained/" target="_blank">
+   https://feitoffake.wordpress.com/202...787-explained/
+  </a>
+  <br/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg1.ibsrv.net/gimg/pprune.org-vbulletin/890x373/screenshot_2025_07_16_143842_66ea11b8e4a20228e81ec323dcd792da2aa56061.png"/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923721 valign=top><td class=post><a href=https://www.pprune.org/members/214092-davereiduk>DaveReidUK</a>
+<br/>July 16, 2025, 12:53:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-59.html#post11923721><br/>permalink</a>
+ Post: 11923721</td>
+<td class=post><div class="tcell alt1" id="td_post_11923721">
+ <!-- message -->
+ <div id="post_message_11923721">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      1stspotter
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923708" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     You might want to carefully read the complete SAIB. The FAA wanted to make sure the issue on some of the B737 switches does not exist on other Boeing made aircraft.
+     <br/>
+     It is here.
+     <a href="https://feitoffake.wordpress.com/2025/07/15/faulty-fuel-cutoff-switches-on-the-boeing-787-explained/" target="_blank">
+      https://feitoffake.wordpress.com/202...787-explained/
+     </a>
+     <br/>
+     <br/>
+     <img alt="" class="post_inline_image" src="https://cimg1.ibsrv.net/gimg/pprune.org-vbulletin/890x373/screenshot_2025_07_16_143842_66ea11b8e4a20228e81ec323dcd792da2aa56061.png"/>
+    </div>
+   </div>
+  </div>
+  I don't think it's me who is having trouble reading the SAIB.
+  <br/>
+  <br/>
+  It calls for the switches on any of the types mentioned to be replaced if found defective, and for the older type of switches on the 737 to be replaced whether defective or not.
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923729 valign=top><td class=post><a href=https://www.pprune.org/members/274741-za9ra22>za9ra22</a>
+<br/>July 16, 2025, 13:17:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-59.html#post11923729><br/>permalink</a>
+ Post: 11923729</td>
+<td class=post><div class="tcell alt1" id="td_post_11923729">
+ <!-- message -->
+ <div id="post_message_11923729">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      1stspotter
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923586" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     It is both fascinating and unsettling to observe how the media in India consistently refuse to acknowledge that suicide may be the most likely scenario. Key voices\x97such as former pilots and the airline pilots' union\x97continue to dismiss the possibility that a pilot could have deliberately moved the fuel control switches to the cutoff position. They rely on factually incorrect arguments and emotional reasoning. For instance, some suggest a potential defect in the Boeing 787\x92s fuel cutoff switches. However, the FAA's Special Airworthiness Information Bulletin (SAIB) they reference was specifically issued for the Boeing 737, not the 787.
+     <br/>
+     <br/>
+     An overview of public statements made by pilots in the media can be found here.
+     <br/>
+     <a href="https://feitoffake.wordpress.com/2025/07/16/suicide-by-one-of-air-india-171-pilots-is-the-elephant-in-the-room-in-india/" target="_blank">
+      https://feitoffake.wordpress.com/202...room-in-india/
+     </a>
+    </div>
+   </div>
+  </div>
+  While I agree with your point entirely, I don't find it unusual or unexpected that there is resistance among many to accept or even acknowledge the possibility of suicide, but at the same time, it's no more fixated than the alternative camp which argues that suicide is the only possibility - and often promotes it via as erroneous 'evidence' as that suggesting the cutoff switches are faulty and the SAIB 'proves' it.
+  <br/>
+  <br/>
+  There's a genuine problem with understanding what 'evidence' means, and both sides seem to be suffering it.
+ </div>
+ <!-- / message -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923730 valign=top><td class=post><a href=https://www.pprune.org/members/33536-1stspotter>1stspotter</a>
+<br/>July 16, 2025, 13:18:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-59.html#post11923730><br/>permalink</a>
+ Post: 11923730</td>
+<td class=post><div class="tcell alt1" id="td_post_11923730">
+ <!-- message -->
+ <div id="post_message_11923730">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      DaveReidUK
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923721" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I don't think it's me who is having trouble reading the SAIB.
+     <br/>
+     <br/>
+     It calls for the switches on any of the types mentioned to be replaced if found defective, and for the older type of switches on the 737 to be replaced whether defective or not.
+    </div>
+   </div>
+  </div>
+  So how many fuel control switches on the Boeing 787 were since the release of this SAIB found with a faulty switch locking?
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923743 valign=top><td class=post><a href=https://www.pprune.org/members/56619-dani>Dani</a>
+<br/>July 16, 2025, 13:58:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-59.html#post11923743><br/>permalink</a>
+ Post: 11923743</td>
+<td class=post><div class="tcell alt1" id="td_post_11923743">
+ <!-- message -->
+ <div id="post_message_11923743">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      1stspotter
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923708" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     You might want to carefully read the complete SAIB.
+    </div>
+   </div>
+  </div>
+  I really don't get it why you oppose to the thought it could happen on any Boeing aircraft. Since they are all very similar switches. Maybe it's even possible to interchange some of them. There are so many errors a maintenance organization can make. Fake parts?
+  <br/>
+  What really frightens me is that you and others resolutely block even to think about the possibility. Because, let's be honest, the probability is not zero (and I would say nearer to 1 than to 0).
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <span style="color:#222222">
+     How many times have you moved those switches, and the engines started without the switch being in the RUN position?
+    </span>
+   </div>
+  </div>
+  I have never moved such a switch, since I fly Airbus.
+  <br/>
+  Let me ask you your question differently: How many times have you moved a faulty switch?
+  <br/>
+  I know, that you and many others would immediatly identify such a bad switch and would render the aircraft as not airworthy. This is not the question. The question is: Has the Air India crew on that day identified the fault. And if yes, have they continued the flight preparation.
+  <br/>
+  You don't need a suicide theory to explain such a simple course of action.
+  <br/>
+  <br/>
+  Dani
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11923877 valign=top><td class=post><a href=https://www.pprune.org/members/558826-justusw>JustusW</a>
+<br/>July 16, 2025, 17:36:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-61.html#post11923877><br/>permalink</a>
+ Post: 11923877</td>
+<td class=post><div class="tcell alt1" id="td_post_11923877">
+ <!-- message -->
+ <div id="post_message_11923877">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Dani
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923873" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     That's not an overly detailed description. In fact, and this is the only fact, it doesn't say one word about the locking mechanism of the switches.
+    </div>
+   </div>
+  </div>
+  It actually does by absence and previous mention of the relevant SAIB regarding the switches. The investigating team has looked into the switches in general. In the description of what was found any deviation from expectation, especially in context of that SAIB, would certainly have been mentioned. They do not. Hence there is no reason to believe anything out of the ordinary was observable.
+  <br>
+  </br>
+ </div>
+ <!-- / message -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923893 valign=top><td class=post><a href=https://www.pprune.org/members/482833-jimtx>jimtx</a>
+<br/>July 16, 2025, 18:06:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-61.html#post11923893><br/>permalink</a>
+ Post: 11923893</td>
+<td class=post><div class="tcell alt1" id="td_post_11923893">
+ <!-- message -->
+ <div id="post_message_11923893">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Guildenstern
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923786" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     There is something about the report that doesn't sit right. Why didn't it say anything about the state of the locks on the fuel switches that were recovered? The investigators knew this was an issue. They recovered the switches sufficiently intact to determine their position. Why didn't they report if the locks were present? Yes, I'm aware that it's exceedingly unlikely the locks were absent given that the console including switches had been replaced as recently as 2023. But "exceedingly unlikely" is not certainty. It seems like a crucial omission.
+    </div>
+   </div>
+  </div>
+  Either the inclusion of the Boeing SAIB was a red herring or they know something about the switches. They took a low resolution photo, page 10, Fig. 13. I can't discern dogs or bosses on the left switch bottom body.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923902 valign=top><td class=post><a href=https://www.pprune.org/members/559025-abbas-ibn-firnas>Abbas Ibn Firnas</a>
+<br/>July 16, 2025, 18:18:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-61.html#post11923902><br/>permalink</a>
+ Post: 11923902</td>
+<td class=post><div class="tcell alt1" id="td_post_11923902">
+ <!-- message -->
+ <div id="post_message_11923902">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      1stspotter
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923730" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     So how many fuel control switches on the Boeing 787 were since the release of this SAIB found with a faulty switch locking?
+    </div>
+   </div>
+  </div>
+  But how many 787s switches have actually been inspected?
+  <br/>
+  It was stated that Air India didn't bother to do so, as the directive or whatever it's called, was not mandatory.
+  <br/>
+  I'm not trying to point the finger at Air India, or suggest that these switches could be faulty, rather highlight how the industry can be seen to function.
+  <br/>
+  There have been numerous accidents that could have been prevented, if remedial actions had not been allowed to be deferred.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923905 valign=top><td class=post><a href=https://www.pprune.org/members/360204-ant-t>Ant T</a>
+<br/>July 16, 2025, 18:23:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-61.html#post11923905><br/>permalink</a>
+ Post: 11923905</td>
+<td class=post><div class="tcell alt1" id="td_post_11923905">
+ <!-- message -->
+ <div id="post_message_11923905">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      GarageYears
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923769" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     And just to be clear the switch fitted to the 787 is NOT that same part as used on the 737. It is a newer design that is visually
+     <b>
+      similar, but CANNOT be installed 'incorrectly'
+     </b>
+    </div>
+   </div>
+  </div>
+  The SAIB from the FAA literally states the opposite to what you are stating.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    Boeing informed the FAA that the fuel control switch design,
+    <b>
+     including the locking feature
+    </b>
+    , is similar
+    <br/>
+    <br/>
+    on various Boeing airplane models. The table below identifies the affected airplane models and
+    <br/>
+    <br/>
+    related part numbers (P/Ns) of the fuel control switch
+   </div>
+  </div>
+  It goes on to list models including 787-8, -9 and -10
+  <br/>
+  <br/>
+  <a href="https://ad.easa.europa.eu/blob/NM-18-33.pdf/SIB_NM-18-33_1" target="_blank">
+   https://ad.easa.europa.eu/blob/NM-18...SIB_NM-18-33_1
+  </a>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Ant T; 16th July 2025 at
+   <span class="time">
+    06:36
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923916 valign=top><td class=post><a href=https://www.pprune.org/members/558823-nrunning24>nrunning24</a>
+<br/>July 16, 2025, 18:31:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-61.html#post11923916><br/>permalink</a>
+ Post: 11923916</td>
+<td class=post><div class="tcell alt1" id="td_post_11923916">
+ <!-- message -->
+ <div id="post_message_11923916">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Ant T
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923905" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The SAIB from Boeing literally states the opposite to what you are stating.
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+     It goes on to list models including 787-8, -9 and -10
+     <br/>
+     <br/>
+     <a href="https://ad.easa.europa.eu/blob/NM-18-33.pdf/SIB_NM-18-33_1" target="_blank">
+      https://ad.easa.europa.eu/blob/NM-18...SIB_NM-18-33_1
+     </a>
+    </div>
+   </div>
+  </div>
+  You both are wrong. It was a 737 part that was found to be defective but was "similar" to the parts on other airplane models. There isn't a impossibility that a 787 has one (hence why its included), but there is also no documented cases of the 787 having a faulty switch.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923921 valign=top><td class=post><a href=https://www.pprune.org/members/304162-garageyears>GarageYears</a>
+<br/>July 16, 2025, 18:39:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-61.html#post11923921><br/>permalink</a>
+ Post: 11923921</td>
+<td class=post><div class="tcell alt1" id="td_post_11923921">
+ <!-- message -->
+ <div id="post_message_11923921">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Ant T
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923905" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The SAIB from the FAA literally states the opposite to what you are stating.
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+     It goes on to list models including 787-8, -9 and -10
+     <br/>
+     <br/>
+     <a href="https://ad.easa.europa.eu/blob/NM-18-33.pdf/SIB_NM-18-33_1" target="_blank">
+      https://ad.easa.europa.eu/blob/NM-18...SIB_NM-18-33_1
+     </a>
+    </div>
+   </div>
+  </div>
+  There were no \x93flaws\x94 in the switches themselves. The original SAIB came about because some switches on 737s were found to be installed incorrectly. When the switches were installed incorrectly they would not hold in the RUN position and would immediately snap back into CUTOFF. The failure mode was obvious and would be immediately recognized that the installation was incorrect.
+  <br/>
+  <br/>
+  These same switches are used on about 7,000 aircraft. A new part (766AT614-3D) with a new locking mechanism that could not be installed incorrectly was made for the 737.
+  <br/>
+  <br/>
+  The 787 uses an entirely different part number (4TL837‑3D). 1,200 787s with 30 million flight hours and 5 million departures. Not one instance of one, let alone two switches not working as designed.
+  <br/>
+  <br/>
+  - GY
+ </div>
+ <!-- / message -->
+</div>
+<p>6 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923945 valign=top><td class=post><a href=https://www.pprune.org/members/296602-exdac>EXDAC</a>
+<br/>July 16, 2025, 19:12:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-62.html#post11923945><br/>permalink</a>
+ Post: 11923945</td>
+<td class=post><div class="tcell alt1" id="td_post_11923945">
+ <!-- message -->
+ <div id="post_message_11923945">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      GarageYears
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923921" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The original SAIB came about because some switches on 737s were found to be installed incorrectly. When the switches were installed incorrectly they would not hold in the RUN position and would immediately snap back into CUTOFF.
+    </div>
+   </div>
+  </div>
+  Did you observe this "snap back" yourself?
+  <br/>
+  <br/>
+  Nothing in the SAIB suggests that this would happen with an improperly installed switch.  In fact the SAIB inspection calls for the switch to be placed in both positions to test the locking mechanism. How would that be possible if the switch "snapped back"?
+  <br/>
+  <br/>
+  "1) Inspect the locking feature of the fuel control switch to ensure its engagement. While the airplane is on the ground, check whether the fuel control switch can be moved between the two positions without lifting up the switch. If the switch can be moved without lifting it up, the locking feature has been disengaged and the switch should be replaced at the earliest opportunity."
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11924353 valign=top><td class=post><a href=https://www.pprune.org/members/414675-willowrun-6-3>WillowRun 6-3</a>
+<br/>July 17, 2025, 12:15:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-65.html#post11924353><br/>permalink</a>
+ Post: 11924353</td>
+<td class=post><div class="tcell alt1" id="td_post_11924353">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   Continued Airworthiness Notification to International Community (FAA - July 11, 2025)
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11924353">
+  Previously, I posted the content of a Reuters article about FAA (as well as Boeing) having issued notices to operators prompted by the reference in the AAIB Prelim Rpt w/r/t the SAIB about fuel switches in certain 737 aircraft (Special Airworthiness Information Bulletin No. NM-18-33, December 17, 2018).
+  <br/>
+  <br/>
+  Through a LinkedIn timeline I happened to discover the actual document the Reuters report was based on. It is entitled "Continued Airworthiness Notification to the International Community", issued by the FAA Aircraft Certification Service, Compliance and Airworthiness Division, dated July 11, 2025. As reported by Reuters, the FAA Notification document specifically references the fact that the AAIB Prelim Rpt made reference to the 2018 SAIB w/r/t the fuel switches.
+  <br/>
+  <br/>
+  The social media platform makes it difficult to transfer content off of it. Interested people may access the document in a LinkedIn post by former NTSB Chair Robert L. Sumwalt, NTSB Chair 2017-2014. (A search of the thread did not turn up the document; apologies if it's already here and I slipped up and missed it.)
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=Special_Airworthiness_Information_Bulletin0.html>First</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin2.html>Previous</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin0.html>1</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin1.html>2</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin2.html>3</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin3.html><b>4</b>
+</a>
+&nbsp;<a href=Special_Airworthiness_Information_Bulletin3.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune ARINC name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts about: "ARINC" [Posts: 13 Pages: 1]</h1>
+<body><h1>Posts about: "ARINC" [Posts: 14 Pages: 1]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
 </p>
 <table class=posts><tr id=11903028 valign=top><td class=post><a href=https://www.pprune.org/members/445033-oldngrounded>OldnGrounded</a>
@@ -43,10 +43,10 @@
     </div>
    </div>
   </div>
-  Thanks for posting this.  I read it quickly and glanced at the drawings, which are adequate for the patent application but not nearly adequate to understand the system in any depth.
+  Thanks for posting this. I read it quickly and glanced at the drawings, which are adequate for the patent application but not nearly adequate to understand the system in any depth.
   <br/>
   <br/>
-  I note that, unless I missed it, the patent application doesn't address a mechanism for determining whether an aircraft is actually on the ground.  I suppose that will depend on some of those "several other digital inputs."
+  I note that, unless I missed it, the patent application doesn't address a mechanism for determining whether an aircraft is actually on the ground. I suppose that will depend on some of those "several other digital inputs."
   <br/>
   <br/>
   <div style="margin:1rem; margin-top:0.3rem;">
@@ -92,7 +92,7 @@
   . Emphasis added.
   <br/>
   <br/>
-  I'm still looking for identification of the relevant inputs for TCMA on the GEnx-1B.  If anyone has suggestions, please share.
+  I'm still looking for identification of the relevant inputs for TCMA on the GEnx-1B. If anyone has suggestions, please share.
  </div>
  <!-- / message -->
 </div>
@@ -794,6 +794,139 @@
   In this case, there is still an AU - it's just integrated into the EAFR.
  </div>
  <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11922796 valign=top><td class=post><a href=https://www.pprune.org/members/545068-hud-engineer>HUD Engineer</a>
+<br/>July 15, 2025, 10:02:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-49.html#post11922796><br/>permalink</a>
+ Post: 11922796</td>
+<td class=post><div class="tcell alt1" id="td_post_11922796">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   Preliminary Report  - another possibility?
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11922796">
+  <span style="color:#000000">
+   <div style="margin:1rem; margin-top:0.3rem;">
+    <div>
+     <label>
+      Quote:
+     </label>
+    </div>
+    <div class="panel alt2" style="border:1px inset">
+     <div>
+      Originally Posted by
+      <strong>
+       YYZjim
+      </strong>
+      <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11922344" rel="nofollow" title="View Post">
+       <i class="fa-solid fa-circle-arrow-right">
+       </i>
+      </a>
+     </div>
+     <div style="font-style:italic">
+      The preliminary report narrows things down a lot but not as much as it could have done. The report will have been approved by several people. What we see is their consensus. Why did they choose this version?
+     </div>
+    </div>
+   </div>
+  </span>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      YYZjim
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11922344" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <br/>
+     <span style="color:#000000">
+      The report is written to point the finger directly at: (i) the fuel cutoff switches and (ii) either pilot error or pilot mal-intent using them. The report is not written to point the finger at an electrical or mechanical malfunction.
+     </span>
+     <br/>
+     <span style="color:#000000">
+      ...
+     </span>
+     <br/>
+     <span style="color:#000000">
+      YYZJim
+     </span>
+    </div>
+   </div>
+  </div>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   I agree that the Preliminary Report will have been a very carefully chosen synopsis, but I don't think it precludes a system behaviour that might or might not even be categorised as either an electrical or mechanical malfunction, as such.
+   <br/>
+   <br/>
+   Consider that the Preliminary Report only references the CVR contents to indicate one crew querying why he (the other) cutoff, and the other denying it. Clearly very pertinent data to this investigation, so I'm not ruling out both of the crew being sincere, until I understand the aircraft system better.
+   <br/>
+   <br/>
+   If the cutoffs weren't triggered by the crew moving the switches, then the most likely thing was that both FADECs encountered a situation that invoked cutoff, practically at the same moment. That might suggest that the data from independent Run/Cutoff switches via independent poles that possibly route via a PIP or PIPs to various RDCs and in turn the CCS (which means these paths have a common mode) resulted in data to both FADECs "failing" in a critical manner simultaneously.
+   <br/>
+   <br/>
+   The only CCS vulnerability I'm aware of is what happens if the CCS is kept powered for 51 days, shortly after which, the Time Manager data integrity for ARINC 664 messages is compromised, possibly only considered critical n conjunction with a CDN Switch failure. AD 2020-06-14 therefore requires a maintenance action of cycling the CCS power at least once every 25 days.
+   <br/>
+   <br/>
+   Two such omitted, or incorrectly executed maintenance actions in a row would have to happen for that known issue to be relevant. Perhaps there is some other input in the CCS system that influences both lanes of data to the FADECs for the Cutoff to be triggered, but I'm not aware of such.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   If the data to both FADECs became good again around the same time (perhaps no longer Stale Data, or an alternative source selected, or other mechanism), and given the unavailability of APU power at this point, might Engine 1 restart be initiated first, and might Engine 2 restart be triggered 4 seconds later by the FADECs? Is that possible without the crew cycling the switches?
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   Regarding AD 2020-06-14, which was approved quickly, Boeing subsequently offered revised wording, which changed "may" to "will", see FAA Docket 2020-0205-0004, but as it did not alter the maintenance action, it was not adopted. A fuller description of possible consequences was in FAA Docket 2020-0205-0001_content, but it was quite wide ranging, and didn't attempt to characterise specific aircraft systems behaviour.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   For anyone wanting more information on the CCS, in the context of that Airworthiness Directive, I recommend reading A Reverse Engineer&rsquo;s Perspective on the Boeing 787 &lsquo;51 days&rsquo; Airworthiness Directive at IOActive.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   As a non-professional pilot, please accept that my knowledge of much beyond the CCS is patchy, but I welcome this scenario being critiqued.
+  </span>
+  <br/>
+  <br/>
+  <span style="color:#000000">
+   Thank you for your time, and I'm just donning my hard hat and flack jacket.
+  </span>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by T28B; 15th July 2025 at
+   <span class="time">
+    01:56
+   </span>
+   .
+							
+							
+								Reason: formatting for easier reading
+  </em>
+ </div>
+ <!-- / edit note -->
 </div>
 </td>
 </tr>

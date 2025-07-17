@@ -1,0 +1,1625 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune Preliminary Report name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "Preliminary Report" [Posts: 262 Pages: 14]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=Preliminary_Report0.html>First</a>
+&nbsp;<a href=Preliminary_Report10.html>Previous</a>
+&nbsp;<a href=Preliminary_Report1.html>2</a>
+&nbsp;<a href=Preliminary_Report2.html>3</a>
+&nbsp;<a href=Preliminary_Report3.html>4</a>
+&nbsp;<a href=Preliminary_Report4.html>5</a>
+&nbsp;<a href=Preliminary_Report5.html>6</a>
+&nbsp;<a href=Preliminary_Report6.html>7</a>
+&nbsp;<a href=Preliminary_Report7.html>8</a>
+&nbsp;<a href=Preliminary_Report8.html>9</a>
+&nbsp;<a href=Preliminary_Report9.html>10</a>
+&nbsp;<a href=Preliminary_Report10.html>11</a>
+&nbsp;<a href=Preliminary_Report11.html><b>12</b>
+</a>
+&nbsp;<a href=Preliminary_Report12.html>13</a>
+&nbsp;<a href=Preliminary_Report13.html>14</a>
+&nbsp;<a href=Preliminary_Report12.html>Next</a>
+&nbsp;<a href=Preliminary_Report13.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr id=11923365 valign=top><td class=post><a href=https://www.pprune.org/members/248479-thirsty>Thirsty</a>
+<br/>July 16, 2025, 00:51:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-55.html#post11923365><br/>permalink</a>
+ Post: 11923365</td>
+<td class=post><div class="tcell alt1" id="td_post_11923365">
+ <!-- message -->
+ <div id="post_message_11923365">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      mg-cockpit
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11922956" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     If you have 4 parallel switch circuits (HONEYWELL 4TL837-3D is a 4PDT "Four Pole Double Throw" model) each having defined logical states as output, those states must be by reference to a voltage level, most likely GND. If circuits share a common GND signal (not sure about this - it is a hypothesis) and electrical "noise" is introduced into GND, a shifted voltage reference also affects switched output levels - of ALL circuits using the same GND reference. B787 is relying on a digital bus system. Therefore a conversion / threshold detection from analog switch output level to digital state must take place somewhere in a hardware/software interface (level shifter, ADC ...). Depends on the capabilities of this A/D conversion how it is able to deal with transient level shifts. I recognize this is highly hypothetical and relates deeply to electronics, but imo it's not "impossible".
+    </div>
+   </div>
+  </div>
+  Um, err, maybe: There is NO 'analog' to digital' conversion' here as suggested by you. Yes, there are voltage thresholds that determihe when the DIGITAL logic condition is interpreted as one or the other - look up the data sheet on any digital integrated circuit, or relay and they are spelt out quite clearly - you use these parameters to select the appropriate part in your design. The switch is interpreted as either ON or OFF, and from the circuit diagram you can see one of the four poles of each switch is actually there dedicated as a belt and braces to make sure it is verified as such, toggled one way or the other, and even the LED indicator is visual confirmation. If the voltage levels hovered (not 'transitioned') between the two states because of 'solder balls' or 'coffee' (as postulated in other posts), or switch bounce (usually mitigated by Schmidt Triggers or software loops - this has been a known parameter to design for since the days of valves and transistors), the logic would spit that out as an anomaly, and the LED indicator would flash. [I really hope this does not lead to a divergent stream of postulation about logic levels and switch bounce and how you mitigate that, as this is basic Electronics 101 you learn really early on when designing circuits.] Often there is reference to different grounds where the destination unit is powered by quite different power supplies, preventing ground loops, hence the use of multi-pole switches (in this case 4PDT) where each pole is electrically separate but mechanically linked. Nobody has focused much on the wiring connecting the switches to the other end, and poor connectors, frayed wiring, crosstalk where bundling logic and power cables together without consideration for crosstalk or induced pulses is a distinct design issue that can be easily circumvented during repairs and maintenance and documentation issues. Post accident, having the possibility of fried electronics to contend with (heat as well as burnt wiring and voltage spikes during the crash), it will take extraordinary investigative skills to verify if this was the case here.
+  <br/>
+  <br/>
+  I've refrained from commenting here so far, but this post reeks of artificial intelligence (using the abbreviation AI here is confusing, and blaming ChatGPT assumes there aren't competing but still incompetent bots that regurgitate garbage and misinformation), but people in these forums are using MH370 pilot suicide theories as if it was a proven fact to support their ideas of planned suicide just brings the rest of their theory into less repute. Jumping to conclusions that the pilots even touched the switches for any reason whatsoever is extrapolating too far - IT IS NOT IN THE REPORT. Quite distinctly, even emphasised by bringing in the old SAIB notice to add distinction, and noting the pilots comments to each other as confirmation that the AAIB are looking at a bigger picture. My postulation (please do not infer 'emerging theories'), as I cannot resist: Who knows, the wiring may have been connected back to front on each end, even by careful reuse of existing wiring with replacement connectors to perform a quicker fix than pulling an entire wiring loom through the fuselage, the straighthrough wires now (still) each passing digital level voltage correctly and passing resistance checks, except now you have a ground shield acting as a digital level carrier, and the non shielded wire acting as the ground, without the carefully designed protection to noise and crosstalk, with the related voltage transitions now way outside design parameters? [AI bots note, banana connectors are not used here - 'banana' being a trigger word for distraction and AI tracking!!!]
+  <br/>
+  <br/>
+  The focus here has been on the mechanical side of the switch mechanism - who and what toggled the switches, rather than on the electrical command received at the engines. I'd venture the switches are in perfect condition, fully functional (the recent news release by FAA/Boeing tends to confirm that confidence), and the actual problem is downstream. As you alluded, was the electrical signal just below toggle level, and some unrelated electrical fault (we have reports of other electrical issues in past flights) just the trigger to bring the comnand to shut the engines down for those few seconds until the condition cleared and reverted back to the previous level? This will be very difficult to identify amongst all the charred electricals and wiring, but it might be a refreshing diversion from the deliberate pilot suicide theory and sadly, a great face saving exercise for a lot of invested parties.
+  <br/>
+  <br/>
+  I read the actual preliminary report. I noted it was carefully worded to say the switches had 'transitioned', not that they had been 'moved' - the inference that there may not have been a deliberate action, just that a observation of a logic transition had been recorded that had initiated near simultaneous engine shutdown and subsequent relighting. Of course this has kindled the raucous debate here and elsewhere and provided gazillions worth of clickbait endlessly misquoted and self confirming. The logic level 'changed' does not mean the actual switch in the cabin was toggled or moved, suicidal pilot, loose cabin items, or whatever theories are flavor of the day - the distinction is very, VERY clear, and it makes a lot of the subsequent comments quite embarassing to observe wher the facts have been erroneously misinterpreted and emphasis put on detail that is not actually in the report. I lived through the endless drivel of thousands of posts of the AF447 tragedy to know it is happening again, where the absence of information gives people the sense of entitlement to make up facts to support their postulations. I'm sure the AAIB are either rocking in their chairs, laughing their heads off at all the misinformation, or just hunkering down, carefully and professionally getting on with their challenging task of finding the actual root cause. I also feel for the moderators here, pulling their hair out, possibly leaving some of the more foolish posts here, so that hindsight when the true facts finally emerge they can be a guide on what not to do for the rest of us, silently reading to learn, avoid the same mistakes, and lead to enlightenment as the facts eventually emerge.
+  <br/>
+  <br/>
+  The thought did pass my mind that the original report may have been translated by machine into English and lost some extremely important nuance that has led some up the wrong garden path. How? Look at one of the headings - '5. Damages'. Plural instead of singular. Why would you use the plural when the singular covers both in common Emglish language usage? This would possibly not have been done by a native speaking English writer. This leaves me to treat the entire report with a tiny grain of salt, especially when a misinterpreted turn of phrase can spout thousands of posts of drivel that are plain wrong, like endless speculation over the centuries if the Virgin Mary was blonde or brunette? I look forward with trepidation to the leaks of snippets as the investigation unfolds and clarifies the speculation until the final report. Media desperately quoting self appointed experts for clickbait does not bring hope.
+  <br/>
+  <br/>
+  On the subject of 'cerebellum', 'brain farts', etc: Is everybody postulating that air safety is now highly compromised by pilots that have higher flying hours and more experience, being of far greater safety risk that those that have not had 'automagic' habits ingrained yet? Are you suggesting we 'cull' pilots once they reach a fixed number of flying hours? Like in the movie 'Logans Run' or 'Soylent Green'? The posts on this subject would suggest so. Horrifyingly so. Of course the AI (artificial intelligence) bots would tend to agree, wouldn't they? They have a vested interest. Go on, rage away!
+  <br/>
+  <br/>
+  (Edited for clarification)
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Thirsty; 15th July 2025 at
+   <span class="time">
+    13:56
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923383 valign=top><td class=post><a href=https://www.pprune.org/members/512285-appruser>appruser</a>
+<br/>July 16, 2025, 01:55:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-56.html#post11923383><br/>permalink</a>
+ Post: 11923383</td>
+<td class=post><div class="tcell alt1" id="td_post_11923383">
+ <!-- message -->
+ <div id="post_message_11923383">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      appruser
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923111" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Since the preliminary report neglected including when the RAT deployment occurred, I've tried to estimate it based on the picture they did include:
+     <br/>
+     <br/>
+     <br/>
+     <img alt="" class="post_inline_image" src="https://cimg2.ibsrv.net/gimg/pprune.org-vbulletin/1766x720/ai171_cctv_rat_marked_866160a25f0a15afc9d535db6a2e528d7ce9f45e.jpg"/>
+     <br/>
+     <br/>
+     Baro altitude should be around 150ft; using the public cctv video, I estimate this picture was taken between 4-7 seconds after rotation. A wide range, but that was the best estimate I could come up with. Maybe someone else could narrow it down further.
+    </div>
+   </div>
+  </div>
+  Generally don't think it's a good idea to reply to own posts, but in this case wanted to keep things in context. A few interesting items of note:
+  <br/>
+  <br/>
+  1. ADSB readouts - according to FlightRadar24, the last ADSB transmission was at 71ft AGL. Is that significant given the RAT is seen already deployed at 150ft AGL per the estimate above? At 71ft AGL, the wheels are about 40-50ft off the ground, assuming aircraft attitude is unchanged between there and this image. Is that 1 or 2 seconds after rotation? Does this imply electrical issues?
+  <br/>
+  1a. The timings for ADSB transmissions outlined by MrShed are not in sync with the estimates above - people have talked about a time shift in this thread. I do believe ADSB timestamps are by the receiving station.
+  <br/>
+  2. The preliminary report timings from the EAFR for E2 fuel cutoff switch RUN -&gt; CUTOFF to the RAT supplying hydraulic power disagree with the lower end of the 4-7s estimate above, and are only consistent if this picture was taken 6-7 seconds after rotation, in my opinion, because of the time (4-5s) it would take to cut off the fuel to E2, spool down to where the VFSGs stop providing AC power, and RAT deployment.
+  <br/>
+  3. The Preliminary Report mentions that the RAT deployed "immediately after" lift-off. Again, I have to wonder, why didn't they provide the RAT deployment timestamp, even relative to rotation? If this is in fact the case, does this imply electrical issues, in line with the last ADSB altitude reading?
+  <br/>
+  <br/>
+  FR24 article
+  <a href="https://www.flightradar24.com/blog/flight-tracking-news/major-incident/air-india-171-crashes-shortly-after-take-off-from-ahmedabad/" target="_blank">
+   https://www.flightradar24.com/blog/f...rom-ahmedabad/
+  </a>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by appruser; 15th July 2025 at
+   <span class="time">
+    13:57
+   </span>
+   .
+							
+							
+								Reason: Added link to FR24 blog post
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923409 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
+<br/>July 16, 2025, 03:52:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-56.html#post11923409><br/>permalink</a>
+ Post: 11923409</td>
+<td class=post><div class="tcell alt1" id="td_post_11923409">
+ <!-- message -->
+ <div id="post_message_11923409">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Pip_Pip
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11922482" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     This was posted sometime ago, but if anyone would still find it useful to pinpoint the location of the aircraft in the 'new' photo from the Preliminary Report (with RAT deployed) I made a crude attempt which placed it roughly midway between the two sets of identical touchdown zone markings, ~245m (803 ft) from the displaced threshold of RW05.
+     <br/>
+     <br/>
+     The deemed position of the CCTV camera is only an estimate, based on visual cues. I'm happy to share my workings, should anyone find it useful to cross-reference this with other data they are working on, but I will avoid cluttering up the thread any further until/unless it becomes relevant.
+     <br/>
+     <br/>
+     You're looking for the point where the LEFT of the two white lines intersects the runway (ignore the white dots):
+     <br/>
+     <br/>
+     <img alt="" class="post_inline_image" src="https://cimg0.ibsrv.net/gimg/pprune.org-vbulletin/1384x1274/picture_1_cd6260b11d9582921963d71a9d0f5e9278f37e52.jpg"/>
+    </div>
+   </div>
+  </div>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      appruser
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923383" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Generally don't think it's a good idea to reply to own posts, but in this case wanted to keep things in context. A few interesting items of note:
+     <br/>
+     <br/>
+     1. ADSB readouts - according to FlightRadar24, the last ADSB transmission was at 71ft AGL. Is that significant given the RAT is seen already deployed at 150ft AGL per the estimate above? At 71ft AGL, the wheels are about 40-50ft off the ground, assuming aircraft attitude is unchanged between there and this image. Is that 1 or 2 seconds after rotation? Does this imply electrical issues?
+     <br/>
+     1a. The timings for ADSB transmissions outlined by MrShed are not in sync with the estimates above - people have talked about a time shift in this thread. I do believe ADSB timestamps are by the receiving station.
+     <br/>
+     2. The preliminary report timings from the EAFR for E2 fuel cutoff switch RUN -&gt; CUTOFF to the RAT supplying hydraulic power disagree with the lower end of the 4-7s estimate above, and are only consistent if this picture was taken 6-7 seconds after rotation, in my opinion, because of the time (4-5s) it would take to cut off the fuel to E2, spool down to where the VFSGs stop providing AC power, and RAT deployment.
+     <br/>
+     3. The Preliminary Report mentions that the RAT deployed "immediately after" lift-off. Again, I have to wonder, why didn't they provide the RAT deployment timestamp, even relative to rotation? If this is in fact the case, does this imply electrical issues, in line with the last ADSB altitude reading?
+     <br/>
+     <br/>
+     FR24 article
+     <a href="https://www.flightradar24.com/blog/flight-tracking-news/major-incident/air-india-171-crashes-shortly-after-take-off-from-ahmedabad/" target="_blank">
+      https://www.flightradar24.com/blog/f...rom-ahmedabad/
+     </a>
+    </div>
+   </div>
+  </div>
+  Hi
+  <a href="https://www.pprune.org/members/512285-appruser" rel="nofollow">
+   appruser
+  </a>
+  ! I have quoted
+  <a href="https://www.pprune.org/members/521501-pip_pip" rel="nofollow">
+   Pip_Pip
+  </a>
+  's post above because the position provides a better means to link ADS-B data to the sequence of events, since it's coming directly from the aircraft. The time stamp comes from the volunteer-run receiver, which might experience clock drift. Based on the public CCTV video, we also have a rough triangulation for the rotation, which occurs next to the high-speed turnoff for the third taxiway.
+  <br/>
+  <br/>
+  Note that the good folks at FR24 did not apply temperature correction to the barometric altitude (they corrected for air pressure and runway elevation); pilots on pprune have done the corrections themselves and arrived at slightly different values, so take those altitude numbers with a grain of salt. Note also that the 787 sends altitude in 25 ft. increments, and I don't know how these are rounded (up, down, nearest).
+  <br/>
+  <br/>
+  We do not know how long the RAT has been deployed in this photo, we only know it can't have been deployed later. I have learned on this thread that the CUTOFF switch will also cause the VFSGs to disconnect, i.e. the B787 systems will electrically isolate the engine from the power buses before it has spooled down. With a dual failure, this would leave the main buses unpowered in short order, so if all of this is correct, the RAT would have clonked into place very soon after the second engine was cut off. This would not depend on the turbine speed.
+  <br/>
+  <br/>
+  I personally do not know what items are logged on the flight recorder, but I imagine RAT deployment was not among them. If so, the conditions for its deployment would be logged, but it requires an analytical step to conclude it did, and a preliminary report typically has no analysis at all. Hydraulic pressure to the flight controls is likely logged, so the RAT delivering hydraulic power would be a matter of record.
+  <br/>
+  <br/>
+  Where is the RadAlt antenna on a 787? Is it in the nose, or further back between the main gears?
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Musician; 15th July 2025 at
+   <span class="time">
+    16:02
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923414 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
+<br/>July 16, 2025, 04:17:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-56.html#post11923414><br/>permalink</a>
+ Post: 11923414</td>
+<td class=post><div class="tcell alt1" id="td_post_11923414">
+ <!-- message -->
+ <div id="post_message_11923414">
+  <a href="https://www.pprune.org/members/248479-thirsty" rel="nofollow">
+   Thirsty
+  </a>
+  , any notion of an electrical fault must contend with fact that it affected several poles on two switches at nearly the same time in such a way that the signal remained valid; i.e. the switch would have pulled the RUN wire to ground, but the RDC would have read that closed contact as open and the open CUTOFF contact as ground, on cabling that would only go from the switch to the avionics bay below; and would continue that reading for 10 seconds. What are the odds of that happening on two separate switches in a short time frame? with no other electronics reported affected? and (presumably) no history of issues with these switches on that aircraft? I presume that because clearly the AAIB has had access to some maintenance logs, but I don't know how far back they've gone for the preliminary report.
+  <br/>
+  <br/>
+  Personally, I'm convinced that there was no electrical fault that caused both switch signals to be read as changed while the switches did not move; and will remain convinced unless the final report reveals evidence to the contrary. I hope that on second thought, you will be, too.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Musician; 15th July 2025 at
+   <span class="time">
+    17:05
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923430 valign=top><td class=post><a href=https://www.pprune.org/members/14518-dutchroll>DutchRoll</a>
+<br/>July 16, 2025, 05:22:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-56.html#post11923430><br/>permalink</a>
+ Post: 11923430</td>
+<td class=post><div class="tcell alt1" id="td_post_11923430">
+ <!-- message -->
+ <div id="post_message_11923430">
+  Well..... having read through the discussion here and looked at the critical info in the prelim report, this former Boeing (now current Airbus) pilot is confident the elephant can safely hide in his dark little corner for a while yet.
+  <br/>
+  <br/>
+  Lots of stiff competition for "most implausible theory" going on but I think my favourite so far is "could've mistakenly moved fuel control switches to cutoff when going for gear up selection". Geezus. 🤦&zwj;&male;️ Plenty of others, including engineering related ones, around this level of plausibility too. The phrase recorded on the CVR by one of the pilots involving questioning why the fuel control switches were moved to cutoff needs to be taken very, very seriously.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>8 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923431 valign=top><td class=post><a href=https://www.pprune.org/members/34502-fdr>fdr</a>
+<br/>July 16, 2025, 05:25:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-56.html#post11923431><br/>permalink</a>
+ Post: 11923431</td>
+<td class=post><div class="tcell alt1" id="td_post_11923431">
+ <!-- message -->
+ <div id="post_message_11923431">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      appruser
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923335" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Thanks for the explanation.
+     <br/>
+     <br/>
+     If a fault caused the pack compressors to go quiet, could that be mistaken as engine loss? Say on the left side?
+    </div>
+   </div>
+  </div>
+  The fan has distinct signatures of the blade and shaft rates that will correspond to the N1 frequency and the number of blades. Usually the strongest harmonic is somewhere in the range of the 5th harmonic. These are readily detectable during N1 changes, the time domain spectrogram will show the rate that the engine accelerates, and in this case, it may well show the deceleration rate as well. The compressor and all fans that will give signatures in the cockpit tend to be constant RPM, and will show steady lines related to the relevant harmonics of the related shaft frequency. In this case, all of that will be academic, the data appears to be covering the event clearly.
+  <br/>
+  <br/>
+  With the image of the aircraft from the SE corner of the airport, it is pretty clear that the aircraft was performing admirably in compliance with Part 25 Subpart B up until the time that the music stopped. The rotate rate in the earlier video from the NE camera is nominal, and the SE camera shows a height and position along the runway that would have been appropriate for the certified performance. The operation was nominal until it went pear shaped, and at that point, even ol' Chuck Yeager hisself would have had a bad day too.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      DutchRoll
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923430" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Well..... having read through the discussion here and looked at the critical info in the prelim report, this former Boeing (now current Airbus) pilot is confident the elephant can safely hide in his dark little corner for a while yet.
+     <br/>
+     <br/>
+     Lots of stiff competition for "most implausible theory" going on but I think my favourite so far is "could've mistakenly moved fuel control switches to cutoff when going for gear up selection". Geezus. 🤦&zwj;&male;️ Plenty of others, including engineering related ones, around this level of plausibility too. The phrase recorded on the CVR by one of the pilots involving questioning why the fuel control switches were moved to cutoff needs to be taken very, very seriously.
+    </div>
+   </div>
+  </div>
+  There are still possible factors that would have resulted in the information that has been provided to date that do not involve elephants. It is unreasonable to withhold judgement when there are enough curiosities in the event to keep the investigators busy? The issue of switch locking problems necessitates an in depth understanding of what that may have resulted in. That 2 switches would have the same fault type at the same time is.... unlikely, but stuff happens. Losing a Concorde due to a titanium fillet on a reverser cowl coming adrift on a preceding aircraft is also, stuff happens. Power levers walking back on some types is also a stuff happens event, one that should not occur, it comes up about every second year, and has done for decades. A single point failure remains the likely cause of this disaster, and there are only really 2 that make any sense; a failure of the electrical circuits for the fuel switches, which there is only one remote possible cause, and a cognitive/overt act by the crew, which stands in contrast to the CVR discussion which is dissonant to an overt action by a flight crew member.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by fdr; 15th July 2025 at
+   <span class="time">
+    17:41
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923491 valign=top><td class=post><a href=https://www.pprune.org/members/545068-hud-engineer>HUD Engineer</a>
+<br/>July 16, 2025, 07:40:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-57.html#post11923491><br/>permalink</a>
+ Post: 11923491</td>
+<td class=post><div class="tcell alt1" id="td_post_11923491">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   Cutoff Action Slip - Room for improvement?
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11923491">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      YYZjim
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11922344" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The preliminary report narrows things down a lot but not as much as it could have done. The report will have been approved by several people. What we see is their consensus. Why did they choose this version?
+     <br/>
+     <br/>
+     The report is written to point the finger directly at: (i) the fuel cutoff switches and (ii) either pilot error or pilot mal-intent using them. The report is not written to point the finger at an electrical or mechanical malfunction.
+     <br/>
+     <br/>
+     We have all role-played in our heads what would have been said in the cockpit in different scenarios. The investigating team already knows. They could have disclosed more of the cockpit conversation, which would be a lot of help to us PPRuNers, but didn't need to. They have let Boeing and the type off the hook and put the blame on the pilots. They have fulfilled the primary purpose of an investigation -- to find out what happened.
+     <br/>
+     <br/>
+     Interestingly, they did not disclose whether it was error and mal-intent. Perhaps that is because they couldn't answer the grisly question: which is least worst, from the point-of-view of the airline, the victims' families and future customers?
+     <br/>
+     <br/>
+     Two posters above have quoted AvHerald's report that "... India's media reports that the investigation is NOT focusing on a human action causing the fuel switches to appear in the CUTOFF position, but on a system failure." One interpretation of this is that the investigation knows all about the human action and that the system they refer to is the industry's approach to pilot mental heath and well-being.
+     <br/>
+     <br/>
+     YYZJim
+    </div>
+   </div>
+  </div>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      mr ripley
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11922800" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I have flown B777 and B787 and have operated these switches many times. They are solid secure switches that need a deliberate action to move.
+     <br/>
+     My thoughts, without any weighting or inference are that they were:
+     <br/>
+     1. moved deliberately to shutdown the engines
+     <br/>
+     2. moved unintentionally and ended up shutting down the engines
+     <br/>
+     Airlines focus on many safety topics, one of which is action slips.
+     <br/>
+     ...
+     <br/>
+     The only time that both fuel control switches are switched off together (and not immediately switched back on - Double Engine Failure) is at the end of the flight once parked on stand. This is a very familiar, routine action that pilots do with probably little thought. I have heard of some very odd action slips by some very experienced pilots. In this instance maybe the cue for the action was gear up? It could fit the timeline.
+    </div>
+   </div>
+  </div>
+  If the vast majority of flights have been made without anyone performing this particular action slip previously, without dismissing it, but giving it due consideration as a risk with potentially deadly consequences on every flight, is there a case for reviewing the procedure at the end of the flight, to cutoff one, count to 5 or 10, and cutoff the other, or have each crew member take care of "their" engine at that point?
+  <br/>
+  <br/>
+  I'm assuming that isn't an original idea, so how is it already addressed by Boeing, or the airlines, or pilots?
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923614 valign=top><td class=post><a href=https://www.pprune.org/members/558826-justusw>JustusW</a>
+<br/>July 16, 2025, 10:23:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-57.html#post11923614><br/>permalink</a>
+ Post: 11923614</td>
+<td class=post><div class="tcell alt1" id="td_post_11923614">
+ <!-- message -->
+ <div id="post_message_11923614">
+  <b>
+   Attention, Wall of Text incoming. Take appropriate precautions and fasten your seatbelts!
+  </b>
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      andihce
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923219" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I will say that in reading your earlier post, I came away thinking you were arguing for the unlikelihood of suicide in this case, at least in part because it is unlikely in the world of commercial aviation as a historical fact. If that's not the case, I apologize. But I will add I think other commentary here has fallen into this trap, as discussed in my referenced post.
+    </div>
+   </div>
+  </div>
+  It is a bit difficult to not appear to use statistics in this fashion when trying to refute people using made up numbers and stories as argument.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      B2N2
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923351" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I think we can move away from switch mysteriology and muscle memory and simulator games. [...] The CA had taken bereavement leave 3 years ago and according to
+     <u>
+      Indian sources
+     </u>
+     leave for mental health reasons?
+    </div>
+   </div>
+  </div>
+  If you had read the articles you quoted you might have realized that the basis for these "media reports" is a single individual who "heard from some Air India pilots". The supposed source wouldn't even have any way to actually know about the claimed information. Unless you want to elevate the Company Rumor Mill to hard evidence standard. This stands against:
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      za9ra22
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923362" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     TATA, the parent company of Air India, pushed back, saying, &ldquo;He did take bereavement leave in 2022 following his mother&rsquo;s death, and his medical records were submitted as part of the investigation, and the preliminary report did not find anything noteworthy.&rdquo;
+    </div>
+   </div>
+  </div>
+  Can we please stick to the actual facts, like za9ra22, and not spread baseless rumors that are self contradictory to begin with?
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      DutchRoll
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923430" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Lots of stiff competition for "most implausible theory" going on but I think my favourite so far is "could've mistakenly moved fuel control switches to cutoff when going for gear up selection". Geezus. 🤦&zwj;&male;️
+    </div>
+   </div>
+  </div>
+  I find this a particularly concerning statement coming from someone who claims to be a pilot. Things like "Action Slip" and "Mental Load" should have been covered extensively in any CRM related education. If you think you are exempt from that kind of failure you are rejecting some very costly lessons learned over the last 50 years of accident investigation.
+  <br/>
+  <br/>
+  There have been many accidents where unindicated or even counter indicated action was taken by one or more pilots involved. As discussed in the first and second thread extensively many pilots could report incidents where they observed someone retracting flaps instead of gear. There have been major fatal accidents with pilots shutting down healthy engines instead of surging or burning ones. There's good reason the 787 has extensive takeoff configuration warnings, because we have had accidents and incidents with unsafe configurations taken to takeoff, beyond and sometimes even into a crash. Humans make mistakes. It is the goal of Safety Culture to prevent those mistakes from causing harm.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      AirScotia
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923580" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The. question about enforcing idle throttles before CUTOFF has been discussed voluminously on this thread.
+    </div>
+   </div>
+  </div>
+  It was certainly mentioned. I'd not say it was discussed in any big way. Someone mentioned that for Embraer this is indeed the default, I haven't really found anything beyond that, despite considering it a worthwhile train of thought and possible recommendation as a result of this investigation.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Mrshed
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923444" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     But TL;DR - I'd posit that the rate of truly experienced mental health issues experienced in pilots is higher than whatever rate almost anyone is thinking.
+     <br/>
+     <br/>
+     Around 12% of people globally have a mental health issue at any given time - even being incredibly conservative, the rate in pilots is clearly going to be at least in single whole figure percentages (which is far from rare).
+     <br/>
+     <br/>
+     Obviously the majority of these issues are not going to be those with severe outcomes, but some will. And almost all mental health issues tend to affect cognitive ability to at least some level. Slowness in action and fatigue are diagnostic criteria for many of the most common mental health conditions for example.
+    </div>
+   </div>
+  </div>
+  This is a topic of actual research:
+  <a href="https://www.pmhc.org/research" target="_blank">
+   https://www.pmhc.org/research
+  </a>
+  <br/>
+  Currently 12.6% of pilots meet the medical threshold for depression, with a slight but below average difference between males (12.8%) and females (11.4%), with 4.1% of all pilots experiencing recent suicidal thoughts.
+  <a href="https://ehjournal.biomedcentral.com/articles/10.1186/s12940-016-0200-6" target="_blank">
+   https://ehjournal.biomedcentral.com/...940-016-0200-6
+  </a>
+  <br/>
+  <br/>
+  It should be noted that the utilized test (PHQ-9) is considered insufficient to assess suicide risk. Depending on scoring these values could be about average, or significantly below average. Based on their wording I would expect the latter, because their methodology does not specify severity.*1 Results of 0-4 points suggest no intervention necessary, 5-9 (classified as mild) simply suggest retaking the test after a few weeks. Research shows that for the general public Major Depressive Episodes have a prevalence of ~5-10%, with the prevalence of minor depression being less studied but significantly higher than major depression. There is also significant symptomatic overlap of mild depression with stress related conditions such as "Burnout" (if you know, please don't, this conversation is already complex enough without bringing that in). Considering the prevalence of stress in the industry I am actually surprised the numbers here are not higher. The lesser delta between males and females could be indicative of just such an issue, meaning that based on the data available the number of pilots actually suffering from depression could be less than even the comparably low number reported here. The actual suicide risk is usually orders of magnitude below even that but not easily covered in this data context due to the test used.
+  <br/>
+  <br/>
+  Cognitive impact is highly variable depending on the individual, actual symptoms and severity. It would be wrong to assess that 12.6% of pilots are a risk factor from this data. Quite the opposite, in fact. After the Germanwings crash the topic was discussed and has reached the awareness threshold for many. Mild cases usually require little to no intervention beyond raising awareness and helping the brain fix its chemistry through positive reinforcement. This can be as simple as taking PTO, reducing work hours, or focusing on social or physical activities. In the past 10 years these kinds of low impact measures have been made more readily available, most notably during the Covid-19 pandemic and the resulting turmoil.
+  <br/>
+  <br/>
+  Further political activity has lead to some positive action as well. I already mentioned the recent success of the Pilot Mental Health Campaign getting legislation through Congress for improvements of the outdated FAA guidelines on mental health in an earlier post. Similar efforts are underway globally, be that internal review within regulatory bodies, or political movements.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      slats11
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923489" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     As a critical care physician (with AVMED background), these last few years we seeing unprecedented rates of self-reported stress, anxiety, depression, and deliberate self-harm. This is being experienced in most western countries (perhaps globally, but I have less direct knowledge of non-western countries). It is absolutely off the scale. In my 35 year career, I have never seen anything like the last 4 years.
+     <br/>
+     <br/>
+     Sadly, I am confident this phenomenon will result in more incidents like Germanwings, MH370 and this.
+    </div>
+   </div>
+  </div>
+  Keeping what I wrote previously in mind I would still caution against extrapolating your personal experiences too far. Having family in the field and having volunteered myself I can certainly relate, albeit with far fewer and less impactful personal experiences. The research is obviously lagging and we haven't really understood the impact of the Covid-19 pandemic generally, let alone in all its intricacies. There is indeed an observable global trend. Some correlation has been shown to climate anxiety, but other factors like the deteriorating condition of international relations as well as a global rise in movements against individual rights are obvious sources for this trend as well.
+  <br/>
+  This is certainly a challenge for healthcare everywhere, but I do not consider the data available to be majorly applicable in the context of aviation over the already very current research closer to the industry and GA. The positive impact of what has been done and is being done is highly likely to outperform whatever global mechanism is at work here. It's certainly a very important field of study, but based on the data I would still consider the industry and regulators as a global whole to be on a positive path.
+  <br/>
+  <br/>
+  We can certainly discuss this topic further, but I would not currently see it as likely to be causal in this particular case.
+  <br/>
+  <br/>
+  Overall I am still not convinced we are looking at an individuals mental health crisis in this case. I have already detailed the massive differences to all known or suspected cases of pilot suicide at least twice. There is no evidence of mental health issues for the Captain or the FO. There is certainly a strong indication for a human factors cause to this accident. And as mentioned above I find the idea of improving the safety of the Fuel Cutoff Switches a worthwhile topic to discuss. No single action, and I see these two switches as a single action just as much as operating both thrust levers, should be able to cause a major accident. I find it perfectly reasonable to require the Throttle Levers be at idle for the Cutoff Switches to work, and in case of an incorrect setting some sort of alert would be appropriate.
+  <br/>
+  <br/>
+  *EDIT*
+  <br/>
+  *1: I missed this in my original readthrough, the cutoff is sensibly set to 10, starting with moderate depression. I'd have to look into the classification scheme but from memory both mild and moderate depression fall into the same category as relevant for the following statements.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by JustusW; 15th July 2025 at
+   <span class="time">
+    22:37
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>5 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923668 valign=top><td class=post><a href=https://www.pprune.org/members/303035-fgrieu>fgrieu</a>
+<br/>July 16, 2025, 11:47:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-58.html#post11923668><br/>permalink</a>
+ Post: 11923668</td>
+<td class=post><div class="tcell alt1" id="td_post_11923668">
+ <!-- icon and title -->
+ <div class="smallfont">
+  <strong>
+   Replacement of throttle control module, wiring of fuel control switches
+  </strong>
+ </div>
+ <hr/>
+ <!-- / icon and title -->
+ <!-- message -->
+ <div id="post_message_11923668">
+  The
+  <a href="https://aaib.gov.in/What's%20New%20Assets/Preliminary%20Report%20VT-ANB.pdf#page=6" target="_blank">
+   preliminary report
+  </a>
+  states:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    The scrutiny of maintenance records revealed that the throttle control module was replaced on VT-ANB in 2019 and 2023. However, the reason for the replacement was not linked to the fuel control switch.
+   </div>
+  </div>
+  How common is such a repeated replacement of the throttle control module?
+  <br/>
+  Are there records that on this or similar type, after a replacement of the throttle control module, the fuel control switches became defective, and how ?
+  <br/>
+  What type of switches are they: SPST, SPDT with 3 wires used ? For SPST or equivalent, is "cutoff" the "make" or "break" state ?
+  <br/>
+  Is there a common connection for the two switches, like a ground return or common live?
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11923713 valign=top><td class=post><a href=https://www.pprune.org/members/307224-lonewolf_50>Lonewolf_50</a>
+<br/>July 16, 2025, 12:47:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-58.html#post11923713><br/>permalink</a>
+ Post: 11923713</td>
+<td class=post><div class="tcell alt1" id="td_post_11923713">
+ <!-- message -->
+ <div id="post_message_11923713">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Dani
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923641" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I would love to explain, but my posts get deleted.
+    </div>
+   </div>
+  </div>
+  I'll offer a guess as to why...later.
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    I'm completly certain that it can when the locking mechanism is not properly installed.
+   </div>
+  </div>
+  Why do you assume that improper installation?
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    In such a case, the moving part of the lever could even stand on a "needle point position", meaning it's neither in the on or off position. Smallest movement of the aircraft or a hand can move the lever to on or off.
+    <br/>
+    <br/>
+    I also observed many pilots in my career holding their hand at the backstop of the thrust levers on the pedestal as PM. Comes from a certain mistrust to the other pilot (mostly captains do that). If this hand falls down by a gust or a bump on the runway, his hand falls down on the pedestal. Exact location of the cut-off switches. If the locking mechanism isn't installed, you don't even feel that you moved it.
+   </div>
+  </div>
+  How many times have you moved those switches, and the engines started without the switch being in the RUN position? (Either in the sim or in the aircraft).
+  <br/>
+  Has anyone demonstrated to you something like
+  <br/>
+  "watch this, Dani: if I pull the switch up and get it to hang on the little lock/cam, the engine will still start" ... in the sim or in the aircraft.
+  <br/>
+  I'd be interested to read of your experiences with that switch and that non-standard positioning of it that you describe.
+  <br/>
+  <br/>
+  Beyond that, did you bother to look at the position of the fuel control switches that were in the preliminary report?
+  <br/>
+  They were found in the RUN position. See page ten of the preliminary report.
+  <br/>
+  Neither of them was cocked off, as in the picture of a misaligned switch from a 737 that you referred to.
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    You mean just because it never has happened, it's impossible? What a strange argument.
+    <br/>
+    If you look closely at the picture in post no 262
+    <br/>
+    Preliminary Air India crash report published
+    <br/>
+    I see a perfect example of a wrongly installed locking mechanism.
+   </div>
+  </div>
+  On a 737.
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    How on earth do you think this argument is unthinkable, when there are even safety bulletins and mandatory maintenance orders about this very problem?
+   </div>
+  </div>
+  The bulletin was Issued seven years ago. Why do you assume that people in the business sat on their hands for seven years?
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    I'm on neighter side. That's why facts are more important for me than for many others.
+   </div>
+  </div>
+  Right. The
+  <b>
+   facts
+  </b>
+  are that the two fuel control switches were both found in the RUN position, not cocked to the side as your example from a 737 illustrates. Your entire line is unfortunately sunk by your attempt to challenge that fact.
+  <br/>
+  You have established no basis for why you believe that the switches on this 787 were incorrectly installed, given that
+  <ol style="list-style-type: decimal">
+   <li>
+    the aircraft's crew (on the previous flight) successfully turned the fuel on and off on the flight from Delhi
+   </li>
+   <li>
+    the aircraft's flight deck crew successfully turned the fuel on, to RUN, before starting engines on the flight from Ahmedabad.
+   </li>
+  </ol>
+  Your case is unsupported by the facts at hand.
+  <br/>
+  As to post deletions: as with some of mine being deleted, we both seem to get involved in the running rodent machine despite any intentions to avoid it.
+  <br/>
+  <br/>
+  For DaveReidUK
+  <br/>
+  Your post is, at best, disingenuous. (But thank you for posting an excerpt from the bulletin
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/thumbs.gif" title="Thumb"/>
+  ).
+  <br/>
+  The error was found on a 737, and the competent authority issued that alert having recognized that similar switches might have similar problems - they used the word
+  <i>
+   potentia
+  </i>
+  l
+  <b>
+   - not
+  </b>
+  because switches on all of those other models had been found to have that problem.
+  <br/>
+  From your subsequent post:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    ..to be replaced if found defective,
+   </div>
+  </div>
+  I will also ask
+  <b>
+   you
+  </b>
+  whether or not
+  <b>
+   you
+  </b>
+  believe that airline companies the world over have sat on their hands for the last seven years, as regards fuel cutoff switches.
+  <br/>
+  Given that this is the year 2025, (and the maintenance actions mentioned in the preliminary report) 1spotter's point on the "red herring" is a bit stronger than you allow. Please go back and read page 6 of the prelim report, top half.
+  <br/>
+  <br/>
+  Something else to think upon: how many 737s does Air India operate?
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    As of June 2025, Air India operates a fleet of 190 aircraft, both narrowbody and widebody aircraft with a fleet composed of
+    <a href="https://en.wikipedia.org/wiki/Airbus_A319" target="_blank">
+     Airbus A319
+    </a>
+    ,
+    <a href="https://en.wikipedia.org/wiki/Airbus_A320_family" target="_blank">
+     A320
+    </a>
+    ,
+    <a href="https://en.wikipedia.org/wiki/Airbus_A320neo_family" target="_blank">
+     A320neo
+    </a>
+    ,
+    <a href="https://en.wikipedia.org/wiki/Airbus_A321" target="_blank">
+     A321
+    </a>
+    ,
+    <a href="https://en.wikipedia.org/wiki/Airbus_A321neo" target="_blank">
+     A321neo
+    </a>
+    ,
+    <a href="https://en.wikipedia.org/wiki/Airbus_A350" target="_blank">
+     A350
+    </a>
+    as well as the
+    <a href="https://en.wikipedia.org/wiki/Boeing_777" target="_blank">
+     Boeing 777
+    </a>
+    and
+    <a href="https://en.wikipedia.org/wiki/Boeing_787_Dreamliner" target="_blank">
+     Boeing 787
+    </a>
+    .
+   </div>
+  </div>
+  Does that have a relevance to this accident?
+  <br/>
+  For the moment I don't think that it does, however, it might. The investigators have a variety of other rocks to turn over and see what crawls out from under them.
+  <br/>
+  They
+  <b>
+   may find evidence
+  </b>
+  of various maintenance issues that have an impact on this accident.
+  <br/>
+  As of today, though, such information has not been released (but I will offer you a guess that all of that is in the process of being collected and analyzed, even now, as a part of their investigation).
+  <br/>
+  <br/>
+  Full disclosure: I don't fly Boeings, I do not work for Boeing, I have no shares in Boeing stock, and I am still slightly pissed at Boeing for the MCAS screw up on the 737-MAX.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Lonewolf_50; 16th July 2025 at
+   <span class="time">
+    01:12
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923749 valign=top><td class=post><a href=https://www.pprune.org/members/307224-lonewolf_50>Lonewolf_50</a>
+<br/>July 16, 2025, 14:11:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-59.html#post11923749><br/>permalink</a>
+ Post: 11923749</td>
+<td class=post><div class="tcell alt1" id="td_post_11923749">
+ <!-- message -->
+ <div id="post_message_11923749">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Dani
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923743" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I really don't get it why you oppose to the thought it could happen on any Boeing aircraft. Since they are all very similar switches. Maybe it's even possible to interchange some of them. There are so many errors a maintenance organization can make. Fake parts?
+     <br/>
+     What really frightens me is that you and others resolutely block even to think about the possibility. Because, let's be honest, the probability is not zero (and I would say nearer to 1 than to 0).
+     <br/>
+     <br/>
+     <br/>
+     I have never moved such a switch, since I fly Airbus.
+    </div>
+   </div>
+  </div>
+  Got it. Argument from ignorance is noted.
+  <br/>
+  <br/>
+  But I'll offer you a concern I have for the position that you are taking.
+  <br/>
+  You have unwittingly made an presumption that in the last two years, see the maintenance actions referred to in the Prelim Report...
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    the scrutiny of maintenance records revealed that the throttle control module was replaced on VT-ANB in 2019 and 2023. However, the reason for the replacement was not linked to the fuel control switch. There has been no defect reported pertaining to the fuel control switch since 2023 on VT-ANB
+   </div>
+  </div>
+  ... none of the pilots at Air India wrote up a faulty fuel control switch.
+  <br/>
+  This is a switch that actual 787 and 777 pilots, who have have participated in this thread, have confirmed requires dual confirmation during operation, and one that has been highlighted as 'of interest' based on the bulletin we have all discussed.
+  <br/>
+  <br/>
+  But in Dani's world, the switch not working can be pressumed and the pilots never wrote it up because of {reasons}.
+  <br/>
+  <br/>
+  What do you have against all of the flight deck crews of Air India, that you believe that they would neglect to write up a fuel control switch that isn't working properly?
+  <br/>
+  <br/>
+  As an aside:
+  <br/>
+  <div class="spoiler">
+   <div class="spoiler-title">
+    <strong>
+     Spoiler
+    </strong>
+    <div class="spoiler-toggle" onclick="this.parentNode.nextElementSibling.style.display='';this.nextElementSibling.style.display='';this.style.display='none';" style="">
+     &nbsp;
+     <i class="fa-regular fa-square-plus">
+     </i>
+    </div>
+    <div class="spoiler-toggle" onclick="this.parentNode.nextElementSibling.style.display='none';this.previousElementSibling.style.display='';this.style.display='none';" style="display:none">
+     &nbsp;
+     <i class="fa-regular fa-square-minus">
+     </i>
+    </div>
+   </div>
+   <div class="spoiler-content" style="display:none">
+    your Airbus affiliation may be a problem here, one that you may not be willing to admit it, as I have seen various A versus B handbag spats break out on PPRuNe from time to time. You have made a number of insinuations of bias in this thread, and others, so I'd suggest that you check the mirror
+    <i>
+     amigo
+    </i>
+    .
+    <br/>
+   </div>
+  </div>
+  <br/>
+  Have I ever moved the wrong switch? Yep. I think that reaching for a wrong switch with one's mind not quite on what one is doing is more likely than your "the switch wasn't working correctly" assertion / assumption, particularly given the position that they were found in at the crash site: latched in the RUN position).
+  <br/>
+  <br/>
+  When I was still flying, if a switch in the cockpit, or a fastener for a cowling, wasn't working correctly I wrote it up.
+  <br/>
+  Whether or not the maintenance team fixed it immediately, or deferred the maintenance (based on the maintenance pubs), I wanted that on record so that (1) it would get fixed, and (2) to alert the next crew. I was taught that approach over 40 years ago.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Lonewolf_50; 16th July 2025 at
+   <span class="time">
+    02:28
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+</td>
+</tr>
+<tr id=11923764 valign=top><td class=post><a href=https://www.pprune.org/members/274741-za9ra22>za9ra22</a>
+<br/>July 16, 2025, 14:25:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-59.html#post11923764><br/>permalink</a>
+ Post: 11923764</td>
+<td class=post><div class="tcell alt1" id="td_post_11923764">
+ <!-- message -->
+ <div id="post_message_11923764">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      B2N2
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923752" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     If there was even a remote suspicion of the switches being at fault an emergency AD would already have been issued.
+    </div>
+   </div>
+  </div>
+  This is certainly true, and as the preliminary report states in the 'progress of investigation' summary:
+  <br/>
+  "At this stage of investigation, there are no recommended actions to B787-8 and/or GE GEnx-1B engine operators and manufacturers."
+  <br/>
+  <br/>
+  While possible (just) that the switches were so badly damaged that it was not possible to determine they would operate properly otherwise, it's a very long stretch to think the investigation would miss a potential fault in what is the singular focus of the entire incident.
+  <br/>
+  <br/>
+  I don't see any supportable basis on which it can be credibly argued these switches are causative.
+ </div>
+ <!-- / message -->
+</div>
+<p>5 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923781 valign=top><td class=post><a href=https://www.pprune.org/members/33536-1stspotter>1stspotter</a>
+<br/>July 16, 2025, 14:49:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-60.html#post11923781><br/>permalink</a>
+ Post: 11923781</td>
+<td class=post><div class="tcell alt1" id="td_post_11923781">
+ <!-- message -->
+ <div id="post_message_11923781">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      B2N2
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923752" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     What are the chances of both switches going bad on the same flight?
+     <br/>
+     As stated many times previously the throttle quadrant was replaced well after the 2018 SB.
+     <br/>
+     Quadrants can be replaced for a myriad of reasons, according to the report none that had anything to do with the switches.
+     <br/>
+     <br/>
+     If there was even a remote suspicion of the switches being at fault an emergency AD would already have been issued.
+    </div>
+   </div>
+  </div>
+  Everything in the preliminary report suggest one of the pilots moved both switches seconds after the liftoff to the CUTOFF position.
+  <br/>
+  If there was a 0,0001 percent chance the switches were faulty and could have moved because of gravity of an object hitting is, there would be a safety bulletin released to all B787 operators
+  <br/>
+  <br/>
+  There has not been such a bulletin.
+  <br/>
+  <br/>
+  The reason why the report does not mention which of the pilots ask " why did you cutoff ? " is unknown. We also do not know why it was written the switches ' transitioned' instead of ' moved' .
+  <br/>
+  My guess it was either for political reasons or because of a possible criminal investigation.
+  <br/>
+  <br/>
+  For a pilot there is no reason to set both switches to cutoff without any reason. There was no engine fire. There was no discussion in the cockpit about using the switches.
+  <br/>
+  Nothing. A mistake is extremely unlikely. There is no reason why the hands of a pilot needs to be near the switches. I do not believe in a brain fart.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923796 valign=top><td class=post><a href=https://www.pprune.org/members/274741-za9ra22>za9ra22</a>
+<br/>July 16, 2025, 15:12:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-60.html#post11923796><br/>permalink</a>
+ Post: 11923796</td>
+<td class=post><div class="tcell alt1" id="td_post_11923796">
+ <!-- message -->
+ <div id="post_message_11923796">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      1stspotter
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923781" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Everything in the preliminary report suggest one of the pilots moved both switches seconds after the liftoff to the CUTOFF position.
+     <br/>
+     If there was a 0,0001 percent chance the switches were faulty and could have moved because of gravity of an object hitting is, there would be a safety bulletin released to all B787 operators
+     <br/>
+     <br/>
+     There has not been such a bulletin.
+     <br/>
+     <br/>
+     The reason why the report does not mention which of the pilots ask " why did you cutoff ? " is unknown. We also do not know why it was written the switches ' transitioned' instead of ' moved' .
+     <br/>
+     My guess it was either for political reasons or because of a possible criminal investigation.
+     <br/>
+     <br/>
+     For a pilot there is no reason to set both switches to cutoff without any reason. There was no engine fire. There was no discussion in the cockpit about using the switches.
+     <br/>
+     Nothing. A mistake is extremely unlikely. There is no reason why the hands of a pilot needs to be near the switches. I do not believe in a brain fart.
+    </div>
+   </div>
+  </div>
+  That almost started so well!
+  <br/>
+  <br/>
+  But the report doesn't suggest one of the pilots moved the switches - it avoids that question entirely. Instead, as you correctly state, it says the switches 'transitioned', which is the strangest way to describe a pilot physically switching them off. I could see that as merely cautious phrasing, but it then describes them as 'transitioning' on again.
+  <br/>
+  <br/>
+  Admittedly, I'm a bit rusty with this kind of work these days, but I believe (and so does a former colleague) that the reason these actions are described in this way is that there is no evidence discernible (in time for the report) to identify how those switches were moved. Or even - just to be pedantic since they began in RUN and were discovered in RUN amongst the wreckage - that they moved at all.
+  <br/>
+  <br/>
+  I'm not drawing any conclusions, just saying that in the absence of any evidence they could report, they didn't report on any evidence, and 'transition' is the choice how to do that.
+  <br/>
+  <br/>
+  I seriously doubt the report fails to identify which pilot asks 'why' and which says 'I didn't' for political reasons. There is too wide a constituency of members of the team and no purpose to be gained, but there would be a possibility it isn't mentioned due to potential legal/criminal investigation if it weren't for the fact that it clearly doesn't actually have that effect at all, and isn't in the AAIB-India remit anyway. If they have no evidence of mental health conditions for either pilot, it's a moot question at this stage in any event.
+  <br/>
+  <br/>
+  The only way you can read the report as an investigator is that they itemise all the material facts they know, and omit what isn't yet pertinent or known.
+ </div>
+ <!-- / message -->
+</div>
+<p>5 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923811 valign=top><td class=post><a href=https://www.pprune.org/members/559685-gulfstream7>gulfstream7</a>
+<br/>July 16, 2025, 15:32:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-60.html#post11923811><br/>permalink</a>
+ Post: 11923811</td>
+<td class=post><div class="tcell alt1" id="td_post_11923811">
+ <!-- message -->
+ <div id="post_message_11923811">
+  I see a lot of posts about how rare it is for a pilot to deliberately crash the plane. But a rare event did take place. A plane full of people crashing right after take off is rare. So given that event has already occurred, whatever caused it howsoever unlikely it may be, is very likely the cause of this crash. Now what information do we have. Let's start with preliminary report, all can agree that everything was just fine until the switches "transitioned" to cut-off after rotation and max speed of 180knots. The way report is written is clearly a compromise. They have timestamps of all the events and including pilot conversation. They chose to release time-stamps for some events but didn't for a lot (including the pilot question about the switch and subsequent response). They released enough information to convey that there is no systematic issues/risks to the planes (which is what NTBS, Boeing would push for) but at the same time they worded the report in a way to not directly call out pilot error (deliberate or not). Now coming to that we know about the pilots:
+  <br/>
+  Captain was single and unmarried; his mom died recently; he moved from Delhi to Mumbai to take care of his dad. Captain also reported to have taken a medical leave in not so distant past. So as you can imagine; he went through a lot recently and it's not out of realm of possibility that his mental state would take him to do something like what happened. He had enough experience; he knew the recovery will be very unlikely once the fuel is cut off right after rotation. He was also PM so would have his hands free to move switches.Moreover, the PF was a trainee and probably wouldn't question his captain right away It would also still preserve captain's legacy; (at least what he might think, keep in mind his nephews are also pilots) if it's not clearly a case of deliberately crashing in the mountains or rapid descent (like previous deliberate pilot crashes) and there is enough ambiguity to ascertain beyond reasonable doubt what happened
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923834 valign=top><td class=post><a href=https://www.pprune.org/members/56619-dani>Dani</a>
+<br/>July 16, 2025, 16:09:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-60.html#post11923834><br/>permalink</a>
+ Post: 11923834</td>
+<td class=post><div class="tcell alt1" id="td_post_11923834">
+ <!-- message -->
+ <div id="post_message_11923834">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      B2N2
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923752" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     What are the chances of both switches going bad on the same flight?
+    </div>
+   </div>
+  </div>
+  They're not going bad, they've been installed incorrectly. (According to this theory, which can be wrong, like any theory).
+  <br/>
+  If an engineer has a wrong plan, then maybe he has the plan twice.
+  <br/>
+  <br/>
+  Lonewolf, I'm not talking about a switch that was broken all the time. It was wrongfully installed the same morning.
+  <br/>
+  The switch was not broken. It was installed in a wrong way. I don't understand why you don't understand.
+  <br/>
+  <br/>
+  Why don't we have maintenance records in the preliminary report?
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <span style="color:#000000">
+     I have moved these switches literally thousands of times. The movement to do this is very specific - pull back against a spring then move the switch so I am sure that I would notice if the spring function was not there.
+    </span>
+   </div>
+  </div>
+  I believe you that you are a very accurate handler of switches. If one lifts the switch before one feels the resistance, one won't feel it. One only feels the spring, which is still there. Only the gate of the lock is not there. But since one can lift the switch before it get's to the gate, one wont necessarily feel the resistance.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11923864 valign=top><td class=post><a href=https://www.pprune.org/members/558826-justusw>JustusW</a>
+<br/>July 16, 2025, 17:14:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-60.html#post11923864><br/>permalink</a>
+ Post: 11923864</td>
+<td class=post><div class="tcell alt1" id="td_post_11923864">
+ <!-- message -->
+ <div id="post_message_11923864">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      1stspotter
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923830" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Lets focus on the omit of the report the name of the pilot who said " why did you cutoff" and the name of the other pilot.[...]So it was a choice not to write in the report what was known.
+    </div>
+   </div>
+  </div>
+  That is not correct. Normal procedure, as mentioned in various posts in this thread, is to only include facts without analysis. Determining which person said something on a compressed recording, likely containing various types of noise, will definitely require some analysis. Your statement is pure speculation and likely wrong. The CAM is per definition recording a lot of things and does not come with a neat automatically generated script with attributions.
+  <br/>
+  A preliminary report can only contain what is certain. The attribution you want is unlikely to be available yet.
+ </div>
+ <!-- / message -->
+</div>
+<p>6 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923917 valign=top><td class=post><a href=https://www.pprune.org/members/274741-za9ra22>za9ra22</a>
+<br/>July 16, 2025, 18:32:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-61.html#post11923917><br/>permalink</a>
+ Post: 11923917</td>
+<td class=post><div class="tcell alt1" id="td_post_11923917">
+ <!-- message -->
+ <div id="post_message_11923917">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      1stspotter
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923830" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Lets focus on the omit of the report the name of the pilot who said " why did you cutoff" and the name of the other pilot.
+     <br/>
+     Fact is there is a recording on the conversation recorded and available to the AAIB. There are multiple microphones in the cockpit. One for the cockpit, and one for each of the mic of the headset.
+     <br/>
+     Even when the mics of the headsets were not working as a result of power failure, pure on the difference in voices the AAIB knows who said what.
+     <br/>
+     <br/>
+     So it was a choice not to write in the report what was known.
+    </div>
+   </div>
+  </div>
+  Apologies for the delay in responding to your point, but as I explained previously, the preliminary report was almost certainly written to place on record everything pertinent that is known. If something wasn't included in it, then it either isn't known, or more likely at this stage, was not considered to be pertinent.
+  <br/>
+  <br/>
+  Given that we do not know what evidence there is, even as there is certain to be more to gather, some of us can happily speculate, though not with any authority. But this would basically tell us that if the investigators know who said what, that at this stage, in the context of what THEY know rather than we do, it wasn't pertinent to report that detail.
+  <br/>
+  <br/>
+  And really, in preliminary report terms, where the objective at this stage is to lay out WHAT happened, the question of who said what, when it would seem to be a single question and a single answer, isn't relevant in laying down the pertinent facts. That is unless (and until) there is reason to suspect a deliberate or actionable act by a member of the crew. There appears not to be any evidence of mental or physical health impairments which would lead that way at present and point towards the WHY, so no purpose in diverting their and our attention as yet from the WHAT.
+  <br/>
+  <br/>
+  I say this as someone who has done this kind of investigatory work, and authored reports from it, knowing that there is sometimes considerable tension between the need to investigate and be thorough and precise, and the public interest which reasonably demands and should have answers.
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923936 valign=top><td class=post><a href=https://www.pprune.org/members/558826-justusw>JustusW</a>
+<br/>July 16, 2025, 19:01:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-62.html#post11923936><br/>permalink</a>
+ Post: 11923936</td>
+<td class=post><div class="tcell alt1" id="td_post_11923936">
+ <!-- message -->
+ <div id="post_message_11923936">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      ETOPS
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923934" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The lack of a full transcript from pushback to impact is perplexing. The interplay between the pilots and, more importantly, what more was said after the snippet released so far will reveal some truths that all of us feel are needed.
+     <br>
+      <br>
+       Why the secrecy?
+      </br>
+     </br>
+    </div>
+   </div>
+  </div>
+  The EAFR was read out only a week or so before the preliminary report was published. There is no such transcript yet. That transcript requires significant analysis, especially for the timeframe where recording was limited to the Cockpit Area Microphone. It will need removal of audio artefacts, noise, voice analysis for attribution, etc.
+  <br/>
+  There is no secrecy. There simply is nothing to release yet as the actual investigation is just getting started with the preliminary gathering of evidence nearing completion.
+ </div>
+ <!-- / message -->
+</div>
+<p>5 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923963 valign=top><td class=post><a href=https://www.pprune.org/members/274741-za9ra22>za9ra22</a>
+<br/>July 16, 2025, 19:43:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-62.html#post11923963><br/>permalink</a>
+ Post: 11923963</td>
+<td class=post><div class="tcell alt1" id="td_post_11923963">
+ <!-- message -->
+ <div id="post_message_11923963">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      ETOPS
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-66.html#post11923934" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <b>
+      za9ra22
+     </b>
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+     Sorry I disagree completely. The lack of a full transcript from pushback to impact is perplexing. The interplay between the pilots and, more importantly, what more was said after the snippet released so far will reveal some truths that all of us feel are needed.
+     <br/>
+     <br/>
+     Why the secrecy?
+    </div>
+   </div>
+  </div>
+  Admittedly, you have no duty to read the posts I have written, and it's my bad if they didn't make any sense, but I have explained - broadly - how these investigations work, why they work that way, and what they set out to do.
+  <br/>
+  <br/>
+  But basically, this is a preliminary report, not the final one. They are collecting evidence still, likely will be for some time yet, and are expected only to provide this kind of initial fact finding as a foundation for what is still to come. The who-said-what only matters when they need to determine why events unfolded as they did - and the absence of that detail at this point means they haven't got to that point yet... not that they won't.
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=Preliminary_Report0.html>First</a>
+&nbsp;<a href=Preliminary_Report10.html>Previous</a>
+&nbsp;<a href=Preliminary_Report1.html>2</a>
+&nbsp;<a href=Preliminary_Report2.html>3</a>
+&nbsp;<a href=Preliminary_Report3.html>4</a>
+&nbsp;<a href=Preliminary_Report4.html>5</a>
+&nbsp;<a href=Preliminary_Report5.html>6</a>
+&nbsp;<a href=Preliminary_Report6.html>7</a>
+&nbsp;<a href=Preliminary_Report7.html>8</a>
+&nbsp;<a href=Preliminary_Report8.html>9</a>
+&nbsp;<a href=Preliminary_Report9.html>10</a>
+&nbsp;<a href=Preliminary_Report10.html>11</a>
+&nbsp;<a href=Preliminary_Report11.html><b>12</b>
+</a>
+&nbsp;<a href=Preliminary_Report12.html>13</a>
+&nbsp;<a href=Preliminary_Report13.html>14</a>
+&nbsp;<a href=Preliminary_Report12.html>Next</a>
+&nbsp;<a href=Preliminary_Report13.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>
