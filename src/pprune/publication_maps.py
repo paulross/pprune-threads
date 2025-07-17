@@ -288,6 +288,8 @@ class AirIndia171(PublicationMap):
         'wsj': 'Wall Street Journal',
         'suicide': 'Suicide/Murder',
         'murder': 'Suicide/Murder',
+        'jumpseaters': 'Jump Seat',
+        'jumpseat': 'Jump Seat',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -509,6 +511,14 @@ class AirIndia171(PublicationMap):
 
             ('muscle', 'memory',): 'Muscle Memory',
             ('mental', 'health',): 'Mental Health',
+
+            ('jump', 'seat',): 'Jump Seat',
+            ('jump', 'seater',): 'Jump Seat',
+            ('jump', 'seating',): 'Jump Seat',
+            ('third', 'person',): 'Jump Seat',
+            ('third', 'pilot',): 'Jump Seat',
+            ('third', 'body',): 'Jump Seat',
+            ('third', 'seat',): 'Jump Seat',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
