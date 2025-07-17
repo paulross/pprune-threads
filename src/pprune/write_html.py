@@ -131,8 +131,8 @@ def pass_one(
             subjects |= analyse_thread.match_phrases(
                 post, common_words, phrase_length, phrase_map,
             )
-        if post.permalink in publication_map.get_specific_posts_to_subject_map():
-            subjects.add(publication_map.get_specific_posts_to_subject_map()[post.permalink])
+        if post.sequence_num in publication_map.get_specific_posts_to_subject_map():
+            subjects.add(publication_map.get_specific_posts_to_subject_map()[post.sequence_num])
         # Add duplicate subjects, for example: 'RAT (Deployment)': {'RAT (All)', }
         dupe_subjects = set()
         for subject in subjects:
@@ -191,8 +191,9 @@ def write_index_significant_posts(
         with element(index, 'p'):
             index.write('These are worth reading before you go any further.')
         # post_ordinals = []
-        for subject, permalink in significant_posts:
+        for subject, post_id in significant_posts:
             try:
+                permalink = thread.post_id_to_permalink_map[post_id]
                 post_ordinal = thread.post_map[permalink]
             except KeyError:
                 logger.error('Can not find permalink %s', permalink)

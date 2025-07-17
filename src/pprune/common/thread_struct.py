@@ -78,33 +78,57 @@ class Post:
     permalink: str
     user: User
     node: bs4.element.Tag
+    # This is the unique number in the pprune universe.
+    # For example <div id="edit10994338"> it would be 10994338.
+    # Also used for permalinks such as:
+    # <a
+    #   href="https://www.pprune.org/11898954-post26.html"
+    #   target="new"
+    #   rel="nofollow"
+    #   id="postcount11898954"
+    #   name="26"
+    #   target="new"
+    #   rel="nofollow">
+    #       <strong>26</strong>
+    #   </a>
+    #   (
+    #   <b>
+    #       <a
+    #           href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-2.html#post11898954"
+    #           title="Link to this Post">
+    #           permalink
+    #       </a>
+    #   </b>
+    #   )
     sequence_num: int
     liked_by_users: typing.List[User]
 
-    # def __post_init__(self):
-    #     """Do some sanity checking on the node.
-    #
-    #     Expects::
-    #
-    #         <div id="edit10994338">
-    #
-    #     """
-    #     if self.node.name != 'div':
-    #         raise ValueError(f'{self.node.name} does not appear to be a post')
-    #     if 'id' not in self.node.attrs:
-    #         raise ValueError(f'Node does not have an "id" attribute')
-    #     node_id = self.node.attrs['id']
-    #     if not node_id.startswith('edit'):
-    #         raise ValueError(f'Node "id" atributes does not start with "edit"')
-    #     if int(node_id[len('edit')]) != self.sequence_num:
-    #         raise ValueError(f'Node "id" attribute "{self.node.attrs['id']}" does not match {self.sequence_num}')
-    #     # Check the permalink matches
-    #     permalink_node = self.node.find('a', title="Link to this Post")
-    #     if permalink_node is None:
-    #         raise ValueError(f'no permalink node for {self.permalink}')
-    #     permalink = permalink_node.attrs['href']
-    #     if permalink != self.permalink:
-    #         raise ValueError(f'permalink node href="{permalink}" != {self.permalink}')
+    def __post_init__(self):
+        """Do some sanity checking on the node.
+
+        Expects::
+
+            <div id="edit10994338">
+
+        """
+        # if self.node.name != 'div':
+        #     raise ValueError(f'{self.node.name} does not appear to be a post')
+        # if 'id' not in self.node.attrs:
+        #     raise ValueError(f'Node does not have an "id" attribute')
+        # node_id = self.node.attrs['id']
+        # if not node_id.startswith('edit'):
+        #     raise ValueError(f'Node "id" atributes does not start with "edit"')
+        # if int(node_id[len('edit')]) != self.sequence_num:
+        #     raise ValueError(f'Node "id" attribute "{self.node.attrs['id']}" does not match {self.sequence_num}')
+        # Check the permalink matches
+        # permalink_node = self.node.find('a', title="Link to this Post")
+        # if permalink_node is None:
+        #     raise ValueError(f'no permalink node for {self.permalink}')
+        # permalink = permalink_node.attrs['href']
+        # if permalink != self.permalink:
+        #     raise ValueError(f'permalink node href="{permalink}" != {self.permalink}')
+        if self.post_number != self.sequence_num:
+            raise ValueError(f'permalink post_number "{self.post_number}" != {self.sequence_num}')
 
     def __str__(self):
         return (
@@ -241,6 +265,14 @@ class Thread:
         self.post_map: typing.Dict[str, int] = {}
         # Map of {User : [post_ordinal, ...], ...}
         self.user_post_indexes: typing.Dict[User, typing.List[int]] = {}
+        # Map of post ID (unique in the pprune universe), for example 11898954
+        # <div id="post11898955"> with the value the permalink URL.
+        # This allows permanent references to the post ("post11898955") to be mapped
+        # to their 'permalink'. The problem being the permalinks are not permanent as
+        # they include the page number and that may change if moderators delete posts
+        # in which case the post could end up in a *previous* page.
+        # This is used by publication maps SPECIFIC_POSTS_MAP and SIGNIFICANT_POSTS.
+        self.post_id_to_permalink_map: typing.Dict[int, str] = {}
 
     def __len__(self) -> int:
         return len(self.posts)
@@ -261,6 +293,7 @@ class Thread:
         if post.user not in self.user_post_indexes:
             self.user_post_indexes[post.user] = []
         self.user_post_indexes[post.user].append(len(self.posts))
+        self.post_id_to_permalink_map[post.sequence_num] = post.permalink
         self.posts.append(post)
 
     @property
