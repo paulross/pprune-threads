@@ -286,6 +286,8 @@ class AirIndia171(PublicationMap):
         'cerebellum': 'Action slip',
         'avherald': 'AvHerald',
         'wsj': 'Wall Street Journal',
+        'suicide': 'Suicide/Murder',
+        'murder': 'Suicide/Murder',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -504,6 +506,7 @@ class AirIndia171(PublicationMap):
             ('authority', 'gradients',): 'Authority Gradient',
 
             ('muscle', 'memory',): 'Muscle Memory',
+            ('mental', 'health',): 'Mental Health',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -617,9 +620,9 @@ class AirIndia171(PublicationMap):
         ('Preliminary Report Timeline',
          'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921202',),
         ('Quick Windmill Relight',
-         'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-38.html#post11921747',),
+         'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-37.html#post11921747',),
         ('A 787 Pilot Speaks',
-         'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-64.html#post11924096',),
+         'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-63.html#post11924096',),
         ('tdracer on Air Accident Investigations',
          'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-64.html#post11924194',),
     )

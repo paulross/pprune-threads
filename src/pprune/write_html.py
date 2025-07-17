@@ -289,7 +289,7 @@ def write_index_most_upvoted_posts_table(
             index.write('NOTE: Up-votes from closed threads maybe lost.')
         post_count = 0
         with element(index, 'table', _class="indextable"):
-            _write_table_header(['Up-votes', 'Text (Quoted Text Removed)', 'User Name', 'Permalink', ], index)
+            _write_table_header(['Up-votes', 'Text (Quoted Text Removed)', 'User Name', 'Date', 'Permalink',], index)
             for k in keys:
                 for post_ordinal in liked_by_users_dict[k]:
                     post = thread.posts[post_ordinal]
@@ -311,6 +311,8 @@ def write_index_most_upvoted_posts_table(
                         with element(index, 'td', _class='indextable'):
                             with element(index, 'a', href=post.user.href):
                                 index.write(post.user.name)
+                        with element(index, 'td', _class='indextable'):
+                            index.write(format_datetime(post.timestamp))
                         with element(index, 'td', _class='indextable'):
                             with element(index, 'a', href=post.permalink):
                                 index.write('Permalink')
