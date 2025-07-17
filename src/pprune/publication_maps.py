@@ -615,4 +615,8 @@ class AirIndia171(PublicationMap):
          'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921202',),
         ('Quick Windmill Relight',
          'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-38.html#post11921747',),
+        ('A 787 Pilot Speaks',
+         'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-64.html#post11924096',),
+        ('tdracer on Air Accident Investigations',
+         'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-64.html#post11924194',),
     )
