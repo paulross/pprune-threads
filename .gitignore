@@ -197,3 +197,5 @@ cython_debug/
 
 threads/
 tmp/
+
+**/.DS_Store
