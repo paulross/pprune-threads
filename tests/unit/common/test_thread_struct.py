@@ -498,7 +498,7 @@ def test_post_words(args, expected):
                             "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
                             'nicolai',
                             "This, is the post text. See:",
-                            42,  # Sequence number
+                            10994338,  # Sequence number
                             [],  # liked_by_users
                     ),
                     10994338,
@@ -726,7 +726,7 @@ EXAMPLE_THREAD_POSTS_TWO = [
         "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
         'nicolai',
         "This, is the post text. See:",
-        42,  # Sequence number
+        10994338,  # Sequence number
         [],  # liked_by_users
     ),
     (
@@ -735,7 +735,7 @@ EXAMPLE_THREAD_POSTS_TWO = [
         "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994339",
         'not-nicolai',
         "Totally different text.",
-        142,  # Sequence number
+        10994339,  # Sequence number
         [],  # liked_by_users
     ),
 ]

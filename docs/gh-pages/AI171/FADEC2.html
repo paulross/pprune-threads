@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune FADEC name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts about: "FADEC" [Posts: 221 Pages: 12]</h1>
+<body><h1>Posts about: "FADEC" [Posts: 231 Pages: 12]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=FADEC0.html>First</a>
 &nbsp;<a href=FADEC1.html>Previous</a>
 &nbsp;<a href=FADEC0.html>1</a>
@@ -75,11 +75,11 @@
 <td class=post><div class="tcell alt1" id="td_post_11902653">
  <!-- message -->
  <div id="post_message_11902653">
-  2008, a Spanair MD-82  crashed in a similar way after liftoff in Madrid.
+  2008, a Spanair MD-82 crashed in a similar way after liftoff in Madrid.
   <a href="https://asn.flightsafety.org/reports/2008/20080820_MD82_EC-HFP.pdf" target="_blank">
    Final report Spanair
   </a>
-  .Main cause: The pilots did not configure the airplane according to checklist and took of with zero flaps and slats. Contributing: previous maintance was disabling RAT heating (MEL if not flying into icing conditions) which somehow inhibited electrically the takeoff configuration warning. I am not implying in the least that such a thing happended to this Air India crash. I just mention it as a proof that some *minor* quirks can contribute to  an accident (i.e. disturb FADEC, TCMA logic, you name it) .  Modern aircraft software  logic is even  more complex than the wired logic of an MD-82. But still: all "IF so and so THEN so and so " code can produce weird results if the conditions are corrupted or delayed by data communication lags. And according to a witness, there were some electrical quirks on the previous flight and possibly some maintenance thereafter. Again not implying any wrongdoing.
+  .Main cause: The pilots did not configure the airplane according to checklist and took of with zero flaps and slats. Contributing: previous maintance was disabling RAT heating (MEL if not flying into icing conditions) which somehow inhibited electrically the takeoff configuration warning. I am not implying in the least that such a thing happended to this Air India crash. I just mention it as a proof that some *minor* quirks can contribute to an accident (i.e. disturb FADEC, TCMA logic, you name it) . Modern aircraft software logic is even more complex than the wired logic of an MD-82. But still: all "IF so and so THEN so and so " code can produce weird results if the conditions are corrupted or delayed by data communication lags. And according to a witness, there were some electrical quirks on the previous flight and possibly some maintenance thereafter. Again not implying any wrongdoing.
  </div>
  <!-- / message -->
 </div>
@@ -194,7 +194,7 @@
     </div>
    </div>
   </div>
-  It was assumed for decades that in the event of uncontrollable high thrust (UHT) that the pilot would cut the fuel.  Until there was a UHT event (1999?) on the takeoff roll and the crew - in an RTO - rode it all the way down and off the runway without cutting fuel.  TCMA is primarily about the RTO scenario (throttle back to idle), and after that fleet event it became a requirement for FAA Part 25 certification.
+  It was assumed for decades that in the event of uncontrollable high thrust (UHT) that the pilot would cut the fuel. Until there was a UHT event (1999?) on the takeoff roll and the crew - in an RTO - rode it all the way down and off the runway without cutting fuel. TCMA is primarily about the RTO scenario (throttle back to idle), and after that fleet event it became a requirement for FAA Part 25 certification.
  </div>
  <!-- / message -->
 </div>
@@ -323,7 +323,7 @@
   The only real hardware in the TCMA system is the N2 overspeed shutdown system - which goes through a BITE style functional test on every engine start. Everything else is in software - with the only aircraft inputs being Air/Ground and thrust lever position.
   <br/>
   <br/>
-  As I've posted previously, the FADEC is powered by a dedicated Permanant Magnet Alternator (PMA) - aircraft power is used only as a backup for starting or if the PMA fails.  If the FADEC determines it is running on aircraft power with engine running (i.e. the PMA has failed), it sets a 'No Dispatch" fault message.
+  As I've posted previously, the FADEC is powered by a dedicated Permanant Magnet Alternator (PMA) - aircraft power is used only as a backup for starting or if the PMA fails. If the FADEC determines it is running on aircraft power with engine running (i.e. the PMA has failed), it sets a 'No Dispatch" fault message.
  </div>
  <!-- / message -->
 </div>
@@ -378,16 +378,16 @@
     </div>
    </div>
   </div>
-  I'm not familiar with the details of how the FADEC s/w is coded (it's the responsibility of the engine manufacturer - in this case GE).  Boeing provides specific requirements as to the aircraft/engine interface (documented in an "Interface Control Document" - ICD).
+  I'm not familiar with the details of how the FADEC s/w is coded (it's the responsibility of the engine manufacturer - in this case GE). Boeing provides specific requirements as to the aircraft/engine interface (documented in an "Interface Control Document" - ICD).
   <br/>
   My understanding is that GE uses an automated coding system that takes logic diagrams of what we want the s/w to do and turns that into the s/w code - again don't know details (my expertise is engine control and engine/aircraft interface - not s/w development).
   <br/>
   The FADEC is a dual channel device (most of the sensors are also duplicated between channels), but both channels use the same s/w (Rolls did a thing many years ago where the channels used different s/w - it was mess and caused all sort of problems - I don't think anyone else has tried that since).
   <br/>
   <br/>
-  FADEC software is classified as "Design Assurance Level A" (aka DAL 'A') - flight critical - same thing as FBW software.  There are specific requirements for the creation, testing, and certification of DAL A software and it's quite exhaustive (those requirements are documented in an FAA/EASA approved s/w requirements document (DO-160 IIRC).  Yes, it is possible for something designed and certified to DAL A to have 'bugs' (and yes it has happened), although those 'bugs' have nearly always been traced to requirements errors - not the actual incorporation of those requirements.
+  FADEC software is classified as "Design Assurance Level A" (aka DAL 'A') - flight critical - same thing as FBW software. There are specific requirements for the creation, testing, and certification of DAL A software and it's quite exhaustive (those requirements are documented in an FAA/EASA approved s/w requirements document (DO-160 IIRC). Yes, it is possible for something designed and certified to DAL A to have 'bugs' (and yes it has happened), although those 'bugs' have nearly always been traced to requirements errors - not the actual incorporation of those requirements.
   <br/>
-  It's also worth noting that the GEnx-1B has millions of hours of operation.  Nothing is 'impossible' - even a 10-9 event will happen given enough opportunities - but the odds are very low of it happening.
+  It's also worth noting that the GEnx-1B has millions of hours of operation. Nothing is 'impossible' - even a 10-9 event will happen given enough opportunities - but the odds are very low of it happening.
   <br/>
   Then again, all of the plausible explanations for dual engine power loss that would explain this accident are of a very low probability.
  </div>
@@ -601,9 +601,9 @@
     </div>
    </div>
   </div>
-  As I noted previously, the FADEC is a dual channel device.  It's long been the case that dispatch is allowed with a single FADEC channel failed (this goes back to the original PW4000/CF6-80C2 as installed on the 747-400 and 767.
+  As I noted previously, the FADEC is a dual channel device. It's long been the case that dispatch is allowed with a single FADEC channel failed (this goes back to the original PW4000/CF6-80C2 as installed on the 747-400 and 767.
   <br/>
-  The MMEL says something like "4 installed, 3 required" (referring to individual FADEC channels) - so you can dispatch for a short time with one FADEC channel failed.  Yes, if the remaining channel of faulted FADEC fails, the engine will fail - but the FADEC reliability is such that the probability of losing the remaining channel (and hence the engine) is sufficiently small as to be acceptable.
+  The MMEL says something like "4 installed, 3 required" (referring to individual FADEC channels) - so you can dispatch for a short time with one FADEC channel failed. Yes, if the remaining channel of faulted FADEC fails, the engine will fail - but the FADEC reliability is such that the probability of losing the remaining channel (and hence the engine) is sufficiently small as to be acceptable.
   <br/>
   <br/>
   Both channels can operate TCMA, so a single channel failure has not overall effect on the system.
@@ -756,15 +756,15 @@
     </div>
    </div>
   </div>
-  Repeating myself (again), but ALL the TCMA logic is resident in the FADEC.  It takes aircraft inputs of air/ground (again, not familiar with the specifics of the air/ground logic used on the 787/GEnx-1B, so don't ask), thrust lever position, and what the engine is actually doing (mainly N1) to determine if the engine is 'out of control'.
+  Repeating myself (again), but ALL the TCMA logic is resident in the FADEC. It takes aircraft inputs of air/ground (again, not familiar with the specifics of the air/ground logic used on the 787/GEnx-1B, so don't ask), thrust lever position, and what the engine is actually doing (mainly N1) to determine if the engine is 'out of control'.
   <br/>
-  The thrust lever inputs are hardwired (resolvers connected to the thrust levers, powered by the FADEC), other aircraft communications on the 787 are on an ethernet based network.  Default mode for the FADEC if aircraft inputs are lost or invalid is "Air", as that is generally considered to be the 'safe' choice.
+  The thrust lever inputs are hardwired (resolvers connected to the thrust levers, powered by the FADEC), other aircraft communications on the 787 are on an ethernet based network. Default mode for the FADEC if aircraft inputs are lost or invalid is "Air", as that is generally considered to be the 'safe' choice.
   <br/>
   But even assuming some aircraft fault caused the FADECs to falsely believe the aircraft was 'on-ground', it would
   <i>
    still
   </i>
-  take a pretty major error in the TCMA logic for it to actually trigger and shutdown the engine (especially lacking an associated thrust lever movement to idle).  Never say never, but we're getting pretty far out on the probability tree for all these things to happen.
+  take a pretty major error in the TCMA logic for it to actually trigger and shutdown the engine (especially lacking an associated thrust lever movement to idle). Never say never, but we're getting pretty far out on the probability tree for all these things to happen.
  </div>
  <!-- / message -->
 </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune tdracer name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts by user "tdracer" [Posts: 74 Total up-votes: 195 Pages: 4]</h1>
+<body><h1>Posts by user "tdracer" [Posts: 81 Total up-votes: 313 Pages: 5]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=USER-tdracer0.html>First</a>
 &nbsp;<a href=USER-tdracer1.html>Previous</a>
 &nbsp;<a href=USER-tdracer0.html>1</a>
@@ -9,8 +9,9 @@
 &nbsp;<a href=USER-tdracer2.html><b>3</b>
 </a>
 &nbsp;<a href=USER-tdracer3.html>4</a>
+&nbsp;<a href=USER-tdracer4.html>5</a>
 &nbsp;<a href=USER-tdracer3.html>Next</a>
-&nbsp;<a href=USER-tdracer3.html>Last</a>
+&nbsp;<a href=USER-tdracer4.html>Last</a>
 &nbsp;<a href=index.html>Index Page</a>
 </p>
 <table class=posts><tr valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
@@ -47,11 +48,11 @@
     </div>
    </div>
   </div>
-  Yea, I think you're right - DO-178 is aviation software - now that I think about it, DO-160 might be electro-magnetic effects (i.e. HIRF/Lightning).  It's not something I need to worry about anymore so it's not something I make a point of remembering
+  Yea, I think you're right - DO-178 is aviation software - now that I think about it, DO-160 might be electro-magnetic effects (i.e. HIRF/Lightning). It's not something I need to worry about anymore so it's not something I make a point of remembering
   <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
   <br/>
   <br/>
-  I doubt the issue would be in top level requirements - those are pretty simple and straightforward.  It's the devil of the details where an error might have occurred.
+  I doubt the issue would be in top level requirements - those are pretty simple and straightforward. It's the devil of the details where an error might have occurred.
   <br/>
   <br/>
   All that being said, I have a hard time with the idea that TCMA activated without a
@@ -159,9 +160,9 @@
     </div>
    </div>
   </div>
-  Inlet compliance is tested at max takeoff power settings, at AOA up to stall.  This is done by performing something called a 'wind-up turn' - with the engine at max TO power and constant altitude, they keep pulling the turn tighter until the wing stalls and the aircraft falls out of the turn.
+  Inlet compliance is tested at max takeoff power settings, at AOA up to stall. This is done by performing something called a 'wind-up turn' - with the engine at max TO power and constant altitude, they keep pulling the turn tighter until the wing stalls and the aircraft falls out of the turn.
   <br/>
-  If the engine doesn't continue normal operation, that's considered a 'fail'.  Plus, the engine reaction of an over-rotated inlet (inlet separation) is a surge - accompanied by big bang and a ball of flame out the back.
+  If the engine doesn't continue normal operation, that's considered a 'fail'. Plus, the engine reaction of an over-rotated inlet (inlet separation) is a surge - accompanied by big bang and a ball of flame out the back.
   <br/>
   Nothing we know about this accident supports an over-rotation and related engine stall/surge.
  </div>
@@ -210,9 +211,9 @@
     </div>
    </div>
   </div>
-  As I noted previously, the FADEC is a dual channel device.  It's long been the case that dispatch is allowed with a single FADEC channel failed (this goes back to the original PW4000/CF6-80C2 as installed on the 747-400 and 767.
+  As I noted previously, the FADEC is a dual channel device. It's long been the case that dispatch is allowed with a single FADEC channel failed (this goes back to the original PW4000/CF6-80C2 as installed on the 747-400 and 767.
   <br/>
-  The MMEL says something like "4 installed, 3 required" (referring to individual FADEC channels) - so you can dispatch for a short time with one FADEC channel failed.  Yes, if the remaining channel of faulted FADEC fails, the engine will fail - but the FADEC reliability is such that the probability of losing the remaining channel (and hence the engine) is sufficiently small as to be acceptable.
+  The MMEL says something like "4 installed, 3 required" (referring to individual FADEC channels) - so you can dispatch for a short time with one FADEC channel failed. Yes, if the remaining channel of faulted FADEC fails, the engine will fail - but the FADEC reliability is such that the probability of losing the remaining channel (and hence the engine) is sufficiently small as to be acceptable.
   <br/>
   <br/>
   Both channels can operate TCMA, so a single channel failure has not overall effect on the system.
@@ -333,15 +334,15 @@
     </div>
    </div>
   </div>
-  Repeating myself (again), but ALL the TCMA logic is resident in the FADEC.  It takes aircraft inputs of air/ground (again, not familiar with the specifics of the air/ground logic used on the 787/GEnx-1B, so don't ask), thrust lever position, and what the engine is actually doing (mainly N1) to determine if the engine is 'out of control'.
+  Repeating myself (again), but ALL the TCMA logic is resident in the FADEC. It takes aircraft inputs of air/ground (again, not familiar with the specifics of the air/ground logic used on the 787/GEnx-1B, so don't ask), thrust lever position, and what the engine is actually doing (mainly N1) to determine if the engine is 'out of control'.
   <br>
-   The thrust lever inputs are hardwired (resolvers connected to the thrust levers, powered by the FADEC), other aircraft communications on the 787 are on an ethernet based network.  Default mode for the FADEC if aircraft inputs are lost or invalid is "Air", as that is generally considered to be the 'safe' choice.
+   The thrust lever inputs are hardwired (resolvers connected to the thrust levers, powered by the FADEC), other aircraft communications on the 787 are on an ethernet based network. Default mode for the FADEC if aircraft inputs are lost or invalid is "Air", as that is generally considered to be the 'safe' choice.
    <br>
     But even assuming some aircraft fault caused the FADECs to falsely believe the aircraft was 'on-ground', it would
     <i>
      still
     </i>
-    take a pretty major error in the TCMA logic for it to actually trigger and shutdown the engine (especially lacking an associated thrust lever movement to idle).  Never say never, but we're getting pretty far out on the probability tree for all these things to happen.
+    take a pretty major error in the TCMA logic for it to actually trigger and shutdown the engine (especially lacking an associated thrust lever movement to idle). Never say never, but we're getting pretty far out on the probability tree for all these things to happen.
    </br>
   </br>
  </div>
@@ -432,7 +433,7 @@
   <i>
    everyone
   </i>
-  !) associated with the investigation is under what's basically a 'gag order'.  They are not to discuss what they know with
+  !) associated with the investigation is under what's basically a 'gag order'. They are not to discuss what they know with
   <i>
    anyone
   </i>
@@ -524,14 +525,14 @@
     </div>
    </div>
   </div>
-  The wiring between the two (per engine) FADEC channels is separate and isolated from each other.  In the areas potentially subject to cross engine rotor burst damage, that wiring is physically separated by a considerable distance.  About the only place where the Channel A and B thrust lever resolver wiring is close proximity is in the thrust lever quadrant.  We've been designing FADEC aircraft for 40 years - and the requirements for isolation are detailed and well understood.
+  The wiring between the two (per engine) FADEC channels is separate and isolated from each other. In the areas potentially subject to cross engine rotor burst damage, that wiring is physically separated by a considerable distance. About the only place where the Channel A and B thrust lever resolver wiring is close proximity is in the thrust lever quadrant. We've been designing FADEC aircraft for 40 years - and the requirements for isolation are detailed and well understood.
   <br/>
   <br/>
   I've
   <i>
    repeatedly
   </i>
-  posted I don't know the details of the 787/GEnx-1B FADEC air/ground logic - and I know even less about the 787 air/ground system architecture.  That being said, I think the whole air/ground is a bit of a red herring - even with a false air/ground indication, it's going to take a very major flaw in the FADEC logic for TCMA to activate without several other things happening (such as the thrust levers being moved to idle - which all by itself is going to make for a bad day if it's done at rotation).
+  posted I don't know the details of the 787/GEnx-1B FADEC air/ground logic - and I know even less about the 787 air/ground system architecture. That being said, I think the whole air/ground is a bit of a red herring - even with a false air/ground indication, it's going to take a very major flaw in the FADEC logic for TCMA to activate without several other things happening (such as the thrust levers being moved to idle - which all by itself is going to make for a bad day if it's done at rotation).
  </div>
  <!-- / message -->
 </div>
@@ -568,30 +569,30 @@
     </div>
    </div>
   </div>
-  Given the number of times I reviewed DFDR data supplied by an operator after some sort of event/incident, I think most major operators have access to the equipment needed to download a healthy data recorder.  So I'd be a bit surprised if Air India does not have this capability.
+  Given the number of times I reviewed DFDR data supplied by an operator after some sort of event/incident, I think most major operators have access to the equipment needed to download a healthy data recorder. So I'd be a bit surprised if Air India does not have this capability.
   <span style="color:#222222">
    OldnGrounded has also posted that the Indian AAIB also has that ability.
   </span>
   <br/>
   <br/>
-  Usually when I hear of data recorders going back to the US NTSB or the recorder manufacturer, it's because the crash damage is such that specialized equipment is needed to download the data.  The recorder in the tail would likely have little damage.
+  Usually when I hear of data recorders going back to the US NTSB or the recorder manufacturer, it's because the crash damage is such that specialized equipment is needed to download the data. The recorder in the tail would likely have little damage.
   <br/>
   While the AAIB
   <i>
    may
   </i>
-  have held off on downloading the recorders until all the major players are present, it's been several days - I'd expect everyone who matters is already there.  So I think it is reasonable to believe that the investigators have done a download and have had at least a preliminary look at the data.  If there is a smoking gun, they probably already know (and the longer we don't hear something regarding the rest of the 787 fleet, or at least the GEnx powered fleet, the less likely it is that they suspect a systemic problem with the aircraft and/or engine).  However the proviso that I posted earlier about potential data loss/corruption due to a sudden shutdown still applies - so maybe the data simply isn't on the recorder.
+  have held off on downloading the recorders until all the major players are present, it's been several days - I'd expect everyone who matters is already there. So I think it is reasonable to believe that the investigators have done a download and have had at least a preliminary look at the data. If there is a smoking gun, they probably already know (and the longer we don't hear something regarding the rest of the 787 fleet, or at least the GEnx powered fleet, the less likely it is that they suspect a systemic problem with the aircraft and/or engine). However the proviso that I posted earlier about potential data loss/corruption due to a sudden shutdown still applies - so maybe the data simply isn't on the recorder.
   <br/>
   <br/>
   As has already been posted, EMI is highly unlikely - the current cert requirements for HIRF are quite high, and due to the composite airframe construction of the 787, the lighting requirements are much higher than for conventional aluminum aircraft (the higher resistance of the composite airframe results is higher lightning induced currents).
   <br/>
   <br/>
-  FDR has suggested a large slug of water hitting critical aircraft electronics at rotation - it is possible that resultant electrical short circuits could falsely signal the engines that the switches are in cutoff.  Highly unlikely that it would do that to both engines, but possible.
+  FDR has suggested a large slug of water hitting critical aircraft electronics at rotation - it is possible that resultant electrical short circuits could falsely signal the engines that the switches are in cutoff. Highly unlikely that it would do that to both engines, but possible.
   <br/>
   Then again, all the other plausible explanations are highly unlikely, so...
   <br/>
   <br/>
-  BTW, I do have a life outside PPRuNe - and I'm going to be traveling the next several days, with limited to non-existent internet access.  So don't be surprised if I'm not responding posts or PMs.
+  BTW, I do have a life outside PPRuNe - and I'm going to be traveling the next several days, with limited to non-existent internet access. So don't be surprised if I'm not responding posts or PMs.
   <br/>
  </div>
  <!-- / message -->
@@ -636,9 +637,9 @@
     </div>
    </div>
   </div>
-  Actually that's not quite true.  Thrust far higher than what's being commanded by the thrust lever - it doesn't have to be at idle.  But even with a CPU failure commanding high thrust (relative to TL position), the odds of that happening to two engines at the same time is astronomical.
+  Actually that's not quite true. Thrust far higher than what's being commanded by the thrust lever - it doesn't have to be at idle. But even with a CPU failure commanding high thrust (relative to TL position), the odds of that happening to two engines at the same time is astronomical.
   <br>
-   BTW, I don't know if there is any 'crosstalk' of TCMA activation between engines on the 787.  I know we don't do any crosstalk of other engines info on the 747-8, but the 787 is far more integrated, and the amount of data that can put on that ethernet based data bus is massive.
+   BTW, I don't know if there is any 'crosstalk' of TCMA activation between engines on the 787. I know we don't do any crosstalk of other engines info on the 747-8, but the 787 is far more integrated, and the amount of data that can put on that ethernet based data bus is massive.
    <br>
     My knee jerk is that they wouldn't crosstalk TCMA status between engines, but the reality is I really don't know.
    </br>
@@ -769,7 +770,7 @@
     </div>
    </div>
   </div>
-  Every commercial airliner I've ever been on - with the exception of a short-range regional jet (only lav in the back) - has at least one lav immediately aft of the flight deck.  Especially post 9/11, putting the most forward lav any further back would become a nightmare when the pilots need to relieve themselves (presumably, they expect the pilot to be able to 'hold it' on a short range regional jet).
+  Every commercial airliner I've ever been on - with the exception of a short-range regional jet (only lav in the back) - has at least one lav immediately aft of the flight deck. Especially post 9/11, putting the most forward lav any further back would become a nightmare when the pilots need to relieve themselves (presumably, they expect the pilot to be able to 'hold it' on a short range regional jet).
   <br/>
   And every commercial airliner I'm familiar with has the prime electronics bay below the flight deck - for what should be obvious reasons.
   <br/>
@@ -899,9 +900,9 @@
     </div>
    </div>
   </div>
-  Engine isolation means just that.  No common wire bundles, no common connectors.  You can move the fuel levers at any time - there is no lockout of any kind with respect to thrust lever position (imagine dropping something into the lever linkage that jams the thrust lever at max power - then being unable to shut that engine down?)
+  Engine isolation means just that. No common wire bundles, no common connectors. You can move the fuel levers at any time - there is no lockout of any kind with respect to thrust lever position (imagine dropping something into the lever linkage that jams the thrust lever at max power - then being unable to shut that engine down?)
   <br/>
-  Obviously, since the thrust levers are placed next to each other - the separation that's available in the center console is limited, but as soon as the wiring exits that constrained area, the separation increases.  Furthermore, the same engine-to-engine wiring separation also applies to channel A/B FADEC channels, as well as the fuel switch/fire handle wiring.
+  Obviously, since the thrust levers are placed next to each other - the separation that's available in the center console is limited, but as soon as the wiring exits that constrained area, the separation increases. Furthermore, the same engine-to-engine wiring separation also applies to channel A/B FADEC channels, as well as the fuel switch/fire handle wiring.
   <br/>
   All these requirements are documented in the Boeing DR&amp;O (Design Requirements and Objectives) - and there is an audit done late in the design process to insure compliance.
   <br/>
@@ -980,13 +981,13 @@
     </div>
    </div>
   </div>
-  Muscle memory is a strange and (usually) wonderous thing.  It allows us as humans to perform amazing things without actually thinking about what we are doing.  Professional Athletes have perfected this to a high art, but the rest of us do things using muscle memory on a regular basis.  Back when I was still racing, I happened to look down at my hands on the steering wheel in fast, bumpy corner, and I was simply amazed at the large, rapid steering inputs that I was making to compensate for the bumps - with absolutely zero conscious thought. Muscle memory at its best.
+  Muscle memory is a strange and (usually) wonderous thing. It allows us as humans to perform amazing things without actually thinking about what we are doing. Professional Athletes have perfected this to a high art, but the rest of us do things using muscle memory on a regular basis. Back when I was still racing, I happened to look down at my hands on the steering wheel in fast, bumpy corner, and I was simply amazed at the large, rapid steering inputs that I was making to compensate for the bumps - with absolutely zero conscious thought. Muscle memory at its best.
   <br/>
   <br/>
-  However, it can also bite us.  The Delta dual engine shutdown during takeoff from LA (referenced way back when in the 1st accident thread) was caused by muscle memory - the pilot reached down to set the EEC switches (located near the fuel On-Off switches) but muscle memory caused him to do something else - set both fuel switches to OFF.  Fortunately, he quickly recognized his error, placing the switches back to RUN and the engines recovered in time to prevent a water landing (barely).
+  However, it can also bite us. The Delta dual engine shutdown during takeoff from LA (referenced way back when in the 1st accident thread) was caused by muscle memory - the pilot reached down to set the EEC switches (located near the fuel On-Off switches) but muscle memory caused him to do something else - set both fuel switches to OFF. Fortunately, he quickly recognized his error, placing the switches back to RUN and the engines recovered in time to prevent a water landing (barely).
   <br/>
   <br/>
-  It is conceivable that a pilot - reaching down to the center console to adjust something unrelated - could have muscle memory cause him to turn the fuel off to both engines.  While all new engines are tested for "Quick Windmill Relight" - i.e. the fuel switch is set to CUTOFF with the engine at high power - and the engine must recover and produce thrust withing a specified time (memory says 60 or 90 seconds) - it takes a finite amount of time for the engines to recover (spool down after a power cut at high power is incredibly fast - plus moving the switch to CUTOFF causes a FADEC reset, which means it won't do anything for ~ 1 second).  Doing that at a couple hundred feet and the chance that an engine will recover and start producing thrust before ground impact is pretty much zero
+  It is conceivable that a pilot - reaching down to the center console to adjust something unrelated - could have muscle memory cause him to turn the fuel off to both engines. While all new engines are tested for "Quick Windmill Relight" - i.e. the fuel switch is set to CUTOFF with the engine at high power - and the engine must recover and produce thrust withing a specified time (memory says 60 or 90 seconds) - it takes a finite amount of time for the engines to recover (spool down after a power cut at high power is incredibly fast - plus moving the switch to CUTOFF causes a FADEC reset, which means it won't do anything for ~ 1 second). Doing that at a couple hundred feet and the chance that an engine will recover and start producing thrust before ground impact is pretty much zero
  </div>
  <!-- / message -->
 </div>
@@ -1037,8 +1038,9 @@
  </div>
  <!-- / message -->
 </div>
-<p><b>Subjects:</b>
- None</p>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Jump_Seat0.html#11918606>Jump Seat</a>
+</p>
 </td>
 </tr>
 </table>
@@ -1049,8 +1051,9 @@
 &nbsp;<a href=USER-tdracer2.html><b>3</b>
 </a>
 &nbsp;<a href=USER-tdracer3.html>4</a>
+&nbsp;<a href=USER-tdracer4.html>5</a>
 &nbsp;<a href=USER-tdracer3.html>Next</a>
-&nbsp;<a href=USER-tdracer3.html>Last</a>
+&nbsp;<a href=USER-tdracer4.html>Last</a>
 &nbsp;<a href=index.html>Index Page</a>
 </p>
 </body>

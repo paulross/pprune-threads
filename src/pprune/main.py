@@ -85,6 +85,26 @@ def main():
         )
     )
     parser.add_argument(
+        "--limit-posts",
+        type=int,
+        default=0,
+        help=(
+            "Limit the thread to this number of posts."
+            " Zero means all posts."
+            " [default: %(default)d]"
+          ),
+    )
+    parser.add_argument(
+        "--min-likes",
+        type=int,
+        default=0,
+        help=(
+            "Limit the thread to posts than have at least this many likes."
+            " This takes priority over --limit-posts."
+            " Zero means all posts. [default: %(default)d]"
+        ),
+    )
+    parser.add_argument(
         "-l",
         "--log-level",
         dest="log_level",
@@ -103,12 +123,22 @@ def main():
 
     t_start = time.perf_counter()
     archive_post_count = {}
+    # Compose the thread.
     thread = thread_struct.Thread()
     for archive in args.archives:
         prev_post_count = len(thread)
         read_html.update_whole_thread(archive, thread)
         archive_post_count[archive] = len(thread) - prev_post_count
+    # Clean up the thread and remove unwanted posts.
     thread.sort_by_sequence_number()
+    if args.min_likes:
+        logger.info("Likes limiting, was %d posts.", len(thread))
+        thread.posts = [post for post in thread.posts if len(post.liked_by_users) >= args.min_likes]
+        logger.info("Likes limiting, now %d posts.", len(thread))
+    if args.limit_posts > 0:
+        logger.info("Post limiting, was %d posts.", len(thread))
+        thread.posts = thread.posts[:args.limit_posts]
+        logger.info("Post limiting, now %d posts.", len(thread))
     word_count = 0
     for post in thread.posts:
         word_count += len(post.words)

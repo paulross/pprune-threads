@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune Digital Flight Data Acquisition Unit name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts about: "Digital Flight Data Acquisition Unit" [Posts: 5 Pages: 1]</h1>
+<body><h1>Posts about: "Digital Flight Data Acquisition Unit" [Posts: 9 Pages: 1]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
 </p>
 <table class=posts><tr id=11902827 valign=top><td class=post><a href=https://www.pprune.org/members/296602-exdac>EXDAC</a>
@@ -212,6 +212,275 @@
    </div>
   </div>
   In this case, there is still an AU - it's just integrated into the EAFR.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11922406 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 14, 2025, 18:16:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-45.html#post11922406><br/>permalink</a>
+ Post: 11922406</td>
+<td class=post><div class="tcell alt1" id="td_post_11922406">
+ <!-- message -->
+ <div id="post_message_11922406">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      EDML
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922392" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Two questions for
+     <a href="https://www.pprune.org/members/414340-tdracer" rel="nofollow">
+      tdracer
+     </a>
+     :
+     <br/>
+     <br/>
+     1. What happens to the FADEC channels if both channels have different data / information (e.g. T/L encoders or fuel switches)?
+     <br/>
+     - Will the currently active channel win?
+     <br/>
+     - Or will the most sensible information be used (e.g. keep the engines running)?
+     <br/>
+     - Will there be a disagree message?
+     <br/>
+     - Logged to the DFDR?
+     <br/>
+     <br/>
+     2. As per the data sheet the fuel switches are 4 pole versions. 1 pole will be used for each FADEC channel. Will one (or both) of the other poles be used for the DFDR or is that information collected from the FADEC through some data bus?
+     <br/>
+     <br/>
+     I know, it's very specific stuff that might only be known by the designer of the FADEC system.
+    </div>
+   </div>
+  </div>
+  An unresolved difference in TLA between the channels is quite unlikely - the fault detection algorithm is quite good (sine squared plus cosine squared) - but it can happen. In the old days, we'd default to the higher TLA, but since the feds became preoccupied with Uncontrollable High Thrust, we tend to select the lower value. Worst case would be to default to idle. The fuel switch discrete doesn't really get used except for engine start - if it falsely indicates shutdown (on one or both channels), the FADEC won't do anything if the engine is already running. All this will set maintenance faults - and associated EICAS Status messages (L/R ENGINE CONTROL or ENGINE C1). I doubt that would be recorded on the DFDR - it would go to the QAR but that's unlikely to survive a crash. It would also be logged in the FADEC NVM - but again no guarantee that would survive either (although when the Lauda 767 crashed due to the thrust reverser deployment, the DFDR was destroyed but the FADEC NVMs both survived - much of what we know about that crash came from the FADEC NVM.)
+  <br/>
+  <br/>
+  Again, not familiar with the specifics of the 787, but on the 747-400/-8, one pole of the fuel switch feeds EICAS - which uses it in various message logic - and sends it out to any other aircraft systems that use it. There is "Digital Flight Data Acquisition Unit) DFDAU (pronounced Daff Du) that takes all the various system digital signals, sorts them and provides them to the DFDR and QAR. The 787 has something similar to the DFDAU but I don't recall what it's called.
+ </div>
+ <!-- / message -->
+</div>
+<p>8 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922481 valign=top><td class=post><a href=https://www.pprune.org/members/555957-ignorantandroid>ignorantAndroid</a>
+<br/>July 14, 2025, 20:32:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-46.html#post11922481><br/>permalink</a>
+ Post: 11922481</td>
+<td class=post><div class="tcell alt1" id="td_post_11922481">
+ <!-- message -->
+ <div id="post_message_11922481">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922406" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Again, not familiar with the specifics of the 787, but on the 747-400/-8, one pole of the fuel switch feeds EICAS - which uses it in various message logic - and sends it out to any other aircraft systems that use it. There is "Digital Flight Data Acquisition Unit) DFDAU (pronounced Daff Du) that takes all the various system digital signals, sorts them and provides them to the DFDR and QAR. The 787 has something similar to the DFDAU but I don't recall what it's called.
+    </div>
+   </div>
+  </div>
+  It was stated earlier that 2 of the poles in the switch are wired to separate Remote Data Concentrators. The RDCs feed data into the Common Data Network (essentially an Ethernet LAN).
+  <br/>
+  <br/>
+  The EAFRs simply sniff the required data from the CDN, so there's no DFDAU as such.
+  <br/>
+  <br/>
+  For some parameters, including the fuel cutoff switches, the EAFRs also record a "Source Index." For the fuel cutoff switches, there are 4 sources numbered 1 through 4 as well as a valid/invalid flag. I don't know what the sources are, but perhaps they're the 2 RDCs plus the 2 channels of the EEC/FADEC. It appears that source 1 (the default) is not the EEC.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11922503 valign=top><td class=post><a href=https://www.pprune.org/members/216491-groundedspanner>GroundedSpanner</a>
+<br/>July 14, 2025, 21:09:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-46.html#post11922503><br/>permalink</a>
+ Post: 11922503</td>
+<td class=post><div class="tcell alt1" id="td_post_11922503">
+ <!-- message -->
+ <div id="post_message_11922503">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922406" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Again, not familiar with the specifics of the 787, but on the 747-400/-8, one pole of the fuel switch feeds EICAS - which uses it in various message logic - and sends it out to any other aircraft systems that use it. There is "Digital Flight Data Acquisition Unit) DFDAU .... that takes all the various system digital signals, sorts them and provides them to the DFDR and QAR. The 787 has something similar to the DFDAU but I don't recall what it's called.
+    </div>
+   </div>
+  </div>
+  787 has RDC's - Remote Data Concentrators. Doing the same function. Two of the switch pole-sets go each to one of 2 different RDC's, that feed the EAFR's / QAR, and the common core network so that any system that wants to know, can. The wiring is positive voltage from the RDC's to the switch and to GND through the common pin. So the RDC's would be able to detect anomalies such as both contacts open, or both contacts closed. The EAFR will see two independent channels per switch.
+  <br/>
+  The other 2 contact sets feed latching relays (again driven each coil independently by dropping to GND at the switch) that then drive spar valves and reset signals to the FADEC Channels. (and more).
+  <br/>
+  <br/>
+  So - for the benefit of those that hang on to the 'possibility' of electrical gremlins and 'ghost' switch signals.
+  <br/>
+  <br/>
+  Each switch has 4 mechanically separated 'channels' - 2 of which do electromechanical things to the engines through separate paths, the other 2 feed through independent paths the FDR and the rest of the computer systems. The results of the electromechanical actions also feed back to the FDR.
+  <br/>
+  <br/>
+  Thus the readout from the EAFR will PROVE that the switches MUST have been PHYSICALLY MOVED.
+  <br/>
+  <br/>
+  And - I'm nervous to challenge you tdracer - there's quite the authority gradient and I know I'm at the bottom end, but I can't let this fly...
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922406" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     DFDAU (pronounced Daff Du)
+    </div>
+   </div>
+  </div>
+  Its 'Deefer Doo'. Fight me.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/wink2.gif" title="Wink"/>
+ </div>
+ <!-- / message -->
+</div>
+<p>18 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922807 valign=top><td class=post><a href=https://www.pprune.org/members/558826-justusw>JustusW</a>
+<br/>July 15, 2025, 10:26:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-49.html#post11922807><br/>permalink</a>
+ Post: 11922807</td>
+<td class=post><div class="tcell alt1" id="td_post_11922807">
+ <!-- message -->
+ <div id="post_message_11922807">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      clearedtocross
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922764" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Lets assume the perliminary report contains facts and lets give the pilots the benefit of doubt. What electrical/electronic failure could produce the simultaneous shut down of both engines?
+    </div>
+   </div>
+  </div>
+  This has been discussed to death previously. I suggest looking for tdracer's excellent insights into FADEC design and implementation. From the beginning we've been discussing various very rare types of circumstances. Based on the preliminary report we can now lay most of those to rest.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922406" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The fuel switch discrete doesn't really get used except for engine start - if it falsely indicates shutdown (on one or both channels), the FADEC won't do anything if the engine is already running. All this will set maintenance faults - and associated EICAS Status messages (L/R ENGINE CONTROL or ENGINE C1). I doubt that would be recorded on the DFDR - it would go to the QAR but that's unlikely to survive a crash. It would also be logged in the FADEC NVM - but again no guarantee that would survive either (although when the Lauda 767 crashed due to the thrust reverser deployment, the DFDR was destroyed but the FADEC NVMs both survived - much of what we know about that crash came from the FADEC NVM.)
+     <br/>
+     <br/>
+     Again, not familiar with the specifics of the 787, but on the 747-400/-8, one pole of the fuel switch feeds EICAS - which uses it in various message logic - and sends it out to any other aircraft systems that use it. There is "Digital Flight Data Acquisition Unit) DFDAU (pronounced Daff Du) that takes all the various system digital signals, sorts them and provides them to the DFDR and QAR. The 787 has something similar to the DFDAU but I don't recall what it's called.
+    </div>
+   </div>
+  </div>
+  Which actually brings me to this one because I would like to ask for a bit of clarification: By "fuel switch discrete" are you referring to the Fuel Control Switches discussed in the preliminary report?
+  <br/>
+  I would assume from your statement, that if a mismatch in the NC/NO signal on the switch was detected the FADEC would not direct the Fuel Cutoff Valves to close (as far as the types you are familiar with are concerned), is that correct?
+  <br/>
+  <br/>
+  The report states:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    [...] at about 08:08:42 UTC [...] the Engine 1 and Engine 2 fuel cutoff switches transitioned from RUN to CUTOFF position one after another with a time gap of 01 sec. The Engine N1 and N2 began to decrease from their take-off values as the fuel supply to the engines was cut off.
+   </div>
+  </div>
+  So this would then mostly preclude the possibility of one or both switches being faulty electrically.
+  <br/>
+  <br/>
+  The report then states:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    As per the EAFR, the Engine 1 fuel cutoff switch transitioned from CUTOFF to RUN at about 08:08:52 UTC. [...] Thereafter at 08:08:56 UTC the Engine 2 fuel cutoff switch also transitions from CUTOFF to RUN.
+   </div>
+  </div>
+  There is a 10 second gap between cutting fuel and re-enabling it and a 4 second gap between switches during re-enabling. Is there a mechanical reason why these switches would be slower to operate in either direction? There are obviously reasons such as startle factor and stress that might negatively affect the speedy operation of switches by anyone, but I am nonetheless curious if this might not be a pointer to some sort of mechanical issue after all, such as asymmetric wear or FOD.
+  <br/>
  </div>
  <!-- / message -->
 </div>
