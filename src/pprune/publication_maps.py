@@ -70,7 +70,7 @@ class PublicationMap(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def get_specific_posts_to_subject_map(self) -> typing.Dict[str, str]:
+    def get_specific_posts_to_subject_map(self) -> typing.Dict[int, str]:
         """Returns a map of {permalink : subject_title, ..}"""
         pass
 
@@ -99,7 +99,7 @@ class PublicationMap(abc.ABC):
         return ret
 
     @abc.abstractmethod
-    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, str]]:
+    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, int]]:
         """The is the set of permalinks of significant posts that might be gathered
         together in the subject 'Significant Posts'."""
         pass
@@ -181,7 +181,7 @@ class AirIndia171(PublicationMap):
             return self.PHRASES_MAP[phrase_length]
         return {}
 
-    def get_specific_posts_to_subject_map(self) -> typing.Dict[str, str]:
+    def get_specific_posts_to_subject_map(self) -> typing.Dict[int, str]:
         return self.SPECIFIC_POSTS_MAP
 
     def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
@@ -189,7 +189,7 @@ class AirIndia171(PublicationMap):
             return self.DUPLICATE_SUBJECT_MAP[subject]
         return set()
 
-    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, str]]:
+    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, int]]:
         return self.SIGNIFICANT_POSTS
 
     def get_set_of_words_required(self) -> typing.Set[str]:
@@ -285,6 +285,11 @@ class AirIndia171(PublicationMap):
         '080843': 'Timeline (Preliminary Report)',
         'cerebellum': 'Action slip',
         'avherald': 'AvHerald',
+        'wsj': 'Wall Street Journal',
+        'suicide': 'Suicide/Murder',
+        'murder': 'Suicide/Murder',
+        'jumpseaters': 'Jump Seat',
+        'jumpseat': 'Jump Seat',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -321,6 +326,8 @@ class AirIndia171(PublicationMap):
         'SAIB': 'Special Airworthiness Information Bulletin',
         # NM-18-33 without punctuation.
         'NM1833': 'SAIB NM-18-33',
+        'WSJ': 'Wall Street Journal',
+        'G650': 'G650 Simulation',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps
@@ -374,6 +381,7 @@ class AirIndia171(PublicationMap):
             ('cutoff', 'switch'): 'Fuel Cutoff Switches',
             ('cut', 'off'): 'Fuel Cutoff Switches',
             ('fuelswitch', 'design'): 'Fuel Cutoff Switches',
+            ('fco', 'switches'): 'Fuel Cutoff Switches',
 
             ('fuel', 'pump'): 'Fuel Pumps',
             ('fuel', 'pumps'): 'Fuel Pumps',
@@ -502,6 +510,15 @@ class AirIndia171(PublicationMap):
             ('authority', 'gradients',): 'Authority Gradient',
 
             ('muscle', 'memory',): 'Muscle Memory',
+            ('mental', 'health',): 'Mental Health',
+
+            ('jump', 'seat',): 'Jump Seat',
+            ('jump', 'seater',): 'Jump Seat',
+            ('jump', 'seating',): 'Jump Seat',
+            ('third', 'person',): 'Jump Seat',
+            ('third', 'pilot',): 'Jump Seat',
+            ('third', 'body',): 'Jump Seat',
+            ('third', 'seat',): 'Jump Seat',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -530,6 +547,7 @@ class AirIndia171(PublicationMap):
 
             ('landing', 'gear', ' lever'): 'Gear Lever',
             ('quick', 'windmill', 'relight'): 'Quick Windmill Relight',
+            ('wall', 'street', 'journal'): 'Wall Street Journal',
         },
         4: {
             ('engine', 'driven', 'fuel', 'pump'): 'Fuel Pump (Engine Driven)',
@@ -556,13 +574,13 @@ class AirIndia171(PublicationMap):
     # but the text does not refer to it.
     # This is a map of {permalink : subject, ...}
     SPECIFIC_POSTS_MAP = {
-        'https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-20.html#post11899702': 'Thread Moderation',
-        'https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-25.html#post11899920': 'Thread Moderation',
-        'https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-51.html#post11901310': 'Thread Moderation',
-        'https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-78.html#post11902773': 'Thread Moderation',
-        'https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-87.html#post11903346': 'Thread Moderation',
-        'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-5.html#post11903792': 'Thread Moderation',
-        'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-11.html#post11904254': 'Thread Moderation',
+        11899702: 'Thread Moderation',
+        11899920: 'Thread Moderation',
+        11901310: 'Thread Moderation',
+        11902773: 'Thread Moderation',
+        11903346: 'Thread Moderation',
+        11903792: 'Thread Moderation',
+        11904254: 'Thread Moderation',
     }
     # Map of {subject_title : set(subject_title), ..}
     DUPLICATE_SUBJECT_MAP = {
@@ -607,12 +625,12 @@ class AirIndia171(PublicationMap):
     # This the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
     SIGNIFICANT_POSTS = (
-        ('Summary of Main Theories',
-         'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-37.html#post11906480',),
-        ('Thread Closure',
-         'https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html#post11908911',),
-        ('Preliminary Report Timeline',
-         'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-28.html#post11921202',),
-        ('Quick Windmill Relight',
-         'https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-38.html#post11921747',),
+        ('Summary of Main Theories', 11906480,),
+        ('Thread Closure', 11908911,),
+        ('Preliminary Report Timeline', 11921202,),
+        ('Quick Windmill Relight', 11921747,),
+        ('A 787 Pilot Speaks', 11924096,),
+        ('tdracer on Air Accident Investigations', 11924194,),
+        # https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-65.html#post11924281
+        ('787 Maintenance and those Fuel Cutoff Switches (15:00 onwards)', 11924281,),
     )

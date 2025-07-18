@@ -76,6 +76,11 @@ def format_datetime(dt: datetime.datetime) -> str:
     return dt.strftime('%B %d, %Y, %H:%M:%S')
 
 
+def format_datetime_as_date(dt: datetime.datetime) -> str:
+    """Return a human readable date."""
+    return dt.strftime('%B %d, %Y')
+
+
 class PassOneResult:
     def __init__(self):
         # Map of {subject: [post_index in Thread.posts, ...], ...}
@@ -131,8 +136,8 @@ def pass_one(
             subjects |= analyse_thread.match_phrases(
                 post, common_words, phrase_length, phrase_map,
             )
-        if post.permalink in publication_map.get_specific_posts_to_subject_map():
-            subjects.add(publication_map.get_specific_posts_to_subject_map()[post.permalink])
+        if post.sequence_num in publication_map.get_specific_posts_to_subject_map():
+            subjects.add(publication_map.get_specific_posts_to_subject_map()[post.sequence_num])
         # Add duplicate subjects, for example: 'RAT (Deployment)': {'RAT (All)', }
         dupe_subjects = set()
         for subject in subjects:
@@ -191,19 +196,23 @@ def write_index_significant_posts(
         with element(index, 'p'):
             index.write('These are worth reading before you go any further.')
         # post_ordinals = []
-        for subject, permalink in significant_posts:
+        for subject, post_id in significant_posts:
             try:
+                permalink = thread.post_id_to_permalink_map[post_id]
                 post_ordinal = thread.post_map[permalink]
             except KeyError:
                 logger.error('Can not find permalink %s', permalink)
             else:
-                with element(index, 'ul'):
-                    post = thread.posts[post_ordinal]
-                    with element(index, 'li'):
-                        index.write(
-                            f'Permalink: <a href="{post.permalink}">{subject}</a>'
-                            f' User: <a href="{post.user.href}">{post.user.name}</a>'
-                        )
+                if post_ordinal < len(thread):
+                    with element(index, 'ul'):
+                        post = thread.posts[post_ordinal]
+                        with element(index, 'li'):
+                            index.write(
+                                f'Permalink: <a href="{post.permalink}">{subject}</a>'
+                                f' User: <a href="{post.user.href}">{post.user.name}</a>'
+                            )
+                else:
+                    logger.warning(f'Can not write post {post_ordinal} most likely due to --limit-posts')
 
 
 def write_index_main_subject_table(
@@ -287,7 +296,7 @@ def write_index_most_upvoted_posts_table(
             index.write('NOTE: Up-votes from closed threads maybe lost.')
         post_count = 0
         with element(index, 'table', _class="indextable"):
-            _write_table_header(['Up-votes', 'Text (Quoted Text Removed)', 'User Name', 'Permalink', ], index)
+            _write_table_header(['Up-votes', 'Text (Quoted Text Removed)', 'User Name', 'Date', 'Permalink', ], index)
             for k in keys:
                 for post_ordinal in liked_by_users_dict[k]:
                     post = thread.posts[post_ordinal]
@@ -309,6 +318,8 @@ def write_index_most_upvoted_posts_table(
                         with element(index, 'td', _class='indextable'):
                             with element(index, 'a', href=post.user.href):
                                 index.write(post.user.name)
+                        with element(index, 'td', _class='indextable'):
+                            index.write(format_datetime(post.timestamp))
                         with element(index, 'td', _class='indextable'):
                             with element(index, 'a', href=post.permalink):
                                 index.write('Permalink')
@@ -422,6 +433,44 @@ def write_index_user_post_table(
                             with element(index, 'a', href=_page_name('USER_' + user_name, 0)):
                                 index.write('{:s} [{:d}]'.format(user_name, len(user_ordinal_map[user_name])))
                         subject_index += 1
+
+
+def write_index_post_date_histogram(
+        thread: thread_struct.Thread,
+        publication_map: publication_maps.PublicationMap,
+        index: typing.TextIO,
+):
+    """Write a table with links to pages that have all user posts."""
+    days_span_as_int = (thread.posts[-1].timestamp - thread.posts[0].timestamp).days
+    date_start = thread.posts[0].timestamp.date()
+    post_count = collections.Counter()
+    for post in thread.posts:
+        post_count[post.timestamp.date()] += 1
+    max_daily_posts = max(post_count.values())
+    divisor = 1 + max_daily_posts // 80
+    with element(index, 'h1'):
+        index.write('Number of Posts by Date')
+    with element(index, 'p'):
+        index.write(
+            f'Here are the number of posts by date, each "*" represents {divisor} posts.'
+        )
+    with element(index, 'table', _class="indextable"):
+        with element(index, 'th'):
+            index.write('Date')
+        with element(index, 'th'):
+            index.write('Post Count')
+        with element(index, 'th'):
+            index.write('')
+        for day_inc in range(days_span_as_int + 1):
+            this_date = date_start + datetime.timedelta(days=day_inc)
+            with element(index, 'tr'):
+                with element(index, 'td', _class='indextable'):
+                    index.write(f'{format_datetime_as_date(this_date)}')
+                with element(index, 'td', _class='indextable'):
+                    index.write(f'{post_count[this_date]}')
+                with element(index, 'td', _class='indextable'):
+                    with element(index, 'tt'):
+                        index.write(f'{"*" * (post_count[this_date] // divisor)}')
 
 
 def write_index_page(
@@ -546,6 +595,8 @@ def write_index_page(
                 write_index_user_subject_table(thread, pass_one_result.user_subject_map, publication_map, index)
 
                 write_index_user_post_table(thread, pass_one_result.user_ordinal_map, publication_map, index)
+
+                write_index_post_date_histogram(thread, publication_map, index)
 
 
 def _write_page_links(subject: str, page_num: int, page_count: int, out_file: typing.TextIO) -> None:

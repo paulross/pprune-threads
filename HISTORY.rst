@@ -1,6 +1,21 @@
 History
 =======
 
+Alpha Release (Thread: July 17, 2025, 19:52:00)
+-----------------------------------------------
+
+- Build threads up to July 17, 2025, 19:52:00 (built on July 17, 2025, 21:02:45).
+- Subjects added: "Jump Seat".
+- Added "Number of Posts by Date" on the landing page.
+
+Alpha Release (Thread: July 17, 2025, 13:34:00)
+-----------------------------------------------
+
+- Build threads up to July 17, 2025, 13:34:00 (built on July 17, 2025, 14:42:00).
+- Subjects added: "Mental Health", "G650 Simulation", "Wall Street Journal" and (reluctantly) "Suicide/Murder."
+- Add some links to "Significant Posts" on the landing page.
+- Fix issues with 'permalinks'.
+
 Alpha Release (Thread: July 14, 2025, 13:20:00)
 -----------------------------------------------
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune TLA (Thrust Lever Angle) name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts about: "TLA (Thrust Lever Angle)" [Posts: 5 Pages: 1]</h1>
+<body><h1>Posts about: "TLA (Thrust Lever Angle)" [Posts: 6 Pages: 1]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=index.html>Index Page</a>
 </p>
 <table class=posts><tr id=11906736 valign=top><td class=post><a href=https://www.pprune.org/members/555957-ignorantandroid>ignorantAndroid</a>
@@ -306,6 +306,65 @@
  </div>
  <!-- / message -->
 </div>
+</td>
+</tr>
+<tr id=11922406 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 14, 2025, 18:16:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-45.html#post11922406><br/>permalink</a>
+ Post: 11922406</td>
+<td class=post><div class="tcell alt1" id="td_post_11922406">
+ <!-- message -->
+ <div id="post_message_11922406">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      EDML
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922392" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Two questions for
+     <a href="https://www.pprune.org/members/414340-tdracer" rel="nofollow">
+      tdracer
+     </a>
+     :
+     <br/>
+     <br/>
+     1. What happens to the FADEC channels if both channels have different data / information (e.g. T/L encoders or fuel switches)?
+     <br/>
+     - Will the currently active channel win?
+     <br/>
+     - Or will the most sensible information be used (e.g. keep the engines running)?
+     <br/>
+     - Will there be a disagree message?
+     <br/>
+     - Logged to the DFDR?
+     <br/>
+     <br/>
+     2. As per the data sheet the fuel switches are 4 pole versions. 1 pole will be used for each FADEC channel. Will one (or both) of the other poles be used for the DFDR or is that information collected from the FADEC through some data bus?
+     <br/>
+     <br/>
+     I know, it's very specific stuff that might only be known by the designer of the FADEC system.
+    </div>
+   </div>
+  </div>
+  An unresolved difference in TLA between the channels is quite unlikely - the fault detection algorithm is quite good (sine squared plus cosine squared) - but it can happen. In the old days, we'd default to the higher TLA, but since the feds became preoccupied with Uncontrollable High Thrust, we tend to select the lower value. Worst case would be to default to idle. The fuel switch discrete doesn't really get used except for engine start - if it falsely indicates shutdown (on one or both channels), the FADEC won't do anything if the engine is already running. All this will set maintenance faults - and associated EICAS Status messages (L/R ENGINE CONTROL or ENGINE C1). I doubt that would be recorded on the DFDR - it would go to the QAR but that's unlikely to survive a crash. It would also be logged in the FADEC NVM - but again no guarantee that would survive either (although when the Lauda 767 crashed due to the thrust reverser deployment, the DFDR was destroyed but the FADEC NVMs both survived - much of what we know about that crash came from the FADEC NVM.)
+  <br/>
+  <br/>
+  Again, not familiar with the specifics of the 787, but on the 747-400/-8, one pole of the fuel switch feeds EICAS - which uses it in various message logic - and sends it out to any other aircraft systems that use it. There is "Digital Flight Data Acquisition Unit) DFDAU (pronounced Daff Du) that takes all the various system digital signals, sorts them and provides them to the DFDR and QAR. The 787 has something similar to the DFDAU but I don't recall what it's called.
+ </div>
+ <!-- / message -->
+</div>
+<p>8 users liked this post.</p>
 </td>
 </tr>
 </table>

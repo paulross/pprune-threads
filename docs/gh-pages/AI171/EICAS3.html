@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune EICAS name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts about: "EICAS" [Posts: 61 Pages: 4]</h1>
+<body><h1>Posts about: "EICAS" [Posts: 78 Pages: 4]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=EICAS0.html>First</a>
 &nbsp;<a href=EICAS2.html>Previous</a>
 &nbsp;<a href=EICAS0.html>1</a>
@@ -13,7 +13,7 @@
 &nbsp;<a href=index.html>Index Page</a>
 </p>
 <table class=posts><tr id=11921934 valign=top><td class=post><a href=https://www.pprune.org/members/386155-bulldog89>bulldog89</a>
-<br/>July 14, 2025, 08:07:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-41.html#post11921934><br/>permalink</a>
+<br/>July 14, 2025, 08:07:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-40.html#post11921934><br/>permalink</a>
  Post: 11921934</td>
 <td class=post><div class="tcell alt1" id="td_post_11921934">
  <!-- message -->
@@ -30,20 +30,19 @@
      <strong>
       keesje
      </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-44.html#post11921931" rel="nofollow" title="View Post">
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11921931" rel="nofollow" title="View Post">
       <i class="fa-solid fa-circle-arrow-right">
       </i>
      </a>
     </div>
     <div style="font-style:italic">
      Agree security camera's are everywhere but in cockpits.
-     <br>
-      <br/>
-      They will add valuable information to enhance crash investigations and accelerate corrective actions.
-      <br/>
-      <br/>
-      E.g. it can automatically activate when flight characteristics, EICAS or crew actions deviate from expected references.
-     </br>
+     <br/>
+     <br/>
+     They will add valuable information to enhance crash investigations and accelerate corrective actions.
+     <br/>
+     <br/>
+     E.g. it can automatically activate when flight characteristics, EICAS or crew actions deviate from expected references.
     </div>
    </div>
   </div>
@@ -51,7 +50,853 @@
  </div>
  <!-- / message -->
 </div>
+<p>5 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922406 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
+<br/>July 14, 2025, 18:16:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-45.html#post11922406><br/>permalink</a>
+ Post: 11922406</td>
+<td class=post><div class="tcell alt1" id="td_post_11922406">
+ <!-- message -->
+ <div id="post_message_11922406">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      EDML
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922392" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Two questions for
+     <a href="https://www.pprune.org/members/414340-tdracer" rel="nofollow">
+      tdracer
+     </a>
+     :
+     <br/>
+     <br/>
+     1. What happens to the FADEC channels if both channels have different data / information (e.g. T/L encoders or fuel switches)?
+     <br/>
+     - Will the currently active channel win?
+     <br/>
+     - Or will the most sensible information be used (e.g. keep the engines running)?
+     <br/>
+     - Will there be a disagree message?
+     <br/>
+     - Logged to the DFDR?
+     <br/>
+     <br/>
+     2. As per the data sheet the fuel switches are 4 pole versions. 1 pole will be used for each FADEC channel. Will one (or both) of the other poles be used for the DFDR or is that information collected from the FADEC through some data bus?
+     <br/>
+     <br/>
+     I know, it's very specific stuff that might only be known by the designer of the FADEC system.
+    </div>
+   </div>
+  </div>
+  An unresolved difference in TLA between the channels is quite unlikely - the fault detection algorithm is quite good (sine squared plus cosine squared) - but it can happen. In the old days, we'd default to the higher TLA, but since the feds became preoccupied with Uncontrollable High Thrust, we tend to select the lower value. Worst case would be to default to idle. The fuel switch discrete doesn't really get used except for engine start - if it falsely indicates shutdown (on one or both channels), the FADEC won't do anything if the engine is already running. All this will set maintenance faults - and associated EICAS Status messages (L/R ENGINE CONTROL or ENGINE C1). I doubt that would be recorded on the DFDR - it would go to the QAR but that's unlikely to survive a crash. It would also be logged in the FADEC NVM - but again no guarantee that would survive either (although when the Lauda 767 crashed due to the thrust reverser deployment, the DFDR was destroyed but the FADEC NVMs both survived - much of what we know about that crash came from the FADEC NVM.)
+  <br/>
+  <br/>
+  Again, not familiar with the specifics of the 787, but on the 747-400/-8, one pole of the fuel switch feeds EICAS - which uses it in various message logic - and sends it out to any other aircraft systems that use it. There is "Digital Flight Data Acquisition Unit) DFDAU (pronounced Daff Du) that takes all the various system digital signals, sorts them and provides them to the DFDR and QAR. The 787 has something similar to the DFDAU but I don't recall what it's called.
+ </div>
+ <!-- / message -->
+</div>
+<p>8 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922425 valign=top><td class=post><a href=https://www.pprune.org/members/161437-edml>EDML</a>
+<br/>July 14, 2025, 18:50:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-45.html#post11922425><br/>permalink</a>
+ Post: 11922425</td>
+<td class=post><div class="tcell alt1" id="td_post_11922425">
+ <!-- message -->
+ <div id="post_message_11922425">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922406" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     ... The fuel switch discrete doesn't really get used except for engine start - if it falsely indicates shutdown (on one or both channels), the FADEC won't do anything if the engine is already running. All this will set maintenance faults - and associated EICAS Status messages (L/R ENGINE CONTROL or ENGINE C1)...
+    </div>
+   </div>
+  </div>
+  Sorry if my wording was not precise here - I meant the fuel cut off switches that more or less caused this accident.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11922481 valign=top><td class=post><a href=https://www.pprune.org/members/555957-ignorantandroid>ignorantAndroid</a>
+<br/>July 14, 2025, 20:32:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-46.html#post11922481><br/>permalink</a>
+ Post: 11922481</td>
+<td class=post><div class="tcell alt1" id="td_post_11922481">
+ <!-- message -->
+ <div id="post_message_11922481">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922406" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Again, not familiar with the specifics of the 787, but on the 747-400/-8, one pole of the fuel switch feeds EICAS - which uses it in various message logic - and sends it out to any other aircraft systems that use it. There is "Digital Flight Data Acquisition Unit) DFDAU (pronounced Daff Du) that takes all the various system digital signals, sorts them and provides them to the DFDR and QAR. The 787 has something similar to the DFDAU but I don't recall what it's called.
+    </div>
+   </div>
+  </div>
+  It was stated earlier that 2 of the poles in the switch are wired to separate Remote Data Concentrators. The RDCs feed data into the Common Data Network (essentially an Ethernet LAN).
+  <br/>
+  <br/>
+  The EAFRs simply sniff the required data from the CDN, so there's no DFDAU as such.
+  <br/>
+  <br/>
+  For some parameters, including the fuel cutoff switches, the EAFRs also record a "Source Index." For the fuel cutoff switches, there are 4 sources numbered 1 through 4 as well as a valid/invalid flag. I don't know what the sources are, but perhaps they're the 2 RDCs plus the 2 channels of the EEC/FADEC. It appears that source 1 (the default) is not the EEC.
+ </div>
+ <!-- / message -->
+</div>
+<p>1 user liked this post.</p>
+</td>
+</tr>
+<tr id=11922503 valign=top><td class=post><a href=https://www.pprune.org/members/216491-groundedspanner>GroundedSpanner</a>
+<br/>July 14, 2025, 21:09:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-46.html#post11922503><br/>permalink</a>
+ Post: 11922503</td>
+<td class=post><div class="tcell alt1" id="td_post_11922503">
+ <!-- message -->
+ <div id="post_message_11922503">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922406" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Again, not familiar with the specifics of the 787, but on the 747-400/-8, one pole of the fuel switch feeds EICAS - which uses it in various message logic - and sends it out to any other aircraft systems that use it. There is "Digital Flight Data Acquisition Unit) DFDAU .... that takes all the various system digital signals, sorts them and provides them to the DFDR and QAR. The 787 has something similar to the DFDAU but I don't recall what it's called.
+    </div>
+   </div>
+  </div>
+  787 has RDC's - Remote Data Concentrators. Doing the same function. Two of the switch pole-sets go each to one of 2 different RDC's, that feed the EAFR's / QAR, and the common core network so that any system that wants to know, can. The wiring is positive voltage from the RDC's to the switch and to GND through the common pin. So the RDC's would be able to detect anomalies such as both contacts open, or both contacts closed. The EAFR will see two independent channels per switch.
+  <br/>
+  The other 2 contact sets feed latching relays (again driven each coil independently by dropping to GND at the switch) that then drive spar valves and reset signals to the FADEC Channels. (and more).
+  <br/>
+  <br/>
+  So - for the benefit of those that hang on to the 'possibility' of electrical gremlins and 'ghost' switch signals.
+  <br/>
+  <br/>
+  Each switch has 4 mechanically separated 'channels' - 2 of which do electromechanical things to the engines through separate paths, the other 2 feed through independent paths the FDR and the rest of the computer systems. The results of the electromechanical actions also feed back to the FDR.
+  <br/>
+  <br/>
+  Thus the readout from the EAFR will PROVE that the switches MUST have been PHYSICALLY MOVED.
+  <br/>
+  <br/>
+  And - I'm nervous to challenge you tdracer - there's quite the authority gradient and I know I'm at the bottom end, but I can't let this fly...
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922406" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     DFDAU (pronounced Daff Du)
+    </div>
+   </div>
+  </div>
+  Its 'Deefer Doo'. Fight me.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/wink2.gif" title="Wink"/>
+ </div>
+ <!-- / message -->
+</div>
+<p>18 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922512 valign=top><td class=post><a href=https://www.pprune.org/members/558823-nrunning24>nrunning24</a>
+<br/>July 14, 2025, 21:23:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-46.html#post11922512><br/>permalink</a>
+ Post: 11922512</td>
+<td class=post><div class="tcell alt1" id="td_post_11922512">
+ <!-- message -->
+ <div id="post_message_11922512">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      LTC8K6
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922506" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I'm still not clear on something, no surprise there.
+     <br/>
+     <br/>
+     If you are the PF and you are just after rotation, and for whatever reason, the fuel control switches transition to "CUTOFF", when and how do you notice this?
+     <br/>
+     Presumably your hands are on the yoke and you are looking very intently out the windshield. So, to me it seems unlikely that you saw whatever happened to the switches, however they moved.
+     <br/>
+     <br/>
+     Do you get a warning indication that the switches have moved? If so, then that would be what I needed to know. You got a warning and therefore you looked right at the switches.
+     <br/>
+     <br/>
+     If not, do you just notice that you have lost power? If that is the case, where do you look first? I presume it would be at the engine info gauges/displays.
+     <br/>
+     <br/>
+     What I'm getting at is what priority is given to looking at the fuel cutoff switches in this situation?
+     <br/>
+     How long until you look at those switches as the possible cause of the engine problems?
+    </div>
+   </div>
+  </div>
+  Well this is probably why it took 10 seconds, whole right side of the flight deck would be blacked out. My guess is that the EICAS messages that you see during sim engine fires/relights training helped. Don't have the post but it exists earlier upthread but there is an fuel cutoff EICAS message that happens when fuel switches move. Obviously can never count out a side vision of the PM, especially if its not a traditional movement in that stage of flight.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11922533 valign=top><td class=post><a href=https://www.pprune.org/members/216491-groundedspanner>GroundedSpanner</a>
+<br/>July 14, 2025, 21:47:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-47.html#post11922533><br/>permalink</a>
+ Post: 11922533</td>
+<td class=post><div class="tcell alt1" id="td_post_11922533">
+ <!-- message -->
+ <div id="post_message_11922533">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      beamer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922462" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     If the F/O was handling pilot using a mixture of visual references and the HUD, one wonders what he would have seen or sensed to make him ask the question \x91why did you do that ?\x92
+    </div>
+   </div>
+  </div>
+  Switching off the engines would cut power. (the RAT deployed before they overflew the end of the runway) The HUD would go blank. As would most of the display units. The lighting would change. The hissing of conditioned air would stop. Various 'noises' would cease. The engines sound would change dramatically, and they would feel the deceleration. The one EICAS screen remaining would be generating all sorts of messages. It would be obvious that power was lost.
+  <br/>
+  I cant speak for how long it would take to connect the dots though.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>8 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922547 valign=top><td class=post><a href=https://www.pprune.org/members/14518-dutchroll>DutchRoll</a>
+<br/>July 14, 2025, 22:12:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-47.html#post11922547><br/>permalink</a>
+ Post: 11922547</td>
+<td class=post><div class="tcell alt1" id="td_post_11922547">
+ <!-- message -->
+ <div id="post_message_11922547">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      LTC8K6
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922506" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I'm still not clear on something, no surprise there.
+     <br/>
+     <br/>
+     If you are the PF and you are just after rotation, and for whatever reason, the fuel control switches transition to "CUTOFF", when and how do you notice this?
+     <br/>
+     Presumably your hands are on the yoke and you are looking very intently out the windshield. So, to me it seems unlikely that you saw whatever happened to the switches, however they moved.
+     <br/>
+     <br/>
+     Do you get a warning indication that the switches have moved? If so, then that would be what I needed to know. You got a warning and therefore you looked right at the switches.
+     <br/>
+     <br/>
+     If not, do you just notice that you have lost power? If that is the case, where do you look first? I presume it would be at the engine info gauges/displays.
+     <br/>
+     <br/>
+     What I'm getting at is what priority is given to looking at the fuel cutoff switches in this situation?
+     <br/>
+     How long until you look at those switches as the possible cause of the engine problems?
+    </div>
+   </div>
+  </div>
+  Not a B787 pilot but many hours on its wide body predecessors.
+  <br/>
+  <br/>
+  It is conceivable that you could notice hand movement around the throttle quadrant in your peripheral vision (noone's hands are on the thrust levers between V1 and shortly after takeoff), however even if you didn't, you'd immediately notice the loss of performance. The instinctive reaction is big loss of performance -&gt; quick glance across at instruments -&gt; why are they winding back? Also if the fuel control switches were moved to cutoff you'd suddenly get EICAS messages saying the engines were shutdown. So there are immediate clues and it's only a minor head movement to see where the fuel control switches are because they're right down there behind the thrust levers. Then the immediate action for a dual engine failure, which would by then likely be obvious with both sets of instruments showing everything winding back, is "fuel control switches cutoff, then run". There is no significant pause in that action because it's only to reset the electronic engine controls, so the 10 second gap between setting them back to "run" is not explained by the dual engine failure procedure but perhaps by a startle factor. One way or another, your eyes are going to end up checking where those switches are.
+ </div>
+ <!-- / message -->
+</div>
+<p>5 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922550 valign=top><td class=post><a href=https://www.pprune.org/members/329371-d-bru>D Bru</a>
+<br/>July 14, 2025, 22:27:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-47.html#post11922550><br/>permalink</a>
+ Post: 11922550</td>
+<td class=post><div class="tcell alt1" id="td_post_11922550">
+ <!-- message -->
+ <div id="post_message_11922550">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      GroundedSpanner
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922533" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Switching off the engines would cut power. (the RAT deployed before they overflew the end of the runway) The HUD would go blank. As would most of the display units. The lighting would change. The hissing of conditioned air would stop. Various 'noises' would cease. The engines sound would change dramatically, and they would feel the deceleration. The one EICAS screen remaining would be generating all sorts of messages. It would be obvious that power was lost.
+     <br/>
+     I cant speak for how long it would take to connect the dots though.
+    </div>
+   </div>
+  </div>
+  Display and Crew Alert (DCA)/EICAS would indeed receive signal about Fuel Cutoff switches (L&amp;R) position and written to EAFR (source:
+  <br/>
+  <a href="https://data.ntsb.gov/Docket/Document/docBLOB?ID=40388298&amp;FileExtension=.PDF&amp;FileName=Flight%20Data%20Recorder%2010%20-%20Factual%20Report%20of%20Group%20Chairman-Master.PDF" target="_blank">
+   https://data.ntsb.gov/Docket/Documen...man-Master.PDF
+  </a>
+  )
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg2.ibsrv.net/gimg/pprune.org-vbulletin/949x256/screenshot_2025_07_13_at_17_46_17_9591da14f59694b8ccd10b4ed55ed8beae27e0fd.png"/>
+  <br/>
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg1.ibsrv.net/gimg/pprune.org-vbulletin/929x175/screenshot_2025_07_13_at_23_25_17_433f42e38ac8591f94228c1fcf7122d6770d62d9.png"/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by D Bru; 14th July 2025 at
+   <span class="time">
+    10:39
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922563 valign=top><td class=post><a href=https://www.pprune.org/members/192863-double-oscar>double-oscar</a>
+<br/>July 14, 2025, 22:51:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-47.html#post11922563><br/>permalink</a>
+ Post: 11922563</td>
+<td class=post><div class="tcell alt1" id="td_post_11922563">
+ <!-- message -->
+ <div id="post_message_11922563">
+  Having seen it today, fuel control switch to cut off produces a L/R ENG SHUTDOWN EICAS message almost immmediately or ENG SHUTDOWN if both. No aural warning. Generators instantly off line therefore it is likely all FO instruments blanked. Definitely a startle event for the PF in this case.
+ </div>
+ <!-- / message -->
+</div>
+<p>9 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922589 valign=top><td class=post><a href=https://www.pprune.org/members/145196-bleve>Bleve</a>
+<br/>July 15, 2025, 00:16:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-47.html#post11922589><br/>permalink</a>
+ Post: 11922589</td>
+<td class=post><div class="tcell alt1" id="td_post_11922589">
+ <!-- message -->
+ <div id="post_message_11922589">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      LTC8K6
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922506" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     If you are the PF and you are just after rotation, and for whatever reason, the fuel control switches transition to "CUTOFF", when and how do you notice this?
+    </div>
+   </div>
+  </div>
+  I've been 'arm chair' flying this scenario and I imagine (for me) the sequence would go something like this.
+  <br/>
+  <br/>
+  I'm pilot flying, so my gaze and attention is firmly out the front rotating to the planned takeoff attitude.
+  <br/>
+  <br/>
+  Initially and in no particular order:
+  <br/>
+  - I would feel the loss of thrust as a sudden loss of acceleration.
+  <br/>
+  - There would be a significant nose down pitch trim change that I would feel through the yoke.
+  <br/>
+  - There would be lots of audio cues: Changes in engine and air conditioning noises. Lots of click-clacking as electrical relays change state with the loss of electrical power.
+  <br/>
+  <br/>
+  My eyes would be drawn inside. I would notice blanking of some of the displays and then look to the EICAS display. My first thought would be probably that we have suffered a major electrical malfunction. There would be lots of messages. I'm not B787 endorsed, but presumably close to the top of the messages would be ENG SHUTDOWN. This message is shown when 'Both engines were shut down by the fuel control switches or the engine fire switches.'
+  <br/>
+  <br/>
+  I think I would then look at the fuel control switches and seeing them both in the cutoff position I would say 'why did you cutoff' or stronger words to that effect.
+  <br/>
+  <br/>
+  After that it all depends on the response of the other pilot. If they are uncooperative, I would be putting the fuel control switches back to run. All whilst frequently checking and adjusting my flight path.
+  <br/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Bleve; 14th July 2025 at
+   <span class="time">
+    12:39
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922613 valign=top><td class=post><a href=https://www.pprune.org/members/12537-bluemic>bluemic</a>
+<br/>July 15, 2025, 01:35:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-47.html#post11922613><br/>permalink</a>
+ Post: 11922613</td>
+<td class=post><div class="tcell alt1" id="td_post_11922613">
+ <!-- message -->
+ <div id="post_message_11922613">
+  <span style="color:#454545">
+   With all the &lsquo;experts&rsquo; swimming about on this thread, I&rsquo;m very loathe to dip my toes in the water for fear of sharks but&hellip;
+  </span>
+  <br/>
+  <br/>
+  Having read the vast majority of postings here on this accident, plus the prelim report, I can&rsquo;t see how anyone could dispute that &lsquo;someone selected both FCS&rsquo;s to cutoff Immediately after lift off and before gear retraction&rsquo;. Which, as all have said, begs the question, was it intentional? A brain fart? Or a &ldquo;I gotta do this now because of a perceived problem&rdquo;? I can&rsquo;t think of any other option.
+  <br/>
+  <br/>
+  Like all Boeing pilots (current or retired) we&rsquo;ve all had a quick and dirty education on a system called MCAS - which is of course a 737 Max issue, but&hellip;one does wonder.
+  <br/>
+  <br/>
+  The accident aircraft had a stabilizer snag on the previous flight. The accident crew would&rsquo;ve noted it in the log. Is there a chance that, just at lift off the EICAS stab warning/caution reappeared and the PM thought it would be pre-emptive to turn off the stab trim switches? BUT&hellip;muscle memory, startle factor, etc, he grabbed the wrong (but more familiar) nearby switch(es) and selected them. In the ensuing maelstrom, the gear was forgotten, the PM desperately tried to put the FCS&rsquo;s back to RUN, the PF was struggling with a blank panel but it was too late airspeed and altitude were heading south and&hellip; they flew directly to the crash site.
+  <br/>
+  <br/>
+  Grasping at straws, I toss this hypothetical scenario into the pool - probably because I just can&rsquo;t get my head around the &lsquo;intentional&rsquo; option.
+  <br/>
+  <br/>
+  Now&hellip;where did I put the shark repellant.
+  <br/>
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+<p>12 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922617 valign=top><td class=post><a href=https://www.pprune.org/members/423098-sailvi767>Sailvi767</a>
+<br/>July 15, 2025, 01:45:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-48.html#post11922617><br/>permalink</a>
+ Post: 11922617</td>
+<td class=post><div class="tcell alt1" id="td_post_11922617">
+ <!-- message -->
+ <div id="post_message_11922617">
+  There is no way any pilot would be touching the stab trim switches right after rotation. It would go against every aspect of training. If the aircraft is flying ok you would never touch anything trim related until after cleanup and working the appropriate QRH or EICAS. I know some will bring up the Delta flight at LAX however that occurred above a 1000 feet and was in compliance with company policy and Boeing at the time where you got one free punch to reset the EEC.
+  <br>
+   It would also have been a data point on the FDR and in the preliminary report.
+   <br>
+   </br>
+  </br>
+ </div>
+ <!-- / message -->
+</div>
+<p>5 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922658 valign=top><td class=post><a href=https://www.pprune.org/members/28788-bbk>BBK</a>
+<br/>July 15, 2025, 05:18:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-48.html#post11922658><br/>permalink</a>
+ Post: 11922658</td>
+<td class=post><div class="tcell alt1" id="td_post_11922658">
+ <!-- message -->
+ <div id="post_message_11922658">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      bluemic
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922613" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <span style="color:#454545">
+      With all the \x91experts\x92 swimming about on this thread, I\x92m very loathe to dip my toes in the water for fear of sharks but\x85
+     </span>
+     <br/>
+     <br/>
+     Having read the vast majority of postings here on this accident, plus the prelim report, I can\x92t see how anyone could dispute that \x91someone selected both FCS\x92s to cutoff Immediately after lift off and before gear retraction\x92. Which, as all have said, begs the question, was it intentional? A brain fart? Or a \x93I gotta do this now because of a perceived problem\x94? I can\x92t think of any other option.
+     <br/>
+     <br/>
+     Like all Boeing pilots (current or retired) we\x92ve all had a quick and dirty education on a system called MCAS - which is of course a 737 Max issue, but\x85one does wonder.
+     <br/>
+     <br/>
+     The accident aircraft had a stabilizer snag on the previous flight. The accident crew would\x92ve noted it in the log. Is there a chance that, just at lift off the EICAS stab warning/caution reappeared and the PM thought it would be pre-emptive to turn off the stab trim switches? BUT\x85muscle memory, startle factor, etc, he grabbed the wrong (but more familiar) nearby switch(es) and selected them. In the ensuing maelstrom, the gear was forgotten, the PM desperately tried to put the FCS\x92s back to RUN, the PF was struggling with a blank panel but it was too late airspeed and altitude were heading south and\x85 they flew directly to the crash site.
+     <br/>
+     <br/>
+     Grasping at straws, I toss this hypothetical scenario into the pool - probably because I just can\x92t get my head around the \x91intentional\x92 option.
+     <br/>
+     <br/>
+     Now\x85where did I put the shark repellant.
+    </div>
+   </div>
+  </div>
+  <br/>
+  bluemic
+  <br/>
+  <br/>
+  How\x92s the water in that shark infested sea?
+  <br/>
+  <br/>
+  When I read that on the previous sector the aircraft had a stab issue written up I wondered the same thing. It\x92s a fanciful theory but they all are. I\x92m leaning towards the action slip \x93brain fart\x94 although why might always be the subject of speculation. Assuming that the captain did place the fuel control switches to cutoff just after rotation then whatever the explanation will most likely defy logic.
+  <br/>
+  <br/>
+  Incidentally this tragic accident wasn\x92t discussed that much in my company even though it operates the 787. I think there\x92s a realisation that it would be pointless speculation until there is the final report. What was noticeable early on is that we\x92re no maintenance actions mandated by Boeing, GE, the FAA etc. Equally nothing from a flight ops perspective.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p>5 users liked this post.</p>
+</td>
+</tr>
+<tr id=11922807 valign=top><td class=post><a href=https://www.pprune.org/members/558826-justusw>JustusW</a>
+<br/>July 15, 2025, 10:26:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-49.html#post11922807><br/>permalink</a>
+ Post: 11922807</td>
+<td class=post><div class="tcell alt1" id="td_post_11922807">
+ <!-- message -->
+ <div id="post_message_11922807">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      clearedtocross
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922764" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Lets assume the perliminary report contains facts and lets give the pilots the benefit of doubt. What electrical/electronic failure could produce the simultaneous shut down of both engines?
+    </div>
+   </div>
+  </div>
+  This has been discussed to death previously. I suggest looking for tdracer's excellent insights into FADEC design and implementation. From the beginning we've been discussing various very rare types of circumstances. Based on the preliminary report we can now lay most of those to rest.
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922406" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     The fuel switch discrete doesn't really get used except for engine start - if it falsely indicates shutdown (on one or both channels), the FADEC won't do anything if the engine is already running. All this will set maintenance faults - and associated EICAS Status messages (L/R ENGINE CONTROL or ENGINE C1). I doubt that would be recorded on the DFDR - it would go to the QAR but that's unlikely to survive a crash. It would also be logged in the FADEC NVM - but again no guarantee that would survive either (although when the Lauda 767 crashed due to the thrust reverser deployment, the DFDR was destroyed but the FADEC NVMs both survived - much of what we know about that crash came from the FADEC NVM.)
+     <br/>
+     <br/>
+     Again, not familiar with the specifics of the 787, but on the 747-400/-8, one pole of the fuel switch feeds EICAS - which uses it in various message logic - and sends it out to any other aircraft systems that use it. There is "Digital Flight Data Acquisition Unit) DFDAU (pronounced Daff Du) that takes all the various system digital signals, sorts them and provides them to the DFDR and QAR. The 787 has something similar to the DFDAU but I don't recall what it's called.
+    </div>
+   </div>
+  </div>
+  Which actually brings me to this one because I would like to ask for a bit of clarification: By "fuel switch discrete" are you referring to the Fuel Control Switches discussed in the preliminary report?
+  <br/>
+  I would assume from your statement, that if a mismatch in the NC/NO signal on the switch was detected the FADEC would not direct the Fuel Cutoff Valves to close (as far as the types you are familiar with are concerned), is that correct?
+  <br/>
+  <br/>
+  The report states:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    [...] at about 08:08:42 UTC [...] the Engine 1 and Engine 2 fuel cutoff switches transitioned from RUN to CUTOFF position one after another with a time gap of 01 sec. The Engine N1 and N2 began to decrease from their take-off values as the fuel supply to the engines was cut off.
+   </div>
+  </div>
+  So this would then mostly preclude the possibility of one or both switches being faulty electrically.
+  <br/>
+  <br/>
+  The report then states:
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    As per the EAFR, the Engine 1 fuel cutoff switch transitioned from CUTOFF to RUN at about 08:08:52 UTC. [...] Thereafter at 08:08:56 UTC the Engine 2 fuel cutoff switch also transitions from CUTOFF to RUN.
+   </div>
+  </div>
+  There is a 10 second gap between cutting fuel and re-enabling it and a 4 second gap between switches during re-enabling. Is there a mechanical reason why these switches would be slower to operate in either direction? There are obviously reasons such as startle factor and stress that might negatively affect the speedy operation of switches by anyone, but I am nonetheless curious if this might not be a pointer to some sort of mechanical issue after all, such as asymmetric wear or FOD.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11923482 valign=top><td class=post><a href=https://www.pprune.org/members/504591-arf23>arf23</a>
+<br/>July 16, 2025, 07:17:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-56.html#post11923482><br/>permalink</a>
+ Post: 11923482</td>
+<td class=post><div class="tcell alt1" id="td_post_11923482">
+ <!-- message -->
+ <div id="post_message_11923482">
+  does the ORDER in which the switches were operated give us any clues which seat operated them? I would suspect that most pilots always go left switch then right switch, or the right then left each and every time when switching off. We are creatures of habit.
+  <br/>
+  <br/>
+  I haven't seen it mentioned it yet that if the stabiliser cut out switches had been left in the wrong position from the previous maintenance, when would EICAS or some other system alert the pilots to this? Would the alert be in close proximity to when the fuel switches were moved?
+  <br/>
+  <br/>
+  As others have said I think what this episode has revealed is it's too easy to turn off the engines in flight, and that the fuel cut-off switches should only operate when the relevant throttle is at idle? or should have a 10 second pause when no WOW signal
+  <br/>
+  <br/>
+  and a definite yes to cockpit video, protected so only accident investigators can access it. I can guarantee the third MCAS event wouldn't have happened if the 2 Lion Air MCAS events had been caught on video. It still shocks me after the first Lion Air near miss where the jump seater saved the day that the plane was released to service "nothing found". And as/when found cockpit video would solve the mystery of MH370.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
 <p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923490 valign=top><td class=post><a href=https://www.pprune.org/members/199560-sorvad>sorvad</a>
+<br/>July 16, 2025, 07:35:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-57.html#post11923490><br/>permalink</a>
+ Post: 11923490</td>
+<td class=post><div class="tcell alt1" id="td_post_11923490">
+ <!-- message -->
+ <div id="post_message_11923490">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      arf23
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11923482" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     does the ORDER in which the switches were operated give us any clues which seat operated them? I would suspect that most pilots always go left switch then right switch, or the right then left each and every time when switching off. We are creatures of habit.
+     <br>
+      <br>
+       I haven't seen it mentioned it yet that if the stabiliser cut out switches had been left in the wrong position from the previous maintenance, when would EICAS or some other system alert the pilots to this? Would the alert be in close proximity to when the fuel switches were moved?
+       <br>
+        <br>
+         As others have said I think what this episode has revealed is it's too easy to turn off the engines in flight, and that the fuel cut-off switches should only operate when the relevant throttle is at idle? or should have a 10 second pause when no WOW signal
+         <br>
+          <br>
+           and a definite yes to cockpit video, protected so only accident investigators can access it. I can guarantee the third MCAS event wouldn't have happened if the 2 Lion Air MCAS events had been caught on video. It still shocks me after the first Lion Air near miss where the jump seater saved the day that the plane was released to service "nothing found". And as/when found cockpit video would solve the mystery of MH370.
+          </br>
+         </br>
+        </br>
+       </br>
+      </br>
+     </br>
+    </div>
+   </div>
+  </div>
+  Generally modern Boeing philosophy is left to right for either pilot.
+  <br>
+  </br>
+ </div>
+ <!-- / message -->
+</div>
+<p>2 users liked this post.</p>
+</td>
+</tr>
+<tr id=11924609 valign=top><td class=post><a href=https://www.pprune.org/members/423098-sailvi767>Sailvi767</a>
+<br/>July 17, 2025, 19:39:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-70.html#post11924609><br/>permalink</a>
+ Post: 11924609</td>
+<td class=post><div class="tcell alt1" id="td_post_11924609">
+ <!-- message -->
+ <div id="post_message_11924609">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      EDML
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11924539" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Totally wrong.
+     <br/>
+     <br/>
+     The TCMA shuts down one or more engines - but it doesn't move the switches to cut-off in any magical way. TCMA directly operates the fuel valves - but the switches stay on.
+     <br/>
+     Of course there is no entry for the switches being operated on the EAFR when TCMA shuts down an engine!
+    </div>
+   </div>
+  </div>
+  The displayed EICAS messages are very different when an engine is shut down via the fuel cutoff switch vice other reasons. The EAFR records those messages. I am quite sure they have eliminated the TCMA as a problem in this accident.
+ </div>
+ <!-- / message -->
+</div>
 </td>
 </tr>
 </table>

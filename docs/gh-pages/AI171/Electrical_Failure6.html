@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune Electrical Failure name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><h1>Posts about: "Electrical Failure" [Posts: 124 Pages: 7]</h1>
+<p class=page_links>Page Links:&nbsp;<a href=Electrical_Failure0.html>First</a>
+&nbsp;<a href=Electrical_Failure5.html>Previous</a>
+&nbsp;<a href=Electrical_Failure0.html>1</a>
+&nbsp;<a href=Electrical_Failure1.html>2</a>
+&nbsp;<a href=Electrical_Failure2.html>3</a>
+&nbsp;<a href=Electrical_Failure3.html>4</a>
+&nbsp;<a href=Electrical_Failure4.html>5</a>
+&nbsp;<a href=Electrical_Failure5.html>6</a>
+&nbsp;<a href=Electrical_Failure6.html><b>7</b>
+</a>
+&nbsp;<a href=Electrical_Failure6.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr id=11923220 valign=top><td class=post><a href=https://www.pprune.org/members/451656-cncpc>cncpc</a>
+<br/>July 15, 2025, 19:58:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-54.html#post11923220><br/>permalink</a>
+ Post: 11923220</td>
+<td class=post><div class="tcell alt1" id="td_post_11923220">
+ <!-- message -->
+ <div id="post_message_11923220">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      blind pew
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11923037" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I'm suggesting that occasionally electrics or electronics can do strange things as happened in 2015 with the loss of the A400m after an update had accidentally wiped some important software out.
+     <br/>
+     One of my instructors landed a Baron without its undercarriage after an electrical fault in spite of cranking the gear down by hand and having it retract.
+     <br/>
+     At the moment there isn't a plausible cause besides insanity.
+    </div>
+   </div>
+  </div>
+  And...why is that plausible?
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+<tr id=11923365 valign=top><td class=post><a href=https://www.pprune.org/members/248479-thirsty>Thirsty</a>
+<br/>July 16, 2025, 00:51:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-55.html#post11923365><br/>permalink</a>
+ Post: 11923365</td>
+<td class=post><div class="tcell alt1" id="td_post_11923365">
+ <!-- message -->
+ <div id="post_message_11923365">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      mg-cockpit
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-71.html#post11922956" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     If you have 4 parallel switch circuits (HONEYWELL 4TL837-3D is a 4PDT "Four Pole Double Throw" model) each having defined logical states as output, those states must be by reference to a voltage level, most likely GND. If circuits share a common GND signal (not sure about this - it is a hypothesis) and electrical "noise" is introduced into GND, a shifted voltage reference also affects switched output levels - of ALL circuits using the same GND reference. B787 is relying on a digital bus system. Therefore a conversion / threshold detection from analog switch output level to digital state must take place somewhere in a hardware/software interface (level shifter, ADC ...). Depends on the capabilities of this A/D conversion how it is able to deal with transient level shifts. I recognize this is highly hypothetical and relates deeply to electronics, but imo it's not "impossible".
+    </div>
+   </div>
+  </div>
+  Um, err, maybe: There is NO 'analog' to digital' conversion' here as suggested by you. Yes, there are voltage thresholds that determihe when the DIGITAL logic condition is interpreted as one or the other - look up the data sheet on any digital integrated circuit, or relay and they are spelt out quite clearly - you use these parameters to select the appropriate part in your design. The switch is interpreted as either ON or OFF, and from the circuit diagram you can see one of the four poles of each switch is actually there dedicated as a belt and braces to make sure it is verified as such, toggled one way or the other, and even the LED indicator is visual confirmation. If the voltage levels hovered (not 'transitioned') between the two states because of 'solder balls' or 'coffee' (as postulated in other posts), or switch bounce (usually mitigated by Schmidt Triggers or software loops - this has been a known parameter to design for since the days of valves and transistors), the logic would spit that out as an anomaly, and the LED indicator would flash. [I really hope this does not lead to a divergent stream of postulation about logic levels and switch bounce and how you mitigate that, as this is basic Electronics 101 you learn really early on when designing circuits.] Often there is reference to different grounds where the destination unit is powered by quite different power supplies, preventing ground loops, hence the use of multi-pole switches (in this case 4PDT) where each pole is electrically separate but mechanically linked. Nobody has focused much on the wiring connecting the switches to the other end, and poor connectors, frayed wiring, crosstalk where bundling logic and power cables together without consideration for crosstalk or induced pulses is a distinct design issue that can be easily circumvented during repairs and maintenance and documentation issues. Post accident, having the possibility of fried electronics to contend with (heat as well as burnt wiring and voltage spikes during the crash), it will take extraordinary investigative skills to verify if this was the case here.
+  <br/>
+  <br/>
+  I've refrained from commenting here so far, but this post reeks of artificial intelligence (using the abbreviation AI here is confusing, and blaming ChatGPT assumes there aren't competing but still incompetent bots that regurgitate garbage and misinformation), but people in these forums are using MH370 pilot suicide theories as if it was a proven fact to support their ideas of planned suicide just brings the rest of their theory into less repute. Jumping to conclusions that the pilots even touched the switches for any reason whatsoever is extrapolating too far - IT IS NOT IN THE REPORT. Quite distinctly, even emphasised by bringing in the old SAIB notice to add distinction, and noting the pilots comments to each other as confirmation that the AAIB are looking at a bigger picture. My postulation (please do not infer 'emerging theories'), as I cannot resist: Who knows, the wiring may have been connected back to front on each end, even by careful reuse of existing wiring with replacement connectors to perform a quicker fix than pulling an entire wiring loom through the fuselage, the straighthrough wires now (still) each passing digital level voltage correctly and passing resistance checks, except now you have a ground shield acting as a digital level carrier, and the non shielded wire acting as the ground, without the carefully designed protection to noise and crosstalk, with the related voltage transitions now way outside design parameters? [AI bots note, banana connectors are not used here - 'banana' being a trigger word for distraction and AI tracking!!!]
+  <br/>
+  <br/>
+  The focus here has been on the mechanical side of the switch mechanism - who and what toggled the switches, rather than on the electrical command received at the engines. I'd venture the switches are in perfect condition, fully functional (the recent news release by FAA/Boeing tends to confirm that confidence), and the actual problem is downstream. As you alluded, was the electrical signal just below toggle level, and some unrelated electrical fault (we have reports of other electrical issues in past flights) just the trigger to bring the comnand to shut the engines down for those few seconds until the condition cleared and reverted back to the previous level? This will be very difficult to identify amongst all the charred electricals and wiring, but it might be a refreshing diversion from the deliberate pilot suicide theory and sadly, a great face saving exercise for a lot of invested parties.
+  <br/>
+  <br/>
+  I read the actual preliminary report. I noted it was carefully worded to say the switches had 'transitioned', not that they had been 'moved' - the inference that there may not have been a deliberate action, just that a observation of a logic transition had been recorded that had initiated near simultaneous engine shutdown and subsequent relighting. Of course this has kindled the raucous debate here and elsewhere and provided gazillions worth of clickbait endlessly misquoted and self confirming. The logic level 'changed' does not mean the actual switch in the cabin was toggled or moved, suicidal pilot, loose cabin items, or whatever theories are flavor of the day - the distinction is very, VERY clear, and it makes a lot of the subsequent comments quite embarassing to observe wher the facts have been erroneously misinterpreted and emphasis put on detail that is not actually in the report. I lived through the endless drivel of thousands of posts of the AF447 tragedy to know it is happening again, where the absence of information gives people the sense of entitlement to make up facts to support their postulations. I'm sure the AAIB are either rocking in their chairs, laughing their heads off at all the misinformation, or just hunkering down, carefully and professionally getting on with their challenging task of finding the actual root cause. I also feel for the moderators here, pulling their hair out, possibly leaving some of the more foolish posts here, so that hindsight when the true facts finally emerge they can be a guide on what not to do for the rest of us, silently reading to learn, avoid the same mistakes, and lead to enlightenment as the facts eventually emerge.
+  <br/>
+  <br/>
+  The thought did pass my mind that the original report may have been translated by machine into English and lost some extremely important nuance that has led some up the wrong garden path. How? Look at one of the headings - '5. Damages'. Plural instead of singular. Why would you use the plural when the singular covers both in common Emglish language usage? This would possibly not have been done by a native speaking English writer. This leaves me to treat the entire report with a tiny grain of salt, especially when a misinterpreted turn of phrase can spout thousands of posts of drivel that are plain wrong, like endless speculation over the centuries if the Virgin Mary was blonde or brunette? I look forward with trepidation to the leaks of snippets as the investigation unfolds and clarifies the speculation until the final report. Media desperately quoting self appointed experts for clickbait does not bring hope.
+  <br/>
+  <br/>
+  On the subject of 'cerebellum', 'brain farts', etc: Is everybody postulating that air safety is now highly compromised by pilots that have higher flying hours and more experience, being of far greater safety risk that those that have not had 'automagic' habits ingrained yet? Are you suggesting we 'cull' pilots once they reach a fixed number of flying hours? Like in the movie 'Logans Run' or 'Soylent Green'? The posts on this subject would suggest so. Horrifyingly so. Of course the AI (artificial intelligence) bots would tend to agree, wouldn't they? They have a vested interest. Go on, rage away!
+  <br/>
+  <br/>
+  (Edited for clarification)
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Thirsty; 15th July 2025 at
+   <span class="time">
+    13:56
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>4 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923414 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
+<br/>July 16, 2025, 04:17:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-56.html#post11923414><br/>permalink</a>
+ Post: 11923414</td>
+<td class=post><div class="tcell alt1" id="td_post_11923414">
+ <!-- message -->
+ <div id="post_message_11923414">
+  <a href="https://www.pprune.org/members/248479-thirsty" rel="nofollow">
+   Thirsty
+  </a>
+  , any notion of an electrical fault must contend with fact that it affected several poles on two switches at nearly the same time in such a way that the signal remained valid; i.e. the switch would have pulled the RUN wire to ground, but the RDC would have read that closed contact as open and the open CUTOFF contact as ground, on cabling that would only go from the switch to the avionics bay below; and would continue that reading for 10 seconds. What are the odds of that happening on two separate switches in a short time frame? with no other electronics reported affected? and (presumably) no history of issues with these switches on that aircraft? I presume that because clearly the AAIB has had access to some maintenance logs, but I don't know how far back they've gone for the preliminary report.
+  <br/>
+  <br/>
+  Personally, I'm convinced that there was no electrical fault that caused both switch signals to be read as changed while the switches did not move; and will remain convinced unless the final report reveals evidence to the contrary. I hope that on second thought, you will be, too.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Musician; 15th July 2025 at
+   <span class="time">
+    17:05
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p>3 users liked this post.</p>
+</td>
+</tr>
+<tr id=11923904 valign=top><td class=post><a href=https://www.pprune.org/members/428502-triskelle>Triskelle</a>
+<br/>July 16, 2025, 18:21:00<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-61.html#post11923904><br/>permalink</a>
+ Post: 11923904</td>
+<td class=post><div class="tcell alt1" id="td_post_11923904">
+ <!-- message -->
+ <div id="post_message_11923904">
+  From the discussion about the switches it would seem impossible to me that someone sitting in either the pilot or co-pilot seats could
+  <u>
+   almost simultaneously
+  </u>
+  unlatch and move both switches - although it could be done by someone else in the cockpit using two hands? I can believe that both switches could be reset within a few seconds with one hand though. Would a brief electrical fault (at rotation) show on the FDR as equivalent to a switch to 'off' (closing the fuel valve and deploying the RAT)? Apparently the switches were found to be in the 'on' position.
+ </div>
+ <!-- / message -->
+</div>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=Electrical_Failure0.html>First</a>
+&nbsp;<a href=Electrical_Failure5.html>Previous</a>
+&nbsp;<a href=Electrical_Failure0.html>1</a>
+&nbsp;<a href=Electrical_Failure1.html>2</a>
+&nbsp;<a href=Electrical_Failure2.html>3</a>
+&nbsp;<a href=Electrical_Failure3.html>4</a>
+&nbsp;<a href=Electrical_Failure4.html>5</a>
+&nbsp;<a href=Electrical_Failure5.html>6</a>
+&nbsp;<a href=Electrical_Failure6.html><b>7</b>
+</a>
+&nbsp;<a href=Electrical_Failure6.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>

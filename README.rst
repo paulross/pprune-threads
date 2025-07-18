@@ -91,7 +91,7 @@ And all the rest:
 
 .. code-block:: shell
 
-    $ time curl https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-[2-15].html -o "667141-preliminary-air-india-crash-report-published-#1.html"
+    $ time curl https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-[2-65].html -o "667141-preliminary-air-india-crash-report-published-#1.html"
     ...
     real	0m35.544s
     user	0m0.176s
