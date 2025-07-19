@@ -272,6 +272,9 @@ class Thread:
         # they include the page number and that may change if moderators delete posts
         # in which case the post could end up in a *previous* page.
         # This is used by publication maps SPECIFIC_POSTS_MAP and SIGNIFICANT_POSTS.
+        # See also pprune threads about this problem:
+        # https://www.pprune.org/pprune-problems-queries/626127-links-pprune-posts-sometimes-broken.html
+        # https://www.pprune.org/pprune-problems-queries/604715-different-post-numbers.html?highlight=permalink
         self.post_id_to_permalink_map: typing.Dict[int, str] = {}
 
     def __len__(self) -> int:
