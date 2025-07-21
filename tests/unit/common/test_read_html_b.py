@@ -1,4 +1,5 @@
 import datetime
+import zoneinfo
 
 import pytest
 
@@ -301,7 +302,10 @@ def test_html_node_post_number(html_str, node_id, expected):
 @pytest.mark.parametrize(
     'html_str, node_id, expected',
     (
-            (HTML_SINGLE_POST, 11898940, datetime.datetime(2025, 6, 12, 21, 35),),
+            (
+                    HTML_SINGLE_POST, 11898940,
+                    datetime.datetime(2025, 6, 12, 9, 35, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT'),),
+            ),
     ),
     ids=[
         'Single node.'
@@ -324,7 +328,7 @@ def test_html_node_date(html_str, node_id, expected):
             (
                     HTML_SINGLE_POST, 11898940,
                     'https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-2.html#post11898940',
-             ),
+            ),
     ),
     ids=[
         'Single node.'
@@ -347,7 +351,7 @@ def test_html_node_permalink(html_str, node_id, expected):
             (
                     HTML_SINGLE_POST, 11898940,
                     thread_struct.User(href='https://www.pprune.org/members/41169-autobrake3', name='autobrake3'),
-             ),
+            ),
     ),
     ids=[
         'Single node.'
@@ -370,7 +374,7 @@ def test_html_node_user(html_str, node_id, expected):
             (
                     HTML_SINGLE_POST, 11898940,
                     'Quote:  Brits will be on board.  Yes, Indians and other nationalities too. “Brits” not more or less relevant.',
-             ),
+            ),
     ),
     ids=[
         'Single node.'
@@ -417,7 +421,7 @@ def test_html_node_like_usernames(html_str, node_id, expected):
                             'Quote:\n'
                             'Brits will be on board.\n'
                             'Yes, Indians and other nationalities too. “Brits” not more or less relevant.'
-                     ),
+                    ),
                     'Yes, Indians and other nationalities too. “Brits” not more or less relevant.',
             ),
     ),

@@ -33,6 +33,7 @@ import os
 import string
 import time
 import typing
+import zoneinfo
 from contextlib import contextmanager
 
 import analyse_thread
@@ -72,12 +73,15 @@ def element(_stream, _name, **attributes):
 
 
 def format_datetime(dt: datetime.datetime) -> str:
-    """Return a human readable datetime."""
-    return dt.strftime('%B %d, %Y, %H:%M:%S')
+    """Return a human-readable datetime."""
+    if dt.tzinfo is None:
+        return dt.strftime('%B %d, %Y, %H:%M:%S')
+    gmt = dt.astimezone(zoneinfo.ZoneInfo('GMT'))
+    return gmt.strftime('%B %d, %Y, %H:%M:%S %Z')
 
 
 def format_datetime_as_date(dt: datetime.datetime) -> str:
-    """Return a human readable date."""
+    """Return a human-readable date."""
     return dt.strftime('%B %d, %Y')
 
 
@@ -473,6 +477,41 @@ def write_index_post_date_histogram(
                         index.write(f'{"*" * (post_count[this_date] // divisor)}')
 
 
+def write_index_post_time_histogram(
+        thread: thread_struct.Thread,
+        publication_map: publication_maps.PublicationMap,
+        index: typing.TextIO,
+):
+    """Write a table with a histogram of posts by time of day (GMT)."""
+    post_count = collections.Counter()
+    for post in thread.posts:
+        post_count[post.timestamp.hour] += 1
+    max_daily_posts = max(post_count.values())
+    divisor = 1 + max_daily_posts // 80
+    with element(index, 'h1'):
+        index.write('Number of Posts by Time of Day (GMT)')
+    with element(index, 'p'):
+        index.write(
+            f'Here are the number of posts by time of day (GMT), each "*" represents {divisor} posts.'
+        )
+    with element(index, 'table', _class="indextable"):
+        with element(index, 'th'):
+            index.write('Hour')
+        with element(index, 'th'):
+            index.write('Post Count')
+        with element(index, 'th'):
+            index.write('')
+        for hour in range(24):
+            with element(index, 'tr'):
+                with element(index, 'td', _class='indextable'):
+                    index.write(f'{hour}')
+                with element(index, 'td', _class='indextable'):
+                    index.write(f'{post_count[hour]}')
+                with element(index, 'td', _class='indextable'):
+                    with element(index, 'tt'):
+                        index.write(f'{"*" * (post_count[hour] // divisor)}')
+
+
 def write_index_page(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
@@ -597,6 +636,8 @@ def write_index_page(
                 write_index_user_post_table(thread, pass_one_result.user_ordinal_map, publication_map, index)
 
                 write_index_post_date_histogram(thread, publication_map, index)
+
+                write_index_post_time_histogram(thread, publication_map, index)
 
 
 def _write_page_links(subject: str, page_num: int, page_count: int, out_file: typing.TextIO) -> None:

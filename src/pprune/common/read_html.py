@@ -117,7 +117,8 @@ def get_post_nodes_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[bs4.el
     if posts is None:
         raise ValueError('No posts found')
     # Miss out the last one: <div id="lastpost"></div>
-    ret = [c for c in posts.children if c.name == 'div' and c.attrs['id'] != 'lastpost']
+    # ret = [c for c in posts.children if c.name == 'div' and c.attrs['id'] != 'lastpost']
+    ret = [c for c in posts.children if c.name == 'div' and RE_POST_ID_TO_POST_NUMBER.match(c.attrs['id'])]
     return ret
 
 
@@ -134,6 +135,7 @@ def get_thread_from_html_string(html_string: str) -> pprune.common.thread_struct
         post = post_from_html_node(node, tz_info)
         if post is not None:
             thread.add_post(post)
+    return thread
 
 
 RE_GMT_TIME_ZONE_AND_TIME = re.compile(r'\s*All times are GMT(\s[-+]\d+)?. The time now is\s*(\d\d:\d\d)\s*\.\s*')
@@ -141,16 +143,20 @@ RE_GMT_TIME_ZONE_AND_TIME = re.compile(r'\s*All times are GMT(\s[-+]\d+)?. The t
 
 def get_zoneinfo_from_parsed_doc(doc: bs4.BeautifulSoup) -> zoneinfo.ZoneInfo:
     """Given a parsed HTML page get the GMT offset.
+
     Examples:
 
         <div class="text-center clearfix">All times are GMT -12. The time now is <span class="time">21:51</span>.</div>
         <div class="text-center clearfix">All times are GMT. The time now is <span class="time">08:41</span>.</div>
 
     This text appears in: /html.no-js/body/footer.row/div.column/div.text-center.clearfix
+
+    This defaults to zoneinfo.ZoneInfo('Etc/GMT')
     """
     node = doc.find('div', **{'class': 'text-center clearfix', })
     if node is None:
-        raise ValueError('No node with GMT offset found')
+        # raise ValueError('No node with GMT offset found')
+        return zoneinfo.ZoneInfo('Etc/GMT')
     txt = node.text
     m = RE_GMT_TIME_ZONE_AND_TIME.match(txt)
     if m is None:
@@ -208,6 +214,8 @@ def html_node_date(node: bs4.element.Tag, tz_info: zoneinfo.ZoneInfo) -> datetim
     date_node = node.find('div', **{"class": "tcell"})
     text = date_node.text
     ret = dateparser.parse(text.strip())
+    if ret is None:
+        raise ValueError('Could not parse date: "%s"', text.strip())
     # Legacy (this was a login issue):
     # # For some weird reason the date from a file obtained by curl is 12 hours behind the display date.
     # # For example, from curl: 11th June 2025 | 20:57
@@ -373,14 +381,18 @@ def update_whole_thread(directory_name: str, thread: pprune.common.thread_struct
             break
         post_count = 0
         try:
-            for post_node in get_post_nodes_from_file_path(files[file_number]):
-                # print('Post: %d' % i)
-                post = post_from_html_node(post_node)
-                if post is not None:
-                    thread.add_post(post)
-                    post_count += 1
-                else:
-                    logger.warning('Can not read post from node <%s %s>', post_node.name, post_node.attrs)
+            with open(files[file_number], errors='backslashreplace') as file:
+                doc = bs4.BeautifulSoup(file.read(), 'html.parser')
+                post_nodes = get_post_nodes_from_parsed_doc(doc)
+                tz_info = get_zoneinfo_from_parsed_doc(doc)
+                for post_node in post_nodes:
+                    # print('Post: %d' % i)
+                    post = post_from_html_node(post_node, tz_info)
+                    if post is not None:
+                        thread.add_post(post)
+                        post_count += 1
+                    else:
+                        logger.warning('Can not read post from node <%s %s>', post_node.name, post_node.attrs)
         except ValueError as err:
             # Have seen the first page say that the lat page is 71 but when curl'ing that the file is empty and
             # we get this error. Ignore it.
