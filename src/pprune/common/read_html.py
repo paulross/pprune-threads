@@ -35,6 +35,7 @@ import string
 import sys
 import time
 import typing
+import zoneinfo
 from urllib.parse import urlparse, ParseResult
 
 import bs4
@@ -127,12 +128,47 @@ def get_post_objects_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[ppru
 def get_thread_from_html_string(html_string: str) -> pprune.common.thread_struct.Thread:
     """Given a string of HTML return the Thread object containing all the posts."""
     doc = parse_str_to_beautiful_soup(html_string)
+    tz_info = get_zoneinfo_from_parsed_doc(doc)
     thread = pprune.common.thread_struct.Thread()
     for node in get_post_nodes_from_parsed_doc(doc):
-        post = post_from_html_node(node)
+        post = post_from_html_node(node, tz_info)
         if post is not None:
             thread.add_post(post)
-    return thread
+
+
+RE_GMT_TIME_ZONE_AND_TIME = re.compile(r'\s*All times are GMT(\s[-+]\d+)?. The time now is\s*(\d\d:\d\d)\s*\.\s*')
+
+
+def get_zoneinfo_from_parsed_doc(doc: bs4.BeautifulSoup) -> zoneinfo.ZoneInfo:
+    """Given a parsed HTML page get the GMT offset.
+    Examples:
+
+        <div class="text-center clearfix">All times are GMT -12. The time now is <span class="time">21:51</span>.</div>
+        <div class="text-center clearfix">All times are GMT. The time now is <span class="time">08:41</span>.</div>
+
+    This text appears in: /html.no-js/body/footer.row/div.column/div.text-center.clearfix
+    """
+    node = doc.find('div', **{'class': 'text-center clearfix', })
+    if node is None:
+        raise ValueError('No node with GMT offset found')
+    txt = node.text
+    m = RE_GMT_TIME_ZONE_AND_TIME.match(txt)
+    if m is None:
+        raise ValueError('No timezone offset found from "%s"', txt)
+    # Example Zone: 'Etc/GMT+1'
+    offset = 'Etc/GMT'
+    if m.group(1) is not None:
+        # There will be a leading space.
+        offset = f'Etc/GMT{m.group(1).strip()}'
+    hour, minute = m.group(2).split(':')
+    # # Get all the posts and choose the last one for the date
+    # post_nodes = get_post_nodes_from_parsed_doc(doc)
+    # post_datetimes = [html_node_date(post) for post in post_nodes]
+    # if len(post_datetimes) == 0:
+    #     raise ValueError('No posts to get the dates from.')
+    # last_datetime = post_datetimes[-1]
+    # result = datetime.datetime(year=last_datetime.year, month=last_datetime.month, day=last_datetime.day, hour=int(hour), minute=int(minute), second=0, tzinfo=zoneinfo.ZoneInfo(offset))
+    return zoneinfo.ZoneInfo(offset)
 
 
 def html_node_post_id(node: bs4.element.Tag) -> str:
@@ -158,7 +194,7 @@ def html_node_post_number(node: bs4.element.Tag) -> typing.Optional[int]:
         return int(m.group(1))
 
 
-def html_node_date(node: bs4.element.Tag) -> datetime.datetime:
+def html_node_date(node: bs4.element.Tag, tz_info: zoneinfo.ZoneInfo) -> datetime.datetime:
     """Returns the date from the node."""
     # Typically:
     # <div class="tcell" style="width:175px;">
@@ -172,12 +208,13 @@ def html_node_date(node: bs4.element.Tag) -> datetime.datetime:
     date_node = node.find('div', **{"class": "tcell"})
     text = date_node.text
     ret = dateparser.parse(text.strip())
-    # For some weird reason the date from a file obtained by curl is 12 hours behind the display date.
-    # For example, from curl: 11th June 2025 | 20:57
-    # But in the browser/show page source: 12th June 2025 | 08:57
-    if ret is not None:
-        ret += datetime.timedelta(hours=12)
-    return ret
+    # Legacy (this was a login issue):
+    # # For some weird reason the date from a file obtained by curl is 12 hours behind the display date.
+    # # For example, from curl: 11th June 2025 | 20:57
+    # # But in the browser/show page source: 12th June 2025 | 08:57
+    # if ret is not None:
+    #     ret += datetime.timedelta(hours=12)
+    return ret.replace(tzinfo=tz_info)
 
 
 def html_node_permalink(node: bs4.element.Tag) -> typing.Optional[str]:
@@ -266,9 +303,9 @@ def html_node_like_usernames(node: bs4.element.Tag) -> typing.List[pprune.common
     return ret
 
 
-def post_from_html_node(node: bs4.element.Tag) -> typing.Optional[pprune.common.thread_struct.Post]:
+def post_from_html_node(node: bs4.element.Tag, tz_info: zoneinfo.ZoneInfo) -> typing.Optional[pprune.common.thread_struct.Post]:
     """Returns a Post object from an HTML node."""
-    timestamp = html_node_date(node)
+    timestamp = html_node_date(node, tz_info)
     permalink = html_node_permalink(node)
     if permalink is None:
         logger.warning(f'No permalink extracted from node <{node.name} {node.attrs}>')
