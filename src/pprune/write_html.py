@@ -72,12 +72,14 @@ def element(_stream, _name, **attributes):
 
 
 def format_datetime(dt: datetime.datetime) -> str:
-    """Return a human readable datetime."""
-    return dt.strftime('%B %d, %Y, %H:%M:%S')
+    """Return a human-readable datetime."""
+    if datetime.tzinfo is None:
+        return dt.strftime('%B %d, %Y, %H:%M:%S')
+    return dt.strftime('%B %d, %Y, %H:%M:%S %Z')
 
 
 def format_datetime_as_date(dt: datetime.datetime) -> str:
-    """Return a human readable date."""
+    """Return a human-readable date."""
     return dt.strftime('%B %d, %Y')
 
 
