@@ -561,21 +561,6 @@ def write_index_page(
                     index.write(' NOTE: No AI was used during this.')
                 # Write table of informational data.
                 posts_inc, posts_exc = get_count_of_posts_included(thread, pass_one_result.subject_post_map)
-                # with element(index, 'p'):
-                #     index.write(
-                #         f'Total Posts: {len(thread)}'
-                #         f', posts included: {posts_inc}'
-                #         f', excluded: {posts_exc}'
-                #         f', proportion included: {posts_inc / len(thread):.1%}'
-                #         f', proportion rejected: {1 - posts_inc / len(thread):.1%}'
-                #     )
-                # with element(index, 'p'):
-                #     index.write(
-                #         f'Posts on the thread start at {format_datetime(thread.posts[0].timestamp)}'
-                #         f' and finish at {format_datetime(thread.posts[-1].timestamp)}.'
-                #         f' This build was made at {format_datetime(datetime.datetime.now())}.'
-                #     )
-
                 with element(index, 'table', _class="indextable"):
                     with element(index, 'tr'):
                         with element(index, 'th'):
@@ -613,7 +598,7 @@ def write_index_page(
                         with element(index, 'td', _class='indextable'):
                             index.write('This build')
                         with element(index, 'td', _class='indextable'):
-                            index.write(format_datetime(datetime.datetime.now()))
+                            index.write(format_datetime(datetime.datetime.now(tz=zoneinfo.ZoneInfo('GMT'))))
 
                 with element(index, 'p'):
                     index.write('Project is here: ')
