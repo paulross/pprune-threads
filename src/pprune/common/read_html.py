@@ -381,14 +381,18 @@ def update_whole_thread(directory_name: str, thread: pprune.common.thread_struct
             break
         post_count = 0
         try:
-            for post_node in get_post_nodes_from_file_path(files[file_number]):
-                # print('Post: %d' % i)
-                post = post_from_html_node(post_node)
-                if post is not None:
-                    thread.add_post(post)
-                    post_count += 1
-                else:
-                    logger.warning('Can not read post from node <%s %s>', post_node.name, post_node.attrs)
+            with open(files[file_number], errors='backslashreplace') as file:
+                doc = bs4.BeautifulSoup(file.read(), 'html.parser')
+                post_nodes = get_post_nodes_from_parsed_doc(doc)
+                tz_info = get_zoneinfo_from_parsed_doc(doc)
+                for post_node in post_nodes:
+                    # print('Post: %d' % i)
+                    post = post_from_html_node(post_node, tz_info)
+                    if post is not None:
+                        thread.add_post(post)
+                        post_count += 1
+                    else:
+                        logger.warning('Can not read post from node <%s %s>', post_node.name, post_node.attrs)
         except ValueError as err:
             # Have seen the first page say that the lat page is 71 but when curl'ing that the file is empty and
             # we get this error. Ignore it.

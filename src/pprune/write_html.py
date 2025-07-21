@@ -33,6 +33,7 @@ import os
 import string
 import time
 import typing
+import zoneinfo
 from contextlib import contextmanager
 
 import analyse_thread
@@ -73,14 +74,18 @@ def element(_stream, _name, **attributes):
 
 def format_datetime(dt: datetime.datetime) -> str:
     """Return a human-readable datetime."""
-    if datetime.tzinfo is None:
+    if dt.tzinfo is None:
         return dt.strftime('%B %d, %Y, %H:%M:%S')
-    return dt.strftime('%B %d, %Y, %H:%M:%S %Z')
+    gmt = dt.astimezone(zoneinfo.ZoneInfo('GMT'))
+    return gmt.strftime('%B %d, %Y, %H:%M:%S %Z')
 
 
 def format_datetime_as_date(dt: datetime.datetime) -> str:
     """Return a human-readable date."""
-    return dt.strftime('%B %d, %Y')
+    if dt.tzinfo is None:
+        return dt.strftime('%B %d, %Y')
+    gmt = dt.astimezone(zoneinfo.ZoneInfo('GMT'))
+    return gmt.strftime('%B %d, %Y %Z')
 
 
 class PassOneResult:
