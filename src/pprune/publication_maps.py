@@ -214,9 +214,9 @@ class AirIndia171(PublicationMap):
 
     def get_set_of_removed_subjects(self) -> typing.Set[str]:
         return {
-            "RAT (Alternate Noise Sources)",
             '51 Day Issue',
             'Audio Analysis',
+            'Biocide',
             'Bird Strike',
             'Engine Over-speed (All)',
             'Engine Shutdown (Over-speed)',
@@ -236,6 +236,7 @@ class AirIndia171(PublicationMap):
             'MLG (All)',
             'MLG Tilt',
             'N2 Over-speed',
+            'RAT (Alternate Noise Sources)',
             'RAT (Sound)',
             'RAT (Witnesses)',
             'Suicide/Murder',
