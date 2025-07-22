@@ -138,6 +138,16 @@ def get_thread_from_html_string(html_string: str) -> pprune.common.thread_struct
     return thread
 
 
+def get_page_url_parsed_doc(doc: bs4.BeautifulSoup) -> str:
+    """Find the page URL from the parsed document.
+    This is from the meta element:
+
+    <meta property="og:url" content="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html" />
+    """
+    node = doc.find('meta', **{'property': 'og:url', })
+    return node.attrs['content']
+
+
 RE_GMT_TIME_ZONE_AND_TIME = re.compile(r'\s*All times are GMT(\s[-+]\d+)?. The time now is\s*(\d\d:\d\d)\s*\.\s*')
 
 
@@ -156,6 +166,7 @@ def get_zoneinfo_from_parsed_doc(doc: bs4.BeautifulSoup) -> zoneinfo.ZoneInfo:
     node = doc.find('div', **{'class': 'text-center clearfix', })
     if node is None:
         # raise ValueError('No node with GMT offset found')
+        logger.warning('Could not find timezone for page: %s', get_page_url_parsed_doc(doc))
         return zoneinfo.ZoneInfo('Etc/GMT')
     txt = node.text
     m = RE_GMT_TIME_ZONE_AND_TIME.match(txt)
@@ -312,7 +323,8 @@ def html_node_like_usernames(node: bs4.element.Tag) -> typing.List[pprune.common
     return ret
 
 
-def post_from_html_node(node: bs4.element.Tag, tz_info: zoneinfo.ZoneInfo) -> typing.Optional[pprune.common.thread_struct.Post]:
+def post_from_html_node(node: bs4.element.Tag, tz_info: zoneinfo.ZoneInfo) -> typing.Optional[
+    pprune.common.thread_struct.Post]:
     """Returns a Post object from an HTML node."""
     timestamp = html_node_date(node, tz_info)
     permalink = html_node_permalink(node)
