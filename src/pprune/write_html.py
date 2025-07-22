@@ -208,7 +208,7 @@ def write_index_significant_posts(
     """Optionally, writes out a list of significant posts."""
     significant_posts = publication_map.get_significant_posts_permalinks()
     if significant_posts:
-        with element(index, 'h1'):
+        with element(index, 'h1', **{'id': 'significant_posts'}):
             index.write('Significant Posts')
         with element(index, 'p'):
             index.write('These are worth reading before you go any further.')
@@ -237,7 +237,7 @@ def write_index_main_subject_table(
         index: typing.TextIO,
 ):
     """Write out the main table of subjects."""
-    with element(index, 'h1'):
+    with element(index, 'h1', **{'id': 'posts_by_subject'}):
         index.write('Posts by Subject')
     with element(index, 'p'):
         index.write(
@@ -268,7 +268,7 @@ def write_index_removed_subjects(
     """If there are removed subjects then list them here."""
     removed_subjects = publication_map.get_set_of_removed_subjects()
     if removed_subjects:
-        with element(index, 'h1'):
+        with element(index, 'h1', **{'id': 'removed_subjects'}):
             index.write('Removed Subjects')
         with element(index, 'p'):
             index.write(f'These {len(removed_subjects)} subjects have been removed: ')
@@ -299,7 +299,7 @@ def write_index_most_upvoted_posts_table(
             post_count += len(liked_by_users_dict[k])
             if post_count >= publication_map.get_upvoted_post_count_limit():
                 break
-        with element(index, 'h1'):
+        with element(index, 'h1', **{'id': 'most_upvoted_posts'}):
             index.write(f'The {post_count} Most Up-voted Posts')
         with element(index, 'p'):
             index.write(
@@ -344,7 +344,7 @@ def write_index_most_upvoted_posts_table(
                     break
     else:
         logger.warning('Can not read up-votes from the thread. Is the thread closed (up-votes will not show)?')
-        with element(index, 'h1'):
+        with element(index, 'h1', **{'id': 'most_upvoted_posts'}):
             index.write(f'The Most Up-voted Posts')
         with element(index, 'p'):
             index.write('This is not available, perhaps because the thread is closed.')
@@ -364,7 +364,7 @@ def write_index_user_subject_table(
         index: typing.TextIO,
 ):
     """Posts by user, including the subjects they covered."""
-    with element(index, 'h1'):
+    with element(index, 'h1', **{'id': 'posts_by_user_subject'}):
         index.write('Posts by User on a Subject')
     # MOST_COMMON_COUNT = 40
     user_count = collections.Counter([post.user for post in thread.posts])
@@ -423,7 +423,7 @@ def write_index_user_post_table(
         index: typing.TextIO,
 ):
     """Write a table with links to pages that have all user posts."""
-    with element(index, 'h1'):
+    with element(index, 'h1', **{'id': 'posts_by_users'}):
         index.write('Users Posts')
     with element(index, 'p'):
         index.write(
@@ -458,6 +458,7 @@ HISTOGRAM_CHARACTER = '&#x25A0;'
 
 def write_index_histogram(
         heading: str,
+        heading_id: str,
         intro: str,
         col_one_heading: str,
         table: typing.List[typing.Tuple[str, int]],
@@ -465,14 +466,14 @@ def write_index_histogram(
         index: typing.TextIO,
 ):
     """Writes a histogram table of posts typically over time such as date or hour of day."""
-    with element(index, 'h1'):
+    with element(index, 'h1', **{'id': heading_id}):
         index.write(heading)
     with element(index, 'p'):
         index.write(
             f'{intro} Each {HISTOGRAM_CHARACTER} represents {divisor} posts.'
         )
     with element(index, 'table', _class="indextable"):
-        _write_table_header([col_one_heading, 'Post Count', 'Histogram',], index)
+        _write_table_header([col_one_heading, 'Post Count', 'Histogram', ], index)
         for name, post_count in table:
             with element(index, 'tr'):
                 with element(index, 'td', _class='indextable'):
@@ -502,6 +503,7 @@ def write_index_post_date_histogram(
         table.append((format_datetime_as_date(this_timestamp), post_count[day_inc]))
     write_index_histogram(
         'Number of Posts by Date (GMT)',
+        'posts_by_date',
         'Here are the number of posts by date',
         'Date',
         table, divisor, index
@@ -524,6 +526,7 @@ def write_index_post_time_histogram(
         table.append((f'{hour}', post_count[hour],))
     write_index_histogram(
         'Number of Posts by Time of Day (GMT)',
+        'posts_by_hour',
         'Here are the number of posts by time of day (GMT).',
         'Hour',
         table, divisor, index
@@ -550,7 +553,7 @@ def write_index_page(
                     pass
             with element(index, 'body'):
                 # with element(index, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
-                with element(index, 'h1'):
+                with element(index, 'h1', **{'id': 'introduction'}):
                     index.write(publication_map.get_title())
 
                 with element(index, 'p'):
