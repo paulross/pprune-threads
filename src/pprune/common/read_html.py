@@ -165,7 +165,8 @@ def get_zoneinfo_from_parsed_doc(doc: bs4.BeautifulSoup) -> zoneinfo.ZoneInfo:
     offset = 'Etc/GMT'
     if m.group(1) is not None:
         # There will be a leading space.
-        offset = f'Etc/GMT{m.group(1).strip()}'
+        offset_int = int(m.group(1))
+        offset = f'Etc/GMT{-offset_int:+d}'
     hour, minute = m.group(2).split(':')
     # # Get all the posts and choose the last one for the date
     # post_nodes = get_post_nodes_from_parsed_doc(doc)
