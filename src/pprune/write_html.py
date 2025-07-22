@@ -81,8 +81,11 @@ def format_datetime(dt: datetime.datetime) -> str:
 
 
 def format_datetime_as_date(dt: datetime.datetime) -> str:
-    """Return a human-readable date."""
-    return dt.strftime('%B %d, %Y')
+    """Return a human-readable date, if dt has a timezone it will be converted to GMT."""
+    if dt.tzinfo is None:
+        return dt.strftime('%B %d, %Y')
+    gmt = dt.astimezone(zoneinfo.ZoneInfo('GMT'))
+    return gmt.strftime('%B %d, %Y')
 
 
 def format_date_as_date(dt: datetime.date) -> str:
@@ -487,19 +490,18 @@ def write_index_post_date_histogram(
         index: typing.TextIO,
 ):
     """Writes a histogram table of posts by date."""
-    days_span_as_int = (thread.posts[-1].timestamp - thread.posts[0].timestamp).days
-    date_start = thread.posts[0].timestamp.date()
     post_count = collections.Counter()
     for post in thread.posts:
-        post_count[post.timestamp.date()] += 1
+        td = post.timestamp - thread.posts[0].timestamp
+        post_count[td.days] += 1
     max_daily_posts = max(post_count.values())
     divisor = 1 + max_daily_posts // 80
     table = []
-    for day_inc in range(days_span_as_int + 1):
-        this_date = date_start + datetime.timedelta(days=day_inc)
-        table.append((format_date_as_date(this_date), post_count[this_date]))
+    for day_inc in range(min(post_count.keys()), max(post_count.keys()) + 1):
+        this_timestamp = thread.posts[0].timestamp + datetime.timedelta(days=day_inc)
+        table.append((format_datetime_as_date(this_timestamp), post_count[day_inc]))
     write_index_histogram(
-        'Number of Posts by Date',
+        'Number of Posts by Date (GMT)',
         'Here are the number of posts by date',
         'Date',
         table, divisor, index
