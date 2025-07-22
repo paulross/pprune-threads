@@ -266,17 +266,30 @@ def write_index_removed_subjects(
         index: typing.TextIO,
 ):
     """If there are removed subjects then list them here."""
-    removed_subjects = publication_map.get_set_of_removed_subjects()
+    removed_subjects = sorted(publication_map.get_set_of_removed_subjects())
     if removed_subjects:
         with element(index, 'h1', **{'id': 'removed_subjects'}):
             index.write('Removed Subjects')
+        # with element(index, 'p'):
+        #     index.write(f'These {len(removed_subjects)} subjects have been removed: ')
+        #     index.write(
+        #         ', '.join(
+        #             [f'"{s}"' for s in removed_subjects]
+        #         )
+        #     )
         with element(index, 'p'):
-            index.write(f'These {len(removed_subjects)} subjects have been removed: ')
-            index.write(
-                ', '.join(
-                    [f'"{s}"' for s in sorted(removed_subjects)]
-                )
-            )
+            index.write('These are subjects that have been removed from previous versions of this build.')
+        with element(index, 'table', _class="indextable"):
+            COLUMNS = 4
+            rows = [removed_subjects[i:i + COLUMNS] for i in range(0, len(removed_subjects), COLUMNS)]
+            subject_index = 0
+            for row in rows:
+                with element(index, 'tr'):
+                    for _cell in row:
+                        subject = removed_subjects[subject_index]
+                        with element(index, 'td', _class='indextable'):
+                            index.write(subject)
+                        subject_index += 1
 
 
 def write_index_most_upvoted_posts_table(
