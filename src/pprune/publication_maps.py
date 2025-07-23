@@ -292,6 +292,9 @@ class AirIndia171(PublicationMap):
         'murder': 'Suicide/Murder',
         'jumpseaters': 'Jump Seat',
         'jumpseat': 'Jump Seat',
+        'moderators': 'Thread Moderation',
+        'moderation': 'Thread Moderation',
+        'mods': 'Thread Moderation',
     }
     # This maps capitilised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
@@ -635,4 +638,6 @@ class AirIndia171(PublicationMap):
         ('tdracer on Air Accident Investigations', 11924194,),
         # https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-65.html#post11924281
         ('787 Maintenance and those Fuel Cutoff Switches (15:00 onwards)', 11924281,),
+        ('NTSB chair Jennifer Homendy on the Preliminary Report', 11925921,),
+        ('The International Federation of Air Line Pilots\' Associations on the Preliminary Report', 11925980,),
     )
