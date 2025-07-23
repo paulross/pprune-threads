@@ -2,12 +2,13 @@ import datetime
 import io
 import pprint
 import urllib.parse
+import zoneinfo
 
 import pytest
-from pprune.common import read_html
-from pprune.common import thread_struct
 
 import example_data
+from pprune.common import read_html
+from pprune.common import thread_struct
 
 
 @pytest.mark.parametrize(
@@ -422,31 +423,61 @@ def test_get_post_nodes_from_file():
 
 
 def test_html_node_date():
-    file = io.StringIO(example_data.EXAMPLE_PAGES['666472-plane-crash-near-ahmedabad-2.html'])
-    post_nodes = read_html.get_post_nodes_from_file(file)
-    post_ids = [read_html.html_node_date(post) for post in post_nodes]
-    assert post_ids == [
-        datetime.datetime(2025, 6, 12, 21, 35),
-        datetime.datetime(2025, 6, 12, 21, 36),
-        datetime.datetime(2025, 6, 12, 21, 40),
-        datetime.datetime(2025, 6, 12, 21, 47),
-        datetime.datetime(2025, 6, 12, 21, 48),
-        datetime.datetime(2025, 6, 12, 21, 48),
-        datetime.datetime(2025, 6, 12, 21, 48),
-        datetime.datetime(2025, 6, 12, 21, 49),
-        datetime.datetime(2025, 6, 12, 21, 51),
-        datetime.datetime(2025, 6, 12, 21, 53),
-        datetime.datetime(2025, 6, 12, 21, 53),
-        datetime.datetime(2025, 6, 12, 21, 54),
-        datetime.datetime(2025, 6, 12, 21, 56),
-        datetime.datetime(2025, 6, 12, 21, 57),
-        datetime.datetime(2025, 6, 12, 21, 58),
-        datetime.datetime(2025, 6, 12, 22, 0),
-        datetime.datetime(2025, 6, 12, 22, 1),
-        datetime.datetime(2025, 6, 12, 22, 2),
-        datetime.datetime(2025, 6, 12, 22, 3),
-        datetime.datetime(2025, 6, 12, 22, 3),
+    doc = read_html.parse_str_to_beautiful_soup(example_data.EXAMPLE_PAGES['666472-plane-crash-near-ahmedabad-2.html'])
+    tz_info = read_html.get_zoneinfo_from_parsed_doc(doc)
+    post_nodes = read_html.get_post_nodes_from_parsed_doc(doc)
+    post_datetimes = [read_html.html_node_date(post, tz_info) for post in post_nodes]
+    assert post_datetimes == [
+        datetime.datetime(2025, 6, 12, 9, 35, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 36, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 40, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 47, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 48, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 48, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 48, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 49, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 51, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 53, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 53, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 54, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 56, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 57, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 9, 58, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 10, 0, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 10, 1, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 10, 2, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 10, 3, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
+        datetime.datetime(2025, 6, 12, 10, 3, tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT')),
     ]
+
+
+@pytest.mark.parametrize(
+    'text, expected_offset, expected_time',
+    (
+            ('All times are GMT -12. The time now is 21:51.', ' -12', '21:51'),
+            ('             All times are GMT -12. The time now is 21:51.', ' -12', '21:51'),
+            ('All times are GMT -12. The time now is 21:51.            ', ' -12', '21:51'),
+            ('             All times are GMT -12. The time now is 21:51.               ', ' -12', '21:51'),
+            ('All times are GMT. The time now is 21:51.', None, '21:51'),
+    )
+)
+def test_html_page_RE_GMT_TIME_ZONE_AND_TIME(text, expected_offset, expected_time):
+    m = read_html.RE_GMT_TIME_ZONE_AND_TIME.match(text)
+    assert m is not None
+    assert m.group(1) == expected_offset
+    assert m.group(2) == expected_time
+
+
+@pytest.mark.parametrize(
+    'page, expected',
+    (
+            ('666472-plane-crash-near-ahmedabad-2.html', zoneinfo.ZoneInfo(key='Etc/GMT')),
+    )
+)
+def test_html_page_get_zoneinfo_from_parsed_doc(page, expected):
+    doc = read_html.parse_str_to_beautiful_soup(example_data.EXAMPLE_PAGES[page])
+    offset = read_html.get_zoneinfo_from_parsed_doc(doc)
+    assert offset == expected
 
 
 def test_html_node_permalink():
@@ -560,7 +591,8 @@ def test_all_page_urls_from_external_url(url, expected):
                                         'https://thepostmillennial.com/colorado-residents-shocked-falling-debris-united-airlines'),
                                     'https://thepostmillennial.com/colora...nited-airlines'),
                         ],
-                        [(urllib.parse.urlparse('https://www.youtube.com/watch?v=XnSjAdvKp8k&ab_channel=ThePeople%27sElixir'),
+                        [(urllib.parse.urlparse(
+                            'https://www.youtube.com/watch?v=XnSjAdvKp8k&ab_channel=ThePeople%27sElixir'),
                           'You Tube')],
                         [],
                         [],
@@ -591,7 +623,8 @@ def test_all_page_urls_from_external_url(url, expected):
                           'https://www.skybrary.aero/index.php/...eles_USA,_2005')],
                         [],
                         [(
-                                urllib.parse.urlparse('https://www.nydailynews.com/news/national/damaged-plane-lands-safely-lax-2005-article-1.607155'),
+                                urllib.parse.urlparse(
+                                    'https://www.nydailynews.com/news/national/damaged-plane-lands-safely-lax-2005-article-1.607155'),
                                 'https://www.nydailynews.com/news/nat...ticle-1.607155')],
                     ],
             ),
@@ -600,7 +633,8 @@ def test_all_page_urls_from_external_url(url, expected):
                     [
                         [],
                         [(
-                                urllib.parse.urlparse('https://timesofindia.indiatimes.com/city/ahmedabad/plane-crashes-in-ahmedabads-meghani-area/articleshow/121798487.cms'),
+                                urllib.parse.urlparse(
+                                    'https://timesofindia.indiatimes.com/city/ahmedabad/plane-crashes-in-ahmedabads-meghani-area/articleshow/121798487.cms'),
                                 'Air India Ahmedabad-London flight crashes near airport in Meghani area | Ahmedabad News - Times of India')],
                         [],
                         [],
@@ -613,7 +647,8 @@ def test_all_page_urls_from_external_url(url, expected):
                         [],
                         [],
                         [(urllib.parse.urlparse('https://www.youtube.com/watch?v=b3SEjNFJU6M'), 'You Tube')],
-                        [(urllib.parse.urlparse('https://www.youtube.com/live/o_TiTsapMVU?si=z90mezbH7_sQUzX9'), 'You Tube')],
+                        [(urllib.parse.urlparse('https://www.youtube.com/live/o_TiTsapMVU?si=z90mezbH7_sQUzX9'),
+                          'You Tube')],
                         [],
                         [],
                         [],

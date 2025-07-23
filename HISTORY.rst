@@ -1,6 +1,17 @@
 History
 =======
 
+Alpha Release (Thread: July 20, 2025, 21:34:00 GMT)
+---------------------------------------------------
+
+- Build threads up to July 20, 2025, 21:34:00 GMT (built on July 23, 2025, 08:35:33 GMT).
+- Hand merged most up-voted posts from previous build as the preliminary report thread is closed.
+- Subjects removed: "Biocide".
+- Subjects added: "Thread Moderation".
+- Added two significant posts.
+- Added "Number of Posts by Time" on the landing page.
+- Fixes to date handling.
+
 Alpha Release (Thread: July 17, 2025, 19:52:00)
 -----------------------------------------------
 
