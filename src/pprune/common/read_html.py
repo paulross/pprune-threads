@@ -27,6 +27,7 @@ __version__ = '0.0.1'
 __rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import argparse
+import dataclasses
 import datetime
 import logging
 import os
@@ -130,10 +131,10 @@ def get_post_objects_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[ppru
 def get_thread_from_html_string(html_string: str) -> pprune.common.thread_struct.Thread:
     """Given a string of HTML return the Thread object containing all the posts."""
     doc = parse_str_to_beautiful_soup(html_string)
-    tz_info = get_zoneinfo_from_parsed_doc(doc)
+    page_information = get_page_information_from_parsed_doc(doc)
     thread = pprune.common.thread_struct.Thread()
     for node in get_post_nodes_from_parsed_doc(doc):
-        post = post_from_html_node(node, tz_info)
+        post = post_from_html_node(node, page_information)
         if post is not None:
             thread.add_post(post)
     return thread
@@ -188,6 +189,70 @@ def get_zoneinfo_from_parsed_doc(doc: bs4.BeautifulSoup) -> zoneinfo.ZoneInfo:
     # last_datetime = post_datetimes[-1]
     # result = datetime.datetime(year=last_datetime.year, month=last_datetime.month, day=last_datetime.day, hour=int(hour), minute=int(minute), second=0, tzinfo=zoneinfo.ZoneInfo(offset))
     return zoneinfo.ZoneInfo(offset)
+
+
+def get_thread_is_open_from_parsed_doc(doc: bs4.BeautifulSoup) -> bool:
+    """Given a parsed HTML page find out if the thread is open.
+
+    Open thread (tests/integration/example_pages/667131-up-votes-post_thanks-not-available-closed-threads.html):
+
+    .. code-block:: html
+
+        <!-- controls above postbits -->
+        <div class="flexitem">
+            <div>
+                <a href="https://www.pprune.org/newreply.php?do=newreply&amp;noquote=1&amp;p=11919549" rel="nofollow" class="button medium fixed-size tertiary" rel="nofollow"><i class="fa-solid fa-reply"></i> Reply</a>
+                <a href="https://www.pprune.org/subscription.php?do=addsubscription&amp;t=667131" rel="nofollow" class="button medium primary" rel="nofollow">Subscribe <i class="fa-solid fa-bell"></i></a>
+            </div>
+            <div></div>
+        </div>
+        <!-- / controls above postbits -->
+
+    Closed thread (tests/integration/example_pages/666472-plane-crash-near-ahmedabad.html):
+
+    .. code-block:: html
+
+        <!-- controls above postbits -->
+        <div class="flexitem">
+            <div>
+                <a href="https://www.pprune.org/newreply.php?do=newreply&amp;noquote=1&amp;p=11898891" rel="nofollow" class="button medium fixed-size closed" rel="nofollow"><i class="fas fa-lock"></i> Closed Thread</a>
+                <a href="https://www.pprune.org/subscription.php?do=addsubscription&amp;t=666472" rel="nofollow" class="button medium primary" rel="nofollow">Subscribe <i class="fas fa-bell"></i></a>
+            </div>
+            <div></div>
+        </div>
+        <!-- / controls above postbits -->
+
+    NOTE: There are multiple <div class="flexitem"> in the document.
+    """
+    def get_node_text(node: bs4.element.Tag) -> str:
+        if node:
+            return node.text.strip()
+        return ''
+
+    nodes = doc.find_all('div', **{'class': 'flexitem', })
+    for node in nodes:
+        # NOTE: <div class="flexitem smallfont"> then node.attrs['class'] == ['flexitem', 'smallfont']
+        if node.attrs['class'] == ['flexitem']:
+            nodes_a = node.find_all('a')
+            for node_a in nodes_a:
+                txt = get_node_text(node_a)
+                if 'class' in node_a.attrs and node_a.attrs['class'] == ['button', 'medium', 'fixed-size', 'tertiary',] and txt == 'Reply':
+                    return True
+                if 'class' in node_a.attrs and node_a.attrs['class'] == ['button', 'medium', 'fixed-size', 'closed'] and txt == 'Closed Thread':
+                    return False
+    raise ValueError('Could not find out if the thread is open or closed')
+
+
+@dataclasses.dataclass
+class PageInformation:
+    tzinfo: zoneinfo.ZoneInfo
+    thread_is_open: bool
+
+
+def get_page_information_from_parsed_doc(doc: bs4.BeautifulSoup) -> PageInformation:
+    tzinfo = get_zoneinfo_from_parsed_doc(doc)
+    thread_is_open = get_thread_is_open_from_parsed_doc(doc)
+    return PageInformation(tzinfo, thread_is_open)
 
 
 def html_node_post_id(node: bs4.element.Tag) -> str:
@@ -324,10 +389,10 @@ def html_node_like_usernames(node: bs4.element.Tag) -> typing.List[pprune.common
     return ret
 
 
-def post_from_html_node(node: bs4.element.Tag, tz_info: zoneinfo.ZoneInfo) -> typing.Optional[
+def post_from_html_node(node: bs4.element.Tag, page_information: PageInformation) -> typing.Optional[
     pprune.common.thread_struct.Post]:
     """Returns a Post object from an HTML node."""
-    timestamp = html_node_date(node, tz_info)
+    timestamp = html_node_date(node, page_information.tzinfo)
     permalink = html_node_permalink(node)
     if permalink is None:
         logger.warning(f'No permalink extracted from node <{node.name} {node.attrs}>')
@@ -338,7 +403,9 @@ def post_from_html_node(node: bs4.element.Tag, tz_info: zoneinfo.ZoneInfo) -> ty
     sequence_number = html_node_post_number(node)
     liked_by_users = html_node_like_usernames(node)
     if sequence_number is not None:
-        post = pprune.common.thread_struct.Post(timestamp, permalink, user, post_node, sequence_number, liked_by_users)
+        post = pprune.common.thread_struct.Post(
+            timestamp, permalink, user, post_node, sequence_number, liked_by_users, page_information.thread_is_open,
+        )
         return post
 
 
@@ -398,10 +465,10 @@ def update_whole_thread(directory_name: str, thread: pprune.common.thread_struct
             with open(files[file_number], errors='backslashreplace') as file:
                 doc = bs4.BeautifulSoup(file.read(), 'html.parser')
                 post_nodes = get_post_nodes_from_parsed_doc(doc)
-                tz_info = get_zoneinfo_from_parsed_doc(doc)
+                page_information = get_page_information_from_parsed_doc(doc)
                 for post_node in post_nodes:
                     # print('Post: %d' % i)
-                    post = post_from_html_node(post_node, tz_info)
+                    post = post_from_html_node(post_node, page_information)
                     if post is not None:
                         thread.add_post(post)
                         post_count += 1

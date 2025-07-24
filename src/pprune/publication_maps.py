@@ -333,6 +333,8 @@ class AirIndia171(PublicationMap):
         'NM1833': 'SAIB NM-18-33',
         'WSJ': 'Wall Street Journal',
         'G650': 'G650 Simulation',
+        'FCS': 'Fuel Cutoff Switches',
+        'FCO': 'Fuel Cutoff Switches',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps

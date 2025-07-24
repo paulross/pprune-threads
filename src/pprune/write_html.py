@@ -595,6 +595,10 @@ def write_index_page(
                     index.write(' NOTE: No AI was used during this.')
                 # Write table of informational data.
                 posts_inc, posts_exc = get_count_of_posts_included(thread, pass_one_result.subject_post_map)
+                posts_in_open_threads = 0
+                for post in thread.posts:
+                    if post.thread_is_open:
+                        posts_in_open_threads += 1
                 with element(index, 'table', _class="indextable"):
                     with element(index, 'tr'):
                         with element(index, 'th'):
@@ -606,6 +610,22 @@ def write_index_page(
                             index.write('Total posts')
                         with element(index, 'td', _class='indextable'):
                             index.write(f'{len(thread)}')
+                    with element(index, 'tr'):
+                        with element(index, 'td', _class='indextable'):
+                            index.write('Posts in currently open threads')
+                        with element(index, 'td', _class='indextable'):
+                            index.write(
+                                f'{posts_in_open_threads}'
+                                f' ({posts_in_open_threads / len(thread):.1%})'
+                            )
+                    with element(index, 'tr'):
+                        with element(index, 'td', _class='indextable'):
+                            index.write('Posts in currently closed threads')
+                        with element(index, 'td', _class='indextable'):
+                            index.write(
+                                f'{len(thread) - posts_in_open_threads}'
+                                f' ({(len(thread) - posts_in_open_threads) / len(thread):.1%})'
+                            )
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Posts included')
@@ -746,12 +766,19 @@ def write_a_subject_page(
                                     out_file.write(' Post: {:d}'.format(post.sequence_num))
                                 with element(out_file, 'td', _class="post"):
                                     out_file.write(post.node.prettify(formatter='html'))
-                                    if len(post.liked_by_users) == 1:
+                                    if post.thread_is_open:
+                                        if len(post.liked_by_users) == 1:
+                                            with element(out_file, 'p'):
+                                                with element(out_file, 'b'):
+                                                    out_file.write(f'{len(post.liked_by_users)} user liked this post.')
+                                        elif len(post.liked_by_users) > 1:
+                                            with element(out_file, 'p'):
+                                                with element(out_file, 'b'):
+                                                    out_file.write(f'{len(post.liked_by_users)} users liked this post.')
+                                    else:
                                         with element(out_file, 'p'):
-                                            out_file.write(f'{len(post.liked_by_users)} user liked this post.')
-                                    elif len(post.liked_by_users) > 1:
-                                        with element(out_file, 'p'):
-                                            out_file.write(f'{len(post.liked_by_users)} users liked this post.')
+                                            with element(out_file, 'b'):
+                                                out_file.write('The thread is closed so there are no user likes are available.')
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
