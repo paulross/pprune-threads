@@ -480,6 +480,20 @@ def test_html_page_get_zoneinfo_from_parsed_doc(page, expected):
     assert offset == expected
 
 
+@pytest.mark.parametrize(
+    'page, expected',
+    (
+            ('666472-plane-crash-near-ahmedabad.html', False),
+            ('666472-plane-crash-near-ahmedabad-2.html', False),
+            ('667131-up-votes-post_thanks-not-available-closed-threads.html', True),
+    )
+)
+def test_html_page_get_thread_is_open_from_parsed_doc(page, expected):
+    doc = read_html.parse_str_to_beautiful_soup(example_data.EXAMPLE_PAGES[page])
+    is_closed = read_html.get_thread_is_open_from_parsed_doc(doc)
+    assert is_closed == expected
+
+
 def test_html_node_permalink():
     file = io.StringIO(example_data.EXAMPLE_PAGES['666472-plane-crash-near-ahmedabad-2.html'])
     post_nodes = read_html.get_post_nodes_from_file(file)
