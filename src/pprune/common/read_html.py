@@ -124,8 +124,8 @@ def get_post_nodes_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[bs4.el
 
 
 def get_post_objects_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[pprune.common.thread_struct.Post]:
-    tz_info = get_zoneinfo_from_parsed_doc(doc)
-    return [post_from_html_node(node, tz_info) for node in get_post_nodes_from_parsed_doc(doc)]
+    page_information = get_page_information_from_parsed_doc(doc)
+    return [post_from_html_node(node, page_information) for node in get_post_nodes_from_parsed_doc(doc)]
 
 
 def get_thread_from_html_string(html_string: str) -> pprune.common.thread_struct.Thread:
