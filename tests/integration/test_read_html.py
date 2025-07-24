@@ -14,6 +14,60 @@ from pprune.common import thread_struct
 @pytest.mark.parametrize(
     'html_str, expected',
     (
+            (
+                    example_data.EXAMPLE_PAGES['example_page.html'],
+                    read_html.PageInformation(
+                        tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT'),
+                        thread_is_open=True,
+                        url_original='https://www.pprune.org/showthread.php?t=638797',
+                        url='https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html',
+                    ),
+            ),
+            (
+                    example_data.EXAMPLE_PAGES['example_page_four_posts.html'],
+                    read_html.PageInformation(
+                        tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT'),
+                        thread_is_open=False,
+                        url_original='https://www.pprune.org/showthread.php?t=639101',
+                        url='https://www.pprune.org/rumours-news/639101-a320-nose-gear-incident.html',
+                    ),
+            ),
+            (
+                    example_data.EXAMPLE_PAGES['666472-plane-crash-near-ahmedabad.html'],
+                    read_html.PageInformation(
+                        tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT'),
+                        thread_is_open=False,
+                        url_original='https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html',
+                        url='https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html',
+                    ),
+            ),
+            (
+                    example_data.EXAMPLE_PAGES['666472-plane-crash-near-ahmedabad-2.html'],
+                    read_html.PageInformation(
+                        tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT'),
+                        thread_is_open=False,
+                        url_original='https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html',
+                        url='https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-2.html',
+                    ),
+            ),
+    ),
+    ids=[
+        'example_page.html',
+        'example_page_four_posts.html',
+        '666472-plane-crash-near-ahmedabad.html',
+        '666472-plane-crash-near-ahmedabad-2.html',
+    ],
+)
+def test_get_page_information_from_parsed_doc(html_str, expected):
+    doc = read_html.parse_str_to_beautiful_soup(html_str)
+    result = read_html.get_page_information_from_parsed_doc(doc)
+    assert result is not None
+    assert result == expected
+
+
+@pytest.mark.parametrize(
+    'html_str, expected',
+    (
             (example_data.EXAMPLE_PAGES['example_page.html'], 20),
             (example_data.EXAMPLE_PAGES['example_page_four_posts.html'], 4),
             (example_data.EXAMPLE_PAGES['666472-plane-crash-near-ahmedabad.html'], 20),

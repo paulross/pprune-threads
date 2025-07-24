@@ -140,14 +140,39 @@ def get_thread_from_html_string(html_string: str) -> pprune.common.thread_struct
     return thread
 
 
-def get_page_url_parsed_doc(doc: bs4.BeautifulSoup) -> str:
-    """Find the page URL from the parsed document.
+def get_original_page_url_parsed_doc(doc: bs4.BeautifulSoup) -> str:
+    """Find the first page URL from the parsed document.
     This is from the meta element:
 
     <meta property="og:url" content="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html" />
     """
     node = doc.find('meta', **{'property': 'og:url', })
     return node.attrs['content']
+
+
+def get_page_url_parsed_doc(doc: bs4.BeautifulSoup) -> str:
+    """Find the URL from the parsed document.
+    Example:
+
+        <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-3.html" onclick="vB_Analytics.push(['event', {category: 'Breadcrumbs', action: 'reload', label: '1'}]);">
+            <img class="inlineimg" src="https://www.pprune.org/images/misc/navbits_finallink_ltr.gif" alt="Reload this Page" />
+        </a>
+
+    NOTE: We get the <img> as that is unique and then grab the parent <a>
+    """
+    node = doc.find('img', **{'class': 'inlineimg', })
+    if node is None:
+        raise ValueError('No image found')
+    if 'alt' not in node.attrs:
+        raise ValueError('<img> node does not have alt="Reload this Page"')
+    if node.attrs['alt'] != 'Reload this Page':
+        raise ValueError(f'<img alt="..."> node has unexpected alt="{node.attrs['alt']}"')
+    parent = node.parent
+    if parent is None:
+        raise ValueError('<img> node does not have a parent')
+    if parent.name != 'a':
+        raise ValueError(f'<img> node parent is not <a> but<{parent.name}>')
+    return parent.attrs['href']
 
 
 RE_GMT_TIME_ZONE_AND_TIME = re.compile(r'\s*All times are GMT(\s[-+]\d+)?. The time now is\s*(\d\d:\d\d)\s*\.\s*')
@@ -168,7 +193,7 @@ def get_zoneinfo_from_parsed_doc(doc: bs4.BeautifulSoup) -> zoneinfo.ZoneInfo:
     node = doc.find('div', **{'class': 'text-center clearfix', })
     if node is None:
         # raise ValueError('No node with GMT offset found')
-        logger.warning('Could not find timezone for page: %s', get_page_url_parsed_doc(doc))
+        logger.warning('Could not find timezone for page: %s', get_original_page_url_parsed_doc(doc))
         return zoneinfo.ZoneInfo('Etc/GMT')
     txt = node.text
     m = RE_GMT_TIME_ZONE_AND_TIME.match(txt)
@@ -224,6 +249,7 @@ def get_thread_is_open_from_parsed_doc(doc: bs4.BeautifulSoup) -> bool:
 
     NOTE: There are multiple <div class="flexitem"> in the document.
     """
+
     def get_node_text(node: bs4.element.Tag) -> str:
         if node:
             return node.text.strip()
@@ -236,9 +262,11 @@ def get_thread_is_open_from_parsed_doc(doc: bs4.BeautifulSoup) -> bool:
             nodes_a = node.find_all('a')
             for node_a in nodes_a:
                 txt = get_node_text(node_a)
-                if 'class' in node_a.attrs and node_a.attrs['class'] == ['button', 'medium', 'fixed-size', 'tertiary',] and txt == 'Reply':
+                if 'class' in node_a.attrs and node_a.attrs['class'] == ['button', 'medium', 'fixed-size',
+                                                                         'tertiary', ] and txt == 'Reply':
                     return True
-                if 'class' in node_a.attrs and node_a.attrs['class'] == ['button', 'medium', 'fixed-size', 'closed'] and txt == 'Closed Thread':
+                if 'class' in node_a.attrs and node_a.attrs['class'] == ['button', 'medium', 'fixed-size',
+                                                                         'closed'] and txt == 'Closed Thread':
                     return False
     raise ValueError('Could not find out if the thread is open or closed')
 
@@ -247,12 +275,16 @@ def get_thread_is_open_from_parsed_doc(doc: bs4.BeautifulSoup) -> bool:
 class PageInformation:
     tzinfo: zoneinfo.ZoneInfo
     thread_is_open: bool
+    url_original: str  # The URL of the start of the thread
+    url: str  # The URL of the page that this post appears on.
 
 
 def get_page_information_from_parsed_doc(doc: bs4.BeautifulSoup) -> PageInformation:
     tzinfo = get_zoneinfo_from_parsed_doc(doc)
     thread_is_open = get_thread_is_open_from_parsed_doc(doc)
-    return PageInformation(tzinfo, thread_is_open)
+    url_original = get_original_page_url_parsed_doc(doc)
+    url = get_page_url_parsed_doc(doc)
+    return PageInformation(tzinfo, thread_is_open, url_original, url)
 
 
 def html_node_post_id(node: bs4.element.Tag) -> str:

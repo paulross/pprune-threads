@@ -88,7 +88,7 @@ HTML_SINGLE_POST = """<!DOCTYPE html>
             <div class="trow thead smallfont">
                 <div class="tcell"  style="width:175px;">
                     <!-- status icon and date -->
-                    <a name="post11898940"><img class="inlineimg" src="https://www.pprune.org/images/statusicon/post_old.gif" alt="Old" /></a>
+                    <a name="post11898940" href="foo/bar/baz"><img class="inlineimg" src="https://www.pprune.org/images/statusicon/post_old.gif" alt="Reload this Page" /></a>
                     12th Jun 2025, 09:35
                     
                     <!-- / status icon and date -->
