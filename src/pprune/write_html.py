@@ -775,6 +775,12 @@ def write_a_subject_page(
                                             with element(out_file, 'p'):
                                                 with element(out_file, 'b'):
                                                     out_file.write(f'{len(post.liked_by_users)} users liked this post.')
+                                        with element(out_file, 'p'):
+                                            # https://www.pprune.org/newreply.php?do=newreply&p=11926646
+                                            target_url = f'https://www.pprune.org/newreply.php?do=newreply&p={post.sequence_num}'
+                                            with element(out_file, 'a', href=target_url):
+                                                out_file.write(f'Reply to this quoting this original post.')
+                                            out_file.write('You need to be logged in. Not available on closed threads.')
                                     else:
                                         with element(out_file, 'p'):
                                             with element(out_file, 'b'):
