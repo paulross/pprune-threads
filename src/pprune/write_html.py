@@ -50,11 +50,13 @@ PAGE_LINK_COUNT = 10
 
 
 def get_out_path(thread: str):
+    """Return the path of the output directory for the given thread."""
     return os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir, 'gh-pages', thread))
 
 
 @contextmanager
 def element(_stream, _name, **attributes):
+    """Simple context manager for XML elements."""
     _stream.write('<{}'.format(_name))
     # Sort attributes: {true_name : attribute key, ...}
     attr_dict = {}
@@ -99,6 +101,7 @@ def format_timedelta(td: datetime.timedelta) -> str:
 
 
 class PassOneResult:
+    """Collects together some data structures that are used when creating the final output."""
     def __init__(self):
         # Map of {subject: [post_index in Thread.posts, ...], ...}
         self.subject_post_map: typing.Dict[str, typing.List[int]] = {}
@@ -162,6 +165,7 @@ def pass_one(
         subjects |= dupe_subjects
         subjects -= publication_map.get_set_of_removed_subjects()
         pass_one_result.add_subject_post(subjects, i, post.sequence_num, post.user.name.strip())
+    # Sanity check, warn if there is a subject with no posts referring to it.
     all_subject_titles = publication_map.get_all_subject_titles()
     for subject_title in sorted(all_subject_titles):
         if subject_title not in pass_one_result.subject_post_map:
@@ -183,9 +187,10 @@ def pass_one(
 
 
 def _page_name(subject, page_num):
+    """Creates a name for a page, removing punctuation with '-', replacing spaces with '_' and
+    appending the page number."""
     result = subject.translate(PUNCTUATION_TABLE) + '{:d}.html'.format(page_num)
     result = result.replace(' ', '_')
-    # print(subject, '->' , result)
     return result
 
 
@@ -265,18 +270,11 @@ def write_index_removed_subjects(
         publication_map: publication_maps.PublicationMap,
         index: typing.TextIO,
 ):
-    """If there are removed subjects then list them here."""
+    """If there are removed subjects then list them here in tabular form."""
     removed_subjects = sorted(publication_map.get_set_of_removed_subjects())
     if removed_subjects:
         with element(index, 'h1', **{'id': 'removed_subjects'}):
             index.write('Removed Subjects')
-        # with element(index, 'p'):
-        #     index.write(f'These {len(removed_subjects)} subjects have been removed: ')
-        #     index.write(
-        #         ', '.join(
-        #             [f'"{s}"' for s in removed_subjects]
-        #         )
-        #     )
         with element(index, 'p'):
             index.write('These are subjects that have been removed from previous versions of this build.')
         with element(index, 'table', _class="indextable"):
@@ -364,6 +362,7 @@ def write_index_most_upvoted_posts_table(
 
 
 def _write_table_header(headers: typing.List[str], index: typing.TextIO):
+    """Write the header row with <th> elements."""
     with element(index, 'tr'):
         for header in headers:
             with element(index, 'th', _class='indextable'):
@@ -552,6 +551,7 @@ def write_index_page(
         publication_map: publication_maps.PublicationMap,
         out_path: str,
 ):
+    """Write the index.html page."""
     if not os.path.exists(out_path):
         os.mkdir(out_path)
     styles.writeCssToDir(out_path)
@@ -572,10 +572,9 @@ def write_index_page(
                 with element(index, 'p'):
                     index.write(publication_map.get_introduction_in_html())
                 with element(index, 'p'):
-                    index.write(f"""    
-        These threads have {len(thread)} posts.
-        Naturally enough it is ordered in time of each post but since it covers
-        so many subjects it is a little hard to follow any particular subject.
+                    index.write(f"""These threads have {len(thread)} posts.
+Naturally enough it is ordered in time of each post but since it covers
+so many subjects it is a little hard to follow any particular subject.
 """)
 
                 with element(index, 'p'):
