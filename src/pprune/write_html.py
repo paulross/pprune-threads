@@ -121,6 +121,14 @@ class PassOneResult:
             sequence_num: int,
             user_name: str,
     ) -> None:
+        """Adds information about a post. Populated by pass_one().
+
+        :param subjects: The set of subjects this post is categorised in.
+        :param post_index: The index of the post in the thread.
+        :param sequence_num: The pprune sequence number of the post. This is unique to pprune.
+        :param user_name: The name of the user.
+        :return: None
+        """
         for subject in subjects:
             if subject not in self.subject_post_map:
                 self.subject_post_map[subject] = []
@@ -130,7 +138,7 @@ class PassOneResult:
         self.user_ordinal_map[user_name.strip()].append(post_index)
 
     def add_sequence_num_subject_link(self, sequence_num: int, subject: str, link: str) -> None:
-        """Populated by write_a_subject_page()."""
+        """Populated by pass_one()."""
         self.sequence_num_subject_link_map[(sequence_num, subject)] = link
 
 
@@ -171,16 +179,16 @@ def pass_one(
         if subject_title not in pass_one_result.subject_post_map:
             logger.warning('No post with subject title "%s"', subject_title)
     # Add the links from the message sequence number + subject to the planned subject page.
-    for subject_title_has_posts in pass_one_result.subject_post_map.keys():
-        _posts = pass_one_result.subject_post_map[subject_title_has_posts]
-        pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
+    for subject_title in pass_one_result.subject_post_map.keys():
+        post_indicies = pass_one_result.subject_post_map[subject_title]
+        pages = [post_indicies[i:i + POSTS_PER_PAGE] for i in range(0, len(post_indicies), POSTS_PER_PAGE)]
         for page_index, page in enumerate(pages):
             for post_index in page:
                 post = thread.posts[post_index]
                 pass_one_result.add_sequence_num_subject_link(
                     post.sequence_num,
-                    subject_title_has_posts,
-                    f'{_page_name(subject_title_has_posts, page_index)}#{post.sequence_num}',
+                    subject_title,
+                    f'{_page_name(subject_title, page_index)}#{post.sequence_num}',
                 )
     logger.info('Pass one complete in %.3f (s)', time.perf_counter() - t_start)
     return pass_one_result
