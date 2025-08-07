@@ -102,6 +102,7 @@ class Post:
     #   )
     sequence_num: int
     liked_by_users: typing.List[User]
+    thread_is_open: bool
 
     def __post_init__(self):
         """Do some sanity checking on the node.
