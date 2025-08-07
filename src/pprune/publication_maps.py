@@ -505,6 +505,7 @@ class AirIndia171(PublicationMap):
             ('51', 'days',): '51 Day Issue',
 
             ('action', 'slip',): 'Action slip',
+            ('action', 'slips',): 'Action slip',
 
             ('human', 'error',): 'Human Factors',
             ('human', 'factor',): 'Human Factors',
@@ -526,6 +527,7 @@ class AirIndia171(PublicationMap):
             ('third', 'pilot',): 'Jump Seat',
             ('third', 'body',): 'Jump Seat',
             ('third', 'seat',): 'Jump Seat',
+            ('channel', '4',): 'Channel 4',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
