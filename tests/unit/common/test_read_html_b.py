@@ -62,7 +62,18 @@ def test_RE_FILENAME(filename, expected):
 # Taken from tests/integration/example_pages/666472-plane-crash-near-ahmedabad-2.html with tabs replaced by '    '.
 HTML_SINGLE_POST = """<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en" class="no-js">
+<meta property="og:url" content="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html" />
 <body>
+        <!-- controls above postbits -->
+        <div class="flexitem">
+            <div>
+                <a href="https://www.pprune.org/newreply.php?do=newreply&amp;noquote=1&amp;p=11919549" rel="nofollow" class="button medium fixed-size tertiary" rel="nofollow"><i class="fa-solid fa-reply"></i> Reply</a>
+                <a href="https://www.pprune.org/subscription.php?do=addsubscription&amp;t=667131" rel="nofollow" class="button medium primary" rel="nofollow">Subscribe <i class="fa-solid fa-bell"></i></a>
+            </div>
+            <div></div>
+        </div>
+        <!-- / controls above postbits -->
+
                     <!-- post #11898940 -->
 
 <div id="edit11898940">
@@ -77,7 +88,7 @@ HTML_SINGLE_POST = """<!DOCTYPE html>
             <div class="trow thead smallfont">
                 <div class="tcell"  style="width:175px;">
                     <!-- status icon and date -->
-                    <a name="post11898940"><img class="inlineimg" src="https://www.pprune.org/images/statusicon/post_old.gif" alt="Old" /></a>
+                    <a name="post11898940" href="foo/bar/baz"><img class="inlineimg" src="https://www.pprune.org/images/statusicon/post_old.gif" alt="Reload this Page" /></a>
                     12th Jun 2025, 09:35
                     
                     <!-- / status icon and date -->
@@ -432,10 +443,10 @@ def test_html_node_like_usernames(html_str, node_id, expected):
 def test_post_node_text_without_quoted_message(html_str, node_id, expected_txt, expected_txt_no_quote):
     doc = read_html.parse_str_to_beautiful_soup(html_str)
     assert doc is not None
-    tz_info = read_html.get_zoneinfo_from_parsed_doc(doc)
+    page_information = read_html.get_page_information_from_parsed_doc(doc)
     post_node = doc.find('div', id=f'edit{node_id}')
     assert post_node is not None
-    post = read_html.post_from_html_node(post_node, tz_info)
+    post = read_html.post_from_html_node(post_node, page_information)
     assert post is not None
     txt = post.text_stripped
     assert txt == expected_txt
@@ -455,8 +466,8 @@ def test_post_node_text_without_quoted_message(html_str, node_id, expected_txt, 
 def test_read_post_node(html_str, node_id, expected):
     doc = read_html.parse_str_to_beautiful_soup(html_str)
     assert doc is not None
-    tz_info = read_html.get_zoneinfo_from_parsed_doc(doc)
+    page_information = read_html.get_page_information_from_parsed_doc(doc)
     post_node = doc.find('div', id=f'edit{node_id}')
     assert post_node is not None
-    post = read_html.post_from_html_node(post_node, tz_info)
+    post = read_html.post_from_html_node(post_node, page_information)
     assert post is not None

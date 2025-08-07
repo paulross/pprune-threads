@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune Fuel Cutoff Switches name=keywords></meta>
 <link href=styles.css rel=stylesheet type=text/css></link>
 </head>
-<body><h1>Posts about: "Fuel Cutoff Switches" [Posts: 802 Pages: 41]</h1>
+<body><h1>Posts about: "Fuel Cutoff Switches" [Posts: 827 Pages: 42]</h1>
 <p class=page_links>Page Links:&nbsp;<a href=Fuel_Cutoff_Switches0.html>First</a>
 &nbsp;<a href=Fuel_Cutoff_Switches2.html>Previous</a>
 &nbsp;<a href=Fuel_Cutoff_Switches0.html>1</a>
@@ -20,10 +20,179 @@
 &nbsp;<a href=Fuel_Cutoff_Switches12.html>13</a>
 &nbsp;<a href=Fuel_Cutoff_Switches13.html>14</a>
 &nbsp;<a href=Fuel_Cutoff_Switches4.html>Next</a>
-&nbsp;<a href=Fuel_Cutoff_Switches40.html>Last</a>
+&nbsp;<a href=Fuel_Cutoff_Switches41.html>Last</a>
 &nbsp;<a href=index.html>Index Page</a>
 </p>
-<table class=posts><tr id=11902144 valign=top><td class=post><a href=https://www.pprune.org/members/43402-icarus2001>Icarus2001</a>
+<table class=posts><tr id=11902102 valign=top><td class=post><a href=https://www.pprune.org/members/554803-someone-somewhere>Someone Somewhere</a>
+<br/>June 15, 2025, 04:53:00 GMT<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-67.html#post11902102><br/>permalink</a>
+ Post: 11902102</td>
+<td class=post><div class="tcell alt1" id="td_post_11902102">
+ <!-- message -->
+ <div id="post_message_11902102">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      MaybeItIs
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-87.html#post11902086" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Ok, thanks for clarifying. Of course, an overload will simply cause the hydraulic pressure relief valves to activate. There will be a moderate increase in motor current when bypassing, but the electrical side should be fully able to cope with that. Should be! I'm suggesting here that there was a fault somewhere in the electrical supplies that effectively derated some part of it, and that maybe the GearUp load was too much for it on this occasion.
+    </div>
+   </div>
+  </div>
+  This is a constant-pressure hydraulic system, not a little hydraulic ram on a logsplitter. While I assume there are some overpressure relief valves, they're not relevant here.
+  <br/>
+  <br/>
+  It uses a variable displacement pump to maintain 5000PSI constant pressure. The swashplate angle is varied to adjust pump output flow: more devices consuming fluid, more flow to keep the pressure up. If the pumps cannot deliver enough fluid, the swashplate reaches the full flow position and the output pressure decreases until flow consumed equals flow produced. Very much like a constant-current constant-voltage power supply.
+  <br/>
+  <br/>
+  Running in that area of maximum flow is 100% expected under some conditions, especially if an engine or EDP fails and the electric demand pump is supplying a whole hydraulic system sized for the larger EDP (although I think this would be less of an issue on the 787 as the L/R systems don't do much, but the same variable-displacement pump design has been around for a LONG time including on the 737).
+  <br/>
+  <br/>
+  And again, there's a VFD between the aircraft electrical bus and the pump motor, because the pump is 400Hz and the aircraft is wild-frequency. VFDs are very very good at isolating faults unless you are actually looking at a sustained overload on
+  <i>
+   one of four generators
+  </i>
+  .
+  <br/>
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    Thanks for confirming the 4 gens. So there's probably quite a bit of switching required. Not sure how that's done, but I guess robust contactors are required. And even these can fail. Systems usually cannot tell that a contactor has failed on the open side until it's switched. So, a switchover may have been done, but a failed contact meant the backup generator wasn't connected. Who knows, so many possibilities.
+   </div>
+  </div>
+  Virtually every bus will have a feed and one or more cross-ties or back-feeds. A failed contactor is 100% designed for and with possibly the sole exception of RAT-only flight, entirely designed around. Plus, of course, flight on batteries only or PMGs.
+  <br/>
+  <br/>
+  No bus is essential on a modern aircraft.
+  <br/>
+  <br/>
+  Boeing treats everything electric as a black box but the A380 has this beautifully overkill drawing - given both have 4x generators, 2x APU generators, and a RAT, it should not be entirely dissimilar levels of redundancy:
+  <br/>
+  <img alt="" class="post_inline_image" src="https://cimg2.ibsrv.net/gimg/pprune.org-vbulletin/647x588/image_28431932c925c99d5fb7fef590cd5968e7f258fd.png"/>
+  <br/>
+  Note that the reason for some links having two contactors in series (e.g. BTC5/6 or BTC7) is because this is spread across two separate units, so that a fire and total loss of one leaves ~half the aircraft powered and totally flyable.
+  <br/>
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    Okay! Many thanks for that! Of course, it very much complicates the picture, and I'm very puzzled as to how the Fuel Cutoff Switches and Valves operate. Apparently, the TCAM system shuts off an errant engine on the ground at least, but my concern is not with the software but the hardware. It obviously has an Output going into the Fuel Shutoff system. If the TCAM unit loses power, can that output cause the Cutoff process (powered by the engine-dedicated generator) to be activated? I guess that's the $64 billion question, but if MCAS is any example, then: Probably!
+   </div>
+  </div>
+  As per TDR, built into the FADEC logic.
+  <br/>
+  <br/>
+  Power-open power-close is very common in commercial/situations where you don't want to be wasting energy 24/7 and don't have a defined position for the valve/damper in case of power loss. Done a bunch of them in ductwork and electrically operated windows - your car likely has them, for example.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Someone Somewhere; 15th June 2025 at
+   <span class="time">
+    05:08
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
+</td>
+</tr>
+<tr id=11902135 valign=top><td class=post><a href=https://www.pprune.org/members/545237-maybeitis>MaybeItIs</a>
+<br/>June 15, 2025, 06:09:00 GMT<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-68.html#post11902135><br/>permalink</a>
+ Post: 11902135</td>
+<td class=post><div class="tcell alt1" id="td_post_11902135">
+ <!-- message -->
+ <div id="post_message_11902135">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Icarus2001
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-87.html#post11902106" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     No evidence of engine failure
+     <br/>
+     <br/>
+     No evidence of RAT deployment from a poor image.
+     <br/>
+     <br/>
+     No evidence of electrical failure.
+     <br/>
+     <br/>
+     The teams of lawyers in the UK representing 53 grieving families will be working over the weekend to sign up said families to a class action.
+     <br/>
+     <br/>
+     &ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;This is going to get messy.
+     <br/>
+     &ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;&ZeroWidthSpace;
+    </div>
+   </div>
+  </div>
+  I guess it all depends on what you mean!
+  <br/>
+  <br/>
+  If the fuel supplies were cut off, causing the engines to stop, is that engine
+  <b>
+   <i>
+    failure
+   </i>
+  </b>
+  ? I'd say not, nothing wrong with the engines until they impacted the buildings etc.
+  <br/>
+  <br/>
+  No evidence of RAT deployment - but you're specifically restricting "the evidence" to a blurry amateur video. That alone is not great evidence, but why does that video exist at all? When they lift the relevant section of fuselage, RAT deployment or not is going to be fairly apparent. And Circumstantial evidence is still evidence, no?
+  <br/>
+  <br/>
+  No evidence of electrical failure? Do you know that from the downloaded Flight Data?
+  <br/>
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
+</td>
+</tr>
+<tr id=11902144 valign=top><td class=post><a href=https://www.pprune.org/members/43402-icarus2001>Icarus2001</a>
 <br/>June 15, 2025, 06:31:00 GMT<a href=https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-68.html#post11902144><br/>permalink</a>
  Post: 11902144</td>
 <td class=post><div class="tcell alt1" id="td_post_11902144">
@@ -77,6 +246,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11902155 valign=top><td class=post><a href=https://www.pprune.org/members/545237-maybeitis>MaybeItIs</a>
@@ -140,6 +311,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11902156 valign=top><td class=post><a href=https://www.pprune.org/members/488774-compton3fox>Compton3fox</a>
@@ -188,6 +361,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11902223 valign=top><td class=post><a href=https://www.pprune.org/members/305620-chuck-canuck>Chuck Canuck</a>
@@ -233,6 +408,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11902253 valign=top><td class=post><a href=https://www.pprune.org/members/79542-amsm01>amsm01</a>
@@ -287,6 +464,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11902405 valign=top><td class=post><a href=https://www.pprune.org/members/521016-kraftstoffvondesibel>Kraftstoffvondesibel</a>
@@ -354,6 +533,8 @@
  </div>
  <!-- / edit note -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11902503 valign=top><td class=post><a href=https://www.pprune.org/members/542081-marineengineer>MarineEngineer</a>
@@ -406,6 +587,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11902721 valign=top><td class=post><a href=https://www.pprune.org/members/34502-fdr>fdr</a>
@@ -454,6 +637,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11902745 valign=top><td class=post><a href=https://www.pprune.org/members/558854-stivo>Stivo</a>
@@ -502,6 +687,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11902791 valign=top><td class=post><a href=https://www.pprune.org/members/498890-alty7x7>Alty7x7</a>
@@ -560,6 +747,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11902882 valign=top><td class=post><a href=https://www.pprune.org/members/40191-captain-fishy>Captain Fishy</a>
@@ -605,6 +794,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11902967 valign=top><td class=post><a href=https://www.pprune.org/members/521016-kraftstoffvondesibel>Kraftstoffvondesibel</a>
@@ -663,6 +854,8 @@
  </div>
  <!-- / edit note -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11903011 valign=top><td class=post><a href=https://www.pprune.org/members/554611-muon71>Muon71</a>
@@ -711,6 +904,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11903125 valign=top><td class=post><a href=https://www.pprune.org/members/542656-mechpowi>mechpowi</a>
@@ -749,6 +944,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11903143 valign=top><td class=post><a href=https://www.pprune.org/members/183730-bakutteh>bakutteh</a>
@@ -769,6 +966,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11903270 valign=top><td class=post><a href=https://www.pprune.org/members/541552-lighttwin2>lighttwin2</a>
@@ -831,6 +1030,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11903323 valign=top><td class=post><a href=https://www.pprune.org/members/555005-pampel>pampel</a>
@@ -880,6 +1081,8 @@
  </div>
  <!-- / message -->
 </div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 <tr id=11903328 valign=top><td class=post><a href=https://www.pprune.org/members/488774-compton3fox>Compton3fox</a>
@@ -941,121 +1144,8 @@
  </div>
  <!-- / message -->
 </div>
-</td>
-</tr>
-<tr id=11903414 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
-<br/>June 12, 2025, 22:02:00 GMT<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903414><br/>permalink</a>
- Post: 11903414</td>
-<td class=post><div class="tcell alt1" id="td_post_11903414">
- <!-- icon and title -->
- <div class="smallfont">
-  <strong>
-   Air India Ahmedabad accident 12th June 2025 Part 2
-  </strong>
- </div>
- <hr>
-  <!-- / icon and title -->
-  <!-- message -->
-  <div id="post_message_11903414">
-   OK, I promised some informed speculation when I got back, so here goes:
-   <br>
-    Disclaimer: never worked the 787, so my detailed knowledge is a bit lacking.
-    <br>
-     <br>
-      First off, this is perplexing - especially if the RAT was deployed. There is no 'simple' explanation that I can come up with.
-      <br>
-       <br>
-        GEnx-1B engines have been exceptionally reliable, and the GE carbon composite fan blades are
-        <i>
-         very
-        </i>
-        robust and resistant to bird strike damage (about 15 years after the GE90 entry into service, I remember a GE boast that no GE90 (carbon composite) fan blades had needed to be scrapped due to damage (birdstrike, FOD, etc. - now that was roughly another 15 years ago, so is probably no longer true, but it shows just how robust the carbon composite blades are - far better than the more conventional titanium fan blades).
-        <br>
-         <br>
-          Not saying it wasn't somehow birdstrike related, just that is very unlikely (then again, all the other explanations I can come up with are also very unlikely
-          <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/icon_rolleyes.gif" title="Roll Eyes (Sarcastic)"/>
-          ).
-          <br/>
-          <br/>
-          Using improper temp when calculating TO performance - after some near misses, Boeing added logic that cross-compares multiple total temp probes - aircraft TAT (I think the 787 uses a single, dual element probe for aircraft TAT, but stand to be corrected) and the temp measured by the engine inlet probes - and puts up a message if they disagree by more than a few degree tolerance - so very, very unlikely.
-          <br/>
-          <br/>
-          N1 power setting is somewhat less prone to measurement and power setting errors than EPR (N1 is a much simpler measurement than Rolls EPR) - although even with EPR, problems on both engines at the same time is almost unheard of.
-          <br/>
-          <br/>
-          The Auto Thrust (autothrottle) function 'falls asleep' at 60 knots - and doesn't unlock until one of several things happens - 250 knots, a set altitude AGL is exceeded (I'm thinking 3,000 ft. but the memory is fuzzy), thrust levers are moved more than a couple of degrees, or the mode select is changed (memory says that last one is inhibited below 400 ft. AGL). So an Auto Thrust malfunction is also extremely unlikely. Further, a premature thrust lever retard would not explain a RAT deployment.
-          <br/>
-          <br/>
-          TO does seem to be very late in the takeoff role - even with a big derate, you still must accelerate fast enough to reach V1 with enough runway to stop - so there is still considerable margin if both engines are operating normally. That makes me wonder if they had the correct TO power setting - but I'm at a loss to explain how they could have fouled that up with all the protections that the 787 puts on that.
-          <br/>
-          <br/>
-          If one engine did fail after V1, it's conceivable that they shut down the wrong engine - but since this happened literally seconds after takeoff, it begs the question why they would be in a big hurry to shut down the engine. Short of an engine fire, there is nothing about an engine failure that requires quick action to shut it down - no evidence of an engine fire, and even with an engine fire, you normally have minutes to take action - not seconds.
-          <br/>
-          <br/>
-          The one thing I keep thinking about is someone placing both fuel switches to cutoff immediately after TO. Yes, it's happened before (twice - 767s in the early 1980s), but the root causes of that mistake are understood and have been corrected. Hard to explain how it could happen (unless, God forbid, it was intentional).
-         </br>
-        </br>
-       </br>
-      </br>
-     </br>
-    </br>
-   </br>
-  </div>
-  <!-- / message -->
- </hr>
-</div>
-</td>
-</tr>
-<tr id=11903415 valign=top><td class=post><a href=https://www.pprune.org/members/414340-tdracer>tdracer</a>
-<br/>June 13, 2025, 02:18:00 GMT<a href=https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html#post11903415><br/>permalink</a>
- Post: 11903415</td>
-<td class=post><div class="tcell alt1" id="td_post_11903415">
- <!-- message -->
- <div id="post_message_11903415">
-  <div style="margin:1rem; margin-top:0.3rem;">
-   <div>
-    <label>
-     Quote:
-    </label>
-   </div>
-   <div class="panel alt2" style="border:1px inset">
-    <div>
-     Originally Posted by
-     <strong>
-      Sailvi767
-     </strong>
-     <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-87.html#post11899917" rel="nofollow" title="View Post">
-      <i class="fa-solid fa-circle-arrow-right">
-      </i>
-     </a>
-    </div>
-    <div style="font-style:italic">
-     Delta airlines had a Captain do this in 1986 on a 757 out of LAX. Came within a few hundred feet of ditching. Then flew all the way to CVG with the rat hanging out!
-    </div>
-   </div>
-  </div>
-  Not 757 - it was a 767. Second time it happened in about 12 months.
-  <br/>
-  <br/>
-  Determined to be an ergonomics problem with the switch layout in the flightdeck.
-  <br/>
-  <br/>
-  Early 767s (JT9D and CF6-80A) had a supervisory "EEC" (Electronic Engine Control - Boeing still uses "EEC" to identify what most people call the FADEC on modern engines). The procedure if an EEC 'failed' was to switch both EECs off (to prevent excessive throttle stagger - unlike FADEC, the engine could operate just fine with a supervisory EEC failed).
-  <br/>
-  <br/>
-  Problem was that the EEC ON/OFF switch was located on the aisle stand - right above the fuel cutoff switches. Turned out 'muscle memory' was when the pilot reached down there, it was usually to turn the fuel ON or OFF - which is what they did. Fortunately realizing what he'd done wrong, the pilot quickly restored the switches to RUN and both engines recovered. And yes, they continued on to their destination (RAT was still deployed since there is no way to retract it in-flight).
-  <br/>
-  <br/>
-  Previous event was with JT9D engines (United IIRC). In that case, only one engine recovered (second engine went into an unrecoverable stall), they simply came back around and did a single engine landing.
-  <br/>
-  <br/>
-  Realizing the ergonomic issue, the EECs were relocated to the pilot's overhead (retrofit by AD).
-  <br/>
-  <br/>
-  To the best of my knowledge, there hasn't been a repeat of an inadvertent dual engine shutdown since the EEC switches were relocated. It's also very difficult to 'accidentally' move the switches as there is a locking detent - the switch must be pulled out slightly before it can be moved to CUTOFF.
- </div>
- <!-- / message -->
-</div>
+<p><b>The thread is closed so there are no user likes are available.</b>
+</p>
 </td>
 </tr>
 </table>
@@ -1077,7 +1167,7 @@
 &nbsp;<a href=Fuel_Cutoff_Switches12.html>13</a>
 &nbsp;<a href=Fuel_Cutoff_Switches13.html>14</a>
 &nbsp;<a href=Fuel_Cutoff_Switches4.html>Next</a>
-&nbsp;<a href=Fuel_Cutoff_Switches40.html>Last</a>
+&nbsp;<a href=Fuel_Cutoff_Switches41.html>Last</a>
 &nbsp;<a href=index.html>Index Page</a>
 </p>
 </body>
