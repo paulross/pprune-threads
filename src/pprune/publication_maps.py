@@ -333,6 +333,8 @@ class AirIndia171(PublicationMap):
         'NM1833': 'SAIB NM-18-33',
         'WSJ': 'Wall Street Journal',
         'G650': 'G650 Simulation',
+        'FCS': 'Fuel Cutoff Switches',
+        'FCO': 'Fuel Cutoff Switches',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lower case unless all caps
@@ -503,6 +505,7 @@ class AirIndia171(PublicationMap):
             ('51', 'days',): '51 Day Issue',
 
             ('action', 'slip',): 'Action slip',
+            ('action', 'slips',): 'Action slip',
 
             ('human', 'error',): 'Human Factors',
             ('human', 'factor',): 'Human Factors',
@@ -524,6 +527,7 @@ class AirIndia171(PublicationMap):
             ('third', 'pilot',): 'Jump Seat',
             ('third', 'body',): 'Jump Seat',
             ('third', 'seat',): 'Jump Seat',
+            ('channel', '4',): 'Channel 4',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -641,3 +645,51 @@ class AirIndia171(PublicationMap):
         ('NTSB chair Jennifer Homendy on the Preliminary Report', 11925921,),
         ('The International Federation of Air Line Pilots\' Associations on the Preliminary Report', 11925980,),
     )
+
+
+class Example(PublicationMap):
+    def get_title(self) -> str:
+        return ''
+
+    def get_introduction_in_html(self) -> str:
+        return """"""
+
+    def get_lowercase_word_to_subject_map(self) -> typing.Dict[str, str]:
+        return {}
+
+    def get_uppercase_word_to_subject_map(self) -> typing.Dict[str, str]:
+        return {}
+
+    def get_phrase_lengths(self) -> typing.List[int]:
+        return []
+
+    def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[str, str]:
+        return {}
+
+    def get_specific_posts_to_subject_map(self) -> typing.Dict[int, str]:
+        return {}
+
+    def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
+        return set()
+
+    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, int]]:
+        return tuple()
+
+    def get_set_of_words_required(self) -> typing.Set[str]:
+        return set()
+
+    def get_number_of_top_authors(self) -> int:
+        return 30
+
+    def get_upvoted_post_count_limit(self) -> int:
+        return 25
+
+    def get_upvoted_post_text_limit(self) -> int:
+        return 150
+
+    def get_minimum_number_username_posts(self) -> int:
+        """The minimum number of posts a user has mad to get a page with all their posts."""
+        return 5
+
+    def get_set_of_removed_subjects(self) -> typing.Set[str]:
+        return {}

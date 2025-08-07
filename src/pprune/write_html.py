@@ -50,11 +50,13 @@ PAGE_LINK_COUNT = 10
 
 
 def get_out_path(thread: str):
+    """Return the path of the output directory for the given thread."""
     return os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir, 'gh-pages', thread))
 
 
 @contextmanager
 def element(_stream, _name, **attributes):
+    """Simple context manager for XML elements."""
     _stream.write('<{}'.format(_name))
     # Sort attributes: {true_name : attribute key, ...}
     attr_dict = {}
@@ -99,6 +101,7 @@ def format_timedelta(td: datetime.timedelta) -> str:
 
 
 class PassOneResult:
+    """Collects together some data structures that are used when creating the final output."""
     def __init__(self):
         # Map of {subject: [post_index in Thread.posts, ...], ...}
         self.subject_post_map: typing.Dict[str, typing.List[int]] = {}
@@ -118,6 +121,14 @@ class PassOneResult:
             sequence_num: int,
             user_name: str,
     ) -> None:
+        """Adds information about a post. Populated by pass_one().
+
+        :param subjects: The set of subjects this post is categorised in.
+        :param post_index: The index of the post in the thread.
+        :param sequence_num: The pprune sequence number of the post. This is unique to pprune.
+        :param user_name: The name of the user.
+        :return: None
+        """
         for subject in subjects:
             if subject not in self.subject_post_map:
                 self.subject_post_map[subject] = []
@@ -127,7 +138,7 @@ class PassOneResult:
         self.user_ordinal_map[user_name.strip()].append(post_index)
 
     def add_sequence_num_subject_link(self, sequence_num: int, subject: str, link: str) -> None:
-        """Populated by write_a_subject_page()."""
+        """Populated by pass_one()."""
         self.sequence_num_subject_link_map[(sequence_num, subject)] = link
 
 
@@ -162,30 +173,32 @@ def pass_one(
         subjects |= dupe_subjects
         subjects -= publication_map.get_set_of_removed_subjects()
         pass_one_result.add_subject_post(subjects, i, post.sequence_num, post.user.name.strip())
+    # Sanity check, warn if there is a subject with no posts referring to it.
     all_subject_titles = publication_map.get_all_subject_titles()
     for subject_title in sorted(all_subject_titles):
         if subject_title not in pass_one_result.subject_post_map:
             logger.warning('No post with subject title "%s"', subject_title)
     # Add the links from the message sequence number + subject to the planned subject page.
-    for subject_title_has_posts in pass_one_result.subject_post_map.keys():
-        _posts = pass_one_result.subject_post_map[subject_title_has_posts]
-        pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
+    for subject_title in pass_one_result.subject_post_map.keys():
+        post_indicies = pass_one_result.subject_post_map[subject_title]
+        pages = [post_indicies[i:i + POSTS_PER_PAGE] for i in range(0, len(post_indicies), POSTS_PER_PAGE)]
         for page_index, page in enumerate(pages):
             for post_index in page:
                 post = thread.posts[post_index]
                 pass_one_result.add_sequence_num_subject_link(
                     post.sequence_num,
-                    subject_title_has_posts,
-                    f'{_page_name(subject_title_has_posts, page_index)}#{post.sequence_num}',
+                    subject_title,
+                    f'{_page_name(subject_title, page_index)}#{post.sequence_num}',
                 )
     logger.info('Pass one complete in %.3f (s)', time.perf_counter() - t_start)
     return pass_one_result
 
 
 def _page_name(subject, page_num):
+    """Creates a name for a page, removing punctuation with '-', replacing spaces with '_' and
+    appending the page number."""
     result = subject.translate(PUNCTUATION_TABLE) + '{:d}.html'.format(page_num)
     result = result.replace(' ', '_')
-    # print(subject, '->' , result)
     return result
 
 
@@ -265,18 +278,11 @@ def write_index_removed_subjects(
         publication_map: publication_maps.PublicationMap,
         index: typing.TextIO,
 ):
-    """If there are removed subjects then list them here."""
+    """If there are removed subjects then list them here in tabular form."""
     removed_subjects = sorted(publication_map.get_set_of_removed_subjects())
     if removed_subjects:
         with element(index, 'h1', **{'id': 'removed_subjects'}):
             index.write('Removed Subjects')
-        # with element(index, 'p'):
-        #     index.write(f'These {len(removed_subjects)} subjects have been removed: ')
-        #     index.write(
-        #         ', '.join(
-        #             [f'"{s}"' for s in removed_subjects]
-        #         )
-        #     )
         with element(index, 'p'):
             index.write('These are subjects that have been removed from previous versions of this build.')
         with element(index, 'table', _class="indextable"):
@@ -364,6 +370,7 @@ def write_index_most_upvoted_posts_table(
 
 
 def _write_table_header(headers: typing.List[str], index: typing.TextIO):
+    """Write the header row with <th> elements."""
     with element(index, 'tr'):
         for header in headers:
             with element(index, 'th', _class='indextable'):
@@ -552,6 +559,7 @@ def write_index_page(
         publication_map: publication_maps.PublicationMap,
         out_path: str,
 ):
+    """Write the index.html page."""
     if not os.path.exists(out_path):
         os.mkdir(out_path)
     styles.writeCssToDir(out_path)
@@ -572,10 +580,9 @@ def write_index_page(
                 with element(index, 'p'):
                     index.write(publication_map.get_introduction_in_html())
                 with element(index, 'p'):
-                    index.write(f"""    
-        These threads have {len(thread)} posts.
-        Naturally enough it is ordered in time of each post but since it covers
-        so many subjects it is a little hard to follow any particular subject.
+                    index.write(f"""These threads have {len(thread)} posts.
+Naturally enough it is ordered in time of each post but since it covers
+so many subjects it is a little hard to follow any particular subject.
 """)
 
                 with element(index, 'p'):
@@ -595,6 +602,10 @@ def write_index_page(
                     index.write(' NOTE: No AI was used during this.')
                 # Write table of informational data.
                 posts_inc, posts_exc = get_count_of_posts_included(thread, pass_one_result.subject_post_map)
+                posts_in_open_threads = 0
+                for post in thread.posts:
+                    if post.thread_is_open:
+                        posts_in_open_threads += 1
                 with element(index, 'table', _class="indextable"):
                     with element(index, 'tr'):
                         with element(index, 'th'):
@@ -606,6 +617,22 @@ def write_index_page(
                             index.write('Total posts')
                         with element(index, 'td', _class='indextable'):
                             index.write(f'{len(thread)}')
+                    with element(index, 'tr'):
+                        with element(index, 'td', _class='indextable'):
+                            index.write('Posts in currently open threads')
+                        with element(index, 'td', _class='indextable'):
+                            index.write(
+                                f'{posts_in_open_threads}'
+                                f' ({posts_in_open_threads / len(thread):.1%})'
+                            )
+                    with element(index, 'tr'):
+                        with element(index, 'td', _class='indextable'):
+                            index.write('Posts in currently closed threads')
+                        with element(index, 'td', _class='indextable'):
+                            index.write(
+                                f'{len(thread) - posts_in_open_threads}'
+                                f' ({(len(thread) - posts_in_open_threads) / len(thread):.1%})'
+                            )
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Posts included')
@@ -746,12 +773,25 @@ def write_a_subject_page(
                                     out_file.write(' Post: {:d}'.format(post.sequence_num))
                                 with element(out_file, 'td', _class="post"):
                                     out_file.write(post.node.prettify(formatter='html'))
-                                    if len(post.liked_by_users) == 1:
+                                    if post.thread_is_open:
+                                        if len(post.liked_by_users) == 1:
+                                            with element(out_file, 'p'):
+                                                with element(out_file, 'b'):
+                                                    out_file.write(f'{len(post.liked_by_users)} user liked this post.')
+                                        elif len(post.liked_by_users) > 1:
+                                            with element(out_file, 'p'):
+                                                with element(out_file, 'b'):
+                                                    out_file.write(f'{len(post.liked_by_users)} users liked this post.')
                                         with element(out_file, 'p'):
-                                            out_file.write(f'{len(post.liked_by_users)} user liked this post.')
-                                    elif len(post.liked_by_users) > 1:
+                                            # https://www.pprune.org/newreply.php?do=newreply&p=11926646
+                                            target_url = f'https://www.pprune.org/newreply.php?do=newreply&p={post.sequence_num}'
+                                            with element(out_file, 'a', href=target_url):
+                                                out_file.write(f'Reply to this quoting this original post.')
+                                            out_file.write('You need to be logged in. Not available on closed threads.')
+                                    else:
                                         with element(out_file, 'p'):
-                                            out_file.write(f'{len(post.liked_by_users)} users liked this post.')
+                                            with element(out_file, 'b'):
+                                                out_file.write('The thread is closed so there are no user likes are available.')
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 

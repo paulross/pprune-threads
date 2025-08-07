@@ -27,6 +27,7 @@ __version__ = '0.0.1'
 __rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import argparse
+import dataclasses
 import datetime
 import logging
 import os
@@ -58,6 +59,7 @@ DIGITS_TABLE = str.maketrans({key: None for key in string.digits})
 
 def get_url_text(url: str) -> str:
     """Gets a URL as text.
+
     This SO question is useful:
     https://stackoverflow.com/questions/62599036/python-requests-is-slow-and-takes-very-long-to-complete-http-or-https-request
 
@@ -90,7 +92,7 @@ def parse_url_to_beautiful_soup(url: str) -> bs4.BeautifulSoup:
 
 
 def parse_str_to_beautiful_soup(content: str) -> bs4.BeautifulSoup:
-    """Parses a string as HTML."""
+    """Parses a string as an HTML DOM."""
     try:
         parse_tree = bs4.BeautifulSoup(content, features='lxml')
     except bs4.exceptions.FeatureNotFound:
@@ -100,7 +102,7 @@ def parse_str_to_beautiful_soup(content: str) -> bs4.BeautifulSoup:
 
 
 def get_post_nodes_from_file_path(file_path) -> typing.List[bs4.element.Tag]:
-    # doctext = open('423988-concorde-question-1.html', errors='backslashreplace').read()
+    """Returns a list of posts as HTML nodes from a file path."""
     with open(file_path, errors='backslashreplace') as f:
         return get_post_nodes_from_file(f)
 
@@ -113,6 +115,7 @@ def get_post_nodes_from_file(file: typing.TextIO) -> typing.List[bs4.element.Tag
 
 
 def get_post_nodes_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[bs4.element.Tag]:
+    """Given a parsed HTML document this returns a list of post nodes."""
     posts = doc.find('div', id='posts')
     if posts is None:
         raise ValueError('No posts found')
@@ -123,29 +126,61 @@ def get_post_nodes_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[bs4.el
 
 
 def get_post_objects_from_parsed_doc(doc: bs4.BeautifulSoup) -> typing.List[pprune.common.thread_struct.Post]:
-    return [post_from_html_node(node) for node in get_post_nodes_from_parsed_doc(doc)]
+    """Given a parsed HTML document this returns a list of posts."""
+    page_information = get_page_information_from_parsed_doc(doc)
+    return [post_from_html_node(node, page_information) for node in get_post_nodes_from_parsed_doc(doc)]
 
 
 def get_thread_from_html_string(html_string: str) -> pprune.common.thread_struct.Thread:
     """Given a string of HTML return the Thread object containing all the posts."""
     doc = parse_str_to_beautiful_soup(html_string)
-    tz_info = get_zoneinfo_from_parsed_doc(doc)
+    page_information = get_page_information_from_parsed_doc(doc)
     thread = pprune.common.thread_struct.Thread()
     for node in get_post_nodes_from_parsed_doc(doc):
-        post = post_from_html_node(node, tz_info)
+        post = post_from_html_node(node, page_information)
         if post is not None:
             thread.add_post(post)
     return thread
 
 
-def get_page_url_parsed_doc(doc: bs4.BeautifulSoup) -> str:
-    """Find the page URL from the parsed document.
+def get_original_page_url_parsed_doc(doc: bs4.BeautifulSoup) -> str:
+    """Find the first page URL from the parsed document.
     This is from the meta element:
 
-    <meta property="og:url" content="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html" />
+    .. code-block:: html
+
+        <meta property="og:url" content="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html" />
     """
     node = doc.find('meta', **{'property': 'og:url', })
     return node.attrs['content']
+
+
+def get_page_url_parsed_doc(doc: bs4.BeautifulSoup) -> str:
+    """Find the URL from the parsed document.
+
+    Example:
+
+    .. code-block:: html
+
+        <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-3.html" onclick="vB_Analytics.push(['event', {category: 'Breadcrumbs', action: 'reload', label: '1'}]);">
+            <img class="inlineimg" src="https://www.pprune.org/images/misc/navbits_finallink_ltr.gif" alt="Reload this Page" />
+        </a>
+
+    NOTE: We get the <img> as that is unique and then grab the parent <a>
+    """
+    node = doc.find('img', **{'class': 'inlineimg', })
+    if node is None:
+        raise ValueError('No image found')
+    if 'alt' not in node.attrs:
+        raise ValueError('<img> node does not have alt="Reload this Page"')
+    if node.attrs['alt'] != 'Reload this Page':
+        raise ValueError(f'<img alt="..."> node has unexpected alt="{node.attrs['alt']}"')
+    parent = node.parent
+    if parent is None:
+        raise ValueError('<img> node does not have a parent')
+    if parent.name != 'a':
+        raise ValueError(f'<img> node parent is not <a> but<{parent.name}>')
+    return parent.attrs['href']
 
 
 RE_GMT_TIME_ZONE_AND_TIME = re.compile(r'\s*All times are GMT(\s[-+]\d+)?. The time now is\s*(\d\d:\d\d)\s*\.\s*')
@@ -156,17 +191,19 @@ def get_zoneinfo_from_parsed_doc(doc: bs4.BeautifulSoup) -> zoneinfo.ZoneInfo:
 
     Examples:
 
+    .. code-block:: html
+
         <div class="text-center clearfix">All times are GMT -12. The time now is <span class="time">21:51</span>.</div>
         <div class="text-center clearfix">All times are GMT. The time now is <span class="time">08:41</span>.</div>
 
-    This text appears in: /html.no-js/body/footer.row/div.column/div.text-center.clearfix
+    This text appears in: ``/html.no-js/body/footer.row/div.column/div.text-center.clearfix``
 
-    This defaults to zoneinfo.ZoneInfo('Etc/GMT')
+    This defaults to ``zoneinfo.ZoneInfo('Etc/GMT')``
     """
     node = doc.find('div', **{'class': 'text-center clearfix', })
     if node is None:
         # raise ValueError('No node with GMT offset found')
-        logger.warning('Could not find timezone for page: %s', get_page_url_parsed_doc(doc))
+        logger.warning('Could not find timezone for page: %s', get_original_page_url_parsed_doc(doc))
         return zoneinfo.ZoneInfo('Etc/GMT')
     txt = node.text
     m = RE_GMT_TIME_ZONE_AND_TIME.match(txt)
@@ -189,6 +226,79 @@ def get_zoneinfo_from_parsed_doc(doc: bs4.BeautifulSoup) -> zoneinfo.ZoneInfo:
     return zoneinfo.ZoneInfo(offset)
 
 
+def get_thread_is_open_from_parsed_doc(doc: bs4.BeautifulSoup) -> bool:
+    """Given a parsed HTML page find out if the thread is open.
+
+    Open thread (tests/integration/example_pages/667131-up-votes-post_thanks-not-available-closed-threads.html):
+
+    .. code-block:: html
+
+        <!-- controls above postbits -->
+        <div class="flexitem">
+            <div>
+                <a href="https://www.pprune.org/newreply.php?do=newreply&amp;noquote=1&amp;p=11919549" rel="nofollow" class="button medium fixed-size tertiary" rel="nofollow"><i class="fa-solid fa-reply"></i> Reply</a>
+                <a href="https://www.pprune.org/subscription.php?do=addsubscription&amp;t=667131" rel="nofollow" class="button medium primary" rel="nofollow">Subscribe <i class="fa-solid fa-bell"></i></a>
+            </div>
+            <div></div>
+        </div>
+        <!-- / controls above postbits -->
+
+    Closed thread (tests/integration/example_pages/666472-plane-crash-near-ahmedabad.html):
+
+    .. code-block:: html
+
+        <!-- controls above postbits -->
+        <div class="flexitem">
+            <div>
+                <a href="https://www.pprune.org/newreply.php?do=newreply&amp;noquote=1&amp;p=11898891" rel="nofollow" class="button medium fixed-size closed" rel="nofollow"><i class="fas fa-lock"></i> Closed Thread</a>
+                <a href="https://www.pprune.org/subscription.php?do=addsubscription&amp;t=666472" rel="nofollow" class="button medium primary" rel="nofollow">Subscribe <i class="fas fa-bell"></i></a>
+            </div>
+            <div></div>
+        </div>
+        <!-- / controls above postbits -->
+
+    NOTE: There are multiple <div class="flexitem"> in the document.
+    """
+
+    def get_node_text(node: bs4.element.Tag) -> str:
+        if node:
+            return node.text.strip()
+        return ''
+
+    nodes = doc.find_all('div', **{'class': 'flexitem', })
+    for node in nodes:
+        # NOTE: <div class="flexitem smallfont"> then node.attrs['class'] == ['flexitem', 'smallfont']
+        if node.attrs['class'] == ['flexitem']:
+            nodes_a = node.find_all('a')
+            for node_a in nodes_a:
+                txt = get_node_text(node_a)
+                if 'class' in node_a.attrs and node_a.attrs['class'] == ['button', 'medium', 'fixed-size',
+                                                                         'tertiary', ] and txt == 'Reply':
+                    return True
+                if 'class' in node_a.attrs and node_a.attrs['class'] == ['button', 'medium', 'fixed-size',
+                                                                         'closed'] and txt == 'Closed Thread':
+                    return False
+    raise ValueError('Could not find out if the thread is open or closed')
+
+
+@dataclasses.dataclass
+class PageInformation:
+    """PoD class for data extracted from a page of a thread."""
+    tzinfo: zoneinfo.ZoneInfo
+    thread_is_open: bool
+    url_original: str  # The URL of the start of the thread
+    url: str  # The URL of the page that this post appears on.
+
+
+def get_page_information_from_parsed_doc(doc: bs4.BeautifulSoup) -> PageInformation:
+    """Given a parsed HTML page return a PageInformation object containing essential information about the page."""
+    tzinfo = get_zoneinfo_from_parsed_doc(doc)
+    thread_is_open = get_thread_is_open_from_parsed_doc(doc)
+    url_original = get_original_page_url_parsed_doc(doc)
+    url = get_page_url_parsed_doc(doc)
+    return PageInformation(tzinfo, thread_is_open, url_original, url)
+
+
 def html_node_post_id(node: bs4.element.Tag) -> str:
     """The ID of the post. From:
     <div id="edit10994338">
@@ -202,8 +312,14 @@ RE_POST_ID_TO_POST_NUMBER = re.compile(r'edit(\d+)')
 
 
 def html_node_post_number(node: bs4.element.Tag) -> typing.Optional[int]:
-    """The ID of the post. From:
-    <div id="edit10994338">
+    """The ID of the post.
+
+    From:
+
+    .. code-block:: html
+
+        <div id="edit10994338">
+
     Would give 10994338
     """
     post_id = html_node_post_id(node)
@@ -213,52 +329,64 @@ def html_node_post_number(node: bs4.element.Tag) -> typing.Optional[int]:
 
 
 def html_node_date(node: bs4.element.Tag, tz_info: zoneinfo.ZoneInfo) -> datetime.datetime:
-    """Returns the date from the node."""
-    # Typically:
-    # <div class="tcell" style="width:175px;">
-    #     <!-- status icon and date -->
-    #     <a name="post10994345">
-    #         <img class="inlineimg" src="https://www.pprune.org/images/statusicon/post_old.gif" alt="Old"/>
-    #     </a>
-    #                         20th Feb 2021, 22:20
-    #                         <!-- / status icon and date -->
-    # </div>
+    """Returns the date from the node.
+    Typically:
+
+    .. code-block:: html
+
+        <div class="tcell" style="width:175px;">
+            <!-- status icon and date -->
+            <a name="post10994345">
+                <img class="inlineimg" src="https://www.pprune.org/images/statusicon/post_old.gif" alt="Old"/>
+            </a>
+                                20th Feb 2021, 22:20
+                                <!-- / status icon and date -->
+        </div>
+    """
     date_node = node.find('div', **{"class": "tcell"})
     text = date_node.text
     ret = dateparser.parse(text.strip())
     if ret is None:
         raise ValueError('Could not parse date: "%s"', text.strip())
-    # Legacy (this was a login issue):
-    # # For some weird reason the date from a file obtained by curl is 12 hours behind the display date.
-    # # For example, from curl: 11th June 2025 | 20:57
-    # # But in the browser/show page source: 12th June 2025 | 08:57
-    # if ret is not None:
-    #     ret += datetime.timedelta(hours=12)
     return ret.replace(tzinfo=tz_info)
 
 
 def html_node_permalink(node: bs4.element.Tag) -> typing.Optional[str]:
-    """Returns the permalink from the node."""
-    # Looking for:
-    # <a href="https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994345" title="Link to this Post">permalink</a>
+    """Returns the permalink from the node.
+    Looking for:
+
+    .. code-block:: html
+
+        <a href="https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994345" title="Link to this Post">permalink</a>
+    """
     ret = node.find('a', title="Link to this Post")
     if ret is not None:
         return ret.attrs['href']
 
 
 def html_node_user(node: bs4.element.Tag) -> typing.Optional[pprune.common.thread_struct.User]:
-    """Returns the user from the node."""
-    # Looking for:
-    # <a rel="nofollow" class="bigusername" href="https://www.pprune.org/members/219249-nicolai">nicolai</a>
+    """Returns the user from the node.
+
+    Looking for:
+
+    .. code-block:: html
+
+        <a rel="nofollow" class="bigusername" href="https://www.pprune.org/members/219249-nicolai">nicolai</a>
+    """
     user_node = node.find('a', **{"class": "bigusername"})
     if user_node:
         return pprune.common.thread_struct.User(user_node.attrs['href'], user_node.text.strip())
 
 
 def html_node_post_node(node: bs4.element.Tag) -> bs4.element.Tag:
-    """Returns the node containing the post content from the post node."""
-    # Looking for:
-    # <div class="tcell alt1" id="td_post_10994338">
+    """Returns the node containing the post content from the post node.
+
+    Looking for:
+
+    .. code-block:: html
+
+        <div class="tcell alt1" id="td_post_10994338">
+    """
     post_id: int = html_node_post_number(node)
     user_node = node.find('div', **{"class": "tcell alt1", "id": f"td_post_{post_id}"})
     return user_node
@@ -266,8 +394,12 @@ def html_node_post_node(node: bs4.element.Tag) -> bs4.element.Tag:
 
 def get_post_text_from_node(node: bs4.element.Tag, sequence_num: int) -> str:
     """The text in the node, this does not include the subject line.
+
     From:
-    <div id="post_message_10994338">
+
+    .. code-block:: html
+
+        <div id="post_message_10994338">
     """
     text_node = node.find('div', **{'id': f'post_message_{sequence_num}'})
     return text_node.get_text()
@@ -279,25 +411,26 @@ def html_node_like_usernames(node: bs4.element.Tag) -> typing.List[pprune.common
     TODO: Update this doc as the site has changed and likes are now javascript based. We can only get the number of likes.
     TODO: Even worse old threads use the original code so we could be dealing with either.
 
-    Example::
+    Example:
 
-          <div id="post_thanks_box_11898940">
-            <div class="tbox">
-              <div class="trow">
-                <div class="tcell alt2" style="width: 175px">
-                  <strong>The following 30 users liked this post by autobrake3:</strong>
-                </div>
-                <div class="tcell alt1" style="vertical-align: top">
-                  <div>
-                  <a href="https://www.pprune.org/members/20986-2-sheds" rel="nofollow">2 sheds</a>,
-                  <a href="https://www.pprune.org/members/2175-alpine-flyer" rel="nofollow">Alpine Flyer</a>,
-                  ...
-                  <a href="https://www.pprune.org/members/413833-una-due-tfc" rel="nofollow">Una Due Tfc</a></div>
-                </div>
-              </div>
+    .. code-block:: html
+
+        <div id="post_thanks_box_11898940">
+        <div class="tbox">
+          <div class="trow">
+            <div class="tcell alt2" style="width: 175px">
+              <strong>The following 30 users liked this post by autobrake3:</strong>
+            </div>
+            <div class="tcell alt1" style="vertical-align: top">
+              <div>
+              <a href="https://www.pprune.org/members/20986-2-sheds" rel="nofollow">2 sheds</a>,
+              <a href="https://www.pprune.org/members/2175-alpine-flyer" rel="nofollow">Alpine Flyer</a>,
+              ...
+              <a href="https://www.pprune.org/members/413833-una-due-tfc" rel="nofollow">Una Due Tfc</a></div>
             </div>
           </div>
-
+        </div>
+        </div>
     """
     # Looking for:
     # <div id="post_thanks_box_11898940">
@@ -323,10 +456,10 @@ def html_node_like_usernames(node: bs4.element.Tag) -> typing.List[pprune.common
     return ret
 
 
-def post_from_html_node(node: bs4.element.Tag, tz_info: zoneinfo.ZoneInfo) -> typing.Optional[
+def post_from_html_node(node: bs4.element.Tag, page_information: PageInformation) -> typing.Optional[
     pprune.common.thread_struct.Post]:
     """Returns a Post object from an HTML node."""
-    timestamp = html_node_date(node, tz_info)
+    timestamp = html_node_date(node, page_information.tzinfo)
     permalink = html_node_permalink(node)
     if permalink is None:
         logger.warning(f'No permalink extracted from node <{node.name} {node.attrs}>')
@@ -337,21 +470,10 @@ def post_from_html_node(node: bs4.element.Tag, tz_info: zoneinfo.ZoneInfo) -> ty
     sequence_number = html_node_post_number(node)
     liked_by_users = html_node_like_usernames(node)
     if sequence_number is not None:
-        post = pprune.common.thread_struct.Post(timestamp, permalink, user, post_node, sequence_number, liked_by_users)
+        post = pprune.common.thread_struct.Post(
+            timestamp, permalink, user, post_node, sequence_number, liked_by_users, page_information.thread_is_open,
+        )
         return post
-
-
-# def read_common_words(filename, n):
-#     """Reads file_path and returns the set of n words."""
-#     print('Reading words file: {}'.format(filename))
-#     l = []
-#     with open(filename) as f:
-#         for aline in f.readlines():
-#             if n <= 0:
-#                 break
-#             l.append(aline.split()[0].lower())
-#             n -= 1
-#     return set(l)
 
 
 def read_files(directory_name: str) -> typing.Dict[int, str]:
@@ -384,7 +506,7 @@ def read_whole_thread(directory_name: str, count: int = -1) -> pprune.common.thr
 def update_whole_thread(directory_name: str, thread: pprune.common.thread_struct.Thread, count: int = -1) -> None:
     """Reads a directory of HTML and updates the Thread object.
     This allows the accumulation of multiple threads.
-    See also read_whole_thread().
+    See also ``read_whole_thread()``.
     """
     t_start = time.perf_counter()
     files = read_files(directory_name)
@@ -397,10 +519,10 @@ def update_whole_thread(directory_name: str, thread: pprune.common.thread_struct
             with open(files[file_number], errors='backslashreplace') as file:
                 doc = bs4.BeautifulSoup(file.read(), 'html.parser')
                 post_nodes = get_post_nodes_from_parsed_doc(doc)
-                tz_info = get_zoneinfo_from_parsed_doc(doc)
+                page_information = get_page_information_from_parsed_doc(doc)
                 for post_node in post_nodes:
                     # print('Post: %d' % i)
-                    post = post_from_html_node(post_node, tz_info)
+                    post = post_from_html_node(post_node, page_information)
                     if post is not None:
                         thread.add_post(post)
                         post_count += 1
@@ -416,6 +538,19 @@ def update_whole_thread(directory_name: str, thread: pprune.common.thread_struct
 
 
 def last_url_from_html_page(html_page: bs4.BeautifulSoup) -> str:
+    """Returns the last URL from a HTML page.
+
+    From:
+
+    .. code-block:: html
+
+        <a
+            id="mb_pagelast"
+            class="button primary hollow"
+            href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-87.html?ispreloading=1"
+            title="Last Page - Results 1,721 to 1,721 of 1,721"
+        >
+    """
     node = html_page.find('a', **{'id': "mb_pagelast"})
     return node.attrs['href']
 
