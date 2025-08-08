@@ -1,6 +1,14 @@
 History
 =======
 
+Alpha Release (AI171 threads to: August 07, 2025, 08:19:00 GMT)
+---------------------------------------------------------------
+
+- Build threads up to August 07, 2025, 08:19:00 GMT (built on August 07, 2025, 08:47:56 GMT).
+- Subjects added: "Channel 4".
+- "Likes" are available on the currently open thread.
+- Add links to respond in pprune to any post on my site under the appropriate subject by clicking the link under the post. This quotes the original post.
+
 Alpha Release (Thread: July 20, 2025, 21:34:00 GMT)
 ---------------------------------------------------
 
@@ -10,7 +18,7 @@ Alpha Release (Thread: July 20, 2025, 21:34:00 GMT)
 - Subjects added: "Thread Moderation".
 - Added two significant posts.
 - Added "Number of Posts by Time" on the landing page.
-- Fixes to date handling.
+- Fixes date handling.
 
 Alpha Release (Thread: July 17, 2025, 19:52:00)
 -----------------------------------------------
