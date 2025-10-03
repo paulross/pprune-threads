@@ -506,6 +506,8 @@ class AirIndia171(PublicationMap):
 
             ('action', 'slip',): 'Action slip',
             ('action', 'slips',): 'Action slip',
+            ('brain', 'fart',): 'Action slip',
+            ('cognitive', 'lapse',): 'Action slip',
 
             ('human', 'error',): 'Human Factors',
             ('human', 'factor',): 'Human Factors',
@@ -527,7 +529,10 @@ class AirIndia171(PublicationMap):
             ('third', 'pilot',): 'Jump Seat',
             ('third', 'body',): 'Jump Seat',
             ('third', 'seat',): 'Jump Seat',
+
             ('channel', '4',): 'Channel 4',
+
+            ('discovery', 'channel',): 'Discovery Channel',
         },
         3: {
             ('dual', 'engine', 'failure'): 'Dual Engine Failure',
@@ -570,6 +575,7 @@ class AirIndia171(PublicationMap):
             ('aviation', 'week', 'space', 'technology'): 'Aviation Week & Space Technology',
             ('indian', 'accident', 'investigation', 'team'): 'AAIB (IDGA)',
             ('indian', 'civil', 'air', 'authority'): 'DGCA',
+            ('directorate', 'general', 'civil', 'aviation'): 'DGCA',
             ('special', 'airworthiness', 'information', 'bulletin',): 'Special Airworthiness Information Bulletin',
             ('why', 'did', 'he', 'cutoff',): 'Pilot "Why did you cut off"',
             ('why', 'did', 'you', 'cutoff',): 'Pilot "Why did you cut off"',
