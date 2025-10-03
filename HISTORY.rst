@@ -1,6 +1,14 @@
 History
 =======
 
+Alpha Release (AI171 threads to: October 03, 2025, 05:44:00 GMT)
+----------------------------------------------------------------
+
+- Build threads up to October 03, 2025, 05:44:00 GMT (built on October 03, 2025, 10:04:00 GMT).
+- Added: "Brain Fart" and "Cognitive Lapse" to "Action Slip" subject.
+- Subjects added: "Discovery Channel".
+- "Likes" are available on the currently open thread.
+
 Alpha Release (AI171 threads to: August 07, 2025, 08:19:00 GMT)
 ---------------------------------------------------------------
 
