@@ -83,7 +83,7 @@ This gives:
 
 .. code-block:: shell
 
-    	<li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-75.html" title="Last Page - Results 281 to 297 of 297">Last <i class="fa-solid fa-angles-right"></i></a></li>
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-75.html" title="Last Page - Results 281 to 297 of 297">Last <i class="fa-solid fa-angles-right"></i></a></li>
 
 So the last page is ``667141-preliminary-air-india-crash-report-published-75.html``
 
