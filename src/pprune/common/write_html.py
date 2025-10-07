@@ -36,10 +36,10 @@ import typing
 import zoneinfo
 from contextlib import contextmanager
 
+from pprune.common import styles
 from pprune.common import analyse_thread
-from publication_maps import publication_map_abc
-import styles
 from pprune.common import thread_struct
+from pprune.publication_maps import publication_map_abc
 
 logger = logging.getLogger(__file__)
 
@@ -254,7 +254,8 @@ def write_index_h1(
         pass
     with element(index, 'h1'):
         index.write(heading)
-        with element(index, 'a', **{'class': "headerlink", "href": f'"#{heading_id}"', 'title': '"Link to this heading"'}):
+        with element(index, 'a',
+                     **{'class': "headerlink", "href": f'"#{heading_id}"', 'title': '"Link to this heading"'}):
             index.write('\u00B6')
 
 

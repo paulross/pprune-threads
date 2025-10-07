@@ -32,12 +32,12 @@ import os
 import sys
 import time
 
-from pprune import write_html
 from pprune.common import log_config
 from pprune.common import read_html
 from pprune.common import thread_struct
 from pprune.common import words
-from publication_maps import air_india_171
+from pprune.common import write_html
+from pprune.publication_maps import air_india_171
 
 logger = logging.getLogger(__file__)
 
