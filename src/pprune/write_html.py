@@ -36,7 +36,7 @@ import typing
 import zoneinfo
 from contextlib import contextmanager
 
-import analyse_thread
+from pprune.common import analyse_thread
 from publication_maps import publication_map_abc
 import styles
 from pprune.common import thread_struct
