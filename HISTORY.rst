@@ -1,6 +1,12 @@
 History
 =======
 
+Alpha Release (AI171 threads to: October 03, 2025, 05:44:00 GMT)#2
+------------------------------------------------------------------
+
+- Build threads up to October 03, 2025, 05:44:00 GMT (built on October 03, 2025, 10:04:00 GMT).
+- Add anchors to all h1, h2 headings.
+
 Alpha Release (AI171 threads to: October 03, 2025, 05:44:00 GMT)
 ----------------------------------------------------------------
 
