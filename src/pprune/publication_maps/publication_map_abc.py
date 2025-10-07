@@ -51,12 +51,12 @@ class PublicationMapABC(abc.ABC):
 
     @abc.abstractmethod
     def get_lowercase_word_to_subject_map(self) -> typing.Dict[str, str]:
-        """Returns a map of {lower_case_word : subject_title, ..}"""
+        """Returns a map of {lower_case_word : subject_title, ...}"""
         pass
 
     @abc.abstractmethod
     def get_uppercase_word_to_subject_map(self) -> typing.Dict[str, str]:
-        """Returns a map of {upper_case_word : subject_title, ..}"""
+        """Returns a map of {upper_case_word : subject_title, ...}"""
         pass
 
     @abc.abstractmethod
@@ -66,12 +66,12 @@ class PublicationMapABC(abc.ABC):
 
     @abc.abstractmethod
     def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[str, str]:
-        """Returns a map of {phrase : subject_title, ..}"""
+        """Returns a map of {phrase : subject_title, ...}"""
         pass
 
     @abc.abstractmethod
     def get_specific_posts_to_subject_map(self) -> typing.Dict[int, str]:
-        """Returns a map of {permalink : subject_title, ..}"""
+        """Returns a map of {permalink : subject_title, ...}"""
         pass
 
     @abc.abstractmethod
@@ -99,8 +99,8 @@ class PublicationMapABC(abc.ABC):
         return ret
 
     @abc.abstractmethod
-    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, int]]:
-        """The is the set of permalinks of significant posts that might be gathered
+    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, int], ...]:
+        """This is the set of permalinks of significant posts that might be gathered
         together in the subject 'Significant Posts'."""
         pass
 

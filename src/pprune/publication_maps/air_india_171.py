@@ -86,7 +86,7 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
             return self.DUPLICATE_SUBJECT_MAP[subject]
         return set()
 
-    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, int]]:
+    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, int], ...]:
         return self.SIGNIFICANT_POSTS
 
     def get_set_of_words_required(self) -> typing.Set[str]:
@@ -234,7 +234,7 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
         'FCO': 'Fuel Cutoff Switches',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
-    # Each part of the key should be lower case unless all caps
+    # Each part of the key should be lowercase unless all caps
     PHRASES_MAP = {
         2: {
             ('engine', 'failure'): 'Engine Failure (All)',

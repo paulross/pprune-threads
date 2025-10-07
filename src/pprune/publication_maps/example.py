@@ -27,6 +27,8 @@ Each value in the map is the subject that the text (probably) refers to.
 TODO: Make this a list of (function, map) where the function takes a list of words and
 applies it to the map. This would make the code more general.
 """
+import typing
+
 from pprune.publication_maps import publication_map_abc
 
 
@@ -55,7 +57,7 @@ class Example(publication_map_abc.PublicationMapABC):
     def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
         return set()
 
-    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, int]]:
+    def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, int], ...]:
         return tuple()
 
     def get_set_of_words_required(self) -> typing.Set[str]:
@@ -75,4 +77,4 @@ class Example(publication_map_abc.PublicationMapABC):
         return 5
 
     def get_set_of_removed_subjects(self) -> typing.Set[str]:
-        return {}
+        return set()
