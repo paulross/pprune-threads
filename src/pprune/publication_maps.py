@@ -37,7 +37,7 @@ import abc
 import typing
 
 
-class PublicationMap(abc.ABC):
+class PublicationMapABC(abc.ABC):
     @abc.abstractmethod
     def get_title(self) -> str:
         """Gets the title to be used in the output index.html"""
@@ -136,7 +136,7 @@ class PublicationMap(abc.ABC):
         pass
 
 
-class AirIndia171(PublicationMap):
+class AirIndia171(PublicationMapABC):
     def get_title(self) -> str:
         return 'AI171 Re-mixed'
 
@@ -654,7 +654,7 @@ class AirIndia171(PublicationMap):
     )
 
 
-class Example(PublicationMap):
+class Example(PublicationMapABC):
     def get_title(self) -> str:
         return ''
 
