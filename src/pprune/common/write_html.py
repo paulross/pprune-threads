@@ -297,27 +297,28 @@ def write_index_main_subject_table(
         index: typing.TextIO,
 ):
     """Write out the main table of subjects."""
-    write_index_h1('Posts by Subject', 'posts_by_subject', index)
-    with element(index, 'p'):
-        index.write(
-            'Here are all {:d} subjects I have identified with the number of posts for each subject:'.format(
-                len(subject_post_map)))
-    with element(index, 'table', _class="indextable"):
-        COLUMNS = 4
-        subjects = sorted(subject_post_map.keys())
-        rows = [subjects[i:i + COLUMNS] for i in range(0, len(subjects), COLUMNS)]
-        subject_index = 0
-        for row in rows:
-            with element(index, 'tr'):
-                for _cell in row:
-                    subject = subjects[subject_index]
-                    with element(index, 'td', _class='indextable'):
-                        with element(index, 'a',
-                                     href=_page_name(subject, 0)):
-                            index.write('{:s} [{:d}]'.format(subject,
-                                                             len(subject_post_map[subject])))
-                    # print(subject, subject_map[subject])
-                    subject_index += 1
+    if len(subject_post_map):
+        write_index_h1('Posts by Subject', 'posts_by_subject', index)
+        with element(index, 'p'):
+            index.write(
+                'Here are all {:d} subjects I have identified with the number of posts for each subject:'.format(
+                    len(subject_post_map)))
+        with element(index, 'table', _class="indextable"):
+            COLUMNS = 4
+            subjects = sorted(subject_post_map.keys())
+            rows = [subjects[i:i + COLUMNS] for i in range(0, len(subjects), COLUMNS)]
+            subject_index = 0
+            for row in rows:
+                with element(index, 'tr'):
+                    for _cell in row:
+                        subject = subjects[subject_index]
+                        with element(index, 'td', _class='indextable'):
+                            with element(index, 'a',
+                                         href=_page_name(subject, 0)):
+                                index.write('{:s} [{:d}]'.format(subject,
+                                                                 len(subject_post_map[subject])))
+                        # print(subject, subject_map[subject])
+                        subject_index += 1
 
 
 def write_index_removed_subjects(

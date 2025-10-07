@@ -211,7 +211,7 @@ Here the most common 200 words are eliminated and then three word phrases are ex
     2025-06-24 11:18:09,446 -              research.py#222  - INFO     - Read 2832 posts in 18.467 (s)
 
 
-Research With Natural Language Processing
+Research with Natural Language Processing
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There is a script ``src/pprune/research_nlp.py`` that analyses the thread for words and phrases.
@@ -270,6 +270,17 @@ Typical output (not collecting nouns or verbs):
     ========================== Entity Label Map DONE ==========================
 
 I don't find it particularly useful.
+
+Research with the ``Example`` Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Running ``main`` with the ``Example`` thread can give some useful results, although no specific subjects are identified.
+
+.. code-block:: shell
+
+    $ python src/pprune/main.py --thread-name=Example threads/AI171_G/AI171-1 threads/AI171_G/AI171-2 threads/AI171_G/AI171-3
+
+This creates summary and user pages which are useful.
 
 Configuring the Build
 --------------------------

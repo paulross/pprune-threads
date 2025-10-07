@@ -38,6 +38,7 @@ from pprune.common import thread_struct
 from pprune.common import words
 from pprune.common import write_html
 from pprune.publication_maps import air_india_171
+from pprune.publication_maps import example
 
 logger = logging.getLogger(__file__)
 
@@ -45,6 +46,7 @@ logger = logging.getLogger(__file__)
 # eventually passed to write_html.write_whole_thread().
 THREAD_NAME_TO_CLASS_MAP = {
     'AI171': air_india_171.AirIndia171,
+    'Example': example.Example,
 }
 
 
@@ -61,7 +63,7 @@ def main():
         )
     )
     parser.add_argument(
-        '--output',
+        '-o', '--output',
         type=str,
         nargs='?',
         default=None,
@@ -71,7 +73,7 @@ def main():
             ' [default: %(default)s].'
         )
     )
-    supported_threads = ','.join(sorted(f'"{v}"' for v in THREAD_NAME_TO_CLASS_MAP.keys()))
+    supported_threads = ', '.join(sorted(f'"{v}"' for v in THREAD_NAME_TO_CLASS_MAP.keys()))
     parser.add_argument(
         '--thread-name',
         type=str,
@@ -79,7 +81,7 @@ def main():
         required=True,
         help=(
             'This decides the thread publication map.'
-            f' Supported values are {supported_threads}.'
+            f' Supported values are: [{supported_threads}].'
             ' [default: %(default)s].'
         )
     )
@@ -89,13 +91,13 @@ def main():
         default=1000,
         help="Number of common words to exclude. [default: %(default)d]",
     )
-    parser.add_argument(
-        "--authors",
-        action="store_true",
-        help=(
-            "Add posts by author."
-        )
-    )
+    # parser.add_argument(
+    #     "--authors",
+    #     action="store_true",
+    #     help=(
+    #         "Add posts by author."
+    #     )
+    # )
     parser.add_argument(
         "--limit-posts",
         type=int,

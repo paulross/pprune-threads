@@ -34,7 +34,7 @@ from pprune.publication_maps import publication_map_abc
 
 class Example(publication_map_abc.PublicationMapABC):
     def get_title(self) -> str:
-        return ''
+        return 'Example'
 
     def get_introduction_in_html(self) -> str:
         return """"""
