@@ -124,6 +124,23 @@ color:             black;
     #     """div.alt2 {
     #     bgcolor:        #7F7F7F;
     # }""",
+    # headerlink, taken from the Python documentation.
+    """
+a.headerlink {
+    visibility: hidden;
+}
+a:visited {
+    color: #551A8B;
+}
+h1:hover > a.headerlink,
+h2:hover > a.headerlink,
+h3:hover > a.headerlink,
+h4:hover > a.headerlink,
+h5:hover > a.headerlink,
+h6:hover > a.headerlink {
+    visibility: visible;
+}
+""",
 ]
 
 CSS_FILE = 'styles.css'

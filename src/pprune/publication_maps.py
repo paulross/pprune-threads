@@ -154,7 +154,8 @@ class AirIndia171(PublicationMap):
          </li>
     </ol>
     <p><b>My condolences to all the people affected by this accident, in particular to the friends and families of the victims.</b></p>
-    <h2>Useful Links</h2>
+    <span id="useful_links"></span>
+    <h2>Useful Links<a class="headerlink" href="#useful_links" title="Link to this heading">\u00B6</a></h2>
     <ol>
         <li><a href="https://aaib.gov.in/What's%20New%20Assets/Preliminary%20Report%20VT-ANB.pdf">The Preliminary Report</a></li>
         <li><a href="https://aaib.gov.in">Air Accident Investigation Board (India)</a></li>

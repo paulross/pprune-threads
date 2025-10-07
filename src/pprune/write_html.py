@@ -102,6 +102,7 @@ def format_timedelta(td: datetime.timedelta) -> str:
 
 class PassOneResult:
     """Collects together some data structures that are used when creating the final output."""
+
     def __init__(self):
         # Map of {subject: [post_index in Thread.posts, ...], ...}
         self.subject_post_map: typing.Dict[str, typing.List[int]] = {}
@@ -213,6 +214,50 @@ def get_count_of_posts_included(
     return len(ordinals_included), len(thread) - len(ordinals_included)
 
 
+def write_index_h1(
+        heading: str,
+        heading_id: str,
+        index: typing.TextIO,
+):
+    """Writes a <h1> heading with an internal link.
+
+    For example from the Python documentation:
+
+        <span id="re-syntax"></span>
+        <h2>Regular Expression Syntax<a class="headerlink" href="#regular-expression-syntax" title="Link to this heading">¶</a></h2>
+
+    The "headerlink" CSS is in basic.css:
+
+        a.headerlink {
+        visibility: hidden;
+        }
+
+        a:visited {
+            color: #551A8B;
+        }
+
+        h1:hover > a.headerlink,
+        h2:hover > a.headerlink,
+        h3:hover > a.headerlink,
+        h4:hover > a.headerlink,
+        h5:hover > a.headerlink,
+        h6:hover > a.headerlink,
+        dt:hover > a.headerlink,
+        caption:hover > a.headerlink,
+        p.caption:hover > a.headerlink,
+        div.code-block-caption:hover > a.headerlink {
+            visibility: visible;
+        }
+    """
+    with element(index, 'span', **{'id': heading_id}):
+        pass
+    with element(index, 'h1'):
+        index.write(heading)
+        with element(index, 'a', **{'class': "headerlink", "href": f'#{heading_id}', 'title': 'Link to this heading'}):
+            # index.write('¶')
+            index.write('\u00B6')
+
+
 def write_index_significant_posts(
         thread: thread_struct.Thread,
         publication_map: publication_maps.PublicationMap,
@@ -221,8 +266,7 @@ def write_index_significant_posts(
     """Optionally, writes out a list of significant posts."""
     significant_posts = publication_map.get_significant_posts_permalinks()
     if significant_posts:
-        with element(index, 'h1', **{'id': 'significant_posts'}):
-            index.write('Significant Posts')
+        write_index_h1('Significant Posts', 'significant_posts', index)
         with element(index, 'p'):
             index.write('These are worth reading before you go any further.')
         # post_ordinals = []
@@ -250,8 +294,7 @@ def write_index_main_subject_table(
         index: typing.TextIO,
 ):
     """Write out the main table of subjects."""
-    with element(index, 'h1', **{'id': 'posts_by_subject'}):
-        index.write('Posts by Subject')
+    write_index_h1('Posts by Subject', 'posts_by_subject', index)
     with element(index, 'p'):
         index.write(
             'Here are all {:d} subjects I have identified with the number of posts for each subject:'.format(
@@ -281,8 +324,7 @@ def write_index_removed_subjects(
     """If there are removed subjects then list them here in tabular form."""
     removed_subjects = sorted(publication_map.get_set_of_removed_subjects())
     if removed_subjects:
-        with element(index, 'h1', **{'id': 'removed_subjects'}):
-            index.write('Removed Subjects')
+        write_index_h1('Removed Subjects', 'removed_subjects', index)
         with element(index, 'p'):
             index.write('These are subjects that have been removed from previous versions of this build.')
         with element(index, 'table', _class="indextable"):
@@ -318,8 +360,7 @@ def write_index_most_upvoted_posts_table(
             post_count += len(liked_by_users_dict[k])
             if post_count >= publication_map.get_upvoted_post_count_limit():
                 break
-        with element(index, 'h1', **{'id': 'most_upvoted_posts'}):
-            index.write(f'The {post_count} Most Up-voted Posts')
+        write_index_h1(f'The {post_count} Most Up-voted Posts', 'most_upvoted_posts', index)
         with element(index, 'p'):
             index.write(
                 'This list the posts that have the largest number of up-votes.'
@@ -363,8 +404,7 @@ def write_index_most_upvoted_posts_table(
                     break
     else:
         logger.warning('Can not read up-votes from the thread. Is the thread closed (up-votes will not show)?')
-        with element(index, 'h1', **{'id': 'most_upvoted_posts'}):
-            index.write(f'The Most Up-voted Posts')
+        write_index_h1(f'The Most Up-voted Posts', 'most_upvoted_posts', index)
         with element(index, 'p'):
             index.write('This is not available, perhaps because the thread is closed.')
 
@@ -384,8 +424,7 @@ def write_index_user_subject_table(
         index: typing.TextIO,
 ):
     """Posts by user, including the subjects they covered."""
-    with element(index, 'h1', **{'id': 'posts_by_user_subject'}):
-        index.write('Posts by User on a Subject')
+    write_index_h1(f'Posts by User on a Subject', 'posts_by_user_subject', index)
     # MOST_COMMON_COUNT = 40
     user_count = collections.Counter([post.user for post in thread.posts])
     # print(user_count)
@@ -443,8 +482,7 @@ def write_index_user_post_table(
         index: typing.TextIO,
 ):
     """Write a table with links to pages that have all user posts."""
-    with element(index, 'h1', **{'id': 'posts_by_users'}):
-        index.write('Users Posts')
+    write_index_h1(f'Users Posts', 'posts_by_users', index)
     with element(index, 'p'):
         index.write(
             f'Here are posts by users that have made >= {publication_map.get_minimum_number_username_posts():d} posts.'
@@ -485,9 +523,9 @@ def write_index_histogram(
         divisor: int,
         index: typing.TextIO,
 ):
-    """Writes a histogram table of posts typically over time such as date or hour of day."""
-    with element(index, 'h1', **{'id': heading_id}):
-        index.write(heading)
+    """Writes a histogram table of posts typically over time such as date or hour of day.
+    """
+    write_index_h1(heading, heading_id, index)
     with element(index, 'p'):
         index.write(
             f'{intro} Each {HISTOGRAM_CHARACTER} represents {divisor} posts.'
@@ -573,10 +611,7 @@ def write_index_page(
                 with element(index, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                     pass
             with element(index, 'body'):
-                # with element(index, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
-                with element(index, 'h1', **{'id': 'introduction'}):
-                    index.write(publication_map.get_title())
-
+                write_index_h1(publication_map.get_title(), 'introduction', index)
                 with element(index, 'p'):
                     index.write(publication_map.get_introduction_in_html())
                 with element(index, 'p'):
@@ -753,9 +788,12 @@ def write_a_subject_page(
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
                 with element(out_file, 'body'):
-                    with element(out_file, 'h1'):
-                        out_file.write(
-                            'Posts about: "{:s}" [Posts: {:d} Pages: {:d}]'.format(subject, len(_posts), len(pages)))
+                    heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
+                        subject, len(_posts), page_index + 1, len(pages),
+                    )
+                    heading_id_str = f'{subject}_{page_index + 1}'
+                    write_index_h1(heading_str, heading_id_str, out_file)
+
                     _write_page_links(subject, page_index, len(pages), out_file)
                     # with element(f, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
                     with element(out_file, 'table', _class='posts'):
@@ -791,7 +829,8 @@ def write_a_subject_page(
                                     else:
                                         with element(out_file, 'p'):
                                             with element(out_file, 'b'):
-                                                out_file.write('The thread is closed so there are no user likes are available.')
+                                                out_file.write(
+                                                    'The thread is closed so there are no user likes are available.')
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
@@ -819,12 +858,12 @@ def write_user_page(
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
                 with element(out_file, 'body'):
-                    with element(out_file, 'h1'):
-                        out_file.write(
-                            'Posts by user "{:s}" [Posts: {:d} Total up-votes: {:d} Pages: {:d}]'.format(
-                                user_name, len(_posts), up_votes, len(pages)
-                            )
-                        )
+                    heading_str = 'Posts by user "{:s}" [Posts: {:d} Total up-votes: {:d} Page: {:d} of {:d}]'.format(
+                        user_name, len(_posts), up_votes, page_index + 1, len(pages)
+                    )
+                    heading_id_str = f'User_{user_name}_{page_index + 1}'
+                    write_index_h1(heading_str, heading_id_str, out_file)
+
                     _write_page_links('USER_' + user_name, page_index, len(pages), out_file)
                     # with element(f, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
                     with element(out_file, 'table', _class='posts'):
