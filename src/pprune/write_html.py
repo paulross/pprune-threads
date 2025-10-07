@@ -249,12 +249,12 @@ def write_index_h1(
             visibility: visible;
         }
     """
+    heading_id = heading_id.replace(' ', '_').replace('"', '')
     with element(index, 'span', **{'id': heading_id}):
         pass
     with element(index, 'h1'):
         index.write(heading)
-        with element(index, 'a', **{'class': "headerlink", "href": f'#{heading_id}', 'title': 'Link to this heading'}):
-            # index.write('¶')
+        with element(index, 'a', **{'class': "headerlink", "href": f'"#{heading_id}"', 'title': '"Link to this heading"'}):
             index.write('\u00B6')
 
 
