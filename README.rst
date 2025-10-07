@@ -274,11 +274,14 @@ I don't find it particularly useful.
 Configuring the Build
 --------------------------
 
-In ``src/pprune/publication_maps.py`` create a new concrete class inheriting from the virtual class ``PublicationMap``:
+In ``src/pprune/publication_maps/publication_maps_abc`` create a new concrete class inheriting from the virtual class ``PublicationMapABC``:
 
 .. code-block:: python
 
-    class AirIndia171(PublicationMap):
+    from pprune.publication_maps import publication_map_abc
+
+
+    class AirIndia171(publication_map_abc.PublicationMapABC):
         def get_title(self) -> str:
             return 'AI171 Re-mixed'
 
@@ -371,20 +374,20 @@ In ``src/pprune/main.py`` add the reference to the ``AirIndia171`` class:
 
 .. code-block:: python
 
-    if args.thread_name == 'Concorde':
-        # ...
-    elif args.thread_name == 'AI171':
-        pub_map = publication_maps.AirIndia171()
-        words_required = pub_map.get_set_of_words_required()
-        common_words -= words_required
-        logger.info('Common words now length {:d}'.format(len(common_words)))
-        write_html.write_whole_thread(thread, common_words, pub_map, args.output)
+    from pprune.publication_maps import air_india_171
 
-And run the build:
+    # Map of thread name to a class declaration that can be created and
+    # eventually passed to write_html.write_whole_thread().
+    THREAD_NAME_TO_CLASS_MAP = {
+        'AI171': air_india_171.AirIndia171,
+    }
+
+And run the build, note that ``--output`` is missing so the default output directory is ``docs/gh-pages/AI171``.
+If the ``--output`` directory is provided the result will be written there:
 
 .. code-block:: shell
 
-    $ python src/pprune/main.py --thread-name=AI171 threads/AI171/AI171-1 threads/AI171/AI171-2 docs/gh-pages/AI171
+    $ python src/pprune/main.py --thread-name=AI171 threads/AI171_G/AI171-1 threads/AI171_G/AI171-2 threads/AI171_G/AI171-3
     2025-06-24 11:50:40,513 -             read_html.py#288  - INFO     - Read: 666472-plane-crash-near-ahmedabad.html posts: 20
     2025-06-24 11:50:40,612 -             read_html.py#288  - INFO     - Read: 666472-plane-crash-near-ahmedabad-2.html posts: 20
     2025-06-24 11:50:40,704 -             read_html.py#288  - INFO     - Read: 666472-plane-crash-near-ahmedabad-3.html posts: 20
