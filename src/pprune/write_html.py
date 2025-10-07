@@ -37,7 +37,7 @@ import zoneinfo
 from contextlib import contextmanager
 
 import analyse_thread
-import publication_maps
+from publication_maps import publication_map_abc
 import styles
 from pprune.common import thread_struct
 
@@ -146,7 +146,7 @@ class PassOneResult:
 def pass_one(
         thread: thread_struct.Thread,
         common_words: typing.Set[str],
-        publication_map: publication_maps.PublicationMapABC,
+        publication_map: publication_map_abc.PublicationMapABC,
 ) -> PassOneResult:
     """Works through every post in the thread and returns a PassOneResult."""
     logger.info('Starting pass one...')
@@ -260,7 +260,7 @@ def write_index_h1(
 
 def write_index_significant_posts(
         thread: thread_struct.Thread,
-        publication_map: publication_maps.PublicationMapABC,
+        publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
 ):
     """Optionally, writes out a list of significant posts."""
@@ -318,7 +318,7 @@ def write_index_main_subject_table(
 
 
 def write_index_removed_subjects(
-        publication_map: publication_maps.PublicationMapABC,
+        publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
 ):
     """If there are removed subjects then list them here in tabular form."""
@@ -342,7 +342,7 @@ def write_index_removed_subjects(
 
 def write_index_most_upvoted_posts_table(
         thread: thread_struct.Thread,
-        publication_map: publication_maps.PublicationMapABC,
+        publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
 ):
     """Posts by most up-voted."""
@@ -420,7 +420,7 @@ def _write_table_header(headers: typing.List[str], index: typing.TextIO):
 def write_index_user_subject_table(
         thread: thread_struct.Thread,
         user_subject_map: typing.Dict[str, typing.Set[str]],
-        publication_map: publication_maps.PublicationMapABC,
+        publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
 ):
     """Posts by user, including the subjects they covered."""
@@ -478,7 +478,7 @@ def write_index_user_subject_table(
 def write_index_user_post_table(
         thread: thread_struct.Thread,
         user_ordinal_map: typing.Dict[str, typing.List[int]],
-        publication_map: publication_maps.PublicationMapABC,
+        publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
 ):
     """Write a table with links to pages that have all user posts."""
@@ -545,7 +545,7 @@ def write_index_histogram(
 
 def write_index_post_date_histogram(
         thread: thread_struct.Thread,
-        publication_map: publication_maps.PublicationMapABC,
+        publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
 ):
     """Writes a histogram table of posts by date."""
@@ -570,7 +570,7 @@ def write_index_post_date_histogram(
 
 def write_index_post_time_histogram(
         thread: thread_struct.Thread,
-        publication_map: publication_maps.PublicationMapABC,
+        publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
 ):
     """Write a table with a histogram of posts by time of day (GMT)."""
@@ -594,7 +594,7 @@ def write_index_post_time_histogram(
 def write_index_page(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
-        publication_map: publication_maps.PublicationMapABC,
+        publication_map: publication_map_abc.PublicationMapABC,
         out_path: str,
 ):
     """Write the index.html page."""
@@ -915,7 +915,7 @@ def write_user_page(
 def write_whole_thread(
         thread: thread_struct.Thread,
         common_words: typing.Set[str],
-        publication_map: publication_maps.PublicationMapABC,
+        publication_map: publication_map_abc.PublicationMapABC,
         output_path: str
 ):
     logger.info('Starting write_whole_thread() to %s', output_path)

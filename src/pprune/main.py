@@ -32,12 +32,12 @@ import os
 import sys
 import time
 
-from pprune import publication_maps
 from pprune import write_html
 from pprune.common import log_config
 from pprune.common import read_html
 from pprune.common import thread_struct
 from pprune.common import words
+from publication_maps import air_india_171
 
 logger = logging.getLogger(__file__)
 
@@ -92,7 +92,7 @@ def main():
             "Limit the thread to this number of posts."
             " Zero means all posts."
             " [default: %(default)d]"
-          ),
+        ),
     )
     parser.add_argument(
         "--min-likes",
@@ -145,8 +145,8 @@ def main():
     logger.info('Number of posts: {:d} Number of words: {:d}'.format(len(thread), word_count))
     common_words = words.read_common_words_file(args.common_words)
     logger.info('Read: {:d} common words from "{:s}" to "{:s}".'.format(
-            len(common_words), common_words[0], common_words[-1],
-        )
+        len(common_words), common_words[0], common_words[-1],
+    )
     )
     for archive in archive_post_count:
         logger.info(
@@ -156,14 +156,8 @@ def main():
         )
     # write_html.pass_one(thread, common_words)
     common_words = set(common_words)
-    if args.thread_name == 'Concorde':
-        pub_map = publication_maps.ConcordePublicationMap()
-        words_required = pub_map.get_set_of_words_required()
-        common_words -= words_required
-        logger.info('Common words now length {:d}'.format(len(common_words)))
-        write_html.write_whole_thread(thread, common_words, pub_map, args.output)
-    elif args.thread_name == 'AI171':
-        pub_map = publication_maps.AirIndia171()
+    if args.thread_name == 'AI171':
+        pub_map = air_india_171.AirIndia171()
         words_required = pub_map.get_set_of_words_required()
         common_words -= words_required
         logger.info('Common words now length {:d}'.format(len(common_words)))
