@@ -27,11 +27,10 @@ Each value in the map is the subject that the text (probably) refers to.
 TODO: Make this a list of (function, map) where the function takes a list of words and
 applies it to the map. This would make the code more general.
 """
+from pprune.publication_maps import publication_map_abc
 
-from publication_map_abc import PublicationMapABC
 
-
-class Example(PublicationMapABC):
+class Example(publication_map_abc.PublicationMapABC):
     def get_title(self) -> str:
         return ''
 

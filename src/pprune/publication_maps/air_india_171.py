@@ -29,10 +29,10 @@ applies it to the map. This would make the code more general.
 """
 import typing
 
-from publication_map_abc import PublicationMapABC
+from pprune.publication_maps import publication_map_abc
 
 
-class AirIndia171(PublicationMapABC):
+class AirIndia171(publication_map_abc.PublicationMapABC):
     def get_title(self) -> str:
         return 'AI171 Re-mixed'
 
