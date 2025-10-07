@@ -84,7 +84,8 @@ setup(
     packages=find_packages(where='pprune'),  # Required
     entry_points={
         'console_scripts': {
-            'archive_thread=pprune.common.read_html:main',
+            'pprune_read_html=pprune.common.read_html:main',
+            'pprune_main=pprune.main:main',
         },
     },
     include_package_data=True,

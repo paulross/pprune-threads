@@ -271,22 +271,24 @@ def write_index_significant_posts(
             index.write('These are worth reading before you go any further.')
         # post_ordinals = []
         for subject, post_id in significant_posts:
-            try:
-                permalink = thread.post_id_to_permalink_map[post_id]
-                post_ordinal = thread.post_map[permalink]
-            except KeyError:
+            if post_id not in thread.post_id_to_permalink_map:
+                logger.error('Can not find post_id %s', post_id)
+                continue
+            permalink = thread.post_id_to_permalink_map[post_id]
+            if permalink not in thread.post_map:
                 logger.error('Can not find permalink %s', permalink)
+                continue
+            post_ordinal = thread.post_map[permalink]
+            if post_ordinal < len(thread):
+                with element(index, 'ul'):
+                    post = thread.posts[post_ordinal]
+                    with element(index, 'li'):
+                        index.write(
+                            f'Permalink: <a href="{post.permalink}">{subject}</a>'
+                            f' User: <a href="{post.user.href}">{post.user.name}</a>'
+                        )
             else:
-                if post_ordinal < len(thread):
-                    with element(index, 'ul'):
-                        post = thread.posts[post_ordinal]
-                        with element(index, 'li'):
-                            index.write(
-                                f'Permalink: <a href="{post.permalink}">{subject}</a>'
-                                f' User: <a href="{post.user.href}">{post.user.name}</a>'
-                            )
-                else:
-                    logger.warning(f'Can not write post {post_ordinal} most likely due to --limit-posts')
+                logger.warning(f'Can not write post {post_ordinal} most likely due to --limit-posts')
 
 
 def write_index_main_subject_table(
