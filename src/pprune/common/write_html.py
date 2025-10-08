@@ -140,7 +140,10 @@ class PassOneResult:
 
     def add_sequence_num_subject_link(self, sequence_num: int, subject: str, link: str) -> None:
         """Populated by pass_one()."""
-        self.sequence_num_subject_link_map[(sequence_num, subject)] = link
+        key = (sequence_num, subject)
+        if key in self.sequence_num_subject_link_map:
+            raise ValueError(f'Duplicate key {key} in sequence_num_subject_link_map')
+        self.sequence_num_subject_link_map[key] = link
 
 
 def pass_one(
@@ -922,15 +925,18 @@ def write_whole_thread(
         publication_map: publication_map_abc.PublicationMapABC,
         output_path: str
 ):
+    """This is the main entry point for writing out the results."""
     logger.info('Starting write_whole_thread() to %s', output_path)
     t_start = time.perf_counter()
     pass_one_result = pass_one(thread, common_words, publication_map)
     total_posts = 0
+    # Write out the subject pages.
     for subject in sorted(pass_one_result.subject_post_map.keys()):
         logger.info('Writing: "{:s}" [{:d}]'.format(subject, len(pass_one_result.subject_post_map[subject])))
         write_a_subject_page(thread, pass_one_result, subject, output_path)
         total_posts += len(pass_one_result.subject_post_map[subject])
     logger.info('Wrote %d posts including duplicates.', total_posts)
+    # Write out the user pages.
     for user_name in sorted(pass_one_result.user_ordinal_map.keys()):
         if len(pass_one_result.user_ordinal_map[user_name]) >= publication_map.get_minimum_number_username_posts():
             logger.info(
@@ -939,5 +945,6 @@ def write_whole_thread(
             )
             write_user_page(thread, pass_one_result, user_name, output_path)
     logger.info('Writing: {:s}'.format('index.html'))
+    # Write out the index page.
     write_index_page(thread, pass_one_result, publication_map, output_path)
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)
