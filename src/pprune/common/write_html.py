@@ -954,4 +954,14 @@ def write_whole_thread(
     logger.info('Writing: {:s}'.format('index.html'))
     # Write out the index page.
     write_index_page(thread, pass_one_result, publication_map, output_path)
+    # Print out a histogram of subject -> count of posts.
+    subject_counter = collections.Counter()
+    for subject in pass_one_result.subject_post_map:
+        subject_counter[subject] = len(pass_one_result.subject_post_map[subject])
+        # for _post in pass_one_result.subject_post_map[subject]:
+        #     subject_counter.update([subject])
+    # print(subject_counter)
+    print('Subjects by size:')
+    for k, v in subject_counter.most_common():
+        print(f'{k:40} [{v:3d}]: {"+" * v}')
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)
