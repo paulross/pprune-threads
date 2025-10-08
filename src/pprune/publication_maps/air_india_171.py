@@ -102,6 +102,10 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
         """The minimum number of posts a user has mad to get a page with all their posts."""
         return 5
 
+    def include_empty_post_dates_in_histogram(self) -> bool:
+        """Returns True if we want all dates in the date histogram even if there are no posts."""
+        return True
+
     def get_set_of_removed_subjects(self) -> typing.Set[str]:
         return {
             '51 Day Issue',

@@ -71,3 +71,7 @@ class Example(publication_map_abc.PublicationMapABC):
 
     def get_set_of_removed_subjects(self) -> typing.Set[str]:
         return set()
+
+    def include_empty_post_dates_in_histogram(self) -> bool:
+        """Returns True if we want all dates in the date histogram even if there are no posts."""
+        return True

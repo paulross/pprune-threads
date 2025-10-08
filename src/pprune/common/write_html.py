@@ -176,7 +176,8 @@ def pass_one(
             dupe_subjects |= publication_map.get_duplicate_subjects(subject)
         subjects |= dupe_subjects
         subjects -= publication_map.get_set_of_removed_subjects()
-        pass_one_result.add_subject_post(subjects, i, post.sequence_num, post.user.name.strip())
+        if post.user is not None:
+            pass_one_result.add_subject_post(subjects, i, post.sequence_num, post.user.name.strip())
     # Sanity check, warn if there is a subject with no posts referring to it.
     all_subject_titles = publication_map.get_all_subject_titles()
     for subject_title in sorted(all_subject_titles):
@@ -565,11 +566,17 @@ def write_index_post_date_histogram(
     table = []
     for day_inc in range(min(post_count.keys()), max(post_count.keys()) + 1):
         this_timestamp = thread.posts[0].timestamp + datetime.timedelta(days=day_inc)
-        table.append((format_datetime_as_date(this_timestamp), post_count[day_inc]))
+        if publication_map.include_empty_post_dates_in_histogram() or post_count[day_inc]:
+            table.append((format_datetime_as_date(this_timestamp), post_count[day_inc]))
+    text = 'Here are the number of posts by date.'
+    if publication_map.include_empty_post_dates_in_histogram():
+        text += ' All dates are included even if there are no posts.'
+    else:
+        text += ' Only dates are included if there are posts.'
     write_index_histogram(
         'Number of Posts by Date (GMT)',
         'posts_by_date',
-        'Here are the number of posts by date',
+        text,
         'Date',
         table, divisor, index
     )
@@ -853,7 +860,7 @@ def write_user_page(
     in context."""
     _posts = pass_one_result.user_ordinal_map[user_name]
     pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
-    up_votes = sum(len(p.liked_by_users) for p in thread.posts if p.user.name == user_name)
+    up_votes = sum(len(p.liked_by_users) for p in thread.posts if p.user is not None and p.user.name == user_name)
     for page_index, page in enumerate(pages):
         with open(os.path.join(out_path, _page_name('USER_' + user_name, page_index)), 'w') as out_file:
             out_file.write(

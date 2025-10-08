@@ -5,6 +5,46 @@ Remixes of prune threads.
 This describes how to reorganise a pprune thread by subject.
 
 --------------------------------------------
+The Concorde Thread
+--------------------------------------------
+
+
+.. code-block:: shell
+
+    $ mkdir concorde_A
+    $ cd concorde_A
+    $ curl https://www.pprune.org/tech-log/423988-concorde-question.html -o "423988-concorde-question.html"
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100  191k    0  191k    0     0   530k      0 --:--:-- --:--:-- --:--:--  540k
+
+.. code-block:: shell
+
+    $ grep "Last Page" 423988-concorde-question.html
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/tech-log/423988-concorde-question-108.html" title="Last Page - Results 2,141 to 2,149 of 2,149">Last <i class="fa-solid fa-angles-right"></i></a></li>
+
+
+.. code-block:: shell
+
+    $ time curl https://www.pprune.org/tech-log/423988-concorde-question-\[2-108\].html -o "423988-concorde-question-#1.html"
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100  207k    0  207k    0     0   583k      0 --:--:-- --:--:-- --:--:--  590k
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100  207k    0  207k    0     0   613k      0 --:--:-- --:--:-- --:--:--  615k
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100  210k    0  210k    0     0   625k      0 --:--:-- --:--:-- --:--:--  627k
+    8<---- Snip ---->8
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100  130k    0  130k    0     0   510k      0 --:--:-- --:--:-- --:--:--  510k
+    curl https://www.pprune.org/tech-log/423988-concorde-question-\[2-108\].html   0.33s user 0.53s system 2% cpu 33.682 total
+
+
+
+--------------------------------------------
 Air India Flight 171 at Ahmedabad 2025-06-12
 --------------------------------------------
 
