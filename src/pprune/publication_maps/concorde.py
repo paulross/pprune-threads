@@ -323,8 +323,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
     # This is a map of {permalink : subject, ...}
     # TODO: Change to permalinks.
     SPECIFIC_POSTS_MAP = {
-        225: 'Flight Envelope',  # Post 225 by pprunes counting
-        250: 'Olympus 593',  # Post 250 by pprunes counting
+        5917048: 'Flight Envelope',  # Post 225 by pprunes counting
+        # https://www.pprune.org/tech-log/423988-concorde-question-108.html#post5918963
+        5918963: 'Olympus 593',  # Post 250 by pprunes counting
         310: 'John Cook',
         333: 'C of G',  # Post 333 by pprunes counting
         463: 'John Cook',
