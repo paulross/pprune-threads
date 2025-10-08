@@ -1,6 +1,6 @@
 """MIT License
 
-Copyright (c) 2017 Paul Ross https://github.com/paulross
+Copyright (c) 2017-2025 Paul Ross https://github.com/paulross
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,13 +19,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-This is a set of maps that determine the layout of the Concorde Re-mix site.
-Each key is a word or phrase that can be identified in the text.
-Each value in the map is the subject that the text (probably) refers to.
-
-TODO: Make this a list of (function, map) where the function takes a list of words and
-applies it to the map. This would make the code more general.
 """
 
 __author__ = 'Paul Ross'
