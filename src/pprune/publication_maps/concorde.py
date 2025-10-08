@@ -107,7 +107,11 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'autostabs': 'Auto-stabilisation',
         'autothrottle': 'Auto-throttle',
         'autotrim': 'Auto-trim',
+        'barbados': 'Barbados',
+        'babylon': 'By the Rivers of Babylon',
         'bleed': 'Bleed Air',
+        'boom': 'Sonic Boom',
+        'booms': 'Sonic Boom',
         'boeing': 'Boeing',
         'bourget': 'Le Bourget',
         'brakes': 'Braking',
@@ -123,6 +127,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'corrosion': 'Corrosion',
         'crash': 'Air France 4590',
         'dakar': 'Dakar',
+        'davies': 'D. P. Davies',
         'depressurisation': 'Depressurisation',
         'depressurization': 'Depressurisation',
         'disaster': 'Air France 4590',
@@ -154,6 +159,10 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'nozzles': 'Nozzles',
         'parachute': 'Parachute',
         'pressurisation': 'Pressurisation',
+
+        'quiz': 'Quiz',
+        'quizes': 'Quiz',
+
         'reheat': 'Afterburner/Re-heat',
         'reheats': 'Afterburner/Re-heat',
         'relight': 'Relight',
@@ -174,13 +183,17 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'surges': 'Engine surge',
         'tailcone': 'Tail Cone',
         'tailwheel': 'Tailwheel',
+        'shannon': 'Shannon',
         'toulouse': 'Toulouse',
         'tyres': 'Tyres',
+        'tmo': 'TMO (Temprature Max Operating)',
         'tu144': 'Tu-144',
         'undercarridge': 'Landing Gear',
         'visor': 'Visor',
         'vortex': 'Vortex',
         'vorticies': 'Vortex',
+        'vmo': 'Vmo',
+        'vd': 'Vd',
     }
 
     # This maps capitilised words (stripped of punctuation) to their subject.
@@ -190,9 +203,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
             'CDG', 'LHR', 'JFK', 'V1', 'V2',
         }
     }
-    # This maps capitilised words (stripped of punctuation) to their subject with ' (All)' as a suffix. .
+    # This maps capitalised words (stripped of punctuation) to their subject with ' (All)' as a suffix. .
     CAPS_WORDS_MAP_ALL = {}
-    # This maps capitilised words (stripped of punctuation) to their subject.
+    # This maps capitalised words (stripped of punctuation) to their subject.
     # Any post that has that capitilised word in it is treated as part of that subject.
     CAPS_WORDS_MAP_EXTRA = {
         'ADC': 'ADC (Air Data Computer)',
@@ -263,13 +276,25 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('brian', 'calvert'): 'Brian Calvert',
             ('brian', 'wadpole'): 'Brian Walpole',
             ('brian', 'walpole'): 'Brian Walpole',
+            ('brize', 'norton'): 'Brize Norton',
+            ('chris', 'norris'): 'Chris Norris',
             ('CLIMB', 'MAX'): 'Climb Performance',
-            ('C', 'G'): 'C of G',  # 'of' is stripped out by common words.
+            ('C', 'G'): 'C of G',
             ('concorde', 'simulator'): 'Concorde Simulator',
+
+            ('concorde', 'routing',): 'Concorde Routings',
+            ('concorde', 'routings',): 'Concorde Routings',
+            ('oceanic', 'routings',): 'Concorde Routings',
+
+            ('conversion', 'course'): 'Conversion Course',
             ('Chris', 'Norris'): 'Chris Norris',
             ('cabin', 'crew'): 'Cabin Crew',
             ('delta', 'golf'): 'G-BBDG',
             ('engine', 'failure'): 'Engine Failure',
+
+            ('emergency', 'descent'): 'Depressurisation',
+            ('window', 'failure'): 'Depressurisation',
+
             ('female', 'pilots'): 'Female Pilots',
             ('flight', 'envelope'): 'Flight Envelope',
             ('fuel', 'pump'): 'Fuel Pumps',
@@ -280,10 +305,13 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('hydraulic', 'contamination'): 'Hydraulic Failure/Contamination',
             ('hydraulic', 'failures'): 'Hydraulic Failure/Contamination',
             ('HP', 'compressor'): 'HP Compressor',
+            ('hp', 'compressor'): 'HP Compressor',
             ('HP', 'turbine'): 'HP Turbine',
+            ('hp', 'turbine'): 'HP Turbine',
             ('JFK', 'departures'): 'LHR-JFK Route',
             ('JFK', 'LHR'): 'LHR-JFK Route',
-            ('John', 'Cook'): 'John Cook',
+            ('john', 'cook'): 'John Cook',
+            ('keith', 'myers'): 'Keith Myers',
             ('landing', 'gear'): 'Landing Gear',
             ('landing', 'lamps'): 'Landing & Taxy Lights',
             ('landing', 'lights'): 'Landing & Taxy Lights',
@@ -296,6 +324,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('mach', 'trim'): 'Mach Trim',
             ('mach', 'trimmer'): 'Mach Trim',
             ('mach', 'trimming'): 'Mach Trim',
+            ('mike', 'bannister'): 'Mike Bannister',
             ('nose', 'gear'): 'Landing Gear',
             ('nose', 'leg'): 'Landing Gear',
             ('nose', 'wheel'): 'Landing Gear',
@@ -303,39 +332,67 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('Olympus', '593'): 'Olympus 593',
             ('nozzle', 'reverser'): 'Thrust Reversers',
             ('pilot', 'selection'): 'Pilot Selection',
+            ('prototype', 'fleet',): 'Prototype Fleet',
             ('RAE', 'farnborough'): 'RAE Farnborough',
             ('rivers', 'babylon'): 'By the Rivers of Babylon',
             ('Rolls', 'Royce'): 'Rolls Royce',
             ('rotating', 'stall'): 'Rotating (engine) Stall',
             ('stick', 'shaker'): 'Stick Shaker',
+
+            ('trivia', 'questions'): 'Quiz',
+            ('stinky', 'questions'): 'Quiz',
+            ('concorde', 'quiz'): 'Quiz',
+            ('concorde', 'quizes'): 'Quiz',
+
             ('taxy', 'lights'): 'Landing & Taxy Lights',
             ('temperature', 'shear'): 'Temperature Shear',
             ('temperature', 'shears'): 'Temperature Shear',
             ('transonic', 'acceleration'): 'Transonic Acceleration',
             ('thrust', 'recuperator'): 'Thrust Recuperator',
+            ('technical', 'diagrams'): 'Technical Diagrams',
             ('vortex', 'aoa'): 'Vortex AoA',
+        },
+        3: {
+            ('c', 'of', 'g',): 'C of G',
+            ('head', 'up', 'display',): 'HUD (Head Up Display)',
+            ('flight', 'plan', 'segment',): 'Concorde Routings',
+            # 'How many wheels on the aircraft'
+            ('how', 'many', 'wheels'): 'Quiz',
+        },
+        4: {
+            ('how', 'many', 'wheel', 'brakes'): 'Quiz',
         }
     }
-    # The key is the pprune message number where the post is clearly about the subject
-    # but the text does not refer to it.
-    # The key is the pprune message permalink where the post is clearly about the subject
+    # The key is the pprune permalink number where the post is clearly about the subject
     # but the text does not refer to it.
     # This is a map of {permalink : subject, ...}
-    # TODO: Change to permalinks.
     SPECIFIC_POSTS_MAP = {
         5917048: 'Flight Envelope',  # Post 225 by pprunes counting
         # https://www.pprune.org/tech-log/423988-concorde-question-108.html#post5918963
         5918963: 'Olympus 593',  # Post 250 by pprunes counting
-        310: 'John Cook',
-        333: 'C of G',  # Post 333 by pprunes counting
-        463: 'John Cook',
-        600: 'John Cook',
-        664: 'HUD (Head Up Display)',
-        1023: 'Relight',
-        1049: 'Captains',
-        1666: 'Tu-144',
-        1861: 'Parachute',
-        1937: 'John Cook',
+        # # https://www.pprune.org/tech-log/423988-concorde-question-16.html#post5926053
+        # 5926053: 'John Cook',
+        # https://www.pprune.org/tech-log/423988-concorde-question-108.html#post5930300
+        5930300: 'C of G',  # Post 331 by pprunes counting
+        # https://www.pprune.org/tech-log/423988-concorde-question-108.html#post5930647
+        5930647: 'C of G',  # Post 333 by pprunes counting
+        # # https://www.pprune.org/tech-log/423988-concorde-question-24.html#post5954015
+        # 5954015: 'John Cook',  # Post 463
+        # https://www.pprune.org/tech-log/423988-concorde-question-30.html#post6012930
+        # 6012930: 'John Cook', # Post 600
+        # # https://www.pprune.org/tech-log/423988-concorde-question-108.html#post6042205
+        # 6042205: 'HUD (Head Up Display)', # Post 664
+        # https://www.pprune.org/tech-log/423988-concorde-question-52.html#post6144908
+        6144908: 'Relight',  # Post 1023
+        # https://www.pprune.org/tech-log/423988-concorde-question-53.html#post6149785
+        6149785: 'Captains',  # Post 1049
+        # https://www.pprune.org/tech-log/423988-concorde-question-84.html#post7389576
+        7389576: 'Tu-144',  # Post 1665
+        # https://www.pprune.org/tech-log/423988-concorde-question-108.html#post8937925
+        8937925: 'Parachute',  # Post 1860
+        # 1937: 'John Cook',
+        # https://www.pprune.org/tech-log/423988-concorde-question-108.html#post11681790
+        11681790: 'Technical Diagrams',
     }
     # Map of {subject_title : set(subject_title), ..}
     DUPLICATE_SUBJECT_MAP = {}
