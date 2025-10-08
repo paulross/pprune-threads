@@ -1,5 +1,5 @@
 import pytest
-from pprune import analyse_thread
+from pprune.common import analyse_thread
 from pprune.common import read_html
 from pprune.common import words
 

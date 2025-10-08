@@ -32,17 +32,28 @@ import os
 import sys
 import time
 
-from pprune import publication_maps
-from pprune import write_html
 from pprune.common import log_config
 from pprune.common import read_html
 from pprune.common import thread_struct
 from pprune.common import words
+from pprune.common import write_html
+from pprune.publication_maps import air_india_171
+from pprune.publication_maps import concorde
+from pprune.publication_maps import example
 
 logger = logging.getLogger(__file__)
 
+# Map of thread name to a class declaration that can be created and
+# eventually passed to write_html.write_whole_thread().
+THREAD_NAME_TO_CLASS_MAP = {
+    'AI171': air_india_171.AirIndia171,
+    'Example': example.Example,
+    'Concorde': concorde.Concorde,
+}
+
 
 def main():
+    print(f'Command: {" ".join(sys.argv)}')
     parser = argparse.ArgumentParser(description='Rewrite a pprune thread to local storage.')
     parser.add_argument(
         'archives',
@@ -53,21 +64,26 @@ def main():
             ' Multiple threads will be added in order.'
         )
     )
-    # TODO: Default to docs/gh-pages/thread-name
     parser.add_argument(
-        'output',
+        '-o', '--output',
         type=str,
+        nargs='?',
+        default=None,
         help=(
             'Directory to write the output to.'
+            ' If absent then this will be computed as docs/gh-pages/<THREAD_NAME>'
             ' [default: %(default)s].'
         )
     )
+    supported_threads = ', '.join(sorted(f'"{v}"' for v in THREAD_NAME_TO_CLASS_MAP.keys()))
     parser.add_argument(
         '--thread-name',
         type=str,
+        nargs='?',
+        required=True,
         help=(
             'This decides the thread publication map.'
-            ' Supported values are "Concorde", "AI171".'
+            f' Supported values are: [{supported_threads}].'
             ' [default: %(default)s].'
         )
     )
@@ -77,13 +93,13 @@ def main():
         default=1000,
         help="Number of common words to exclude. [default: %(default)d]",
     )
-    parser.add_argument(
-        "--authors",
-        action="store_true",
-        help=(
-            "Add posts by author."
-        )
-    )
+    # parser.add_argument(
+    #     "--authors",
+    #     action="store_true",
+    #     help=(
+    #         "Add posts by author."
+    #     )
+    # )
     parser.add_argument(
         "--limit-posts",
         type=int,
@@ -92,7 +108,7 @@ def main():
             "Limit the thread to this number of posts."
             " Zero means all posts."
             " [default: %(default)d]"
-          ),
+        ),
     )
     parser.add_argument(
         "--min-likes",
@@ -113,14 +129,24 @@ def main():
         help="Log level. [default: %(default)d]",
     )
     args = parser.parse_args()
+    # print(f'Args: {args}')
     logging.basicConfig(
         level=args.log_level,
         format=log_config.DEFAULT_OPT_LOG_FORMAT_NO_PROCESS,
         stream=sys.stdout,
     )
-
-    os.makedirs(args.output, exist_ok=True)
-
+    if args.output is None:
+        output_dir = os.path.normpath(
+            os.path.join(
+                os.path.dirname(__file__), os.pardir, os.pardir, 'docs', 'gh-pages', args.thread_name
+            )
+        )
+        logger.info("Computed output directory is %s", output_dir)
+    else:
+        output_dir = args.output
+        logger.info("Given output directory is %s", output_dir)
+    os.makedirs(output_dir, exist_ok=True)
+    # Get to work.
     t_start = time.perf_counter()
     archive_post_count = {}
     # Compose the thread.
@@ -144,7 +170,8 @@ def main():
         word_count += len(post.words)
     logger.info('Number of posts: {:d} Number of words: {:d}'.format(len(thread), word_count))
     common_words = words.read_common_words_file(args.common_words)
-    logger.info('Read: {:d} common words from "{:s}" to "{:s}".'.format(
+    logger.info(
+        'Read: {:d} common words from "{:s}" to "{:s}".'.format(
             len(common_words), common_words[0], common_words[-1],
         )
     )
@@ -154,22 +181,18 @@ def main():
                 archive_post_count[archive], 1 + archive_post_count[archive] // 20, archive,
             )
         )
-    # write_html.pass_one(thread, common_words)
     common_words = set(common_words)
-    if args.thread_name == 'Concorde':
-        pub_map = publication_maps.ConcordePublicationMap()
+    if args.thread_name in THREAD_NAME_TO_CLASS_MAP:
+        pub_map = THREAD_NAME_TO_CLASS_MAP[args.thread_name]()
         words_required = pub_map.get_set_of_words_required()
         common_words -= words_required
         logger.info('Common words now length {:d}'.format(len(common_words)))
-        write_html.write_whole_thread(thread, common_words, pub_map, args.output)
-    elif args.thread_name == 'AI171':
-        pub_map = publication_maps.AirIndia171()
-        words_required = pub_map.get_set_of_words_required()
-        common_words -= words_required
-        logger.info('Common words now length {:d}'.format(len(common_words)))
-        write_html.write_whole_thread(thread, common_words, pub_map, args.output)
+        write_html.write_whole_thread(thread, common_words, pub_map, output_dir)
     else:
-        logger.error(f'Do not know thread {args.thread_name}')
+        logger.error(
+            f'Do not know of thread "{args.thread_name}".'
+            f' Supported threads are: {supported_threads}'
+        )
         return -1
     t_elapsed = time.perf_counter() - t_start
     logger.info('Processed %d posts in %.3f (s)', len(thread), t_elapsed, )

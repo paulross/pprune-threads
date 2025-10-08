@@ -33,7 +33,7 @@ import pprint
 import sys
 import time
 
-import analyse_thread
+import pprune.common.analyse_thread
 import pprune.common.log_config
 import pprune.common.read_html
 import pprune.common.thread_struct
@@ -44,7 +44,7 @@ logger = logging.getLogger(__file__)
 
 def print_non_cap_words(thread, common_words, freq_ge: int):
     print(' print_non_cap_words(): freq_ge={:d} '.format(freq_ge).center(75, '-'))
-    word_counter = analyse_thread.count_non_cap_words(thread, common_words, freq_ge)
+    word_counter = pprune.common.analyse_thread.count_non_cap_words(thread, common_words, freq_ge)
     print(f'Words counted: {sum(word_counter.values())}')
     # pprint.pprint(word_counter.most_common(400))
     pprint.pprint(word_counter)
@@ -59,7 +59,7 @@ def print_phrases(thread, common_words, phrase_length, most_common_count: int, f
         ' print_phrases(): len={:d} most_common={:d} freq_ge={:d} '.format(
             phrase_length, most_common_count, freq_ge).center(75, '-')
     )
-    word_counter = analyse_thread.count_phrases(thread, common_words, phrase_length, freq_ge=freq_ge)
+    word_counter = pprune.common.analyse_thread.count_phrases(thread, common_words, phrase_length, freq_ge=freq_ge)
     # pprint.pprint(word_counter.most_common(most_common_count))
     for words, count in word_counter.most_common(most_common_count):
         # print(f'{" ".join(words):32} : {count:4d}')
@@ -84,7 +84,7 @@ def print_phrases(thread, common_words, phrase_length, most_common_count: int, f
 
 def print_all_caps(thread, most_common_count: int, freq_ge: int):
     print(' print_all_caps(): most_common={:d} freq_ge={:d} '.format(most_common_count, freq_ge).center(75, '-'))
-    word_counter = analyse_thread.count_all_caps(thread, min_size=2, freq_ge=freq_ge)
+    word_counter = pprune.common.analyse_thread.count_all_caps(thread, min_size=2, freq_ge=freq_ge)
     pprint.pprint(word_counter.most_common(most_common_count))
     print(' print_all_caps(): most_common={:d} freq_ge={:d} DONE '.format(most_common_count, freq_ge).center(75, '-'))
     print(' print_all_caps(): most_common={:d} freq_ge={:d} sorted '.format(most_common_count, freq_ge).center(75, '-'))

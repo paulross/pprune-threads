@@ -50,12 +50,22 @@ from pprune.common import thread_struct
                         url='https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-2.html',
                     ),
             ),
+            (
+                    example_data.EXAMPLE_PAGES['423988-concorde-question.html'],
+                    read_html.PageInformation(
+                        tzinfo=zoneinfo.ZoneInfo(key='Etc/GMT'),
+                        thread_is_open=True,
+                        url_original='https://www.pprune.org/tech-log/423988-concorde-question.html',
+                        url='https://www.pprune.org/tech-log/423988-concorde-question.html',
+                    ),
+            ),
     ),
     ids=[
         'example_page.html',
         'example_page_four_posts.html',
         '666472-plane-crash-near-ahmedabad.html',
         '666472-plane-crash-near-ahmedabad-2.html',
+        '423988-concorde-question.html',
     ],
 )
 def test_get_page_information_from_parsed_doc(html_str, expected):
@@ -72,12 +82,14 @@ def test_get_page_information_from_parsed_doc(html_str, expected):
             (example_data.EXAMPLE_PAGES['example_page_four_posts.html'], 4),
             (example_data.EXAMPLE_PAGES['666472-plane-crash-near-ahmedabad.html'], 20),
             (example_data.EXAMPLE_PAGES['666472-plane-crash-near-ahmedabad-2.html'], 20),
+            (example_data.EXAMPLE_PAGES['423988-concorde-question.html'], 20),
     ),
     ids=[
         'example_page.html',
         'example_page_four_posts.html',
         '666472-plane-crash-near-ahmedabad.html',
         '666472-plane-crash-near-ahmedabad-2.html',
+        '423988-concorde-question.html',
     ],
 )
 def test_get_thread_from_html_string(html_str, expected):
@@ -98,9 +110,15 @@ def test_get_thread_from_html_string(html_str, expected):
                         'This has happened to A320s before... 2005, Jet Blue BUR-JFK knew immediately after takeoff that there was a NG issue, burned fuel for three hours before heading into LAX.\nhttps://www.nydailynews.com/news/nat...ticle-1.607155'
                     ],
             ),
+            (
+                    example_data.EXAMPLE_PAGES['423988-concorde-question.html'],
+                    [
+                    ],
+            ),
     ),
     ids=[
         'example_page_four_posts.html',
+        '423988-concorde-question.html',
     ],
 )
 def test_get_thread_from_html_string_text_stripped(html_str, expected):
