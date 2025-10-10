@@ -1,0 +1,1408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content=pprune M2dude name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+</head>
+<body><span id=User_M2dude_8></span>
+<h1>Posts by user "M2dude" [Posts: 257 Total up-votes: 1 Page: 8 of 13]<a class=headerlink href="#User_M2dude_8" title="Link to this heading">¶</a>
+</h1>
+<p class=page_links>Page Links:&nbsp;<a href=USER-M2dude0.html>First</a>
+&nbsp;<a href=USER-M2dude6.html>Previous</a>
+&nbsp;<a href=USER-M2dude0.html>1</a>
+&nbsp;<a href=USER-M2dude1.html>2</a>
+&nbsp;<a href=USER-M2dude2.html>3</a>
+&nbsp;<a href=USER-M2dude3.html>4</a>
+&nbsp;<a href=USER-M2dude4.html>5</a>
+&nbsp;<a href=USER-M2dude5.html>6</a>
+&nbsp;<a href=USER-M2dude6.html>7</a>
+&nbsp;<a href=USER-M2dude7.html><b>8</b>
+</a>
+&nbsp;<a href=USER-M2dude8.html>9</a>
+&nbsp;<a href=USER-M2dude9.html>10</a>
+&nbsp;<a href=USER-M2dude10.html>11</a>
+&nbsp;<a href=USER-M2dude11.html>12</a>
+&nbsp;<a href=USER-M2dude12.html>13</a>
+&nbsp;<a href=USER-M2dude8.html>Next</a>
+&nbsp;<a href=USER-M2dude12.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 18, 2010, 11:25:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-37.html#post6069344><br/>permalink</a>
+ Post: 6069344</td>
+<td class=post><div class="tcell alt1" id="td_post_6069344">
+ <!-- message -->
+ <div id="post_message_6069344">
+  <b>
+   Mr Vortex
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    - So once we select the Engine schedule to mode Hi or F/O the Prim nozzle will open wider causing the pressure at the Prim nozzle to drop and hence the higher flow of the exhaust through the LP turbine = Higher N1 RPM. Am I understand it correctly?
+   </div>
+  </div>
+  More or less you are correct yes, but remember that schedule selection was more or less automatic. (
+  <span style="color:red">
+   <b>
+    E Flyover
+   </b>
+  </span>
+  was armed prior to take-off, and
+  <span style="color:red">
+   <b>
+    E-MID
+   </b>
+  </span>
+  during approach by the E/O, otherwise it was more or less a 'hands off' afair).
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    According to your reply, the E schedule that will provide the most thrust is the Low mode since the prim nozzle area will be the smallest among all of the other mode which mean the highest pressure and temperature. Am I understand it correctly? And if so why do BA [as far as I know] told the FE to use Hi mode? Because the higher thrust can be obtain with higher N1?
+   </div>
+  </div>
+  Oooo no, we are way adrift here I'm afraid. I'm trying not to get too 'heavy' with this explanation, and I've enclosed below the Rolls-Royce E Shedule diagram to try and help clarify everything. (I've edited out the exact equation figures in deference to Rolls-Royce). Where N1/&radic;&theta; and N2/&radic;&theta; is quoted, the term '
+  <b>
+   &theta;
+  </b>
+  ' related to
+  <b>
+   T1 in degrees K/288
+  </b>
+  . (288 deg's K being 15 deg's C). The hotter things are the higher the spool speed scheduled is, and visa-versa for lower temperatures. Only at a T1 of 15 deg's. C (Standard day temperature) does N/&radic;&theta; equate to N.  (But remamber that T1 is TOTAL temperature, that varies with Mach Number).
+  <br/>
+  The use of
+  <span style="color:red">
+   <b>
+    E LOW
+   </b>
+  </span>
+  above 220KIAS was not only strictly inhibited by the automatics, if you over-rode the automatics and 'hard selected'
+  <b>
+   <span style="color:#ff0000">
+    E LOW
+   </span>
+  </b>
+  , the aircraft would fall
+  <span style="color:black">
+   out
+  </span>
+  of the sky when reheat was cancelled at Mach 1.7. This was because the low N1/&radic;&theta; scheduled by
+  <span style="color:red">
+   <b>
+    E LOW
+   </b>
+  </span>
+  would now invoke an N2/&radic;&theta;
+  <span style="color:navy">
+   limit (The
+  </span>
+  E3 Limiter in the diagram) and claw off fuel flow by the tonne.
+  <br/>
+  The most efficient schedule for supersonic cruise was
+  <span style="color:red">
+   <b>
+    E HI
+   </b>
+  </span>
+  which again would be automatically selected.
+  <br/>
+  <span style="color:red">
+   <b>
+    E-MID
+   </b>
+  </span>
+  was automatically selected during afterburning operation, to minimise the chance of an N1 overspeed on cancellation of reheat.
+  <b>
+   <span style="color:#ff0000">
+    E-MID
+   </span>
+  </b>
+  could also be selected by the E/O for noise abatement approach.
+  <br/>
+  <span style="color:#ff0000">
+   <b>
+    E Flyover
+   </b>
+  </span>
+  <span style="color:navy">
+   was as we discussed before used for take-off flyover noise abatement as well as subsonic cruise if desired. (If Mach 1 was exceeded with
+  </span>
+  <span style="color:#ff0000">
+   <b>
+    E Flyover
+   </b>
+   <span style="color:navy">
+    still selected, a yellow NOZZLE light illuminated and
+    <b>
+     <span style="color:#ff0000">
+      E HI
+     </span>
+    </b>
+    would be automatically selected.
+   </span>
+  </span>
+  <br/>
+  <span style="color:#ff0000">
+   <span style="color:navy">
+    I sincerely hope that this blurb is not clear as mud, feel free to ask away.
+   </span>
+  </span>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    - Also does the the Hi mode can deliver the higher N1 RPM, does that mean the Engine control unit must deliver the higher fuelflow rate in order to keep N2 run at the constant speed [higher N1 speed =&gt; higher pressure =&gt; more resistance
+    <br/>
+    =&gt; higher Fuelflow require to keep N2 run at constant speed]
+   </div>
+  </div>
+  Nope, that is the beauty of it all. Because of the part choking of the LP turbine section of the engine, the pressure changes due to Aj variation were felt exclusively by N1 and not N2. (Clever, these Rolls-Royce guys
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/smile.gif" title="Smilie"/>
+  ).
+  <br/>
+  Regards
+  <br/>
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+  <br/>
+  <img alt="" class="post_inline_image" src="http://i1237.photobucket.com/albums/ff476/riconc11/Concorde/ESchedules-1.jpg"/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by M2dude; 18th November 2010 at
+   <span class="time">
+    14:04
+   </span>
+   .
+							
+							
+								Reason: I goofed.. (another sign of age)
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Afterburner-Re-heat2.html#6069344>Afterburner/Re-heat</a>
+&nbsp;<a href=British_Airways4.html#6069344>British Airways</a>
+&nbsp;<a href=LP_Turbine0.html#6069344>LP Turbine</a>
+&nbsp;<a href=N1_-revolutions-0.html#6069344>N1 (revolutions)</a>
+&nbsp;<a href=Noise_Abatement0.html#6069344>Noise Abatement</a>
+&nbsp;<a href=Nozzles1.html#6069344>Nozzles</a>
+&nbsp;<a href=Rolls_Royce0.html#6069344>Rolls Royce</a>
+&nbsp;<a href=Vortex0.html#6069344>Vortex</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 18, 2010, 11:47:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-37.html#post6069397><br/>permalink</a>
+ Post: 6069397</td>
+<td class=post><div class="tcell alt1" id="td_post_6069397">
+ <!-- message -->
+ <div id="post_message_6069397">
+  <b>
+   Landroger
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    It is
+    <i>
+     still
+    </i>
+    difficult to grasp the fact that, with the one exception Christiaan has told us about, all of the control electronics in Concorde were
+    <i>
+     analogue.
+    </i>
+    Some of the little tweaks Dude has just alluded to in his reply about the nozzles and the relationship of compressor speeds, for example. Most of them would be relatively easy - relative is a huge word of course
+    <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/icon_rolleyes.gif" title="Roll Eyes (Sarcastic)"/>
+    - if they were microprocessor controlled locally and sending/ receiving status and demand data to a bank of central computers. But to do it with analogue signals and controllers is mind boggling.
+    <img alt="" class="post_inline_image" src="http://images.ibsrv.net/ibsrv/res/src:www.pprune.org/get/images/smilies/eek.gif"/>
+   </div>
+  </div>
+  It always was a bit of a paradox; in terms of fuel price and environmental concerns, Concorde was about 5 years too late. But in ELECTRONICS terms she was 10 years too early. Bearing in mind that the first Intel 4004 was not even commercially available until 1971. When the decision was taken in late 1970 to 're-design' the analog air intake control system into a digital one, there was nothing to fall back on; a BAC custom guided missile processor (used I believe on both the Rapier and Sea Dart SAMs) had to be adapted. This processor was, as I've yawned on about before, comprised of multiple double sided PCBs completely stacked with TTL ICs. In spite of being a total antique and a dinasore (just like me
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/boohoo.gif" title="Boo Hoo"/>
+  ) this thing was really cutting edge technology at the time, even using a 64 bit data word. The AICS as again I've yawned on about before, was the WORLD's first commercial airborne digital control sysstem, but the Concorde analog stuff in fact worked pretty well indeed.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/thumbs.gif" title="Thumb"/>
+  <br/>
+  <br/>
+  <b>
+   Galaxy Flyer
+  </b>
+  <br/>
+  As always GF you make your point really well. As far as Concorde went, the very few American (Branniff) pilots who flew her thought she was totally amazing, and the American BA engineers at JFK and IAD absolutely adored the aeroplane.
+  <br/>
+  And back to your 'charriot', the C5 has been a staggeringly successful aeroplane in terms of US service. and is still thriving (big modernisation programme underway). Not bad for an aircraft that entered USAF service in 1969!!!
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_clap.gif" title="Big Grin"/>
+  <br/>
+  Regards
+  <br/>
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=AICS_-Air_Intake_Control_System-0.html#6069397>AICS (Air Intake Control System)</a>
+&nbsp;<a href=British_Airways4.html#6069397>British Airways</a>
+&nbsp;<a href=JFK2.html#6069397>JFK</a>
+&nbsp;<a href=Microprocessor0.html#6069397>Microprocessor</a>
+&nbsp;<a href=Nozzles1.html#6069397>Nozzles</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 19, 2010, 20:45:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-38.html#post6072863><br/>permalink</a>
+ Post: 6072863</td>
+<td class=post><div class="tcell alt1" id="td_post_6072863">
+ <!-- message -->
+ <div id="post_message_6072863">
+  <b>
+   Cron
+  </b>
+  <br>
+   <div style="margin:1rem; margin-top:0.3rem;">
+    <div>
+     <label>
+      Quote:
+     </label>
+    </div>
+    <div class="panel alt2" style="border:1px inset">
+     The crews, the engineers and anyone 'hands on' with the aircraft would have known that they were involved with something very special. Moreso I detect from such posters that they seemed to have a relationship with the aircraft which went beyond the normal level of any professional working with interesting technology. Were these people such well balanced types that they shrugged and took in their stride or was there seething but repressed anger? Was there a feeling of personal loss that such a thing would never happen again?
+    </div>
+   </div>
+   You sure touched a nerve or two there Cron. I can only speak for myself, but to me Concorde was more than a job, far more than just 30 years of my life, she was (and still is) an amazing and astoundingly beautiful aircraft. She was flown by dedicated, highly professional crews, some of which I still regard as some of my best friends. She carried an enormous variety of people, from the wealthy and famous to old Granny having a chance of a lifetime birthday treat. She epitomised what dedicated men (and women too) can achieve in the field of adversity when there is sufficient talent and dedication available to overcome massive political and technical hurdles. These guys and gals produced what is to me simply avaiation perfection. There is another aspect of Concorde's life that is seldom mentioned, that of live organ transportation across the Atlantic (in both directions I might add). I wonder just how many lives were saved by this marvelous use of speed. (The organs were transported in refrigerated containers and the speedy transport from the aeroplane was both slick and professional. I could go on.... but will give instead my personal feelings regarding this 'world without Concorde. The real TRUE story of why Concorde was withdrawn from service is for another time (this story has already been alluded to several times in this thread), but I am stilll filled with feelings of sadness, of guilt (was there really nothing any of 'us' could have done?) but mainly a deep feeling of anger and revulsion towards a small handfull of nasty little individuals that managed to destroy something so wonderful, so unique and so special for ALL the wrong reasons. I just hope these characters look back and are truly proud of themselves; this aviation 'crime' is right up there with the TSR-2 cancellation in my view.
+   <br>
+    But life goes on, and I had to spend the next few years learning all about those Boeing things. (You know I never realised that it was possible to fly WELL BELOW the speed of sound
+    <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/wink2.gif" title="Wink"/>
+    ).
+    <br>
+     <br>
+      <b>
+       BN2A
+      </b>
+      <br>
+       <div style="margin:1rem; margin-top:0.3rem;">
+        <div>
+         <label>
+          Quote:
+         </label>
+        </div>
+        <div class="panel alt2" style="border:1px inset">
+         PS - Was there ANYTHING on the Charger(ski) that was better or more advanced??
+        </div>
+       </div>
+       errrr nope.
+       <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/evil.gif" title="Evil"/>
+       <br>
+        Regards
+        <br>
+         <br/>
+         Dude
+         <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+        </br>
+       </br>
+      </br>
+     </br>
+    </br>
+   </br>
+  </br>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Boeing0.html#6072863>Boeing</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 19, 2010, 21:00:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-38.html#post6072895><br/>permalink</a>
+ Post: 6072895</td>
+<td class=post><div class="tcell alt1" id="td_post_6072895">
+ <!-- message -->
+ <div id="post_message_6072895">
+  <b>
+   Mr Vortex
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    So if we select E Low at M&gt;1.7 the N2 will ovespeed and hence higher fuelflow. Am I understand it right? Also, what E mode provide the
+    <br/>
+    best config shape [lest sat suitable] that provide a con-di nozzle for
+    <br/>
+    maximize thrust. [Not open to wide that exhaust can't reach M1 at the
+    <br/>
+    throat of Prim nozzle].
+   </div>
+  </div>
+  Not quite; remember that the N1s and N2s in the E SCHEDULE graph are non-dimentional. ie. they vary with temperature. As the temperature rises (with increasing Mach Number) the scheduled spool speeds increase. What really happens (I did not explain it correctly first time) is that the much lower N1 demanded by the use of E LOW at high speed results in a much further closed primary nozzle than normal, pushing up TET (and EGT) and we run hard into the EGT limiter, which claws fuel flow off, to the extent that the ramps and spill doors come down to their preset limits, almost as if there is a flame-out. The net result is a huge reduction in thrust. The condi was formed as the primary nozzle naturally took up a near fully open position in supersonic cruise and the wide open secondary nozzle buckets completed the picture. The schedule used here was E HIGH. I've noticed a couple of errors on the graph, the main one being that E HIGH is used with reheat off but with Vc
+  <b>
+   &gt;
+  </b>
+  220 KIAS
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    And another quesrion here, the engine control unit use which parameter to control the thrsut. The EGT, or N2, or P7.
+   </div>
+  </div>
+  Apart from being set as a variable limit, EGT normally played no role in the control loops (there were 2 loops, the 'governor' and 'positioner' loops). P7 played no part whatsoever in any case, the main variables were; N2, throttle valve position, throttle transmitter position, T1, total pressure and static temperature..
+  <br/>
+  <br/>
+  <b>
+   Feathers McGraw
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    If you watch some of the more recent Concorde programmes, such as "Concorde's Last Flight", you'll hear and see the reaction of the various people (including our very own Dude) from the BA side of things as they talk about their charge.
+   </div>
+  </div>
+  Oh nooooo... I've been outed
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/badteeth.gif" title="Bad teeth"/>
+  <br/>
+  Best regards
+  <br/>
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by M2dude; 20th November 2010 at
+   <span class="time">
+    04:10
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Afterburner-Re-heat2.html#6072895>Afterburner/Re-heat</a>
+&nbsp;<a href=British_Airways4.html#6072895>British Airways</a>
+&nbsp;<a href=Flameout0.html#6072895>Flameout</a>
+&nbsp;<a href=N1_-revolutions-0.html#6072895>N1 (revolutions)</a>
+&nbsp;<a href=Nozzles1.html#6072895>Nozzles</a>
+&nbsp;<a href=Thrust_Reversers0.html#6072895>Thrust Reversers</a>
+&nbsp;<a href=Vortex0.html#6072895>Vortex</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 20, 2010, 18:55:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-38.html#post6074477><br/>permalink</a>
+ Post: 6074477</td>
+<td class=post><div class="tcell alt1" id="td_post_6074477">
+ <!-- message -->
+ <div id="post_message_6074477">
+  <b>
+   a330pilotcanada
+  </b>
+  <br/>
+  I'm so glad that the guys on Alpha Charlie looked after you so well on that flight. Meeting fellow aviators was always most pleasurable for my 'flying chums' and they's always wax lyrical with absolute pride. I can also only apologise on behalf of the enrire fleet for the underwear replacement that your Flight Service Director; the aeroplane DID look stunning from that close I know.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_clap.gif" title="Big Grin"/>
+  <br/>
+  If the beers are on you my friend that will be great (but you can #make mine a Bud' if that's ok
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/thumbs.gif" title="Thumb"/>
+  <br/>
+  Best Regards
+  <br/>
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects:</b>
+ None</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 21, 2010, 20:37:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-38.html#post6076276><br/>permalink</a>
+ Post: 6076276</td>
+<td class=post><div class="tcell alt1" id="td_post_6076276">
+ <!-- message -->
+ <div id="post_message_6076276">
+  <b>
+   galaxy flyer
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    any idea of the min IAS for the RAT to provide the juice and hydraulics? Would it be as low as Vapp minus some margin?
+   </div>
+  </div>
+  Well the RAT was 'advertised' to be able to maintain 4000 (ish) PSI on Green and Yellow systems down to around 200 KTS, so IN THEORY you'd be ok (ish), refering to Brit312's post. Incidently, one of the prime reasons that the engines were housed in twin nacelle pairs, rather than the original TU144 'monobloc' style was to eliminate the chance of a severe ripple surges flaming out all four engines. (But as the thing had half of the engine air passing over the massive stowed main undercarriage, they had other problems to worry about anyway).
+  <br/>
+  I have to echo your point GF about carrying on asking questions, even if they may seem dumb at the time. It's all about how we all had to learn in the first place; Personally I'm happy to answer any questions at all here (the questions may not be stupid, but some of my answers...........
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_wall.gif" title="Ugh"/>
+  ).
+  <br/>
+  Regards to all
+  <br/>
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Engine_surge0.html#6076276>Engine surge</a>
+&nbsp;<a href=IAS_-Indicated_Air_Speed-1.html#6076276>IAS (Indicated Air Speed)</a>
+&nbsp;<a href=RAT_-Ram_Air_Turbine-0.html#6076276>RAT (Ram Air Turbine)</a>
+&nbsp;<a href=Tu-1440.html#6076276>Tu-144</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 26, 2010, 07:47:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-40.html#post6085163><br/>permalink</a>
+ Post: 6085163</td>
+<td class=post><div class="tcell alt1" id="td_post_6085163">
+ <!-- message -->
+ <div id="post_message_6085163">
+  <b>
+   speedbirdconcorde
+  </b>
+  <br>
+   <div style="margin:1rem; margin-top:0.3rem;">
+    <div>
+     <label>
+      Quote:
+     </label>
+    </div>
+    <div class="panel alt2" style="border:1px inset">
+     Regarding the rather important role of the elevons on Concorde
+     <img alt="" class="post_inline_image" src="http://images.ibsrv.net/ibsrv/res/src:www.pprune.org/get/images/smilies/smile.gif"/>
+     where there any failures during her time in the skies ?
+    </div>
+   </div>
+   Yes we did, just a couple if I remember correctly and relatively minor failures at that. (Regular ultrasonic NDT inspections had been instigated to pre-empt these failures from actually occuring). New elevon purchases were rightly seen to be the answer to the problem; the poorly designed trailing edge extension modifications of the late 1970's were as was said before, the source of these failures, due to moisture ingress in the honeycombe structure).
+   <br>
+    <br>
+     <b>
+      Mr Vortex
+     </b>
+     <br>
+      <div style="margin:1rem; margin-top:0.3rem;">
+       <div>
+        <label>
+         Quote:
+        </label>
+       </div>
+       <div class="panel alt2" style="border:1px inset">
+        I've just wonder that does the Concorde use a surge tank or
+        <br>
+         some a kind of a NACA duct like on B737 for pressurize the fuel in a tank?
+        </br>
+       </div>
+      </div>
+      As has been posted previously, there was a small NACA duct on the right hand side of the fin, that provided the air source for fuel tank pressurisation. This pressure was controlled to 1.5 PSIG.
+      <br>
+       <div style="margin:1rem; margin-top:0.3rem;">
+        <div>
+         <label>
+          Quote:
+         </label>
+        </div>
+        <div class="panel alt2" style="border:1px inset">
+         Also, in Concorde F/E panel around the fuel control panel there're switch call trim pipe drain switch. Which I tried to read and figure it out but finally I don't know what it actually do
+         <img alt="" class="post_inline_image" src="http://images.ibsrv.net/ibsrv/res/src:www.pprune.org/get/images/smilies/boohoo.gif"/>
+         and in which circumstance do we need to use it
+        </div>
+       </div>
+       This switch operated two valves that would drain out any residual fuel for maintenance (for example, replacing a vent valve); it was not used very often however.
+       <br>
+        <br/>
+        <b>
+         Islander539 and ChristiaanJ
+        </b>
+        <br/>
+        The actions of Airbus at Filton are nothing short of disgusting. By 'removing the insulation' you will need to strip the cabin completely bare (seats, galleys, ceiling panels and all of the side-wall panels). They say that 'Filton was only ever going to be an interim home for Concorde',
+        <b>
+         <span style="color:red">
+          what total
+          <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/censored.gif" title="Mad"/>
+          crap
+         </span>
+        </b>
+        !!
+        <br/>
+        The idea is to 'cocoon' the aircraft 'until a permanent home is found'. I hope all readers here realise that this will involve
+        <span style="color:red">
+         <b>
+          BREAKING UP THE AIRFRAME
+         </b>
+        </span>
+        to make it road transportable. The reasons that scarebus are giving for all this are vague and misleading, but here's my take. There are pressures around from various people and bodies 'to return a British Concorde to flying condition.' Now a lot (NOT ALL) of these people although very well intentioned are not that well informed and their wishes are not reasonably possible. But the pressures exist nonetheless, and scarebus will do anything to prevent this possibility, nomatter how unlikely, from being progressed. So we have G-BOAF, the youngest Concorde in the world, with the lowest airframe hours, in pretty good structural condition (she's suffered from being outside for 7 years, but nothing terminal) and actually in the hands of the dreaded scarebus (who would rather forget that Concorde ever existed, and was almost certainly the reason why they even noe exist). Doesn't take much working out now, does it?
+        <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/evil.gif" title="Evil"/>
+        <br/>
+        <br/>
+        Dude
+        <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+       </br>
+      </br>
+     </br>
+    </br>
+   </br>
+  </br>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Airbus1.html#6085163>Airbus</a>
+&nbsp;<a href=Elevons1.html#6085163>Elevons</a>
+&nbsp;<a href=Engine_surge1.html#6085163>Engine surge</a>
+&nbsp;<a href=Filton1.html#6085163>Filton</a>
+&nbsp;<a href=G-BOAF0.html#6085163>G-BOAF</a>
+&nbsp;<a href=Galley0.html#6085163>Galley</a>
+&nbsp;<a href=Pressurisation0.html#6085163>Pressurisation</a>
+&nbsp;<a href=Vortex1.html#6085163>Vortex</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 26, 2010, 07:58:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-40.html#post6085176><br/>permalink</a>
+ Post: 6085176</td>
+<td class=post><div class="tcell alt1" id="td_post_6085176">
+ <!-- message -->
+ <div id="post_message_6085176">
+  <b>
+   EXWOK
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    Or was it 18?? Late at night here - I'll think about it tomorrow!
+   </div>
+  </div>
+  I think you will find it was 18\xb0 TLA mate (age catching up with us???
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/smile.gif" title="Smilie"/>
+  . OK I know it has been 7 years).
+  <br/>
+  The 18\xb0 TLA limitation was set to prevent TOD 'pop' surges, due to the resulting large intake ramp angle causing excessive compressor face distortion (the one side effect of the intake 'thin lip' modification).
+  <br/>
+  <br/>
+  Best Regards
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Engine_surge1.html#6085176>Engine surge</a>
+&nbsp;<a href=TLA_-Throttle_Lever_Angle-0.html#6085176>TLA (Throttle Lever Angle)</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 26, 2010, 10:11:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-40.html#post6085415><br/>permalink</a>
+ Post: 6085415</td>
+<td class=post><div class="tcell alt1" id="td_post_6085415">
+ <!-- message -->
+ <div id="post_message_6085415">
+  <b>
+   EXWOK
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    Has AF really accrued fewer hours than AG, with her time out of service?
+   </div>
+  </div>
+  arghhhhhh.. age is catching up me ME
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/wibble.gif" title="Wibble"/>
+  <br/>
+  You are quite correct, Alpha Gulf accrued 2000 less airframe hours than Alpha Fox, mainly due to her protracted 'holiday' between 1982 and 1985.
+  <br/>
+  Totally agree with you about not letting the scarebus b****s buther OAF. OAA became a truly pitiful sight when they chopped the wings off for transportation. (You can still see the massive 'cut lines' on the wings, the effect of this effectively in my view 'killing' the aeroplane).
+  <br/>
+  It's all a little personal for me too; I did my very first LHR-JFK in
+  <b>
+   OAF
+  </b>
+  in September 1982, returning the following day in
+  <b>
+   OAA
+  </b>
+  . (Hutch, Chris Norris and Chopper Bill were the operating crew..... This old fart can still remember something I guess).
+  <br/>
+  <br/>
+  Regards
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Air_France1.html#6085415>Air France</a>
+&nbsp;<a href=Chris_Norris0.html#6085415>Chris Norris</a>
+&nbsp;<a href=LHR-JFK_Route0.html#6085415>LHR-JFK Route</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 27, 2010, 08:02:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-40.html#post6087291><br/>permalink</a>
+ Post: 6087291</td>
+<td class=post><div class="tcell alt1" id="td_post_6087291">
+ <!-- message -->
+ <div id="post_message_6087291">
+  <b>
+   ChristiaanJ
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    With the lack of comm from Airbus, of course we don't know the details, but I would have thought the problem is essentially the under-floor insulation, the same that causes the musty smell in the Fox-Charlie cockpit. If so, I doubt they'd bother to strip the cabin.
+   </div>
+  </div>
+  <span style="color:#000063">
+   With respect my friend that is utter codswallop. You can doubt things all you want, they've already said that they would remove it all; that by definition means all the cabin side-walls, galleys and roof panels, as well as the underfloor areas. When G-BBDG (202) was cocooned at Filton they did just that, and
+   <b>
+    the only intact part of the interior left was the flight deck!!
+   </b>
+  </span>
+  <br/>
+  <span style="color:#000063">
+   <div style="margin:1rem; margin-top:0.3rem;">
+    <div>
+     <label>
+      Quote:
+     </label>
+    </div>
+    <div class="panel alt2" style="border:1px inset">
+     At present, the 'permanent home' is planned to be at Cribb's Causeway, where land is already available. Since this is only just on the other side of Filton airfield, so far there is no question of breaking up the airframe, or road transport.
+    </div>
+   </div>
+  </span>
+  <br/>
+  <span style="color:#000063">
+   <span style="color:#000063">
+    Unfortunately, this lot have a habit of talking with forked tongue as far as Concorde goes; you can not in any way be sure about this,
+    <b>
+     and we should really stop believing everything that this lot in Toulouse tell us
+    </b>
+    . (Recent history here has taught us this all too well, and nothing would please scarebus more than there to be no reminders of Concorde at all on the airfield at Filton). More to the point, there is absolutely no certainty that the Cribb's Causeway site will ever be built anyway, you just can
+    <b>
+     NOT
+    </b>
+    say that the airframe will not ne broken up for road transportation, because if she does go to another museum in the absence of the Cribb's Causeway site being built, that will DEFINATELY happen. But at least we now have another 'written off' British Concorde; I guess this fact obviously pleases some people
+    <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/wibble.gif" title="Wibble"/>
+   </span>
+   <br/>
+   <div style="margin:1rem; margin-top:0.3rem;">
+    <div>
+     <label>
+      Quote:
+     </label>
+    </div>
+    <div class="panel alt2" style="border:1px inset">
+     I doubt this.... The "pressures" from these bodies and people consist only of noises on internet forums and in the press. As long as BA (as the owner), Airbus (as the current 'guardian' and legacy manufacturer) and the CAA (as the regulatory body) say "NO", Airbus knows perfectly well it'll never happen, pressures or no pressures. My own take is simply, that they're fed up with a Concorde on their site, that their early 'enthusiasts' who campaigned for 'A Concorde at Filton' have now left, and that it's now Airbus exerting pressure on the Concorde Trust and other bodies to provide that 'permanent home' they've been talking about for years.
+    </div>
+   </div>
+   <span style="color:#000063">
+    Total crap I'm afraid Christian. You can doubt it all you want; you're entitled to your opinions as we all are here. But the fact remains that there is a certain producer of airframes in Europe that has come out with nothing but lies and deceit with regard to Concorde, since early 2003, and it continues to do so to this day. (Guesses anyone?) You conveniently seem to forget that it was
+    <b>
+     scarebus themselves
+    </b>
+    who unilaterally closed the Concorde Filton exhibit...'for maintenace' ..
+    <b>
+     <span style="color:red">
+      YET ANOTHER TOTAL PACK OF LIES!!
+     </span>
+    </b>
+   </span>
+   <br/>
+   <span style="color:#000063">
+    And as far as responding to pressures; They could not give a flying
+    <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/censored.gif" title="Mad"/>
+    about Concorde pressures, they
+    <b>
+     JUST DO NOT WANT TO KNOW!!
+    </b>
+    And yes they are fed up with Concorde.. poor dears. Perhaps OAF should never have gone to Filton in the first place; The continuing thought of Filton bending over backwards to please it's French masters makes one want to throw up. The basic fact remains that any British Concorde anywhere NEAR an Airbus plant is nothing more than an embarassment to them, and is fundimantally always in jeapordy.
+   </span>
+   <br/>
+   <div style="margin:1rem; margin-top:0.3rem;">
+    <div>
+     <label>
+      Quote:
+     </label>
+    </div>
+    <div class="panel alt2" style="border:1px inset">
+     In 2003, the issue with G-BOAF was that she was almost 'out of hours', with only a few hours left until the next big overhaul (an 'Inter', IIRC). At the time, this was the reason why G-BOAF did not partake to the full extent in the flying during the last months, so as to have a few hours 'spare' for the last few flights, and of course the final flight.
+    </div>
+   </div>
+   <span style="color:#000063">
+    <span style="color:#000063">
+     Big deal, she needed a C Check. Unlike in France, a Concorde major (D check) here did not take over a year to complete, and an inter could be in and out of the shed in a couple of months. Oh, and the check was completed correctly and thoroughly.
+     <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_wall.gif" title="Ugh"/>
+    </span>
+   </span>
+   <br/>
+   <span style="color:#000063">
+    <div style="margin:1rem; margin-top:0.3rem;">
+     <div>
+      <label>
+       Quote:
+      </label>
+     </div>
+     <div class="panel alt2" style="border:1px inset">
+      And that's another reason why Airbus wouldn't be bothered by those "pressures" mentioned earlier... they know perfectly well nobody is going to come up with the \xa3100M +++ to re-create the necessary infrastructure.
+     </div>
+    </div>
+   </span>
+   <br/>
+   <span style="color:#000063">
+    <span style="color:#000063">
+     <span style="color:#000063">
+      I tend to agree with the RTF point, the \xa3\xa3\xa3\xa3\xa3's involved are generally prohibitive and it will probably never happen, but you and I have been in aviation long enough to realise that nothing is impossible. (At least not this side of the Channel). All aircraft left outside in the elements are obviously going to suffer, and it is irony of ironies that the
+      <b>
+       <span style="color:red">
+        FRENCH
+       </span>
+      </b>
+      aircraft are generally stored indoors in the dry and warm, where the British were ALL intitially stored outside, exposed to the elements. (Only OAC in Manchester and OAE in BGI are now finally cared for under cover, the poor old 'wing clipped' OAA in Edinburgh does not really count). This ridiculous fact is is a source of both wonder and
+      <span style="color:red">
+       <b>
+        ANGER
+       </b>
+      </span>
+     </span>
+     <span style="color:#000063">
+      in the minds of most Concorde people in the UK. (Makes me sick personally!!).
+     </span>
+    </span>
+   </span>
+   <br/>
+   <br/>
+   <span style="color:#000063">
+    <span style="color:#000063">
+     Dude
+     <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+    </span>
+    <br/>
+    <br/>
+    <br/>
+   </span>
+   <br/>
+  </span>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by M2dude; 27th November 2010 at
+   <span class="time">
+    13:21
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Airbus1.html#6087291>Airbus</a>
+&nbsp;<a href=British_Airways4.html#6087291>British Airways</a>
+&nbsp;<a href=Filton1.html#6087291>Filton</a>
+&nbsp;<a href=G-BBDG0.html#6087291>G-BBDG</a>
+&nbsp;<a href=G-BOAF0.html#6087291>G-BOAF</a>
+&nbsp;<a href=Galley0.html#6087291>Galley</a>
+&nbsp;<a href=Toulouse0.html#6087291>Toulouse</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 27, 2010, 08:24:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-40.html#post6087308><br/>permalink</a>
+ Post: 6087308</td>
+<td class=post><div class="tcell alt1" id="td_post_6087308">
+ <!-- message -->
+ <div id="post_message_6087308">
+  <b>
+   Nick Thomas
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    Looking at the readings it appeared that he had recorded a lot more readings than just the EGT. He also added that the readings were handed to the ground engineers at the end of each flight.
+    <br/>
+    It would be interesting to know what readings were recorded and the significance of them to the ground engineers. Also could the FE deduce anything form the EGT trend graph?
+   </div>
+  </div>
+  Oh the Rolls Royce EGT Trend Monitoring Programwas an incredible piece of kit indeed Nick. The idea was that you would input Mach, TAT, N1, N2 and EGT itself. The computer program written in BASIC (I still have a copy) would then calculate the 'brochure' EGT for those conditions (the brochure itself being based on a 127\xb0 ISA +5 day), and what the
+  <b>
+   delta
+  </b>
+  from this brochure figure actually was. This delta EGT trend over the last few flights was then plotted (it was the delta rather than the actual brochure itself that we were interested in) and if there was a sudden jump or dip from the previous flights, it was indicative of something wrong with the engine. A severe dip was indicative of compressor damage and a severe jump indicative of turbine damage. Boroscope inspections would be carried out in such a case, and the Trend Program was better than 90% accurate in terms of predicting engine problems, although these problems became less and less common as the engine design became more mature. (As a result of modifications embodied in the engine over the years). FOD damage ended up being the most common cause of headaches here.
+  <br/>
+  The obvious remedy for confirmed compressor or turbine damage was to 'pull' the engine and replace it with a 'new' one; the damaged engine was then sent to Treforest in Pontypridd for overhaul. (These guys by the way did a really superb job
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_clap.gif" title="Big Grin"/>
+  ).
+  <br/>
+  <br/>
+  Best Regards
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by M2dude; 27th November 2010 at
+   <span class="time">
+    08:39
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=N1_-revolutions-0.html#6087308>N1 (revolutions)</a>
+&nbsp;<a href=TAT_-Total_Air_Temperature-0.html#6087308>TAT (Total Air Temperature)</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 27, 2010, 14:22:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-40.html#post6087713><br/>permalink</a>
+ Post: 6087713</td>
+<td class=post><div class="tcell alt1" id="td_post_6087713">
+ <!-- message -->
+ <div id="post_message_6087713">
+  Nick I can't quite remember the numbers, (I must find out) but we always had a sufficient float of spare engines to cope with out needs. Engine changes in the early days of operation were quite common, with average on wing live being little more than 600 hours. Eventually, through modifications the on wing life more than quadrupled, but still only a fraction of the time that a big fan engine would stay on wing. (The Olympus 593 was subject to so much more thermal and mechanical stress than a subsonic engine during cruise flight). Although the last engines were built at Patchway (Bristol) sometime in the 1980's (IIRC) there was virtually no limit to the number of times that an engine could be overhauled, as new turbine and compressor blades, combusion chamber components etc. were always being manufactured during airline service. Apart from pulling engines due to EGT Trend induced boroscope inspections, another reason was as the result of an engine oil sample chemical analysis, where the presence of certain contaminant metals would indicate such things as potential gearbox failures.
+  <br/>
+  But in order to fully answer your question Nick, we could have carried on operating Concorde almost indeffinately, as far as engines went.
+  <br/>
+  <br/>
+  Best Regards
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Olympus_5930.html#6087713>Olympus 593</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 27, 2010, 14:34:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-40.html#post6087722><br/>permalink</a>
+ Post: 6087722</td>
+<td class=post><div class="tcell alt1" id="td_post_6087722">
+ <!-- message -->
+ <div id="post_message_6087722">
+  <b>
+   Lord Bracken
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    I would be grateful if any of the fantastically knowledgable posters on here could provide more details of the formation flying that went on on December 24, 1985.
+   </div>
+  </div>
+  This wonderful event was to to celebrate the 10th anniversery of Concorde passenger services by way of a four ship photo/video shoot. The twp pilots involved on the first video, Capt's Dave Leney and John Hutchinson were two of the nicest gentlemen that I have ever had the pleasure of knowing.
+  <br/>
+  The co-ordination of the event required a great deal of co-operation from Air Traffic Control and was an incredible spectacle.
+  <br/>
+  Best Regards
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects:</b>
+ None</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 28, 2010, 16:27:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-40.html#post6089456><br/>permalink</a>
+ Post: 6089456</td>
+<td class=post><div class="tcell alt1" id="td_post_6089456">
+ <!-- message -->
+ <div id="post_message_6089456">
+  <b>
+   ChristiaanJ
+  </b>
+  <br/>
+  There is THIS link from Gordon Roxborough's superb 'ConncordeSST site'
+  <a href="http://www.concordesst.com/history/events/10.html" target="_blank">
+   CONCORDE SST : 10th Anniversary
+  </a>
+  <br/>
+  As you can see the event occured on Christmas Eve in 1985. As you can see from the video, Capt John Hutchinson was also aboard G-BOAG as a commentator, the F/O being John 'Noj' White. (After leaving the fleet when he got his command, Noj eventually returned to Concorde many years later as Capt Noj).
+  <br/>
+  At the bottom of the web page I am 99% sure that Gordon got it wrong when he said that the reason that there were only 6 aircraft for the Boxing day 'group photo' was that the seventh aircraft was in the paint shop. I was there when we did the photo shoot, and I am pretty sure the only reason we never had aircraft 7 was that it was in JFK.
+  <br/>
+  <br/>
+  <b>
+   CAAAD
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    Dude - I think basic engine hardware was in good supply, but there were concerns about the control amplifier component availability.
+   </div>
+  </div>
+  I wouldn't be at all surprised (the Ultra ECA was a real steam powered piece of kit) but we always managed to get obsolete/obsolescent electron component somewhow. I remember when we test flew the Plessey (I think) digital ECA on G-BBDG in the late 1970's it was a fraction of the size, ran cooler and the engine parameters were more stable too. Such a pity that we never went down that road for the production aircraft.
+  <br/>
+  <br/>
+  Regards
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=G-BBDG0.html#6089456>G-BBDG</a>
+&nbsp;<a href=G-BOAG0.html#6089456>G-BOAG</a>
+&nbsp;<a href=JFK2.html#6089456>JFK</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 28, 2010, 20:23:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-41.html#post6089807><br/>permalink</a>
+ Post: 6089807</td>
+<td class=post><div class="tcell alt1" id="td_post_6089807">
+ <!-- message -->
+ <div id="post_message_6089807">
+  You and I both would love to see more of this video material, as you say it is totally priceless. I have no clue where most of it resides (if any is held by Airbus at Filton, then we are all screwed. It is possible I suppose that Rolls Royce might have some though; I'll have to check). But generally, I am afraid if I need any video material for lectures etc. my sources are invariably YouTube or my Great Uncle Google.
+  <br>
+   <br>
+    Regards
+    <br>
+     Dude
+     <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+    </br>
+   </br>
+  </br>
+ </div>
+ <!-- / message -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Airbus1.html#6089807>Airbus</a>
+&nbsp;<a href=Filton1.html#6089807>Filton</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 29, 2010, 06:18:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-41.html#post6090331><br/>permalink</a>
+ Post: 6090331</td>
+<td class=post><div class="tcell alt1" id="td_post_6090331">
+ <!-- message -->
+ <div id="post_message_6090331">
+  <b>
+   Dozy Wannabe
+  </b>
+  <br/>
+  I am afraid it is a case of 'go figure'. Recent history (as well as what is going on right now) shows that there is little interest in even caring for the aeroplane at Filton, let alone preserving her. Who built what is not the point here anyway.. When design and construction of the aircraft was carried out there were TWO airframe companies, A\xe9rospatiale and BAC. Now we just have Airbus, with virtually zero British input now. (Don't get me wrong, this is the fault of the British and not the French, we are the ones that threw everything away). I can not explain the attitude of Airbus to the aeroplane, it just remains a cold hard fact....
+  <b>
+   THEY ARE NOT
+   <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/censored.gif" title="Mad"/>
+   INTERESTED
+  </b>
+  <br/>
+  <br/>
+  We are all well aware that the disposal of the aircraft was the decision of the airlines thank you, I did know that.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_wall.gif" title="Ugh"/>
+  Now like it or not, there really is a lot of anger behind the fact that no INTACT British aircraft has been stored under cover from the beginning, and only one of those aircraft in the UK itself is stored away from the elements. G-BOAC the oldest production Concorde in the world, is beautifully preserved and cared for in Manchester, which makes a hell of a contrast to G-BOAF, the YOUNGEST Concorde in the world at Filton. I am really sorry if all this discord saddens you, it pleases none of us I'm sure, but truth is often like that I'm afraid, we have to deal with it; a national disgrace.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/wibble.gif" title="Wibble"/>
+  <br/>
+  There is also no point avoiding this truth as far as the ceasation of services goes, just because when you unravel the duplicity and deceit behind the happenings of 2003, you discover a sense of disgust and outrage on the part of the British Concorde community. Far from 'not making a blind bit of difference' it makes a huge amount of difference to where we are. I do agree that we should concentrate on celebrating this truly wonderful national icon (I do so every day), but we must not be afraid of looking at the history that has got us (the aeroplane) in the sorry state we are now.
+  <br/>
+  <br/>
+  Regards
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by M2dude; 29th November 2010 at
+   <span class="time">
+    12:09
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Airbus1.html#6090331>Airbus</a>
+&nbsp;<a href=Filton1.html#6090331>Filton</a>
+&nbsp;<a href=G-BOAC0.html#6090331>G-BOAC</a>
+&nbsp;<a href=G-BOAF0.html#6090331>G-BOAF</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 29, 2010, 06:30:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-41.html#post6090339><br/>permalink</a>
+ Post: 6090339</td>
+<td class=post><div class="tcell alt1" id="td_post_6090339">
+ <!-- message -->
+ <div id="post_message_6090339">
+  <b>
+   VApilot2004
+  </b>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    The lovely lady on the Hudson was in sad shape the last time I visited her. Shameful considering her lineage.
+   </div>
+  </div>
+  This really is a sad state of afairs I know. G-BOAD even had the 'radome tore off and the droop nose bent sideways by an idiot of a truck driver when she was stored in New Jersey 18 months or so ago. A new 'radome' was fabricated out of fibreglass (quite a reasonable attempt actually) and the bent nose? A hammer and blowtorch fixed that!! (I'm not joking). I have American engineer friends at JFK who can not even bring themselves to look at what Alpha Delta has become. They used to take exquisite care of Concorde during JFK transits, and to see her now, well it's just too much for those guys. (This is another personal one for me I'm afraid, G-BOAD was the first Concorde I ever flew on, November 5th 1976 out of Fairford).
+  <br/>
+  <br/>
+  Regards
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by M2dude; 29th November 2010 at
+   <span class="time">
+    12:51
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Fairford0.html#6090339>Fairford</a>
+&nbsp;<a href=G-BOAD0.html#6090339>G-BOAD</a>
+&nbsp;<a href=JFK2.html#6090339>JFK</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 29, 2010, 06:40:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-41.html#post6090347><br/>permalink</a>
+ Post: 6090347</td>
+<td class=post><div class="tcell alt1" id="td_post_6090347">
+ <!-- message -->
+ <div id="post_message_6090347">
+  <b>
+   ChristiaanJ
+  </b>
+  <br/>
+  I completely take your point regarding filming out-takes. My personal 'record' was three hours of solid filming (me) and only five SECONDS (of me) used in the programme
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_wall.gif" title="Ugh"/>
+  Fame sucks you know
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/boohoo.gif" title="Boo Hoo"/>
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/boohoo.gif" title="Boo Hoo"/>
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/boohoo.gif" title="Boo Hoo"/>
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/boohoo.gif" title="Boo Hoo"/>
+  <br/>
+  I must check out the DVD you mentioned, sounds really good.
+  <br/>
+  Oh I do wish they'd listened to the great Jean Franchi and let him do a barrel roll in that apalling movie. (Some of the air to air footage in the movie however was not half bad). Jean Franchi in my book goes down as one of the all time great Concorde pilots.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/thumbs.gif" title="Thumb"/>
+  <br/>
+  <br/>
+  Regards
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by M2dude; 29th November 2010 at
+   <span class="time">
+    12:50
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p><b>Subjects:</b>
+ None</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 29, 2010, 12:35:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-41.html#post6090948><br/>permalink</a>
+ Post: 6090948</td>
+<td class=post><div class="tcell alt1" id="td_post_6090948">
+ <!-- message -->
+ <div id="post_message_6090948">
+  <b>
+   speedbirdconcorde
+  </b>
+  <br/>
+  5 seconds I know, but it does at least compensate for my other screen hoggings.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/evil.gif" title="Evil"/>
+  <br/>
+  Some really nice shots of G-BOAG and the SR71. (I particularly love the 'business end' shot of the J-58, showing the 4 afterburner rings).
+  <br/>
+  I last visited OAG in Seattle about 5 years ago and the exterior had really suffered from the elements, being parked right next to a highway near one of the most beautiful but wettest cities in the USA. (Boeing told me that they were planning a re-paint, don't know if it ever happened though). The interior however was absolutely immaculate, thanks to the pre-conditioned air being pumped through the entire fuselage. (Now THAT'S the way to do it
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/thumbs.gif" title="Thumb"/>
+  ).
+  <br/>
+  And as for the last photo.....
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/eek.gif" title="EEK!"/>
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/eek.gif" title="EEK!"/>
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/eek.gif" title="EEK!"/>
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/eek.gif" title="EEK!"/>
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/eek.gif" title="EEK!"/>
+  (I laughed so much I almost fell of the chair).
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/evil.gif" title="Evil"/>
+  <br/>
+  <br/>
+  <b>
+   1965 BEA
+  </b>
+  <br/>
+  Nice clip, pity it's an ambedded Flash movie. It is at a good resolution however, if you zoom in the web page it's really quite good quality.
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_clap.gif" title="Big Grin"/>
+  <br/>
+  <br/>
+  Regards
+  <br/>
+  Dude
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by M2dude; 29th November 2010 at
+   <span class="time">
+    12:47
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Afterburner-Re-heat2.html#6090948>Afterburner/Re-heat</a>
+&nbsp;<a href=Boeing0.html#6090948>Boeing</a>
+&nbsp;<a href=G-BOAG0.html#6090948>G-BOAG</a>
+&nbsp;<a href=SR-710.html#6090948>SR-71</a>
+</p>
+</td>
+</tr>
+<tr valign=top><td class=post><a href=https://www.pprune.org/members/218153-m2dude>M2dude</a>
+<br/>November 30, 2010, 09:16:00 GMT<a href=https://www.pprune.org/tech-log/423988-concorde-question-41.html#post6092495><br/>permalink</a>
+ Post: 6092495</td>
+<td class=post><div class="tcell alt1" id="td_post_6092495">
+ <!-- message -->
+ <div id="post_message_6092495">
+  Hi DavvaP, and welcome. As far as ice on the wing goes, I'm sure as any of my pilot friends here will agree that she was treated just like a subsonic in that regard; any ice or snow build up on the surfaces of the wings would not be tolerated and would have to be removed before flight. (She may have had a revolutionary wing design, but still this was a wing nonetheless
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_naughty.gif" title="Derr"/>
+  ). She would also require pre-flight chemical anti-icing/de-icing treatment from a ground truck just like the rest, in shall we say, 'less than tropical conditions'. (Winters in Prestwick during crew base training... such fond memories
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/badteeth.gif" title="Bad teeth"/>
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/boohoo.gif" title="Boo Hoo"/>
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/eek.gif" title="EEK!"/>
+  ). As far as active ice protection on the wings, there was a highly sophisticated Lucas electrical 'spraymat' system fitted, but only the wetted areas of the wing, forward of the engines were 'covered'. Two digitall cyclic timers (CTPUs) would automatically regulate cyclic switching on and off of 115 VAC for various load areas of the wing at a time at pilot pre-selectable intervals (2, 4 or 8 seconds). Also as part of this system, there was
+  <i>
+   continuous
+  </i>
+  de-icing for certain other load areas too, so you had a mix of cyclic and continuous de-icing in operation. The whole idea here was to prevent chunks of ice entering and damaging the engines, the only other areas of this electrical de-icing system were the intake lips and side-walls and also the D Box area above the auxilliary inlet vane, built into the spill door. (This would only operate if the auxilliary inlet door itself was open). The whole shooting match would automatically switch itself off, for obvious reasons, above a TAT of 15\xb0 C. (ie. the vast majority of the flight). The only other de-icing system (apart from the galley drain masts) was on the engine inlet guide vanes, but this was purely pneumatic and again would swith itself off above 15\xb0 C.
+  <br/>
+  I think you will find that precious little of Concorde is now not generally available in the public domain, some control software and laws are still I would expect covered by some sort of patent. (That is why when I publiished here the engine 'E Schedule' graphs I deliberately deleted the equations for the various running lines.
+  <br/>
+  Your efficiency question was a valid one; as IAS and Mach number increase the aerodynamic drag (in all it's forms) will
+  <i>
+   <b>
+    generally
+   </b>
+  </i>
+  increase, but the efficiency OF A WELL DESIGNED powerplant wil also increase, and Concorde was definately no exception here. The real beauty of Concorde was just
+  <b>
+   <i>
+    HOW MUCH
+   </i>
+  </b>
+  the powerplant efficiency increased with increasing speed and more than totally eclipsed the aerodynamic drag rise with this increasing speed. At supersonic speeds, the closer you could fly to Vmo/Mmo the lower the fuel burn was. (Especiall true at Mach 2, although the autopilot would hold you Mach 2 (ish) in Max Cruise mode, flying closer to Mmo, Mach 2.04, would save fuel, assuming the static air temoerature was low enough to sustain this). This fact (along with about a million others) produced what we all like to call
+  <b>
+   'The Magic of Concorde'
+   <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_clap.gif" title="Big Grin"/>
+  </b>
+  <br/>
+  <br/>
+  Best Regards
+  <br/>
+  <i>
+   Dude
+   <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment"/>
+  </i>
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by M2dude; 30th November 2010 at
+   <span class="time">
+    11:21
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<p><b>Subjects</b>
+ (links are to this post in the relevant subject page so that this post can be seen in context): <a href=Auto-pilot0.html#6092495>Auto-pilot</a>
+&nbsp;<a href=Galley1.html#6092495>Galley</a>
+&nbsp;<a href=IAS_-Indicated_Air_Speed-1.html#6092495>IAS (Indicated Air Speed)</a>
+&nbsp;<a href=Intakes1.html#6092495>Intakes</a>
+&nbsp;<a href=Mmo0.html#6092495>Mmo</a>
+&nbsp;<a href=TAT_-Total_Air_Temperature-0.html#6092495>TAT (Total Air Temperature)</a>
+</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=USER-M2dude0.html>First</a>
+&nbsp;<a href=USER-M2dude6.html>Previous</a>
+&nbsp;<a href=USER-M2dude0.html>1</a>
+&nbsp;<a href=USER-M2dude1.html>2</a>
+&nbsp;<a href=USER-M2dude2.html>3</a>
+&nbsp;<a href=USER-M2dude3.html>4</a>
+&nbsp;<a href=USER-M2dude4.html>5</a>
+&nbsp;<a href=USER-M2dude5.html>6</a>
+&nbsp;<a href=USER-M2dude6.html>7</a>
+&nbsp;<a href=USER-M2dude7.html><b>8</b>
+</a>
+&nbsp;<a href=USER-M2dude8.html>9</a>
+&nbsp;<a href=USER-M2dude9.html>10</a>
+&nbsp;<a href=USER-M2dude10.html>11</a>
+&nbsp;<a href=USER-M2dude11.html>12</a>
+&nbsp;<a href=USER-M2dude12.html>13</a>
+&nbsp;<a href=USER-M2dude8.html>Next</a>
+&nbsp;<a href=USER-M2dude12.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>
