@@ -6,8 +6,6 @@ This project is to take long running threads on
 `https://www.pprune.org/ <https://www.pprune.org/>`_ and summarise them
 by subject.
 
-This describes how to reorganise a pprune thread by subject.
-
 --------------------------------------------
 The Concorde Thread
 --------------------------------------------
@@ -162,6 +160,7 @@ Conducting Research
 
 This describes how to use the research tools to examine a thread so that
 you can create the appropriate ``PublicationMap``.
+The example used is the AI171 thread(s).
 
 There is a script ``src/pprune/research.py`` that analyses the thread for words and phrases.
 
@@ -351,6 +350,7 @@ Configuring the Build with a Publication Map
 
 In ``src/pprune/publication_maps/publication_maps`` create a new file ``pprune/publication_maps/air_india_171.py``
 which contains a concrete class inheriting from the virtual class ``PublicationMapABC``:
+The example used is the AI171 thread(s).
 
 .. code-block:: python
 
@@ -448,6 +448,7 @@ Running the Build
 --------------------------
 
 In ``src/pprune/main.py`` add the reference to the ``AirIndia171`` class:
+The example used is the AI171 thread(s).
 
 .. code-block:: python
 
@@ -456,11 +457,13 @@ In ``src/pprune/main.py`` add the reference to the ``AirIndia171`` class:
     # Map of thread name to a class declaration that can be created and
     # eventually passed to write_html.write_whole_thread().
     THREAD_NAME_TO_CLASS_MAP = {
+        # 8<---- Snip ---->8
         'AI171': air_india_171.AirIndia171,
+        # 8<---- Snip ---->8
     }
 
 And run the build, note that ``--output`` is missing so the default output directory is ``docs/gh-pages/AI171``.
-If the ``--output`` directory is provided the result will be written there:
+If the ``--output`` directory is provided the result will be written there (advised for testing).
 
 .. code-block:: shell
 
