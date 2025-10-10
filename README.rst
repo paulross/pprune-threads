@@ -2,9 +2,11 @@
 Remixes of Pprune threads
 =========================
 
-This project is to take long running threads on
-`https://www.pprune.org/ <https://www.pprune.org/>`_ and summarise them
-by subject.
+This project is to take long running discussion threads on
+`Professional Pilots Rumour Network <https://www.pprune.org/>`_
+and summarise them by subject.
+
+Here are some example threads:
 
 --------------------------------------------
 The Concorde Thread
