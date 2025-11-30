@@ -888,7 +888,7 @@ def write_user_page(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
         user_name: str,
-        out_path: str,
+        out_directory_path: str,
 ) -> None:
     """Writes a specific HTML page for the user posts.
     Each user page has all the posts from that user in order.
@@ -898,7 +898,7 @@ def write_user_page(
     pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
     up_votes = sum(len(p.liked_by_users) for p in thread.posts if p.user is not None and p.user.name == user_name)
     for page_index, page in enumerate(pages):
-        with open(os.path.join(out_path, _page_name('USER_' + user_name, page_index)), 'w') as out_file:
+        with open(os.path.join(out_directory_path, _page_name('USER_' + user_name, page_index)), 'w') as out_file:
             out_file.write(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
