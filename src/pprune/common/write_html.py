@@ -36,8 +36,8 @@ import typing
 import zoneinfo
 from contextlib import contextmanager
 
-from pprune.common import styles
 from pprune.common import analyse_thread
+from pprune.common import styles
 from pprune.common import thread_struct
 from pprune.publication_maps import publication_map_abc
 
@@ -782,6 +782,43 @@ def _write_page_links(subject: str, page_num: int, page_count: int, out_file: ty
             out_file.write('Index Page')
 
 
+def write_number_of_users_liked_this_post(out_file: typing.TextIO, post: thread_struct.Post) -> None:
+    """Writes out how many users liked this post."""
+    count = f'{len(post.liked_by_users)}' if post.liked_by_users else 'No'
+    word = 'user' if len(post.liked_by_users) == 1 else 'users'
+    with element(out_file, 'p'):
+        out_file.write(f'{count} {word} liked this post.')
+
+
+def url_for_reply_to_post(post: thread_struct.Post) -> str:
+    """Returns a URL for triggering a reply on pprune quoting the post.
+    Example: https://www.pprune.org/newreply.php?do=newreply&p=11926646
+    """
+    target_url = f'https://www.pprune.org/newreply.php?do=newreply&p={post.sequence_num}'
+    return target_url
+
+
+def write_link_reply_to_post(out_file: typing.TextIO, post: thread_struct.Post) -> None:
+    """Writes a link to create a reply to a post on pprune."""
+    with element(out_file, 'p'):
+        with element(out_file, 'a', href=url_for_reply_to_post(post)):
+            out_file.write(f'Reply to this quoting this original post.')
+        out_file.write('You need to be logged in. Not available on closed threads.')
+
+
+def write_post_footer(out_file: typing.TextIO, post: thread_struct.Post) -> None:
+    """Write the footer to the post. This includes the number of likes and a reply link."""
+    if post.thread_is_open:
+        write_number_of_users_liked_this_post(out_file, post)
+        write_link_reply_to_post(out_file, post)
+    else:
+        with element(out_file, 'p'):
+            with element(out_file, 'b'):
+                out_file.write(
+                    'The thread is closed so there are no user likes are available and no reply is possible.'
+                )
+
+
 def write_a_subject_page(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
@@ -825,26 +862,7 @@ def write_a_subject_page(
                                     out_file.write(' Post: {:d}'.format(post.sequence_num))
                                 with element(out_file, 'td', _class="post"):
                                     out_file.write(post.node.prettify(formatter='html'))
-                                    if post.thread_is_open:
-                                        if len(post.liked_by_users) == 1:
-                                            with element(out_file, 'p'):
-                                                with element(out_file, 'b'):
-                                                    out_file.write(f'{len(post.liked_by_users)} user liked this post.')
-                                        elif len(post.liked_by_users) > 1:
-                                            with element(out_file, 'p'):
-                                                with element(out_file, 'b'):
-                                                    out_file.write(f'{len(post.liked_by_users)} users liked this post.')
-                                        with element(out_file, 'p'):
-                                            # https://www.pprune.org/newreply.php?do=newreply&p=11926646
-                                            target_url = f'https://www.pprune.org/newreply.php?do=newreply&p={post.sequence_num}'
-                                            with element(out_file, 'a', href=target_url):
-                                                out_file.write(f'Reply to this quoting this original post.')
-                                            out_file.write('You need to be logged in. Not available on closed threads.')
-                                    else:
-                                        with element(out_file, 'p'):
-                                            with element(out_file, 'b'):
-                                                out_file.write(
-                                                    'The thread is closed so there are no user likes are available.')
+                                    write_post_footer(out_file, post)
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
@@ -916,13 +934,7 @@ def write_user_page(
                                             with element(out_file, 'b'):
                                                 out_file.write('Subjects:')
                                             out_file.write(' None')
-
-                                    if len(post.liked_by_users) == 1:
-                                        with element(out_file, 'p'):
-                                            out_file.write(f'{len(post.liked_by_users)} user liked this post.')
-                                    elif len(post.liked_by_users) > 1:
-                                        with element(out_file, 'p'):
-                                            out_file.write(f'{len(post.liked_by_users)} users liked this post.')
+                                    write_post_footer(out_file, post)
                     _write_page_links('USER_' + user_name, page_index, len(pages), out_file)
 
 
