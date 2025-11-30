@@ -145,6 +145,15 @@ class PassOneResult:
             raise ValueError(f'Duplicate key {key} in sequence_num_subject_link_map')
         self.sequence_num_subject_link_map[key] = link
 
+    def sequence_numbers_no_subject(self) -> typing.List[int]:
+        """Returns an ordered list of sequence numbers that have no subjects."""
+        ret = []
+        for sequence_number in self.post_subject_map.keys():
+            if len(self.post_subject_map[sequence_number]) == 0:
+                ret.append(sequence_number)
+        ret.sort()
+        return ret
+
 
 def pass_one(
         thread: thread_struct.Thread,
@@ -666,6 +675,15 @@ so many subjects it is a little hard to follow any particular subject.
                             index.write('Total posts')
                         with element(index, 'td', _class='indextable'):
                             index.write(f'{len(thread)}')
+                    # with element(index, 'tr'):
+                    #     with element(index, 'td', _class='indextable'):
+                    #         index.write('Posts with no discovered subject')
+                    #     with element(index, 'td', _class='indextable'):
+                    #         num_posts_no_subject = len(pass_one_result.sequence_numbers_no_subject())
+                    #         index.write(
+                    #             f'{num_posts_no_subject}'
+                    #             f' ({num_posts_no_subject / len(thread):.1%})'
+                    #         )
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Posts in currently open threads')
@@ -684,12 +702,12 @@ so many subjects it is a little hard to follow any particular subject.
                             )
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
-                            index.write('Posts included')
+                            index.write('Posts with a discovered subject')
                         with element(index, 'td', _class='indextable'):
                             index.write(f'{posts_inc} ({posts_inc / len(thread):.1%})')
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
-                            index.write('Posts excluded')
+                            index.write('Posts with no discovered subject')
                         with element(index, 'td', _class='indextable'):
                             index.write(f'{posts_exc} ({posts_exc / len(thread):.1%})')
                     with element(index, 'tr'):
@@ -973,7 +991,13 @@ def write_whole_thread(
         # for _post in pass_one_result.subject_post_map[subject]:
         #     subject_counter.update([subject])
     # print(subject_counter)
-    print('Subjects by size:')
+    print('Histogram of subjects by size:')
+    max_posts = max(subject_counter.values())
+    COL_WIDTH = 120
+    divisor = int(max_posts / COL_WIDTH + 0.5)
+    if divisor == 0:
+        divisor = 1
+    key_width = max([len(k) for k in subject_counter.most_common()])
     for k, v in subject_counter.most_common():
-        print(f'{k:40} [{v:3d}]: {"+" * v}')
+        print(f'{k:{key_width}} [{v:3d}]: {"+" * (v // divisor)}')
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)
