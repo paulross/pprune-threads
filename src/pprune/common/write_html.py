@@ -997,7 +997,7 @@ def write_whole_thread(
     divisor = int(max_posts / COL_WIDTH + 0.5)
     if divisor == 0:
         divisor = 1
-    key_width = max([len(k) for k in subject_counter.most_common()])
+    key_width = max([len(k) for k in subject_counter.keys()])
     for k, v in subject_counter.most_common():
         print(f'{k:{key_width}} [{v:3d}]: {"+" * (v // divisor)}')
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)
