@@ -31,6 +31,19 @@ import typing
 
 
 class PublicationMapABC(abc.ABC):
+
+    def __init__(self):
+        self._include_posts_with_no_subject = False
+
+    @property
+    def include_posts_with_no_subject(self) -> bool:
+        """Flag to include pages with posts that have no identifiable subject."""
+        return self._include_posts_with_no_subject
+
+    @include_posts_with_no_subject.setter
+    def include_posts_with_no_subject(self, value: bool) -> None:
+        self._include_posts_with_no_subject = value
+
     @abc.abstractmethod
     def get_title(self) -> str:
         """Gets the title to be used in the output index.html"""
@@ -127,6 +140,7 @@ class PublicationMapABC(abc.ABC):
     def get_set_of_removed_subjects(self) -> typing.Set[str]:
         """Returns a set of subjects that are removed, possibly temporarily."""
         pass
+
     @abc.abstractmethod
     def include_empty_post_dates_in_histogram(self) -> bool:
         """Returns True if we want all dates in the date histogram even if there are no posts."""
