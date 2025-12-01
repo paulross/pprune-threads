@@ -93,6 +93,10 @@ class Concorde(publication_map_abc.PublicationMapABC):
         '214': 'G-BOAG',
         '216': 'G-BOAF',
         '593': 'Olympus 593',
+        '747': 'Boeing 747',
+        'b747': 'Boeing 747',
+        '747s': 'Boeing 747',
+        'avionics': 'Avionics',
         'abatement': 'Noise Abatement',
         'accident': 'Air France 4590',
         'aerospatiale': 'Aerospatiale',
@@ -107,6 +111,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'autostabs': 'Auto-stabilisation',
         'autothrottle': 'Auto-throttle',
         'autotrim': 'Auto-trim',
+        'bac221': 'BAC221',
         'barbados': 'Barbados',
         'babylon': 'By the Rivers of Babylon',
         'bleed': 'Bleed Air',
@@ -133,11 +138,13 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'disaster': 'Air France 4590',
         'elevon': 'Elevons',
         'elevons': 'Elevons',
+        'expansion': 'Expansion',
         'fairford': 'Fairford',
         'fatigue': 'Fatigue',
         'filton': 'Filton',
         'flameout': 'Flameout',
         'flameouts': 'Flameout',
+        'fl600': 'FL600',
         'galley': 'Galley',
         'galleys': 'Galley',
         'glide': 'Glide',
@@ -146,6 +153,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'haynes': 'Haynes guide to Concorde',
         'heathrow': 'LHR',
         'hooker': 'Sir Stanley Hooker',
+        'hp115': 'HP115',
         'hydraulic': 'Hydraulic',
         'hydrazine': 'Hydrazine',
         'ignitor': 'Ignitors',
@@ -187,7 +195,16 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'toulouse': 'Toulouse',
         'tyres': 'Tyres',
         'tmo': 'TMO (Temprature Max Operating)',
+
         'tu144': 'Tu-144',
+        'concordski': 'Tu-144',
+        'russian': 'Tu-144',
+        'russians': 'Tu-144',
+        'mi6': 'Tu-144',
+        'tu144d': 'Tu-144',
+        # Missing space in 'Concorde,Tu-144'
+        'concordetu144': 'Tu-144',
+
         'undercarridge': 'Landing Gear',
         'visor': 'Visor',
         'vortex': 'Vortex',
@@ -271,6 +288,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('aoa', 'vortex'): 'AoA',
             ('aoa', 'vortices'): 'AoA',
             ('auto', 'stabilisation'): 'Auto-stabilisation',
+            ('barber', 'pole'): 'Barber Pole',
             ('boeing', 'SST'): 'Boeing SST',
             ('barbara', 'harmer'): 'Barbara Harmer',
             ('brian', 'calvert'): 'Brian Calvert',
@@ -337,7 +355,16 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('rivers', 'babylon'): 'By the Rivers of Babylon',
             ('Rolls', 'Royce'): 'Rolls Royce',
             ('rotating', 'stall'): 'Rotating (engine) Stall',
+
+            ('reverse', 'thrust'): 'Reverse Thrust',
+
             ('stick', 'shaker'): 'Stick Shaker',
+
+            ('stan', 'hookers',): 'Sir Stanley Hooker',
+
+            ('takeoff', 'thrust'): 'Take-off Thrust',
+            ('tail', 'skid'): 'Tail Skid',
+            ('tyre', 'life'): 'Tyre Life',
 
             ('trivia', 'questions'): 'Quiz',
             ('stinky', 'questions'): 'Quiz',
@@ -358,6 +385,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('flight', 'plan', 'segment',): 'Concorde Routings',
             # 'How many wheels on the aircraft'
             ('how', 'many', 'wheels'): 'Quiz',
+            ('flight', 'crew', 'positions',): 'Flight Crew Positions',
         },
         4: {
             ('how', 'many', 'wheel', 'brakes'): 'Quiz',
@@ -368,6 +396,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
     # This is a map of {permalink : subject, ...}
     SPECIFIC_POSTS_MAP = {
         5917048: 'Flight Envelope',  # Post 225 by pprunes counting
+        5917084: 'Flight Envelope',
         # https://www.pprune.org/tech-log/423988-concorde-question-108.html#post5918963
         5918963: 'Olympus 593',  # Post 250 by pprunes counting
         # # https://www.pprune.org/tech-log/423988-concorde-question-16.html#post5926053
