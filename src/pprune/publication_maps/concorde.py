@@ -96,6 +96,8 @@ class Concorde(publication_map_abc.PublicationMapABC):
         '747': 'Boeing 747',
         'b747': 'Boeing 747',
         '747s': 'Boeing 747',
+        'aicu': 'AICU (Air Intake Control Computer)',
+        'aicus': 'AICU (Air Intake Control Computer)',
         'avionics': 'Avionics',
         'abatement': 'Noise Abatement',
         'accident': 'Air France 4590',
@@ -160,6 +162,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'ignitors': 'Ignitors',
         'inlet': 'Intakes',
         'intakes': 'Intakes',
+
+        'inss': 'INS (Inertial Navigation System)',
+
         'microprocessor': 'Microprocessor',
         'mmo': 'Mmo',
         'nosewheel': 'Landing Gear',
@@ -176,6 +181,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'relight': 'Relight',
         'rollsroyce': 'Rolls Royce',
         'rudder': 'Rudder',
+
+        'radalt': 'Radio Altimeter',
+
         'shockwave': 'Shockwave',
         'shockwaves': 'Shockwave',
         'shutdown': 'Engine Shutdown',
@@ -185,6 +193,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'simulators': 'Simulator',
         'stagnation': 'Stagnation Point',
         'stewardess': 'Cabin Crew',
+        'stewardesses': 'Cabin Crew',
         'supercruise': 'Super-cruise',
         'surge': 'Engine surge',
         'surged': 'Engine surge',
@@ -205,12 +214,19 @@ class Concorde(publication_map_abc.PublicationMapABC):
         # Missing space in 'Concorde,Tu-144'
         'concordetu144': 'Tu-144',
 
+        'ullage': 'Ullage (Fuel)',
+
         'undercarridge': 'Landing Gear',
         'visor': 'Visor',
         'vortex': 'Vortex',
         'vorticies': 'Vortex',
         'vmo': 'Vmo',
         'vd': 'Vd',
+
+        'vref': 'Vref',
+        'vref5': 'Vref',
+        'vref7': 'Vref',
+        'vref10': 'Vref',
     }
 
     # This maps capitilised words (stripped of punctuation) to their subject.
@@ -315,9 +331,14 @@ class Concorde(publication_map_abc.PublicationMapABC):
 
             ('female', 'pilots'): 'Female Pilots',
             ('flight', 'envelope'): 'Flight Envelope',
+
             ('fuel', 'pump'): 'Fuel Pumps',
             ('fuel', 'pumps'): 'Fuel Pumps',
             ('fuel', 'vent'): 'Fuel Vent System',
+            ('fuel', 'burn'): 'Fuel Burn',
+
+            # ('fuel', 'incident'): 'Fuel Incident',
+
             ('green', 'system'): 'GREEN Hydraulic System',
             ('hand', 'flying'): 'Hand Flying',
             ('hydraulic', 'contamination'): 'Hydraulic Failure/Contamination',
@@ -351,6 +372,10 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('nozzle', 'reverser'): 'Thrust Reversers',
             ('pilot', 'selection'): 'Pilot Selection',
             ('prototype', 'fleet',): 'Prototype Fleet',
+
+            ('radio', 'altimeter',): 'Radio Altimeter',
+            ('radar', 'altimeter',): 'Radio Altimeter',
+
             ('RAE', 'farnborough'): 'RAE Farnborough',
             ('rivers', 'babylon'): 'By the Rivers of Babylon',
             ('Rolls', 'Royce'): 'Rolls Royce',

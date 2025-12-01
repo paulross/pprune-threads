@@ -979,8 +979,8 @@ def write_pages_with_no_subject(
                                     out_file.write(' Post: {:d}'.format(post.sequence_num))
                                 with element(out_file, 'td', _class="post"):
                                     out_file.write(post.node.prettify(formatter='html'))
-                                    write_subjects_of_this_post(pass_one_result, post, out_file)
-                                    write_post_footer(post, out_file)
+                                    # write_subjects_of_this_post(pass_one_result, post, out_file)
+                                    # write_post_footer(post, out_file)
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
