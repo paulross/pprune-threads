@@ -350,6 +350,7 @@ def write_index_no_subjects(
         with element(index, 'p'):
             with element(index, 'a', href=_page_name(NO_SUBJECT_PREFIX, 0)):
                 index.write('Posts that have no subjects.')
+            index.write(' These pages of posts might be useful for identifying subjects to add.')
 
 
 def write_index_removed_subjects(
@@ -820,16 +821,14 @@ def _write_page_links(subject: str, page_num: int, page_count: int, out_file: ty
             out_file.write('Index Page')
 
 
-def write_subjects_of_this_post(pass_one_result: PassOneResult, post: thread_struct.Post, out_file: typing.TextIO) -> None:
+def write_subjects_of_this_post(pass_one_result: PassOneResult, post: thread_struct.Post,
+                                out_file: typing.TextIO) -> None:
     """Write out the subjects that this post covers."""
     with element(out_file, 'p'):
         if post.sequence_num in pass_one_result.post_subject_map \
-        and len(pass_one_result.post_subject_map[post.sequence_num]):
+                and len(pass_one_result.post_subject_map[post.sequence_num]):
             with element(out_file, 'b'):
                 out_file.write('Subjects')
-            out_file.write(
-                ' (links are to this post in the relevant subject page so that this post can be seen in context): '
-            )
             for i, subject in enumerate(
                     sorted(pass_one_result.post_subject_map[post.sequence_num])):
                 if i:
@@ -838,6 +837,11 @@ def write_subjects_of_this_post(pass_one_result: PassOneResult, post: thread_str
                     (post.sequence_num, subject)]
                 with element(out_file, 'a', href=href):
                     out_file.write(subject)
+            with element(out_file, 'br'):
+                pass
+            out_file.write(
+                'Links are to this post in the relevant subject page so that this post can be seen in context.'
+            )
         else:
             with element(out_file, 'b'):
                 out_file.write('Subjects:')
@@ -846,10 +850,14 @@ def write_subjects_of_this_post(pass_one_result: PassOneResult, post: thread_str
 
 def write_number_of_users_liked_this_post(post: thread_struct.Post, out_file: typing.TextIO) -> None:
     """Writes out how many users liked this post."""
-    count = f'{len(post.liked_by_users)}' if post.liked_by_users else 'No'
-    word = 'user' if len(post.liked_by_users) == 1 else 'users'
-    with element(out_file, 'p'):
-        out_file.write(f'{count} {word} liked this post.')
+    if len(post.liked_by_users):
+        out_file.write(f'{len(post.liked_by_users)} recorded likes for this post.')
+    else:
+        out_file.write(f'No recorded likes for this post (could be before pprune supported \'likes\').')
+    # count = f'{len(post.liked_by_users)}' if post.liked_by_users else 'No'
+    # word = 'user' if len(post.liked_by_users) == 1 else 'users'
+    # with element(out_file, 'p'):
+    #     out_file.write(f'{count} {word} liked this post.')
 
 
 def url_for_reply_to_post(post: thread_struct.Post) -> str:
@@ -930,6 +938,7 @@ def write_a_subject_page(
 
 
 NO_SUBJECT_PREFIX = "NO_SUBJECTS"
+
 
 def write_pages_with_no_subject(
         thread: thread_struct.Thread,

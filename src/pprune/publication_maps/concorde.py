@@ -96,6 +96,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         '747': 'Boeing 747',
         'b747': 'Boeing 747',
         '747s': 'Boeing 747',
+        'adcs': 'ADC (Air Data Computer)',
         'aicu': 'AICU (Air Intake Control Computer)',
         'aicus': 'AICU (Air Intake Control Computer)',
         'avionics': 'Avionics',
@@ -115,6 +116,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'autotrim': 'Auto-trim',
         'bac221': 'BAC221',
         'barbados': 'Barbados',
+
+        'barbara': 'Barbara Harmer',
+
         'babylon': 'By the Rivers of Babylon',
         'bleed': 'Bleed Air',
         'boom': 'Sonic Boom',
@@ -129,6 +133,10 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'buckets': 'Thrust Reversers',
         'captain': 'Captains',
         'captains': 'Captains',
+
+        'checklist': 'Checklists',
+        'checklists': 'Checklists',
+
         'cofg': 'C of G',
         'cog': 'C of G',
         'corrosion': 'Corrosion',
@@ -160,7 +168,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'hydrazine': 'Hydrazine',
         'ignitor': 'Ignitors',
         'ignitors': 'Ignitors',
+
         'inlet': 'Intakes',
+        'intake': 'Intakes',
         'intakes': 'Intakes',
 
         'inss': 'INS (Inertial Navigation System)',
@@ -179,6 +189,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'reheat': 'Afterburner/Re-heat',
         'reheats': 'Afterburner/Re-heat',
         'relight': 'Relight',
+
+        'roundthebay': 'Round the Bay',
+
         'rollsroyce': 'Rolls Royce',
         'rudder': 'Rudder',
 
@@ -194,12 +207,17 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'stagnation': 'Stagnation Point',
         'stewardess': 'Cabin Crew',
         'stewardesses': 'Cabin Crew',
+        'landlady': 'Cabin Crew',
+
+        'liftdrag': 'Lift Drag Ratio',
+
         'supercruise': 'Super-cruise',
         'surge': 'Engine surge',
         'surged': 'Engine surge',
         'surges': 'Engine surge',
         'tailcone': 'Tail Cone',
         'tailwheel': 'Tailwheel',
+        'trim': 'Trim',
         'shannon': 'Shannon',
         'toulouse': 'Toulouse',
         'tyres': 'Tyres',
@@ -249,10 +267,12 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'APU': 'APU (Auxiliary Power Unit)',
         'AUTOSTAB': 'Auto-stabilisation',
         'AUTOLAND': 'Auto-land',
+        'B747': 'Boeing 747',
         'BA': 'British Airways',
         'BLUE': 'Hydraulic System - BLUE',
         'CG': 'C of G',
         'CC': 'Cabin Crew',
+        'FL600': 'FL600',
         'FBW': 'FBW (Fly By Wire)',
         'FBTSC': 'F-BTSC',
         'FBTSD': 'F-BTSD',
@@ -275,6 +295,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'GPU': 'GPU (Ground Power Unit)',
         'GREEN': 'Hydraulic System - GREEN',
         'HUD': 'HUD (Head Up Display)',
+        'HP115': 'HP-115',
         'IAS': 'IAS (Indicated Air Speed)',
         'INS': 'INS (Inertial Navigation System)',
         'ITVV': 'Intelligent Television and Video',
@@ -286,12 +307,14 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'PFCU': 'PFCU (Powered Flying Control Units)',
         'RAT': 'RAT (Ram Air Turbine)',
         'RR': 'Rolls Royce',
+        'SC1': 'Short SC-1',
         'SR71': 'SR-71',
         'TAS': 'TAS (True Air Speed)',
         'TAT': 'TAT (Total Air Temperature)',
         'TLA': 'TLA (Throttle Lever Angle)',
         'TMO': 'TMO (Temprature Max Operating)',
         'TU144': 'Tu-144',
+        'TU144D': 'Tu-144',
         'YELLOW': 'Hydraulic System - YELLOW',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
@@ -311,6 +334,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('brian', 'wadpole'): 'Brian Walpole',
             ('brian', 'walpole'): 'Brian Walpole',
             ('brize', 'norton'): 'Brize Norton',
+            ('bristol', 'siddeley'): 'Bristol Siddeley',
             ('chris', 'norris'): 'Chris Norris',
             ('CLIMB', 'MAX'): 'Climb Performance',
             ('C', 'G'): 'C of G',
@@ -319,6 +343,10 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('concorde', 'routing',): 'Concorde Routings',
             ('concorde', 'routings',): 'Concorde Routings',
             ('oceanic', 'routings',): 'Concorde Routings',
+            ('crown', 'modification',): 'Crown Modification',
+            ('crown', 'modifications',): 'Crown Modification',
+
+            ('cross', 'wind',): 'Cross Wind Limit',
 
             ('conversion', 'course'): 'Conversion Course',
             ('Chris', 'Norris'): 'Chris Norris',
@@ -352,6 +380,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('john', 'cook'): 'John Cook',
             ('keith', 'myers'): 'Keith Myers',
             ('landing', 'gear'): 'Landing Gear',
+
+            ('lift', 'drag'): 'Lift Drag Ratio',
+
             ('landing', 'lamps'): 'Landing & Taxy Lights',
             ('landing', 'lights'): 'Landing & Taxy Lights',
             ('le', 'bourget'): 'Le Bourget',
@@ -378,7 +409,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
 
             ('RAE', 'farnborough'): 'RAE Farnborough',
             ('rivers', 'babylon'): 'By the Rivers of Babylon',
-            ('Rolls', 'Royce'): 'Rolls Royce',
+            ('rolls', 'royce'): 'Rolls Royce',
             ('rotating', 'stall'): 'Rotating (engine) Stall',
 
             ('reverse', 'thrust'): 'Reverse Thrust',
@@ -403,6 +434,8 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('thrust', 'recuperator'): 'Thrust Recuperator',
             ('technical', 'diagrams'): 'Technical Diagrams',
             ('vortex', 'aoa'): 'Vortex AoA',
+            # We want to eliminate 'the'
+            ('round', 'bay',): 'Round the Bay',
         },
         3: {
             ('c', 'of', 'g',): 'C of G',
