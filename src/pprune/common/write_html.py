@@ -36,8 +36,8 @@ import typing
 import zoneinfo
 from contextlib import contextmanager
 
-from pprune.common import styles
 from pprune.common import analyse_thread
+from pprune.common import styles
 from pprune.common import thread_struct
 from pprune.publication_maps import publication_map_abc
 
@@ -144,6 +144,21 @@ class PassOneResult:
         if key in self.sequence_num_subject_link_map:
             raise ValueError(f'Duplicate key {key} in sequence_num_subject_link_map')
         self.sequence_num_subject_link_map[key] = link
+
+    def sequence_numbers_no_subject(self) -> typing.List[int]:
+        """Returns an ordered list of sequence numbers that have no subjects."""
+        ret = []
+        for sequence_number in self.post_subject_map.keys():
+            if len(self.post_subject_map[sequence_number]) == 0:
+                ret.append(sequence_number)
+        ret.sort()
+        return ret
+
+    def num_subjects(self, sequence_number: int) -> int:
+        """Returns the number of subjects that the posts of that sequence number covers."""
+        if sequence_number in self.post_subject_map:
+            return len(self.post_subject_map[sequence_number])
+        return 0
 
 
 def pass_one(
@@ -323,6 +338,19 @@ def write_index_main_subject_table(
                                                                  len(subject_post_map[subject])))
                         # print(subject, subject_map[subject])
                         subject_index += 1
+
+
+def write_index_no_subjects(
+        publication_map: publication_map_abc.PublicationMapABC,
+        index: typing.TextIO,
+):
+    """Optionally, writes out a list of significant posts."""
+    if publication_map.include_posts_with_no_subject:
+        write_index_h1('Posts with no Identifiable Subjects', 'no_subjects', index)
+        with element(index, 'p'):
+            with element(index, 'a', href=_page_name(NO_SUBJECT_PREFIX, 0)):
+                index.write('Posts that have no subjects.')
+            index.write(' These pages of posts might be useful for identifying subjects to add.')
 
 
 def write_index_removed_subjects(
@@ -666,6 +694,15 @@ so many subjects it is a little hard to follow any particular subject.
                             index.write('Total posts')
                         with element(index, 'td', _class='indextable'):
                             index.write(f'{len(thread)}')
+                    # with element(index, 'tr'):
+                    #     with element(index, 'td', _class='indextable'):
+                    #         index.write('Posts with no discovered subject')
+                    #     with element(index, 'td', _class='indextable'):
+                    #         num_posts_no_subject = len(pass_one_result.sequence_numbers_no_subject())
+                    #         index.write(
+                    #             f'{num_posts_no_subject}'
+                    #             f' ({num_posts_no_subject / len(thread):.1%})'
+                    #         )
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Posts in currently open threads')
@@ -684,12 +721,12 @@ so many subjects it is a little hard to follow any particular subject.
                             )
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
-                            index.write('Posts included')
+                            index.write('Posts with a discovered subject')
                         with element(index, 'td', _class='indextable'):
                             index.write(f'{posts_inc} ({posts_inc / len(thread):.1%})')
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
-                            index.write('Posts excluded')
+                            index.write('Posts with no discovered subject')
                         with element(index, 'td', _class='indextable'):
                             index.write(f'{posts_exc} ({posts_exc / len(thread):.1%})')
                     with element(index, 'tr'):
@@ -737,6 +774,8 @@ so many subjects it is a little hard to follow any particular subject.
 
                 write_index_main_subject_table(pass_one_result.subject_post_map, index)
 
+                write_index_no_subjects(publication_map, index)
+
                 write_index_removed_subjects(publication_map, index)
 
                 write_index_most_upvoted_posts_table(thread, publication_map, index)
@@ -782,6 +821,74 @@ def _write_page_links(subject: str, page_num: int, page_count: int, out_file: ty
             out_file.write('Index Page')
 
 
+def write_subjects_of_this_post(pass_one_result: PassOneResult, post: thread_struct.Post,
+                                out_file: typing.TextIO) -> None:
+    """Write out the subjects that this post covers."""
+    with element(out_file, 'p'):
+        if post.sequence_num in pass_one_result.post_subject_map \
+                and len(pass_one_result.post_subject_map[post.sequence_num]):
+            with element(out_file, 'b'):
+                out_file.write('Subjects')
+            for i, subject in enumerate(
+                    sorted(pass_one_result.post_subject_map[post.sequence_num])):
+                if i:
+                    out_file.write('&nbsp;')
+                href = pass_one_result.sequence_num_subject_link_map[
+                    (post.sequence_num, subject)]
+                with element(out_file, 'a', href=href):
+                    out_file.write(subject)
+            with element(out_file, 'br'):
+                pass
+            out_file.write(
+                'Links are to this post in the relevant subject page so that this post can be seen in context.'
+            )
+        else:
+            with element(out_file, 'b'):
+                out_file.write('Subjects:')
+            out_file.write(' None')
+
+
+def write_number_of_users_liked_this_post(post: thread_struct.Post, out_file: typing.TextIO) -> None:
+    """Writes out how many users liked this post."""
+    if len(post.liked_by_users):
+        out_file.write(f'{len(post.liked_by_users)} recorded likes for this post.')
+    else:
+        out_file.write(f'No recorded likes for this post (could be before pprune supported \'likes\').')
+    # count = f'{len(post.liked_by_users)}' if post.liked_by_users else 'No'
+    # word = 'user' if len(post.liked_by_users) == 1 else 'users'
+    # with element(out_file, 'p'):
+    #     out_file.write(f'{count} {word} liked this post.')
+
+
+def url_for_reply_to_post(post: thread_struct.Post) -> str:
+    """Returns a URL for triggering a reply on pprune quoting the post.
+    Example: https://www.pprune.org/newreply.php?do=newreply&p=11926646
+    """
+    target_url = f'https://www.pprune.org/newreply.php?do=newreply&p={post.sequence_num}'
+    return target_url
+
+
+def write_link_reply_to_post(post: thread_struct.Post, out_file: typing.TextIO) -> None:
+    """Writes a link to create a reply to a post on pprune."""
+    with element(out_file, 'p'):
+        with element(out_file, 'a', href=url_for_reply_to_post(post)):
+            out_file.write(f'Reply to this quoting this original post.')
+        out_file.write('You need to be logged in. Not available on closed threads.')
+
+
+def write_post_footer(post: thread_struct.Post, out_file: typing.TextIO) -> None:
+    """Write the footer to the post. This includes the number of likes and a reply link."""
+    if post.thread_is_open:
+        write_number_of_users_liked_this_post(post, out_file)
+        write_link_reply_to_post(post, out_file)
+    else:
+        with element(out_file, 'p'):
+            with element(out_file, 'b'):
+                out_file.write(
+                    'The thread is closed so there are no user likes are available and no reply is possible.'
+                )
+
+
 def write_a_subject_page(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
@@ -825,26 +932,64 @@ def write_a_subject_page(
                                     out_file.write(' Post: {:d}'.format(post.sequence_num))
                                 with element(out_file, 'td', _class="post"):
                                     out_file.write(post.node.prettify(formatter='html'))
-                                    if post.thread_is_open:
-                                        if len(post.liked_by_users) == 1:
-                                            with element(out_file, 'p'):
-                                                with element(out_file, 'b'):
-                                                    out_file.write(f'{len(post.liked_by_users)} user liked this post.')
-                                        elif len(post.liked_by_users) > 1:
-                                            with element(out_file, 'p'):
-                                                with element(out_file, 'b'):
-                                                    out_file.write(f'{len(post.liked_by_users)} users liked this post.')
-                                        with element(out_file, 'p'):
-                                            # https://www.pprune.org/newreply.php?do=newreply&p=11926646
-                                            target_url = f'https://www.pprune.org/newreply.php?do=newreply&p={post.sequence_num}'
-                                            with element(out_file, 'a', href=target_url):
-                                                out_file.write(f'Reply to this quoting this original post.')
-                                            out_file.write('You need to be logged in. Not available on closed threads.')
-                                    else:
-                                        with element(out_file, 'p'):
-                                            with element(out_file, 'b'):
-                                                out_file.write(
-                                                    'The thread is closed so there are no user likes are available.')
+                                    write_subjects_of_this_post(pass_one_result, post, out_file)
+                                    write_post_footer(post, out_file)
+                    _write_page_links(subject, page_index, len(pages), out_file)
+
+
+NO_SUBJECT_PREFIX = "NO_SUBJECTS"
+
+
+def write_pages_with_no_subject(
+        thread: thread_struct.Thread,
+        pass_one_result: PassOneResult,
+        out_path: str,
+):
+    """Writes all the pages for a single subject."""
+    _posts = []
+    for post_index, post in enumerate(thread.posts):
+        if pass_one_result.num_subjects(post.sequence_num) == 0:
+            _posts.append(post_index)
+    pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
+    subject = NO_SUBJECT_PREFIX
+    for page_index, page in enumerate(pages):
+        logger.info(f'Writing {_page_name(subject, page_index)}')
+        with open(os.path.join(out_path, _page_name(subject, page_index)), 'w') as out_file:
+            out_file.write(
+                '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
+            with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
+                with element(out_file, 'head'):
+                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
+                        pass
+                    with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
+                        pass
+                with element(out_file, 'body'):
+                    heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
+                        subject, len(_posts), page_index + 1, len(pages),
+                    )
+                    heading_id_str = f'{subject}_{page_index + 1}'
+                    write_index_h1(heading_str, heading_id_str, out_file)
+
+                    _write_page_links(subject, page_index, len(pages), out_file)
+                    # with element(f, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
+                    with element(out_file, 'table', _class='posts'):
+                        for post_index in page:
+                            post = thread.posts[post_index]
+                            with element(out_file, 'tr', valign="top", _id=f'{post.sequence_num}'):
+                                # with element(f, 'td', _class="alt2", style="border: 1px solid #000063; border-top: 0px; border-bottom: 0px"):
+                                with element(out_file, 'td', _class="post"):
+                                    if post.user is not None:
+                                        with element(out_file, 'a', href=post.user.href):
+                                            out_file.write(post.user.name.strip())
+                                        out_file.write('<br/>')
+                                    out_file.write(format_datetime(post.timestamp))
+                                    with element(out_file, 'a', href=post.permalink):
+                                        out_file.write('<br/>permalink')
+                                    out_file.write(' Post: {:d}'.format(post.sequence_num))
+                                with element(out_file, 'td', _class="post"):
+                                    out_file.write(post.node.prettify(formatter='html'))
+                                    # write_subjects_of_this_post(pass_one_result, post, out_file)
+                                    # write_post_footer(post, out_file)
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
@@ -852,7 +997,7 @@ def write_user_page(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
         user_name: str,
-        out_path: str,
+        out_directory_path: str,
 ) -> None:
     """Writes a specific HTML page for the user posts.
     Each user page has all the posts from that user in order.
@@ -862,7 +1007,7 @@ def write_user_page(
     pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
     up_votes = sum(len(p.liked_by_users) for p in thread.posts if p.user is not None and p.user.name == user_name)
     for page_index, page in enumerate(pages):
-        with open(os.path.join(out_path, _page_name('USER_' + user_name, page_index)), 'w') as out_file:
+        with open(os.path.join(out_directory_path, _page_name('USER_' + user_name, page_index)), 'w') as out_file:
             out_file.write(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
@@ -895,34 +1040,8 @@ def write_user_page(
                                     out_file.write(' Post: {:d}'.format(post.sequence_num))
                                 with element(out_file, 'td', _class="post"):
                                     out_file.write(post.node.prettify(formatter='html'))
-
-                                    # Subjects that this post covers.
-                                    with element(out_file, 'p'):
-                                        if len(pass_one_result.post_subject_map[post.sequence_num]):
-                                            with element(out_file, 'b'):
-                                                out_file.write('Subjects')
-                                            out_file.write(
-                                                ' (links are to this post in the relevant subject page so that this post can be seen in context): '
-                                            )
-                                            for i, subject in enumerate(
-                                                    sorted(pass_one_result.post_subject_map[post.sequence_num])):
-                                                if i:
-                                                    out_file.write('&nbsp;')
-                                                href = pass_one_result.sequence_num_subject_link_map[
-                                                    (post.sequence_num, subject)]
-                                                with element(out_file, 'a', href=href):
-                                                    out_file.write(subject)
-                                        else:
-                                            with element(out_file, 'b'):
-                                                out_file.write('Subjects:')
-                                            out_file.write(' None')
-
-                                    if len(post.liked_by_users) == 1:
-                                        with element(out_file, 'p'):
-                                            out_file.write(f'{len(post.liked_by_users)} user liked this post.')
-                                    elif len(post.liked_by_users) > 1:
-                                        with element(out_file, 'p'):
-                                            out_file.write(f'{len(post.liked_by_users)} users liked this post.')
+                                    write_subjects_of_this_post(pass_one_result, post, out_file)
+                                    write_post_footer(post, out_file)
                     _write_page_links('USER_' + user_name, page_index, len(pages), out_file)
 
 
@@ -943,6 +1062,10 @@ def write_whole_thread(
         write_a_subject_page(thread, pass_one_result, subject, output_path)
         total_posts += len(pass_one_result.subject_post_map[subject])
     logger.info('Wrote %d posts including duplicates.', total_posts)
+
+    if publication_map.include_posts_with_no_subject:
+        write_pages_with_no_subject(thread, pass_one_result, output_path)
+
     # Write out the user pages.
     for user_name in sorted(pass_one_result.user_ordinal_map.keys()):
         if len(pass_one_result.user_ordinal_map[user_name]) >= publication_map.get_minimum_number_username_posts():
@@ -961,7 +1084,13 @@ def write_whole_thread(
         # for _post in pass_one_result.subject_post_map[subject]:
         #     subject_counter.update([subject])
     # print(subject_counter)
-    print('Subjects by size:')
+    print('Histogram of subjects by size:')
+    max_posts = max(subject_counter.values())
+    COL_WIDTH = 120
+    divisor = int(max_posts / COL_WIDTH + 0.5)
+    if divisor == 0:
+        divisor = 1
+    key_width = max([len(k) for k in subject_counter.keys()])
     for k, v in subject_counter.most_common():
-        print(f'{k:40} [{v:3d}]: {"+" * v}')
+        print(f'{k:{key_width}} [{v:3d}]: {"+" * (v // divisor)}')
     logger.info('Writing thread done in %.3f (s)', time.perf_counter() - t_start)

@@ -110,15 +110,9 @@ def test_get_thread_from_html_string(html_str, expected):
                         'This has happened to A320s before... 2005, Jet Blue BUR-JFK knew immediately after takeoff that there was a NG issue, burned fuel for three hours before heading into LAX.\nhttps://www.nydailynews.com/news/nat...ticle-1.607155'
                     ],
             ),
-            (
-                    example_data.EXAMPLE_PAGES['423988-concorde-question.html'],
-                    [
-                    ],
-            ),
     ),
     ids=[
         'example_page_four_posts.html',
-        '423988-concorde-question.html',
     ],
 )
 def test_get_thread_from_html_string_text_stripped(html_str, expected):
@@ -129,6 +123,36 @@ def test_get_thread_from_html_string_text_stripped(html_str, expected):
     print()
     print(texts_stripped)
     assert texts_stripped == expected
+
+
+@pytest.mark.parametrize(
+    'html_str, post_index, expected',
+    (
+            (
+                    example_data.EXAMPLE_PAGES['example_page_four_posts.html'],
+                    0,
+                    'https://avherald.com/h?article=4e3fd7f4',
+            ),
+            (
+                    example_data.EXAMPLE_PAGES['423988-concorde-question.html'],
+                    14,
+                    'Just scanned this off the Concorde 01 (G-AXDN) Flight Manual, and cropped as much as possible.',
+            ),
+    ),
+    ids=[
+        'example_page_four_posts.html',
+        '423988-concorde-question.html',
+    ],
+)
+def test_get_thread_from_html_string_text_stripped_single_post(html_str, post_index, expected):
+    thread = read_html.get_thread_from_html_string(html_str)
+    text_stripped = thread.posts[post_index].text_stripped
+    texts_stripped = []
+    for post in thread.posts:
+        texts_stripped.append(post.text_stripped)
+    print()
+    print(text_stripped)
+    assert text_stripped == expected
 
 
 @pytest.mark.parametrize(

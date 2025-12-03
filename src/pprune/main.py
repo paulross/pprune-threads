@@ -37,7 +37,7 @@ from pprune.common import read_html
 from pprune.common import thread_struct
 from pprune.common import words
 from pprune.common import write_html
-from pprune.publication_maps import air_india_171
+from pprune.publication_maps import air_india_171, publication_map_abc
 from pprune.publication_maps import concorde
 from pprune.publication_maps import example
 
@@ -121,6 +121,14 @@ def main():
         ),
     )
     parser.add_argument(
+        "--include-no-subjects",
+        action="store_true",
+        help=(
+            "Include pages of posts that have no identifiable subjects."
+            " [default: %(default)s]"
+        )
+    )
+    parser.add_argument(
         "-l",
         "--log-level",
         dest="log_level",
@@ -130,6 +138,7 @@ def main():
     )
     args = parser.parse_args()
     # print(f'Args: {args}')
+    # return 0
     logging.basicConfig(
         level=args.log_level,
         format=log_config.DEFAULT_OPT_LOG_FORMAT_NO_PROCESS,
@@ -183,7 +192,8 @@ def main():
         )
     common_words = set(common_words)
     if args.thread_name in THREAD_NAME_TO_CLASS_MAP:
-        pub_map = THREAD_NAME_TO_CLASS_MAP[args.thread_name]()
+        pub_map: publication_map_abc.PublicationMapABC = THREAD_NAME_TO_CLASS_MAP[args.thread_name]()
+        pub_map.include_posts_with_no_subject = args.include_no_subjects
         words_required = pub_map.get_set_of_words_required()
         common_words -= words_required
         logger.info('Common words now length {:d}'.format(len(common_words)))

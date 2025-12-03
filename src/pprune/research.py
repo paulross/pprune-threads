@@ -32,6 +32,7 @@ import logging
 import pprint
 import sys
 import time
+import typing
 
 import pprune.common.analyse_thread
 import pprune.common.log_config
@@ -54,7 +55,7 @@ def print_non_cap_words(thread, common_words, freq_ge: int):
     print(' print_non_cap_words(): freq_ge={:d} DONE '.format(freq_ge).center(75, '-'))
 
 
-def print_phrases(thread, common_words, phrase_length, most_common_count: int, freq_ge: int):
+def print_phrases(thread, common_words, phrase_length: int, most_common_count: int, freq_ge: int):
     print(
         ' print_phrases(): len={:d} most_common={:d} freq_ge={:d} '.format(
             phrase_length, most_common_count, freq_ge).center(75, '-')
@@ -141,13 +142,17 @@ def print_liked_by_users(thread: pprune.common.thread_struct.Thread):
 
 
 def print_research(thread, common_words, most_common_count: int, freq_ge: int,
-                   non_cap_words: bool, all_cap_words: bool, phrases: int, authors: bool, liked_by_users: bool):
+                   non_cap_words: bool, all_cap_words: bool,
+                   phrases: typing.List[int], authors: bool, liked_by_users: bool):
     if non_cap_words:
         print_non_cap_words(thread, common_words, freq_ge)
     if all_cap_words:
         print_all_caps(thread, most_common_count, freq_ge)
-    if phrases > 0:
-        print_phrases(thread, common_words, phrases, most_common_count, freq_ge)
+    if len(phrases):
+        for phrase_len in phrases:
+            phrase_len_int = int(phrase_len)
+            if phrase_len_int > 1:
+                print_phrases(thread, common_words, phrase_len_int, most_common_count, freq_ge)
     if authors:
         print_authors(thread, most_common_count)
     if liked_by_users:
@@ -199,9 +204,12 @@ def main():
     )
     parser.add_argument(
         "--phrases",
-        type=int,
-        default=0,
-        help="If >0 then report the frequency of phrases of this length. [default: %(default)d]",
+        action='append',
+        default=[],
+        help=(
+            "If present and > 1 then report the frequency of phrases of this length."
+            " Additive. [default: %(default)s]"
+        ),
     )
     parser.add_argument(
         "--authors",

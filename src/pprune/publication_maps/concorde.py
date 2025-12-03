@@ -93,6 +93,13 @@ class Concorde(publication_map_abc.PublicationMapABC):
         '214': 'G-BOAG',
         '216': 'G-BOAF',
         '593': 'Olympus 593',
+        '747': 'Boeing 747',
+        'b747': 'Boeing 747',
+        '747s': 'Boeing 747',
+        'adcs': 'ADC (Air Data Computer)',
+        'aicu': 'AICU (Air Intake Control Computer)',
+        'aicus': 'AICU (Air Intake Control Computer)',
+        'avionics': 'Avionics',
         'abatement': 'Noise Abatement',
         'accident': 'Air France 4590',
         'aerospatiale': 'Aerospatiale',
@@ -107,7 +114,11 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'autostabs': 'Auto-stabilisation',
         'autothrottle': 'Auto-throttle',
         'autotrim': 'Auto-trim',
+        'bac221': 'BAC221',
         'barbados': 'Barbados',
+
+        'barbara': 'Barbara Harmer',
+
         'babylon': 'By the Rivers of Babylon',
         'bleed': 'Bleed Air',
         'boom': 'Sonic Boom',
@@ -122,6 +133,10 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'buckets': 'Thrust Reversers',
         'captain': 'Captains',
         'captains': 'Captains',
+
+        'checklist': 'Checklists',
+        'checklists': 'Checklists',
+
         'cofg': 'C of G',
         'cog': 'C of G',
         'corrosion': 'Corrosion',
@@ -133,11 +148,13 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'disaster': 'Air France 4590',
         'elevon': 'Elevons',
         'elevons': 'Elevons',
+        'expansion': 'Expansion',
         'fairford': 'Fairford',
         'fatigue': 'Fatigue',
         'filton': 'Filton',
         'flameout': 'Flameout',
         'flameouts': 'Flameout',
+        'fl600': 'FL600',
         'galley': 'Galley',
         'galleys': 'Galley',
         'glide': 'Glide',
@@ -146,12 +163,18 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'haynes': 'Haynes guide to Concorde',
         'heathrow': 'LHR',
         'hooker': 'Sir Stanley Hooker',
+        'hp115': 'HP115',
         'hydraulic': 'Hydraulic',
         'hydrazine': 'Hydrazine',
         'ignitor': 'Ignitors',
         'ignitors': 'Ignitors',
+
         'inlet': 'Intakes',
+        'intake': 'Intakes',
         'intakes': 'Intakes',
+
+        'inss': 'INS (Inertial Navigation System)',
+
         'microprocessor': 'Microprocessor',
         'mmo': 'Mmo',
         'nosewheel': 'Landing Gear',
@@ -166,8 +189,14 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'reheat': 'Afterburner/Re-heat',
         'reheats': 'Afterburner/Re-heat',
         'relight': 'Relight',
+
+        'roundthebay': 'Round the Bay',
+
         'rollsroyce': 'Rolls Royce',
         'rudder': 'Rudder',
+
+        'radalt': 'Radio Altimeter',
+
         'shockwave': 'Shockwave',
         'shockwaves': 'Shockwave',
         'shutdown': 'Engine Shutdown',
@@ -177,23 +206,45 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'simulators': 'Simulator',
         'stagnation': 'Stagnation Point',
         'stewardess': 'Cabin Crew',
+        'stewardesses': 'Cabin Crew',
+        'landlady': 'Cabin Crew',
+
+        'liftdrag': 'Lift Drag Ratio',
+
         'supercruise': 'Super-cruise',
         'surge': 'Engine surge',
         'surged': 'Engine surge',
         'surges': 'Engine surge',
         'tailcone': 'Tail Cone',
         'tailwheel': 'Tailwheel',
+        'trim': 'Trim',
         'shannon': 'Shannon',
         'toulouse': 'Toulouse',
         'tyres': 'Tyres',
         'tmo': 'TMO (Temprature Max Operating)',
+
         'tu144': 'Tu-144',
+        'concordski': 'Tu-144',
+        'russian': 'Tu-144',
+        'russians': 'Tu-144',
+        'mi6': 'Tu-144',
+        'tu144d': 'Tu-144',
+        # Missing space in 'Concorde,Tu-144'
+        'concordetu144': 'Tu-144',
+
+        'ullage': 'Ullage (Fuel)',
+
         'undercarridge': 'Landing Gear',
         'visor': 'Visor',
         'vortex': 'Vortex',
         'vorticies': 'Vortex',
         'vmo': 'Vmo',
         'vd': 'Vd',
+
+        'vref': 'Vref',
+        'vref5': 'Vref',
+        'vref7': 'Vref',
+        'vref10': 'Vref',
     }
 
     # This maps capitilised words (stripped of punctuation) to their subject.
@@ -216,10 +267,12 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'APU': 'APU (Auxiliary Power Unit)',
         'AUTOSTAB': 'Auto-stabilisation',
         'AUTOLAND': 'Auto-land',
+        'B747': 'Boeing 747',
         'BA': 'British Airways',
         'BLUE': 'Hydraulic System - BLUE',
         'CG': 'C of G',
         'CC': 'Cabin Crew',
+        'FL600': 'FL600',
         'FBW': 'FBW (Fly By Wire)',
         'FBTSC': 'F-BTSC',
         'FBTSD': 'F-BTSD',
@@ -242,6 +295,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'GPU': 'GPU (Ground Power Unit)',
         'GREEN': 'Hydraulic System - GREEN',
         'HUD': 'HUD (Head Up Display)',
+        'HP115': 'HP-115',
         'IAS': 'IAS (Indicated Air Speed)',
         'INS': 'INS (Inertial Navigation System)',
         'ITVV': 'Intelligent Television and Video',
@@ -253,12 +307,14 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'PFCU': 'PFCU (Powered Flying Control Units)',
         'RAT': 'RAT (Ram Air Turbine)',
         'RR': 'Rolls Royce',
+        'SC1': 'Short SC-1',
         'SR71': 'SR-71',
         'TAS': 'TAS (True Air Speed)',
         'TAT': 'TAT (Total Air Temperature)',
         'TLA': 'TLA (Throttle Lever Angle)',
         'TMO': 'TMO (Temprature Max Operating)',
         'TU144': 'Tu-144',
+        'TU144D': 'Tu-144',
         'YELLOW': 'Hydraulic System - YELLOW',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
@@ -271,12 +327,14 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('aoa', 'vortex'): 'AoA',
             ('aoa', 'vortices'): 'AoA',
             ('auto', 'stabilisation'): 'Auto-stabilisation',
+            ('barber', 'pole'): 'Barber Pole',
             ('boeing', 'SST'): 'Boeing SST',
             ('barbara', 'harmer'): 'Barbara Harmer',
             ('brian', 'calvert'): 'Brian Calvert',
             ('brian', 'wadpole'): 'Brian Walpole',
             ('brian', 'walpole'): 'Brian Walpole',
             ('brize', 'norton'): 'Brize Norton',
+            ('bristol', 'siddeley'): 'Bristol Siddeley',
             ('chris', 'norris'): 'Chris Norris',
             ('CLIMB', 'MAX'): 'Climb Performance',
             ('C', 'G'): 'C of G',
@@ -285,6 +343,10 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('concorde', 'routing',): 'Concorde Routings',
             ('concorde', 'routings',): 'Concorde Routings',
             ('oceanic', 'routings',): 'Concorde Routings',
+            ('crown', 'modification',): 'Crown Modification',
+            ('crown', 'modifications',): 'Crown Modification',
+
+            ('cross', 'wind',): 'Cross Wind Limit',
 
             ('conversion', 'course'): 'Conversion Course',
             ('Chris', 'Norris'): 'Chris Norris',
@@ -297,9 +359,14 @@ class Concorde(publication_map_abc.PublicationMapABC):
 
             ('female', 'pilots'): 'Female Pilots',
             ('flight', 'envelope'): 'Flight Envelope',
+
             ('fuel', 'pump'): 'Fuel Pumps',
             ('fuel', 'pumps'): 'Fuel Pumps',
             ('fuel', 'vent'): 'Fuel Vent System',
+            ('fuel', 'burn'): 'Fuel Burn',
+
+            # ('fuel', 'incident'): 'Fuel Incident',
+
             ('green', 'system'): 'GREEN Hydraulic System',
             ('hand', 'flying'): 'Hand Flying',
             ('hydraulic', 'contamination'): 'Hydraulic Failure/Contamination',
@@ -313,6 +380,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('john', 'cook'): 'John Cook',
             ('keith', 'myers'): 'Keith Myers',
             ('landing', 'gear'): 'Landing Gear',
+
+            ('lift', 'drag'): 'Lift Drag Ratio',
+
             ('landing', 'lamps'): 'Landing & Taxy Lights',
             ('landing', 'lights'): 'Landing & Taxy Lights',
             ('le', 'bourget'): 'Le Bourget',
@@ -333,11 +403,24 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('nozzle', 'reverser'): 'Thrust Reversers',
             ('pilot', 'selection'): 'Pilot Selection',
             ('prototype', 'fleet',): 'Prototype Fleet',
+
+            ('radio', 'altimeter',): 'Radio Altimeter',
+            ('radar', 'altimeter',): 'Radio Altimeter',
+
             ('RAE', 'farnborough'): 'RAE Farnborough',
             ('rivers', 'babylon'): 'By the Rivers of Babylon',
-            ('Rolls', 'Royce'): 'Rolls Royce',
+            ('rolls', 'royce'): 'Rolls Royce',
             ('rotating', 'stall'): 'Rotating (engine) Stall',
+
+            ('reverse', 'thrust'): 'Reverse Thrust',
+
             ('stick', 'shaker'): 'Stick Shaker',
+
+            ('stan', 'hookers',): 'Sir Stanley Hooker',
+
+            ('takeoff', 'thrust'): 'Take-off Thrust',
+            ('tail', 'skid'): 'Tail Skid',
+            ('tyre', 'life'): 'Tyre Life',
 
             ('trivia', 'questions'): 'Quiz',
             ('stinky', 'questions'): 'Quiz',
@@ -351,6 +434,8 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('thrust', 'recuperator'): 'Thrust Recuperator',
             ('technical', 'diagrams'): 'Technical Diagrams',
             ('vortex', 'aoa'): 'Vortex AoA',
+            # We want to eliminate 'the'
+            ('round', 'bay',): 'Round the Bay',
         },
         3: {
             ('c', 'of', 'g',): 'C of G',
@@ -358,6 +443,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('flight', 'plan', 'segment',): 'Concorde Routings',
             # 'How many wheels on the aircraft'
             ('how', 'many', 'wheels'): 'Quiz',
+            ('flight', 'crew', 'positions',): 'Flight Crew Positions',
         },
         4: {
             ('how', 'many', 'wheel', 'brakes'): 'Quiz',
@@ -368,6 +454,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
     # This is a map of {permalink : subject, ...}
     SPECIFIC_POSTS_MAP = {
         5917048: 'Flight Envelope',  # Post 225 by pprunes counting
+        5917084: 'Flight Envelope',
         # https://www.pprune.org/tech-log/423988-concorde-question-108.html#post5918963
         5918963: 'Olympus 593',  # Post 250 by pprunes counting
         # # https://www.pprune.org/tech-log/423988-concorde-question-16.html#post5926053

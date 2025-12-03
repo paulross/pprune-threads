@@ -37,6 +37,8 @@ class User:
             return int(m.group(1))
 
 
+#: As key is None the Punctuation is removed with no replacement.
+#: So 'G-BBDG' becomes 'GBBDG'.
 PUNCTUATION_TABLE = str.maketrans({key: None for key in string.punctuation})
 
 
@@ -198,6 +200,8 @@ class Post:
 
     @property
     def words(self) -> typing.List[str]:
+        """Return the list of words contained in the post after removing punctuation.
+        So 'G-BBDG' becomes 'GBBDG'."""
         txt = self.text_stripped.translate(PUNCTUATION_TABLE)
         return txt.split()
 

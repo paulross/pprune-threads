@@ -1,13 +1,31 @@
 =========================
-Remixes of prune threads.
+Remixes of Pprune threads
 =========================
 
-This describes how to reorganise a pprune thread by subject.
+This project is to take long running discussion threads on
+`Professional Pilots Rumour Network <https://www.pprune.org/>`_
+and summarise them by subject.
+
+Here are some example threads:
 
 --------------------------------------------
 The Concorde Thread
 --------------------------------------------
 
+This fascinating thread
+`https://www.pprune.org/tech-log/423988-concorde-question.html <https://www.pprune.org/tech-log/423988-concorde-question.html>`_
+contains 2000+ posts, many by Concorde experts.
+
+The result is here:
+`https://paulross.github.io/pprune-threads/gh-pages/Concorde/index.html <https://paulross.github.io/pprune-threads/gh-pages/Concorde/index.html>`_
+
+.. note::
+
+    Much of the Concorde thread was created before the up-voting system was introduced to the site.
+    As a result there are very few up-votes.
+
+Pulling Down the Thread
+--------------------------
 
 .. code-block:: shell
 
@@ -42,13 +60,11 @@ The Concorde Thread
     100  130k    0  130k    0     0   510k      0 --:--:-- --:--:-- --:--:--  510k
     curl https://www.pprune.org/tech-log/423988-concorde-question-\[2-108\].html   0.33s user 0.53s system 2% cpu 33.682 total
 
-
-
 --------------------------------------------
 Air India Flight 171 at Ahmedabad 2025-06-12
 --------------------------------------------
 
-https://en.wikipedia.org/wiki/Air_India_Flight_171
+`https://en.wikipedia.org/wiki/Air_India_Flight_171 <https://en.wikipedia.org/wiki/Air_India_Flight_171>`_
 
 Original threads:
 
@@ -57,6 +73,9 @@ Original threads:
 3. https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html
 
 There is also https://www.pprune.org/accidents-close-calls/666714-moderation-air-india-accident-threads.html
+
+The result is here:
+`https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html <https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html>`_
 
 Pulling Down the Thread(s)
 --------------------------
@@ -137,13 +156,18 @@ And all the rest:
     user	0m0.176s
     sys	0m0.356s
 
+-------------------
 Conducting Research
 -------------------
+
+This describes how to use the research tools to examine a thread so that
+you can create the appropriate ``PublicationMap``.
+The example used is the AI171 thread(s).
 
 There is a script ``src/pprune/research.py`` that analyses the thread for words and phrases.
 
 Words that are all Capitals
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 Use the ``--all-cap-words`` to list words in all capitals.
 
@@ -312,7 +336,7 @@ Typical output (not collecting nouns or verbs):
 I don't find it particularly useful.
 
 Research with the ``Example`` Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------------
 
 Running ``main`` with the ``Example`` thread can give some useful results, although no specific subjects are identified.
 
@@ -322,10 +346,13 @@ Running ``main`` with the ``Example`` thread can give some useful results, altho
 
 This creates summary and user pages which are useful.
 
-Configuring the Build
---------------------------
+--------------------------------------------
+Configuring the Build with a Publication Map
+--------------------------------------------
 
-In ``src/pprune/publication_maps/publication_maps_abc`` create a new concrete class inheriting from the virtual class ``PublicationMapABC``:
+In ``src/pprune/publication_maps/publication_maps`` create a new file ``pprune/publication_maps/air_india_171.py``
+which contains a concrete class inheriting from the virtual class ``PublicationMapABC``:
+The example used is the AI171 thread(s).
 
 .. code-block:: python
 
@@ -418,10 +445,12 @@ of the reader as important.
 
 In ``src/pprune/publication_maps.py`` implement all the abstract methods.
 
+--------------------------
 Running the Build
 --------------------------
 
 In ``src/pprune/main.py`` add the reference to the ``AirIndia171`` class:
+The example used is the AI171 thread(s).
 
 .. code-block:: python
 
@@ -430,11 +459,13 @@ In ``src/pprune/main.py`` add the reference to the ``AirIndia171`` class:
     # Map of thread name to a class declaration that can be created and
     # eventually passed to write_html.write_whole_thread().
     THREAD_NAME_TO_CLASS_MAP = {
+        # 8<---- Snip ---->8
         'AI171': air_india_171.AirIndia171,
+        # 8<---- Snip ---->8
     }
 
 And run the build, note that ``--output`` is missing so the default output directory is ``docs/gh-pages/AI171``.
-If the ``--output`` directory is provided the result will be written there:
+If the ``--output`` directory is provided the result will be written there (advised for testing).
 
 .. code-block:: shell
 
