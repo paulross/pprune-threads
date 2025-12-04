@@ -1,6 +1,14 @@
 History
 =======
 
+Alpha Release (Concorde threads to: December 04, 2025, 07:27:00 GMT)
+--------------------------------------------------------------------
+
+- Added Concorde subjects: ADC, Avionics, Barber Pole, Boeing 747, Bristol Siddeley, Checklists, Cross Wind,
+  Crown Modification, Expansion, FL600, Fuel Burn, HP-1150, Intakes, Lift/Drag, Radio Altimeter, Reverse Thrust,
+  Round the Bay, Short SC-10, Tail Skid, Take Off Thrust, Trim, Tyre Life, Ullage, Vref.
+- Make the histogram of posts yearly.
+
 Alpha Release (AI171 threads to: October 03, 2025, 05:44:00 GMT)#2
 ------------------------------------------------------------------
 
