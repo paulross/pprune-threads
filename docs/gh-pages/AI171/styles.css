@@ -71,3 +71,18 @@ p.page_links {
         font-size:        10pt;
         font-style:     italic;
     }
+
+a.headerlink {
+    visibility: hidden;
+}
+a:visited {
+    color: #551A8B;
+}
+h1:hover > a.headerlink,
+h2:hover > a.headerlink,
+h3:hover > a.headerlink,
+h4:hover > a.headerlink,
+h5:hover > a.headerlink,
+h6:hover > a.headerlink {
+    visibility: visible;
+}
