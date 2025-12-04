@@ -108,7 +108,7 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
 
     def histogram_frequency(self) -> publication_map_abc.HistogramFrequency:
         """How frequently the histogram buckets are."""
-        return publication_map_abc.HistogramFrequency.DAILY
+        return publication_map_abc.HistogramFrequency.WEEKLY
 
 
     def get_set_of_removed_subjects(self) -> typing.Set[str]:

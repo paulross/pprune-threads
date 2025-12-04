@@ -1,6 +1,12 @@
 History
 =======
 
+Alpha Release (AI171 threads to: December 03, 2025, 12:54:00 GMT)
+-----------------------------------------------------------------
+
+- Build threads up to December 03, 2025, 12:54:00 GMT (built on December 04, 2025, 13:47:29 GMT).
+- "Likes" are available on the currently open thread.
+
 Alpha Release (Concorde threads to: December 04, 2025, 07:27:00 GMT)
 --------------------------------------------------------------------
 
