@@ -586,26 +586,57 @@ def write_index_post_date_histogram(
 ):
     """Writes a histogram table of posts by date."""
     post_count = collections.Counter()
-    for post in thread.posts:
-        td = post.timestamp - thread.posts[0].timestamp
-        post_count[td.days] += 1
-    max_daily_posts = max(post_count.values())
-    divisor = 1 + max_daily_posts // 80
     table = []
-    for day_inc in range(min(post_count.keys()), max(post_count.keys()) + 1):
-        this_timestamp = thread.posts[0].timestamp + datetime.timedelta(days=day_inc)
-        if publication_map.include_empty_post_dates_in_histogram() or post_count[day_inc]:
-            table.append((format_datetime_as_date(this_timestamp), post_count[day_inc]))
+    if publication_map.histogram_frequency() == publication_map_abc.HistogramFrequency.DAILY:
+        for post in thread.posts:
+            td = post.timestamp - thread.posts[0].timestamp
+            post_count[td.days] += 1
+        for day_inc in range(min(post_count.keys()), max(post_count.keys()) + 1):
+            this_timestamp = thread.posts[0].timestamp + datetime.timedelta(days=day_inc)
+            if publication_map.include_empty_post_dates_in_histogram() or post_count[day_inc]:
+                table.append((format_datetime_as_date(this_timestamp), post_count[day_inc]))
+        col_one_heading = 'Date'
+    elif publication_map.histogram_frequency() == publication_map_abc.HistogramFrequency.MONTHY:
+        for post in thread.posts:
+            post_count[(post.timestamp.year, post.timestamp.month)] += 1
+        year_month_min = min(post_count.keys())
+        year_month_max = max(post_count.keys())
+        year = year_month_min[0]
+        month = year_month_min[1]
+        while year <= year_month_max[0] and month <= year_month_max[1]:
+            if publication_map.include_empty_post_dates_in_histogram() or post_count[(year, month)]:
+                dt = datetime.date(year, month, 1)
+                table.append((dt.strftime('%B, %Y'), post_count[(year, month)]))
+            month += 1
+            if month == 13:
+                year += 1
+                month = 1
+        col_one_heading = 'Month, Year'
+    elif publication_map.histogram_frequency() == publication_map_abc.HistogramFrequency.YEARLY:
+        for post in thread.posts:
+            post_count[post.timestamp.year] += 1
+        year_min = min(post_count.keys())
+        year_max = max(post_count.keys())
+        year = year_min
+        while year <= year_max:
+            if publication_map.include_empty_post_dates_in_histogram() or post_count[year]:
+                table.append((f'{year}', post_count[year]))
+            year += 1
+        col_one_heading = 'Year'
+    else:
+        raise ValueError(f'Unsupported histogram frequency {publication_map.histogram_frequency()}')
     text = 'Here are the number of posts by date.'
     if publication_map.include_empty_post_dates_in_histogram():
         text += ' All dates are included even if there are no posts.'
     else:
         text += ' Only dates are included if there are posts.'
+    max_posts = max(post_count.values())
+    divisor = 1 + max_posts // 80
     write_index_histogram(
         'Number of Posts by Date (GMT)',
         'posts_by_date',
         text,
-        'Date',
+        col_one_heading,
         table, divisor, index
     )
 
