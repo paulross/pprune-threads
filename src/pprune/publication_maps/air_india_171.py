@@ -106,6 +106,11 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
         """Returns True if we want all dates in the date histogram even if there are no posts."""
         return True
 
+    def histogram_frequency(self) -> publication_map_abc.HistogramFrequency:
+        """How frequently the histogram buckets are."""
+        return publication_map_abc.HistogramFrequency.DAILY
+
+
     def get_set_of_removed_subjects(self) -> typing.Set[str]:
         return {
             '51 Day Issue',

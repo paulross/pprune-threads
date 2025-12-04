@@ -27,7 +27,15 @@ __version__ = '0.0.1'
 __rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import abc
+import enum
 import typing
+
+
+class HistogramFrequency(enum.Enum):
+    DAILY = 1
+    WEEKLY = 2
+    MONTHLY = 3
+    YEARLY = 4
 
 
 class PublicationMapABC(abc.ABC):
@@ -144,4 +152,8 @@ class PublicationMapABC(abc.ABC):
     @abc.abstractmethod
     def include_empty_post_dates_in_histogram(self) -> bool:
         """Returns True if we want all dates in the date histogram even if there are no posts."""
+        pass
+    @abc.abstractmethod
+    def histogram_frequency(self) -> HistogramFrequency:
+        """How frequently the histogram buckets are."""
         pass
