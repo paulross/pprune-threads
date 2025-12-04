@@ -33,7 +33,8 @@ import typing
 
 class HistogramFrequency(enum.Enum):
     DAILY = 1
-    MONTHY = 3
+    WEEKLY = 2
+    MONTHLY = 3
     YEARLY = 4
 
 

@@ -596,7 +596,16 @@ def write_index_post_date_histogram(
             if publication_map.include_empty_post_dates_in_histogram() or post_count[day_inc]:
                 table.append((format_datetime_as_date(this_timestamp), post_count[day_inc]))
         col_one_heading = 'Date'
-    elif publication_map.histogram_frequency() == publication_map_abc.HistogramFrequency.MONTHY:
+    elif publication_map.histogram_frequency() == publication_map_abc.HistogramFrequency.WEEKLY:
+        for post in thread.posts:
+            td = post.timestamp - thread.posts[0].timestamp
+            post_count[td.days // 7] += 1
+        for week_inc in range(min(post_count.keys()), max(post_count.keys()) + 1):
+            this_timestamp = thread.posts[0].timestamp + datetime.timedelta(days=7 * week_inc)
+            if publication_map.include_empty_post_dates_in_histogram() or post_count[week_inc]:
+                table.append((format_datetime_as_date(this_timestamp), post_count[week_inc]))
+        col_one_heading = 'Week Beginning'
+    elif publication_map.histogram_frequency() == publication_map_abc.HistogramFrequency.MONTHLY:
         for post in thread.posts:
             post_count[(post.timestamp.year, post.timestamp.month)] += 1
         year_month_min = min(post_count.keys())
