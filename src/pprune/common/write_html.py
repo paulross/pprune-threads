@@ -349,16 +349,19 @@ def write_index_main_subject_table(
 
 
 def write_index_pages_with_external_links_of_interest(
-        pages_with_external_links_of_interest: typing.List[typing.Tuple[str, str]],
+        pages_with_external_links_of_interest: typing.List[typing.Tuple[str, typing.Tuple[str, int]]],
         index: typing.TextIO,
 ):
     if len(pages_with_external_links_of_interest):
         write_index_h1('Posts with Useful External Links', 'external_links', index)
+        with element(index, 'p'):
+            index.write('External link title with the [number of posts].')
         with element(index, 'ul'):
-            for subject, page_name in pages_with_external_links_of_interest:
+            for subject, (page_name, post_count) in pages_with_external_links_of_interest:
                 with element(index, 'li'):
                     index.write(
                         f'<a href="{page_name}">{subject}</a>'
+                        f' [{post_count}]'
                     )
 
 
@@ -699,7 +702,7 @@ def write_index_page(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
         publication_map: publication_map_abc.PublicationMapABC,
-        pages_with_external_links_of_interest: typing.List[typing.Tuple[str, str]],
+        pages_with_external_links_of_interest: typing.List[typing.Tuple[str, typing.Tuple[str, int]]],
         out_path: str,
 ):
     """Write the index.html page."""
@@ -1066,7 +1069,7 @@ def write_posts_with_external_links(
         subject: str,
         regex_patterns: typing.Tuple[re.Pattern, ...],
         out_path: str,
-):
+) -> typing.Optional[typing.Tuple[str, int]]:
     """Writes all the pages that have external links, for example to YouTube, bbc, avherald.com, www.avherald.com,
     www.skybrary, www.flightradar24.com etc."""
     _posts = []
@@ -1078,8 +1081,9 @@ def write_posts_with_external_links(
                         _posts.append(post_index)
     pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
     for page_index, page in enumerate(pages):
-        logger.info(f'Writing pages with external links to {_page_name(subject, page_index)}')
-        with open(os.path.join(out_path, _page_name(subject, page_index)), 'w') as out_file:
+        page_name = _page_name("EXT_" + subject, page_index)
+        logger.info(f'Writing pages with external links to {page_name}')
+        with open(os.path.join(out_path, page_name), 'w') as out_file:
             out_file.write(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
@@ -1117,8 +1121,8 @@ def write_posts_with_external_links(
                                     write_post_footer(post, out_file)
                     _write_page_links(subject, page_index, len(pages), out_file)
     if len(pages):
-        return _page_name(subject, 0)
-    return ''
+        return _page_name("EXT_" + subject, 0), len(_posts)
+    return None
 
 
 def write_user_page(
@@ -1200,12 +1204,12 @@ def write_whole_thread(
     # TODO: Write out video links to netloc=www.flightradar24.com
     # TODO: Write out video links to netloc=www.bbc.com
     external_links_of_interest = publication_map.external_links_of_interest()
-    pages_with_external_links_of_interest: typing.List[typing.Tuple[str, str]] = []
+    pages_with_external_links_of_interest: typing.List[typing.Tuple[str, typing.Tuple[str, int]]] = []
     for external_subject in sorted(external_links_of_interest.keys()):
         external_page = write_posts_with_external_links(
             thread, pass_one_result, external_subject, external_links_of_interest[external_subject], output_path,
         )
-        if external_page:
+        if external_page is not None:
             pages_with_external_links_of_interest.append((external_subject, external_page))
     # Write out the user pages.
     for user_name in sorted(pass_one_result.user_ordinal_map.keys()):
