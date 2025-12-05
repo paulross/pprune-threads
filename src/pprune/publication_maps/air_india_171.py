@@ -20,6 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+import re
 import typing
 
 from pprune.publication_maps import publication_map_abc
@@ -102,14 +103,6 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
         """The minimum number of posts a user has mad to get a page with all their posts."""
         return 5
 
-    def include_empty_post_dates_in_histogram(self) -> bool:
-        """Returns True if we want all dates in the date histogram even if there are no posts."""
-        return True
-
-    def histogram_frequency(self) -> publication_map_abc.HistogramFrequency:
-        """How frequently the histogram buckets are."""
-        return publication_map_abc.HistogramFrequency.WEEKLY
-
 
     def get_set_of_removed_subjects(self) -> typing.Set[str]:
         return {
@@ -149,6 +142,26 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
             'VNAV',
             'Water Ingress',
             'Wrong Engine',
+        }
+
+    def include_empty_post_dates_in_histogram(self) -> bool:
+        """Returns True if we want all dates in the date histogram even if there are no posts."""
+        return True
+
+    def histogram_frequency(self) -> publication_map_abc.HistogramFrequency:
+        """How frequently the histogram buckets are."""
+        return publication_map_abc.HistogramFrequency.WEEKLY
+
+    def external_links_of_interest(self) -> typing.Dict[str, typing.Tuple[re.Pattern, ...]]:
+        """Returns a map of {Title : (netloc_re, ...), ...} where netloc_re is a compiled regular expression
+        to the netloc part of the <a href=URL>.
+        If they match then write these posts to a page with that title.
+        """
+        return {
+            "YouTube Videos": (
+                re.compile(r'.*youtube\.com'),
+                re.compile(r'.*youtu\.be'),
+            ),
         }
 
     # Map of {lower_case_word : subject_title, ..}

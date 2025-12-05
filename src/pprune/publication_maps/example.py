@@ -20,6 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+import re
 import typing
 
 from pprune.publication_maps import publication_map_abc
@@ -80,3 +81,14 @@ class Example(publication_map_abc.PublicationMapABC):
         """How frequently the histogram buckets are."""
         return publication_map_abc.HistogramFrequency.DAILY
 
+    def external_links_of_interest(self) -> typing.Dict[str, typing.Tuple[re.Pattern, ...]]:
+        """Returns a map of {Title : (netloc_re, ...), ...} where netloc_re is a compiled regular expression
+        to the netloc part of the <a href=URL>.
+        If they match then write these posts to a page with that title.
+        """
+        return {
+            "YouTube Videos": (
+                re.compile(r'.*youtube\.com'),
+                re.compile(r'.*youtu\.be'),
+            ),
+        }
