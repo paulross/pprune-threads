@@ -103,7 +103,6 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
         """The minimum number of posts a user has mad to get a page with all their posts."""
         return 5
 
-
     def get_set_of_removed_subjects(self) -> typing.Set[str]:
         return {
             '51 Day Issue',
