@@ -490,4 +490,6 @@ class Concorde(publication_map_abc.PublicationMapABC):
     # This the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
     # Tuple[Tuple[str, permalink], ...]
-    SIGNIFICANT_POSTS = tuple()
+    SIGNIFICANT_POSTS = (
+        ('Technical Diagrams from "Flight"', 11681790,),
+    )

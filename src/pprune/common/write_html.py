@@ -288,7 +288,7 @@ def write_index_significant_posts(
     if significant_posts:
         write_index_h1('Significant Posts', 'significant_posts', index)
         with element(index, 'p'):
-            index.write('These are worth reading before you go any further.')
+            index.write('Specific posts that are worth reading:')
         # post_ordinals = []
         for subject, post_id in significant_posts:
             if post_id not in thread.post_id_to_permalink_map:
