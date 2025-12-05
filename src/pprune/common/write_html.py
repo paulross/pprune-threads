@@ -889,6 +889,8 @@ def _write_page_links(subject: str, page_num: int, page_count: int, out_file: ty
 def write_subjects_of_this_post(pass_one_result: PassOneResult, post: thread_struct.Post,
                                 out_file: typing.TextIO) -> None:
     """Write out the subjects that this post covers."""
+    with element(out_file, 'hr', style="width:50%;color:red;text-align:left;margin-left:0"):
+        pass
     with element(out_file, 'p'):
         if post.sequence_num in pass_one_result.post_subject_map \
                 and len(pass_one_result.post_subject_map[post.sequence_num]):
