@@ -156,10 +156,61 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
         to the netloc part of the <a href=URL>.
         If they match then write these posts to a page with that title.
         """
+        # TODO:
+        # ------------------------ print_netloc_popularity(): -----------------------
+        # www.pprune.org                   :    132
+        # www.youtube.com                  :     47
+        # x.com                            :     47
+        # en.wikipedia.org                 :     38
+        # youtu.be                         :     32
+        # www.flightradar24.com            :     27
+        # paulross.github.io               :     23
+        # github.com                       :     21
+        # www.bbc.co.uk                    :     20
+
+        # www.reuters.com                  :     20
+        # ad.easa.europa.eu                :     17
+        # feitoffake.wordpress.com         :     16
+        # www.thetimes.com                 :     15
+        # www.geaerospace.com              :     14
+        # www.federalregister.gov          :     12
+        # www.wsj.com                      :     12
+        # www.ndtv.com                     :     11
+        # timesofindia.indiatimes.com      :     10
+        # data.ntsb.gov                    :     10
+        # avherald.com                     :     10
+        # www.gov.uk                       :     10
+        # time.com                         :     10
+        # www.theguardian.com              :      9
+        # assets.publishing.service.gov.uk :      8
+        # patents.google.com               :      8
+        # asn.flightsafety.org             :      8
+
         return {
             "YouTube Videos": (
-                re.compile(r'.*youtube\.com'),
-                re.compile(r'.*youtu\.be'),
+                re.compile(r'.*youtube.com'),
+                re.compile(r'.*youtu.be'),
+            ),
+            "Twitter/X": (
+                re.compile(r'.*x.com'),
+            ),
+            "Wikipedia": (
+                re.compile(r'.*wikipedia.org'),
+            ),
+            "Flight Radar 24": (
+                re.compile(r'www.flightradar24.com'),
+            ),
+            "paulross": (
+                re.compile(r'paulross.github.io'),
+            ),
+            "GitHub": (
+                re.compile(r'github.com'),
+            ),
+            "BBC": (
+                re.compile(r'www.bbc.co.uk'),
+            ),
+            "Reuters": (
+                re.compile(r'www.reuters.com'),
             ),
         }
 
