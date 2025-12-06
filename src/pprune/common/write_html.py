@@ -1072,13 +1072,19 @@ def write_posts_with_external_links(
 ) -> typing.Optional[typing.Tuple[str, int]]:
     """Writes all the pages that have external links, for example to YouTube, bbc, avherald.com, www.avherald.com,
     www.skybrary, www.flightradar24.com etc."""
+    def post_matches(netloc: str, regex_patterns: typing.Tuple[re.Pattern, ...]) -> bool:
+        for regex_pattern in regex_patterns:
+            if re.match(regex_pattern, netloc):
+                return True
+
     _posts = []
     for post_index, post in enumerate(thread.posts):
         if post.sequence_num in pass_one_result.sequence_num_href_pairs_map:
             for parsed_href, enclosing_text in pass_one_result.sequence_num_href_pairs_map[post.sequence_num]:
-                for regex_pattern in regex_patterns:
-                    if re.match(regex_pattern, parsed_href.netloc):
-                        _posts.append(post_index)
+                if post_matches(parsed_href.netloc, regex_patterns):
+                    _posts.append(post_index)
+                    # Include post only once.
+                    break
     pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
     for page_index, page in enumerate(pages):
         page_name = _page_name("EXT_" + subject, page_index)
