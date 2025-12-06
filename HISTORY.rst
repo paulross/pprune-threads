@@ -1,6 +1,14 @@
 History
 =======
 
+Alpha Release (AI171 threads to: December 06, 2025, 09:34:00 GMT)
+-----------------------------------------------------------------
+
+- Build threads up to December 06, 2025, 09:34:00 GMT (built on December 06, 2025, 13:46:57 GMT).
+- "Likes" are available on the currently open thread.
+- Add a list of pages where posts refer to external sites such as flightradar24.com, bbc.com etc.
+- Post frequency for the histogram is now weekly.
+
 Alpha Release (AI171 threads to: December 03, 2025, 12:54:00 GMT)
 -----------------------------------------------------------------
 
