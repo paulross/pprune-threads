@@ -358,18 +358,22 @@ def write_index_pages_with_external_links_of_interest(
             index.write('External link title with the [number of posts].')
         with element(index, 'ul'):
             for subject, (page_name, post_count) in pages_with_external_links_of_interest:
-                with element(index, 'li'):
-                    index.write(
-                        f'<a href="{page_name}">{subject}</a>'
-                        f' [{post_count}]'
-                    )
+                if post_count:
+                    logger.info(f'Looking for external links on "{subject}" produces {post_count} posts.')
+                    with element(index, 'li'):
+                        index.write(
+                            f'<a href="{page_name}">{subject}</a>'
+                            f' [{post_count}]'
+                        )
+                else:
+                    logger.warning(f'Looking for external links on "{subject}" produces no posts.')
 
 
 def write_index_no_subjects(
         publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
 ):
-    """Optionally, writes out a list of significant posts."""
+    """Optionally, writes out a list of posts that have no subjects."""
     if publication_map.include_posts_with_no_subject:
         write_index_h1('Posts with no Identifiable Subjects', 'no_subjects', index)
         with element(index, 'p'):
@@ -746,9 +750,11 @@ so many subjects it is a little hard to follow any particular subject.
                 # Write table of informational data.
                 posts_inc, posts_exc = get_count_of_posts_included(thread, pass_one_result.subject_post_map)
                 posts_in_open_threads = 0
+                word_count = 0
                 for post in thread.posts:
                     if post.thread_is_open:
                         posts_in_open_threads += 1
+                    word_count += len(post.words)
                 with element(index, 'table', _class="indextable"):
                     with element(index, 'tr'):
                         with element(index, 'th'):
@@ -759,22 +765,18 @@ so many subjects it is a little hard to follow any particular subject.
                         with element(index, 'td', _class='indextable'):
                             index.write('Total posts')
                         with element(index, 'td', _class='indextable'):
-                            index.write(f'{len(thread)}')
-                    # with element(index, 'tr'):
-                    #     with element(index, 'td', _class='indextable'):
-                    #         index.write('Posts with no discovered subject')
-                    #     with element(index, 'td', _class='indextable'):
-                    #         num_posts_no_subject = len(pass_one_result.sequence_numbers_no_subject())
-                    #         index.write(
-                    #             f'{num_posts_no_subject}'
-                    #             f' ({num_posts_no_subject / len(thread):.1%})'
-                    #         )
+                            index.write(f'{len(thread):,d}')
+                    with element(index, 'tr'):
+                        with element(index, 'td', _class='indextable'):
+                            index.write('Total number of words in posts')
+                        with element(index, 'td', _class='indextable'):
+                            index.write(f'{word_count:,d}')
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Posts in currently open threads')
                         with element(index, 'td', _class='indextable'):
                             index.write(
-                                f'{posts_in_open_threads}'
+                                f'{posts_in_open_threads:,d}'
                                 f' ({posts_in_open_threads / len(thread):.1%})'
                             )
                     with element(index, 'tr'):
@@ -782,19 +784,19 @@ so many subjects it is a little hard to follow any particular subject.
                             index.write('Posts in currently closed threads')
                         with element(index, 'td', _class='indextable'):
                             index.write(
-                                f'{len(thread) - posts_in_open_threads}'
+                                f'{len(thread) - posts_in_open_threads:,d}'
                                 f' ({(len(thread) - posts_in_open_threads) / len(thread):.1%})'
                             )
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Posts with a discovered subject')
                         with element(index, 'td', _class='indextable'):
-                            index.write(f'{posts_inc} ({posts_inc / len(thread):.1%})')
+                            index.write(f'{posts_inc:,d} ({posts_inc / len(thread):.1%})')
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Posts with no discovered subject')
                         with element(index, 'td', _class='indextable'):
-                            index.write(f'{posts_exc} ({posts_exc / len(thread):.1%})')
+                            index.write(f'{posts_exc:,d} ({posts_exc / len(thread):.1%})')
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Thread starts at')
@@ -840,11 +842,12 @@ so many subjects it is a little hard to follow any particular subject.
 
                 write_index_main_subject_table(pass_one_result.subject_post_map, index)
 
-                write_index_pages_with_external_links_of_interest(pages_with_external_links_of_interest, index)
-
-                write_index_no_subjects(publication_map, index)
-
                 write_index_removed_subjects(publication_map, index)
+
+                if publication_map.include_posts_with_no_subject:
+                    write_index_no_subjects(publication_map, index)
+
+                write_index_pages_with_external_links_of_interest(pages_with_external_links_of_interest, index)
 
                 write_index_most_upvoted_posts_table(thread, publication_map, index)
 
@@ -1072,6 +1075,7 @@ def write_posts_with_external_links(
 ) -> typing.Optional[typing.Tuple[str, int]]:
     """Writes all the pages that have external links, for example to YouTube, bbc, avherald.com, www.avherald.com,
     www.skybrary, www.flightradar24.com etc."""
+
     def post_matches(netloc: str, regex_patterns: typing.Tuple[re.Pattern, ...]) -> bool:
         for regex_pattern in regex_patterns:
             if re.match(regex_pattern, netloc):
@@ -1203,12 +1207,8 @@ def write_whole_thread(
 
     if publication_map.include_posts_with_no_subject:
         write_pages_with_no_subject(thread, pass_one_result, output_path)
-    # TODO: Publication map controls this.
-    # TODO: Write out video links to netloc=www.youtube.com, youtu.be with count
-    # TODO: Write out video links to netloc=avherald.com, www.avherald.com
-    # TODO: Write out video links to netloc=www.skybrary.aero
-    # TODO: Write out video links to netloc=www.flightradar24.com
-    # TODO: Write out video links to netloc=www.bbc.com
+
+    # Posts with external links of interest. The publication map controls this.
     external_links_of_interest = publication_map.external_links_of_interest()
     pages_with_external_links_of_interest: typing.List[typing.Tuple[str, typing.Tuple[str, int]]] = []
     for external_subject in sorted(external_links_of_interest.keys()):
@@ -1217,6 +1217,7 @@ def write_whole_thread(
         )
         if external_page is not None:
             pages_with_external_links_of_interest.append((external_subject, external_page))
+
     # Write out the user pages.
     for user_name in sorted(pass_one_result.user_ordinal_map.keys()):
         if len(pass_one_result.user_ordinal_map[user_name]) >= publication_map.get_minimum_number_username_posts():
@@ -1225,9 +1226,10 @@ def write_whole_thread(
                     user_name, len(pass_one_result.user_ordinal_map[user_name]))
             )
             write_user_page(thread, pass_one_result, user_name, output_path)
+
     logger.info('Writing: {:s}'.format('index.html'))
     # Write out the index page.
-    # TODO: Include pages_with_external_links_of_interest
+    # Include pages_with_external_links_of_interest
     write_index_page(thread, pass_one_result, publication_map, pages_with_external_links_of_interest, output_path)
     # Print out a histogram of subject -> count of posts.
     subject_counter = collections.Counter()

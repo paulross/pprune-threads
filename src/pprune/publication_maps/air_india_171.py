@@ -37,7 +37,7 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
     <ol>
         <li><a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html">Part One [pprune]</a> (now closed)</li>
         <li><a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html">Part Two [pprune]</a> (now closed)</li>
-        <li><a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html">Preliminary Report [pprune]</a> (now closed)</li>
+        <li><a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html">Preliminary Report [pprune]</a> (occasionally open)</li>
         <li>There is also a thread on the
             <a href="https://www.pprune.org/accidents-close-calls/666714-moderation-air-india-accident-threads.html">moderation of these threads [pprune]</a>
              (this is not included in this analysis)
@@ -167,23 +167,31 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
         # paulross.github.io               :     23
         # github.com                       :     21
         # www.bbc.co.uk                    :     20
-
         # www.reuters.com                  :     20
         # ad.easa.europa.eu                :     17
+
+        # Omit
         # feitoffake.wordpress.com         :     16
+
         # www.thetimes.com                 :     15
+
+        # Omit
         # www.geaerospace.com              :     14
+
         # www.federalregister.gov          :     12
         # www.wsj.com                      :     12
         # www.ndtv.com                     :     11
         # timesofindia.indiatimes.com      :     10
         # data.ntsb.gov                    :     10
         # avherald.com                     :     10
+
+        # Omit these.
         # www.gov.uk                       :     10
         # time.com                         :     10
         # www.theguardian.com              :      9
         # assets.publishing.service.gov.uk :      8
         # patents.google.com               :      8
+
         # asn.flightsafety.org             :      8
 
         return {
@@ -211,6 +219,33 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
             ),
             "Reuters": (
                 re.compile(r'www.reuters.com'),
+            ),
+            "EASA": (
+                re.compile(r'ad.easa.europa.eu'),
+            ),
+            "The Times (London)": (
+                re.compile(r'www.thetimes.com'),
+            ),
+            "The Federal Register (USA)": (
+                re.compile(r'www.federalregister.gov'),
+            ),
+            "Wall Street Journal": (
+                re.compile(r'www.wsj.com'),
+            ),
+            "New Delhi Television Ltd (NDTV)": (
+                re.compile(r'www.ndtv.com'),
+            ),
+            "The Times of India": (
+                re.compile(r'timesofindia.indiatimes.com'),
+            ),
+            "NTSB": (
+                re.compile(r'.*ntsb.gov'),
+            ),
+            "The Aviation Herald (avherald)": (
+                re.compile(r'avherald.com'),
+            ),
+            "Flight Safety Foundation (FSF)": (
+                re.compile(r'asn.flightsafety.org'),
             ),
         }
 
