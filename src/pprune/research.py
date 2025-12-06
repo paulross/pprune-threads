@@ -141,9 +141,23 @@ def print_liked_by_users(thread: pprune.common.thread_struct.Thread):
     print(f' print_liked_by_users(): most upvoters >= {UPVOTES_LIMIT_GE} DONE '.center(75, '-'))
 
 
+def print_netloc_popularity(thread: pprune.common.thread_struct.Thread):
+    """Finds all the external references (e.g. YouTube) and shows them by most popularity"""
+    print(' print_netloc_popularity(): '.center(75, '-'))
+    netloc_count = collections.Counter()
+    for post in thread.posts:
+        for url_parse, text in post.href_pairs():
+            netloc_count.update([url_parse.netloc])
+    # pprint.pprint(netloc_count)
+    for netloc, count in netloc_count.most_common():
+        print(f'{netloc:32s} : {count:6d}')
+    print(f' print_netloc_popularity(): DONE '.center(75, '-'))
+
+
 def print_research(thread, common_words, most_common_count: int, freq_ge: int,
                    non_cap_words: bool, all_cap_words: bool,
-                   phrases: typing.List[int], authors: bool, liked_by_users: bool):
+                   phrases: typing.List[int], authors: bool, liked_by_users: bool,
+                   netloc_popularity: bool, ):
     if non_cap_words:
         print_non_cap_words(thread, common_words, freq_ge)
     if all_cap_words:
@@ -157,6 +171,8 @@ def print_research(thread, common_words, most_common_count: int, freq_ge: int,
         print_authors(thread, most_common_count)
     if liked_by_users:
         print_liked_by_users(thread)
+    if netloc_popularity:
+        print_netloc_popularity(thread)
 
 
 def main():
@@ -226,6 +242,13 @@ def main():
         )
     )
     parser.add_argument(
+        "--netloc-popularity",
+        action="store_true",
+        help=(
+            "Show the count of the popularity of external links. "
+        )
+    )
+    parser.add_argument(
         "-l",
         "--log-level",
         dest="log_level",
@@ -260,7 +283,8 @@ def main():
 
     print_research(
         thread, common_words, args.most_common_count, args.freq_ge,
-        args.non_cap_words, args.all_cap_words, args.phrases, args.authors, args.liked_by_users
+        args.non_cap_words, args.all_cap_words, args.phrases, args.authors, args.liked_by_users,
+        args.netloc_popularity,
     )
 
     t_elapsed = time.perf_counter() - t_start

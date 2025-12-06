@@ -28,6 +28,7 @@ __rights__ = 'Copyright (c) 2017 Paul Ross'
 
 import abc
 import enum
+import re
 import typing
 
 
@@ -156,4 +157,20 @@ class PublicationMapABC(abc.ABC):
     @abc.abstractmethod
     def histogram_frequency(self) -> HistogramFrequency:
         """How frequently the histogram buckets are."""
+        pass
+
+    @abc.abstractmethod
+    def external_links_of_interest(self) -> typing.Dict[str, typing.Tuple[re.Pattern, ...]]:
+        """Returns a map of {Title : (netloc_re, ...), ...} where netloc_re is a compiled regular expression
+        to the netloc part of the <a href=URL>.
+        If they match then write these posts to a page with that title.
+
+        For example::
+            {
+                "YouTube Videos" : (
+                                        re.compile(r'.*youtube\.com'),
+                                        re.compile(r'.*youtu\.be'),
+                                    ),
+            }
+        """
         pass

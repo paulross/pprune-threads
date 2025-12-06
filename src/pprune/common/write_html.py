@@ -30,9 +30,11 @@ import collections
 import datetime
 import logging
 import os
+import re
 import string
 import time
 import typing
+import urllib
 import zoneinfo
 from contextlib import contextmanager
 
@@ -112,8 +114,11 @@ class PassOneResult:
         self.user_subject_map: typing.Dict[str, typing.Set[str]] = collections.defaultdict(set)
         # Map of {username: [post_index in Thread.posts, ...], ...}
         self.user_ordinal_map: typing.Dict[str, typing.List[int]] = collections.defaultdict(list)
-        # Dict of {(sequence_number, subject) : page_link_to_post_on_subject_page, ...}
+        # Dict of {(post_sequence_number, subject) : page_link_to_post_on_subject_page, ...}
         self.sequence_num_subject_link_map = {}
+        # Dict of {post_sequence_number : typing.List[typing.Tuple[urllib.parse.ParseResult, str]], ...}
+        self.sequence_num_href_pairs_map: typing.Dict[
+            int, typing.List[typing.Tuple[urllib.parse.ParseResult, str]]] = {}
 
     def add_subject_post(
             self,
@@ -121,6 +126,7 @@ class PassOneResult:
             post_index: int,
             sequence_num: int,
             user_name: str,
+            href_pairs: typing.List[typing.Tuple[urllib.parse.ParseResult, str]],
     ) -> None:
         """Adds information about a post. Populated by pass_one().
 
@@ -128,6 +134,7 @@ class PassOneResult:
         :param post_index: The index of the post in the thread.
         :param sequence_num: The pprune sequence number of the post. This is unique to pprune.
         :param user_name: The name of the user.
+        :param href_pairs: List of pairs of href urllib.parse.ParseResult, enclosed text as a str.
         :return: None
         """
         for subject in subjects:
@@ -137,6 +144,7 @@ class PassOneResult:
         self.post_subject_map[sequence_num] = subjects
         self.user_subject_map[user_name.strip()] |= subjects
         self.user_ordinal_map[user_name.strip()].append(post_index)
+        self.sequence_num_href_pairs_map[sequence_num] = href_pairs
 
     def add_sequence_num_subject_link(self, sequence_num: int, subject: str, link: str) -> None:
         """Populated by pass_one()."""
@@ -192,7 +200,7 @@ def pass_one(
         subjects |= dupe_subjects
         subjects -= publication_map.get_set_of_removed_subjects()
         if post.user is not None:
-            pass_one_result.add_subject_post(subjects, i, post.sequence_num, post.user.name.strip())
+            pass_one_result.add_subject_post(subjects, i, post.sequence_num, post.user.name.strip(), post.href_pairs())
     # Sanity check, warn if there is a subject with no posts referring to it.
     all_subject_titles = publication_map.get_all_subject_titles()
     for subject_title in sorted(all_subject_titles):
@@ -288,7 +296,7 @@ def write_index_significant_posts(
     if significant_posts:
         write_index_h1('Significant Posts', 'significant_posts', index)
         with element(index, 'p'):
-            index.write('These are worth reading before you go any further.')
+            index.write('Specific posts that are worth reading:')
         # post_ordinals = []
         for subject, post_id in significant_posts:
             if post_id not in thread.post_id_to_permalink_map:
@@ -340,11 +348,32 @@ def write_index_main_subject_table(
                         subject_index += 1
 
 
+def write_index_pages_with_external_links_of_interest(
+        pages_with_external_links_of_interest: typing.List[typing.Tuple[str, typing.Tuple[str, int]]],
+        index: typing.TextIO,
+):
+    if len(pages_with_external_links_of_interest):
+        write_index_h1('Posts with Useful External Links', 'external_links', index)
+        with element(index, 'p'):
+            index.write('External link title with the [number of posts].')
+        with element(index, 'ul'):
+            for subject, (page_name, post_count) in pages_with_external_links_of_interest:
+                if post_count:
+                    logger.info(f'Looking for external links on "{subject}" produces {post_count} posts.')
+                    with element(index, 'li'):
+                        index.write(
+                            f'<a href="{page_name}">{subject}</a>'
+                            f' [{post_count}]'
+                        )
+                else:
+                    logger.warning(f'Looking for external links on "{subject}" produces no posts.')
+
+
 def write_index_no_subjects(
         publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
 ):
-    """Optionally, writes out a list of significant posts."""
+    """Optionally, writes out a list of posts that have no subjects."""
     if publication_map.include_posts_with_no_subject:
         write_index_h1('Posts with no Identifiable Subjects', 'no_subjects', index)
         with element(index, 'p'):
@@ -677,6 +706,7 @@ def write_index_page(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
         publication_map: publication_map_abc.PublicationMapABC,
+        pages_with_external_links_of_interest: typing.List[typing.Tuple[str, typing.Tuple[str, int]]],
         out_path: str,
 ):
     """Write the index.html page."""
@@ -720,9 +750,11 @@ so many subjects it is a little hard to follow any particular subject.
                 # Write table of informational data.
                 posts_inc, posts_exc = get_count_of_posts_included(thread, pass_one_result.subject_post_map)
                 posts_in_open_threads = 0
+                word_count = 0
                 for post in thread.posts:
                     if post.thread_is_open:
                         posts_in_open_threads += 1
+                    word_count += len(post.words)
                 with element(index, 'table', _class="indextable"):
                     with element(index, 'tr'):
                         with element(index, 'th'):
@@ -733,22 +765,18 @@ so many subjects it is a little hard to follow any particular subject.
                         with element(index, 'td', _class='indextable'):
                             index.write('Total posts')
                         with element(index, 'td', _class='indextable'):
-                            index.write(f'{len(thread)}')
-                    # with element(index, 'tr'):
-                    #     with element(index, 'td', _class='indextable'):
-                    #         index.write('Posts with no discovered subject')
-                    #     with element(index, 'td', _class='indextable'):
-                    #         num_posts_no_subject = len(pass_one_result.sequence_numbers_no_subject())
-                    #         index.write(
-                    #             f'{num_posts_no_subject}'
-                    #             f' ({num_posts_no_subject / len(thread):.1%})'
-                    #         )
+                            index.write(f'{len(thread):,d}')
+                    with element(index, 'tr'):
+                        with element(index, 'td', _class='indextable'):
+                            index.write('Total number of words in posts')
+                        with element(index, 'td', _class='indextable'):
+                            index.write(f'{word_count:,d}')
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Posts in currently open threads')
                         with element(index, 'td', _class='indextable'):
                             index.write(
-                                f'{posts_in_open_threads}'
+                                f'{posts_in_open_threads:,d}'
                                 f' ({posts_in_open_threads / len(thread):.1%})'
                             )
                     with element(index, 'tr'):
@@ -756,19 +784,19 @@ so many subjects it is a little hard to follow any particular subject.
                             index.write('Posts in currently closed threads')
                         with element(index, 'td', _class='indextable'):
                             index.write(
-                                f'{len(thread) - posts_in_open_threads}'
+                                f'{len(thread) - posts_in_open_threads:,d}'
                                 f' ({(len(thread) - posts_in_open_threads) / len(thread):.1%})'
                             )
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Posts with a discovered subject')
                         with element(index, 'td', _class='indextable'):
-                            index.write(f'{posts_inc} ({posts_inc / len(thread):.1%})')
+                            index.write(f'{posts_inc:,d} ({posts_inc / len(thread):.1%})')
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Posts with no discovered subject')
                         with element(index, 'td', _class='indextable'):
-                            index.write(f'{posts_exc} ({posts_exc / len(thread):.1%})')
+                            index.write(f'{posts_exc:,d} ({posts_exc / len(thread):.1%})')
                     with element(index, 'tr'):
                         with element(index, 'td', _class='indextable'):
                             index.write('Thread starts at')
@@ -814,9 +842,12 @@ so many subjects it is a little hard to follow any particular subject.
 
                 write_index_main_subject_table(pass_one_result.subject_post_map, index)
 
-                write_index_no_subjects(publication_map, index)
-
                 write_index_removed_subjects(publication_map, index)
+
+                if publication_map.include_posts_with_no_subject:
+                    write_index_no_subjects(publication_map, index)
+
+                write_index_pages_with_external_links_of_interest(pages_with_external_links_of_interest, index)
 
                 write_index_most_upvoted_posts_table(thread, publication_map, index)
 
@@ -864,6 +895,8 @@ def _write_page_links(subject: str, page_num: int, page_count: int, out_file: ty
 def write_subjects_of_this_post(pass_one_result: PassOneResult, post: thread_struct.Post,
                                 out_file: typing.TextIO) -> None:
     """Write out the subjects that this post covers."""
+    with element(out_file, 'hr', style="width:50%;color:red;text-align:left;margin-left:0"):
+        pass
     with element(out_file, 'p'):
         if post.sequence_num in pass_one_result.post_subject_map \
                 and len(pass_one_result.post_subject_map[post.sequence_num]):
@@ -1033,6 +1066,75 @@ def write_pages_with_no_subject(
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
+def write_posts_with_external_links(
+        thread: thread_struct.Thread,
+        pass_one_result: PassOneResult,
+        subject: str,
+        regex_patterns: typing.Tuple[re.Pattern, ...],
+        out_path: str,
+) -> typing.Optional[typing.Tuple[str, int]]:
+    """Writes all the pages that have external links, for example to YouTube, bbc, avherald.com, www.avherald.com,
+    www.skybrary, www.flightradar24.com etc."""
+
+    def post_matches(netloc: str, regex_patterns: typing.Tuple[re.Pattern, ...]) -> bool:
+        for regex_pattern in regex_patterns:
+            if re.match(regex_pattern, netloc):
+                return True
+
+    _posts = []
+    for post_index, post in enumerate(thread.posts):
+        if post.sequence_num in pass_one_result.sequence_num_href_pairs_map:
+            for parsed_href, enclosing_text in pass_one_result.sequence_num_href_pairs_map[post.sequence_num]:
+                if post_matches(parsed_href.netloc, regex_patterns):
+                    _posts.append(post_index)
+                    # Include post only once.
+                    break
+    pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
+    for page_index, page in enumerate(pages):
+        page_name = _page_name("EXT_" + subject, page_index)
+        logger.info(f'Writing pages with external links to {page_name}')
+        with open(os.path.join(out_path, page_name), 'w') as out_file:
+            out_file.write(
+                '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
+            with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
+                with element(out_file, 'head'):
+                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
+                        pass
+                    with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
+                        pass
+                with element(out_file, 'body'):
+                    heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
+                        subject, len(_posts), page_index + 1, len(pages),
+                    )
+                    heading_id_str = f'{subject}_{page_index + 1}'
+                    write_index_h1(heading_str, heading_id_str, out_file)
+
+                    _write_page_links(subject, page_index, len(pages), out_file)
+                    # with element(f, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
+                    with element(out_file, 'table', _class='posts'):
+                        for post_index in page:
+                            post = thread.posts[post_index]
+                            with element(out_file, 'tr', valign="top", _id=f'{post.sequence_num}'):
+                                # with element(f, 'td', _class="alt2", style="border: 1px solid #000063; border-top: 0px; border-bottom: 0px"):
+                                with element(out_file, 'td', _class="post"):
+                                    if post.user is not None:
+                                        with element(out_file, 'a', href=post.user.href):
+                                            out_file.write(post.user.name.strip())
+                                        out_file.write('<br/>')
+                                    out_file.write(format_datetime(post.timestamp))
+                                    with element(out_file, 'a', href=post.permalink):
+                                        out_file.write('<br/>permalink')
+                                    out_file.write(' Post: {:d}'.format(post.sequence_num))
+                                with element(out_file, 'td', _class="post"):
+                                    out_file.write(post.node.prettify(formatter='html'))
+                                    write_subjects_of_this_post(pass_one_result, post, out_file)
+                                    write_post_footer(post, out_file)
+                    _write_page_links(subject, page_index, len(pages), out_file)
+    if len(pages):
+        return _page_name("EXT_" + subject, 0), len(_posts)
+    return None
+
+
 def write_user_page(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
@@ -1106,6 +1208,16 @@ def write_whole_thread(
     if publication_map.include_posts_with_no_subject:
         write_pages_with_no_subject(thread, pass_one_result, output_path)
 
+    # Posts with external links of interest. The publication map controls this.
+    external_links_of_interest = publication_map.external_links_of_interest()
+    pages_with_external_links_of_interest: typing.List[typing.Tuple[str, typing.Tuple[str, int]]] = []
+    for external_subject in sorted(external_links_of_interest.keys()):
+        external_page = write_posts_with_external_links(
+            thread, pass_one_result, external_subject, external_links_of_interest[external_subject], output_path,
+        )
+        if external_page is not None:
+            pages_with_external_links_of_interest.append((external_subject, external_page))
+
     # Write out the user pages.
     for user_name in sorted(pass_one_result.user_ordinal_map.keys()):
         if len(pass_one_result.user_ordinal_map[user_name]) >= publication_map.get_minimum_number_username_posts():
@@ -1114,9 +1226,11 @@ def write_whole_thread(
                     user_name, len(pass_one_result.user_ordinal_map[user_name]))
             )
             write_user_page(thread, pass_one_result, user_name, output_path)
+
     logger.info('Writing: {:s}'.format('index.html'))
     # Write out the index page.
-    write_index_page(thread, pass_one_result, publication_map, output_path)
+    # Include pages_with_external_links_of_interest
+    write_index_page(thread, pass_one_result, publication_map, pages_with_external_links_of_interest, output_path)
     # Print out a histogram of subject -> count of posts.
     subject_counter = collections.Counter()
     for subject in pass_one_result.subject_post_map:

@@ -20,6 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+import re
 import typing
 
 from pprune.publication_maps import publication_map_abc
@@ -36,7 +37,7 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
     <ol>
         <li><a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html">Part One [pprune]</a> (now closed)</li>
         <li><a href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html">Part Two [pprune]</a> (now closed)</li>
-        <li><a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html">Preliminary Report [pprune]</a> (now closed)</li>
+        <li><a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html">Preliminary Report [pprune]</a> (occasionally open)</li>
         <li>There is also a thread on the
             <a href="https://www.pprune.org/accidents-close-calls/666714-moderation-air-india-accident-threads.html">moderation of these threads [pprune]</a>
              (this is not included in this analysis)
@@ -102,15 +103,6 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
         """The minimum number of posts a user has mad to get a page with all their posts."""
         return 5
 
-    def include_empty_post_dates_in_histogram(self) -> bool:
-        """Returns True if we want all dates in the date histogram even if there are no posts."""
-        return True
-
-    def histogram_frequency(self) -> publication_map_abc.HistogramFrequency:
-        """How frequently the histogram buckets are."""
-        return publication_map_abc.HistogramFrequency.WEEKLY
-
-
     def get_set_of_removed_subjects(self) -> typing.Set[str]:
         return {
             '51 Day Issue',
@@ -149,6 +141,112 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
             'VNAV',
             'Water Ingress',
             'Wrong Engine',
+        }
+
+    def include_empty_post_dates_in_histogram(self) -> bool:
+        """Returns True if we want all dates in the date histogram even if there are no posts."""
+        return True
+
+    def histogram_frequency(self) -> publication_map_abc.HistogramFrequency:
+        """How frequently the histogram buckets are."""
+        return publication_map_abc.HistogramFrequency.WEEKLY
+
+    def external_links_of_interest(self) -> typing.Dict[str, typing.Tuple[re.Pattern, ...]]:
+        """Returns a map of {Title : (netloc_re, ...), ...} where netloc_re is a compiled regular expression
+        to the netloc part of the <a href=URL>.
+        If they match then write these posts to a page with that title.
+        """
+        # TODO:
+        # ------------------------ print_netloc_popularity(): -----------------------
+        # www.pprune.org                   :    132
+        # www.youtube.com                  :     47
+        # x.com                            :     47
+        # en.wikipedia.org                 :     38
+        # youtu.be                         :     32
+        # www.flightradar24.com            :     27
+        # paulross.github.io               :     23
+        # github.com                       :     21
+        # www.bbc.co.uk                    :     20
+        # www.reuters.com                  :     20
+        # ad.easa.europa.eu                :     17
+
+        # Omit
+        # feitoffake.wordpress.com         :     16
+
+        # www.thetimes.com                 :     15
+
+        # Omit
+        # www.geaerospace.com              :     14
+
+        # www.federalregister.gov          :     12
+        # www.wsj.com                      :     12
+        # www.ndtv.com                     :     11
+        # timesofindia.indiatimes.com      :     10
+        # data.ntsb.gov                    :     10
+        # avherald.com                     :     10
+
+        # Omit these.
+        # www.gov.uk                       :     10
+        # time.com                         :     10
+        # www.theguardian.com              :      9
+        # assets.publishing.service.gov.uk :      8
+        # patents.google.com               :      8
+
+        # asn.flightsafety.org             :      8
+
+        return {
+            "YouTube Videos": (
+                re.compile(r'.*youtube.com'),
+                re.compile(r'.*youtu.be'),
+            ),
+            "Twitter/X": (
+                re.compile(r'.*x.com'),
+            ),
+            "Wikipedia": (
+                re.compile(r'.*wikipedia.org'),
+            ),
+            "Flight Radar 24": (
+                re.compile(r'www.flightradar24.com'),
+            ),
+            "paulross": (
+                re.compile(r'paulross.github.io'),
+            ),
+            "GitHub": (
+                re.compile(r'github.com'),
+            ),
+            "BBC": (
+                re.compile(r'www.bbc.co.uk'),
+            ),
+            "Reuters": (
+                re.compile(r'www.reuters.com'),
+            ),
+            "EASA": (
+                re.compile(r'ad.easa.europa.eu'),
+            ),
+            "The Times (London)": (
+                re.compile(r'www.thetimes.com'),
+            ),
+            "The Federal Register (USA)": (
+                re.compile(r'www.federalregister.gov'),
+            ),
+            "Wall Street Journal": (
+                re.compile(r'www.wsj.com'),
+            ),
+            "New Delhi Television Ltd (NDTV)": (
+                re.compile(r'www.ndtv.com'),
+            ),
+            "The Times of India": (
+                re.compile(r'timesofindia.indiatimes.com'),
+            ),
+            "NTSB": (
+                re.compile(r'.*ntsb.gov'),
+            ),
+            "The Aviation Herald (avherald)": (
+                re.compile(r'avherald.com'),
+            ),
+            "Flight Safety Foundation (FSF)": (
+                re.compile(r'asn.flightsafety.org'),
+            ),
         }
 
     # Map of {lower_case_word : subject_title, ..}
