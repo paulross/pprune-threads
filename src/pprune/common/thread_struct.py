@@ -243,7 +243,17 @@ class Post:
 
     def href_pairs(self) -> typing.List[typing.Tuple[urllib.parse.ParseResult, str]]:
         """Return a list of links and their text.
-        Internal links are ignored."""
+        Internal links are ignored.
+
+        The urllib.parse.urlparse gives::
+
+            o = urlparse("http://docs.python.org:80/3/library/urllib.parse.html?"
+                         "highlight=params#url-parsing")
+            o
+            ParseResult(scheme='http', netloc='docs.python.org:80',
+                        path='/3/library/urllib.parse.html', params='',
+                        query='highlight=params', fragment='url-parsing')
+        """
         ret = []
         for node in self.node.find_all('a'):
             if 'rel' in node.attrs and node.attrs['rel'] == ['nofollow', ]:
