@@ -302,6 +302,16 @@ class Thread:
         """Sorts the posts by their sequence number.
         This is useful when combining multiple threads and you want to keep the posts in time order."""
         self.posts.sort(key=lambda p: p.sequence_num)
+        # Rebuild the internal maps.
+        self.post_map = {}
+        self.user_post_indexes = {}
+        self.post_id_to_permalink_map = {}
+        for i, post in enumerate(self.posts):
+            self.post_map[post.permalink] = i
+            if post.user not in self.user_post_indexes:
+                self.user_post_indexes[post.user] = []
+            self.user_post_indexes[post.user].append(i)
+            self.post_id_to_permalink_map[post.sequence_num] = post.permalink
 
     def add_post(self, post: Post):
         """Add a post."""
