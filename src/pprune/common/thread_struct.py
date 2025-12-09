@@ -310,9 +310,9 @@ class Thread:
         This is useful when combining multiple threads and you want to keep the posts in time order."""
         self.posts.sort(key=lambda p: p.sequence_num)
         # Rebuild the internal maps.
-        self.post_map = {}
-        self.user_post_indexes = {}
-        self.post_id_to_permalink_map = {}
+        self.post_map.clear()
+        self.user_post_indexes.clear()
+        self.post_id_to_permalink_map.clear()
         for i, post in enumerate(self.posts):
             self.post_map[post.permalink] = i
             if post.user not in self.user_post_indexes:
