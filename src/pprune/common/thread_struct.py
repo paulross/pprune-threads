@@ -286,7 +286,14 @@ class Thread:
         # to their 'permalink'. The problem being the permalinks are not permanent as
         # they include the page number and that may change if moderators delete posts
         # in which case the post could end up in a *previous* page.
-        # This is used by publication maps SPECIFIC_POSTS_MAP and SIGNIFICANT_POSTS.
+        #
+        # Example:
+        # <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-2.html#post11898940" title="Link to this Post">permalink</a>
+        # The href includes tha page number: "666472-plane-crash-near-ahmedabad-2.html#post11898940"
+        #
+        # This is used by publication maps functions:
+        # get_specific_posts_to_subject_map() that typically returns SPECIFIC_POSTS_MAP
+        # and get_significant_posts_permalinks() that typically reruns SIGNIFICANT_POSTS.
         # See also pprune threads about this problem:
         # https://www.pprune.org/pprune-problems-queries/626127-links-pprune-posts-sometimes-broken.html
         # https://www.pprune.org/pprune-problems-queries/604715-different-post-numbers.html?highlight=permalink
