@@ -28,10 +28,12 @@ from pprune.publication_maps import publication_map_abc
 
 class AA5342DCA(publication_map_abc.PublicationMapABC):
     def get_title(self) -> str:
-        return 'AA5342 and a Military Helicopter Collision at DCA'
+        return 'AA5342-Blackhawk Collision at DCA'
 
     def get_introduction_in_html(self) -> str:
-        return """"""
+        return """
+            <p><b>My condolences to all the people affected by this accident, in particular to the friends and families of the victims.</b></p>
+"""
 
     def get_lowercase_word_to_subject_map(self) -> typing.Dict[str, str]:
         return self.LC_WORDS_MAP
@@ -132,8 +134,10 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
 
         'blackhawk': 'Blackhawk (H-60)',
         'h60': 'Blackhawk (H-60)',
+        'uh60': 'Blackhawk (H-60)',
 
         'controller': 'ATC',
+        'antidei': 'DEI',
 
         'homendy': 'NTSB Chair Jennifer Homendy',
 
@@ -141,6 +145,9 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
         'ras': 'TCAS RA',
 
         'trump': 'President Donald Trump',
+        'president': 'President Donald Trump',
+        'potus': 'President Donald Trump',
+        'potuss': 'President Donald Trump',
 
         'moderation': 'Thread Moderation',
         'moderators': 'Thread Moderation',
@@ -148,11 +155,17 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
         'nvgs': 'Night Vision Goggles (NVG)',
 
         'separation': 'Separation (ALL)',
+
+        'radar': 'Radar',
+
+        'sidestep': 'Circle to Land (Deviate to RWY 33)',
+
     }
     CAPS_WORDS_MAP = {
         k: k for k in {
-            'ATC', 'ATCO', 'AA5342', 'ADSB', 'CRJ', 'DCA',
-            'DEI', 'FAA', 'HUD', 'ICAO', 'NTSB', 'TCAS', 'PAT23', 'PAT25',
+            'ATC', 'ATCO', 'AA5342', 'ADSB', 'CNN', 'CRJ', 'DCA',
+            'DEI', 'FAA', 'HUD', 'ICAO', 'KDCA', 'NBC', 'NTSB', 'NDAA',
+            'TCAS', 'PAT23', 'PAT25', 'QNH',
         }
     }
     CAPS_WORDS_MAP_ALL = {
@@ -169,7 +182,14 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
         'LAHS': 'Land and Hold Short',
         'LAHSO': 'Land and Hold Short',
 
-        'NVG': 'Night Vision Goggles (NVG)'
+        'NVG': 'Night Vision Goggles (NVG)',
+
+        'NYT': 'New York Times',
+
+        'SA': 'Situational Awareness',
+
+        '4514': 'Republic Airways Flight 4514 Go-around',
+        'RP4514': 'Republic Airways Flight 4514 Go-around',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lowercase unless all caps
@@ -182,6 +202,8 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
             ('black', 'hawk'): 'Blackhawk (H-60)',
 
             ('circle', 'land',): 'Circle to Land (Deviate to RWY 33)',
+
+            ('close', 'calls',): 'Close Calls',
 
             ('route', '4',): 'Route 4',
             ('route', '5',): 'Route 5',
@@ -228,5 +250,6 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
     # This the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
     SIGNIFICANT_POSTS = (
-        # ('Summary of Main Theories', 11906480,),
+        # Resolves to https://www.ntsb.gov/news/Documents/National%20Defense%20Authorization%20Act.pdf
+        ('NTSB Letter to Congress (re: Section 373 of the FY26 NDAA)', 12003913,),
     )

@@ -375,7 +375,7 @@ def write_index_no_subjects(
 ):
     """Optionally, writes out a list of posts that have no subjects."""
     if publication_map.include_posts_with_no_subject:
-        write_index_h1('Posts with no Identifiable Subjects', 'no_subjects', index)
+        write_index_h1('Posts with No Identifiable Subjects', 'no_subjects', index)
         with element(index, 'p'):
             with element(index, 'a', href=_page_name(NO_SUBJECT_PREFIX, 0)):
                 index.write('Posts that have no subjects.')

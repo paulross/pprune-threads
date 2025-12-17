@@ -177,6 +177,9 @@ class Post:
         text_node = self.node.find('div', **{'id': f'post_message_{self.sequence_num}'})
         if text_node is None:
             raise RuntimeError(f'No text node for post {self.sequence_num}')
+        # TODO: Replace windows smart quotes. s.replace('\x92', '')
+        # TODO: And maybe others:
+        # TODO: https://en.wikipedia.org/wiki/Windows-1252
         return text_node.get_text()
 
     @property
