@@ -6,156 +6,6 @@ This project is to take long running discussion threads on
 `Professional Pilots Rumour Network <https://www.pprune.org/>`_
 and summarise them by subject.
 
-Here are some example threads:
-
---------------------------------------------
-The Concorde Thread
---------------------------------------------
-
-This fascinating thread
-`https://www.pprune.org/tech-log/423988-concorde-question.html <https://www.pprune.org/tech-log/423988-concorde-question.html>`_
-contains 2000+ posts, many by Concorde experts.
-
-The result is here:
-`https://paulross.github.io/pprune-threads/gh-pages/Concorde/index.html <https://paulross.github.io/pprune-threads/gh-pages/Concorde/index.html>`_
-
-.. note::
-
-    Much of the Concorde thread was created before the up-voting system was introduced to the site.
-    As a result there are very few up-votes.
-
-Pulling Down the Thread
---------------------------
-
-.. code-block:: shell
-
-    $ mkdir concorde_A
-    $ cd concorde_A
-    $ curl https://www.pprune.org/tech-log/423988-concorde-question.html -o "423988-concorde-question.html"
-      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                     Dload  Upload   Total   Spent    Left  Speed
-    100  191k    0  191k    0     0   530k      0 --:--:-- --:--:-- --:--:--  540k
-
-.. code-block:: shell
-
-    $ grep "Last Page" 423988-concorde-question.html
-    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/tech-log/423988-concorde-question-108.html" title="Last Page - Results 2,141 to 2,149 of 2,149">Last <i class="fa-solid fa-angles-right"></i></a></li>
-
-
-.. code-block:: shell
-
-    $ time curl https://www.pprune.org/tech-log/423988-concorde-question-\[2-108\].html -o "423988-concorde-question-#1.html"
-      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                     Dload  Upload   Total   Spent    Left  Speed
-    100  207k    0  207k    0     0   583k      0 --:--:-- --:--:-- --:--:--  590k
-      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                     Dload  Upload   Total   Spent    Left  Speed
-    100  207k    0  207k    0     0   613k      0 --:--:-- --:--:-- --:--:--  615k
-      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                     Dload  Upload   Total   Spent    Left  Speed
-    100  210k    0  210k    0     0   625k      0 --:--:-- --:--:-- --:--:--  627k
-    8<---- Snip ---->8
-      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                     Dload  Upload   Total   Spent    Left  Speed
-    100  130k    0  130k    0     0   510k      0 --:--:-- --:--:-- --:--:--  510k
-    curl https://www.pprune.org/tech-log/423988-concorde-question-\[2-108\].html   0.33s user 0.53s system 2% cpu 33.682 total
-
---------------------------------------------
-Air India Flight 171 at Ahmedabad 2025-06-12
---------------------------------------------
-
-`https://en.wikipedia.org/wiki/Air_India_Flight_171 <https://en.wikipedia.org/wiki/Air_India_Flight_171>`_
-
-Original threads:
-
-1. https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html
-2. https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html
-3. https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html
-
-There is also https://www.pprune.org/accidents-close-calls/666714-moderation-air-india-accident-threads.html
-
-The result is here:
-`https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html <https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html>`_
-
-Pulling Down the Thread(s)
---------------------------
-
-.. code-block:: shell
-
-    $ cd threads/AI171-1
-    $ curl https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html -o "666472-plane-crash-near-ahmedabad.html"
-    $ grep 'Last Page' 666472-plane-crash-near-ahmedabad.html
-
-This gives:
-
-.. code-block:: shell
-
-    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-87.html?ispreloading=1" title="Last Page - Results 1,721 to 1,729 of 1,729">Last <i class="fas fa-angle-double-right"></i></a></li>
-
-So the last page is ``666472-plane-crash-near-ahmedabad-87.html``
-
-And all the rest:
-
-.. code-block:: shell
-
-    $ time curl https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-[2-86].html -o "666472-plane-crash-near-ahmedabad-#1.html"
-    ...
-    real	0m35.544s
-    user	0m0.176s
-    sys	0m0.356s
-
-Then:
-
-.. code-block:: shell
-
-    $ cd threads/AI171-2
-    $ curl https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html -o "666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html"
-    $ grep 'Last Page' 666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html
-
-This gives:
-
-.. code-block:: shell
-
-    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html?ispreloading=1" title="Last Page - Results 1,061 to 1,074 of 1,074">Last <i class="fas fa-angle-double-right"></i></a></li>```
-
-So the last page is ``https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html``
-
-And all the rest:
-
-.. code-block:: shell
-
-    $ time curl https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-[2-72].html -o "666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-#1.html"
-    ...
-    real	0m35.544s
-    user	0m0.176s
-    sys	0m0.356s
-
-Then:
-
-.. code-block:: shell
-
-    $ cd threads/AI171-3
-    $ curl https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html -o "667141-preliminary-air-india-crash-report-published.html"
-    $ grep 'Last Page' 667141-preliminary-air-india-crash-report-published.html
-
-This gives:
-
-.. code-block:: shell
-
-    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-79.html" title="Last Page - Results 281 to 297 of 297">Last <i class="fa-solid fa-angles-right"></i></a></li>
-
-So the last page is ``667141-preliminary-air-india-crash-report-published-79.html``
-
-And all the rest:
-
-.. code-block:: shell
-
-    $ time curl https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-[2-79].html -o "667141-preliminary-air-india-crash-report-published-#1.html"
-    ...
-    real	0m35.544s
-    user	0m0.176s
-    sys	0m0.356s
-
 -------------------
 Conducting Research
 -------------------
@@ -444,6 +294,197 @@ of the reader as important.
 
 
 In ``src/pprune/publication_maps.py`` implement all the abstract methods.
+
+Here are some example threads:
+
+--------------------------------------------
+The Concorde Thread
+--------------------------------------------
+
+This fascinating thread
+`https://www.pprune.org/tech-log/423988-concorde-question.html <https://www.pprune.org/tech-log/423988-concorde-question.html>`_
+contains 2000+ posts, many by Concorde experts.
+
+The result is here:
+`https://paulross.github.io/pprune-threads/gh-pages/Concorde/index.html <https://paulross.github.io/pprune-threads/gh-pages/Concorde/index.html>`_
+
+.. note::
+
+    Much of the Concorde thread was created before the up-voting system was introduced to the site.
+    As a result there are very few up-votes.
+
+Pulling Down the Thread
+--------------------------
+
+.. code-block:: shell
+
+    $ mkdir concorde_A
+    $ cd concorde_A
+    $ curl https://www.pprune.org/tech-log/423988-concorde-question.html -o "423988-concorde-question.html"
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100  191k    0  191k    0     0   530k      0 --:--:-- --:--:-- --:--:--  540k
+
+.. code-block:: shell
+
+    $ grep "Last Page" 423988-concorde-question.html
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/tech-log/423988-concorde-question-108.html" title="Last Page - Results 2,141 to 2,149 of 2,149">Last <i class="fa-solid fa-angles-right"></i></a></li>
+
+
+.. code-block:: shell
+
+    $ time curl https://www.pprune.org/tech-log/423988-concorde-question-\[2-108\].html -o "423988-concorde-question-#1.html"
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100  207k    0  207k    0     0   583k      0 --:--:-- --:--:-- --:--:--  590k
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100  207k    0  207k    0     0   613k      0 --:--:-- --:--:-- --:--:--  615k
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100  210k    0  210k    0     0   625k      0 --:--:-- --:--:-- --:--:--  627k
+    8<---- Snip ---->8
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100  130k    0  130k    0     0   510k      0 --:--:-- --:--:-- --:--:--  510k
+    curl https://www.pprune.org/tech-log/423988-concorde-question-\[2-108\].html   0.33s user 0.53s system 2% cpu 33.682 total
+
+--------------------------------------------
+Air India Flight 171 at Ahmedabad 2025-06-12
+--------------------------------------------
+
+`https://en.wikipedia.org/wiki/Air_India_Flight_171 <https://en.wikipedia.org/wiki/Air_India_Flight_171>`_
+
+Original threads:
+
+1. https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html
+2. https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html
+3. https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html
+
+There is also https://www.pprune.org/accidents-close-calls/666714-moderation-air-india-accident-threads.html
+
+The result is here:
+`https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html <https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html>`_
+
+Pulling Down the Thread(s)
+--------------------------
+
+.. code-block:: shell
+
+    $ cd threads/AI171-1
+    $ curl https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad.html -o "666472-plane-crash-near-ahmedabad.html"
+    $ grep 'Last Page' 666472-plane-crash-near-ahmedabad.html
+
+This gives:
+
+.. code-block:: shell
+
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-87.html?ispreloading=1" title="Last Page - Results 1,721 to 1,729 of 1,729">Last <i class="fas fa-angle-double-right"></i></a></li>
+
+So the last page is ``666472-plane-crash-near-ahmedabad-87.html``
+
+And all the rest:
+
+.. code-block:: shell
+
+    $ time curl https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-[2-86].html -o "666472-plane-crash-near-ahmedabad-#1.html"
+    ...
+    real	0m35.544s
+    user	0m0.176s
+    sys	0m0.356s
+
+Then:
+
+.. code-block:: shell
+
+    $ cd threads/AI171-2
+    $ curl https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html -o "666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html"
+    $ grep 'Last Page' 666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a.html
+
+This gives:
+
+.. code-block:: shell
+
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html?ispreloading=1" title="Last Page - Results 1,061 to 1,074 of 1,074">Last <i class="fas fa-angle-double-right"></i></a></li>```
+
+So the last page is ``https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html``
+
+And all the rest:
+
+.. code-block:: shell
+
+    $ time curl https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-[2-72].html -o "666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-#1.html"
+    ...
+    real	0m35.544s
+    user	0m0.176s
+    sys	0m0.356s
+
+Then:
+
+.. code-block:: shell
+
+    $ cd threads/AI171-3
+    $ curl https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published.html -o "667141-preliminary-air-india-crash-report-published.html"
+    $ grep 'Last Page' 667141-preliminary-air-india-crash-report-published.html
+
+This gives:
+
+.. code-block:: shell
+
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-79.html" title="Last Page - Results 281 to 297 of 297">Last <i class="fa-solid fa-angles-right"></i></a></li>
+
+So the last page is ``667141-preliminary-air-india-crash-report-published-79.html``
+
+And all the rest:
+
+.. code-block:: shell
+
+    $ time curl https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-[2-79].html -o "667141-preliminary-air-india-crash-report-published-#1.html"
+    ...
+    real	0m35.544s
+    user	0m0.176s
+    sys	0m0.356s
+
+--------------------------------------------
+AA5342
+--------------------------------------------
+
+`https://en.wikipedia.org/wiki/2025_Potomac_River_mid-air_collision <https://en.wikipedia.org/wiki/2025_Potomac_River_mid-air_collision>`_
+
+Original threads:
+
+1. https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca.html
+
+The result is here:
+`https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html <https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html>`_
+
+Pulling Down the Thread(s)
+--------------------------
+
+.. code-block:: shell
+
+    $ cd threads/AA5342_A
+    $ curl https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca.html -o "663888-aa5342-down-dca.html"
+    $ grep "Last Page" 663888-aa5342-down-dca.html
+
+This gives:
+
+.. code-block:: shell
+
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-90.html" title="Last Page - Results 1,781 to 1,791 of 1,791">Last <i class="fa-solid fa-angles-right"></i></a></li>
+
+So the last page is ``663888-aa5342-down-dca-90.html``
+
+And all the rest:
+
+.. code-block:: shell
+
+    $ time curl https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-\[2-90\].html -o "663888-aa5342-down-dca-#1.html"
+    ...
+    real	0m35.544s
+    user	0m0.176s
+    sys	0m0.356s
+
 
 --------------------------
 Running the Build

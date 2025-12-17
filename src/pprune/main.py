@@ -37,9 +37,11 @@ from pprune.common import read_html
 from pprune.common import thread_struct
 from pprune.common import words
 from pprune.common import write_html
-from pprune.publication_maps import air_india_171, publication_map_abc
+from pprune.publication_maps import AA5342_DCA
+from pprune.publication_maps import air_india_171
 from pprune.publication_maps import concorde
 from pprune.publication_maps import example
+from pprune.publication_maps import publication_map_abc
 
 logger = logging.getLogger(__file__)
 
@@ -49,6 +51,7 @@ THREAD_NAME_TO_CLASS_MAP = {
     'AI171': air_india_171.AirIndia171,
     'Example': example.Example,
     'Concorde': concorde.Concorde,
+    'AA5342': AA5342_DCA.AA5342DCA
 }
 
 

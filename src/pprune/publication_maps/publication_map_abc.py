@@ -80,7 +80,7 @@ class PublicationMapABC(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[str, str]:
+    def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[typing.Tuple[str, ...], str]:
         """Returns a map of {phrase : subject_title, ...}"""
         pass
 
@@ -166,6 +166,7 @@ class PublicationMapABC(abc.ABC):
         If they match then write these posts to a page with that title.
 
         For example::
+
             {
                 "YouTube Videos" : (
                                         re.compile(r'.*youtube\.com'),
