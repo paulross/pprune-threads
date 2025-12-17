@@ -28,7 +28,7 @@ from pprune.publication_maps import publication_map_abc
 
 class AA5342DCA(publication_map_abc.PublicationMapABC):
     def get_title(self) -> str:
-        return 'AA5342 Collision with Military Helicopter at DCA'
+        return 'AA5342 and a Military Helicopter Collision at DCA'
 
     def get_introduction_in_html(self) -> str:
         return """"""
@@ -128,6 +128,13 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
 
     # Map of {lower_case_word : subject_title, ..}
     LC_WORDS_MAP = {
+        'adsbin': 'ADSB In',
+
+        'blackhawk': 'Blackhawk (H-60)',
+        'h60': 'Blackhawk (H-60)',
+
+        'controller': 'ATC',
+
         'homendy': 'NTSB Chair Jennifer Homendy',
 
         'ra': 'TCAS RA',
@@ -144,7 +151,8 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
     }
     CAPS_WORDS_MAP = {
         k: k for k in {
-            'AA5342', 'ADSB', 'NTSB', 'TCAS', 'PAT25',
+            'ATC', 'ATCO', 'AA5342', 'ADSB', 'CRJ', 'DCA',
+            'DEI', 'FAA', 'HUD', 'ICAO', 'NTSB', 'TCAS', 'PAT23', 'PAT25',
         }
     }
     CAPS_WORDS_MAP_ALL = {
@@ -153,7 +161,11 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
         ]
     }
     CAPS_WORDS_MAP_EXTRA = {
+        '13435': 'Frequency 134.35',
+        '1191': 'Frequency 119.1',
+
         '373': 'Section 373 of the FY26 NDAA',
+
         'LAHS': 'Land and Hold Short',
         'LAHSO': 'Land and Hold Short',
 
@@ -164,14 +176,24 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
     PHRASES_MAP = {
         2: {
             ('pass', 'behind',): 'Pass Behind',
+
+            ('situational', 'awareness'): 'Situational Awareness',
+
+            ('black', 'hawk'): 'Blackhawk (H-60)',
+
             ('circle', 'land',): 'Circle to Land (Deviate to RWY 33)',
 
+            ('route', '4',): 'Route 4',
+            ('route', '5',): 'Route 5',
+            ('route', '9',): 'Route 9',
 
             ('ADSB', 'out'): 'ADSB Out',
             ('ADSB', 'Out'): 'ADSB Out',
             ('ADSB', 'in'): 'ADSB In',
 
             ('TCAS', 'RA'): 'TCAS RA',
+
+            ('PSA', 'procedures'): 'PSA Procedures',
 
             ('land', 'hold', 'short',): 'Land and Hold Short',
 
@@ -185,7 +207,12 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
             ('traffic', 'in', 'sight',): 'Traffic in Sight',
 
             ('deviate', 'rwy', '33'): 'Circle to Land (Deviate to RWY 33)',
+
+            ('PAT25', 'pass', 'behind'): 'Pass Behind (PAT25)',
         },
+        4: {
+            ('PAT', '25', 'pass', 'behind'): 'Pass Behind (PAT25)',
+        }
     }
     # The key is the pprune message permalink where the post is clearly about the subject
     # but the text does not refer to it.
@@ -196,6 +223,7 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
     # Map of {subject_title : set(subject_title), ..}
     DUPLICATE_SUBJECT_MAP = {
         # 'RAT (Deployment)': {'RAT (All)', },
+        'Pass Behind (PAT25)': {'Pass Behind (All)', },
     }
     # This the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
