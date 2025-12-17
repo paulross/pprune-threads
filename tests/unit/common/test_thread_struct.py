@@ -586,6 +586,28 @@ def test_post_words_removed(args, remove_these, lower_case, expected):
 
 
 @pytest.mark.parametrize(
+    'args, expected',
+    (
+            (
+                    (
+                            datetime.datetime(2020, 1, 1, 5, 32, 14),
+                            "https://www.pprune.org/rumours-news/638797-united-b777-engine-failure.html#post10994338",
+                            'nicolai',
+                            parse_string(EXAMPLE_SINGLE_PPRUNE_POST, 'lxml'),
+                            10994338,  # Sequence number
+                            [],  # liked_by_users
+                            True,  # thread_is_open
+                    ),
+                    2,
+            ),
+    )
+)
+def test_post_num_inline_images(args, expected):
+    post = thread_struct.Post(*args)
+    assert post.num_inline_images == expected
+
+
+@pytest.mark.parametrize(
     'args, min_size, expected',
     (
             (

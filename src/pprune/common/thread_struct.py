@@ -79,7 +79,7 @@ class Post:
     timestamp: datetime.datetime
     permalink: str
     user: User
-    node: bs4.element.Tag
+    node: bs4.element
     # This is the unique number in the pprune universe.
     # For example <div id="edit10994338"> it would be 10994338.
     # Also used for permalinks such as:
@@ -197,6 +197,13 @@ class Post:
         if post_node is not None:
             text_without_quoted_message(post_node, texts)
         return ' '.join(texts)
+
+    @property
+    def num_inline_images(self) -> int:
+        """Return the number of inline images in the post."""
+        # Example: <img src="https://cimg9.ibsrv.net/gimg/pprune.org-vbulletin/750x500/image_d35d1976553eab4d43d55f0af22e41488132ebf7.png" alt="" class="post_inline_image"/>
+        img_nodes = self.node.find_all('img', **{'class': f'post_inline_image'})
+        return len(img_nodes)
 
     @property
     def words(self) -> typing.List[str]:
