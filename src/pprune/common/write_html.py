@@ -382,6 +382,19 @@ def write_index_no_subjects(
             index.write(' These pages of posts might be useful for identifying subjects to add.')
 
 
+def write_index_inline_images(
+        publication_map: publication_map_abc.PublicationMapABC,
+        index: typing.TextIO,
+):
+    """Optionally, writes out a list of posts that have inline images."""
+    if publication_map.include_posts_with_no_subject:
+        write_index_h1('Posts with Inline Images', 'inline_images', index)
+        with element(index, 'p'):
+            with element(index, 'a', href=_page_name(INLINE_IMAGES_PREFIX, 0)):
+                index.write('Posts that have inline images.')
+            index.write(' These pages of posts might be useful for reference.')
+
+
 def write_index_removed_subjects(
         publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
@@ -847,6 +860,9 @@ so many subjects it is a little hard to follow any particular subject.
                 if publication_map.include_posts_with_no_subject:
                     write_index_no_subjects(publication_map, index)
 
+                if publication_map.include_posts_with_inline_images:
+                    write_index_inline_images(publication_map, index)
+
                 write_index_pages_with_external_links_of_interest(pages_with_external_links_of_interest, index)
 
                 write_index_most_upvoted_posts_table(thread, publication_map, index)
@@ -1066,6 +1082,62 @@ def write_pages_with_no_subject(
                     _write_page_links(subject, page_index, len(pages), out_file)
 
 
+INLINE_IMAGES_PREFIX = "INLINE_IMAGES"
+
+
+def write_pages_with_inline_images(
+        thread: thread_struct.Thread,
+        pass_one_result: PassOneResult,
+        out_path: str,
+):
+    """Writes all the pages for a single subject."""
+    _posts = []
+    for post_index, post in enumerate(thread.posts):
+        if post.num_inline_images > 0:
+            _posts.append(post_index)
+    pages = [_posts[i:i + POSTS_PER_PAGE] for i in range(0, len(_posts), POSTS_PER_PAGE)]
+    subject = INLINE_IMAGES_PREFIX
+    for page_index, page in enumerate(pages):
+        logger.info(f'Writing {_page_name(subject, page_index)}')
+        with open(os.path.join(out_path, _page_name(subject, page_index)), 'w') as out_file:
+            out_file.write(
+                '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
+            with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
+                with element(out_file, 'head'):
+                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
+                        pass
+                    with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
+                        pass
+                with element(out_file, 'body'):
+                    heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
+                        subject, len(_posts), page_index + 1, len(pages),
+                    )
+                    heading_id_str = f'{subject}_{page_index + 1}'
+                    write_index_h1(heading_str, heading_id_str, out_file)
+
+                    _write_page_links(subject, page_index, len(pages), out_file)
+                    # with element(f, 'table', border="0", width="96%", cellpadding="0", cellspacing="0", bgcolor="#FFFFFF", align="center"):
+                    with element(out_file, 'table', _class='posts'):
+                        for post_index in page:
+                            post = thread.posts[post_index]
+                            with element(out_file, 'tr', valign="top", _id=f'{post.sequence_num}'):
+                                # with element(f, 'td', _class="alt2", style="border: 1px solid #000063; border-top: 0px; border-bottom: 0px"):
+                                with element(out_file, 'td', _class="post"):
+                                    if post.user is not None:
+                                        with element(out_file, 'a', href=post.user.href):
+                                            out_file.write(post.user.name.strip())
+                                        out_file.write('<br/>')
+                                    out_file.write(format_datetime(post.timestamp))
+                                    with element(out_file, 'a', href=post.permalink):
+                                        out_file.write('<br/>permalink')
+                                    out_file.write(' Post: {:d}'.format(post.sequence_num))
+                                with element(out_file, 'td', _class="post"):
+                                    out_file.write(post.node.prettify(formatter='html'))
+                                    write_subjects_of_this_post(pass_one_result, post, out_file)
+                                    write_post_footer(post, out_file)
+                    _write_page_links(subject, page_index, len(pages), out_file)
+
+
 def write_posts_with_external_links(
         thread: thread_struct.Thread,
         pass_one_result: PassOneResult,
@@ -1207,6 +1279,9 @@ def write_whole_thread(
 
     if publication_map.include_posts_with_no_subject:
         write_pages_with_no_subject(thread, pass_one_result, output_path)
+
+    if publication_map.include_posts_with_inline_images:
+        write_pages_with_inline_images(thread, pass_one_result, output_path)
 
     # Posts with external links of interest. The publication map controls this.
     external_links_of_interest = publication_map.external_links_of_interest()
