@@ -1,6 +1,13 @@
 History
 =======
 
+Alpha Release (AA5342 thread to: December 18, 2025, 08:59:00 GMT)
+-----------------------------------------------------------------
+
+- Build threads up to December 18, 2025, 08:59:00 GMT (built on December 18, 2025, 12:07:39 GMT).
+- "Likes" are available on the currently open thread.
+- Add a list of pages where posts have inline images.
+
 Alpha Release (AI171 threads to: December 06, 2025, 09:34:00 GMT)
 -----------------------------------------------------------------
 

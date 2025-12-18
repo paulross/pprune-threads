@@ -473,17 +473,25 @@ This gives:
 
     <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-90.html" title="Last Page - Results 1,781 to 1,791 of 1,791">Last <i class="fa-solid fa-angles-right"></i></a></li>
 
-So the last page is ``663888-aa5342-down-dca-90.html``
+So the last page is ``663888-aa5342-down-dca-91.html``
 
 And all the rest:
 
 .. code-block:: shell
 
-    $ time curl https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-\[2-90\].html -o "663888-aa5342-down-dca-#1.html"
+    $ time curl https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-\[2-91\].html -o "663888-aa5342-down-dca-#1.html"
     ...
     real	0m35.544s
     user	0m0.176s
     sys	0m0.356s
+
+Running the Build
+---------------------------
+
+
+.. code-block:: shell
+
+    python src/pprune/main.py --thread-name=AA5342 --output=tmp/AA5342_B_A threads/AA5342_B --include-no-subjects --include-inline-images
 
 
 --------------------------
