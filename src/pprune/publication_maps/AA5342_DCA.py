@@ -150,6 +150,8 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
 
         'controller': 'ATC',
 
+        'faas': 'FAA',
+
         'antidei': 'DEI',
 
         'homendy': 'NTSB Chair Jennifer Homendy',
@@ -161,6 +163,7 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
 
         'trump': 'President Donald Trump',
         'president': 'President Donald Trump',
+        'presidents': 'President Donald Trump',
         'potus': 'President Donald Trump',
         'potuss': 'President Donald Trump',
 
@@ -208,18 +211,22 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
 
         '4514': 'Republic Airways Flight 4514 Go-around',
         'RP4514': 'Republic Airways Flight 4514 Go-around',
+
+        'POTUS': 'President Donald Trump',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lowercase unless all caps
     PHRASES_MAP = {
         2: {
             ('pass', 'behind',): 'Pass Behind',
+            ('go', 'behind',): 'Pass Behind',
 
             ('situational', 'awareness'): 'Situational Awareness',
 
             ('black', 'hawk'): 'Blackhawk (H-60)',
 
             ('circle', 'land',): 'Circle to Land (Deviate to RWY 33)',
+            ('circling', 'approach',): 'Circle to Land (Deviate to RWY 33)',
 
             ('close', 'call',): 'Close Calls',
             ('close', 'calls',): 'Close Calls',
@@ -240,7 +247,14 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
 
             ('preliminary', 'report'): 'Preliminary Report',
 
-            ('land', 'hold', 'short',): 'Land and Hold Short',
+            ('relative', 'bearing'): 'Relative Bearing',
+
+            ('skating', 'team'): 'Skating Team (Victims)',
+            ('figure', 'skating'): 'Skating Team (Victims)',
+            ('ice', 'dancer'): 'Skating Team (Victims)',
+
+            # NOTE: We don't want 'and' in the text (common words).
+            ('see', 'avoid'): 'See and Avoid',
 
             ('vertical', 'separation'): 'Vertical Separation',
             ('visual', 'separation'): 'Visual Separation',
@@ -248,6 +262,8 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
         3: {
             ('accident', 'waiting', 'happen'): 'Accident Waiting to Happen',
             ('wall', 'street', 'journal'): 'Wall Street Journal',
+
+            ('land', 'hold', 'short',): 'Land and Hold Short',
 
             ('traffic', 'in', 'sight',): 'Traffic in Sight',
 
