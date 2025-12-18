@@ -31,8 +31,21 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
         return 'AA5342-Blackhawk Collision at DCA'
 
     def get_introduction_in_html(self) -> str:
-        return """
-            <p><b>My condolences to all the people affected by this accident, in particular to the friends and families of the victims.</b></p>
+        return """There is this thread on pprune about the mid-air collision between a CRJ700, operating as PSA
+Airlines flight 5342, and a Sikorsky UH-60L, operated by the US Army under the callsign PAT25 
+approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (DCA) on 29 January 2025:
+    <ol>
+        <li><a href="https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca.html">Main Thread [pprune]</a></li>
+    </ol>
+    <span id="useful_links"></span>
+    <h2>Useful Links<a class="headerlink" href="#useful_links" title="Link to this heading">\u00B6</a></h2>
+    <ol>
+        <li><a href="https://data.ntsb.gov/Docket?ProjectID=199620">NTSB docket [NTSB]</a></li>
+        <li><a href="https://data.ntsb.gov/Docket/Document/docBLOB?ID=19088347&FileExtension=pdf&FileName=Report_DCA25MA108_Combined%20Transcript%20-%20FINAL-Rel.pdf">Combined Transcript [NTSB}</a></li>
+        <li>This accident on the <a href="https://aviation-safety.net/wikibase/474365">Aviation Safety Network</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/2025_Potomac_River_mid-air_collision">2025 Potomac River mid-air collision [Wikipedia]</a></li>
+    </ol>
+    <p><b>My condolences to all the people affected by this accident, in particular to the friends and families of the victims.</b></p>
 """
 
     def get_lowercase_word_to_subject_map(self) -> typing.Dict[str, str]:
@@ -56,13 +69,12 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
         return self.SPECIFIC_POSTS_MAP
 
     def get_duplicate_subjects(self, subject: str) -> typing.Set[str]:
+        if subject in self.DUPLICATE_SUBJECT_MAP:
+            return self.DUPLICATE_SUBJECT_MAP[subject]
         return set()
 
     def get_significant_posts_permalinks(self) -> typing.Tuple[typing.Tuple[str, int], ...]:
-        # https://en.wikipedia.org/wiki/Jennifer_Homendy 'Jennifer Homendy'
-        return (
-            ('NTSB Chair Jennifer Homendy on Section 373', 12005067),
-        )
+        return self.SIGNIFICANT_POSTS
 
     def get_set_of_words_required(self) -> typing.Set[str]:
         result = set(self.LC_WORDS_MAP.keys())
@@ -137,9 +149,12 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
         'uh60': 'Blackhawk (H-60)',
 
         'controller': 'ATC',
+
         'antidei': 'DEI',
 
         'homendy': 'NTSB Chair Jennifer Homendy',
+
+        'hover': 'Hover',
 
         'ra': 'TCAS RA',
         'ras': 'TCAS RA',
@@ -158,14 +173,17 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
 
         'radar': 'Radar',
 
+        'phraseology': 'Phraseology (ATC)',
+
         'sidestep': 'Circle to Land (Deviate to RWY 33)',
+        'doglegging': 'Circle to Land (Deviate to RWY 33)',
 
     }
     CAPS_WORDS_MAP = {
         k: k for k in {
             'ATC', 'ATCO', 'AA5342', 'ADSB', 'CNN', 'CRJ', 'DCA',
-            'DEI', 'FAA', 'HUD', 'ICAO', 'KDCA', 'NBC', 'NTSB', 'NDAA',
-            'TCAS', 'PAT23', 'PAT25', 'QNH',
+            'DEI', 'FAA', 'HUD', 'IFR', 'ICAO', 'KDCA', 'NBC', 'NTSB', 'NDAA',
+            'TCAS', 'PAT23', 'PAT25', 'QNH', 'VFR',
         }
     }
     CAPS_WORDS_MAP_ALL = {
@@ -203,7 +221,10 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
 
             ('circle', 'land',): 'Circle to Land (Deviate to RWY 33)',
 
+            ('close', 'call',): 'Close Calls',
             ('close', 'calls',): 'Close Calls',
+            ('near', 'miss',): 'Close Calls',
+            ('near', 'misses',): 'Close Calls',
 
             ('route', '4',): 'Route 4',
             ('route', '5',): 'Route 5',
@@ -216,6 +237,8 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
             ('TCAS', 'RA'): 'TCAS RA',
 
             ('PSA', 'procedures'): 'PSA Procedures',
+
+            ('preliminary', 'report'): 'Preliminary Report',
 
             ('land', 'hold', 'short',): 'Land and Hold Short',
 
@@ -245,11 +268,15 @@ class AA5342DCA(publication_map_abc.PublicationMapABC):
     # Map of {subject_title : set(subject_title), ..}
     DUPLICATE_SUBJECT_MAP = {
         # 'RAT (Deployment)': {'RAT (All)', },
+        'Pass Behind': {'Pass Behind (All)', },
         'Pass Behind (PAT25)': {'Pass Behind (All)', },
     }
     # This the set of permalinks of significant posts that might be gathered
     # together in the subject 'Significant Posts'.
     SIGNIFICANT_POSTS = (
+        ('Airspace Chart, Image and Approach Plate', 11817466,),
+        # https://en.wikipedia.org/wiki/Jennifer_Homendy 'Jennifer Homendy'
+        ('NTSB Chair Jennifer Homendy on Section 373', 12005067),
         # Resolves to https://www.ntsb.gov/news/Documents/National%20Defense%20Authorization%20Act.pdf
         ('NTSB Letter to Congress (re: Section 373 of the FY26 NDAA)', 12003913,),
     )
