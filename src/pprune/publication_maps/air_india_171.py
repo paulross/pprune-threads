@@ -67,7 +67,7 @@ class AirIndia171(publication_map_abc.PublicationMapABC):
     def get_phrase_lengths(self) -> typing.List[int]:
         return sorted(self.PHRASES_MAP.keys())
 
-    def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[str, str]:
+    def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[typing.Tuple[str, ...], str]:
         if phrase_length in self.get_phrase_lengths():
             return self.PHRASES_MAP[phrase_length]
         return {}
