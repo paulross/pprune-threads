@@ -37,9 +37,11 @@ from pprune.common import read_html
 from pprune.common import thread_struct
 from pprune.common import words
 from pprune.common import write_html
-from pprune.publication_maps import air_india_171, publication_map_abc
+from pprune.publication_maps import AA5342_DCA
+from pprune.publication_maps import air_india_171
 from pprune.publication_maps import concorde
 from pprune.publication_maps import example
+from pprune.publication_maps import publication_map_abc
 
 logger = logging.getLogger(__file__)
 
@@ -49,6 +51,7 @@ THREAD_NAME_TO_CLASS_MAP = {
     'AI171': air_india_171.AirIndia171,
     'Example': example.Example,
     'Concorde': concorde.Concorde,
+    'AA5342': AA5342_DCA.AA5342DCA
 }
 
 
@@ -129,6 +132,14 @@ def main():
         )
     )
     parser.add_argument(
+        "--include-inline-images",
+        action="store_true",
+        help=(
+            "Include pages of posts that have inline images."
+            " [default: %(default)s]"
+        )
+    )
+    parser.add_argument(
         "-l",
         "--log-level",
         dest="log_level",
@@ -194,6 +205,7 @@ def main():
     if args.thread_name in THREAD_NAME_TO_CLASS_MAP:
         pub_map: publication_map_abc.PublicationMapABC = THREAD_NAME_TO_CLASS_MAP[args.thread_name]()
         pub_map.include_posts_with_no_subject = args.include_no_subjects
+        pub_map.include_posts_with_inline_images = args.include_inline_images
         words_required = pub_map.get_set_of_words_required()
         common_words -= words_required
         logger.info('Common words now length {:d}'.format(len(common_words)))

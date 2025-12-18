@@ -79,7 +79,7 @@ class Post:
     timestamp: datetime.datetime
     permalink: str
     user: User
-    node: bs4.element.Tag
+    node: bs4.element
     # This is the unique number in the pprune universe.
     # For example <div id="edit10994338"> it would be 10994338.
     # Also used for permalinks such as:
@@ -177,6 +177,9 @@ class Post:
         text_node = self.node.find('div', **{'id': f'post_message_{self.sequence_num}'})
         if text_node is None:
             raise RuntimeError(f'No text node for post {self.sequence_num}')
+        # TODO: Replace windows smart quotes. s.replace('\x92', '')
+        # TODO: And maybe others:
+        # TODO: https://en.wikipedia.org/wiki/Windows-1252
         return text_node.get_text()
 
     @property
@@ -197,6 +200,13 @@ class Post:
         if post_node is not None:
             text_without_quoted_message(post_node, texts)
         return ' '.join(texts)
+
+    @property
+    def num_inline_images(self) -> int:
+        """Return the number of inline images in the post."""
+        # Example: <img src="https://cimg9.ibsrv.net/gimg/pprune.org-vbulletin/750x500/image_d35d1976553eab4d43d55f0af22e41488132ebf7.png" alt="" class="post_inline_image"/>
+        img_nodes = self.node.find_all('img', **{'class': f'post_inline_image'})
+        return len(img_nodes)
 
     @property
     def words(self) -> typing.List[str]:
@@ -286,7 +296,14 @@ class Thread:
         # to their 'permalink'. The problem being the permalinks are not permanent as
         # they include the page number and that may change if moderators delete posts
         # in which case the post could end up in a *previous* page.
-        # This is used by publication maps SPECIFIC_POSTS_MAP and SIGNIFICANT_POSTS.
+        #
+        # Example:
+        # <a href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-2.html#post11898940" title="Link to this Post">permalink</a>
+        # The href includes tha page number: "666472-plane-crash-near-ahmedabad-2.html#post11898940"
+        #
+        # This is used by publication maps functions:
+        # get_specific_posts_to_subject_map() that typically returns SPECIFIC_POSTS_MAP
+        # and get_significant_posts_permalinks() that typically reruns SIGNIFICANT_POSTS.
         # See also pprune threads about this problem:
         # https://www.pprune.org/pprune-problems-queries/626127-links-pprune-posts-sometimes-broken.html
         # https://www.pprune.org/pprune-problems-queries/604715-different-post-numbers.html?highlight=permalink
@@ -302,6 +319,16 @@ class Thread:
         """Sorts the posts by their sequence number.
         This is useful when combining multiple threads and you want to keep the posts in time order."""
         self.posts.sort(key=lambda p: p.sequence_num)
+        # Rebuild the internal maps.
+        self.post_map.clear()
+        self.user_post_indexes.clear()
+        self.post_id_to_permalink_map.clear()
+        for i, post in enumerate(self.posts):
+            self.post_map[post.permalink] = i
+            if post.user not in self.user_post_indexes:
+                self.user_post_indexes[post.user] = []
+            self.user_post_indexes[post.user].append(i)
+            self.post_id_to_permalink_map[post.sequence_num] = post.permalink
 
     def add_post(self, post: Post):
         """Add a post."""

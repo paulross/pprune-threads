@@ -43,6 +43,7 @@ class PublicationMapABC(abc.ABC):
 
     def __init__(self):
         self._include_posts_with_no_subject = False
+        self._include_posts_with_inline_images = False
 
     @property
     def include_posts_with_no_subject(self) -> bool:
@@ -52,6 +53,15 @@ class PublicationMapABC(abc.ABC):
     @include_posts_with_no_subject.setter
     def include_posts_with_no_subject(self, value: bool) -> None:
         self._include_posts_with_no_subject = value
+
+    @property
+    def include_posts_with_inline_images(self) -> bool:
+        """Flag to include pages with posts that have inline images."""
+        return self._include_posts_with_no_subject
+
+    @include_posts_with_inline_images.setter
+    def include_posts_with_inline_images(self, value: bool) -> None:
+        self._include_posts_with_inline_images = value
 
     @abc.abstractmethod
     def get_title(self) -> str:
@@ -80,7 +90,7 @@ class PublicationMapABC(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[str, str]:
+    def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[typing.Tuple[str, ...], str]:
         """Returns a map of {phrase : subject_title, ...}"""
         pass
 
@@ -166,6 +176,7 @@ class PublicationMapABC(abc.ABC):
         If they match then write these posts to a page with that title.
 
         For example::
+
             {
                 "YouTube Videos" : (
                                         re.compile(r'.*youtube\.com'),

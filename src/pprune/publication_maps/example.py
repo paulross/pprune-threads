@@ -42,7 +42,7 @@ class Example(publication_map_abc.PublicationMapABC):
     def get_phrase_lengths(self) -> typing.List[int]:
         return []
 
-    def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[str, str]:
+    def get_phrases_to_subject_map(self, phrase_length: int) -> typing.Dict[typing.Tuple[str, ...], str]:
         return {}
 
     def get_specific_posts_to_subject_map(self) -> typing.Dict[int, str]:

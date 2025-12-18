@@ -242,7 +242,7 @@ def test_match_all_caps(html_str, index, word_map, expected):
         '666472-plane-crash-near-ahmedabad-2.html-5-2',
     ],
 )
-def test_match_all_caps(html_str, index, phrase_length, phrase_map, expected):
+def test_match_phrases(html_str, index, phrase_length, phrase_map, expected):
     thread = read_html.get_thread_from_html_string(html_str)
     common_words = words.read_common_words_file(limit=1000)
     result = analyse_thread.match_phrases(thread.posts[index], common_words, phrase_length, phrase_map)
