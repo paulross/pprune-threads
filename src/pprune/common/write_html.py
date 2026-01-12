@@ -996,7 +996,7 @@ def write_a_subject_page(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
                 with element(out_file, 'head'):
-                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
+                    with element(out_file, 'meta', name='keywords', content='"pprune {:s}"'.format(subject)):
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
@@ -1053,7 +1053,7 @@ def write_pages_with_no_subject(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
                 with element(out_file, 'head'):
-                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
+                    with element(out_file, 'meta', name='keywords', content='"pprune {:s}"'.format(subject)):
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
@@ -1111,7 +1111,7 @@ def write_pages_with_inline_images(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
                 with element(out_file, 'head'):
-                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
+                    with element(out_file, 'meta', name='keywords', content='"pprune {:s}"'.format(subject)):
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
@@ -1179,7 +1179,7 @@ def write_posts_with_external_links(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
                 with element(out_file, 'head'):
-                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
+                    with element(out_file, 'meta', name='keywords', content='"pprune {:s}"'.format(subject)):
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
@@ -1237,7 +1237,7 @@ def write_user_page(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
                 with element(out_file, 'head'):
-                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(user_name)):
+                    with element(out_file, 'meta', name='keywords', content='"pprune {:s}"'.format(user_name)):
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
