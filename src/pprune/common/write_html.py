@@ -735,6 +735,8 @@ def write_index_page(
                     pass
                 with element(index, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                     pass
+                with element(index, 'title'):
+                    index.write(publication_map.get_title())
             with element(index, 'body'):
                 write_index_h1(publication_map.get_title(), 'introduction', index)
                 with element(index, 'p'):
@@ -754,12 +756,13 @@ so many subjects it is a little hard to follow any particular subject.
                         ' Any post that refers to a subject is included in a page in the original order of the posts.'
                     )
                 with element(index, 'p'):
-                    index.write(' Posts that mention multiple subjects are duplicated appropriately.')
+                    index.write('Posts that mention multiple subjects are duplicated appropriately.')
                     index.write(' I have not changed the content of any post and this includes links and images.')
                 with element(index, 'p'):
-                    index.write(' Each post is linked to the original so that you can check ;-)')
-                with element(index, 'note'):
-                    index.write(' NOTE: No AI was used during this.')
+                    index.write('Each post is linked to the original so that you can check ;-)')
+                with element(index, 'p'):
+                    with element(index, 'i'):
+                        index.write('NOTE: No AI was used during this.')
                 # Write table of informational data.
                 posts_inc, posts_exc = get_count_of_posts_included(thread, pass_one_result.subject_post_map)
                 posts_in_open_threads = 0
@@ -997,6 +1000,8 @@ def write_a_subject_page(
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
+                    with element(out_file, 'title'):
+                        out_file.write(f'{subject} Page: {page_index + 1:d} of {len(pages):d}')
                 with element(out_file, 'body'):
                     heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
                         subject, len(_posts), page_index + 1, len(pages),
@@ -1052,6 +1057,8 @@ def write_pages_with_no_subject(
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
+                    with element(out_file, 'title'):
+                        out_file.write(f'{subject} Page: {page_index + 1:d} of {len(pages):d}')
                 with element(out_file, 'body'):
                     heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
                         subject, len(_posts), page_index + 1, len(pages),
@@ -1108,6 +1115,8 @@ def write_pages_with_inline_images(
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
+                    with element(out_file, 'title'):
+                        out_file.write(f'{subject} Page: {page_index + 1:d} of {len(pages):d}')
                 with element(out_file, 'body'):
                     heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
                         subject, len(_posts), page_index + 1, len(pages),
@@ -1174,6 +1183,8 @@ def write_posts_with_external_links(
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
+                    with element(out_file, 'title'):
+                        out_file.write(f'{subject} Page: {page_index + 1:d} of {len(pages):d}')
                 with element(out_file, 'body'):
                     heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
                         subject, len(_posts), page_index + 1, len(pages),
@@ -1230,6 +1241,8 @@ def write_user_page(
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
+                    with element(out_file, 'title'):
+                        out_file.write(f'{user_name} Page: {page_index + 1:d} of {len(pages):d}')
                 with element(out_file, 'body'):
                     heading_str = 'Posts by user "{:s}" [Posts: {:d} Total up-votes: {:d} Page: {:d} of {:d}]'.format(
                         user_name, len(_posts), up_votes, page_index + 1, len(pages)
