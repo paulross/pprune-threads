@@ -554,7 +554,6 @@ def write_index_user_subject_table(
 
 
 def write_index_user_post_table(
-        thread: thread_struct.Thread,
         user_ordinal_map: typing.Dict[str, typing.List[int]],
         publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
@@ -694,7 +693,6 @@ def write_index_post_date_histogram(
 
 def write_index_post_time_histogram(
         thread: thread_struct.Thread,
-        publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
 ):
     """Write a table with a histogram of posts by time of day (GMT)."""
@@ -872,11 +870,11 @@ so many subjects it is a little hard to follow any particular subject.
 
                 write_index_user_subject_table(thread, pass_one_result.user_subject_map, publication_map, index)
 
-                write_index_user_post_table(thread, pass_one_result.user_ordinal_map, publication_map, index)
+                write_index_user_post_table(pass_one_result.user_ordinal_map, publication_map, index)
 
                 write_index_post_date_histogram(thread, publication_map, index)
 
-                write_index_post_time_histogram(thread, publication_map, index)
+                write_index_post_time_histogram(thread, index)
 
 
 def _write_page_links(subject: str, page_num: int, page_count: int, out_file: typing.TextIO) -> None:
@@ -1157,8 +1155,8 @@ def write_posts_with_external_links(
     """Writes all the pages that have external links, for example to YouTube, bbc, avherald.com, www.avherald.com,
     www.skybrary, www.flightradar24.com etc."""
 
-    def post_matches(netloc: str, regex_patterns: typing.Tuple[re.Pattern, ...]) -> bool:
-        for regex_pattern in regex_patterns:
+    def post_matches(netloc: str, _regex_patterns: typing.Tuple[re.Pattern, ...]) -> bool:
+        for regex_pattern in _regex_patterns:
             if re.match(regex_pattern, netloc):
                 return True
 
