@@ -243,10 +243,18 @@ class Concorde(publication_map_abc.PublicationMapABC):
 
         'liftdrag': 'Lift Drag Ratio',
 
+        'manuals': 'Manuals',
+
+        'marilake': 'Marilake Display',
+        'marilakes': 'Marilake Display',
+
         'supercruise': 'Super-cruise',
         'surge': 'Engine surge',
         'surged': 'Engine surge',
         'surges': 'Engine surge',
+
+        'sfc': 'Fuel Burn',
+
         'tailcone': 'Tail Cone',
         'tailwheel': 'Tailwheel',
         'trim': 'Trim',
@@ -317,6 +325,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'FBVFD': 'F-BVFD',
         'FWTSA': 'F-WTSA',
         'FWTSB': 'F-WTSB',
+
+        'FCOM': 'Manuals',
+
         'GAXDN': 'G-AXDN',
         'GBBDG': 'G-BBDG',
         'GBFKW': 'G-BFKW',
@@ -345,6 +356,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'RR': 'Rolls Royce',
         'SC1': 'Short SC-1',
         'SR71': 'SR-71',
+
+        'SFC': 'Fuel Burn',
+
         'TAS': 'TAS (True Air Speed)',
         'TAT': 'TAT (Total Air Temperature)',
         'TLA': 'TLA (Throttle Lever Angle)',
@@ -362,6 +376,10 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('aoa', 'stall'): 'AoA',
             ('aoa', 'vortex'): 'AoA',
             ('aoa', 'vortices'): 'AoA',
+
+            ('area', 'rule'): 'Area Rule',
+            ('area', 'ruling'): 'Area Rule',
+
             ('auto', 'stabilisation'): 'Auto-stabilisation',
             ('barber', 'pole'): 'Barber Pole',
             ('boeing', 'SST'): 'Boeing SST',
@@ -390,6 +408,8 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('delta', 'golf'): 'G-BBDG',
             ('engine', 'failure'): 'Engine Failure',
 
+            ('eclipse', 'chasing'): 'Eclipse Chasing',
+
             ('emergency', 'descent'): 'Depressurisation',
             ('window', 'failure'): 'Depressurisation',
 
@@ -400,6 +420,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('fuel', 'pumps'): 'Fuel Pumps',
             ('fuel', 'vent'): 'Fuel Vent System',
             ('fuel', 'burn'): 'Fuel Burn',
+            ('fuel', 'flow'): 'Fuel Burn',
 
             # ('fuel', 'incident'): 'Fuel Incident',
 
@@ -448,12 +469,22 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('rolls', 'royce'): 'Rolls Royce',
             ('rotating', 'stall'): 'Rotating (engine) Stall',
 
+            # We want to eliminate 'the'
+            ('round', 'bay',): 'Round the Bay',
+            ('bay', 'biscay',): 'Round the Bay',
+
             ('reverse', 'thrust'): 'Reverse Thrust',
 
             ('stick', 'shaker'): 'Stick Shaker',
 
+            ('skin', 'temperature'): 'Skin Temperature',
+            ('skin', 'temp'): 'Skin Temperature',
+            ('skin', 'temps'): 'Skin Temperature',
+
             ('stan', 'hookers',): 'Sir Stanley Hooker',
             ('stanley', 'hookers',): 'Sir Stanley Hooker',
+
+            ('static', 'ports',): 'Static  Ports',
 
             ('takeoff', 'thrust'): 'Take-off Thrust',
             ('tail', 'skid'): 'Tail Skid',
@@ -472,8 +503,8 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('thrust', 'recuperator'): 'Thrust Recuperator',
             ('technical', 'diagrams'): 'Technical Diagrams',
             ('vortex', 'aoa'): 'Vortex AoA',
-            # We want to eliminate 'the'
-            ('round', 'bay',): 'Round the Bay',
+
+            ('yellow', 'system',): 'Hydraulic System - YELLOW',
         },
         3: {
             ('c', 'of', 'g',): 'C of G',
@@ -529,4 +560,5 @@ class Concorde(publication_map_abc.PublicationMapABC):
     # Tuple[Tuple[str, permalink], ...]
     SIGNIFICANT_POSTS = (
         ('Technical Diagrams from "Flight"', 11681790,),
+        ('Site with Concorde Manuals', 11405789,),
     )
