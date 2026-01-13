@@ -99,9 +99,21 @@ class Concorde(publication_map_abc.PublicationMapABC):
         If they match then write these posts to a page with that title.
         """
         return {
+            "PPRUNE": (
+                re.compile(r'.*pprune.org'),
+            ),
             "YouTube Videos": (
                 re.compile(r'.*youtube\.com'),
                 re.compile(r'.*youtu\.be'),
+            ),
+            "Concorde SST": (
+                re.compile(r'www\.concordesst\.com'),
+            ),
+            "Wikipedia": (
+                re.compile(r'.*wikipedia\.org'),
+            ),
+            "Heritage Concorde": (
+                re.compile(r'.*heritageconcorde\.com'),
             ),
         }
 
@@ -124,6 +136,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'airbus': 'Airbus',
         'antiskid': 'Anti-skid',
         'aoa': 'AoA',
+        'aofa': 'AoA',
         'apus': 'Auxiliary Power Unit',
         'autoland': 'Auto-land',
         'autopilot': 'Auto-pilot',
@@ -131,7 +144,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'autostabs': 'Auto-stabilisation',
         'autothrottle': 'Auto-throttle',
         'autotrim': 'Auto-trim',
-        'bac221': 'BAC221',
+        'BAC221': 'BAC221',
         'barbados': 'Barbados',
 
         'barbara': 'Barbara Harmer',
@@ -180,7 +193,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'haynes': 'Haynes guide to Concorde',
         'heathrow': 'LHR',
         'hooker': 'Sir Stanley Hooker',
-        'hp115': 'HP115',
+        'HP115': 'HP115',
         'hydraulic': 'Hydraulic',
         'hydrazine': 'Hydrazine',
         'ignitor': 'Ignitors',
@@ -207,6 +220,8 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'reheats': 'Afterburner/Re-heat',
         'relight': 'Relight',
 
+        'radiation': 'Radiation Exposure',
+
         'roundthebay': 'Round the Bay',
 
         'rollsroyce': 'Rolls Royce',
@@ -228,10 +243,18 @@ class Concorde(publication_map_abc.PublicationMapABC):
 
         'liftdrag': 'Lift Drag Ratio',
 
+        'manuals': 'Manuals',
+
+        'marilake': 'Marilake Display',
+        'marilakes': 'Marilake Display',
+
         'supercruise': 'Super-cruise',
         'surge': 'Engine surge',
         'surged': 'Engine surge',
         'surges': 'Engine surge',
+
+        'sfc': 'Fuel Burn',
+
         'tailcone': 'Tail Cone',
         'tailwheel': 'Tailwheel',
         'trim': 'Trim',
@@ -239,6 +262,10 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'toulouse': 'Toulouse',
         'tyres': 'Tyres',
         'tmo': 'TMO (Temprature Max Operating)',
+
+        'trubshaw': 'Brian Trubshaw',
+        'turcat': 'Andre Turcat',
+        'cochrane': 'John Cochrane',
 
         'tu144': 'Tu-144',
         'concordski': 'Tu-144',
@@ -298,6 +325,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'FBVFD': 'F-BVFD',
         'FWTSA': 'F-WTSA',
         'FWTSB': 'F-WTSB',
+
+        'FCOM': 'Manuals',
+
         'GAXDN': 'G-AXDN',
         'GBBDG': 'G-BBDG',
         'GBFKW': 'G-BFKW',
@@ -326,6 +356,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'RR': 'Rolls Royce',
         'SC1': 'Short SC-1',
         'SR71': 'SR-71',
+
+        'SFC': 'Fuel Burn',
+
         'TAS': 'TAS (True Air Speed)',
         'TAT': 'TAT (Total Air Temperature)',
         'TLA': 'TLA (Throttle Lever Angle)',
@@ -343,6 +376,10 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('aoa', 'stall'): 'AoA',
             ('aoa', 'vortex'): 'AoA',
             ('aoa', 'vortices'): 'AoA',
+
+            ('area', 'rule'): 'Area Rule',
+            ('area', 'ruling'): 'Area Rule',
+
             ('auto', 'stabilisation'): 'Auto-stabilisation',
             ('barber', 'pole'): 'Barber Pole',
             ('boeing', 'SST'): 'Boeing SST',
@@ -371,6 +408,8 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('delta', 'golf'): 'G-BBDG',
             ('engine', 'failure'): 'Engine Failure',
 
+            ('eclipse', 'chasing'): 'Eclipse Chasing',
+
             ('emergency', 'descent'): 'Depressurisation',
             ('window', 'failure'): 'Depressurisation',
 
@@ -381,6 +420,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('fuel', 'pumps'): 'Fuel Pumps',
             ('fuel', 'vent'): 'Fuel Vent System',
             ('fuel', 'burn'): 'Fuel Burn',
+            ('fuel', 'flow'): 'Fuel Burn',
 
             # ('fuel', 'incident'): 'Fuel Incident',
 
@@ -429,17 +469,29 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('rolls', 'royce'): 'Rolls Royce',
             ('rotating', 'stall'): 'Rotating (engine) Stall',
 
+            # We want to eliminate 'the'
+            ('round', 'bay',): 'Round the Bay',
+            ('bay', 'biscay',): 'Round the Bay',
+
             ('reverse', 'thrust'): 'Reverse Thrust',
 
             ('stick', 'shaker'): 'Stick Shaker',
 
+            ('skin', 'temperature'): 'Skin Temperature',
+            ('skin', 'temp'): 'Skin Temperature',
+            ('skin', 'temps'): 'Skin Temperature',
+
             ('stan', 'hookers',): 'Sir Stanley Hooker',
+            ('stanley', 'hookers',): 'Sir Stanley Hooker',
+
+            ('static', 'ports',): 'Static  Ports',
 
             ('takeoff', 'thrust'): 'Take-off Thrust',
             ('tail', 'skid'): 'Tail Skid',
             ('tyre', 'life'): 'Tyre Life',
 
             ('trivia', 'questions'): 'Quiz',
+            ('trivia', 'quiz'): 'Quiz',
             ('stinky', 'questions'): 'Quiz',
             ('concorde', 'quiz'): 'Quiz',
             ('concorde', 'quizes'): 'Quiz',
@@ -451,8 +503,8 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('thrust', 'recuperator'): 'Thrust Recuperator',
             ('technical', 'diagrams'): 'Technical Diagrams',
             ('vortex', 'aoa'): 'Vortex AoA',
-            # We want to eliminate 'the'
-            ('round', 'bay',): 'Round the Bay',
+
+            ('yellow', 'system',): 'Hydraulic System - YELLOW',
         },
         3: {
             ('c', 'of', 'g',): 'C of G',
@@ -461,6 +513,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
             # 'How many wheels on the aircraft'
             ('how', 'many', 'wheels'): 'Quiz',
             ('flight', 'crew', 'positions',): 'Flight Crew Positions',
+
+            ('fuel', 'saving', 'landing',): 'Fuel Saving Landing',
+            ('fuel', 'saving', 'landings',): 'Fuel Saving Landing',
         },
         4: {
             ('how', 'many', 'wheel', 'brakes'): 'Quiz',
@@ -505,4 +560,5 @@ class Concorde(publication_map_abc.PublicationMapABC):
     # Tuple[Tuple[str, permalink], ...]
     SIGNIFICANT_POSTS = (
         ('Technical Diagrams from "Flight"', 11681790,),
+        ('Site with Concorde Manuals', 11405789,),
     )

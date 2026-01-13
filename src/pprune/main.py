@@ -150,6 +150,14 @@ def main():
     args = parser.parse_args()
     # print(f'Args: {args}')
     # return 0
+
+    if args.thread_name not in THREAD_NAME_TO_CLASS_MAP:
+        logger.error(
+            f'Do not know of thread "{args.thread_name}".'
+            f' Supported threads are: {supported_threads}'
+        )
+        return -1
+
     logging.basicConfig(
         level=args.log_level,
         format=log_config.DEFAULT_OPT_LOG_FORMAT_NO_PROCESS,
@@ -202,20 +210,14 @@ def main():
             )
         )
     common_words = set(common_words)
-    if args.thread_name in THREAD_NAME_TO_CLASS_MAP:
-        pub_map: publication_map_abc.PublicationMapABC = THREAD_NAME_TO_CLASS_MAP[args.thread_name]()
-        pub_map.include_posts_with_no_subject = args.include_no_subjects
-        pub_map.include_posts_with_inline_images = args.include_inline_images
-        words_required = pub_map.get_set_of_words_required()
-        common_words -= words_required
-        logger.info('Common words now length {:d}'.format(len(common_words)))
-        write_html.write_whole_thread(thread, common_words, pub_map, output_dir)
-    else:
-        logger.error(
-            f'Do not know of thread "{args.thread_name}".'
-            f' Supported threads are: {supported_threads}'
-        )
-        return -1
+    assert args.thread_name in THREAD_NAME_TO_CLASS_MAP, f'Do not support thread "{args.thread_name}".'
+    pub_map: publication_map_abc.PublicationMapABC = THREAD_NAME_TO_CLASS_MAP[args.thread_name]()
+    pub_map.include_posts_with_no_subject = args.include_no_subjects
+    pub_map.include_posts_with_inline_images = args.include_inline_images
+    words_required = pub_map.get_set_of_words_required()
+    common_words -= words_required
+    logger.info('Common words now length {:d}'.format(len(common_words)))
+    write_html.write_whole_thread(thread, common_words, pub_map, output_dir)
     t_elapsed = time.perf_counter() - t_start
     logger.info('Processed %d posts in %.3f (s)', len(thread), t_elapsed, )
     print('Bye, bye!')
