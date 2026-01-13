@@ -387,7 +387,7 @@ def write_index_inline_images(
         index: typing.TextIO,
 ):
     """Optionally, writes out a list of posts that have inline images."""
-    if publication_map.include_posts_with_no_subject:
+    if publication_map.include_posts_with_inline_images:
         write_index_h1('Posts with Inline Images', 'inline_images', index)
         with element(index, 'p'):
             with element(index, 'a', href=_page_name(INLINE_IMAGES_PREFIX, 0)):
@@ -554,7 +554,6 @@ def write_index_user_subject_table(
 
 
 def write_index_user_post_table(
-        thread: thread_struct.Thread,
         user_ordinal_map: typing.Dict[str, typing.List[int]],
         publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
@@ -694,7 +693,6 @@ def write_index_post_date_histogram(
 
 def write_index_post_time_histogram(
         thread: thread_struct.Thread,
-        publication_map: publication_map_abc.PublicationMapABC,
         index: typing.TextIO,
 ):
     """Write a table with a histogram of posts by time of day (GMT)."""
@@ -735,6 +733,8 @@ def write_index_page(
                     pass
                 with element(index, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                     pass
+                with element(index, 'title'):
+                    index.write(publication_map.get_title())
             with element(index, 'body'):
                 write_index_h1(publication_map.get_title(), 'introduction', index)
                 with element(index, 'p'):
@@ -754,12 +754,13 @@ so many subjects it is a little hard to follow any particular subject.
                         ' Any post that refers to a subject is included in a page in the original order of the posts.'
                     )
                 with element(index, 'p'):
-                    index.write(' Posts that mention multiple subjects are duplicated appropriately.')
+                    index.write('Posts that mention multiple subjects are duplicated appropriately.')
                     index.write(' I have not changed the content of any post and this includes links and images.')
                 with element(index, 'p'):
-                    index.write(' Each post is linked to the original so that you can check ;-)')
-                with element(index, 'note'):
-                    index.write(' NOTE: No AI was used during this.')
+                    index.write('Each post is linked to the original so that you can check ;-)')
+                with element(index, 'p'):
+                    with element(index, 'i'):
+                        index.write('NOTE: No AI was used during this.')
                 # Write table of informational data.
                 posts_inc, posts_exc = get_count_of_posts_included(thread, pass_one_result.subject_post_map)
                 posts_in_open_threads = 0
@@ -869,11 +870,11 @@ so many subjects it is a little hard to follow any particular subject.
 
                 write_index_user_subject_table(thread, pass_one_result.user_subject_map, publication_map, index)
 
-                write_index_user_post_table(thread, pass_one_result.user_ordinal_map, publication_map, index)
+                write_index_user_post_table(pass_one_result.user_ordinal_map, publication_map, index)
 
                 write_index_post_date_histogram(thread, publication_map, index)
 
-                write_index_post_time_histogram(thread, publication_map, index)
+                write_index_post_time_histogram(thread, index)
 
 
 def _write_page_links(subject: str, page_num: int, page_count: int, out_file: typing.TextIO) -> None:
@@ -993,10 +994,12 @@ def write_a_subject_page(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
                 with element(out_file, 'head'):
-                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
+                    with element(out_file, 'meta', name='keywords', content='"pprune {:s}"'.format(subject)):
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
+                    with element(out_file, 'title'):
+                        out_file.write(f'{subject} Page: {page_index + 1:d} of {len(pages):d}')
                 with element(out_file, 'body'):
                     heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
                         subject, len(_posts), page_index + 1, len(pages),
@@ -1048,10 +1051,12 @@ def write_pages_with_no_subject(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
                 with element(out_file, 'head'):
-                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
+                    with element(out_file, 'meta', name='keywords', content='"pprune {:s}"'.format(subject)):
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
+                    with element(out_file, 'title'):
+                        out_file.write(f'{subject} Page: {page_index + 1:d} of {len(pages):d}')
                 with element(out_file, 'body'):
                     heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
                         subject, len(_posts), page_index + 1, len(pages),
@@ -1104,10 +1109,12 @@ def write_pages_with_inline_images(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
                 with element(out_file, 'head'):
-                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
+                    with element(out_file, 'meta', name='keywords', content='"pprune {:s}"'.format(subject)):
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
+                    with element(out_file, 'title'):
+                        out_file.write(f'{subject} Page: {page_index + 1:d} of {len(pages):d}')
                 with element(out_file, 'body'):
                     heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
                         subject, len(_posts), page_index + 1, len(pages),
@@ -1148,8 +1155,8 @@ def write_posts_with_external_links(
     """Writes all the pages that have external links, for example to YouTube, bbc, avherald.com, www.avherald.com,
     www.skybrary, www.flightradar24.com etc."""
 
-    def post_matches(netloc: str, regex_patterns: typing.Tuple[re.Pattern, ...]) -> bool:
-        for regex_pattern in regex_patterns:
+    def post_matches(netloc: str, _regex_patterns: typing.Tuple[re.Pattern, ...]) -> bool:
+        for regex_pattern in _regex_patterns:
             if re.match(regex_pattern, netloc):
                 return True
 
@@ -1170,10 +1177,12 @@ def write_posts_with_external_links(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
                 with element(out_file, 'head'):
-                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(subject)):
+                    with element(out_file, 'meta', name='keywords', content='"pprune {:s}"'.format(subject)):
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
+                    with element(out_file, 'title'):
+                        out_file.write(f'{subject} Page: {page_index + 1:d} of {len(pages):d}')
                 with element(out_file, 'body'):
                     heading_str = 'Posts about: "{:s}" [Posts: {:d} Page: {:d} of {:d}]'.format(
                         subject, len(_posts), page_index + 1, len(pages),
@@ -1226,10 +1235,12 @@ def write_user_page(
                 '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">')
             with element(out_file, 'html', xmlns="http://www.w3.org/1999/xhtml", dir="ltr", lang="en"):
                 with element(out_file, 'head'):
-                    with element(out_file, 'meta', name='keywords', content='pprune {:s}'.format(user_name)):
+                    with element(out_file, 'meta', name='keywords', content='"pprune {:s}"'.format(user_name)):
                         pass
                     with element(out_file, 'link', rel="stylesheet", type="text/css", href=styles.CSS_FILE):
                         pass
+                    with element(out_file, 'title'):
+                        out_file.write(f'{user_name} Page: {page_index + 1:d} of {len(pages):d}')
                 with element(out_file, 'body'):
                     heading_str = 'Posts by user "{:s}" [Posts: {:d} Total up-votes: {:d} Page: {:d} of {:d}]'.format(
                         user_name, len(_posts), up_votes, page_index + 1, len(pages)
@@ -1267,6 +1278,11 @@ def write_whole_thread(
 ):
     """This is the main entry point for writing out the results."""
     logger.info('Starting write_whole_thread() to %s', output_path)
+    logger.info(
+        f'Publication map {publication_map}'
+        f' include inline images: {publication_map.include_posts_with_inline_images}'
+        f' include posts with no subject: {publication_map.include_posts_with_no_subject}',
+    )
     t_start = time.perf_counter()
     pass_one_result = pass_one(thread, common_words, publication_map)
     total_posts = 0

@@ -57,7 +57,7 @@ class PublicationMapABC(abc.ABC):
     @property
     def include_posts_with_inline_images(self) -> bool:
         """Flag to include pages with posts that have inline images."""
-        return self._include_posts_with_no_subject
+        return self._include_posts_with_inline_images
 
     @include_posts_with_inline_images.setter
     def include_posts_with_inline_images(self, value: bool) -> None:
