@@ -387,7 +387,8 @@ def write_index_inline_images(
         index: typing.TextIO,
 ):
     """Optionally, writes out a list of posts that have inline images."""
-    if publication_map.include_posts_with_no_subject:
+    if publication_map.include_posts_with_inline_images:
+        print('TRACE XXX')
         write_index_h1('Posts with Inline Images', 'inline_images', index)
         with element(index, 'p'):
             with element(index, 'a', href=_page_name(INLINE_IMAGES_PREFIX, 0)):

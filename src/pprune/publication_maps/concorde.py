@@ -99,9 +99,21 @@ class Concorde(publication_map_abc.PublicationMapABC):
         If they match then write these posts to a page with that title.
         """
         return {
+            "PPRUNE": (
+                re.compile(r'.*pprune.org'),
+            ),
             "YouTube Videos": (
                 re.compile(r'.*youtube\.com'),
                 re.compile(r'.*youtu\.be'),
+            ),
+            "Concorde SST": (
+                re.compile(r'www\.concordesst\.com'),
+            ),
+            "Wikipedia": (
+                re.compile(r'.*wikipedia\.org'),
+            ),
+            "Heritage Concorde": (
+                re.compile(r'.*heritageconcorde\.com'),
             ),
         }
 
