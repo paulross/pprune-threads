@@ -204,9 +204,22 @@ class Post:
     @property
     def num_inline_images(self) -> int:
         """Return the number of inline images in the post."""
-        # Example: <img src="https://cimg9.ibsrv.net/gimg/pprune.org-vbulletin/750x500/image_d35d1976553eab4d43d55f0af22e41488132ebf7.png" alt="" class="post_inline_image"/>
+        # Example:
+        # <img src="https://cimg9.ibsrv.net/gimg/pprune.org-vbulletin/750x500/image_d35d1976553eab4d43d55f0af22e41488132ebf7.png" alt="" class="post_inline_image"/>
         img_nodes = self.node.find_all('img', **{'class': f'post_inline_image'})
-        return len(img_nodes)
+        # This should ignore emojis but it doesn't seem to, example:
+        # <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies/embarass.gif" title="Embarrassment">
+        # Ah, sometimes the smilie is like this:
+        # <img alt="" class="post_inline_image" src="http://images.ibsrv.net/ibsrv/res/src:www.pprune.org/get/images/smilies/boohoo.gif"/>
+        ret = 0
+        for img_node in img_nodes:
+            if 'src:www.pprune.org/get/images/smilies' not in img_node['src']:
+                ret += 1
+            # if img_node['class'][0] != 'post_inline_image':
+            #     assert 0
+        # if len(img_nodes):
+        #     pass
+        return ret
 
     @property
     def words(self) -> typing.List[str]:

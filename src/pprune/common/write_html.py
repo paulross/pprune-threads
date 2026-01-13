@@ -388,7 +388,6 @@ def write_index_inline_images(
 ):
     """Optionally, writes out a list of posts that have inline images."""
     if publication_map.include_posts_with_inline_images:
-        print('TRACE XXX')
         write_index_h1('Posts with Inline Images', 'inline_images', index)
         with element(index, 'p'):
             with element(index, 'a', href=_page_name(INLINE_IMAGES_PREFIX, 0)):
@@ -1279,6 +1278,11 @@ def write_whole_thread(
 ):
     """This is the main entry point for writing out the results."""
     logger.info('Starting write_whole_thread() to %s', output_path)
+    logger.info(
+        f'Publication map {publication_map}'
+        f' include inline images: {publication_map.include_posts_with_inline_images}'
+        f' include posts with no subject: {publication_map.include_posts_with_no_subject}',
+    )
     t_start = time.perf_counter()
     pass_one_result = pass_one(thread, common_words, publication_map)
     total_posts = 0

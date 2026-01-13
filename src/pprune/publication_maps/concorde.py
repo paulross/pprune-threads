@@ -136,6 +136,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'airbus': 'Airbus',
         'antiskid': 'Anti-skid',
         'aoa': 'AoA',
+        'aofa': 'AoA',
         'apus': 'Auxiliary Power Unit',
         'autoland': 'Auto-land',
         'autopilot': 'Auto-pilot',
@@ -143,7 +144,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'autostabs': 'Auto-stabilisation',
         'autothrottle': 'Auto-throttle',
         'autotrim': 'Auto-trim',
-        'bac221': 'BAC221',
+        'BAC221': 'BAC221',
         'barbados': 'Barbados',
 
         'barbara': 'Barbara Harmer',
@@ -192,7 +193,7 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'haynes': 'Haynes guide to Concorde',
         'heathrow': 'LHR',
         'hooker': 'Sir Stanley Hooker',
-        'hp115': 'HP115',
+        'HP115': 'HP115',
         'hydraulic': 'Hydraulic',
         'hydrazine': 'Hydrazine',
         'ignitor': 'Ignitors',
@@ -218,6 +219,8 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'reheat': 'Afterburner/Re-heat',
         'reheats': 'Afterburner/Re-heat',
         'relight': 'Relight',
+
+        'radiation': 'Radiation Exposure',
 
         'roundthebay': 'Round the Bay',
 
@@ -251,6 +254,10 @@ class Concorde(publication_map_abc.PublicationMapABC):
         'toulouse': 'Toulouse',
         'tyres': 'Tyres',
         'tmo': 'TMO (Temprature Max Operating)',
+
+        'trubshaw': 'Brian Trubshaw',
+        'turcat': 'Andre Turcat',
+        'cochrane': 'John Cochrane',
 
         'tu144': 'Tu-144',
         'concordski': 'Tu-144',
@@ -446,12 +453,14 @@ class Concorde(publication_map_abc.PublicationMapABC):
             ('stick', 'shaker'): 'Stick Shaker',
 
             ('stan', 'hookers',): 'Sir Stanley Hooker',
+            ('stanley', 'hookers',): 'Sir Stanley Hooker',
 
             ('takeoff', 'thrust'): 'Take-off Thrust',
             ('tail', 'skid'): 'Tail Skid',
             ('tyre', 'life'): 'Tyre Life',
 
             ('trivia', 'questions'): 'Quiz',
+            ('trivia', 'quiz'): 'Quiz',
             ('stinky', 'questions'): 'Quiz',
             ('concorde', 'quiz'): 'Quiz',
             ('concorde', 'quizes'): 'Quiz',
@@ -473,6 +482,9 @@ class Concorde(publication_map_abc.PublicationMapABC):
             # 'How many wheels on the aircraft'
             ('how', 'many', 'wheels'): 'Quiz',
             ('flight', 'crew', 'positions',): 'Flight Crew Positions',
+
+            ('fuel', 'saving', 'landing',): 'Fuel Saving Landing',
+            ('fuel', 'saving', 'landings',): 'Fuel Saving Landing',
         },
         4: {
             ('how', 'many', 'wheel', 'brakes'): 'Quiz',
