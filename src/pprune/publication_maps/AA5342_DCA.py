@@ -44,6 +44,7 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
         <li><a href="https://data.ntsb.gov/Docket/Document/docBLOB?ID=19088347&FileExtension=pdf&FileName=Report_DCA25MA108_Combined%20Transcript%20-%20FINAL-Rel.pdf">Combined Transcript [NTSB}</a></li>
         <li>This accident on the <a href="https://aviation-safety.net/wikibase/474365">Aviation Safety Network</a></li>
         <li><a href="https://en.wikipedia.org/wiki/2025_Potomac_River_mid-air_collision">2025 Potomac River mid-air collision [Wikipedia]</a></li>
+        <li><a href="https://www.ntsb.gov/investigations/Pages/DCA25MA108.aspx">NTSB Jan. 27, 2026 Board Meeting Presentations [NTSB]</a> Includes the findings, probable cause and final recommendations.</li>
     </ol>
     <p><b>My condolences to all the people affected by this accident, in particular to the friends and families of the victims.</b></p>
 """
@@ -144,6 +145,9 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
     LC_WORDS_MAP = {
         'adsbin': 'ADSB In',
 
+        'accountability': 'Accountability/Liability',
+        'liability': 'Accountability/Liability',
+
         'blackhawk': 'Blackhawk (H-60)',
         'h60': 'Blackhawk (H-60)',
         'uh60': 'Blackhawk (H-60)',
@@ -153,6 +157,10 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
         'faas': 'FAA',
 
         'antidei': 'DEI',
+
+        'findings': 'Findings',
+
+        'docket': 'NTSB Docket',
 
         'homendy': 'NTSB Chair Jennifer Homendy',
 
@@ -225,6 +233,12 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
 
             ('black', 'hawk'): 'Blackhawk (H-60)',
 
+            ('barometric', 'altimeter'): 'Barometric Altimeter',
+
+            ('route', 'altitude'): 'Route Altitude',
+
+            ('hot', 'spots'): 'Hot Spots',
+
             ('circle', 'land',): 'Circle to Land (Deviate to RWY 33)',
             ('circling', 'approach',): 'Circle to Land (Deviate to RWY 33)',
 
@@ -247,7 +261,12 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
 
             ('preliminary', 'report'): 'Preliminary Report',
 
+            ('final', 'report'): 'Final Report',
+
             ('relative', 'bearing'): 'Relative Bearing',
+
+            ('probable', 'cause'): 'Probable Cause',
+            ('safety', 'recommendations'): 'Safety Recommendations',
 
             ('skating', 'team'): 'Skating Team (Victims)',
             ('figure', 'skating'): 'Skating Team (Victims)',
@@ -270,6 +289,8 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
             ('deviate', 'rwy', '33'): 'Circle to Land (Deviate to RWY 33)',
 
             ('PAT25', 'pass', 'behind'): 'Pass Behind (PAT25)',
+
+            ('helicopter', 'working', 'group'): 'Helicopter Working Group',
         },
         4: {
             ('PAT', '25', 'pass', 'behind'): 'Pass Behind (PAT25)',

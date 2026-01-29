@@ -1,6 +1,14 @@
 History
 =======
 
+Alpha Release (AA5342 thread to: January 29, 2026, 00:17:00 GMT)
+----------------------------------------------------------------
+
+- Build threads up to January 29, 2026, 00:17:00 GMT (built on January 29, 2026, 11:49:24).
+- "Likes" are available on the currently open thread.
+- Added link to NTSB findings, probable cause and final recommendations.
+- Added subjects: 'Accountability/Liability', 'Findings', 'NTSB Docket', 'Barometric Altimeter', 'Route Altitude', 'Hot Spots', 'Final Report', 'Probable Cause', 'Safety Recommendations', 'Helicopter Working Group'.
+
 Alpha Release (AA5342 thread to: December 18, 2025, 08:59:00 GMT)
 -----------------------------------------------------------------
 
