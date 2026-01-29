@@ -445,56 +445,6 @@ And all the rest:
     user	0m0.176s
     sys	0m0.356s
 
---------------------------------------------
-AA5342
---------------------------------------------
-
-`https://en.wikipedia.org/wiki/2025_Potomac_River_mid-air_collision <https://en.wikipedia.org/wiki/2025_Potomac_River_mid-air_collision>`_
-
-Original threads:
-
-1. https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca.html
-
-The result is here:
-`https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html <https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html>`_
-
-Pulling Down the Thread(s)
---------------------------
-
-.. code-block:: shell
-
-    $ cd threads/AA5342_A
-    $ curl https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca.html -o "663888-aa5342-down-dca.html"
-    $ grep "Last Page" 663888-aa5342-down-dca.html
-
-This gives:
-
-.. code-block:: shell
-
-    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-90.html" title="Last Page - Results 1,781 to 1,791 of 1,791">Last <i class="fa-solid fa-angles-right"></i></a></li>
-
-So the last page is ``663888-aa5342-down-dca-91.html``
-
-And all the rest:
-
-.. code-block:: shell
-
-    $ time curl https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-\[2-91\].html -o "663888-aa5342-down-dca-#1.html"
-    ...
-    real	0m35.544s
-    user	0m0.176s
-    sys	0m0.356s
-
-Running the Build
----------------------------
-
-
-.. code-block:: shell
-
-    python src/pprune/main.py --thread-name=AA5342 --output=tmp/AA5342_B_A threads/AA5342_B --include-no-subjects --include-inline-images
-
-
---------------------------
 Running the Build
 --------------------------
 
@@ -543,3 +493,53 @@ If the ``--output`` directory is provided the result will be written there (advi
     2025-06-24 11:51:05,485 -            write_html.py#381  - INFO     - Writing thread done in 5.747 (s)
     2025-06-24 11:51:05,486 -                  main.py#135  - INFO     - Processed 2832 posts in 25.110 (s)
     Bye, bye!
+
+--------------------------------------------
+AA5342
+--------------------------------------------
+
+`https://en.wikipedia.org/wiki/2025_Potomac_River_mid-air_collision <https://en.wikipedia.org/wiki/2025_Potomac_River_mid-air_collision>`_
+
+Original threads:
+
+1. https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca.html
+
+The result is here:
+`https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html <https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html>`_
+
+Pulling Down the Thread(s)
+--------------------------
+
+.. code-block:: shell
+
+    $ cd threads/AA5342_A
+    $ curl https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca.html -o "663888-aa5342-down-dca.html"
+    $ grep "Last Page" 663888-aa5342-down-dca.html
+
+This gives:
+
+.. code-block:: shell
+
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-93.html" title="Last Page - Results 1,781 to 1,791 of 1,791">Last <i class="fa-solid fa-angles-right"></i></a></li>
+
+So the last page is ``663888-aa5342-down-dca-93.html``
+
+And all the rest:
+
+.. code-block:: shell
+
+    $ time curl https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-\[2-93\].html -o "663888-aa5342-down-dca-#1.html"
+    ...
+    real	0m35.544s
+    user	0m0.176s
+    sys	0m0.356s
+
+Running the Build
+---------------------------
+
+
+.. code-block:: shell
+
+    python src/pprune/main.py --thread-name=AA5342 --output=tmp/AA5342_B_A threads/AA5342_B --include-no-subjects --include-inline-images
+
+

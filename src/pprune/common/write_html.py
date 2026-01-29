@@ -653,7 +653,7 @@ def write_index_post_date_histogram(
         year_month_max = max(post_count.keys())
         year = year_month_min[0]
         month = year_month_min[1]
-        while year <= year_month_max[0] and month <= year_month_max[1]:
+        while (year, month) <= year_month_max:
             if publication_map.include_empty_post_dates_in_histogram() or post_count[(year, month)]:
                 dt = datetime.date(year, month, 1)
                 table.append((dt.strftime('%B, %Y'), post_count[(year, month)]))
