@@ -1,0 +1,930 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir=ltr lang=en xmlns=http://www.w3.org/1999/xhtml><head><meta content="pprune AI171" name=keywords></meta>
+<link href=styles.css rel=stylesheet type=text/css></link>
+<title>AI171 Page: 5 of 5</title>
+</head>
+<body><span id=AI171_5></span>
+<h1>Posts about: "AI171" [Posts: 94 Page: 5 of 5]<a class=headerlink href="#AI171_5" title="Link to this heading">¶</a>
+</h1>
+<p class=page_links>Page Links:&nbsp;<a href=AI1710.html>First</a>
+&nbsp;<a href=AI1713.html>Previous</a>
+&nbsp;<a href=AI1710.html>1</a>
+&nbsp;<a href=AI1711.html>2</a>
+&nbsp;<a href=AI1712.html>3</a>
+&nbsp;<a href=AI1713.html>4</a>
+&nbsp;<a href=AI1714.html><b>5</b>
+</a>
+&nbsp;<a href=AI1714.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+<table class=posts><tr id=12010138 valign=top><td class=post><a href=https://www.pprune.org/members/302264-vicmel>VicMel</a>
+<br/>December 23, 2025, 21:15:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-79.html#post12010138><br/>permalink</a>
+ Post: 12010138</td>
+<td class=post><div class="tcell alt1" id="td_post_12010138">
+ <!-- message -->
+ <div id="post_message_12010138">
+  A week ago the BBC reported that 2025 was the sunniest year for the UK since records began; back in August I was diagnosed with a small spot of non-aggressive skin cancer, it is probably not a coincidence! This led me to think - could the Air India 171 crash be due to solar radiation? I searched the preliminary report and (disappointingly) found no reference to it, so I dug a bit deeper, as you do. According to Airbus, data corruption due to radiation was the underlying cause of the incident on A320 flight 1230, but fortuitously had a very different outcome to the Boeing 787 on flight AI 171.
+  <br/>
+  <br/>
+  However, comparing the two incidents some interesting common factors come out:-
+  <br/>
+  <br/>
+  1. Both incidents were at similar latitudes, the Boeing 787 was near Ahmedabad, which is at 23 deg N; the A320 was near Tampa, which is about 28 deg N. The Tropic of Cancer is at 23.4 deg N, where the sun will be directly overhead on June 21st. The significance of this is that the Boeing 787 is more likely to suffer data corruption due to solar radiation on 12th June, than the A320 on 30th October.
+  <br/>
+  <br/>
+  2. Both incidents were at a similar time of day, a few hours after local noon
+  <br/>
+  <br/>
+  3. Airbus seem to have good evidence that the flight 1230 incident was caused by a solar flare corruption. From the BBC /news/live/cvg4y6g74ert:- "
+  <i>
+   It&rsquo;s thought the incident was caused by interference from intense solar radiation, which corrupted data in a computer which controls the aircraft's elevation
+  </i>
+  ". Airbus identified the problem that was the cause of the uncommanded change to flight control and rapidly come up with a solution which only required reverting back to an earlier software issue, i.e. they already had software that could cope with such data corruption.
+  <br/>
+  <br/>
+  4. Boeing have not identified any aircraft fault as the cause of the 787 crash. And sadly, as has happened before, the air-crew are being looked upon as possible scapegoats. Airbus have identified solar radiation as having caused data corruption, it would seem to be highly plausible that Air India 171, with higher intensity of solar radiation, could well have suffered such data corruption.
+  <br/>
+  <br/>
+  5. The different end results are consistent with data corruption, but within different systems on the two aircraft.
+  <br/>
+  <br/>
+  It would be interesting to see if any other aircraft's 'uncommanded' events happened when the aircraft was in the tropics, at around noon. A possible candidate is the Boeing 777, flight SIA321 on 21.5.2024. From wiki 'Singapore_Airlines_Flight_321':-
+  <br/>
+  <br/>
+  <i>
+   At 07:49:40 UTC the aircraft experienced a drop in vertical acceleration from +1.35G to -1.5G within 0.6 seconds, which likely caused unrestrained passengers to become airborne. At 07:49:41 UTC the vertical acceleration changed from -1.5G to +1.5G in 4 seconds, which would have caused airborne occupants to fall
+  </i>
+  . The aircraft would have been flying over Myanmar, at a latitude of about 16.5 deg N; the local time for 07:50 UTC would be 14:20, close to local midday. This means the Sun would have been high in the sky and so radiation intensity would be very high.
+  <br/>
+  <br/>
+  Over the years I have worked on the software for several aircraft systems, starting in 1971 as a Software Engineer on Tornado and ending in 2009 as a Software Safety Assessor on Typhoon, including projects on Harrier, A320 and ESA's ISS, where solar corruption is taken very seriously. I would expect ELAC software to be cyclic, running at about 50Hz, with data smoothing software to remove spikes. A random memory corruption could cause a spike in a critical parameter (such as 'Last Value of Elevator Angle' ), leading to a large spike in elevator demand angle. This would explain the data from the SIA321 incident, where there is an initial rapid change to vertical acceleration in 0.6 secs (smoothing bypassed), followed by the pilots' smoothed recovery in 4 secs.
+  <br/>
+  <br/>
+  In contrast, on flight AI171 I would expect the software that determines and sets the true/false state of WoW in RAM (probably the Landing Gear System) would only be active at take-off and touch-down, or perhaps only when the landing gear doors are open. However, if the state of WoW is corrupted outside of this period and goes from 'false' to 'true' (a "bit flip"), WoW status will stay at 'true' until the aircraft lands again. As there is a serious aircraft safety hazard with high engine power whilst on the ground, the thrust-control malfunction accommodation (TCMA) system will reduce power to just enough for Taxiing. If this is what happened on AI771, it is most likely that no matter what the aircrew did, they would not be able to get the engine power back up because WoW would be stuck at 'true' and TCMA would hold it down.
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12010138>AI171</a>
+&nbsp;<a href=BBC1.html#12010138>BBC</a>
+&nbsp;<a href=Preliminary_Report14.html#12010138>Preliminary Report</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+1 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12010138>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12010158 valign=top><td class=post><a href=https://www.pprune.org/members/150561-pilot-dar>Pilot DAR</a>
+<br/>December 23, 2025, 22:27:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-80.html#post12010158><br/>permalink</a>
+ Post: 12010158</td>
+<td class=post><div class="tcell alt1" id="td_post_12010158">
+ <!-- message -->
+ <div id="post_message_12010158">
+  Let's recall what the AI-171 preliminary accident report said:
+  <br>
+   <br>
+    <div style="margin:1rem; margin-top:0.3rem;">
+     <div>
+      <label>
+       Quote:
+      </label>
+     </div>
+     <div class="panel alt2" style="border:1px inset">
+      .....the Engine 1 and Engine 2 fuel cutoff switches transitioned from RUN to CUTOFF position one after another with a time gap of 01 sec.
+     </div>
+    </div>
+    That's caused by a person's hand, not a bit flip affecting a circuit board. Other automated actions (RAT deployment) after that seemed to operate as intended. Sure, bit flips are a thing, but not this thing...
+    <br>
+     <br>
+     </br>
+    </br>
+   </br>
+  </br>
+ </div>
+ <!-- / message -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12010158>AI171</a>
+&nbsp;<a href=Fuel_-All-52.html#12010158>Fuel (All)</a>
+&nbsp;<a href=Fuel_Cutoff15.html#12010158>Fuel Cutoff</a>
+&nbsp;<a href=Fuel_Cutoff_Switches41.html#12010158>Fuel Cutoff Switches</a>
+&nbsp;<a href=RAT_-All-34.html#12010158>RAT (All)</a>
+&nbsp;<a href=RAT_-Deployment-19.html#12010158>RAT (Deployment)</a>
+&nbsp;<a href=RUN-CUTOFF9.html#12010158>RUN/CUTOFF</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+9 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12010158>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12010314 valign=top><td class=post><a href=https://www.pprune.org/members/288524-aakee>AAKEE</a>
+<br/>December 24, 2025, 10:07:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-80.html#post12010314><br/>permalink</a>
+ Post: 12010314</td>
+<td class=post><div class="tcell alt1" id="td_post_12010314">
+ <!-- message -->
+ <div id="post_message_12010314">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Pilot DAR
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12010158" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Let's recall what the AI-171 preliminary accident report said:
+     <br/>
+     <br/>
+     <br/>
+     <br/>
+     That's caused by a person's hand, not a bit flip affecting a circuit board. Other automated actions (RAT deployment) after that seemed to operate as intended. Sure, bit flips are a thing, but not this thing...
+    </div>
+   </div>
+  </div>
+  Decision making a bit flipped before the hand made the moves, maybe.
+  <br/>
+ </div>
+ <!-- / message -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12010314>AI171</a>
+&nbsp;<a href=RAT_-All-34.html#12010314>RAT (All)</a>
+&nbsp;<a href=RAT_-Deployment-19.html#12010314>RAT (Deployment)</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+No recorded likes for this post (could be before pprune supported 'likes').<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12010314>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12025318 valign=top><td class=post><a href=https://www.pprune.org/members/44119-b2n2>B2N2</a>
+<br/>January 22, 2026, 18:10:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-80.html#post12025318><br/>permalink</a>
+ Post: 12025318</td>
+<td class=post><div class="tcell alt1" id="td_post_12025318">
+ <!-- message -->
+ <div id="post_message_12025318">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <span style="color:#000000">
+     A whistleblower report submitted to the US Senate Permanent Subcommittee on Investigations (PSI) shows that the Air India Boeing 787-8 AI-171, which crashed 32 seconds after take-off on June 12, 2025, killing 260 people, had a long history of electrical and computing system faults, including a major electrical fire in 2022 and subsequent replacements of core system components.
+    </span>
+   </div>
+  </div>
+  The report is here:
+  <br/>
+  <a href="https://avherald.com/files/Senate%20PSI%20Presentation%20-%20Jan%2012,%202026.pdf" target="_blank">
+   https://avherald.com/files/Senate%20...12,%202026.pdf
+  </a>
+  <br/>
+  <br/>
+  Source:
+  <br/>
+  <a href="https://www.freepressjournal.in/india/ai-171-crash-us-senate-whistleblower-report-flags-long-history-of-electrical-faults-in-air-india-boeing-787" target="_blank">
+   https://www.freepressjournal.in/indi...dia-boeing-787
+  </a>
+ </div>
+ <!-- / message -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12025318>AI171</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+No recorded likes for this post (could be before pprune supported 'likes').<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12025318>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12025513 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
+<br/>January 23, 2026, 02:00:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-80.html#post12025513><br/>permalink</a>
+ Post: 12025513</td>
+<td class=post><div class="tcell alt1" id="td_post_12025513">
+ <!-- message -->
+ <div id="post_message_12025513">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      tdracer
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12025503" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I thought we were discussing the Air India crash - not something that happened 15 years earlier during flight testing.
+     <br/>
+     There is a reason they flight test new aircraft - to find problems like that.
+     <br/>
+     Anyway, what's the relevance to Air India? It didn't lose power until the engines were shutdown...
+    </div>
+   </div>
+  </div>
+  The relevance is that the Foundation for Aviation Safety (FAS) is pushing the narrative that the accident was caused by an electrical fault, and not by a human moving the switch, because that is what they want to believe.
+  <br/>
+  <br/>
+  The problem is that that's not where the known evidence leads (as we know), and that "whistleblower" doesn't change that.
+  <br/>
+  They're trying to portray the 787 as a fault-ridden aircraft that ought to not be allowed to fly, in spite of its long track record of flying safely (once the battery issues were solved). It's kind of like the people shouting "the vaccine is going to kill us all", despite a marked absence of dead bodies at scale 4 years later.
+  <br/>
+  For that end, they're avoiding putting their facts in any kind of context, and instead peddle big numbers, "secrets", and an implied coverup, but there's no hard evidence for any of it (I don't think we get to see these 2000+ reports?).
+  <br/>
+  <br/>
+  So the evidence of the FDR must be wrong&mdash;otherwise their narrative doesn't work.
+  <br/>
+  Why is it wrong? "Electrical problems", meaning "magic".
+  <br/>
+  If you believe in magic, where a
+  <i>
+   fault ex machina
+  </i>
+  just so happens to achieve what you need it to achieve, as if reality was a cheesy Hollywood production, then the AI171 crashed all by itself.
+  <br/>
+  <br/>
+  Those of us who don't believe in electrical magic follow the evidence instead.
+ </div>
+ <!-- / message -->
+ <aside class="text-center" style="">
+  <!-- Beginning Async AdSlot 4 for Ad units. Size: [[300x250]] -->
+  <!-- To refresh use: googletag.pubads().refresh([gptadslots[4]]) -->
+  <div class="am-adslot" data-adtext="" id="gpt-adslot-4" style="position: relative; min-height: 250px;">
+   <script>
+    googletag.cmd.push(function() {
+					if (window.googletag && googletag.apiReady) {
+						
+						
+						
+				// this is a new code for OpenWrap
+				var initAdDisplay = function() {
+						googletag.display('gpt-adslot-4');
+						googletag.pubads().refresh([gptadslots[4]],{changeCorrelator: false});
+						console.log('Requested ad unit 4');
+						
+				}
+				if (typeof PWT.requestBids === 'function') {
+					PWT.requestBids(PWT.generateConfForGPT([gptadslots[4]]
+				), function (adUnitsArray) {
+						PWT.addKeyValuePairsToGPTSlots(adUnitsArray);
+						initAdDisplay();
+					});
+				}
+				else {
+					initAdDisplay();
+				}
+			
+					}
+				});
+   </script>
+  </div>
+  <!-- End AdSlot 4 -->
+ </aside>
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12025513>AI171</a>
+&nbsp;<a href=Electrical_Failure6.html#12025513>Electrical Failure</a>
+&nbsp;<a href=FDR9.html#12025513>FDR</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+6 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12025513>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12030849 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
+<br/>February 01, 2026, 22:18:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-83.html#post12030849><br/>permalink</a>
+ Post: 12030849</td>
+<td class=post><div class="tcell alt1" id="td_post_12030849">
+ <!-- message -->
+ <div id="post_message_12030849">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      nikplane
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12030813" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <b>
+      Hello everyone.
+     </b>
+     <br/>
+     There's this rumor and/or question going around:
+     <br/>
+     Someone was promoting the idea that a diode failure in the backup battery had disabled the battery and both buses.
+     <br/>
+     He claimed that the FDR inputs from the switch sensors were coming from opto-isolators, and since they had lost power, they showed the switches going into the open state until power returned from the RAT.
+     <br/>
+     For this theory to be valid, a single diode failure would have had to disable the entire aircraft.
+     <br/>
+     <br/>
+     <b>
+      Please,
+     </b>
+     <br/>
+     - just comments on technical aspects?
+     <br/>
+     - It's unclear this refers to the forward EAFR backup battery or
+     <br/>
+     the Hot Battery Bus (Hot BB).
+     <br/>
+     <br/>
+     Thanks
+    </div>
+   </div>
+  </div>
+  The engines have their own power supply, separate connections to the cutoff switches and thrust lever angle resolvers, and would be unaffected in this scenario.
+  <br/>
+  <br/>
+  Notwithstanding the fact that this failure mode is also technically implausible/impossible. Here's a 787 that landed with the battery on fire:
+  <br/>
+  <a href="https://skybrary.aero/accidents-and-incidents/b788-en-route-shikoku-island-japan-2013" target="_blank">
+   https://skybrary.aero/accidents-and-...and-japan-2013
+  </a>
+  <div style="margin-left: 40px;">
+   <i>
+    On 16 January 2013, a Boeing 787-8 (JA804A) being operated by All Nippon Airways (ANA) on a scheduled passenger flight from Yamaguchi-Ube to Tokyo Haneda in day Visual Meteorological Conditions (VMC) made an emergency diversion to Takamatsu after a main battery failure was annunciated climbing through FL320.
+   </i>
+   <br/>
+  </div>
+  .
+  <br/>
+  The original perpetrator of this idea is Jeremy John Thompson, with a Youtube video titled "How Air India AI171 B787 crashed - Lithium Battery Diode Module Failure" positing that the battery diode module failed, the battery overcharged and short-circuited, and disaster ensued. This was half a year ago.
+ </div>
+ <!-- / message -->
+ <!-- edit note -->
+ <div class="smallfont">
+  <hr/>
+  <em>
+   Last edited by Musician; 1st February 2026 at
+   <span class="time">
+    22:41
+   </span>
+   .
+  </em>
+ </div>
+ <!-- / edit note -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12030849>AI171</a>
+&nbsp;<a href=EAFR8.html#12030849>EAFR</a>
+&nbsp;<a href=FDR10.html#12030849>FDR</a>
+&nbsp;<a href=Fuel_-All-53.html#12030849>Fuel (All)</a>
+&nbsp;<a href=Fuel_Cutoff_Switches42.html#12030849>Fuel Cutoff Switches</a>
+&nbsp;<a href=RAT_-All-34.html#12030849>RAT (All)</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+2 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12030849>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12030970 valign=top><td class=post><a href=https://www.pprune.org/members/101384-cv880>CV880</a>
+<br/>February 02, 2026, 08:32:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-83.html#post12030970><br/>permalink</a>
+ Post: 12030970</td>
+<td class=post><div class="tcell alt1" id="td_post_12030970">
+ <!-- message -->
+ <div id="post_message_12030970">
+  I came across one of Jeremy John Thompson's videos a couple of days ago and a quick glance at his channel reveals about 17 videos on AI171 and 787 systems. Talk about being obsessed!
+ </div>
+ <!-- / message -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12030970>AI171</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+2 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12030970>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12030995 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
+<br/>February 02, 2026, 09:50:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-83.html#post12030995><br/>permalink</a>
+ Post: 12030995</td>
+<td class=post><div class="tcell alt1" id="td_post_12030995">
+ <!-- message -->
+ <div id="post_message_12030995">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      CV880
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12030970" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I came across one of Jeremy John Thompson's videos a couple of days ago and a quick glance at his channel reveals about 17 videos on AI171 and 787 systems. Talk about being obsessed!
+    </div>
+   </div>
+  </div>
+  The 18th video is him getting angry at AVHerald commenters calling him out. He says, "[1:11] You don't have access to the data. When we get the data, you'll see that I'm correct because it's impossible to be incorrect."
+  <img alt="" border="0" class="inlineimg" src="https://www.pprune.org/images/smilies2/eusa_wall.gif" title="Ugh"/>
+ </div>
+ <!-- / message -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12030995>AI171</a>
+&nbsp;<a href=AvHerald0.html#12030995>AvHerald</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+2 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12030995>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12031171 valign=top><td class=post><a href=https://www.pprune.org/members/558826-justusw>JustusW</a>
+<br/>February 02, 2026, 16:20:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-84.html#post12031171><br/>permalink</a>
+ Post: 12031171</td>
+<td class=post><div class="tcell alt1" id="td_post_12031171">
+ <!-- message -->
+ <div id="post_message_12031171">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Den2020
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12031149" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <span style="color:#000000">
+      The foundation stated when asked why the aircraft departed nonetheless: "The issue is, there is no guidance." ... unbelievable
+     </span>
+    </div>
+   </div>
+  </div>
+  Christ almighty... When I was quipping about the MEL I didn't actually expect a pilot to take off with a faulty item very very very definitely not on it...
+  <br/>
+  <br/>
+  So much for the quality of this "Safety Matters Foundation". There is guidance. If it's broke and it's not exempt your aircraft is grounded. Considering this happened AFTER the incident discussed in this thread it almost makes me reconsider the accidental double switch movement theory... They might never have swapped the switches as per the original directive, and it might just have been common practice to mash dem buttons until they "stuck".
+  <br/>
+  How do you fly an Air India plane post AI171 and do that if it's not widely employed common practice?
+  <br/>
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Andy_S
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12031160" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     It should not be physically possible for the switch to behave in the way described. As someone said earlier, I smell a rat.....
+    </div>
+   </div>
+  </div>
+  I mean, now it almost makes more sense. Air India might just routinely be flying with deformed or misaligned detents on their fuel cutoff switches.
+  <br/>
+  This is beginning to sound like the least insane explanation...
+ </div>
+ <!-- / message -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12031171>AI171</a>
+&nbsp;<a href=Fuel_-All-53.html#12031171>Fuel (All)</a>
+&nbsp;<a href=Fuel_Cutoff15.html#12031171>Fuel Cutoff</a>
+&nbsp;<a href=Fuel_Cutoff_Switches43.html#12031171>Fuel Cutoff Switches</a>
+&nbsp;<a href=Fuel_Cutoff_Switches_-detent-2.html#12031171>Fuel Cutoff Switches (detent)</a>
+&nbsp;<a href=MEL1.html#12031171>MEL</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+4 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12031171>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12031473 valign=top><td class=post><a href=https://www.pprune.org/members/9556-magplug>Magplug</a>
+<br/>February 03, 2026, 09:41:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-85.html#post12031473><br/>permalink</a>
+ Post: 12031473</td>
+<td class=post><div class="tcell alt1" id="td_post_12031473">
+ <!-- message -->
+ <div id="post_message_12031473">
+  I don't know of a professional pilot in his right mind that would have continued the flight having experienced the (alleged) issue with the start switches, and the calmly continued.  Had the crew returned to stand and brought the issue to their (impartial) third-party UK engineers it would have added quite a lot of weight to AI's assertion that there was a wider problem with this aircraft. Instead they elected to continue to BLR where they dropped this bombshell in the tech-log.
+  <br/>
+  <br/>
+  Sorry, I don't have that much faith in coincidences. This was a clumsy and rather transparent attempt to discredit the 787, further muddying the waters of the AI171 investigation and shifting blame away from Air India.
+ </div>
+ <!-- / message -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12031473>AI171</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+7 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12031473>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12031596 valign=top><td class=post><a href=https://www.pprune.org/members/561657-ver5pen>Ver5pen</a>
+<br/>February 03, 2026, 13:37:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-85.html#post12031596><br/>permalink</a>
+ Post: 12031596</td>
+<td class=post><div class="tcell alt1" id="td_post_12031596">
+ <!-- message -->
+ <div id="post_message_12031596">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Magplug
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12031473" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I don't know of a professional pilot in his right mind that would have continued the flight having experienced the (alleged) issue with the start switches, and the calmly continued. Had the crew returned to stand and brought the issue to their (impartial) third-party UK engineers it would have added quite a lot of weight to AI's assertion that there was a wider problem with this aircraft. Instead they elected to continue to BLR where they dropped this bombshell in the tech-log.
+     <br/>
+     <br/>
+     Sorry, I don't have that much faith in coincidences. This was a clumsy and rather transparent attempt to discredit the 787, further muddying the waters of the AI171 investigation and shifting blame away from Air India.
+    </div>
+   </div>
+  </div>
+  <div id="ame_noshow_post_1770125869_1" style="display: none;">
+   <a href="https://x.com/ari_maj/status/2018651774731862355?s=46" target="_blank" title="X - Formerly Twitter">
+    X - Formerly Twitter
+   </a>
+  </div>
+  <div id="ame_doshow_post_1770125869_1">
+   <div id="tweet_ame_1770125869_1_2018651774731862355">
+   </div>
+   <script>
+    (function(jQ){jQ.ajax({url:"https://api.x.com/1/statuses/oembed.json?id=2018651774731862355",dataType:"jsonp",async:true,success:function(data){jQ("#tweet_ame_1770125869_1_2018651774731862355").html(data.html)}});})(jQuery);
+   </script>
+  </div>
+  <br/>
+  On the third attempt the switch seated correctly and remained there
+  <br/>
+  <br/>
+  Are you saying air india pilots are fabricating these things now? That\x92s quite the claim
+  <br/>
+  <br/>
+  So the Indians are spreading conspiracy theories by pointing fingers at Boeing but what exactly is this you are suggesting? Good faith fact based analysis? This is almost wilder than anything I\x92ve heard from the most rabid Indian media report
+ </div>
+ <!-- / message -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12031596>AI171</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+2 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12031596>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12031656 valign=top><td class=post><a href=https://www.pprune.org/members/471752-musician>Musician</a>
+<br/>February 03, 2026, 14:45:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-86.html#post12031656><br/>permalink</a>
+ Post: 12031656</td>
+<td class=post><div class="tcell alt1" id="td_post_12031656">
+ <!-- message -->
+ <div id="post_message_12031656">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Pilot DAR
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12031636" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     Both of these topics relate to the switch(es) in the 787, but I think that the similarity ends there.
+    </div>
+   </div>
+  </div>
+  We already have several threads on AI171 issues (at least one of them in
+  <i>
+   Tech Log
+  </i>
+  ), so moving this discussion to its own thread seems unproblematic.
+  <br>
+   <br>
+    The significance of this new finding is that it makes accidental movement more likely. We already know about the incident where a sun visor fell and moved the switch. We are learning now that the mechanism of "pull up, then move the switch" can be circumvented, and that the switch can be moved by a single application of force. It appears that the engineers were able to reproduce this behaviour, so it's no longer just that crew's word.
+    <br>
+     <br>
+      So while on VT-ANB both switches moved at the same time, and that is unlikely to happen by itself, it now appears possible that an external force such as a loose object or an inadvertant pilot motion could have moved both switches. At least, this requires further study to narrow down the conditions for it, and to check whether these conditions were present on the accident flight.
+     </br>
+    </br>
+   </br>
+  </br>
+ </div>
+ <!-- / message -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12031656>AI171</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+3 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12031656>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12031660 valign=top><td class=post><a href=https://www.pprune.org/members/561657-ver5pen>Ver5pen</a>
+<br/>February 03, 2026, 14:52:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-86.html#post12031660><br/>permalink</a>
+ Post: 12031660</td>
+<td class=post><div class="tcell alt1" id="td_post_12031660">
+ <!-- message -->
+ <div id="post_message_12031660">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Musician
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12031656" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     We already have several threads on AI171 issues (at least one of them in
+     <i>
+      Tech Log
+     </i>
+     ), so moving this discussion to its own thread seems unproblematic.
+     <br>
+      <br/>
+      The significance of this new finding is that it makes accidental movement more likely. We already know about the incident where a sun visor fell and moved the switch. We are learning now that the mechanism of "pull up, then move the switch" can be circumvented, and that the switch can be moved by a single application of force. It appears that the engineers were able to reproduce this behaviour, so it's no longer just that crew's word.
+      <br/>
+      <br/>
+      So while on VT-ANB both switches moved at the same time, and that is unlikely to happen by itself, it now appears possible that an external force such as a loose object or an inadvertant pilot motion could have moved both switches. At least, this requires further study to narrow down the conditions for it, and to check whether these conditions were present on the accident flight.
+     </br>
+    </div>
+   </div>
+  </div>
+  indeed. This is what I am taking from this
+  <br/>
+  <br/>
+  all of the noise about these switches being foolproof and above suspicion hence it could only have been deliberate action
+  <br/>
+  <br/>
+  yet many airlines have suffered inadvertent engine shutdowns because of accidental manipulation of fuel cut off switches/engine masters in
+  <br/>
+  <br/>
+  and these specific switches on the identical fleet in the same airline, it\x92s certainly a noteworthy revelation
+  <br/>
+  <br/>
+  dismissing this as professional crews trying to cover up for their colleagues or some other highly absurd slanderous accusation I would\x92ve hoped was beneath PPRUNE, but of course only Indians/foreigners are to be doubted, everyone else are professionals who only ever act with integrity. We\x92ve never seen western/American OEMs or regulators falling short on this absolutely not.
+ </div>
+ <!-- / message -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12031660>AI171</a>
+&nbsp;<a href=Fuel_-All-54.html#12031660>Fuel (All)</a>
+&nbsp;<a href=Fuel_Cutoff16.html#12031660>Fuel Cutoff</a>
+&nbsp;<a href=Fuel_Cutoff_Switches44.html#12031660>Fuel Cutoff Switches</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+4 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12031660>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+<tr id=12031687 valign=top><td class=post><a href=https://www.pprune.org/members/307224-lonewolf_50>Lonewolf_50</a>
+<br/>February 03, 2026, 15:31:00 GMT<a href=https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-86.html#post12031687><br/>permalink</a>
+ Post: 12031687</td>
+<td class=post><div class="tcell alt1" id="td_post_12031687">
+ <!-- message -->
+ <div id="post_message_12031687">
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      TURIN
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12031381" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     But yes, the fact it only left 14 minutes late suggests they did nothing about a fault that could potentially cause an engine to shut down.
+     <br/>
+     <br/>
+     Unbelievable!
+     <br/>
+     What a shoddy outfit.
+    </div>
+   </div>
+  </div>
+  One more vote for "It's a corporate culture thing." Let's think about what this implies about the pilots who wrote it up. Their company had a fatal accident that involved moving that switch within the last year. All aircrews are certainly going to pay attention to that switch, right? Right? And if it doesn't work properly, they will alert maintenance. Right? Right?
+  <br/>
+  This smells of fish.
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      nikplane
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12031405" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     <b>
+      -
+     </b>
+     <br/>
+     <b>
+      The checks have to be completed by Jul 21 2025
+     </b>
+     .
+    </div>
+   </div>
+  </div>
+  Well they (probably) did fill out the paperwork, but did they make sure that the switches worked? Did they replace any that needed replacing? A few months back I offered a thought that the full investigation may uncover some unknown details about aircraft maintenance at Air India.
+  <br/>
+  Is this slowly coming to light as a result of the investigation?
+  <br/>
+  <div style="margin:1rem; margin-top:0.3rem;">
+   <div>
+    <label>
+     Quote:
+    </label>
+   </div>
+   <div class="panel alt2" style="border:1px inset">
+    <div>
+     Originally Posted by
+     <strong>
+      Magplug
+     </strong>
+     <a href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html#post12031473" rel="nofollow" title="View Post">
+      <i class="fa-solid fa-circle-arrow-right">
+      </i>
+     </a>
+    </div>
+    <div style="font-style:italic">
+     I don't know of a professional pilot in his right mind that would have continued the flight having experienced the (alleged) issue with the start switches, and the calmly continued. Had the crew returned to stand and brought the issue to their (impartial) third-party UK engineers it would have added quite a lot of weight to AI's assertion that there was a wider problem with this aircraft. Instead they elected to continue to BLR where they dropped this bombshell in the tech-log.
+     <br/>
+     <br/>
+     Sorry, I don't have that much faith in coincidences. This was a clumsy and rather transparent attempt to discredit the 787, further muddying the waters of the AI171 investigation and shifting blame away from Air India.
+    </div>
+   </div>
+  </div>
+  Seconded.
+  <br/>
+  <br/>
+  <a href="https://www.pprune.org/members/561657-ver5pen" target="_blank">
+   Ver5pen
+  </a>
+  , strongly suggest that you review the context (via the CVR summary, not transcript) from the accident aircraft's interim report. You are deliberately removing the context and timings of that event in your attempt to throw up a smoke screen. Not well played given that the type, model and series differences have been discussed
+  <i>
+   as nauseum
+  </i>
+  , and more to the point...Air India has had most of a year to take a good look at all of their switches in all of their cockpits and replace any found to be defective.
+  <br/>
+  <br/>
+  And was that done? If not, Why Not?
+ </div>
+ <!-- / message -->
+</div>
+<hr style=width:50%;color:red;text-align:left;margin-left:0></hr>
+<p><b>Subjects</b>
+<a href=AI1714.html#12031687>AI171</a>
+&nbsp;<a href=CVR13.html#12031687>CVR</a>
+<br></br>
+Links are to this post in the relevant subject page so that this post can be seen in context.</p>
+1 recorded likes for this post.<p><a href=https://www.pprune.org/newreply.php?do=newreply&p=12031687>Reply to this quoting this original post.</a>
+You need to be logged in. Not available on closed threads.</p>
+</td>
+</tr>
+</table>
+<p class=page_links>Page Links:&nbsp;<a href=AI1710.html>First</a>
+&nbsp;<a href=AI1713.html>Previous</a>
+&nbsp;<a href=AI1710.html>1</a>
+&nbsp;<a href=AI1711.html>2</a>
+&nbsp;<a href=AI1712.html>3</a>
+&nbsp;<a href=AI1713.html>4</a>
+&nbsp;<a href=AI1714.html><b>5</b>
+</a>
+&nbsp;<a href=AI1714.html>Last</a>
+&nbsp;<a href=index.html>Index Page</a>
+</p>
+</body>
+</html>
