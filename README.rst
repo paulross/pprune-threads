@@ -379,9 +379,9 @@ This gives:
 
 .. code-block:: shell
 
-    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-87.html?ispreloading=1" title="Last Page - Results 1,721 to 1,729 of 1,729">Last <i class="fas fa-angle-double-right"></i></a></li>
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/666472-plane-crash-near-ahmedabad-86.html?ispreloading=1" title="Last Page - Results 1,721 to 1,729 of 1,729">Last <i class="fas fa-angle-double-right"></i></a></li>
 
-So the last page is ``666472-plane-crash-near-ahmedabad-87.html``
+So the last page is ``666472-plane-crash-near-ahmedabad-86.html``
 
 And all the rest:
 
@@ -405,7 +405,7 @@ This gives:
 
 .. code-block:: shell
 
-    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-56.html?ispreloading=1" title="Last Page - Results 1,061 to 1,074 of 1,074">Last <i class="fas fa-angle-double-right"></i></a></li>```
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html" title="Last Page - Results 1,421 to 1,427 of 1,427">Last <i class="fa-solid fa-angles-right"></i></a></li>
 
 So the last page is ``https://www.pprune.org/accidents-close-calls/666581-air-india-ahmedabad-accident-12th-june-2025-part-2-a-72.html``
 
@@ -431,15 +431,15 @@ This gives:
 
 .. code-block:: shell
 
-    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-79.html" title="Last Page - Results 281 to 297 of 297">Last <i class="fa-solid fa-angles-right"></i></a></li>
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-87.html" title="Last Page - Results 281 to 297 of 297">Last <i class="fa-solid fa-angles-right"></i></a></li>
 
-So the last page is ``667141-preliminary-air-india-crash-report-published-79.html``
+So the last page is ``667141-preliminary-air-india-crash-report-published-87.html``
 
 And all the rest:
 
 .. code-block:: shell
 
-    $ time curl https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-[2-79].html -o "667141-preliminary-air-india-crash-report-published-#1.html"
+    $ time curl https://www.pprune.org/accidents-close-calls/667141-preliminary-air-india-crash-report-published-[2-87].html -o "667141-preliminary-air-india-crash-report-published-#1.html"
     ...
     real	0m35.544s
     user	0m0.176s
