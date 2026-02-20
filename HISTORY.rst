@@ -1,6 +1,14 @@
 History
 =======
 
+Alpha Release (AA5342 thread to: February 20, 2026, 10:23:00 GMT)
+-----------------------------------------------------------------
+
+- Build threads up to February 20, 2026, 10:23:00 GMT (built on February 20, 2026, 10:49:47 GMT).
+- "Likes" are available on the currently open thread.
+- Added link to NTSB Final Report and the Airspace Location and Enhanced Risk Transparency (ALERT) Act of 2026.
+- Added subjects: Add subjects: "Altimeter (All)", "Radio Altimeter", "Grief", "Normalization of Deviance", "See and Avoid", "CVR", "ALERT Act of 2026".
+
 Alpha Release (AA5342 thread to: January 29, 2026, 00:17:00 GMT)
 ----------------------------------------------------------------
 
