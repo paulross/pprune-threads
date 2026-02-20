@@ -45,6 +45,9 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
         <li>This accident on the <a href="https://aviation-safety.net/wikibase/474365">Aviation Safety Network</a></li>
         <li><a href="https://en.wikipedia.org/wiki/2025_Potomac_River_mid-air_collision">2025 Potomac River mid-air collision [Wikipedia]</a></li>
         <li><a href="https://www.ntsb.gov/investigations/Pages/DCA25MA108.aspx">NTSB Jan. 27, 2026 Board Meeting Presentations [NTSB]</a> Includes the findings, probable cause and final recommendations.</li>
+        <li><a href="AA_DCA_NTSB_Transcript_2026-01-27_B.html">An <b>unoficial transcript</b> of the NTSB Jan. 27, 2026 Board Meeting Presentations.</a></li>
+        <li><a href="https://www.ntsb.gov/investigations/AccidentReports/Reports/AIR2602.pdf">Final Report AIR-26-02 [NTSB] [PDF]</a> dated January 27, 2026</li>
+        <li><a href="https://transportation.house.gov/news/email/show.aspx?ID=RFS3V7AWS4PPNV2MA2XZXHULM4">Airspace Location and Enhanced Risk Transparency (ALERT) Act of 2026</a> Press Release with links to the act itself.</li>
     </ol>
     <p><b>My condolences to all the people affected by this accident, in particular to the friends and families of the victims.</b></p>
 """
@@ -145,6 +148,9 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
     LC_WORDS_MAP = {
         'adsbin': 'ADSB In',
 
+        'altimeter': 'Altimeter (All)',
+        'radalt': 'Radio Altimeter',
+
         'accountability': 'Accountability/Liability',
         'liability': 'Accountability/Liability',
 
@@ -154,6 +160,7 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
 
         'controller': 'ATC',
 
+        'faa': 'FAA',
         'faas': 'FAA',
 
         'antidei': 'DEI',
@@ -161,6 +168,8 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
         'findings': 'Findings',
 
         'docket': 'NTSB Docket',
+
+        'grief': 'Grief',
 
         'homendy': 'NTSB Chair Jennifer Homendy',
 
@@ -180,11 +189,16 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
 
         'nvgs': 'Night Vision Goggles (NVG)',
 
+        'normalisation': 'Normalization of Deviance',
+        'normalization': 'Normalization of Deviance',
+
         'separation': 'Separation (ALL)',
 
         'radar': 'Radar',
 
         'phraseology': 'Phraseology (ATC)',
+        # Catches 'see-and-avoid'
+        'seeandavoid': 'See and Avoid',
 
         'sidestep': 'Circle to Land (Deviate to RWY 33)',
         'doglegging': 'Circle to Land (Deviate to RWY 33)',
@@ -192,7 +206,7 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
     }
     CAPS_WORDS_MAP = {
         k: k for k in {
-            'ATC', 'ATCO', 'AA5342', 'ADSB', 'CNN', 'CRJ', 'DCA',
+            'ATC', 'ATCO', 'AA5342', 'ADSB', 'CNN', 'CRJ', 'CVR', 'DCA',
             'DEI', 'FAA', 'HUD', 'IFR', 'ICAO', 'KDCA', 'NBC', 'NTSB', 'NDAA',
             'TCAS', 'PAT23', 'PAT25', 'QNH', 'VFR',
         }
@@ -221,6 +235,8 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
         'RP4514': 'Republic Airways Flight 4514 Go-around',
 
         'POTUS': 'President Donald Trump',
+
+        'ALERT': 'ALERT Act of 2026',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lowercase unless all caps
@@ -267,6 +283,8 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
 
             ('probable', 'cause'): 'Probable Cause',
             ('safety', 'recommendations'): 'Safety Recommendations',
+
+            ('rad', 'alt'): 'Radio Altimeter',
 
             ('skating', 'team'): 'Skating Team (Victims)',
             ('figure', 'skating'): 'Skating Team (Victims)',
