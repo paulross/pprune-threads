@@ -520,15 +520,15 @@ This gives:
 
 .. code-block:: shell
 
-    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-93.html" title="Last Page - Results 1,781 to 1,791 of 1,791">Last <i class="fa-solid fa-angles-right"></i></a></li>
+    <li><a id="mb_pagelast" class="button primary hollow" href="https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-96.html" title="Last Page - Results 1,901 to 1,919 of 1,919">Last <i class="fa-solid fa-angles-right"></i></a></li>
 
-So the last page is ``663888-aa5342-down-dca-93.html``
+So the last page is ``663888-aa5342-down-dca-96.html``
 
 And all the rest:
 
 .. code-block:: shell
 
-    $ time curl https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-\[2-93\].html -o "663888-aa5342-down-dca-#1.html"
+    $ time curl https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca-\[2-96\].html -o "663888-aa5342-down-dca-#1.html"
     ...
     real	0m35.544s
     user	0m0.176s
