@@ -236,7 +236,6 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
 
         'POTUS': 'President Donald Trump',
 
-        'ALERT': 'ALERT Act of 2026',
     }
     # ('fuel', 'pump') -> "Fuel Pumps"
     # Each part of the key should be lowercase unless all caps
@@ -270,6 +269,9 @@ approximately 0.5 miles southeast of Ronald Reagan Washington National Airport (
             ('ADSB', 'out'): 'ADSB Out',
             ('ADSB', 'Out'): 'ADSB Out',
             ('ADSB', 'in'): 'ADSB In',
+
+            ('ALERT', 'act'): 'ALERT Act of 2026',
+            ('ROTOR', 'act'): 'ROTOR Act of 2012',
 
             ('TCAS', 'RA'): 'TCAS RA',
 
