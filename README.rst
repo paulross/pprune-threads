@@ -505,7 +505,7 @@ Original threads:
 1. https://www.pprune.org/accidents-close-calls/663888-aa5342-down-dca.html
 
 The result is here:
-`https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html <https://paulross.github.io/pprune-threads/gh-pages/AI171/index.html>`_
+`https://paulross.github.io/pprune-threads/gh-pages/AA5342_DCA/index.html <https://paulross.github.io/pprune-threads/gh-pages/AA5342_DCA/index.html>`_
 
 Pulling Down the Thread(s)
 --------------------------
